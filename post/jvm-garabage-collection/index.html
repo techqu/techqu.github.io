@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>对象存活判断、垃圾收集算法和垃圾收集器 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/jvm-garabage-collection/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="对象存活判断、垃圾收集算法和垃圾收集器" />
+<meta property="og:description" content="全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/jvm-garabage-collection/" /><meta property="article:published_time" content="2018-12-20T08:44:54&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-20T08:44:54&#43;08:00"/>
+
+<meta itemprop="name" content="对象存活判断、垃圾收集算法和垃圾收集器">
+<meta itemprop="description" content="全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。">
+
+
+<meta itemprop="datePublished" content="2018-12-20T08:44:54&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-20T08:44:54&#43;08:00" />
+<meta itemprop="wordCount" content="3350">
+
+
+
+<meta itemprop="keywords" content="java,JVM,虚拟机," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="对象存活判断、垃圾收集算法和垃圾收集器"/>
+<meta name="twitter:description" content="全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">学习、记录、分享</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">学习、记录、分享</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">对象存活判断、垃圾收集算法和垃圾收集器</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-12-20 </span>
+        <div class="post-category">
+            <a href="/categories/tech/"> Tech </a>
+            </div>
+          <span class="more-meta"> 3350 words </span>
+          <span class="more-meta"> 7 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#一-如何判断哪些对象需要回收">一、如何判断哪些对象需要回收？</a></li>
+<li><a href="#二-如何回收-垃圾收集算法">二、如何回收（垃圾收集算法）</a>
+<ul>
+<li><a href="#1-标记-清除算法-mark-sweep">1.标记-清除算法（Mark-Sweep）</a></li>
+<li><a href="#2-复制算法-copying">2.复制算法（Copying）</a></li>
+<li><a href="#3-标记-整理算法-mark-compact">3.标记-整理算法（Mark-Compact）</a></li>
+<li><a href="#4-分代收集算法-generational-collection">4.分代收集算法（Generational Collection）</a></li>
+</ul></li>
+<li><a href="#三-minor-gc-major-gc和full-gc之间的区别">三、Minor GC、Major GC和Full GC之间的区别</a></li>
+<li><a href="#四-垃圾收集器">四、垃圾收集器</a>
+<ul>
+<li><a href="#1-serial收集器">1.Serial收集器</a></li>
+<li><a href="#2-serial-old-收集器">2.Serial Old 收集器</a></li>
+<li><a href="#3-parnew收集器">3.ParNew收集器</a></li>
+<li><a href="#4-parallel-scavenge收集器">4. Parallel Scavenge收集器</a></li>
+<li><a href="#5-parallel-old收集器">5.Parallel Old收集器</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#parallel-scavenge-old-img-parallel-scavenge-old-png"><img src="/img/parallel-scavenge-old.png" alt="parallel-scavenge-old" /></a>
+<ul>
+<li>
+<ul>
+<li><a href="#6-cms-concurrent-mark-sweep-收集">6.CMS（Concurrent Mark Sweep） 收集.</a></li>
+<li><a href="#7-g1-garbage-first-收集器">7.G1（Garbage-First）收集器</a></li>
+<li><a href="#8-垃圾收集器参数总结">8.垃圾收集器参数总结</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。</p>
+
+<h3 id="一-如何判断哪些对象需要回收">一、如何判断哪些对象需要回收？</h3>
+
+<ol>
+<li>引用计数法（缺陷：互相引用，无法回收）</li>
+<li>可达性分析算法
+
+<ul>
+<li>可作为GC Roots的对象
+
+<ul>
+<li>虚拟机栈（栈帧中的本地变量表）中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中JNI（即一般说的Native方法）引用的对象</li>
+</ul></li>
+</ul></li>
+<li>引用的几种
+
+<ul>
+<li>强引用</li>
+<li>软引用</li>
+<li>弱引用</li>
+<li>虚引用</li>
+</ul></li>
+</ol>
+
+<h3 id="二-如何回收-垃圾收集算法">二、如何回收（垃圾收集算法）</h3>
+
+<h4 id="1-标记-清除算法-mark-sweep">1.标记-清除算法（Mark-Sweep）</h4>
+
+<ol>
+<li>标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象</li>
+<li>在标记完成后统一回收所有被标记的对象</li>
+</ol>
+
+<p>缺点：</p>
+
+<ol>
+<li>一个是效率问题，标记和清除两个过程的效率都不高；</li>
+<li>另一个是空间问题，标记清除之后会产生大量不连续的内存碎片，空间碎片太多可能会导致以后在程序运行过程中
+需要分配较大对象时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作。</li>
+</ol>
+
+<p><img src="/img/mark-sweep.png" alt="mark-sweep" /></p>
+
+<h4 id="2-复制算法-copying">2.复制算法（Copying）</h4>
+
+<ol>
+<li>将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。</li>
+<li>当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用过的内存空间一次清理掉。</li>
+</ol>
+
+<p><strong>优点：</strong>这样使得每次都是对整个半区进行内存回收，内存分配时也就不用考虑内存碎片等
+复杂情况，只要移动堆顶指针，按顺序分配内存即可，实现简单，运行高效。只是这种算法的代价是将内存缩小为
+了原来的一半，未免太高了一点。</p>
+
+<p><strong>缺点：</strong>复制收集算法在对象存活率较高时就要进行较多的复制操作，效率将会变低</p>
+
+<p><img src="/img/copying.png" alt="copying" /></p>
+
+<h4 id="3-标记-整理算法-mark-compact">3.标记-整理算法（Mark-Compact）</h4>
+
+<ol>
+<li>标记</li>
+<li>让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存</li>
+</ol>
+
+<p><img src="/img/mark-compact.png" alt="mark-compact" /></p>
+
+<h4 id="4-分代收集算法-generational-collection">4.分代收集算法（Generational Collection）</h4>
+
+<ol>
+<li>根据对象存活周期的不同将内存划分为几块。</li>
+<li>一般是把Java堆分为新生代和老年代，这样就可以根据各个年代的特点采用最适当的收集算法。</li>
+<li>在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用复制算法，只需要付出少量存活对象的复制成本就可以完成收集。</li>
+<li>老年代中因为对象存活率高、没有额外空间对它进行分配担保，就必须使用“标记—清理”或者“标记—整理”算法来进行回收。</li>
+</ol>
+
+<h3 id="三-minor-gc-major-gc和full-gc之间的区别">三、Minor GC、Major GC和Full GC之间的区别</h3>
+
+<ol>
+<li>Minor GC：只回收新生代，所有的 Minor GC 都会触发“（stop-the-world）”</li>
+<li>Major GC：只回收永久代</li>
+<li>Full GC： 回收整个堆。相当于 Minor GC + Major GC</li>
+</ol>
+
+<h3 id="四-垃圾收集器">四、垃圾收集器</h3>
+
+<p><img src="/img/gc.jpeg" alt="类加载过程" /></p>
+
+<h4 id="1-serial收集器">1.Serial收集器</h4>
+
+<ol>
+<li>简单高效。</li>
+<li>单线程、stop the world（停止所有工作线程）。</li>
+<li>适合client模式的虚拟机</li>
+</ol>
+
+<h4 id="2-serial-old-收集器">2.Serial Old 收集器</h4>
+
+<ol>
+<li>Serial收集器的老年代版本，单线程，使用标记-整理算法。</li>
+<li>主要是Client模式下的虚拟机使用。</li>
+<li>如果在Server模式下，那么它主要还有两大用途：
+
+<ul>
+<li>一种用途是在JDK 1.5以及之前的版本中与Parallel Scavenge收集器搭配使用[1]，</li>
+<li>另一种用途就是作为CMS收集器的后备预案，在并发收集发生Concurrent Mode Failure时使用。</li>
+</ul></li>
+</ol>
+
+<p><img src="/img/serial-old.png" alt="serial-old" /></p>
+
+<h4 id="3-parnew收集器">3.ParNew收集器</h4>
+
+<ol>
+<li>Serial收集器的多线程版本</li>
+<li>单CPU不如Serial</li>
+<li><strong>Server模式下新生代首选</strong>,目前只有它能与CMS收集器配合工作</li>
+<li>使用-XX：+UseConcMarkSweepGC选项后的默认新生代收集器，也可以使用-XX：+UseParNewGC选项来强制指定它。</li>
+<li>-XX：ParallelGCThreads：限制垃圾收集的线程数。</li>
+</ol>
+
+<p><img src="/img/parNew-serial-old.png" alt="parNew-serial-old" /></p>
+
+<h4 id="4-parallel-scavenge收集器">4. Parallel Scavenge收集器</h4>
+
+<ol>
+<li>吞吐量优先”收集器</li>
+<li>新生代收集器，复制算法，并行的多线程收集器,这些和ParNew收集器都一样,不同：关注点不同。又叫“吞吐量优先”收集器</li>
+<li>目标是达到一个可控制的吞吐量（Throughput）。而CMS等收集器的关注点是尽可能地缩短垃圾收集时用户线程的停顿时间。</li>
+<li>吞吐量=运行用户代码时间/（运行用户代码时间+垃圾收集时间），虚拟机总共运行了100分钟，其中垃圾收集花掉1分钟，那吞吐量就是99%。</li>
+<li>两个参数用于精确控制吞吐量:
+-XX：MaxGCPauseMillis是控制最大垃圾收集停顿时间
+-XX：GCTimeRatio直接设置吞吐量大小
+-XX：+UseAdaptiveSizePolicy:动态设置新生代大小、Eden与Survivor区的比例、晋升老年代对象年龄</li>
+<li>并行（Parallel）：指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态。</li>
+<li>并发（Concurrent）：指用户线程与垃圾收集线程同时执行（但不一定是并行的，可能会交替执行），用户
+程序在继续运行，而垃圾收集程序运行于另一个CPU上。</li>
+</ol>
+
+<h4 id="5-parallel-old收集器">5.Parallel Old收集器</h4>
+
+<ol>
+<li>Parallel Scavenge收集器的老年代版本，使用多线程和“标记-整理”算法。</li>
+<li>在注重吞吐量以及CPU资源敏感的场合，都可以优先考虑Parallel Scavenge加Parallel Old收集器。</li>
+</ol>
+
+<h2 id="parallel-scavenge-old-img-parallel-scavenge-old-png"><img src="/img/parallel-scavenge-old.png" alt="parallel-scavenge-old" /></h2>
+
+<h4 id="6-cms-concurrent-mark-sweep-收集">6.CMS（Concurrent Mark Sweep） 收集.</h4>
+
+<ol>
+<li>以获取最短回收停顿时间为目标的收集器。</li>
+<li>非常符合互联网站或者B/S系统的服务端上，重视服务的响应速度，希望系统停顿时间最短的应用</li>
+<li>基于“标记—清除”算法实现的</li>
+<li>CMS收集器的内存回收过程是与用户线程一起并发执行的</li>
+<li>它的运作过程分为4个步骤，包括：
+
+<ul>
+<li>初始标记，“Stop The World”，只是标记一下GC Roots能直接关联到的对象，速度很快</li>
+<li>并发标记，并发标记阶段就是进行GC RootsTracing的过程</li>
+<li>重新标记，Stop The World”，是为了修正并发标记期间因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录，但远比并发标记的时间短</li>
+<li>并发清除（CMS concurrent sweep）</li>
+</ul></li>
+<li>优点：并发收集、低停顿</li>
+<li>缺点：
+       - 对CPU资源非常敏感。
+       - 无法处理浮动垃圾，可能出现“Concurrent Mode Failure”失败而导致另一次Full GC的产生。
+       - 一款基于“标记—清除”算法实现的收集器
+<br /></li>
+</ol>
+
+<p><img src="/img/concurrent-mark-sweep.png" alt="concurrent-mark-sweep" /></p>
+
+<h4 id="7-g1-garbage-first-收集器">7.G1（Garbage-First）收集器</h4>
+
+<ol>
+<li>当今收集器技术发展的最前沿成果之一</li>
+<li>G1是一款面向服务端应用的垃圾收集器。</li>
+<li>优点：
+
+<ul>
+<li>并行与并发：充分利用多CPU、多核环境下的硬件优势</li>
+<li>分代收集：不需要其他收集器配合就能独立管理整个GC堆</li>
+<li>空间整合：“标记—整理”算法实现的收集器，局部上基于“复制”算法不会产生内存空间碎片<br /></li>
+<li>可预测的停顿：能让使用者明确指定在一个长度为M毫秒的时间片段内，消耗在垃圾收集上的时间不得超过N毫秒</li>
+</ul></li>
+<li>G1收集器的运作大致可划分为以下几个步骤：
+
+<ul>
+<li>初始标记：标记一下GC Roots能直接关联到的对象，需要停顿线程，但耗时很短</li>
+<li>并发标记：是从GC Root开始对堆中对象进行可达性分析，找出存活的对象，这阶段耗时较长，但可与用户程序并发执行</li>
+<li>最终标记：修正在并发标记期间因用户程序继续运作而导致标记产生变动的那一部分标记记录</li>
+<li>筛选回收：对各个Region的回收价值和成本进行排序，根据用户所期望的GC停顿时间来制定回收计划
+<br /></li>
+</ul></li>
+</ol>
+
+<p><img src="/img/g1.png" alt="g1" /></p>
+
+<h4 id="8-垃圾收集器参数总结">8.垃圾收集器参数总结</h4>
+
+<p>收集器设置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">-XX:+UseSerialGC:年轻串行（Serial），老年串行（Serial Old）
+-XX:+UseParNewGC:年轻并行（ParNew），老年串行（Serial Old）
+-XX:+UseConcMarkSweepGC:年轻并行（ParNew），老年串行（CMS），备份（Serial Old）
+-XX:+UseParallelGC:年轻并行吞吐（Parallel Scavenge），老年串行（Serial Old）
+-XX:+UseParalledlOldGC:年轻并行吞吐（Parallel Scavenge），老年并行吞吐（Parallel Old）</pre></td></tr></table>
+</div>
+</div>
+<p>收集器参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">-XX:ParallelGCThreads=n:设置并行收集器收集时使用的CPU数。并行收集线程数。
+-XX:MaxGCPauseMillis=n:设置并行收集最大暂停时间
+-XX:GCTimeRatio=n:设置垃圾回收时间占程序运行时间的百分比。公式为1/(1+n)
+-XX:+CMSIncrementalMode:设置为增量模式。适用于单CPU情况。
+-XX:ParallelGCThreads=n:设置并发收集器年轻代收集方式为并行收集时，使用的CPU数。并行收集线程数。</pre></td></tr></table>
+</div>
+</div>
+<p><img src="/img/gc-options-1.png" alt="gc-options-1" />
+<img src="/img/gc-options-2.png" alt="gc-options-2" /></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-12-20</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">java</a>
+          <a href="/tags/jvm/">JVM</a>
+          <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/markdown/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">markdown语法示例</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/resume/">
+            <span class="next-text nav-default">简历模版</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

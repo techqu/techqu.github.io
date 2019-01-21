@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kubernetes on Quguang 学习笔记</title>
+    <link>https://techqu.github.io/categories/kubernetes/</link>
+    <description>Recent content in kubernetes on Quguang 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 17 Jan 2019 08:41:16 +0800</lastBuildDate>
+    
+	<atom:link href="https://techqu.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes 入门</title>
+      <link>https://techqu.github.io/post/kubernetes-introduction/</link>
+      <pubDate>Thu, 17 Jan 2019 08:41:16 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/kubernetes-introduction/</guid>
+      <description>&lt;p&gt;首先，Kubernetes项目要解决的问题是什么？&lt;/p&gt;
+
+&lt;p&gt;编排？调度？容器云？还是集群管理？&lt;/p&gt;
+
+&lt;p&gt;对于大多数用户来说，他们希望Kubernetes项目带来的体验是确定的：现在我有了应用的容器镜像，请帮我在一个给定的集群上把这个应用运行起来。更进一步地说，我还希望Kubernetes能给我提供路由网关、水平扩展、监控、备份、灾难恢复等一系列运维能力。这不就是经典Paas（比如，Cloud Foundry）项目的能力吗?&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

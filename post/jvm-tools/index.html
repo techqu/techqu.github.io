@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>JVM 工具 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="本文介绍了常用的JDK的命令行工具
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/jvm-tools/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="JVM 工具" />
+<meta property="og:description" content="本文介绍了常用的JDK的命令行工具" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/jvm-tools/" /><meta property="article:published_time" content="2018-12-24T18:08:25&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-24T18:08:25&#43;08:00"/>
+
+<meta itemprop="name" content="JVM 工具">
+<meta itemprop="description" content="本文介绍了常用的JDK的命令行工具">
+
+
+<meta itemprop="datePublished" content="2018-12-24T18:08:25&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-24T18:08:25&#43;08:00" />
+<meta itemprop="wordCount" content="397">
+
+
+
+<meta itemprop="keywords" content="java,JVM,虚拟机," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JVM 工具"/>
+<meta name="twitter:description" content="本文介绍了常用的JDK的命令行工具"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">学习、记录、分享</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">学习、记录、分享</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">JVM 工具</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-12-24 </span>
+        <div class="post-category">
+            <a href="/categories/tech/"> Tech </a>
+            </div>
+          <span class="more-meta"> 397 words </span>
+          <span class="more-meta"> 1 min read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#一-jps-虚拟机进程状况工具">一、jps:虚拟机进程状况工具</a></li>
+<li><a href="#二-jstat-虚拟机统计信息监视工具">二、jstat：虚拟机统计信息监视工具</a></li>
+<li><a href="#三-jinfo-java配置信息工具">三、jinfo：java配置信息工具</a></li>
+<li><a href="#四-jmap-java内存映像工具">四、jmap：java内存映像工具</a></li>
+<li><a href="#五-jhat-虚拟机堆转储快照分析工具">五、jhat：虚拟机堆转储快照分析工具</a></li>
+<li><a href="#六-jstack-java堆栈跟踪工具">六、jstack：Java堆栈跟踪工具</a></li>
+<li><a href="#七-hsdis-jit生成代码反汇编">七、HSDIS：JIT生成代码反汇编</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本文介绍了常用的JDK的命令行工具</p>
+
+<p>内容出自：
+<div class="douban_show">
+    <div id="db9787111421900" date-dbid="9787111421900" class="douban_item post-preview"></div>
+  </div></p>
+
+<h2 id="一-jps-虚拟机进程状况工具">一、jps:虚拟机进程状况工具</h2>
+
+<p>jsp命令格式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">jps <span class="o">[</span>options<span class="o">]</span>  <span class="o">[</span>hostid<span class="o">]</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="二-jstat-虚拟机统计信息监视工具">二、jstat：虚拟机统计信息监视工具</h2>
+
+<p>jstat命令格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">jstat<span class="o">[</span>option vmid <span class="o">[</span>interval<span class="o">[</span>s<span class="p">|</span>ms<span class="o">]</span> <span class="o">[</span>count<span class="o">]]]</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>如果是本地虚拟机进程，VMID与LVMID是一致的，如果是远程虚拟机进程，那VMID的格式应当是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>protocol：<span class="o">][</span>//<span class="o">]</span>lvmid<span class="o">[</span>@hostname<span class="o">[</span>：port<span class="o">]</span>/servername<span class="o">]</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>参数interval和count代表查询间隔和次数，如果省略这两个参数，说明只查询一次。</p>
+
+<p>假设需要每250毫秒查询一次进程2764垃圾收集状况，一共查询20次，
+那命令应当是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">jstat -gc <span class="m">2764</span> <span class="m">250</span> <span class="m">20</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>jstat各参数含义：
+<img src="/img/jstat-options.png" alt="jstat-options" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#jstat执行样例：结果如图</span>
+jstat -gcutil <span class="m">2764</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><img src="/img/jstat-gcutil.png" alt="jstat-gcutil" /></p>
+
+<h2 id="三-jinfo-java配置信息工具">三、jinfo：java配置信息工具</h2>
+
+<h2 id="四-jmap-java内存映像工具">四、jmap：java内存映像工具</h2>
+
+<h2 id="五-jhat-虚拟机堆转储快照分析工具">五、jhat：虚拟机堆转储快照分析工具</h2>
+
+<h2 id="六-jstack-java堆栈跟踪工具">六、jstack：Java堆栈跟踪工具</h2>
+
+<h2 id="七-hsdis-jit生成代码反汇编">七、HSDIS：JIT生成代码反汇编</h2>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-12-24</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">java</a>
+          <a href="/tags/jvm/">JVM</a>
+          <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/jvm-performance-optimization/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">JVM性能调优</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/how-jvm-load-java-class/">
+            <span class="next-text nav-default">Java虚拟机是如何加载Java类的?</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

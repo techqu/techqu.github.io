@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>面试 on Quguang 学习笔记</title>
+    <link>https://techqu.github.io/categories/%E9%9D%A2%E8%AF%95/</link>
+    <description>Recent content in 面试 on Quguang 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 19 Dec 2018 21:45:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://techqu.github.io/categories/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>简历模版</title>
+      <link>https://techqu.github.io/post/resume/</link>
+      <pubDate>Wed, 19 Dec 2018 21:45:56 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/resume/</guid>
+      <description>&lt;p&gt;本文是一个markdown风格语法的简历模版，转载自网络&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

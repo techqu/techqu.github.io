@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java面试 on Quguang 学习笔记</title>
+    <link>https://techqu.github.io/categories/java%E9%9D%A2%E8%AF%95/</link>
+    <description>Recent content in java面试 on Quguang 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 19 Jan 2019 07:56:14 +0800</lastBuildDate>
+    
+	<atom:link href="https://techqu.github.io/categories/java%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
+      <link>https://techqu.github.io/post/15-lock-in-java/</link>
+      <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/15-lock-in-java/</guid>
+      <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

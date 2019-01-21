@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Java工程师成神之路（2018修订版） - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="网罗了比较全面的java技术栈。
+本文基于微信公众号文章基础上添加，原文链接： https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/roadmap/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="Java工程师成神之路（2018修订版）" />
+<meta property="og:description" content="网罗了比较全面的java技术栈。
+
+本文基于微信公众号文章基础上添加，原文链接：
+https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/roadmap/" /><meta property="article:published_time" content="2018-12-20T11:12:42&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-20T11:12:42&#43;08:00"/>
+
+<meta itemprop="name" content="Java工程师成神之路（2018修订版）">
+<meta itemprop="description" content="网罗了比较全面的java技术栈。
+
+本文基于微信公众号文章基础上添加，原文链接：
+https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg">
+
+
+<meta itemprop="datePublished" content="2018-12-20T11:12:42&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-20T11:12:42&#43;08:00" />
+<meta itemprop="wordCount" content="4402">
+
+
+
+<meta itemprop="keywords" content="java," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java工程师成神之路（2018修订版）"/>
+<meta name="twitter:description" content="网罗了比较全面的java技术栈。
+
+本文基于微信公众号文章基础上添加，原文链接：
+https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">学习、记录、分享</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">学习、记录、分享</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Java工程师成神之路（2018修订版）</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-12-20 </span>
+        <div class="post-category">
+            <a href="/categories/tech/"> Tech </a>
+            <a href="/categories/%E6%AF%95%E7%94%9F%E7%9B%AE%E6%A0%87/"> 毕生目标 </a>
+            </div>
+          <span class="more-meta"> 4402 words </span>
+          <span class="more-meta"> 9 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#一-基础篇">一、基础篇</a>
+<ul>
+<li><a href="#jvm">JVM</a>
+<ul>
+<li>
+<ul>
+<li><a href="#jvm内存结构">JVM内存结构</a></li>
+<li><a href="#java内存模型">Java内存模型</a></li>
+<li><a href="#垃圾回收">垃圾回收</a></li>
+<li><a href="#jvm参数及调优">JVM参数及调优</a></li>
+<li><a href="#hotspot">HotSpot</a></li>
+<li><a href="#类加载机制">类加载机制</a></li>
+<li><a href="#虚拟机性能监控与故障处理工具">虚拟机性能监控与故障处理工具</a></li>
+<li><a href="#编译与反编译">编译与反编译</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#java基础知识">Java基础知识</a>
+<ul>
+<li><a href="#阅读源代码">阅读源代码</a></li>
+<li><a href="#java中各种变量类型">Java中各种变量类型</a>
+<ul>
+<li><a href="#熟悉java-string的使用-熟悉string的各种函数">熟悉Java String的使用，熟悉String的各种函数</a></li>
+<li><a href="#字符串的不可变性">字符串的不可变性</a></li>
+<li><a href="#自动拆装箱">自动拆装箱</a></li>
+<li><a href="#熟悉java中各种关键字">熟悉Java中各种关键字</a></li>
+<li><a href="#集合类">集合类</a></li>
+<li><a href="#枚举">枚举</a></li>
+<li><a href="#java-io-java-nio-并学会使用">Java IO&amp;Java NIO，并学会使用</a></li>
+<li><a href="#java反射与javassist">Java反射与javassist</a></li>
+<li><a href="#java序列化">Java序列化</a></li>
+<li><a href="#注解">注解</a></li>
+<li><a href="#jms">JMS</a></li>
+<li><a href="#jmx">JMX</a></li>
+<li><a href="#泛型">泛型</a></li>
+<li><a href="#单元测试">单元测试</a></li>
+<li><a href="#正则表达式">正则表达式</a></li>
+<li><a href="#常用的java工具库">常用的Java工具库</a></li>
+<li><a href="#什么是api-spi">什么是API&amp;SPI</a></li>
+<li><a href="#时间处理">时间处理</a></li>
+<li><a href="#编码方式">编码方式</a></li>
+<li><a href="#语法糖">语法糖</a></li>
+<li><a href="#java并发编程">Java并发编程</a></li>
+<li><a href="#线程池">线程池</a></li>
+<li><a href="#线程安全">线程安全</a></li>
+<li><a href="#锁">锁</a></li>
+<li><a href="#volatile">volatile</a></li>
+<li><a href="#synchronized">synchronized</a></li>
+<li><a href="#sleep-和-wait">sleep 和 wait</a></li>
+<li><a href="#wait-和-notify">wait 和 notify</a></li>
+<li><a href="#notify-和-notifyall">notify 和 notifyAll</a></li>
+<li><a href="#threadlocal">ThreadLocal</a></li>
+<li><a href="#写一个死锁的程序">写一个死锁的程序</a></li>
+<li><a href="#写代码来解决生产者消费者问题">写代码来解决生产者消费者问题</a></li>
+<li><a href="#守护线程">守护线程</a></li>
+<li><a href="#守护线程和非守护线程的区别以及用法">守护线程和非守护线程的区别以及用法</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#二-进阶篇">二、 进阶篇</a>
+<ul>
+<li><a href="#java底层知识">Java底层知识</a></li>
+</ul></li>
+<li><a href="#三-高级篇">三、 高级篇</a></li>
+<li><a href="#四-架构篇">四、架构篇</a></li>
+<li><a href="#五-扩展篇">五、 扩展篇</a></li>
+<li><a href="#六-推荐书籍">六、 推荐书籍</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>网罗了比较全面的java技术栈。</p>
+
+<p>本文基于微信公众号文章基础上添加，原文链接：
+<a href="https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg">https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg</a></p>
+
+<h1 id="一-基础篇">一、基础篇</h1>
+
+<h2 id="jvm">JVM</h2>
+
+<h4 id="jvm内存结构">JVM内存结构</h4>
+
+<p>堆、栈、方法区、直接内存、堆和栈区别</p>
+
+<h4 id="java内存模型">Java内存模型</h4>
+
+<p>内存可见性、重排序、顺序一致性、volatile、锁、final</p>
+
+<h4 id="垃圾回收">垃圾回收</h4>
+
+<p>内存分配策略、垃圾收集器（G1）、GC算法、GC参数、对象存活的判定</p>
+
+<h4 id="jvm参数及调优">JVM参数及调优</h4>
+
+<p>Java对象模型
+oop-klass、对象头</p>
+
+<h4 id="hotspot">HotSpot</h4>
+
+<p>即时编译器、编译优化</p>
+
+<h4 id="类加载机制">类加载机制</h4>
+
+<p>classLoader、类加载过程、双亲委派（破坏双亲委派）、模块化（jboss modules、osgi、jigsaw）</p>
+
+<h4 id="虚拟机性能监控与故障处理工具">虚拟机性能监控与故障处理工具</h4>
+
+<p>jps, jstack, jmap、jstat, jconsole, jinfo, jhat, javap, btrace、TProfiler</p>
+
+<h4 id="编译与反编译">编译与反编译</h4>
+
+<p>javac 、javap 、jad 、CRF</p>
+
+<h2 id="java基础知识">Java基础知识</h2>
+
+<h3 id="阅读源代码">阅读源代码</h3>
+
+<p>String、Integer、Long、Enum、BigDecimal、ThreadLocal、ClassLoader &amp; URLClassLoader、ArrayList &amp; LinkedList、 HashMap &amp; LinkedHashMap &amp; TreeMap &amp; CouncurrentHashMap、HashSet &amp; LinkedHashSet &amp; TreeSet</p>
+
+<h3 id="java中各种变量类型">Java中各种变量类型</h3>
+
+<h4 id="熟悉java-string的使用-熟悉string的各种函数">熟悉Java String的使用，熟悉String的各种函数</h4>
+
+<p>JDK 6和JDK 7中substring的原理及区别、</p>
+
+<p>replaceFirst、replaceAll、replace区别、</p>
+
+<p>String对“+”的重载、</p>
+
+<p>String.valueOf和Integer.toString的区别、</p>
+
+<h4 id="字符串的不可变性">字符串的不可变性</h4>
+
+<h4 id="自动拆装箱">自动拆装箱</h4>
+
+<p>Integer的缓存机制</p>
+
+<h4 id="熟悉java中各种关键字">熟悉Java中各种关键字</h4>
+
+<p>transient、instanceof、volatile、synchronized、final、static、const 原理及用法。</p>
+
+<h4 id="集合类">集合类</h4>
+
+<p>常用集合类的使用</p>
+
+<p>ArrayList和LinkedList和Vector的区别</p>
+
+<p>SynchronizedList和Vector的区别</p>
+
+<p>HashMap、HashTable、ConcurrentHashMap区别</p>
+
+<p>Java 8中stream相关用法</p>
+
+<p>apache集合处理工具类的使用</p>
+
+<p>不同版本的JDK中HashMap的实现的区别以及原因</p>
+
+<h4 id="枚举">枚举</h4>
+
+<p>枚举的用法、枚举与单例、Enum类</p>
+
+<h4 id="java-io-java-nio-并学会使用">Java IO&amp;Java NIO，并学会使用</h4>
+
+<p>bio、nio和aio的区别、三种IO的用法与原理、netty</p>
+
+<h4 id="java反射与javassist">Java反射与javassist</h4>
+
+<p>反射与工厂模式、 java.lang.reflect.*</p>
+
+<h4 id="java序列化">Java序列化</h4>
+
+<p>什么是序列化与反序列化、为什么序列化</p>
+
+<p>序列化底层原理</p>
+
+<p>序列化与单例模式</p>
+
+<p>protobuf</p>
+
+<p>为什么说序列化并不安全</p>
+
+<h4 id="注解">注解</h4>
+
+<p>元注解、自定义注解、Java中常用注解使用、注解与反射的结合</p>
+
+<h4 id="jms">JMS</h4>
+
+<p>什么是Java消息服务、JMS消息传送模型</p>
+
+<h4 id="jmx">JMX</h4>
+
+<p>java.lang.management.<em>、 javax.management.</em></p>
+
+<h4 id="泛型">泛型</h4>
+
+<p>泛型与继承</p>
+
+<p>类型擦除</p>
+
+<p>泛型中K T V E</p>
+
+<p>object等的含义、泛型各种用法</p>
+
+<h4 id="单元测试">单元测试</h4>
+
+<p>junit、mock、mockito、内存数据库（h2）</p>
+
+<h4 id="正则表达式">正则表达式</h4>
+
+<p>java.lang.util.regex.*</p>
+
+<h4 id="常用的java工具库">常用的Java工具库</h4>
+
+<p>commons.lang, commons.*&hellip; guava-libraries netty</p>
+
+<h4 id="什么是api-spi">什么是API&amp;SPI</h4>
+
+<p>异常
+异常类型、正确处理异常、自定义异常</p>
+
+<h4 id="时间处理">时间处理</h4>
+
+<p>时区、时令、Java中时间API</p>
+
+<h4 id="编码方式">编码方式</h4>
+
+<p>解决乱码问题、常用编码方式</p>
+
+<h4 id="语法糖">语法糖</h4>
+
+<p>Java中语法糖原理、解语法糖</p>
+
+<h4 id="java并发编程">Java并发编程</h4>
+
+<p>什么是线程，与进程的区别
+阅读源代码，并学会使用
+Thread、Runnable、Callable、ReentrantLock、ReentrantReadWriteLock、Atomic*、Semaphore、CountDownLatch、、ConcurrentHashMap、Executors</p>
+
+<h4 id="线程池">线程池</h4>
+
+<p>自己设计线程池、submit() 和 execute()</p>
+
+<h4 id="线程安全">线程安全</h4>
+
+<p>死锁、死锁如何排查、Java线程调度、线程安全和内存模型的关系</p>
+
+<h4 id="锁">锁</h4>
+
+<p>CAS、乐观锁与悲观锁、数据库相关锁机制、分布式锁、偏向锁、轻量级锁、重量级锁、monitor、锁优化、锁消除、锁粗化、自旋锁、可重入锁、阻塞锁、死锁</p>
+
+<p>死锁</p>
+
+<h4 id="volatile">volatile</h4>
+
+<p>happens-before、编译器指令重排和CPU指令重</p>
+
+<h4 id="synchronized">synchronized</h4>
+
+<p>synchronized是如何实现的？</p>
+
+<p>synchronized和lock之间关系</p>
+
+<p>不使用synchronized如何实现一个线程安全的单例</p>
+
+<h4 id="sleep-和-wait">sleep 和 wait</h4>
+
+<h4 id="wait-和-notify">wait 和 notify</h4>
+
+<h4 id="notify-和-notifyall">notify 和 notifyAll</h4>
+
+<h4 id="threadlocal">ThreadLocal</h4>
+
+<h4 id="写一个死锁的程序">写一个死锁的程序</h4>
+
+<h4 id="写代码来解决生产者消费者问题">写代码来解决生产者消费者问题</h4>
+
+<h4 id="守护线程">守护线程</h4>
+
+<h4 id="守护线程和非守护线程的区别以及用法">守护线程和非守护线程的区别以及用法</h4>
+
+<h2 id="二-进阶篇">二、 进阶篇</h2>
+
+<h3 id="java底层知识">Java底层知识</h3>
+
+<p>字节码、class文件格式
+CPU缓存，L1，L2，L3和伪共享
+尾递归
+位运算
+用位运算实现加、减、乘、除、取余</p>
+
+<p>设计模式
+了解23种设计模式
+会使用常用设计模式
+单例、策略、工厂、适配器、责任链。</p>
+
+<p>实现AOP
+实现IOC
+不用synchronized和lock，实现线程安全的单例模式
+nio和reactor设计模式
+网络编程
+tcp、udp、http、https等常用协议
+三次握手与四次关闭、流量控制和拥塞控制、OSI七层模型、tcp粘包与拆包</p>
+
+<p>http/1.0 http/1.1 http/2之前的区别
+Java RMI，Socket，HttpClient
+cookie 与 session
+cookie被禁用，如何实现session</p>
+
+<p>用Java写一个简单的静态文件的HTTP服务器
+实现客户端缓存功能，支持返回304 实现可并发下载一个文件 使用线程池处理客户端请求 使用nio处理客户端请求 支持简单的rewrite规则 上述功能在实现的时候需要满足“开闭原则”</p>
+
+<p>了解nginx和apache服务器的特性并搭建一个对应的服务器
+用Java实现FTP、SMTP协议
+进程间通讯的方式
+什么是CDN？如果实现？
+什么是DNS？
+反向代理
+框架知识
+Servlet线程安全问题
+Servlet中的filter和listener
+Hibernate的缓存机制
+Hiberate的懒加载
+Spring Bean的初始化
+Spring的AOP原理
+自己实现Spring的IOC
+Spring MVC
+Spring Boot2.0
+Spring Boot的starter原理，自己实现一个starter</p>
+
+<p>Spring Security
+应用服务器
+JBoss
+tomcat
+jetty
+Weblogic
+工具
+git &amp; svn
+maven &amp; gradle</p>
+
+<h2 id="三-高级篇">三、 高级篇</h2>
+
+<p>新技术
+Java 8
+lambda表达式、Stream API、</p>
+
+<p>Java 9
+Jigsaw、Jshell、Reactive Streams</p>
+
+<p>Java 10
+局部变量类型推断、G1的并行Full GC、ThreadLocal握手机制</p>
+
+<p>Spring 5
+响应式编程</p>
+
+<p>Spring Boot 2.0
+性能优化
+使用单例、使用Future模式、使用线程池、选择就绪、减少上下文切换、减少锁粒度、数据压缩、结果缓存</p>
+
+<p>线上问题分析
+dump获取
+线程Dump、内存Dump、gc情况</p>
+
+<p>dump分析
+分析死锁、分析内存泄露</p>
+
+<p>自己编写各种outofmemory，stackoverflow程序
+HeapOutOfMemory、 Young OutOfMemory、MethodArea OutOfMemory、ConstantPool OutOfMemory、DirectMemory OutOfMemory、Stack OutOfMemory Stack OverFlow</p>
+
+<p>常见问题解决思路
+内存溢出、线程死锁、类加载冲突</p>
+
+<p>使用工具尝试解决以下问题，并写下总结
+当一个Java程序响应很慢时如何查找问题、</p>
+
+<p>当一个Java程序频繁FullGC时如何解决问题、</p>
+
+<p>如何查看垃圾回收日志、</p>
+
+<p>当一个Java应用发生OutOfMemory时该如何解决、</p>
+
+<p>如何判断是否出现死锁、</p>
+
+<p>如何判断是否存在内存泄露</p>
+
+<p>编译原理知识
+编译与反编译
+Java代码的编译与反编译
+Java的反编译工具
+词法分析，语法分析（LL算法，递归下降算法，LR算法），语义分析，运行时环境，中间代码，代码生成，代码优化
+操作系统知识
+Linux的常用命令
+进程同步
+缓冲区溢出
+分段和分页
+虚拟内存与主存
+数据库知识
+MySql 执行引擎
+MySQL 执行计划
+如何查看执行计划，如何根据执行计划进行SQL优化</p>
+
+<p>SQL优化
+事务
+事务的隔离级别、事务能不能实现锁的功能</p>
+
+<p>数据库锁
+行锁、表锁、使用数据库锁实现乐观锁、</p>
+
+<p>数据库主备搭建
+binlog
+内存数据库
+h2</p>
+
+<p>常用的nosql数据库
+redis、memcached</p>
+
+<p>分别使用数据库锁、NoSql实现分布式锁
+性能调优
+数据结构与算法知识
+简单的数据结构
+栈、队列、链表、数组、哈希表、</p>
+
+<p>树
+二叉树、字典树、平衡树、排序树、B树、B+树、R树、多路树、红黑树</p>
+
+<p>排序算法
+各种排序算法和时间复杂度 深度优先和广度优先搜索 全排列、贪心算法、KMP算法、hash算法、海量数据处理</p>
+
+<p>大数据知识
+Zookeeper
+基本概念、常见用法</p>
+
+<p>Solr，Lucene，ElasticSearch
+在linux上部署solr，solrcloud，，新增、删除、查询索引</p>
+
+<p>Storm，流式计算，了解Spark，S4
+在linux上部署storm，用zookeeper做协调，运行storm hello world，local和remote模式运行调试storm topology。</p>
+
+<p>Hadoop，离线计算
+HDFS、MapReduce</p>
+
+<p>分布式日志收集flume，kafka，logstash
+数据挖掘，mahout
+网络安全知识
+什么是XSS
+XSS的防御</p>
+
+<p>什么是CSRF
+什么是注入攻击
+SQL注入、XML注入、CRLF注入</p>
+
+<p>什么是文件上传漏洞
+加密与解密
+MD5，SHA1、DES、AES、RSA、DSA</p>
+
+<p>什么是DOS攻击和DDOS攻击
+memcached为什么可以导致DDos攻击、什么是反射型DDoS</p>
+
+<p>SSL、TLS，HTTPS
+如何通过Hash碰撞进行DOS攻击
+用openssl签一个证书部署到apache或nginx</p>
+
+<h2 id="四-架构篇">四、架构篇</h2>
+
+<p>分布式
+数据一致性、服务治理、服务降级</p>
+
+<p>分布式事务
+2PC、3PC、CAP、BASE、 可靠消息最终一致性、最大努力通知、TCC</p>
+
+<p>Dubbo
+服务注册、服务发现，服务治理</p>
+
+<p>分布式数据库
+怎样打造一个分布式数据库、什么时候需要分布式数据库、mycat、otter、HBase</p>
+
+<p>分布式文件系统
+mfs、fastdfs</p>
+
+<p>分布式缓存
+缓存一致性、缓存命中率、缓存冗余</p>
+
+<p>微服务
+SOA、康威定律</p>
+
+<p>ServiceMesh
+Docker &amp; Kubernets
+Spring Boot
+Spring Cloud
+高并发
+分库分表
+CDN技术
+消息队列
+ActiveMQ</p>
+
+<p>监控
+监控什么
+CPU、内存、磁盘I/O、网络I/O等</p>
+
+<p>监控手段
+进程监控、语义监控、机器资源监控、数据波动</p>
+
+<p>监控数据采集
+日志、埋点</p>
+
+<p>Dapper
+负载均衡
+tomcat负载均衡、Nginx负载均衡</p>
+
+<p>DNS
+DNS原理、DNS的设计</p>
+
+<p>CDN
+数据一致性</p>
+
+<h2 id="五-扩展篇">五、 扩展篇</h2>
+
+<p>云计算
+IaaS、SaaS、PaaS、虚拟化技术、openstack、Serverlsess</p>
+
+<p>搜索引擎
+Solr、Lucene、Nutch、Elasticsearch</p>
+
+<p>权限管理
+Shiro</p>
+
+<p>区块链
+哈希算法、Merkle树、公钥密码算法、共识算法、Raft协议、Paxos 算法与 Raft 算法、拜占庭问题与算法、消息认证码与数字签名</p>
+
+<p>比特币
+挖矿、共识机制、闪电网络、侧链、热点问题、分叉</p>
+
+<p>以太坊
+超级账本
+人工智能
+数学基础、机器学习、人工神经网络、深度学习、应用场景。</p>
+
+<p>常用框架
+TensorFlow、DeepLearning4J</p>
+
+<p>其他语言
+Groovy、Python、Go、NodeJs、Swift、Rust</p>
+
+<h2 id="六-推荐书籍">六、 推荐书籍</h2>
+
+<p>《深入理解Java虚拟机》</p>
+
+<p>《Effective Java》</p>
+
+<p>《深入分析Java Web技术内幕》</p>
+
+<p>《大型网站技术架构》</p>
+
+<p>《代码整洁之道》</p>
+
+<p>《Head First设计模式》</p>
+
+<p>《maven实战》</p>
+
+<p>《区块链原理、设计与应用》</p>
+
+<p>《Java并发编程实战》</p>
+
+<p>《鸟哥的Linux私房菜》</p>
+
+<p>《从Paxos到Zookeeper》</p>
+
+<p>《架构即未来》</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-12-20</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">java</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/how-jvm-load-java-class/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Java虚拟机是如何加载Java类的?</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/markdown/">
+            <span class="next-text nav-default">markdown语法示例</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

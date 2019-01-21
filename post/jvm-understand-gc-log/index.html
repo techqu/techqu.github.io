@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>理解GC日志 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="理解GC日志，基于jdk1.7,一步步看懂GC日志
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/jvm-understand-gc-log/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="理解GC日志" />
+<meta property="og:description" content="理解GC日志，基于jdk1.7,一步步看懂GC日志" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/jvm-understand-gc-log/" /><meta property="article:published_time" content="2018-12-24T19:03:40&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-24T19:03:40&#43;08:00"/>
+
+<meta itemprop="name" content="理解GC日志">
+<meta itemprop="description" content="理解GC日志，基于jdk1.7,一步步看懂GC日志">
+
+
+<meta itemprop="datePublished" content="2018-12-24T19:03:40&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-24T19:03:40&#43;08:00" />
+<meta itemprop="wordCount" content="3383">
+
+
+
+<meta itemprop="keywords" content="java,JVM,虚拟机," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="理解GC日志"/>
+<meta name="twitter:description" content="理解GC日志，基于jdk1.7,一步步看懂GC日志"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">学习、记录、分享</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">学习、记录、分享</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">理解GC日志</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-12-24 </span>
+        <div class="post-category">
+            <a href="/categories/tech/"> Tech </a>
+            </div>
+          <span class="more-meta"> 3383 words </span>
+          <span class="more-meta"> 7 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#gc-堆">GC 堆</a></li>
+<li><a href="#gc-日志1">GC 日志1</a></li>
+<li><a href="#gc-日志2">GC 日志2</a></li>
+<li><a href="#gc-日志3">GC 日志3</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>理解GC日志，基于jdk1.7,一步步看懂GC日志</p>
+
+<h2 id="gc-堆">GC 堆</h2>
+
+<p>1、GC 分为两种：Minor GC、Full GC ( 或称为 Major GC )。</p>
+
+<p>2、Minor GC 是发生在新生代中的垃圾收集动作，所采用的是复制算法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">a、新生代几乎是所有 Java 对象出生的地方，即 Java 对象申请的内存以及存放都是在这个地方。
+b、Java 中的大部分对象通常不需长久存活，具有朝生夕灭的性质。
+c、当一个对象被判定为 “死亡” 的时候，GC 就有责任来回收掉这部分对象的内存空间。
+d、新生代是 GC 收集垃圾的频繁区域。
+e、当对象在 Eden（+from） 出生后，在经过一次 Minor GC 后，如果对象还存活，并且能够被另外一块 Survivor 区域        
+    所容纳( 这里应为 to 区域 )，则使用复制算法将这些仍然还存活的对象复制到另外一块 Survivor 区域 ( 即 to 区域 ) 中，
+f、 然后清理所使用过的 Eden 以及 Survivor 区域 ( 即 from 区域 )，并且将这些对象的年龄设置为1，
+g、以后对象在 Survivor 区每熬过一次 Minor GC，就将对象的年龄 + 1，
+h、当对象的年龄达到某个值时 ( 默认是 15 岁，可以通过参数 -XX:MaxTenuringThreshold 来设定 )，这些对象就会成为    
+        老年代。
+j、但这也不是一定的，对于一些较大的对象 ( 即需要分配一块较大的连续内存空间 ) 则是直接进入到老年代。</pre></td></tr></table>
+</div>
+</div>
+<p>3、Full GC 是发生在老年代的垃圾收集动作，所采用的是标记-清除算法。</p>
+
+<ol>
+<li>老年代里面的对象几乎个个都是在 Survivor 区域中熬过来的，它们是不会那么容易就 “死掉” 了的。</li>
+<li>Full GC 发生的次数不会有 Minor GC 那么频繁，并且做一次 Full GC 要比进行一次 Minor GC 的时间更长。</li>
+<li>标记-清除算法收集垃圾的时候会产生许多的内存碎片 ( 即不连续的内存空间 )，</li>
+<li>此后需要为较大的对象分配内存空间时，若无法找到足够的连续的内存空间，就会提前触发一次 GC 的收集动作。</li>
+</ol>
+
+<h2 id="gc-日志1">GC 日志1</h2>
+
+<p><img src="/img/gc-log1.png" alt="gc-log" /></p>
+
+<p>1、“33.125：”和“100.667：”代表了GC发生的时间，这个数字的含义是从Java虚拟机启动以来经过的秒数。</p>
+
+<p>2、“[GC”和“[Full GC”说明了这次垃圾收集的停顿类型，而不是用来区分新生代GC还是老年代GC的。
+    “Full”，说明这次GC是发生了Stop-The-World的，例如下面这段新生代收集器ParNew的日志也会出
+现“[Full GC”（这一般是因为出现了分配担保失败之类的问题，所以才导致STW）。如果是调用System.gc（）方
+法所触发的收集，那么在这里将显示“[Full GC（System）”。[Full GC 283.736：[ParNew：261599K-＞261599K（261952K），0.0000288 secs]</p>
+
+<p>3、DefNew”、“Tenured”、“Perm”表示GC发生的区域，这里显示的区域名称与使用的GC收集器
+是密切相关的，</p>
+
+<ul>
+<li>“DefNew”：Serial收集器中的新生代名为“Default New Generation”</li>
+<li>“ParNew”：ParNew收集器，新生代，意为“Parallel New Generation”。</li>
+<li>“PSYoungGen”： Parallel Scavenge收集器</li>
+<li>老年代和永久代同理，名称也是由收集器决定的。Tenured表示老年代</li>
+</ul>
+
+<p>4、“3324K-＞152K（3712K）”是“GC前该内存区域已使用容量-＞GC后该内存区域已使用容量（该内存区域总容量）”。</p>
+
+<p>5、方括号之外“3324K-＞152K（11904K）”表示“GC前Java堆已使用容量-＞GC后Java堆已使用容量（Java堆总容量）”。</p>
+
+<p>6、“0.0025925 secs”表示该内存区域GC所占用的时间，单位是秒。</p>
+
+<p>7、“[Times：user=0.01 sys=0.00，real=0.02 secs]”</p>
+
+<ul>
+<li>user：用户态消耗的CPU时间</li>
+<li>sys：内核态消耗的CPU时间</li>
+<li>real：操作从开始到结束所经过的墙钟时间（Wall Clock Time）
+CPU时间与墙钟时间的区别是，墙钟时间包括各种非运算的等待耗时，例如等待磁盘I/O、等待线程阻塞，而CPU时间不包括这些耗时，但当系统有多CPU或者多核的话，多线程操作会叠加这些CPU时间，所以读者看到user或sys时间超过real时间是完全正常的。</li>
+</ul>
+
+<h2 id="gc-日志2">GC 日志2</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>   
+     <span class="n">Object</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>   
+     <span class="n">System</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>  
+     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span> 
+     <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>   
+     <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>   
+     <span class="n">System</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>  
+     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>设置 JVM 参数为 -XX:+PrintGCDetails，使得控制台能够显示 GC 相关的日志信息，执行上面代码，下面是其中一次执行的结果。</p>
+</blockquote>
+
+<p><img src="/img/gc-log2-1.png" alt="gc-log" />
+<img src="/img/gc-log2-2.png" alt="gc-log" /></p>
+
+<h2 id="gc-日志3">GC 日志3</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/** 
+</span><span class="cm">  -Xms60m 
+</span><span class="cm">  -Xmx60m 
+</span><span class="cm">  -Xmn20m 
+</span><span class="cm">  -XX:NewRatio=2 ( 若 Xms = Xmx, 并且设定了 Xmn, 那么该项配置就不需要配置了 ) 
+</span><span class="cm">  -XX:SurvivorRatio=8 
+</span><span class="cm">  -XX:PermSize=30m  (PermSize=30m; support was removed in 8.0)
+</span><span class="cm">  -XX:MaxPermSize=30m (MaxPermSize=30m; support was removed in 8.0)
+</span><span class="cm">  -XX:+PrintGCDetails
+</span><span class="cm">  */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">newTest</span><span class="o">().</span><span class="na">doTest</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">doTest</span><span class="o">(){</span>
+     <span class="n">Integer</span> <span class="n">M</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="n">1024</span><span class="o">*</span> <span class="n">1024</span><span class="o">*</span> <span class="n">1</span><span class="o">);</span>  <span class="c1">//单位, 兆(M)
+</span><span class="c1"></span>     <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1</span><span class="o">*</span> <span class="n">M</span><span class="o">];</span> <span class="c1">//申请 1M 大小的内存空间
+</span><span class="c1"></span>     <span class="n">bytes</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  <span class="c1">//断开引用链
+</span><span class="c1"></span>     <span class="n">System</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>   <span class="c1">//通知 GC 收集垃圾
+</span><span class="c1"></span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+     <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1</span><span class="o">*</span> <span class="n">M</span><span class="o">];</span>  <span class="c1">//重新申请 1M 大小的内存空间
+</span><span class="c1"></span>     <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1</span><span class="o">*</span> <span class="n">M</span><span class="o">];</span>  <span class="c1">//再次申请 1M 大小的内存空间
+</span><span class="c1"></span>     <span class="n">System</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>
+     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>按上面代码中注释的信息设定 jvm 相关的参数项，并执行程序，下面是一次执行完成控制台打印的结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[ GC [ PSYoungGen:  1351K -&gt; 288K (18432K) ]  1351K -&gt; 288K (59392K), 0.0012389 secs ]  [ Times: user=0.00 sys=0.00, real=0.00 secs ]
+[ Full GC (System)  [ PSYoungGen:  288K -&gt; 0K (18432K) ]  [ PSOldGen:  0K -&gt; 160K (40960K) ]  288K -&gt; 160K (59392K)  [ PSPermGen:  2942K -&gt; 2942K (30720K) ],  0.0057649 secs ] [ Times:  user=0.00  sys=0.00,  real=0.01 secs ] 
+[ GC [ PSYoungGen:  2703K -&gt; 1056K (18432K) ]  2863K -&gt; 1216K(59392K),  0.0008206 secs ]  [ Times: user=0.00 sys=0.00, real=0.00 secs ]
+[ Full GC (System)  [ PSYoungGen:  1056K -&gt; 0K (18432K) ]  [ PSOldGen:  160K -&gt; 1184K (40960K) ]  1216K -&gt; 1184K (59392K)  [ PSPermGen:  2951K -&gt; 2951K (30720K) ], 0.0052445 secs ]  [ Times: user=0.02 sys=0.00, real=0.01 secs ] 
+Heap PSYoungGen     
+ total 18432K, used 327K [0x00000000fec00000, 0x0000000100000000, 0x0000000100000000)  
+ eden space 16384K, 2% used [0x00000000fec00000,0x00000000fec51f58,0x00000000ffc00000)  
+ from space 2048K, 0% used [0x00000000ffe00000,0x00000000ffe00000,0x0000000100000000)  
+ to   space 2048K, 0% used [0x00000000ffc00000,0x00000000ffc00000,0x00000000ffe00000) 
+ PSOldGen        total 40960K, used 1184K [0x00000000fc400000, 0x00000000fec00000, 0x00000000fec00000)  
+   object space 40960K, 2% used [0x00000000fc400000,0x00000000fc5281f8,0x00000000fec00000) 
+ PSPermGen       total 30720K, used 2959K [0x00000000fa600000, 0x00000000fc400000, 0x00000000fc400000)  
+   object space 30720K, 9% used [0x00000000fa600000,0x00000000fa8e3ce0,0x00000000fc400000)</pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li><p>堆中新生代的内存空间为 18432K ( 约 18M )，eden 的内存空间为 16384K ( 约 16M)，from / to survivor 的内存空间为 2048K ( 约 2M)。</p></li>
+
+<li><p>新生代 = eden + from + to = 16 + 2 + 2 = 20M，可见新生代的内存空间确实是按 Xmn 参数分配得到的。</p></li>
+
+<li><p>SurvivorRatio = 8，因此，eden = <sup>8</sup>&frasl;<sub>10</sub> 的新生代空间 = <sup>8</sup>&frasl;<sub>10</sub> * 20 = 16M。from = to = <sup>1</sup>&frasl;<sub>10</sub> 的新生代空间 = <sup>1</sup>&frasl;<sub>10</sub> * 20 = 2M。</p></li>
+
+<li><p>堆信息中新生代的 total 18432K 是这样来的： eden + 1 个 survivor = 16384K + 2048K = 18432K，即约为 18M。因为 jvm 每次只是用新生代中的 eden 和 一个 survivor，因此新生代实际的可用内存空间大小为所指定的 90%。因此可以知道，这里新生代的内存空间指的是新生代可用的总的内存空间，而不是指整个新生代的空间大小。</p></li>
+
+<li><p>另外，可以看出老年代的内存空间为 40960K ( 约 40M )，堆大小 = 新生代 + 老年代。因此在这里，老年代 = 堆大小 – 新生代 = 60 – 20 = 40M。</p></li>
+
+<li><p>最后，这里还指定了 PermSize = 30m，PermGen 即永久代 ( 方法区 )，它还有一个名字，叫非堆，主要用来存储由 jvm 加载的类文件信息、常量、静态变量等。</p></li>
+
+<li><p>回到 doTest() 方法中，可以看到代码在第 17、21、22 这三行中分别申请了一块 1M 大小的内存空间，并在 19 和 23 这两行中分别显式的调用了 System.gc()。从控制台打印的信息来看，每次调 System.gc()，是先进行 Minor GC，然后再进行 Full GC。</p></li>
+
+<li><p>第 19 行触发的 Minor GC 收集分析：
+从信息 PSYoungGen :  1351K -&gt; 288K，可以知道，在第 17 行为 bytes 分配的内存空间已经被回收完成。
+引起 GC 回收这 1M 内存空间的因素是第 18 行的 bytes = null;   bytes 为 null 表明之前申请的那 1M 大小的内存空间现在已经没有任何引用变量在使用它了，
+并且在内存中它处于一种不可到达状态 ( 即没有任何引用链与 GC Roots 相连 )。那么，当 Minor GC 发生的时候，GC 就会来回收掉这部分的内存空间。</p></li>
+
+<li><p>第 19 行触发的 Full GC 收集分析：
+在 Minor GC 的时候，信息显示 PSYoungGen :  1351K -&gt; 288K，再看看 Full GC 中显示的 PSYoungGen :  288K -&gt; 0K，可以看出，Full GC 后，新生代的内存使用变成0K 了
+刚刚说到 Full GC 后，新生代的内存使用从 288K 变成 0K 了，那么这 288K 到底哪去了 ? 难道都被 GC 当成垃圾回收掉了 ? 当然不是了。我还特意在 main 方法中 new 了一个 Test 类的实例，这里的 Test 类的实例属于小对象，它应该被分配到新生代内存当中，现在还在调用这个实例的 doTest 方法呢，GC 不可能在这个时候来回收它的。
+接着往下看 Full GC 的信息，会发现一个很有趣的现象，PSOldGen:  0K  -&gt; 160K，可以看到，Full GC 后，老年代的内存使用从 0K 变成了 160K，想必你已经猜到大概是怎么回事了。<strong>当 Full GC 进行的时候，默认的方式是尽量清空新生代 ( YoungGen )，因此在调 System.gc() 时，新生代 ( YoungGen ) 中存活的对象会提前进入老年代。</strong></p></li>
+
+<li><p>第 23 行触发的 Minor GC 收集分析：
+从信息 PSYoungGen :  2703K -&gt; 1056K，可以知道，在第 21 行创建的，大小为 1M 的数组被 GC 回收了。在第 22 行创建的，大小也为 1M 的数组由于 bytes 引用变量还在引用它，因此，它暂时未被 GC 回收。</p></li>
+
+<li><p>第 23 行触发的 Full GC 收集分析：
+在 Minor GC 的时候，信息显示 PSYoungGen :  2703K -&gt; 1056K，Full GC 中显示的 PSYoungGen :  1056K -&gt; 0K，以及 PSOldGen:  160K -&gt; 1184K，可以知道，新生代 ( YoungGen ) 中存活的对象又提前进入老年代了。</p></li>
+</ol>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-12-24</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">java</a>
+          <a href="/tags/jvm/">JVM</a>
+          <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/jvm-how-execute-method-1/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">JVM是如何执行方法调用的？（上）</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/jvm-performance-optimization/">
+            <span class="next-text nav-default">JVM性能调优</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

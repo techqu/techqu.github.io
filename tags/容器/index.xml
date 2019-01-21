@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>容器 on Quguang 学习笔记</title>
+    <link>https://techqu.github.io/tags/%E5%AE%B9%E5%99%A8/</link>
+    <description>Recent content in 容器 on Quguang 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 17 Jan 2019 15:12:03 +0800</lastBuildDate>
+    
+	<atom:link href="https://techqu.github.io/tags/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker的实现原理</title>
+      <link>https://techqu.github.io/post/docker-introduction/</link>
+      <pubDate>Thu, 17 Jan 2019 15:12:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/docker-introduction/</guid>
+      <description>&lt;p&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”&lt;/p&gt;
+
+&lt;p&gt;Docker容器具有以下3个特点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;轻量级&lt;/strong&gt;：在同一台宿主机上的容器共享系统Kernel，这使得他们可以迅速启动而且占有的内存极少。镜像是以分层文件系统构造的，这可以让它们共享相同的文件，使得磁盘使用率和镜像下载速度得到提高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开放&lt;/strong&gt;：Docker容器基于开放标准，这使得Docker容器可以运行在主流Linux发行版和Windows操作系统上。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全&lt;/strong&gt;：容器将各个应用程序隔离开来，这给所有的应用程序提供了一层额外的安全防护。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于Docker等大多数Linux容器来说，&lt;strong&gt;Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

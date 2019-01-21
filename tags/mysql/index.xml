@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on Quguang 学习笔记</title>
+    <link>https://techqu.github.io/tags/mysql/</link>
+    <description>Recent content in mysql on Quguang 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 19 Dec 2018 17:32:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://techqu.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MYSQL实战45讲-笔记</title>
+      <link>https://techqu.github.io/post/mysql/</link>
+      <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql/</guid>
+      <description>&lt;p&gt;MYSQL实战45讲-极客时间笔记&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>并发 on Quguang 学习笔记</title>
+    <link>https://techqu.github.io/tags/%E5%B9%B6%E5%8F%91/</link>
+    <description>Recent content in 并发 on Quguang 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 19 Jan 2019 07:56:14 +0800</lastBuildDate>
+    
+	<atom:link href="https://techqu.github.io/tags/%E5%B9%B6%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
+      <link>https://techqu.github.io/post/15-lock-in-java/</link>
+      <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/15-lock-in-java/</guid>
+      <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>markdown语法示例</title>
+      <link>https://techqu.github.io/post/markdown/</link>
+      <pubDate>Thu, 20 Dec 2018 10:58:38 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/markdown/</guid>
+      <description>&lt;p&gt;本文是markdown语法的示例&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>线程间通信</title>
+      <link>https://techqu.github.io/post/thread-notify/</link>
+      <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/thread-notify/</guid>
+      <description>&lt;p&gt;《java并发编程的艺术》-4.3线程间通信&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;volatile可以用来修饰字段（成员变量），就是告知程序&lt;strong&gt;任何对该变量的访问均需要从共享内存中获取，而对它的改变必须同步刷新回共享内存&lt;/strong&gt;，它能保证所有线程对变量访问的可见性&lt;/li&gt;
+&lt;li&gt;synchronized可以修饰方法或者以同步块的形式来进行使用，&lt;strong&gt;它主要确保多个线程在同一个时刻，只能有一个线程处于方法或者同步块中&lt;/strong&gt;，它保证了线程对变量访问的可见性和排他性&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

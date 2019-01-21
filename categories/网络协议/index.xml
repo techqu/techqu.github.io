@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网络协议 on Quguang 学习笔记</title>
+    <link>https://techqu.github.io/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</link>
+    <description>Recent content in 网络协议 on Quguang 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 16 Jan 2019 18:51:01 +0800</lastBuildDate>
+    
+	<atom:link href="https://techqu.github.io/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ipconfig:最熟悉又陌生的命令行</title>
+      <link>https://techqu.github.io/post/ipconfig/</link>
+      <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/ipconfig/</guid>
+      <description>&lt;p&gt;从一行查看IP地址的命令开始讲解，
+Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

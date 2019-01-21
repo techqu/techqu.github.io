@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Quguang 学习笔记</title>
+    <link>https://techqu.github.io/</link>
+    <description>Recent content on Quguang 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 21 Jan 2019 16:34:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://techqu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>政事堂书单 2018</title>
+      <link>https://techqu.github.io/post/booklist-zhengshitang-2018/</link>
+      <pubDate>Mon, 21 Jan 2019 16:34:26 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/booklist-zhengshitang-2018/</guid>
+      <description>-- 政事堂按： 关于《朱镕基讲话实录》(丛书)，记得当年从新华书店买书的时候，多半只是为了给自己书架填充的更好看，可是随着近几年改革的推进，越来</description>
+    </item>
+    
+    <item>
+      <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
+      <link>https://techqu.github.io/post/15-lock-in-java/</link>
+      <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/15-lock-in-java/</guid>
+      <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>值得一看的网络课程收集</title>
+      <link>https://techqu.github.io/post/course-introduction/</link>
+      <pubDate>Fri, 18 Jan 2019 15:03:48 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/course-introduction/</guid>
+      <description>&lt;p&gt;前言：搜罗来一些不错的网络课程，比如Coursera, edX, Udacity上&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Navigator</title>
+      <link>https://techqu.github.io/navigator/</link>
+      <pubDate>Fri, 18 Jan 2019 14:35:04 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/navigator/</guid>
+      <description>| 分类 | | | | | | | | | | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | | 每日必看 | ImportNew | InfoQ | leetcode | juejin| medium | segmentfault | oschina| | | | springcloud | springboot | | | | | | | 每日必看 Fruits Vegetable 每日</description>
+    </item>
+    
+    <item>
+      <title>Docker的实现原理</title>
+      <link>https://techqu.github.io/post/docker-introduction/</link>
+      <pubDate>Thu, 17 Jan 2019 15:12:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/docker-introduction/</guid>
+      <description>&lt;p&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”&lt;/p&gt;
+
+&lt;p&gt;Docker容器具有以下3个特点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;轻量级&lt;/strong&gt;：在同一台宿主机上的容器共享系统Kernel，这使得他们可以迅速启动而且占有的内存极少。镜像是以分层文件系统构造的，这可以让它们共享相同的文件，使得磁盘使用率和镜像下载速度得到提高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开放&lt;/strong&gt;：Docker容器基于开放标准，这使得Docker容器可以运行在主流Linux发行版和Windows操作系统上。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全&lt;/strong&gt;：容器将各个应用程序隔离开来，这给所有的应用程序提供了一层额外的安全防护。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于Docker等大多数Linux容器来说，&lt;strong&gt;Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 入门</title>
+      <link>https://techqu.github.io/post/kubernetes-introduction/</link>
+      <pubDate>Thu, 17 Jan 2019 08:41:16 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/kubernetes-introduction/</guid>
+      <description>&lt;p&gt;首先，Kubernetes项目要解决的问题是什么？&lt;/p&gt;
+
+&lt;p&gt;编排？调度？容器云？还是集群管理？&lt;/p&gt;
+
+&lt;p&gt;对于大多数用户来说，他们希望Kubernetes项目带来的体验是确定的：现在我有了应用的容器镜像，请帮我在一个给定的集群上把这个应用运行起来。更进一步地说，我还希望Kubernetes能给我提供路由网关、水平扩展、监控、备份、灾难恢复等一系列运维能力。这不就是经典Paas（比如，Cloud Foundry）项目的能力吗?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ipconfig:最熟悉又陌生的命令行</title>
+      <link>https://techqu.github.io/post/ipconfig/</link>
+      <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/ipconfig/</guid>
+      <description>&lt;p&gt;从一行查看IP地址的命令开始讲解，
+Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>2018总结-2019展望</title>
+      <link>https://techqu.github.io/post/2018-2019/</link>
+      <pubDate>Wed, 16 Jan 2019 10:42:50 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/2018-2019/</guid>
+      <description>2018总结 一、个人 结婚 体重暴涨 工作能力进步 了解了面试准备的重要性 二、了解和学习 领域驱动设计 devops spring security ldap service mesh mysql 网络协议 kubernetes jvm etl kylin 数据结构与算法 并发</description>
+    </item>
+    
+    <item>
+      <title>分布式事务-TCC事务：最终一致性</title>
+      <link>https://techqu.github.io/post/transaction-tcc/</link>
+      <pubDate>Tue, 15 Jan 2019 10:53:02 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/transaction-tcc/</guid>
+      <description>TCC 事务：最终一致性 方案简介 TCC（Try-Confirm-Cancel）的概念，最早是由 Pat Helland 于 2007 年发表的一篇名为《Life beyond Distributed Transactions:an Aposta</description>
+    </item>
+    
+    <item>
+      <title>分布式事务-本地消息表：最终一致性</title>
+      <link>https://techqu.github.io/post/transaction-local-msg-tb/</link>
+      <pubDate>Tue, 15 Jan 2019 10:53:02 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/transaction-local-msg-tb/</guid>
+      <description>本地消息表：最终一致性 方案简介 本地消息表的方案最初是由 eBay 提出，核心思路是将分布式事务拆分成本地事务进行处理。 方案通过在事务主动发起方额外新建</description>
+    </item>
+    
+    <item>
+      <title>从分布式一致性谈到CAP理论、BASE理论、分布式事务</title>
+      <link>https://techqu.github.io/post/distributed-consistency/</link>
+      <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/distributed-consistency/</guid>
+      <description>&lt;p&gt;什么是事务，简单说事务就是要么全不做，要么全做。一部分做一部分不做就会出一致性问题。&lt;/p&gt;
+
+&lt;p&gt;传统的单体应用不会横跨多个数据库，可以通过单机事务保证一致性。&lt;/p&gt;
+
+&lt;p&gt;然而在海量数据的场景下，需要对数据库做拆分，即分库分表，而Cobar、MyCat这类分库分表中间并不提供分布式事务的特性，并且基于二阶段提交的分布式事务性能较差，对于大多数业务场景来说，并不需要强一致，只需要保证最终一致性即可。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>分布式事务-2PC(二阶段提交)</title>
+      <link>https://techqu.github.io/post/transaction-2pc/</link>
+      <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/transaction-2pc/</guid>
+      <description>2PC(二阶段提交)方案：强一致性 方案简介 二阶段提交协议（Two-phase Commit，即 2PC）是常用的分布式事务解决方案，即将事务的提</description>
+    </item>
+    
+    <item>
+      <title>分布式事务-3PC(三阶段提交)</title>
+      <link>https://techqu.github.io/post/transaction-3pc/</link>
+      <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/transaction-3pc/</guid>
+      <description>方案简介 三阶段提交协议，是二阶段提交协议的改进版本，与二阶段提交不同的是，引入超时机制。同时在协调者和参与者中都引入超时机制。 3PC把2PC</description>
+    </item>
+    
+    <item>
+      <title>什么是Devops？</title>
+      <link>https://techqu.github.io/post/what-is-devops/</link>
+      <pubDate>Sun, 13 Jan 2019 10:06:30 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/what-is-devops/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;它不仅仅是流程，它不仅仅是产品或工具，它完全是人员，流程和工具，共同努力实现目标。最终以小增量单位实现价值，持续交付给终端用户，我认为这非常重要。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Devops实践</title>
+      <link>https://techqu.github.io/post/devops-in-action/</link>
+      <pubDate>Sun, 13 Jan 2019 10:03:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/devops-in-action/</guid>
+      <description>&lt;h2 id=&#34;1-配置管理&#34;&gt;1、配置管理&lt;/h2&gt;
+
+&lt;p&gt;很多应用程序需要一些配置通过组合的配置文件，命令行参数和环境变量。
+这些配置应该与镜像内容分离以保持容器化应用程序的可移植性。&lt;/p&gt;
+
+&lt;p&gt;方案一、第三方产品
+携程apollo&lt;/p&gt;
+
+&lt;p&gt;方案二、k8s的configmap+ansible
+ConfigMap API资源提供了将配置数据注入容器的机制，同时保持容器不受kubernetes的影响。ConfigMap可用于存储细粒度信息如单个属性，或粗粒度信息如整个配置文件或JSON对象。&lt;/p&gt;
+
+&lt;p&gt;视频介绍 &lt;a href=&#34;http://fast.wistia.net/embed/iframe/qrqfj371b6?popover=true&#34;&gt;ansible来了&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《你的灯亮着吗?》-读书笔记</title>
+      <link>https://techqu.github.io/post/reading-note-your-light-on/</link>
+      <pubDate>Sat, 12 Jan 2019 17:39:54 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/reading-note-your-light-on/</guid>
+      <description>在微信读书app上很快就看完了</description>
+    </item>
+    
+    <item>
+      <title>《影响力》-读书笔记</title>
+      <link>https://techqu.github.io/post/reading-note-influence/</link>
+      <pubDate>Sat, 12 Jan 2019 17:20:43 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/reading-note-influence/</guid>
+      <description>&lt;p&gt;主要讲的是作者对于顺从性的研究，到底是什么因素让一个人向另一个人说了“行”？哪些技术能最有效地利用这些因素。作者研究了顺从心理学，先是在实验室，后来在社会上进行参与式观察。&lt;/p&gt;
+
+&lt;p&gt;顺从职业者：销售员、筹款家、广告商等。&lt;/p&gt;
+
+&lt;p&gt;最后总结了六个基本类型，每一类型都是从一种能指导人们行为的基本心理原则衍生出来的，正因为如此，这些策略就具有了左右人们行为的力量，分别是 ：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《凹凸相对论》-读书笔记</title>
+      <link>https://techqu.github.io/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>在微信读书app上很快就看完了，从正反两个角度看待同样的问题，思路很不错</description>
+    </item>
+    
+    <item>
+      <title>《大型网站技术架构》-读书笔记</title>
+      <link>https://techqu.github.io/post/reading-note-large-website-technology-architecture/</link>
+      <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/reading-note-large-website-technology-architecture/</guid>
+      <description>李智慧老师13年写的架构入门书，没有太深入的内容，比较适合刚刚接触网站架构的同学有个通盘的了解，也可以是有一定经验的同学作为目录一样去看。了</description>
+    </item>
+    
+    <item>
+      <title>《曾国藩的正面与侧面》-读书笔记</title>
+      <link>https://techqu.github.io/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>从《曾国藩家书》了解到的曾国藩，以他为榜样，资质愚钝，后天补足。</description>
+    </item>
+    
+    <item>
+      <title>高效学习</title>
+      <link>https://techqu.github.io/post/learn-method/</link>
+      <pubDate>Sat, 12 Jan 2019 11:59:01 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/learn-method/</guid>
+      <description>&lt;p&gt;首先明确的是，学习是件反人性的事，需要刻意练习的，是需要持之以恒的。&lt;/p&gt;
+
+&lt;p&gt;很多事情能做到什么程度，其实在思想的源头就被决定了，因为它会绝大程度地受到思考问题的出发点、思维方式、格局观、价值观等因素影响。&lt;/p&gt;
+
+&lt;h3 id=&#34;目前的状况-浅度学习&#34;&gt;目前的状况-浅度学习&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;朋友圈、头条、知乎、抖音、微博质量不高&lt;/li&gt;
+&lt;li&gt;加班严重，挤占时间&lt;/li&gt;
+&lt;li&gt;外网受限，英文受限，无法获得一手资料&lt;/li&gt;
+&lt;li&gt;急于求成，心态浮躁，不求甚解，没有自己的思考&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于</title>
+      <link>https://techqu.github.io/about/</link>
+      <pubDate>Thu, 10 Jan 2019 20:25:33 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/about/</guid>
+      <description>从14年参加工作，到现在也有三四年了，业余时间也都有学习，可惜一直感觉工作中能用上的东西很少，学了angular、react、vue、ion</description>
+    </item>
+    
+    <item>
+      <title>书单-按学科划分</title>
+      <link>https://techqu.github.io/post/booklist/</link>
+      <pubDate>Sun, 06 Jan 2019 15:24:35 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/booklist/</guid>
+      <description>&lt;p&gt;眼界对应着拓宽，这是广度上的，如果需要深入了解一个领域，还需入手一些经典的教科书籍，经过系统的学习才能掌握。
+人的精力和时间都是有限的，你不可能对每一个领域都有比较深的认识。我们都只能在有限的时间里做有限的事情，读书也须有选择。那么怎么选择呢？建议从兴趣入手。&lt;/p&gt;
+
+&lt;p&gt;然而，我觉得&lt;strong&gt;心理学&lt;/strong&gt;和&lt;strong&gt;经济学&lt;/strong&gt;是每个人都有必要看一看的，它们能解释生活中很多看似不可理喻，实则又非常正常的现象。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>书单-按能力划分</title>
+      <link>https://techqu.github.io/post/booklist-ability/</link>
+      <pubDate>Sun, 06 Jan 2019 15:24:35 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/booklist-ability/</guid>
+      <description>&lt;p&gt;按能力划分（附书籍豆瓣链接）&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>如何集成maven和Spring boot的profile功能</title>
+      <link>https://techqu.github.io/post/springboot-maven-profile/</link>
+      <pubDate>Fri, 04 Jan 2019 23:05:13 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/springboot-maven-profile/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;今天看 guns 项目的 application.properties 文件，发现了&lt;code&gt;spring.profiles.active = @profiles.active@&lt;/code&gt;的写法，查了好些资料终于搞明白了。原来是在集成maven和Spring boot的profile功能时用的，那么如何集成呢？&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>JVM是如何执行方法调用的？（下）</title>
+      <link>https://techqu.github.io/post/jvm-how-execute-method-2/</link>
+      <pubDate>Wed, 26 Dec 2018 11:45:43 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/jvm-how-execute-method-2/</guid>
+      <description>&lt;p&gt;《极客时间-深入拆解java虚拟机》笔记&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JVM是如何执行方法调用的？（上）</title>
+      <link>https://techqu.github.io/post/jvm-how-execute-method-1/</link>
+      <pubDate>Tue, 25 Dec 2018 22:52:53 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/jvm-how-execute-method-1/</guid>
+      <description>&lt;p&gt;JVM是如何执行方法调用的？（上）&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>理解GC日志</title>
+      <link>https://techqu.github.io/post/jvm-understand-gc-log/</link>
+      <pubDate>Mon, 24 Dec 2018 19:03:40 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/jvm-understand-gc-log/</guid>
+      <description>&lt;p&gt;理解GC日志，基于jdk1.7,一步步看懂GC日志&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JVM性能调优</title>
+      <link>https://techqu.github.io/post/jvm-performance-optimization/</link>
+      <pubDate>Mon, 24 Dec 2018 18:48:04 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/jvm-performance-optimization/</guid>
+      <description>&lt;p&gt;包含年轻代大小选择和年老代大小的选择&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JVM 工具</title>
+      <link>https://techqu.github.io/post/jvm-tools/</link>
+      <pubDate>Mon, 24 Dec 2018 18:08:25 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/jvm-tools/</guid>
+      <description>&lt;p&gt;本文介绍了常用的JDK的命令行工具&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java虚拟机是如何加载Java类的?</title>
+      <link>https://techqu.github.io/post/how-jvm-load-java-class/</link>
+      <pubDate>Mon, 24 Dec 2018 15:46:28 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/how-jvm-load-java-class/</guid>
+      <description>&lt;p&gt;Java虚拟机是如何加载Java类的?&lt;/p&gt;
+
+&lt;p&gt;虚拟机规范并没有指明二进制字节流要从一个Class文件获取，或者说根本没有指明从哪里获取、怎样获取。这种开放使得Java在很多领域得到充分运用，例如：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;从ZIP包中读取，这很常见，成为JAR，EAR，WAR格式的基础&lt;/li&gt;
+&lt;li&gt;从网络中获取，最典型的应用就是Applet&lt;/li&gt;
+&lt;li&gt;运行时计算生成，最典型的是动态代理技术，在java.lang.reflect.Proxy中，就是用了ProxyGenerator.generateProxyClass来- 为特定接口生成形式为“*$Proxy”的代理类的二进制字节流&lt;/li&gt;
+&lt;li&gt;由其他文件生成，最典型的JSP应用，由JSP文件生成对应的Class类&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;从class文件到内存中的类，按先后顺序需要经过&lt;strong&gt;加载、链接、以及初始化&lt;/strong&gt;三大步骤。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java工程师成神之路（2018修订版）</title>
+      <link>https://techqu.github.io/post/roadmap/</link>
+      <pubDate>Thu, 20 Dec 2018 11:12:42 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/roadmap/</guid>
+      <description>&lt;p&gt;网罗了比较全面的java技术栈。&lt;/p&gt;
+
+&lt;p&gt;本文基于微信公众号文章基础上添加，原文链接：
+&lt;a href=&#34;https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg&#34;&gt;https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>markdown语法示例</title>
+      <link>https://techqu.github.io/post/markdown/</link>
+      <pubDate>Thu, 20 Dec 2018 10:58:38 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/markdown/</guid>
+      <description>&lt;p&gt;本文是markdown语法的示例&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>对象存活判断、垃圾收集算法和垃圾收集器</title>
+      <link>https://techqu.github.io/post/jvm-garabage-collection/</link>
+      <pubDate>Thu, 20 Dec 2018 08:44:54 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/jvm-garabage-collection/</guid>
+      <description>&lt;p&gt;全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>简历模版</title>
+      <link>https://techqu.github.io/post/resume/</link>
+      <pubDate>Wed, 19 Dec 2018 21:45:56 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/resume/</guid>
+      <description>&lt;p&gt;本文是一个markdown风格语法的简历模版，转载自网络&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MYSQL实战45讲-笔记</title>
+      <link>https://techqu.github.io/post/mysql/</link>
+      <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql/</guid>
+      <description>&lt;p&gt;MYSQL实战45讲-极客时间笔记&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>线程间通信</title>
+      <link>https://techqu.github.io/post/thread-notify/</link>
+      <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/thread-notify/</guid>
+      <description>&lt;p&gt;《java并发编程的艺术》-4.3线程间通信&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;volatile可以用来修饰字段（成员变量），就是告知程序&lt;strong&gt;任何对该变量的访问均需要从共享内存中获取，而对它的改变必须同步刷新回共享内存&lt;/strong&gt;，它能保证所有线程对变量访问的可见性&lt;/li&gt;
+&lt;li&gt;synchronized可以修饰方法或者以同步块的形式来进行使用，&lt;strong&gt;它主要确保多个线程在同一个时刻，只能有一个线程处于方法或者同步块中&lt;/strong&gt;，它保证了线程对变量访问的可见性和排他性&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据结构与算法-基础篇</title>
+      <link>https://techqu.github.io/post/data-structure-and-algorithm/</link>
+      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-and-algorithm/</guid>
+      <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据结构与算法-高级篇</title>
+      <link>https://techqu.github.io/post/data-structure-and-algorithm.1/</link>
+      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-and-algorithm.1/</guid>
+      <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>归档</title>
+      <link>https://techqu.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://techqu.github.io/archives/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

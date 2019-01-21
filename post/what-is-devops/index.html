@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>什么是Devops？ - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content=" DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。
+ 它不仅仅是流程，它不仅仅是产品或工具，它完全是人员，流程和工具，共同努力实现目标。最终以小增量单位实现价值，持续交付给终端用户，我认为这非常重要。
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/what-is-devops/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="什么是Devops？" />
+<meta property="og:description" content="
+DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。
+
+
+它不仅仅是流程，它不仅仅是产品或工具，它完全是人员，流程和工具，共同努力实现目标。最终以小增量单位实现价值，持续交付给终端用户，我认为这非常重要。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/what-is-devops/" /><meta property="article:published_time" content="2019-01-13T10:06:30&#43;08:00"/>
+<meta property="article:modified_time" content="2019-01-13T10:06:30&#43;08:00"/>
+
+<meta itemprop="name" content="什么是Devops？">
+<meta itemprop="description" content="
+DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。
+
+
+它不仅仅是流程，它不仅仅是产品或工具，它完全是人员，流程和工具，共同努力实现目标。最终以小增量单位实现价值，持续交付给终端用户，我认为这非常重要。">
+
+
+<meta itemprop="datePublished" content="2019-01-13T10:06:30&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-13T10:06:30&#43;08:00" />
+<meta itemprop="wordCount" content="1244">
+
+
+
+<meta itemprop="keywords" content="java," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="什么是Devops？"/>
+<meta name="twitter:description" content="
+DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。
+
+
+它不仅仅是流程，它不仅仅是产品或工具，它完全是人员，流程和工具，共同努力实现目标。最终以小增量单位实现价值，持续交付给终端用户，我认为这非常重要。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">学习、记录、分享</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">学习、记录、分享</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">什么是Devops？</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-13 </span>
+        <div class="post-category">
+            <a href="/categories/tech/"> Tech </a>
+            </div>
+          <span class="more-meta"> 1244 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#devops不是什么">DevOps不是什么？ </a></li>
+<li><a href="#什么驱动了devops的产生">什么驱动了devops的产生？</a>
+<ul>
+<li><a href="#概览">概览</a></li>
+<li><a href="#参考">参考：</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。</p>
+</blockquote>
+
+<p>它不仅仅是流程，它不仅仅是产品或工具，它完全是人员，流程和工具，共同努力实现目标。最终以小增量单位实现价值，持续交付给终端用户，我认为这非常重要。</p>
+
+<p>当我们谈论DevOps时，<strong>我们不只是在谈论构建和推进测试环境。我们正在谈论一种让我们能够迅速投入生产的文化。</strong> 它强调四件事情。</p>
+
+<ol>
+<li><p>首先是文化。 DevOps不仅仅是一套工具，人员和实践，还是一种文化，它从组织内部成长起来，并且可以在组织中变化。而且，您会发现具有强烈文化背景的组织，专注于交付，专注于生产，能够非常迅速和高效地发展DevOps文化。</p></li>
+
+<li><p>第二，是一种衡量文化，我们正在进入并理解我们正在做什么。这不仅仅是获取日志文件，尽管这是它的重要组成部分。但它理解所发生的一切，AB测试。</p></li>
+
+<li><p>第三种是自动化，如果没有强大的自动化功能，您就无法进入DevOps。这是使用工具来自动化您的业务流程的部署，构建，测试，所有这些事情。</p></li>
+
+<li><p>最后，这是合作。这是开发和运营之间的合作，还有DevOps，但更重要的是，它超越了它，它需要引入项目经理。它需要引入收集需求的人员，引入维护应用程序的人员，并引入客户服务。这不仅仅是开发和运维，我们也会在整个课程中强调这一点。</p></li>
+</ol>
+
+<h2 id="devops不是什么">DevOps不是什么？ </h2>
+
+<ul>
+<li>这不是一个产品。 </li>
+<li>这不是任何地方的规范。 </li>
+<li>这不是集中的。 </li>
+<li>它没有商标。 </li>
+</ul>
+
+<p>多诺万布朗的描述：你不能购买DevOps并安装它。 DevOps不仅仅是代码自动化或基础设施。 DevOps是人员，遵循由产品支持的流程，为我们的最终用户提供价值。 这回到我们最初开始的定义。 我喜欢它，因为我们需要专注于人，产品和将它们联系在一起的过程。 这就是我们对DevOps的定义。</p>
+
+<h2 id="什么驱动了devops的产生">什么驱动了devops的产生？</h2>
+
+<p><img src="/img/what-driving-devops.png" alt="Alt text" /></p>
+
+<ul>
+<li>敏捷方法论加速了软件开发过程</li>
+<li>传统的运维方法论使发布和运维的流程更加可靠，但是并不敏捷</li>
+<li>当发生问题时，开发和运维之间断层会导致出错和增加MTTR（平均恢复时间）</li>
+<li>根据收获反馈确定下一组的目标;</li>
+</ul>
+
+<h3 id="概览">概览</h3>
+
+<ul>
+<li>它的要求，版本控制，测试用例管理，错误跟踪。</li>
+<li>它是测试，集成测试，单元测试。</li>
+<li>它是部署，定义环境，供应，配置，以及部署到这些环境的所有这些，</li>
+<li>它是应用程序配置，它监视生产中的应用程序。</li>
+</ul>
+
+<p>所以，这些是我们必须做的一些技术性的事情，为什么我要强调这一点？ 因为有时候行业会看看并说，这里是我们的工具，我们是一个DevOps工具，购买这个工具，并且您已经拥有了您需要的一切。 这是错误的，这是一种文化，它是人，它是流程，它不仅仅是一种工具。 有时候这些工具供应商会遇到这样一个小区域。 例如，它可能只是最后一英里，连续交付管道，或者它可能只是预先的ALM (application lifecycle management，应用生命周期管理)工具。 我们说的是<strong>整个工具集以及人员和流程</strong>。</p>
+
+<p><img src="/img/7-devops-habits.png" alt="Alt text" /></p>
+
+<ul>
+<li>团队自治和企业一致;</li>
+<li>严格管理技术性债务;</li>
+<li>专注于客户价值的流动;</li>
+<li>假设驱动的发展;</li>
+<li>生产中收集的证据;</li>
+<li>生产中收集;</li>
+<li>将基础设施作为灵活资源进行管理</li>
+</ul>
+
+<p><img src="/img/7-devops-practices.png" alt="Alt text" /></p>
+
+<h3 id="参考">参考：</h3>
+
+<p>本文内容来自EDX上的devops课程：<a href="https://courses.edx.org/courses/course-v1%3AMicrosoft%2BDEV212x%2B2T2016/">Microsoft.DEV212x.2T2016</a></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-01-13</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">java</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/transaction-3pc/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">分布式事务-3PC(三阶段提交)</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/devops-in-action/">
+            <span class="next-text nav-default">Devops实践</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

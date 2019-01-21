@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>分布式事务-TCC事务：最终一致性 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="TCC 事务：最终一致性 方案简介 TCC（Try-Confirm-Cancel）的概念，最早是由 Pat Helland 于 2007 年发表的一篇名为《Life beyond Distributed Transactions:an Aposta" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/transaction-tcc/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="分布式事务-TCC事务：最终一致性" />
+<meta property="og:description" content="TCC 事务：最终一致性 方案简介 TCC（Try-Confirm-Cancel）的概念，最早是由 Pat Helland 于 2007 年发表的一篇名为《Life beyond Distributed Transactions:an Aposta" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/transaction-tcc/" /><meta property="article:published_time" content="2019-01-15T10:53:02&#43;08:00"/>
+<meta property="article:modified_time" content="2019-01-15T10:53:02&#43;08:00"/>
+
+<meta itemprop="name" content="分布式事务-TCC事务：最终一致性">
+<meta itemprop="description" content="TCC 事务：最终一致性 方案简介 TCC（Try-Confirm-Cancel）的概念，最早是由 Pat Helland 于 2007 年发表的一篇名为《Life beyond Distributed Transactions:an Aposta">
+
+
+<meta itemprop="datePublished" content="2019-01-15T10:53:02&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-15T10:53:02&#43;08:00" />
+<meta itemprop="wordCount" content="3600">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="分布式事务-TCC事务：最终一致性"/>
+<meta name="twitter:description" content="TCC 事务：最终一致性 方案简介 TCC（Try-Confirm-Cancel）的概念，最早是由 Pat Helland 于 2007 年发表的一篇名为《Life beyond Distributed Transactions:an Aposta"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">学习、记录、分享</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">学习、记录、分享</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">分布式事务-TCC事务：最终一致性</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-15 </span>
+        <div class="post-category">
+            <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
+            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"> 分布式 </a>
+            </div>
+          <span class="more-meta"> 3600 words </span>
+          <span class="more-meta"> 8 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#tcc-事务-最终一致性">TCC 事务：最终一致性</a>
+<ul>
+<li><a href="#处理流程">处理流程</a>
+<ul>
+<li><a href="#①try-阶段">①Try 阶段</a></li>
+<li><a href="#②confirm-cancel-阶段">②Confirm / Cancel 阶段</a></li>
+</ul></li>
+<li><a href="#对比2pc两阶段提交">对比2PC两阶段提交</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="tcc-事务-最终一致性">TCC 事务：最终一致性</h2>
+
+<p>方案简介</p>
+
+<blockquote>
+<p>TCC（Try-Confirm-Cancel）的概念，最早是由 Pat Helland 于 2007 年发表的一篇名为《Life beyond Distributed Transactions:an Apostate’s Opinion》的论文提出。</p>
+</blockquote>
+
+<p>TCC事务机制相对于传统事务机制（X/Open XA Two-Phase-Commit），其特征在于它不依赖资源管理器(RM)对XA的支持，而是通过对（由业务系统提供的）业务逻辑的调度来实现分布式事务。</p>
+
+<p>对于业务系统中一个特定的业务逻辑S，其对外提供服务时，必须接受一些不确定性，即对业务逻辑执行的一次调用仅是一个临时性操作，调用它的消费方服务M保留了后续的取消权。如果M认为全局事务应该rollback，它会要求取消之前的临时性操作，这将对应S的一个取消操作；而当M认为全局事务应该commit时，它会放弃之前临时性操作的取消权，这对应S的一个确认操作。</p>
+
+<p>每一个初步操作，最终都会被确认或取消。因此，针对一个具体的业务服务，TCC事务机制需要业务系统提供三段业务逻辑：初步操作Try、确认操作Confirm、取消操作Cancel。</p>
+
+<p>TCC事务机制中的业务逻辑（Try），从执行阶段来看，与传统事务机制中业务逻辑相同。但从业务角度来看，却不一样。TCC机制中的Try仅是一个初步操作，它和后续的确认一起才能真正构成一个完整的业务逻辑。可以认为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">[传统事务机制]的业务逻辑 = [TCC事务机制]的初步操作（Try） + [TCC事务机制]的确认逻辑（Confirm）。</pre></td></tr></table>
+</div>
+</div>
+<p>TCC 事务的 Try、Confirm、Cancel 可以理解为 SQL 事务中的 Lock、Commit、Rollback。</p>
+
+<div class="admonition note"><p class="admonition-title">TCC</p>
+  <p>Try 操作作为一阶段，负责资源的检查和预留。</p>
+
+<ul>
+<li>完成所有业务检查( 一致性 ) 。</li>
+<li>预留必须业务资源( 准隔离性 ) 。</li>
+</ul>
+
+<p>Confirm 操作作为二阶段提交操作，执行真正的业务。</p>
+
+<ul>
+<li>真正执行业务</li>
+<li>不作任何业务检查</li>
+<li>只使用Try阶段预留的业务资源</li>
+<li>Confirm操作满足幂等性</li>
+</ul>
+
+<p>Cancel 是预留资源的取消。</p>
+
+<ul>
+<li>释放Try阶段预留的业务资源</li>
+<li>Cancel操作满足幂等性</li>
+</ul>
+
+</div>
+
+<h3 id="处理流程">处理流程</h3>
+
+<p>为了方便理解，下面以电商下单为例进行方案解析，这里把整个过程简单分为扣减库存，订单创建 2 个步骤，库存服务和订单服务分别在不同的服务器节点上。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sequence" data-lang="sequence"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sequence" data-lang="sequence">主业务逻辑-&gt;库存服务: 检查、预留库存
+Note left of 主业务逻辑: TCC（Try阶段）
+库存服务--&gt;库存服务: 更新库存为98,\n冻结库存为2
+主业务逻辑-&gt;订单服务: 创建订单
+订单服务--&gt;订单服务: 创建订单、\n订单状态为待确认
+库存服务--&gt;主业务逻辑:执行成功
+订单服务--&gt;主业务逻辑:执行成功
+
+
+Note left of 主业务逻辑: TCC（Confirm阶段）
+
+主业务逻辑-&gt;库存服务: 确认提交
+库存服务--&gt;库存服务: 冻结库存减2
+主业务逻辑-&gt;订单服务: 确认提交
+订单服务--&gt;订单服务: 更新订单状态为成功
+库存服务--&gt;主业务逻辑:执行成功
+订单服务--&gt;主业务逻辑:执行成功</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="①try-阶段">①Try 阶段</h4>
+
+<p>从执行阶段来看，与传统事务机制中业务逻辑相同。但从业务角度来看，却不一样。</p>
+
+<p>TCC 机制中的 Try 仅是一个初步操作，它和后续的确认一起才能真正构成一个完整的业务逻辑，TCC 事务机制以初步操作（Try）为中心的，确认操作（Confirm）和取消操作（Cancel）都是围绕初步操作（Try）而展开。</p>
+
+<p>假设商品库存为 100，购买数量为 2，这里检查和更新库存的同时，冻结用户购买数量的库存，同时创建订单，订单状态为待确认。</p>
+
+<p>因此，Try 阶段中的操作，其保障性是最好的，即使失败，仍然有取消操作（Cancel）可以将其执行结果撤销。</p>
+
+<h4 id="②confirm-cancel-阶段">②Confirm / Cancel 阶段</h4>
+
+<p>根据 Try 阶段服务是否全部正常执行，继续执行确认操作（Confirm）或取消操作（Cancel）。</p>
+
+<p>Confirm 和 Cancel 操作满足幂等性，如果 Confirm 或 Cancel 操作执行失败，将会不断重试直到执行完成。</p>
+
+<p>Confirm：当 Try 阶段服务全部正常执行， 执行确认业务逻辑操作，这里使用的资源一定是 Try 阶段预留的业务资源。在 TCC 事务机制中认为，如果在 Try 阶段能正常的预留资源，那 Confirm 一定能完整正确的提交。</p>
+
+<p>Confirm 阶段也可以看成是对 Try 阶段的一个补充，<strong>Try+Confirm 一起组成了一个完整的业务逻辑</strong>。</p>
+
+<p>Cancel：当 Try 阶段存在服务执行失败， 进入 Cancel 阶段</p>
+
+<p>Cancel 取消执行，释放 Try 阶段预留的业务资源，上面的例子中，Cancel 操作会把冻结的库存释放，并更新订单状态为取消。</p>
+
+<p>在TCC事务模型中，Confirm/Cancel业务可能会被重复调用，其原因很多。比如，全局事务在提交/回滚时会调用各TCC服务的Confirm/Cancel业务逻辑。执行这些Confirm/Cancel业务时，可能会出现如网络中断的故障而使得全局事务不能完成。因此，故障恢复机制后续仍然会重新提交/回滚这些未完成的全局事务，这样就会再次调用参与该全局事务的各TCC服务的Confirm/Cancel业务逻辑</p>
+
+<h3 id="对比2pc两阶段提交">对比2PC两阶段提交</h3>
+
+<p>经常在网络上看见有人介绍TCC时，都提一句，”TCC是两阶段提交的一种”。其理由是TCC将业务逻辑分成try、confirm/cancel在两个不同的阶段中执行。其实这个说法，是不正确的。可能是因为既不太了解两阶段提交机制、也不太了解TCC机制的缘故，于是将两阶段提交机制的prepare、commit两个事务提交阶段和TCC机制的try、confirm/cancel两个业务执行阶段互相混淆，才有了这种说法。</p>
+
+<p>两阶段提交（Two Phase Commit，下文简称2PC），简单的说，是将事务的提交操作分成了prepare、commit两个阶段。其事务处理方式为：</p>
+
+<p>1、 在全局事务决定提交时，a）逐个向RM发送prepare请求；b）若所有RM都返回OK，则逐个发送commit请求最终提交事务；否则，逐个发送rollback请求来回滚事务；</p>
+
+<p>2、 在全局事务决定回滚时，直接逐个发送rollback请求即可，不必分阶段。
+* 需要注意的是：2PC机制需要RM提供底层支持（一般是兼容XA），而TCC机制则不需要。</p>
+
+<p>TCC（Try-Confirm-Cancel），则是将业务逻辑分成try、confirm/cancel两个阶段执行，具体介绍见TCC事务机制简介。其事务处理方式为：</p>
+
+<p>1、 在全局事务决定提交时，调用与try业务逻辑相对应的confirm业务逻辑；</p>
+
+<p>2、 在全局事务决定回滚时，调用与try业务逻辑相对应的cancel业务逻辑。
+可见，TCC在事务处理方式上，是很简单的：要么调用confirm业务逻辑，要么调用cancel逻辑。这里为什么没有提到try业务逻辑呢？因为try逻辑与全局事务处理无关。</p>
+
+<p>当讨论2PC时，我们只专注于事务处理阶段，因而只讨论prepare和commit，所以，可能很多人都忘了，使用2PC事务管理机制时也是有业务逻辑阶段的。正是因为业务逻辑的执行，发起了全局事务，这才有其后的事务处理阶段。实际上，使用2PC机制时————以提交为例————一个完整的事务生命周期是：begin -&gt; 业务逻辑 -&gt; prepare -&gt; commit。</p>
+
+<p>再看TCC，也不外乎如此。我们要发起全局事务，同样也必须通过执行一段业务逻辑来实现。该业务逻辑一来通过执行触发TCC全局事务的创建；二来也需要执行部分数据写操作；此外，还要通过执行来向TCC全局事务注册自己，以便后续TCC全局事务commit/rollback时回调其相应的confirm/cancel业务逻辑。所以，使用TCC机制时————以提交为例————一个完整的事务生命周期是：begin -&gt; 业务逻辑(try业务) -&gt; commit(comfirm业务)。</p>
+
+<p>综上，我们可以从执行的阶段上将二者一一对应起来：</p>
+
+<ol>
+<li>2PC机制的业务阶段 等价于 TCC机制的try业务阶段；</li>
+<li>2PC机制的提交阶段（prepare &amp; commit） 等价于 TCC机制的提交阶段（confirm）；</li>
+<li>2PC机制的回滚阶段（rollback） 等价于 TCC机制的回滚阶段（cancel）。</li>
+</ol>
+
+<p>因此，可以看出，虽然TCC机制中有两个阶段都存在业务逻辑的执行，但其中try业务阶段其实是与全局事务处理无关的。认清了这一点，当我们再比较TCC和2PC时，就会很容易地发现，TCC不是两阶段提交，而只是它对事务的提交/回滚是通过执行一段confirm/cancel业务逻辑来实现，仅此而已。</p>
+
+<div class="admonition note"><p class="admonition-title">方案总结</p>
+  <p>TCC 事务机制相对于传统事务机制（X/Open XA Two-Phase-Commit）,有以下优点：</p>
+
+<ul>
+<li>性能提升：具体业务来实现控制资源锁的粒度变小，不会锁定整个资源。</li>
+<li>数据最终一致性：基于 Confirm 和 Cancel 的幂等性，保证事务最终完成确认或者取消，保证数据的一致性。</li>
+<li>可靠性：解决了 XA 协议的协调者单点故障问题，由主业务方发起并控制整个业务活动，业务活动管理器也变成多点，引入集群。</li>
+</ul>
+
+<p>缺点：</p>
+
+<p>TCC 的 Try、Confirm 和 Cancel 操作功能要按具体业务来实现，业务耦合度较高，提高了开发成本。</p>
+
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-01-15</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/2018-2019/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">2018总结-2019展望</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/transaction-local-msg-tb/">
+            <span class="next-text nav-default">分布式事务-本地消息表：最终一致性</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>
