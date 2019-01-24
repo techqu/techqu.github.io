@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>drools on Quguang 学习笔记</title>
+    <link>https://techqu.github.io/categories/drools/</link>
+    <description>Recent content in drools on Quguang 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 24 Jan 2019 14:56:49 +0800</lastBuildDate>
+    
+	<atom:link href="https://techqu.github.io/categories/drools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Drools 7.15.0 docker容器方式部署</title>
+      <link>https://techqu.github.io/post/drools-7.15.0.final-docker-deploy/</link>
+      <pubDate>Thu, 24 Jan 2019 14:56:49 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/drools-7.15.0.final-docker-deploy/</guid>
+      <description>&lt;p&gt;基于 Drools 可以构建一个全面的业务自动化平台，用于业务规则管理，业务资源优化和复杂事件处理（CEP）。组织或企业可以将复杂的决策逻辑整合到业务线应用程序中，并在市场条件发生变化时快速更新基础业务规则，有效提高业务的能力&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

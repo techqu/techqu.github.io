@@ -1,0 +1,2823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Drools Documentation - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content=" 转载自：MyHerux/drools-springboot
+ Drools语法-Language 关键词  Hard keywords(Cannot use any):
+true,false,null
+ Soft keywords(avoid use)
+lock-on-active date-effective date-expires no-loop auto-focus activation-group agenda-group ruleflow-group entry-point duration package import dialect salience enabled attributes rule extend when then template query declare function global eval not in or and exists forall accumulate collect from action reverse result end over init
+  注释  单行注释
+1 2 3 4 5 6 7  rule &amp;#34;Testing Comments&amp;#34; when // this is a single line comment eval( true ) // this is a comment in the same line of a pattern then // this is a comment inside a semantic code block end   多行注释
+1 2 3 4 5 6 7 8 9  rule &amp;#34;Test Multi-line Comments&amp;#34; when /* this is a multi-line comment in the left hand side of a rule */ eval( true ) then /* and this is a multi-line comment in the right hand side of a rule */ end    Pakage  package
+package表示一个命名空间.package是必须定义的，必须放在规则文件第一行.
+ import
+import语句的工作方式类似于Java中的import语句。您需要为要在规则中使用的任何对象指定完全限定路径和类型名称。
+ global
+global用于定义全局变量。
+Rules:
+1 2 3 4 5 6 7 8  global java.util.List myGlobalList; rule &amp;#34;Using a global&amp;#34; when eval( true ) then myGlobalList.add( &amp;#34;Hello World&amp;#34; ); end   Set the global value:
+1 2 3  List list = new ArrayList(); KieSession kieSession = kiebase.newKieSession(); kieSession.setGlobal( &amp;#34;myGlobalList&amp;#34;, list );    Function  function
+function是一种将语义代码放置在规则源文件中的方法，而不是普通的Java类
+1 2 3 4 5 6 7 8 9 10  function String hello(String name) { return &amp;#34;Hello &amp;#34;&#43;name&#43;&amp;#34;!&amp;#34;; } import function my.package.Foo.hello rule &amp;#34;using a static function&amp;#34; when eval( true ) then System.out.println( hello( &amp;#34;Bob&amp;#34; ) ); end    Query  query  query是一种搜索工作内存中与指定条件匹配的事实的简单方法.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  对所有30岁以上的人的简单查询 query &amp;#34;people over the age of 30&amp;#34; person : Person( age &amp;gt; 30 ) end 查询超过x岁的人，以及居住在y的人 query &amp;#34;people over the age of x&amp;#34; (int x, String y) person : Person( age &amp;gt; x, location == y ) end QueryResults results = ksession.getQueryResults( &amp;#34;people over the age of 30&amp;#34; ); System.out.println( &amp;#34;we have &amp;#34; &#43; results.size() &#43; &amp;#34; people over the age of 30&amp;#34; ); System.out.println( &amp;#34;These people are are over 30:&amp;#34; ); for ( QueryResultsRow row : results ) { Person person = ( Person ) row.get( &amp;#34;person&amp;#34; ); System.out.println( person.getName() &#43; &amp;#34;\n&amp;#34; ); }   Rule rule定义规则。rule &amp;quot;ruleName&amp;quot;。
+一个规则可以包含三个部分：属性部分,条件部分：即LHS,结果部分：即RHS. 属性部分-Attributes 定义当前规则执行的一些属性等，比如是否可被重复执行、过期时间、生效时间等。 activation-group agenda-group auto-focus date-effective date-expires dialect duration duration-value enabled lock-on-active no-loop ruleflow-group salience
+ no-loop
+默认值：false
+类型：Boolean
+在一个规则当中如果条件满足就对Working Memory当中的某个Fact对象进行了修改，比如使用update 将其更新到当前的Working Memory当中，这时引擎会再次检查所有的规则是否满足条件，如果满足会再次执行.
+ ruleflow-group
+默认值：N/A
+类型：String
+Ruleflow是一个Drools功能，可让您控制规则的触发。由相同的规则流组标识汇编的规则仅在其组处于活动状态时触发。将规则划分为一个个的组，然后在规则流当中通过使用ruleflow-group属性的值，从而使用对应的规则。
+ lock-on-active
+默认值：false
+类型：Boolean
+当在规则上使用ruleflow-group 属性或agenda-group 属性的时候，将lock-on-action 属性的值设置为true，可能避免因某些Fact 对象被修改而使已经执行过的规则再次被激活执行。可以看出该属性与no-loop 属性有相似之处，no-loop 属性是为了避免Fact 修改或调用了insert、retract、update 之类而导致规则再次激活执行，这里的lock-on-action 属性也是起这个作用，lock-on-active 是no-loop 的增强版属性，它主要作用在使用ruleflow-group 属性或agenda-group 属性的时候
+ salience
+默认值：0
+类型：integer
+设置规则执行的优先级，salience 属性的值是一个数字，数字越大执行优先级越高，同时它的值可以是一个负数. 规则的salience 默认值为0，所以如果我们不手动设置规则的salience 属性，那么它的执行顺序是随机的.
+ agenda-group
+默认值：MAIN
+类型：String
+规则的调用与执行是通过StatelessSession 或StatefulSession 来实现的，一般的顺序是创建一个StatelessSession 或StatefulSession，将各种经过编译的规则的package 添加到session当中，接下来将规则当中可能用到的Global对象和Fact对象插入到Session 当中，最后调用fireAllRules 方法来触发、执行规则。在没有调用最后一步fireAllRules方法之前，所有的规则及插入的Fact对象都存放在一个名叫Agenda表的对象当中，这个Agenda表中每一个规则及与其匹配相关业务数据叫做Activation，在调用fireAllRules方法后，这些Activation 会依次执行，这些位于Agenda 表中的Activation 的执行顺序在没有设置相关用来控制顺序的属性时（比如salience 属性），它的执行顺序是随机的，不确定的。Agenda Group 是用来在Agenda 的基础之上，对现在的规则进行再次分组，具体的分组方法可以采用为规则添加agenda-group属性来实现。agenda-group 属性的值也是一个字符串，通过这个字符串，可以将规则分为若干个Agenda Group，默认情况下，引擎在调用这些设置了agenda-group 属性的规则的时候需要显示的指定某个Agenda Group 得到Focus（焦点），这样位于该Agenda Group 当中的规则才会触发执行，否则将不执行。
+ auto-focus
+默认值：false
+类型：Boolean
+用来在已设置了agenda-group的规则上设置该规则是否可以自动独取Focus，如果该属性设置为true，那么在引擎执行时，就不需要显示的为某个Agenda Group设置Focus，否则需要。对于规则的执行的控制，还可以使用Agenda Filter 来实现。在Drools 当中，提供了一个名为org.drools.runtime.rule.AgendaFilter 的Agenda Filter 接口，用户可以实现该接口，通过规则当中的某些属性来控制规则要不要执行。org.drools.runtime.rule.AgendaFilter 接口只有一个方法需要实现，方法体如下： public boolean accept(Activation activation); 在该方法当中提供了一个Activation 参数，通过该参数我们可以得到当前正在执行的规则对象或其它一些属性，该方法要返回一个布尔值，该布尔值就决定了要不要执行当前这个规则，返回true 就执行规则，否则就不执行。
+ activation-group
+默认值：N/A
+类型：String
+该属性的作用是将若干个规则划分成一个组，用一个字符串来给这个组命名，这样在执行的时候，具有相同activation-group属性的规则中只要有一个会被执行，其它的规则都将不再执行。也就是说，在一组具有相同activation-group属性的规则当中，只有一个规则会被执行，其它规则都将不会被执行。当然对于具有相同activation-group属性的规则当中究竟哪一个会先执行，则可以用类似salience之类属性来实现。
+ dialect
+默认值： 根据package指定
+类型：String，&amp;rdquo;java&amp;rdquo; or &amp;ldquo;mvel&amp;rdquo;
+dialect种类是用于LHS或RHS代码块中的任何代码表达式的语言。目前有两种dialect，Java和MVEL。虽然dialect可以在包级别指定，但此属性允许为规则覆盖包定义。
+ date-effective
+默认值：N/A
+类型：字符串，包含日期和时间定义。格式：dd-MMM-yyyy(25-Sep-2009).
+仅当当前日期和时间在日期有效属性后面时，才能激活规则。
+ date-expires
+默认值：N/A
+类型：字符串，包含日期和时间定义。格式：dd-MMM-yyyy(25-Sep-2009).
+如果当前日期和时间在date-expires属性之后，则无法激活规则.
+ enabled
+默认值：false
+类型：String
+表示规则是可用的，如果手工为一个规则添加一个enabled属性，并且设置其enabled属性值为false，那么引擎就不会执行该规则.
+ duration
+默认值：无
+类型：long
+持续时间指示规则将在指定的持续时间之后触发，如果它仍然是true.
+  条件部分-LHS 定义当前规则的条件，如when Message(); 判断当前workingMemory中是否存在Message对象。
+Left Hand Side（LHS）是规则的条件部分的公共名称。它由零个或多个条件元素组成。 如果LHS为空，它将被认为是一个条件元素，它总是为真，并且当创建一个新的WorkingMemory会话时，它将被激活一次。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  Conditions / LHS —匹配模式（Patterns） 没有字段约束的Pattern Person() 有文本字段约束的Pattern Person( name == “bob” ) 字段绑定的Pattern Person( $name : name == “bob” ) 变量名称可以是任何合法的java变量，$是可选的，可由于区分字段和变量 Fact绑定的Pattern $bob : Person( name == “bob” )字段绑定的Pattern 变量约束的Pattern Person( name == $name )   Drools提供了十二种类型比较操作符: &amp;gt; &amp;gt;= &amp;lt; &amp;lt;= == != contains not contains memberOf not memberOf matches not matches
+ contains
+运算符contains用于检查作为Collection或elements的字段是否包含指定的值.
+1 2 3  Cheese( name contains &amp;#34;tilto&amp;#34; ) Person( fullName contains &amp;#34;Jr&amp;#34; ) String( this contains &amp;#34;foo&amp;#34; )   not contains
+和contains相反
+ memberOf
+运算符memberOf用于检查字段是否是集合的成员或元素;该集合必须是一个变量。
+1  CheeseCounter( cheese memberOf $matureCheeses )   not memberOf
+和memberOf相反
+ matches
+正则表达式匹配，与java不同的是，不用考虑&amp;rsquo;/&amp;lsquo;的转义问题
+1  Cheese( type matches &amp;#34;(Buffalo)?\\S*Mozarella&amp;#34; )   not matches
+和matches相反
+  其他条件元素： - exists
+1  存在。检查Working Memory是否存在某物。使用模式`exists`，则规则将只激活最多一次，而不管在工作存储器中存在与存在模式中的条件匹配的数据量    not
+不存在，检查工作存储器中是否存在某物。认为“not”意味着“there must be none of...”。
+  结果部分-RHS 这里可以写普通java代码，即当前规则条件满足后执行的操作，可以直接调用Fact对象的方法来操作应用。
+Right Hand Side（RHS）是规则的结果或动作部分的通用名称;此部分应包含要执行的操作的列表。在规则的RHS中使用命令式或条件式代码是不好的做法;作为一个规则应该是原子的性质 - “when this, then do this”，而不是“when this, maybe do this”。规则的RHS部分也应该保持较小，从而保持声明性和可读性。如果你发现你需要在RHS中的命令式和/或条件代码，那么也许你应该把这个规则分成多个规则。 RHS的主要目的是插入，删除或修改工作存储器数据。为了协助，有一些方便的方法可以用来修改工作记忆;而不必首先引用工作内存实例。
+ update
+更新，告诉引擎对象已经改变（已经绑定到LHS上的某个东西），并且规则可能需要重新考虑。
+ insert(new Something())
+插入，往当前workingMemory中插入一个新的Fact对象，会触发规则的再次执行，除非使用no-loop限定；
+ insertLogical(new Something())
+类似于insert，但是当没有更多的facts支持当前触发规则的真实性时，对象将被自动删除。
+ modify
+修改，与update语法不同，结果都是更新操作。该语言扩展提供了一种结构化的方法来更新事实。它将更新操作与一些setter调用相结合来更改对象的字段。
+ retract
+删除
+  一些内置的method。
+ drools.halt()
+调用drools.halt（）立即终止规则执行。这是需要将控制权返回到当前会话使用fireUntilHalt（）的点。
+ drools.getWorkingMemory()
+返回WorkingMemory对象.
+ drools.setFocus( String s)
+将焦点设置为指定的agenda group.
+ drools.getRule().getName()
+从规则的RHS调用，返回规则的名称。
+ drools.getTuple()
+返回与当前执行的规则匹配的Tuple，而drools.getActivation（）传递相应的激活。
+ " /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/drools-wb-translation/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="Drools Documentation" />
+<meta property="og:description" content="
+转载自：MyHerux/drools-springboot
+
+
+Drools语法-Language
+
+关键词
+
+
+Hard keywords(Cannot use any):
+
+true,false,null
+
+Soft keywords(avoid use)
+
+lock-on-active date-effective date-expires no-loop auto-focus activation-group agenda-group ruleflow-group entry-point duration package import dialect salience enabled attributes rule extend when then template query declare function global eval not in or and exists forall accumulate collect from action reverse result end over init
+
+
+注释
+
+
+单行注释
+
+
+1
+2
+3
+4
+5
+6
+7
+
+
+rule &#34;Testing Comments&#34;
+when
+    // this is a single line comment
+    eval( true ) // this is a comment in the same line of a pattern
+then
+    // this is a comment inside a semantic code block
+end
+
+
+
+多行注释
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+rule &#34;Test Multi-line Comments&#34;
+when
+    /* this is a multi-line comment
+    in the left hand side of a rule */
+eval( true )
+then
+    /* and this is a multi-line comment
+    in the right hand side of a rule */
+end
+
+
+
+
+Pakage
+
+
+package
+
+package表示一个命名空间.package是必须定义的，必须放在规则文件第一行.
+
+import
+
+import语句的工作方式类似于Java中的import语句。您需要为要在规则中使用的任何对象指定完全限定路径和类型名称。
+
+global
+
+global用于定义全局变量。
+
+Rules:
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+
+
+global java.util.List myGlobalList;
+
+rule &#34;Using a global&#34;
+when
+  eval( true )
+then
+  myGlobalList.add( &#34;Hello World&#34; );
+end
+
+
+Set the global value:
+
+
+1
+2
+3
+
+
+List list = new ArrayList();
+KieSession kieSession = kiebase.newKieSession();
+kieSession.setGlobal( &#34;myGlobalList&#34;, list );
+
+
+
+
+Function
+
+
+function
+
+function是一种将语义代码放置在规则源文件中的方法，而不是普通的Java类
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+
+
+function String hello(String name) {
+  return &#34;Hello &#34;&#43;name&#43;&#34;!&#34;;
+}
+import function my.package.Foo.hello
+rule &#34;using a static function&#34;
+when
+  eval( true )
+then
+  System.out.println( hello( &#34;Bob&#34; ) );
+end
+
+
+
+
+Query
+
+
+query
+
+
+query是一种搜索工作内存中与指定条件匹配的事实的简单方法.
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+
+
+  对所有30岁以上的人的简单查询
+  query &#34;people over the age of 30&#34;
+      person : Person( age &gt; 30 )
+  end
+
+  查询超过x岁的人，以及居住在y的人
+  query &#34;people over the age of x&#34;  (int x, String y)
+      person : Person( age &gt; x, location == y )
+  end
+
+  QueryResults results = ksession.getQueryResults( &#34;people over the age of 30&#34; );
+  System.out.println( &#34;we have &#34; &#43; results.size() &#43; &#34; people over the age  of 30&#34; );
+
+  System.out.println( &#34;These people are are over 30:&#34; );
+
+  for ( QueryResultsRow row : results ) {
+      Person person = ( Person ) row.get( &#34;person&#34; );
+      System.out.println( person.getName() &#43; &#34;\n&#34; );
+  }
+
+
+Rule
+
+rule定义规则。rule &quot;ruleName&quot;。
+
+一个规则可以包含三个部分：属性部分,条件部分：即LHS,结果部分：即RHS.
+  
+
+属性部分-Attributes
+
+定义当前规则执行的一些属性等，比如是否可被重复执行、过期时间、生效时间等。
+    activation-group agenda-group auto-focus date-effective date-expires dialect duration duration-value enabled lock-on-active no-loop ruleflow-group salience
+
+
+
+
+no-loop
+
+默认值：false
+
+类型：Boolean
+
+在一个规则当中如果条件满足就对Working Memory当中的某个Fact对象进行了修改，比如使用update 将其更新到当前的Working Memory当中，这时引擎会再次检查所有的规则是否满足条件，如果满足会再次执行.
+
+ruleflow-group
+
+默认值：N/A
+
+类型：String
+
+Ruleflow是一个Drools功能，可让您控制规则的触发。由相同的规则流组标识汇编的规则仅在其组处于活动状态时触发。将规则划分为一个个的组，然后在规则流当中通过使用ruleflow-group属性的值，从而使用对应的规则。
+
+lock-on-active
+
+默认值：false
+
+类型：Boolean
+
+当在规则上使用ruleflow-group 属性或agenda-group 属性的时候，将lock-on-action 属性的值设置为true，可能避免因某些Fact 对象被修改而使已经执行过的规则再次被激活执行。可以看出该属性与no-loop 属性有相似之处，no-loop 属性是为了避免Fact 修改或调用了insert、retract、update 之类而导致规则再次激活执行，这里的lock-on-action 属性也是起这个作用，lock-on-active 是no-loop 的增强版属性，它主要作用在使用ruleflow-group 属性或agenda-group 属性的时候
+
+salience
+
+默认值：0
+
+类型：integer
+
+设置规则执行的优先级，salience 属性的值是一个数字，数字越大执行优先级越高，同时它的值可以是一个负数.
+  规则的salience 默认值为0，所以如果我们不手动设置规则的salience 属性，那么它的执行顺序是随机的.
+
+agenda-group
+
+默认值：MAIN
+
+类型：String
+
+规则的调用与执行是通过StatelessSession 或StatefulSession 来实现的，一般的顺序是创建一个StatelessSession 或StatefulSession，将各种经过编译的规则的package 添加到session当中，接下来将规则当中可能用到的Global对象和Fact对象插入到Session 当中，最后调用fireAllRules 方法来触发、执行规则。在没有调用最后一步fireAllRules方法之前，所有的规则及插入的Fact对象都存放在一个名叫Agenda表的对象当中，这个Agenda表中每一个规则及与其匹配相关业务数据叫做Activation，在调用fireAllRules方法后，这些Activation 会依次执行，这些位于Agenda 表中的Activation 的执行顺序在没有设置相关用来控制顺序的属性时（比如salience 属性），它的执行顺序是随机的，不确定的。Agenda Group 是用来在Agenda 的基础之上，对现在的规则进行再次分组，具体的分组方法可以采用为规则添加agenda-group属性来实现。agenda-group 属性的值也是一个字符串，通过这个字符串，可以将规则分为若干个Agenda Group，默认情况下，引擎在调用这些设置了agenda-group 属性的规则的时候需要显示的指定某个Agenda Group 得到Focus（焦点），这样位于该Agenda Group 当中的规则才会触发执行，否则将不执行。
+
+auto-focus
+
+默认值：false
+
+类型：Boolean
+
+用来在已设置了agenda-group的规则上设置该规则是否可以自动独取Focus，如果该属性设置为true，那么在引擎执行时，就不需要显示的为某个Agenda Group设置Focus，否则需要。对于规则的执行的控制，还可以使用Agenda Filter 来实现。在Drools 当中，提供了一个名为org.drools.runtime.rule.AgendaFilter 的Agenda Filter 接口，用户可以实现该接口，通过规则当中的某些属性来控制规则要不要执行。org.drools.runtime.rule.AgendaFilter 接口只有一个方法需要实现，方法体如下： public boolean accept(Activation activation);  在该方法当中提供了一个Activation 参数，通过该参数我们可以得到当前正在执行的规则对象或其它一些属性，该方法要返回一个布尔值，该布尔值就决定了要不要执行当前这个规则，返回true 就执行规则，否则就不执行。
+
+activation-group
+
+默认值：N/A
+
+类型：String
+
+该属性的作用是将若干个规则划分成一个组，用一个字符串来给这个组命名，这样在执行的时候，具有相同activation-group属性的规则中只要有一个会被执行，其它的规则都将不再执行。也就是说，在一组具有相同activation-group属性的规则当中，只有一个规则会被执行，其它规则都将不会被执行。当然对于具有相同activation-group属性的规则当中究竟哪一个会先执行，则可以用类似salience之类属性来实现。
+
+dialect
+
+默认值： 根据package指定
+
+类型：String，&rdquo;java&rdquo; or &ldquo;mvel&rdquo;
+
+dialect种类是用于LHS或RHS代码块中的任何代码表达式的语言。目前有两种dialect，Java和MVEL。虽然dialect可以在包级别指定，但此属性允许为规则覆盖包定义。
+
+date-effective
+
+默认值：N/A
+
+类型：字符串，包含日期和时间定义。格式：dd-MMM-yyyy(25-Sep-2009).
+
+仅当当前日期和时间在日期有效属性后面时，才能激活规则。
+
+date-expires
+
+默认值：N/A
+
+类型：字符串，包含日期和时间定义。格式：dd-MMM-yyyy(25-Sep-2009).
+
+如果当前日期和时间在date-expires属性之后，则无法激活规则.
+
+enabled
+
+默认值：false
+
+类型：String
+
+表示规则是可用的，如果手工为一个规则添加一个enabled属性，并且设置其enabled属性值为false，那么引擎就不会执行该规则.
+
+duration
+
+默认值：无
+
+类型：long
+
+持续时间指示规则将在指定的持续时间之后触发，如果它仍然是true.
+
+
+条件部分-LHS
+
+定义当前规则的条件，如when Message(); 判断当前workingMemory中是否存在Message对象。
+
+Left Hand Side（LHS）是规则的条件部分的公共名称。它由零个或多个条件元素组成。
+  如果LHS为空，它将被认为是一个条件元素，它总是为真，并且当创建一个新的WorkingMemory会话时，它将被激活一次。
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+
+
+      Conditions / LHS —匹配模式（Patterns）
+
+      没有字段约束的Pattern
+      Person()
+
+      有文本字段约束的Pattern
+      Person( name == “bob” )
+
+      字段绑定的Pattern
+      Person( $name : name == “bob” )
+      变量名称可以是任何合法的java变量，$是可选的，可由于区分字段和变量
+
+      Fact绑定的Pattern
+      $bob : Person( name == “bob” )字段绑定的Pattern
+
+      变量约束的Pattern
+      Person( name == $name )
+
+
+Drools提供了十二种类型比较操作符:
+      &gt;  &gt;=  &lt;  &lt;=  ==  !=  contains  not contains  memberOf  not memberOf matches not matches
+
+
+contains
+
+运算符contains用于检查作为Collection或elements的字段是否包含指定的值.
+
+
+1
+2
+3
+
+
+  Cheese( name contains &#34;tilto&#34; )
+  Person( fullName contains &#34;Jr&#34; )
+  String( this contains &#34;foo&#34; )
+
+
+
+not contains
+
+和contains相反
+
+memberOf
+
+运算符memberOf用于检查字段是否是集合的成员或元素;该集合必须是一个变量。
+
+
+1
+
+
+  CheeseCounter( cheese memberOf $matureCheeses )
+
+
+
+not memberOf
+
+和memberOf相反
+
+matches
+
+正则表达式匹配，与java不同的是，不用考虑&rsquo;/&lsquo;的转义问题
+
+
+1
+
+
+  Cheese( type matches &#34;(Buffalo)?\\S*Mozarella&#34; )
+
+
+
+not matches
+
+和matches相反
+
+
+其他条件元素：
+  - exists
+
+
+1
+
+
+存在。检查Working Memory是否存在某物。使用模式`exists`，则规则将只激活最多一次，而不管在工作存储器中存在与存在模式中的条件匹配的数据量
+
+
+
+not
+
+不存在，检查工作存储器中是否存在某物。认为“not”意味着“there must be none of...”。
+
+
+结果部分-RHS
+
+这里可以写普通java代码，即当前规则条件满足后执行的操作，可以直接调用Fact对象的方法来操作应用。
+
+Right Hand Side（RHS）是规则的结果或动作部分的通用名称;此部分应包含要执行的操作的列表。在规则的RHS中使用命令式或条件式代码是不好的做法;作为一个规则应该是原子的性质 - “when this, then do this”，而不是“when this, maybe do this”。规则的RHS部分也应该保持较小，从而保持声明性和可读性。如果你发现你需要在RHS中的命令式和/或条件代码，那么也许你应该把这个规则分成多个规则。 RHS的主要目的是插入，删除或修改工作存储器数据。为了协助，有一些方便的方法可以用来修改工作记忆;而不必首先引用工作内存实例。
+
+
+update
+
+更新，告诉引擎对象已经改变（已经绑定到LHS上的某个东西），并且规则可能需要重新考虑。
+
+insert(new Something())
+
+插入，往当前workingMemory中插入一个新的Fact对象，会触发规则的再次执行，除非使用no-loop限定；
+
+insertLogical(new Something())
+
+类似于insert，但是当没有更多的facts支持当前触发规则的真实性时，对象将被自动删除。
+
+modify
+
+修改，与update语法不同，结果都是更新操作。该语言扩展提供了一种结构化的方法来更新事实。它将更新操作与一些setter调用相结合来更改对象的字段。
+
+retract
+
+删除
+
+
+一些内置的method。
+
+
+drools.halt()
+
+调用drools.halt（）立即终止规则执行。这是需要将控制权返回到当前会话使用fireUntilHalt（）的点。
+
+drools.getWorkingMemory()
+
+返回WorkingMemory对象.
+
+drools.setFocus( String s)
+
+将焦点设置为指定的agenda group.
+
+drools.getRule().getName()
+
+从规则的RHS调用，返回规则的名称。
+
+drools.getTuple()
+
+返回与当前执行的规则匹配的Tuple，而drools.getActivation（）传递相应的激活。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/drools-wb-translation/" /><meta property="article:published_time" content="2019-01-19T13:18:56&#43;08:00"/>
+<meta property="article:modified_time" content="2019-01-19T13:18:56&#43;08:00"/>
+
+<meta itemprop="name" content="Drools Documentation">
+<meta itemprop="description" content="
+转载自：MyHerux/drools-springboot
+
+
+Drools语法-Language
+
+关键词
+
+
+Hard keywords(Cannot use any):
+
+true,false,null
+
+Soft keywords(avoid use)
+
+lock-on-active date-effective date-expires no-loop auto-focus activation-group agenda-group ruleflow-group entry-point duration package import dialect salience enabled attributes rule extend when then template query declare function global eval not in or and exists forall accumulate collect from action reverse result end over init
+
+
+注释
+
+
+单行注释
+
+
+1
+2
+3
+4
+5
+6
+7
+
+
+rule &#34;Testing Comments&#34;
+when
+    // this is a single line comment
+    eval( true ) // this is a comment in the same line of a pattern
+then
+    // this is a comment inside a semantic code block
+end
+
+
+
+多行注释
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+rule &#34;Test Multi-line Comments&#34;
+when
+    /* this is a multi-line comment
+    in the left hand side of a rule */
+eval( true )
+then
+    /* and this is a multi-line comment
+    in the right hand side of a rule */
+end
+
+
+
+
+Pakage
+
+
+package
+
+package表示一个命名空间.package是必须定义的，必须放在规则文件第一行.
+
+import
+
+import语句的工作方式类似于Java中的import语句。您需要为要在规则中使用的任何对象指定完全限定路径和类型名称。
+
+global
+
+global用于定义全局变量。
+
+Rules:
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+
+
+global java.util.List myGlobalList;
+
+rule &#34;Using a global&#34;
+when
+  eval( true )
+then
+  myGlobalList.add( &#34;Hello World&#34; );
+end
+
+
+Set the global value:
+
+
+1
+2
+3
+
+
+List list = new ArrayList();
+KieSession kieSession = kiebase.newKieSession();
+kieSession.setGlobal( &#34;myGlobalList&#34;, list );
+
+
+
+
+Function
+
+
+function
+
+function是一种将语义代码放置在规则源文件中的方法，而不是普通的Java类
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+
+
+function String hello(String name) {
+  return &#34;Hello &#34;&#43;name&#43;&#34;!&#34;;
+}
+import function my.package.Foo.hello
+rule &#34;using a static function&#34;
+when
+  eval( true )
+then
+  System.out.println( hello( &#34;Bob&#34; ) );
+end
+
+
+
+
+Query
+
+
+query
+
+
+query是一种搜索工作内存中与指定条件匹配的事实的简单方法.
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+
+
+  对所有30岁以上的人的简单查询
+  query &#34;people over the age of 30&#34;
+      person : Person( age &gt; 30 )
+  end
+
+  查询超过x岁的人，以及居住在y的人
+  query &#34;people over the age of x&#34;  (int x, String y)
+      person : Person( age &gt; x, location == y )
+  end
+
+  QueryResults results = ksession.getQueryResults( &#34;people over the age of 30&#34; );
+  System.out.println( &#34;we have &#34; &#43; results.size() &#43; &#34; people over the age  of 30&#34; );
+
+  System.out.println( &#34;These people are are over 30:&#34; );
+
+  for ( QueryResultsRow row : results ) {
+      Person person = ( Person ) row.get( &#34;person&#34; );
+      System.out.println( person.getName() &#43; &#34;\n&#34; );
+  }
+
+
+Rule
+
+rule定义规则。rule &quot;ruleName&quot;。
+
+一个规则可以包含三个部分：属性部分,条件部分：即LHS,结果部分：即RHS.
+  
+
+属性部分-Attributes
+
+定义当前规则执行的一些属性等，比如是否可被重复执行、过期时间、生效时间等。
+    activation-group agenda-group auto-focus date-effective date-expires dialect duration duration-value enabled lock-on-active no-loop ruleflow-group salience
+
+
+
+
+no-loop
+
+默认值：false
+
+类型：Boolean
+
+在一个规则当中如果条件满足就对Working Memory当中的某个Fact对象进行了修改，比如使用update 将其更新到当前的Working Memory当中，这时引擎会再次检查所有的规则是否满足条件，如果满足会再次执行.
+
+ruleflow-group
+
+默认值：N/A
+
+类型：String
+
+Ruleflow是一个Drools功能，可让您控制规则的触发。由相同的规则流组标识汇编的规则仅在其组处于活动状态时触发。将规则划分为一个个的组，然后在规则流当中通过使用ruleflow-group属性的值，从而使用对应的规则。
+
+lock-on-active
+
+默认值：false
+
+类型：Boolean
+
+当在规则上使用ruleflow-group 属性或agenda-group 属性的时候，将lock-on-action 属性的值设置为true，可能避免因某些Fact 对象被修改而使已经执行过的规则再次被激活执行。可以看出该属性与no-loop 属性有相似之处，no-loop 属性是为了避免Fact 修改或调用了insert、retract、update 之类而导致规则再次激活执行，这里的lock-on-action 属性也是起这个作用，lock-on-active 是no-loop 的增强版属性，它主要作用在使用ruleflow-group 属性或agenda-group 属性的时候
+
+salience
+
+默认值：0
+
+类型：integer
+
+设置规则执行的优先级，salience 属性的值是一个数字，数字越大执行优先级越高，同时它的值可以是一个负数.
+  规则的salience 默认值为0，所以如果我们不手动设置规则的salience 属性，那么它的执行顺序是随机的.
+
+agenda-group
+
+默认值：MAIN
+
+类型：String
+
+规则的调用与执行是通过StatelessSession 或StatefulSession 来实现的，一般的顺序是创建一个StatelessSession 或StatefulSession，将各种经过编译的规则的package 添加到session当中，接下来将规则当中可能用到的Global对象和Fact对象插入到Session 当中，最后调用fireAllRules 方法来触发、执行规则。在没有调用最后一步fireAllRules方法之前，所有的规则及插入的Fact对象都存放在一个名叫Agenda表的对象当中，这个Agenda表中每一个规则及与其匹配相关业务数据叫做Activation，在调用fireAllRules方法后，这些Activation 会依次执行，这些位于Agenda 表中的Activation 的执行顺序在没有设置相关用来控制顺序的属性时（比如salience 属性），它的执行顺序是随机的，不确定的。Agenda Group 是用来在Agenda 的基础之上，对现在的规则进行再次分组，具体的分组方法可以采用为规则添加agenda-group属性来实现。agenda-group 属性的值也是一个字符串，通过这个字符串，可以将规则分为若干个Agenda Group，默认情况下，引擎在调用这些设置了agenda-group 属性的规则的时候需要显示的指定某个Agenda Group 得到Focus（焦点），这样位于该Agenda Group 当中的规则才会触发执行，否则将不执行。
+
+auto-focus
+
+默认值：false
+
+类型：Boolean
+
+用来在已设置了agenda-group的规则上设置该规则是否可以自动独取Focus，如果该属性设置为true，那么在引擎执行时，就不需要显示的为某个Agenda Group设置Focus，否则需要。对于规则的执行的控制，还可以使用Agenda Filter 来实现。在Drools 当中，提供了一个名为org.drools.runtime.rule.AgendaFilter 的Agenda Filter 接口，用户可以实现该接口，通过规则当中的某些属性来控制规则要不要执行。org.drools.runtime.rule.AgendaFilter 接口只有一个方法需要实现，方法体如下： public boolean accept(Activation activation);  在该方法当中提供了一个Activation 参数，通过该参数我们可以得到当前正在执行的规则对象或其它一些属性，该方法要返回一个布尔值，该布尔值就决定了要不要执行当前这个规则，返回true 就执行规则，否则就不执行。
+
+activation-group
+
+默认值：N/A
+
+类型：String
+
+该属性的作用是将若干个规则划分成一个组，用一个字符串来给这个组命名，这样在执行的时候，具有相同activation-group属性的规则中只要有一个会被执行，其它的规则都将不再执行。也就是说，在一组具有相同activation-group属性的规则当中，只有一个规则会被执行，其它规则都将不会被执行。当然对于具有相同activation-group属性的规则当中究竟哪一个会先执行，则可以用类似salience之类属性来实现。
+
+dialect
+
+默认值： 根据package指定
+
+类型：String，&rdquo;java&rdquo; or &ldquo;mvel&rdquo;
+
+dialect种类是用于LHS或RHS代码块中的任何代码表达式的语言。目前有两种dialect，Java和MVEL。虽然dialect可以在包级别指定，但此属性允许为规则覆盖包定义。
+
+date-effective
+
+默认值：N/A
+
+类型：字符串，包含日期和时间定义。格式：dd-MMM-yyyy(25-Sep-2009).
+
+仅当当前日期和时间在日期有效属性后面时，才能激活规则。
+
+date-expires
+
+默认值：N/A
+
+类型：字符串，包含日期和时间定义。格式：dd-MMM-yyyy(25-Sep-2009).
+
+如果当前日期和时间在date-expires属性之后，则无法激活规则.
+
+enabled
+
+默认值：false
+
+类型：String
+
+表示规则是可用的，如果手工为一个规则添加一个enabled属性，并且设置其enabled属性值为false，那么引擎就不会执行该规则.
+
+duration
+
+默认值：无
+
+类型：long
+
+持续时间指示规则将在指定的持续时间之后触发，如果它仍然是true.
+
+
+条件部分-LHS
+
+定义当前规则的条件，如when Message(); 判断当前workingMemory中是否存在Message对象。
+
+Left Hand Side（LHS）是规则的条件部分的公共名称。它由零个或多个条件元素组成。
+  如果LHS为空，它将被认为是一个条件元素，它总是为真，并且当创建一个新的WorkingMemory会话时，它将被激活一次。
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+
+
+      Conditions / LHS —匹配模式（Patterns）
+
+      没有字段约束的Pattern
+      Person()
+
+      有文本字段约束的Pattern
+      Person( name == “bob” )
+
+      字段绑定的Pattern
+      Person( $name : name == “bob” )
+      变量名称可以是任何合法的java变量，$是可选的，可由于区分字段和变量
+
+      Fact绑定的Pattern
+      $bob : Person( name == “bob” )字段绑定的Pattern
+
+      变量约束的Pattern
+      Person( name == $name )
+
+
+Drools提供了十二种类型比较操作符:
+      &gt;  &gt;=  &lt;  &lt;=  ==  !=  contains  not contains  memberOf  not memberOf matches not matches
+
+
+contains
+
+运算符contains用于检查作为Collection或elements的字段是否包含指定的值.
+
+
+1
+2
+3
+
+
+  Cheese( name contains &#34;tilto&#34; )
+  Person( fullName contains &#34;Jr&#34; )
+  String( this contains &#34;foo&#34; )
+
+
+
+not contains
+
+和contains相反
+
+memberOf
+
+运算符memberOf用于检查字段是否是集合的成员或元素;该集合必须是一个变量。
+
+
+1
+
+
+  CheeseCounter( cheese memberOf $matureCheeses )
+
+
+
+not memberOf
+
+和memberOf相反
+
+matches
+
+正则表达式匹配，与java不同的是，不用考虑&rsquo;/&lsquo;的转义问题
+
+
+1
+
+
+  Cheese( type matches &#34;(Buffalo)?\\S*Mozarella&#34; )
+
+
+
+not matches
+
+和matches相反
+
+
+其他条件元素：
+  - exists
+
+
+1
+
+
+存在。检查Working Memory是否存在某物。使用模式`exists`，则规则将只激活最多一次，而不管在工作存储器中存在与存在模式中的条件匹配的数据量
+
+
+
+not
+
+不存在，检查工作存储器中是否存在某物。认为“not”意味着“there must be none of...”。
+
+
+结果部分-RHS
+
+这里可以写普通java代码，即当前规则条件满足后执行的操作，可以直接调用Fact对象的方法来操作应用。
+
+Right Hand Side（RHS）是规则的结果或动作部分的通用名称;此部分应包含要执行的操作的列表。在规则的RHS中使用命令式或条件式代码是不好的做法;作为一个规则应该是原子的性质 - “when this, then do this”，而不是“when this, maybe do this”。规则的RHS部分也应该保持较小，从而保持声明性和可读性。如果你发现你需要在RHS中的命令式和/或条件代码，那么也许你应该把这个规则分成多个规则。 RHS的主要目的是插入，删除或修改工作存储器数据。为了协助，有一些方便的方法可以用来修改工作记忆;而不必首先引用工作内存实例。
+
+
+update
+
+更新，告诉引擎对象已经改变（已经绑定到LHS上的某个东西），并且规则可能需要重新考虑。
+
+insert(new Something())
+
+插入，往当前workingMemory中插入一个新的Fact对象，会触发规则的再次执行，除非使用no-loop限定；
+
+insertLogical(new Something())
+
+类似于insert，但是当没有更多的facts支持当前触发规则的真实性时，对象将被自动删除。
+
+modify
+
+修改，与update语法不同，结果都是更新操作。该语言扩展提供了一种结构化的方法来更新事实。它将更新操作与一些setter调用相结合来更改对象的字段。
+
+retract
+
+删除
+
+
+一些内置的method。
+
+
+drools.halt()
+
+调用drools.halt（）立即终止规则执行。这是需要将控制权返回到当前会话使用fireUntilHalt（）的点。
+
+drools.getWorkingMemory()
+
+返回WorkingMemory对象.
+
+drools.setFocus( String s)
+
+将焦点设置为指定的agenda group.
+
+drools.getRule().getName()
+
+从规则的RHS调用，返回规则的名称。
+
+drools.getTuple()
+
+返回与当前执行的规则匹配的Tuple，而drools.getActivation（）传递相应的激活。
+">
+
+
+<meta itemprop="datePublished" content="2019-01-19T13:18:56&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-19T13:18:56&#43;08:00" />
+<meta itemprop="wordCount" content="6134">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Drools Documentation"/>
+<meta name="twitter:description" content="
+转载自：MyHerux/drools-springboot
+
+
+Drools语法-Language
+
+关键词
+
+
+Hard keywords(Cannot use any):
+
+true,false,null
+
+Soft keywords(avoid use)
+
+lock-on-active date-effective date-expires no-loop auto-focus activation-group agenda-group ruleflow-group entry-point duration package import dialect salience enabled attributes rule extend when then template query declare function global eval not in or and exists forall accumulate collect from action reverse result end over init
+
+
+注释
+
+
+单行注释
+
+
+1
+2
+3
+4
+5
+6
+7
+
+
+rule &#34;Testing Comments&#34;
+when
+    // this is a single line comment
+    eval( true ) // this is a comment in the same line of a pattern
+then
+    // this is a comment inside a semantic code block
+end
+
+
+
+多行注释
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+rule &#34;Test Multi-line Comments&#34;
+when
+    /* this is a multi-line comment
+    in the left hand side of a rule */
+eval( true )
+then
+    /* and this is a multi-line comment
+    in the right hand side of a rule */
+end
+
+
+
+
+Pakage
+
+
+package
+
+package表示一个命名空间.package是必须定义的，必须放在规则文件第一行.
+
+import
+
+import语句的工作方式类似于Java中的import语句。您需要为要在规则中使用的任何对象指定完全限定路径和类型名称。
+
+global
+
+global用于定义全局变量。
+
+Rules:
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+
+
+global java.util.List myGlobalList;
+
+rule &#34;Using a global&#34;
+when
+  eval( true )
+then
+  myGlobalList.add( &#34;Hello World&#34; );
+end
+
+
+Set the global value:
+
+
+1
+2
+3
+
+
+List list = new ArrayList();
+KieSession kieSession = kiebase.newKieSession();
+kieSession.setGlobal( &#34;myGlobalList&#34;, list );
+
+
+
+
+Function
+
+
+function
+
+function是一种将语义代码放置在规则源文件中的方法，而不是普通的Java类
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+
+
+function String hello(String name) {
+  return &#34;Hello &#34;&#43;name&#43;&#34;!&#34;;
+}
+import function my.package.Foo.hello
+rule &#34;using a static function&#34;
+when
+  eval( true )
+then
+  System.out.println( hello( &#34;Bob&#34; ) );
+end
+
+
+
+
+Query
+
+
+query
+
+
+query是一种搜索工作内存中与指定条件匹配的事实的简单方法.
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+
+
+  对所有30岁以上的人的简单查询
+  query &#34;people over the age of 30&#34;
+      person : Person( age &gt; 30 )
+  end
+
+  查询超过x岁的人，以及居住在y的人
+  query &#34;people over the age of x&#34;  (int x, String y)
+      person : Person( age &gt; x, location == y )
+  end
+
+  QueryResults results = ksession.getQueryResults( &#34;people over the age of 30&#34; );
+  System.out.println( &#34;we have &#34; &#43; results.size() &#43; &#34; people over the age  of 30&#34; );
+
+  System.out.println( &#34;These people are are over 30:&#34; );
+
+  for ( QueryResultsRow row : results ) {
+      Person person = ( Person ) row.get( &#34;person&#34; );
+      System.out.println( person.getName() &#43; &#34;\n&#34; );
+  }
+
+
+Rule
+
+rule定义规则。rule &quot;ruleName&quot;。
+
+一个规则可以包含三个部分：属性部分,条件部分：即LHS,结果部分：即RHS.
+  
+
+属性部分-Attributes
+
+定义当前规则执行的一些属性等，比如是否可被重复执行、过期时间、生效时间等。
+    activation-group agenda-group auto-focus date-effective date-expires dialect duration duration-value enabled lock-on-active no-loop ruleflow-group salience
+
+
+
+
+no-loop
+
+默认值：false
+
+类型：Boolean
+
+在一个规则当中如果条件满足就对Working Memory当中的某个Fact对象进行了修改，比如使用update 将其更新到当前的Working Memory当中，这时引擎会再次检查所有的规则是否满足条件，如果满足会再次执行.
+
+ruleflow-group
+
+默认值：N/A
+
+类型：String
+
+Ruleflow是一个Drools功能，可让您控制规则的触发。由相同的规则流组标识汇编的规则仅在其组处于活动状态时触发。将规则划分为一个个的组，然后在规则流当中通过使用ruleflow-group属性的值，从而使用对应的规则。
+
+lock-on-active
+
+默认值：false
+
+类型：Boolean
+
+当在规则上使用ruleflow-group 属性或agenda-group 属性的时候，将lock-on-action 属性的值设置为true，可能避免因某些Fact 对象被修改而使已经执行过的规则再次被激活执行。可以看出该属性与no-loop 属性有相似之处，no-loop 属性是为了避免Fact 修改或调用了insert、retract、update 之类而导致规则再次激活执行，这里的lock-on-action 属性也是起这个作用，lock-on-active 是no-loop 的增强版属性，它主要作用在使用ruleflow-group 属性或agenda-group 属性的时候
+
+salience
+
+默认值：0
+
+类型：integer
+
+设置规则执行的优先级，salience 属性的值是一个数字，数字越大执行优先级越高，同时它的值可以是一个负数.
+  规则的salience 默认值为0，所以如果我们不手动设置规则的salience 属性，那么它的执行顺序是随机的.
+
+agenda-group
+
+默认值：MAIN
+
+类型：String
+
+规则的调用与执行是通过StatelessSession 或StatefulSession 来实现的，一般的顺序是创建一个StatelessSession 或StatefulSession，将各种经过编译的规则的package 添加到session当中，接下来将规则当中可能用到的Global对象和Fact对象插入到Session 当中，最后调用fireAllRules 方法来触发、执行规则。在没有调用最后一步fireAllRules方法之前，所有的规则及插入的Fact对象都存放在一个名叫Agenda表的对象当中，这个Agenda表中每一个规则及与其匹配相关业务数据叫做Activation，在调用fireAllRules方法后，这些Activation 会依次执行，这些位于Agenda 表中的Activation 的执行顺序在没有设置相关用来控制顺序的属性时（比如salience 属性），它的执行顺序是随机的，不确定的。Agenda Group 是用来在Agenda 的基础之上，对现在的规则进行再次分组，具体的分组方法可以采用为规则添加agenda-group属性来实现。agenda-group 属性的值也是一个字符串，通过这个字符串，可以将规则分为若干个Agenda Group，默认情况下，引擎在调用这些设置了agenda-group 属性的规则的时候需要显示的指定某个Agenda Group 得到Focus（焦点），这样位于该Agenda Group 当中的规则才会触发执行，否则将不执行。
+
+auto-focus
+
+默认值：false
+
+类型：Boolean
+
+用来在已设置了agenda-group的规则上设置该规则是否可以自动独取Focus，如果该属性设置为true，那么在引擎执行时，就不需要显示的为某个Agenda Group设置Focus，否则需要。对于规则的执行的控制，还可以使用Agenda Filter 来实现。在Drools 当中，提供了一个名为org.drools.runtime.rule.AgendaFilter 的Agenda Filter 接口，用户可以实现该接口，通过规则当中的某些属性来控制规则要不要执行。org.drools.runtime.rule.AgendaFilter 接口只有一个方法需要实现，方法体如下： public boolean accept(Activation activation);  在该方法当中提供了一个Activation 参数，通过该参数我们可以得到当前正在执行的规则对象或其它一些属性，该方法要返回一个布尔值，该布尔值就决定了要不要执行当前这个规则，返回true 就执行规则，否则就不执行。
+
+activation-group
+
+默认值：N/A
+
+类型：String
+
+该属性的作用是将若干个规则划分成一个组，用一个字符串来给这个组命名，这样在执行的时候，具有相同activation-group属性的规则中只要有一个会被执行，其它的规则都将不再执行。也就是说，在一组具有相同activation-group属性的规则当中，只有一个规则会被执行，其它规则都将不会被执行。当然对于具有相同activation-group属性的规则当中究竟哪一个会先执行，则可以用类似salience之类属性来实现。
+
+dialect
+
+默认值： 根据package指定
+
+类型：String，&rdquo;java&rdquo; or &ldquo;mvel&rdquo;
+
+dialect种类是用于LHS或RHS代码块中的任何代码表达式的语言。目前有两种dialect，Java和MVEL。虽然dialect可以在包级别指定，但此属性允许为规则覆盖包定义。
+
+date-effective
+
+默认值：N/A
+
+类型：字符串，包含日期和时间定义。格式：dd-MMM-yyyy(25-Sep-2009).
+
+仅当当前日期和时间在日期有效属性后面时，才能激活规则。
+
+date-expires
+
+默认值：N/A
+
+类型：字符串，包含日期和时间定义。格式：dd-MMM-yyyy(25-Sep-2009).
+
+如果当前日期和时间在date-expires属性之后，则无法激活规则.
+
+enabled
+
+默认值：false
+
+类型：String
+
+表示规则是可用的，如果手工为一个规则添加一个enabled属性，并且设置其enabled属性值为false，那么引擎就不会执行该规则.
+
+duration
+
+默认值：无
+
+类型：long
+
+持续时间指示规则将在指定的持续时间之后触发，如果它仍然是true.
+
+
+条件部分-LHS
+
+定义当前规则的条件，如when Message(); 判断当前workingMemory中是否存在Message对象。
+
+Left Hand Side（LHS）是规则的条件部分的公共名称。它由零个或多个条件元素组成。
+  如果LHS为空，它将被认为是一个条件元素，它总是为真，并且当创建一个新的WorkingMemory会话时，它将被激活一次。
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+
+
+      Conditions / LHS —匹配模式（Patterns）
+
+      没有字段约束的Pattern
+      Person()
+
+      有文本字段约束的Pattern
+      Person( name == “bob” )
+
+      字段绑定的Pattern
+      Person( $name : name == “bob” )
+      变量名称可以是任何合法的java变量，$是可选的，可由于区分字段和变量
+
+      Fact绑定的Pattern
+      $bob : Person( name == “bob” )字段绑定的Pattern
+
+      变量约束的Pattern
+      Person( name == $name )
+
+
+Drools提供了十二种类型比较操作符:
+      &gt;  &gt;=  &lt;  &lt;=  ==  !=  contains  not contains  memberOf  not memberOf matches not matches
+
+
+contains
+
+运算符contains用于检查作为Collection或elements的字段是否包含指定的值.
+
+
+1
+2
+3
+
+
+  Cheese( name contains &#34;tilto&#34; )
+  Person( fullName contains &#34;Jr&#34; )
+  String( this contains &#34;foo&#34; )
+
+
+
+not contains
+
+和contains相反
+
+memberOf
+
+运算符memberOf用于检查字段是否是集合的成员或元素;该集合必须是一个变量。
+
+
+1
+
+
+  CheeseCounter( cheese memberOf $matureCheeses )
+
+
+
+not memberOf
+
+和memberOf相反
+
+matches
+
+正则表达式匹配，与java不同的是，不用考虑&rsquo;/&lsquo;的转义问题
+
+
+1
+
+
+  Cheese( type matches &#34;(Buffalo)?\\S*Mozarella&#34; )
+
+
+
+not matches
+
+和matches相反
+
+
+其他条件元素：
+  - exists
+
+
+1
+
+
+存在。检查Working Memory是否存在某物。使用模式`exists`，则规则将只激活最多一次，而不管在工作存储器中存在与存在模式中的条件匹配的数据量
+
+
+
+not
+
+不存在，检查工作存储器中是否存在某物。认为“not”意味着“there must be none of...”。
+
+
+结果部分-RHS
+
+这里可以写普通java代码，即当前规则条件满足后执行的操作，可以直接调用Fact对象的方法来操作应用。
+
+Right Hand Side（RHS）是规则的结果或动作部分的通用名称;此部分应包含要执行的操作的列表。在规则的RHS中使用命令式或条件式代码是不好的做法;作为一个规则应该是原子的性质 - “when this, then do this”，而不是“when this, maybe do this”。规则的RHS部分也应该保持较小，从而保持声明性和可读性。如果你发现你需要在RHS中的命令式和/或条件代码，那么也许你应该把这个规则分成多个规则。 RHS的主要目的是插入，删除或修改工作存储器数据。为了协助，有一些方便的方法可以用来修改工作记忆;而不必首先引用工作内存实例。
+
+
+update
+
+更新，告诉引擎对象已经改变（已经绑定到LHS上的某个东西），并且规则可能需要重新考虑。
+
+insert(new Something())
+
+插入，往当前workingMemory中插入一个新的Fact对象，会触发规则的再次执行，除非使用no-loop限定；
+
+insertLogical(new Something())
+
+类似于insert，但是当没有更多的facts支持当前触发规则的真实性时，对象将被自动删除。
+
+modify
+
+修改，与update语法不同，结果都是更新操作。该语言扩展提供了一种结构化的方法来更新事实。它将更新操作与一些setter调用相结合来更改对象的字段。
+
+retract
+
+删除
+
+
+一些内置的method。
+
+
+drools.halt()
+
+调用drools.halt（）立即终止规则执行。这是需要将控制权返回到当前会话使用fireUntilHalt（）的点。
+
+drools.getWorkingMemory()
+
+返回WorkingMemory对象.
+
+drools.setFocus( String s)
+
+将焦点设置为指定的agenda group.
+
+drools.getRule().getName()
+
+从规则的RHS调用，返回规则的名称。
+
+drools.getTuple()
+
+返回与当前执行的规则匹配的Tuple，而drools.getActivation（）传递相应的激活。
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">学习、记录、分享</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">学习、记录、分享</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Drools Documentation</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-19 </span>
+        
+          <span class="more-meta"> 6134 words </span>
+          <span class="more-meta"> 13 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#drools语法-language">Drools语法-Language</a>
+<ul>
+<li><a href="#关键词">关键词</a></li>
+<li><a href="#注释">注释</a></li>
+<li><a href="#pakage">Pakage</a></li>
+<li><a href="#function">Function</a></li>
+<li><a href="#query">Query</a></li>
+<li><a href="#rule">Rule</a>
+<ul>
+<li><a href="#属性部分-attributes">属性部分-Attributes</a></li>
+<li><a href="#条件部分-lhs">条件部分-LHS</a></li>
+<li><a href="#结果部分-rhs">结果部分-RHS</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#drools应用">Drools应用</a>
+<ul>
+<li><a href="#动态规则">动态规则</a>
+<ul>
+<li><a href="#动态获取kiesession">动态获取KieSession</a></li>
+<li><a href="#激活规则">激活规则</a></li>
+</ul></li>
+<li><a href="#决策表">决策表</a>
+<ul>
+<li><a href="#将文件翻译为drl文件">将文件翻译为drl文件</a></li>
+<li><a href="#将文件流翻译为drl文件">将文件流翻译为drl文件</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#drools-example">Drools-Example</a>
+<ul>
+<li><a href="#mingdrink">MingDrink</a></li>
+<li><a href="#worldproblem">WorldProblem</a></li>
+<li><a href="#golferproblem">GolferProblem</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>转载自：<a href="https://github.com/MyHerux/drools-springboot">MyHerux/drools-springboot</a></p>
+</blockquote>
+
+<h2 id="drools语法-language">Drools语法-Language</h2>
+
+<h3 id="关键词">关键词</h3>
+
+<ul>
+<li><p>Hard keywords(Cannot use any):</p>
+
+<p><code>true,false,null</code></p></li>
+
+<li><p>Soft keywords(avoid use)</p>
+
+<p><code>lock-on-active date-effective date-expires no-loop auto-focus activation-group agenda-group ruleflow-group entry-point duration package import dialect salience enabled attributes rule extend when then template query declare function global eval not in or and exists forall accumulate collect from action reverse result end over init</code></p></li>
+</ul>
+
+<h3 id="注释">注释</h3>
+
+<ul>
+<li><p>单行注释</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">rule &#34;Testing Comments&#34;
+when
+    // this is a single line comment
+    eval( true ) // this is a comment in the same line of a pattern
+then
+    // this is a comment inside a semantic code block
+end</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>多行注释</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">rule &#34;Test Multi-line Comments&#34;
+when
+    /* this is a multi-line comment
+    in the left hand side of a rule */
+eval( true )
+then
+    /* and this is a multi-line comment
+    in the right hand side of a rule */
+end</pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<h3 id="pakage">Pakage</h3>
+
+<ul>
+<li><p>package</p>
+
+<p><code>package</code>表示一个命名空间.package是必须定义的，必须放在规则文件第一行.</p></li>
+
+<li><p>import</p>
+
+<p><code>import</code>语句的工作方式类似于Java中的import语句。您需要为要在规则中使用的任何对象指定完全限定路径和类型名称。</p></li>
+
+<li><p>global</p>
+
+<p><code>global</code>用于定义全局变量。</p>
+
+<p>Rules:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">global java.util.List myGlobalList;
+
+rule &#34;Using a global&#34;
+when
+  eval( true )
+then
+  myGlobalList.add( &#34;Hello World&#34; );
+end</pre></td></tr></table>
+</div>
+</div>
+<p>Set the global value:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">List list = new ArrayList();
+KieSession kieSession = kiebase.newKieSession();
+kieSession.setGlobal( &#34;myGlobalList&#34;, list );</pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<h3 id="function">Function</h3>
+
+<ul>
+<li><p>function</p>
+
+<p><code>function</code>是一种将语义代码放置在规则源文件中的方法，而不是普通的Java类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">function String hello(String name) {
+  return &#34;Hello &#34;+name+&#34;!&#34;;
+}
+import function my.package.Foo.hello
+rule &#34;using a static function&#34;
+when
+  eval( true )
+then
+  System.out.println( hello( &#34;Bob&#34; ) );
+end</pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<h3 id="query">Query</h3>
+
+<ul>
+<li>query</li>
+</ul>
+
+<p><code>query</code>是一种搜索工作内存中与指定条件匹配的事实的简单方法.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">  对所有30岁以上的人的简单查询
+  query &#34;people over the age of 30&#34;
+      person : Person( age &gt; 30 )
+  end
+
+  查询超过x岁的人，以及居住在y的人
+  query &#34;people over the age of x&#34;  (int x, String y)
+      person : Person( age &gt; x, location == y )
+  end
+
+  QueryResults results = ksession.getQueryResults( &#34;people over the age of 30&#34; );
+  System.out.println( &#34;we have &#34; + results.size() + &#34; people over the age  of 30&#34; );
+
+  System.out.println( &#34;These people are are over 30:&#34; );
+
+  for ( QueryResultsRow row : results ) {
+      Person person = ( Person ) row.get( &#34;person&#34; );
+      System.out.println( person.getName() + &#34;\n&#34; );
+  }</pre></td></tr></table>
+</div>
+</div>
+<h3 id="rule">Rule</h3>
+
+<p><code>rule</code>定义规则。<code>rule &quot;ruleName&quot;</code>。</p>
+
+<p>一个规则可以包含三个部分：属性部分,条件部分：即<code>LHS</code>,结果部分：即<code>RHS</code>.
+  <img src="http://of0qa2hzs.bkt.clouddn.com/rule.jpg" alt="" /></p>
+
+<h4 id="属性部分-attributes">属性部分-Attributes</h4>
+
+<p>定义当前规则执行的一些属性等，比如是否可被重复执行、过期时间、生效时间等。
+    <code>activation-group</code> <code>agenda-group</code> <code>auto-focus</code> <code>date-effective</code> <code>date-expires</code> <code>dialect</code> <code>duration</code> <code>duration-value</code> <code>enabled</code> <code>lock-on-active</code> <code>no-loop</code> <code>ruleflow-group</code> <code>salience</code></p>
+
+<p><img src="http://of0qa2hzs.bkt.clouddn.com/1484118982%281%29.jpg" alt="" /></p>
+
+<ul>
+<li><p>no-loop</p>
+
+<p>默认值：false</p>
+
+<p>类型：Boolean</p>
+
+<p>在一个规则当中如果条件满足就对<code>Working Memory</code>当中的某个Fact对象进行了修改，比如使用update 将其更新到当前的<code>Working Memory</code>当中，这时引擎会再次检查所有的规则是否满足条件，如果满足会再次执行.</p></li>
+
+<li><p>ruleflow-group</p>
+
+<p>默认值：N/A</p>
+
+<p>类型：String</p>
+
+<p><code>Ruleflow</code>是一个Drools功能，可让您控制规则的触发。由相同的规则流组标识汇编的规则仅在其组处于活动状态时触发。将规则划分为一个个的组，然后在规则流当中通过使用<code>ruleflow-group</code>属性的值，从而使用对应的规则。</p></li>
+
+<li><p>lock-on-active</p>
+
+<p>默认值：false</p>
+
+<p>类型：Boolean</p>
+
+<p>当在规则上使用<code>ruleflow-group</code> 属性或<code>agenda-group</code> 属性的时候，将<code>lock-on-action</code> 属性的值设置为true，可能避免因某些Fact 对象被修改而使已经执行过的规则再次被激活执行。可以看出该属性与<code>no-loop</code> 属性有相似之处，<code>no-loop</code> 属性是为了避免Fact 修改或调用了<code>insert</code>、<code>retract</code>、<code>update</code> 之类而导致规则再次激活执行，这里的<code>lock-on-action</code> 属性也是起这个作用，<code>lock-on-active</code> 是<code>no-loop</code> 的增强版属性，它主要作用在使用<code>ruleflow-group</code> 属性或<code>agenda-group</code> 属性的时候</p></li>
+
+<li><p>salience</p>
+
+<p>默认值：0</p>
+
+<p>类型：integer</p>
+
+<p>设置规则执行的优先级，<code>salience</code> 属性的值是一个数字，数字越大执行优先级越高，同时它的值可以是一个负数.
+  规则的<code>salience</code> 默认值为0，所以如果我们不手动设置规则的<code>salience</code> 属性，那么它的执行顺序是随机的.</p></li>
+
+<li><p>agenda-group</p>
+
+<p>默认值：MAIN</p>
+
+<p>类型：String</p>
+
+<p>规则的调用与执行是通过<code>StatelessSession</code> 或<code>StatefulSession</code> 来实现的，一般的顺序是创建一个<code>StatelessSession</code> 或<code>StatefulSession</code>，将各种经过编译的规则的package 添加到session当中，接下来将规则当中可能用到的Global对象和Fact对象插入到Session 当中，最后调用fireAllRules 方法来触发、执行规则。在没有调用最后一步<code>fireAllRules</code>方法之前，所有的规则及插入的<code>Fact</code>对象都存放在一个名叫<code>Agenda</code>表的对象当中，这个<code>Agenda</code>表中每一个规则及与其匹配相关业务数据叫做<code>Activation</code>，在调用<code>fireAllRules</code>方法后，这些Activation 会依次执行，这些位于Agenda 表中的Activation 的执行顺序在没有设置相关用来控制顺序的属性时（比如salience 属性），它的执行顺序是随机的，不确定的。<code>Agenda Group</code> 是用来在Agenda 的基础之上，对现在的规则进行再次分组，具体的分组方法可以采用为规则添加<code>agenda-group</code>属性来实现。<code>agenda-group</code> 属性的值也是一个字符串，通过这个字符串，可以将规则分为若干个<code>Agenda Group</code>，默认情况下，引擎在调用这些设置了<code>agenda-group</code> 属性的规则的时候需要显示的指定某个<code>Agenda Group</code> 得到<code>Focus</code>（焦点），这样位于该<code>Agenda Group</code> 当中的规则才会触发执行，否则将不执行。</p></li>
+
+<li><p>auto-focus</p>
+
+<p>默认值：false</p>
+
+<p>类型：Boolean</p>
+
+<p>用来在已设置了<code>agenda-group</code>的规则上设置该规则是否可以自动独取<code>Focus</code>，如果该属性设置为true，那么在引擎执行时，就不需要显示的为某个<code>Agenda Group</code>设置<code>Focus</code>，否则需要。对于规则的执行的控制，还可以使用<code>Agenda Filter</code> 来实现。在Drools 当中，提供了一个名为<code>org.drools.runtime.rule.AgendaFilter 的Agenda Filter</code> 接口，用户可以实现该接口，通过规则当中的某些属性来控制规则要不要执行。<code>org.drools.runtime.rule.AgendaFilter</code> 接口只有一个方法需要实现，方法体如下： <code>public boolean accept(Activation activation);</code>  在该方法当中提供了一个<code>Activation</code> 参数，通过该参数我们可以得到当前正在执行的规则对象或其它一些属性，该方法要返回一个布尔值，该布尔值就决定了要不要执行当前这个规则，返回true 就执行规则，否则就不执行。</p></li>
+
+<li><p>activation-group</p>
+
+<p>默认值：N/A</p>
+
+<p>类型：String</p>
+
+<p>该属性的作用是将若干个规则划分成一个组，用一个字符串来给这个组命名，这样在执行的时候，具有相同<code>activation-group</code>属性的规则中只要有一个会被执行，其它的规则都将不再执行。也就是说，在一组具有相同<code>activation-group</code>属性的规则当中，只有一个规则会被执行，其它规则都将不会被执行。当然对于具有相同<code>activation-group</code>属性的规则当中究竟哪一个会先执行，则可以用类似<code>salience</code>之类属性来实现。</p></li>
+
+<li><p>dialect</p>
+
+<p>默认值： 根据package指定</p>
+
+<p>类型：String，&rdquo;java&rdquo; or &ldquo;mvel&rdquo;</p>
+
+<p><code>dialect</code>种类是用于LHS或RHS代码块中的任何代码表达式的语言。目前有两种<code>dialect</code>，<code>Java</code>和<code>MVEL</code>。虽然<code>dialect</code>可以在包级别指定，但此属性允许为规则覆盖包定义。</p></li>
+
+<li><p>date-effective</p>
+
+<p>默认值：N/A</p>
+
+<p>类型：字符串，包含日期和时间定义。格式：<code>dd-MMM-yyyy</code>(25-Sep-2009).</p>
+
+<p>仅当当前日期和时间在日期有效属性后面时，才能激活规则。</p></li>
+
+<li><p>date-expires</p>
+
+<p>默认值：N/A</p>
+
+<p>类型：字符串，包含日期和时间定义。格式：<code>dd-MMM-yyyy</code>(25-Sep-2009).</p>
+
+<p>如果当前日期和时间在<code>date-expires</code>属性之后，则无法激活规则.</p></li>
+
+<li><p>enabled</p>
+
+<p>默认值：false</p>
+
+<p>类型：String</p>
+
+<p>表示规则是可用的，如果手工为一个规则添加一个<code>enabled</code>属性，并且设置其<code>enabled</code>属性值为false，那么引擎就不会执行该规则.</p></li>
+
+<li><p>duration</p>
+
+<p>默认值：无</p>
+
+<p>类型：long</p>
+
+<p>持续时间指示规则将在指定的持续时间之后触发，如果它仍然是true.</p></li>
+</ul>
+
+<h4 id="条件部分-lhs">条件部分-LHS</h4>
+
+<p>定义当前规则的条件，如<code>when Message()</code>; 判断当前workingMemory中是否存在Message对象。</p>
+
+<p><code>Left Hand Side</code>（<code>LHS</code>）是规则的条件部分的公共名称。它由零个或多个条件元素组成。
+  如果LHS为空，它将被认为是一个条件元素，它总是为真，并且当创建一个新的WorkingMemory会话时，它将被激活一次。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">      Conditions / LHS —匹配模式（Patterns）
+
+      没有字段约束的Pattern
+      Person()
+
+      有文本字段约束的Pattern
+      Person( name == “bob” )
+
+      字段绑定的Pattern
+      Person( $name : name == “bob” )
+      变量名称可以是任何合法的java变量，$是可选的，可由于区分字段和变量
+
+      Fact绑定的Pattern
+      $bob : Person( name == “bob” )字段绑定的Pattern
+
+      变量约束的Pattern
+      Person( name == $name )</pre></td></tr></table>
+</div>
+</div>
+<p>Drools提供了十二种类型比较操作符:
+      <code>&gt;</code>  <code>&gt;=</code>  <code>&lt;</code>  <code>&lt;=</code>  <code>==</code>  <code>!=</code>  <code>contains</code>  <code>not contains</code>  <code>memberOf</code>  <code>not memberOf</code> <code>matches</code> <code>not matches</code></p>
+
+<ul>
+<li><p>contains</p>
+
+<p>运算符<code>contains</code>用于检查作为Collection或elements的字段是否包含指定的值.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">  Cheese( name contains &#34;tilto&#34; )
+  Person( fullName contains &#34;Jr&#34; )
+  String( this contains &#34;foo&#34; )</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>not contains</p>
+
+<p>和<code>contains</code>相反</p></li>
+
+<li><p>memberOf</p>
+
+<p>运算符<code>memberOf</code>用于检查字段是否是集合的成员或元素;该集合必须是一个变量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">  CheeseCounter( cheese memberOf $matureCheeses )</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>not memberOf</p>
+
+<p>和<code>memberOf</code>相反</p></li>
+
+<li><p>matches</p>
+
+<p>正则表达式匹配，与java不同的是，不用考虑&rsquo;/&lsquo;的转义问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">  Cheese( type matches &#34;(Buffalo)?\\S*Mozarella&#34; )</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>not matches</p>
+
+<p>和<code>matches</code>相反</p></li>
+</ul>
+
+<p>其他条件元素：
+  - exists</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">存在。检查Working Memory是否存在某物。使用模式`exists`，则规则将只激活最多一次，而不管在工作存储器中存在与存在模式中的条件匹配的数据量</pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li><p>not</p>
+
+<p>不存在，检查工作存储器中是否存在某物。认为“<code>not</code>”意味着“<code>there must be none of...</code>”。</p></li>
+</ul>
+
+<h4 id="结果部分-rhs">结果部分-RHS</h4>
+
+<p>这里可以写普通java代码，即当前规则条件满足后执行的操作，可以直接调用Fact对象的方法来操作应用。</p>
+
+<p><code>Right Hand Side</code>（<code>RHS</code>）是规则的结果或动作部分的通用名称;此部分应包含要执行的操作的列表。在规则的RHS中使用命令式或条件式代码是不好的做法;作为一个规则应该是<code>原子</code>的性质 - “<code>when this, then do this</code>”，而不是“<code>when this, maybe do this</code>”。规则的RHS部分也应该保持较小，从而保持声明性和可读性。如果你发现你需要在RHS中的命令式和/或条件代码，那么也许你应该把这个规则分成多个规则。 <code>RHS</code>的主要目的是插入，删除或修改工作存储器数据。为了协助，有一些方便的方法可以用来修改工作记忆;而不必首先引用工作内存实例。</p>
+
+<ul>
+<li><p>update</p>
+
+<p>更新，告诉引擎对象已经改变（已经绑定到LHS上的某个东西），并且规则可能需要重新考虑。</p></li>
+
+<li><p>insert(new Something())</p>
+
+<p>插入，往当前<code>workingMemory</code>中插入一个新的Fact对象，会触发规则的再次执行，除非使用<code>no-loop</code>限定；</p></li>
+
+<li><p>insertLogical(new Something())</p>
+
+<p>类似于<code>insert</code>，但是当没有更多的facts支持当前触发规则的真实性时，对象将被自动删除。</p></li>
+
+<li><p>modify</p>
+
+<p>修改，与<code>update</code>语法不同，结果都是更新操作。该语言扩展提供了一种结构化的方法来更新事实。它将更新操作与一些setter调用相结合来更改对象的字段。</p></li>
+
+<li><p>retract</p>
+
+<p>删除</p></li>
+</ul>
+
+<p>一些内置的method。</p>
+
+<ul>
+<li><p>drools.halt()</p>
+
+<p>调用<code>drools.halt（）</code>立即终止规则执行。这是需要将控制权返回到当前会话使用<code>fireUntilHalt（）</code>的点。</p></li>
+
+<li><p>drools.getWorkingMemory()</p>
+
+<p>返回WorkingMemory对象.</p></li>
+
+<li><p>drools.setFocus( String s)</p>
+
+<p>将焦点设置为指定的<code>agenda group</code>.</p></li>
+
+<li><p>drools.getRule().getName()</p>
+
+<p>从规则的RHS调用，返回规则的名称。</p></li>
+
+<li><p>drools.getTuple()</p>
+
+<p>返回与当前执行的规则匹配的<code>Tuple</code>，而drools.getActivation（）传递相应的激活。</p></li>
+</ul>
+
+<h2 id="drools应用">Drools应用</h2>
+
+<h3 id="动态规则">动态规则</h3>
+
+<h4 id="动态获取kiesession">动态获取KieSession</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">KieSession</span> <span class="nf">getKieSession</span><span class="o">(</span><span class="n">String</span> <span class="n">rules</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">KieServices</span> <span class="n">kieServices</span> <span class="o">=</span> <span class="n">KieServices</span><span class="o">.</span><span class="na">Factory</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+        <span class="n">KieFileSystem</span> <span class="n">kfs</span> <span class="o">=</span> <span class="n">kieServices</span><span class="o">.</span><span class="na">newKieFileSystem</span><span class="o">();</span>
+        <span class="n">kfs</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;src/main/resources/rules/rules.drl&#34;</span><span class="o">,</span> <span class="n">rules</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="n">KieBuilder</span> <span class="n">kieBuilder</span> <span class="o">=</span> <span class="n">kieServices</span><span class="o">.</span><span class="na">newKieBuilder</span><span class="o">(</span><span class="n">kfs</span><span class="o">).</span><span class="na">buildAll</span><span class="o">();</span>
+        <span class="n">Results</span> <span class="n">results</span> <span class="o">=</span> <span class="n">kieBuilder</span><span class="o">.</span><span class="na">getResults</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">results</span><span class="o">.</span><span class="na">hasMessages</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">kie</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">builder</span><span class="o">.</span><span class="na">Message</span><span class="o">.</span><span class="na">Level</span><span class="o">.</span><span class="na">ERROR</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">results</span><span class="o">.</span><span class="na">getMessages</span><span class="o">());</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">BusinessException</span><span class="o">(</span><span class="n">300003</span><span class="o">,</span><span class="n">results</span><span class="o">.</span><span class="na">getMessages</span><span class="o">().</span><span class="na">toString</span><span class="o">(),</span><span class="n">4</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">KieContainer</span> <span class="n">kieContainer</span> <span class="o">=</span> <span class="n">kieServices</span><span class="o">.</span><span class="na">newKieContainer</span><span class="o">(</span><span class="n">kieServices</span><span class="o">.</span><span class="na">getRepository</span><span class="o">().</span><span class="na">getDefaultReleaseId</span><span class="o">());</span>
+        <span class="n">KieBase</span> <span class="n">kieBase</span> <span class="o">=</span> <span class="n">kieContainer</span><span class="o">.</span><span class="na">getKieBase</span><span class="o">();</span>
+
+        <span class="k">return</span> <span class="n">kieBase</span><span class="o">.</span><span class="na">newKieSession</span><span class="o">();</span>
+    <span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="激活规则">激活规则</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    KieSession kieSession = rulesService.getKieSession(rule);
+    Gson gson = new Gson();
+    Person person = gson.fromJson(json, Person.class);
+    kieSession.insert(person);
+    kieSession.fireAllRules();
+    kieSession.dispose();</pre></td></tr></table>
+</div>
+</div>
+<h3 id="决策表">决策表</h3>
+
+<h4 id="将文件翻译为drl文件">将文件翻译为drl文件</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    public String getRuleTable() {
+        //把excel翻译成drl文件
+        SpreadsheetCompiler compiler = new SpreadsheetCompiler();
+        String rules = compiler.compile(ResourceFactory.newClassPathResource(RULES_PATH + File.separator + &#34;rule.xlsx&#34;, &#34;UTF-8&#34;), &#34;rule-table&#34;);
+        System.out.println(rules);
+        return rules;
+    }</pre></td></tr></table>
+</div>
+</div>
+<h4 id="将文件流翻译为drl文件">将文件流翻译为drl文件</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    public String getRuleTable(InputStream inputStream) {
+        //把excel翻译成drl文件
+        SpreadsheetCompiler compiler = new SpreadsheetCompiler();
+        String rules = compiler.compile(ResourceFactory.newInputStreamResource(inputStream, &#34;UTF-8&#34;), &#34;rule-table&#34;);
+        logger.info(&#34;get rule from xls:&#34; + rules);
+        return rules;
+    }</pre></td></tr></table>
+</div>
+</div>
+<h2 id="drools-example">Drools-Example</h2>
+
+<p>使用Drools来解决一些复杂的逻辑问题。</p>
+
+<h3 id="mingdrink">MingDrink</h3>
+
+<ul>
+<li><p>problem</p>
+
+<p>小明喝汽水问题:</p>
+
+<p>1元钱一瓶汽水，喝完后两个空瓶换一瓶汽水，问：小明有20元钱，最多可以喝到几瓶汽水？</p></li>
+
+<li><p>rule</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    <span class="kn">package</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span>
+
+    <span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span><span class="p">.</span><span class="nx">bean</span><span class="p">.</span><span class="nx">XiaoMing</span><span class="p">;</span>
+
+
+    <span class="c1">// 小明喝汽水问题
+</span><span class="c1"></span>    <span class="c1">// 1元钱一瓶汽水，喝完后两个空瓶换一瓶汽水，问：小明有20元钱，最多可以喝到几瓶汽水？
+</span><span class="c1"></span>    <span class="c1">// 规则1：1元钱一瓶汽水
+</span><span class="c1"></span>    <span class="c1">// 规则2：两个空瓶换一瓶汽水
+</span><span class="c1"></span>
+    <span class="c1">//规则1：1元钱一瓶汽水。有钱就买水，空瓶+1，钱-1，喝水+1；
+</span><span class="c1"></span>    <span class="nx">rule</span> <span class="s">&#34;rule1&#34;</span>
+        <span class="nx">salience</span> <span class="mi">3</span>
+        <span class="nx">when</span>
+            <span class="err">$</span><span class="nx">m</span><span class="p">:</span><span class="nf">XiaoMing</span><span class="p">(</span><span class="nx">money</span><span class="p">&gt;</span><span class="mi">0</span><span class="p">);</span>
+        <span class="nx">then</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;有钱即可喝水，钱：&#34;</span><span class="o">+</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getMoney</span><span class="p">());</span>
+            <span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">setBottle</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getBottle</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+            <span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">setMoney</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getMoney</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+            <span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">setDrink</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getDrink</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+            <span class="nf">update</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">)</span>
+    <span class="nx">end</span>
+
+    <span class="c1">//规则2：两个空瓶换一瓶汽水。有空瓶就换钱，空瓶-2，钱+1；
+</span><span class="c1"></span>    <span class="nx">rule</span> <span class="s">&#34;rule2&#34;</span>
+        <span class="nx">salience</span> <span class="mi">2</span>
+        <span class="nx">when</span>
+            <span class="err">$</span><span class="nx">m</span><span class="p">:</span><span class="nf">XiaoMing</span><span class="p">(</span><span class="nx">bottle</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">);</span>
+        <span class="nx">then</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;有瓶子就换钱，瓶子：&#34;</span><span class="o">+</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getBottle</span><span class="p">());</span>
+            <span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">setBottle</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getBottle</span><span class="p">()</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+            <span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">setMoney</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getMoney</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+            <span class="nf">update</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">)</span>
+    <span class="nx">end</span>
+
+    <span class="c1">//规则3，打印已经喝掉的数量
+</span><span class="c1"></span>    <span class="nx">rule</span> <span class="s">&#34;rule3&#34;</span>
+        <span class="nx">salience</span> <span class="mi">1</span>
+        <span class="nx">when</span>
+            <span class="err">$</span><span class="nx">m</span><span class="p">:</span><span class="nf">XiaoMing</span><span class="p">();</span>
+        <span class="nx">then</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;总共喝掉：&#34;</span><span class="o">+</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getDrink</span><span class="p">());</span>
+    <span class="nx">end</span></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<h3 id="worldproblem">WorldProblem</h3>
+
+<ul>
+<li><p>problem</p>
+
+<p>猜对错问题:
+在一次数学竞赛中，获得前三名的同学是A，B，C. 老师对他们说：“祝贺你们，请你们猜一猜名次。”</p>
+
+<ul>
+<li>甲：“A是第二，C是第三.”</li>
+<li>乙：“A是第一，B是第三.”</li>
+<li>丙：“B是第二，A是第三.”</li>
+</ul>
+
+<p><code>感觉有更好的方法，但是写不出规则来0.0</code></p></li>
+
+<li><p>rule</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    <span class="kn">package</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span>
+
+    <span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span><span class="p">.</span><span class="nx">bean</span><span class="p">.</span><span class="nx">Student</span><span class="p">;</span>
+    <span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span><span class="p">.</span><span class="nx">bean</span><span class="p">.</span><span class="nx">World</span>
+
+    <span class="nx">rule</span> <span class="s">&#34;find jia1&#34;</span>
+        <span class="nx">salience</span> <span class="mi">2</span>
+    <span class="nx">when</span>
+            <span class="err">$</span><span class="nx">jia1</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;jia&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;C&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">==</span><span class="s">&#34;2&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">!=</span><span class="s">&#34;3&#34;</span><span class="p">)</span>
+        <span class="nx">then</span>
+            <span class="nf">insert</span><span class="p">(</span> <span class="nx">new</span> <span class="nf">World</span><span class="p">(</span><span class="err">$</span><span class="nx">jia1</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="err">$</span><span class="nx">jia1</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">())</span> <span class="p">);</span>
+    <span class="nx">end</span>
+
+    <span class="nx">rule</span> <span class="s">&#34;find jia2&#34;</span>
+        <span class="nx">salience</span> <span class="mi">2</span>
+        <span class="nx">when</span>
+            <span class="err">$</span><span class="nx">jia2</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;jia&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;C&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">!=</span><span class="s">&#34;2&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">==</span><span class="s">&#34;3&#34;</span><span class="p">)</span>
+        <span class="nx">then</span>
+            <span class="nf">insert</span><span class="p">(</span> <span class="nx">new</span> <span class="nf">World</span><span class="p">(</span><span class="err">$</span><span class="nx">jia2</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="err">$</span><span class="nx">jia2</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">())</span> <span class="p">);</span>
+    <span class="nx">end</span>
+
+    <span class="nx">rule</span> <span class="s">&#34;find yi1&#34;</span>
+        <span class="nx">salience</span> <span class="mi">3</span>
+        <span class="nx">when</span>
+            <span class="err">$</span><span class="nx">yi1</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;yi&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;B&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">==</span><span class="s">&#34;1&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">!=</span><span class="s">&#34;3&#34;</span><span class="p">);</span>
+            <span class="err">$</span><span class="nx">w</span> <span class="p">:</span> <span class="nf">World</span><span class="p">(</span><span class="nx">a</span><span class="o">==</span><span class="err">$</span><span class="nx">yi1</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">())</span>
+        <span class="nx">then</span>
+            <span class="err">$</span><span class="nx">w</span><span class="p">.</span><span class="nf">setB</span><span class="p">(</span><span class="err">$</span><span class="nx">yi1</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">());</span>
+            <span class="nf">update</span><span class="p">(</span><span class="err">$</span><span class="nx">w</span><span class="p">)</span>
+    <span class="nx">end</span>
+
+    <span class="nx">rule</span> <span class="s">&#34;find yi2&#34;</span>
+        <span class="nx">salience</span> <span class="mi">3</span>
+        <span class="nx">when</span>
+            <span class="err">$</span><span class="nx">yi2</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;yi&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;B&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">==</span><span class="s">&#34;1&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">!=</span><span class="s">&#34;3&#34;</span><span class="p">)</span>
+            <span class="err">$</span><span class="nx">w</span> <span class="p">:</span> <span class="nf">World</span><span class="p">(</span><span class="nx">a</span><span class="o">==</span><span class="err">$</span><span class="nx">yi2</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">())</span>
+        <span class="nx">then</span>
+            <span class="err">$</span><span class="nx">w</span><span class="p">.</span><span class="nf">setB</span><span class="p">(</span><span class="err">$</span><span class="nx">yi2</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">());</span>
+            <span class="nf">update</span><span class="p">(</span><span class="err">$</span><span class="nx">w</span><span class="p">)</span>
+    <span class="nx">end</span>
+
+
+    <span class="nx">rule</span> <span class="s">&#34;find bing1&#34;</span>
+        <span class="nx">salience</span> <span class="mi">4</span>
+        <span class="nx">when</span>
+            <span class="err">$</span><span class="nx">bing1</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;bing&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;B&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">==</span><span class="s">&#34;3&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">!=</span><span class="s">&#34;2&#34;</span><span class="p">)</span>
+            <span class="err">$</span><span class="nx">w</span> <span class="p">:</span> <span class="nf">World</span><span class="p">(</span><span class="nx">a</span><span class="o">==</span><span class="err">$</span><span class="nx">bing1</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">(),</span><span class="nx">b</span><span class="o">==</span><span class="err">$</span><span class="nx">bing1</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">())</span>
+        <span class="nx">then</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;-------&#34;</span><span class="o">+</span><span class="err">$</span><span class="nx">w</span><span class="p">.</span><span class="nf">toString</span><span class="p">());</span>
+    <span class="nx">end</span>
+
+
+    <span class="nx">rule</span> <span class="s">&#34;find bing2&#34;</span>
+        <span class="nx">salience</span> <span class="mi">4</span>
+        <span class="nx">when</span>
+            <span class="err">$</span><span class="nx">bing2</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;bing&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;B&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">!=</span><span class="s">&#34;3&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">==</span><span class="s">&#34;2&#34;</span><span class="p">)</span>
+            <span class="err">$</span><span class="nx">w</span> <span class="p">:</span> <span class="nf">World</span><span class="p">(</span><span class="nx">a</span><span class="o">==</span><span class="err">$</span><span class="nx">bing2</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">(),</span><span class="nx">b</span><span class="o">==</span><span class="err">$</span><span class="nx">bing2</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">())</span>
+        <span class="nx">then</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;-------&#34;</span><span class="o">+</span><span class="err">$</span><span class="nx">w</span><span class="p">.</span><span class="nf">toString</span><span class="p">());</span>
+    <span class="nx">end</span></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<h3 id="golferproblem">GolferProblem</h3>
+
+<ul>
+<li><p>problem</p>
+
+<p>高尔夫球员站位问题:</p>
+
+<p>已知有四个高尔夫球员，他们的名字是Fred,Joe,Bob,Tom;</p>
+
+<ul>
+<li>今天他们分别穿着红色，蓝色，橙色，以及格子衣服，并且他们按照从左往右的顺序站成一排。</li>
+<li>我们将最左边的位置定为1，最右边的位置定为4，中间依次是2,3位置。</li>
+<li>现在我们了解的情况是：</li>
+<li>1.高尔夫球员Fred,目前不知道他的位置和衣服颜色</li>
+<li>2.Fred右边紧挨着的球员穿蓝色衣服</li>
+<li>3.Joe排在第2个位置</li>
+<li>4.Bob穿着格子短裤</li>
+<li>5.Tom没有排在第1位或第4位，也没有穿橙色衣服</li>
+<li>请问,这四名球员的位置和衣服颜色。</li>
+</ul></li>
+
+<li><p>rule</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">    <span class="kn">package</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span>
+
+    <span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span><span class="p">.</span><span class="nx">bean</span><span class="p">.</span><span class="nx">Golfer</span><span class="p">;</span>
+
+    <span class="nx">rule</span> <span class="s">&#34;find solution&#34;</span>
+        <span class="nx">when</span>
+            <span class="c1">//1.高尔夫球员Fred,目前不知道他的位置和衣服颜色
+</span><span class="c1"></span>            <span class="err">$</span><span class="nx">fred</span> <span class="p">:</span> <span class="nf">Golfer</span><span class="p">(</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;Fred&#34;</span> <span class="p">)</span>
+
+            <span class="c1">//3.Joe排在第2个位置
+</span><span class="c1"></span>            <span class="err">$</span><span class="nx">joe</span> <span class="p">:</span> <span class="nf">Golfer</span><span class="p">(</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;Joe&#34;</span><span class="p">,</span>
+                    <span class="nx">position</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
+                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">color</span> <span class="p">)</span>
+
+            <span class="c1">//4.Bob穿着格子短裤
+</span><span class="c1"></span>            <span class="err">$</span><span class="nx">bob</span> <span class="p">:</span> <span class="nf">Golfer</span><span class="p">(</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;Bob&#34;</span><span class="p">,</span>
+                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
+                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
+                    <span class="nx">color</span> <span class="o">==</span> <span class="s">&#34;plaid&#34;</span><span class="p">,</span>
+                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">color</span><span class="p">,</span>
+                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nx">color</span> <span class="p">)</span>
+
+            <span class="c1">//5.Tom没有排在第1位或第4位，也没有穿橙色衣服
+</span><span class="c1"></span>            <span class="err">$</span><span class="nx">tom</span> <span class="p">:</span> <span class="nf">Golfer</span><span class="p">(</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;Tom&#34;</span><span class="p">,</span>
+                    <span class="nx">position</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="nx">position</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">,</span>
+                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
+                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
+                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">bob</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
+                    <span class="nx">color</span> <span class="o">!=</span> <span class="s">&#34;orange&#34;</span><span class="p">,</span>
+                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">color</span><span class="p">,</span>
+                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nx">color</span><span class="p">,</span>
+                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">bob</span><span class="p">.</span><span class="nx">color</span> <span class="p">)</span>
+
+            <span class="c1">//2.Fred右边紧挨着的球员穿蓝色衣服
+</span><span class="c1"></span>            <span class="nf">Golfer</span><span class="p">(</span> <span class="nx">position</span> <span class="o">==</span> <span class="p">(</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">position</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">),</span>
+                        <span class="nx">color</span> <span class="o">==</span> <span class="s">&#34;blue&#34;</span><span class="p">,</span>
+                        <span class="nx">this</span> <span class="nf">in</span> <span class="p">(</span> <span class="err">$</span><span class="nx">joe</span><span class="p">,</span> <span class="err">$</span><span class="nx">bob</span><span class="p">,</span> <span class="err">$</span><span class="nx">tom</span> <span class="p">)</span> <span class="p">)</span>
+
+        <span class="nx">then</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span> <span class="s">&#34;Fred &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nf">getPosition</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nf">getColor</span><span class="p">()</span> <span class="p">);</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span> <span class="s">&#34;Joe &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nf">getPosition</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nf">getColor</span><span class="p">()</span> <span class="p">);</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span> <span class="s">&#34;Bob &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">bob</span><span class="p">.</span><span class="nf">getPosition</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">bob</span><span class="p">.</span><span class="nf">getColor</span><span class="p">()</span> <span class="p">);</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span> <span class="s">&#34;Tom &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">tom</span><span class="p">.</span><span class="nf">getPosition</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">tom</span><span class="p">.</span><span class="nf">getColor</span><span class="p">()</span> <span class="p">);</span>
+    <span class="nx">end</span></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-01-19</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/booklist-zhengshitang-2018/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">政事堂书单 2018</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/15-lock-in-java/">
+            <span class="next-text nav-default">Java 中15种锁的介绍：公平锁，可重入锁等等……</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>
