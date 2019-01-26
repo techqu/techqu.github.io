@@ -1,6 +1,8 @@
 
    > 转载自：[MyHerux/drools-springboot](https://github.com/MyHerux/drools-springboot)
 
+<!--more-->
+
 ## Drools语法-Language
 ### 关键词
   - Hard keywords(Cannot use any):
@@ -142,7 +144,7 @@
 
       类型：Boolean
 
-      当在规则上使用`ruleflow-group` 属性或`agenda-group` 属性的时候，将`lock-on-action` 属性的值设置为true，可能避免因某些Fact 对象被修改而使已经执行过的规则再次被激活执行。可以看出该属性与`no-loop` 属性有相似之处，`no-loop` 属性是为了避免Fact 修改或调用了`insert`、`retract`、`update` 之类而导致规则再次激活执行，这里的`lock-on-action` 属性也是起这个作用，`lock-on-active` 是`no-loop` 的增强版属性，它主要作用在使用`ruleflow-group` 属性或`agenda-group` 属性的时候
+      当在规则上使用`ruleflow-group` 属性或`agenda-group` 属性的时候，将`lock-on-action` 属性的值设置为true，可能避免因某些Fact 对象被修改而使已经执行过的规则再次被激活执行。可以看出该属性与`no-loop` 属性有相似之处，`no-loop` 属性是为了避免Fact 修改或调用了`insert`、`retract`、`update` 之类而导致规则再次激活执行，这里的`lock-on-action` 属性也是起这个作用，`lock-on-active` 是`no-loop` 的增强版属性，它主要作用在使用`ruleflow-group` 属性或`agenda-group` 属性的时候，lock-on-active属性默认值为false。与no-loop不同的是lock-on-active可以避免其他规则修改FACT对象导致规则的重新执行。
 
   - salience
 
@@ -331,7 +333,7 @@
 
 
 
-<!--more-->
+
 ## Drools应用
 
 ### 动态规则

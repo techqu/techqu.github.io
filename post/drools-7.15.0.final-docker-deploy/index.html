@@ -45,15 +45,15 @@
 <meta property="og:description" content="基于 Drools 可以构建一个全面的业务自动化平台，用于业务规则管理，业务资源优化和复杂事件处理（CEP）。组织或企业可以将复杂的决策逻辑整合到业务线应用程序中，并在市场条件发生变化时快速更新基础业务规则，有效提高业务的能力" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://techqu.github.io/post/drools-7.15.0.final-docker-deploy/" /><meta property="article:published_time" content="2019-01-24T14:56:49&#43;08:00"/>
-<meta property="article:modified_time" content="2019-01-24T14:56:49&#43;08:00"/>
+<meta property="article:modified_time" content="2019-01-26T14:56:49&#43;08:00"/>
 
 <meta itemprop="name" content="Drools 7.15.0 docker容器方式部署">
 <meta itemprop="description" content="基于 Drools 可以构建一个全面的业务自动化平台，用于业务规则管理，业务资源优化和复杂事件处理（CEP）。组织或企业可以将复杂的决策逻辑整合到业务线应用程序中，并在市场条件发生变化时快速更新基础业务规则，有效提高业务的能力">
 
 
 <meta itemprop="datePublished" content="2019-01-24T14:56:49&#43;08:00" />
-<meta itemprop="dateModified" content="2019-01-24T14:56:49&#43;08:00" />
-<meta itemprop="wordCount" content="966">
+<meta itemprop="dateModified" content="2019-01-26T14:56:49&#43;08:00" />
+<meta itemprop="wordCount" content="1037">
 
 
 
@@ -134,8 +134,8 @@
         <div class="post-category">
             <a href="/categories/drools/"> drools </a>
             </div>
-          <span class="more-meta"> 966 words </span>
-          <span class="more-meta"> 2 mins read </span>
+          <span class="more-meta"> 1037 words </span>
+          <span class="more-meta"> 3 mins read </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
     </header>
@@ -147,14 +147,20 @@
 <ul>
 <li>
 <ul>
-<li><a href="#一-docker尝鲜">一、docker尝鲜</a></li>
-<li><a href="#二-实践问题">二、实践问题</a>
+<li><a href="#一-快速部署">一、快速部署</a></li>
+<li><a href="#二-问题">二、问题</a>
 <ul>
 <li><a href="#1-drools中文规则乱码问题">1.drools中文规则乱码问题</a></li>
 <li><a href="#2-容器时区问题">2.容器时区问题</a></li>
 <li><a href="#3-drools规则持久化保存">3.drools规则持久化保存</a></li>
+<li><a href="#4-drools规则源文件如何拿到">4.drools规则源文件如何拿到</a></li>
 </ul></li>
-<li><a href="#三-完整部署流程">三、完整部署流程</a></li>
+<li><a href="#三-完整部署流程">三、完整部署流程</a>
+<ul>
+<li><a href="#1-构建镜像-命令如下">1.构建镜像，命令如下：</a></li>
+<li><a href="#2-启动镜像-命令如下">2.启动镜像，命令如下：</a></li>
+<li><a href="#3-浏览器访问-http-localhost-8080-drools-wb">3.浏览器访问，<a href="http://localhost:8080/drools-wb">http://localhost:8080/drools-wb</a></a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -163,7 +169,7 @@
     <div class="post-content">
       <p>基于 Drools 可以构建一个全面的业务自动化平台，用于业务规则管理，业务资源优化和复杂事件处理（CEP）。组织或企业可以将复杂的决策逻辑整合到业务线应用程序中，并在市场条件发生变化时快速更新基础业务规则，有效提高业务的能力</p>
 
-<h2 id="一-docker尝鲜">一、docker尝鲜</h2>
+<h2 id="一-快速部署">一、快速部署</h2>
 
 <p>1.拉取基础镜像，命令如下：</p>
 <div class="highlight"><div class="chroma">
@@ -176,9 +182,9 @@
   docker run -p <span class="m">8180</span>:8080 -d --name kie-server --link drools-workbench:kie_wb jboss/kie-server-showcase:7.15.0.Final</code></pre></td></tr></table>
 </div>
 </div>
-<p>2.已经可以访问了，<a href="http://localhost:8080/drools-wb">http://localhost:8080/drools-wb</a></p>
+<p>2.<a href="http://localhost:8080/drools-wb">点击访问</a>，账号密码：admin/admin</p>
 
-<h2 id="二-实践问题">二、实践问题</h2>
+<h2 id="二-问题">二、问题</h2>
 
 <h3 id="1-drools中文规则乱码问题">1.drools中文规则乱码问题</h3>
 
@@ -199,7 +205,7 @@
 
 <p>由于Docker默认设置，一旦移除了容器，该容器中的数据也将被删除,如果需要删除并创建新的工作台容器，则会出现问题。</p>
 
-<p>默认情况下，工作台容器的内部GIT根目录位于 <code>/opt/jboss/wildfly/bin/.niogit</code>，因此您可以通过使用docker 的 volumne 机制来使此目录在docker中保持不变：</p>
+<p>默认情况下，工作台容器的内部GIT根目录位于 <code>/opt/jboss/wildfly/bin/.niogit</code>，因此你可以通过使用docker 的 volumne 机制来使此目录在docker中保持不变：</p>
 
 <p>挂载目录，centos下创建<code>/home/myuser/web_git/mygit</code>，修改文件夹及其子文件夹文件权限，命令如下：</p>
 <div class="highlight"><div class="chroma">
@@ -207,7 +213,7 @@
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">chomd -R <span class="m">777</span> home/<span class="p">;</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">chmod -R <span class="m">777</span> home/<span class="p">;</span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -219,7 +225,24 @@
 docker run -p <span class="m">8080</span>:8080 -p <span class="m">8001</span>:8001 -v /home/myuser/wb_git:/opt/jboss/wildfly/bin/.niogit:Z -d --name drools-workbench jboss/drools-workbench-showcase:7.15.0.Final</code></pre></td></tr></table>
 </div>
 </div>
-<p>如上面的命令，现在你的workbench git存储库将在你的本地文件系统路径 <code>/home/myuser/wb_git</code> 中持久化。 因此，如果您删除此容器并使用相同的共享卷启动一个新容器，您也可以在新工作台的容器中找到所有数据。</p>
+<p>如上面的命令，现在你的workbench git存储库将在你的本地文件系统路径 <code>/home/myuser/wb_git</code> 中持久化。 因此，如果你删除此容器并使用相同的共享卷启动一个新容器，你也可以在新工作台的容器中找到所有数据。</p>
+
+<h3 id="4-drools规则源文件如何拿到">4.drools规则源文件如何拿到</h3>
+
+<p>比如我想下载 MySpace 空间中的 Mortgages 项目的源代码，使用ssh协议通过git下载即可，地址在 <code>MySpace-&gt; Mortgages -&gt; 设置  -&gt; General Settings</code>的URL参数中。</p>
+
+<p>如下图所示：</p>
+
+<p><img src="/img/drools-git-ssh.png" alt="drools-git-ssh" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">git clone ssh://admin@localhost:8001/MySpace/example-Mortgages</pre></td></tr></table>
+</div>
+</div>
+<p>用户名密码就是登陆workbench的用户名密码</p>
 
 <h2 id="三-完整部署流程">三、完整部署流程</h2>
 
@@ -250,18 +273,16 @@ docker run -p <span class="m">8080</span>:8080 -p <span class="m">8001</span>:80
 </span><span class="err"></span><span class="k">RUN</span> ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">&#39;Asia/Shanghai&#39;</span> &gt; /etc/timezone</code></pre></td></tr></table>
 </div>
 </div>
-<p>1.构建镜像，命令如下：</p>
+<h3 id="1-构建镜像-命令如下">1.构建镜像，命令如下：</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">##--rm :设置镜像成功后删除中间容器；</span>
-docker build -rm -t drools-workbench:MyTag .</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">docker build  -t drools-workbench:MyTag .</code></pre></td></tr></table>
 </div>
 </div>
-<p>2.启动镜像，命令如下：</p>
+<h3 id="2-启动镜像-命令如下">2.启动镜像，命令如下：</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
@@ -270,7 +291,7 @@ docker build -rm -t drools-workbench:MyTag .</code></pre></td></tr></table>
 <pre class="chroma"><code class="language-shell" data-lang="shell">docker run -p <span class="m">8080</span>:8080 -p <span class="m">8001</span>:8001 -v /home/myuser/wb_git:/opt/jboss/wildfly/bin/.niogit:Z -d --name drools-workbench drools-workbench:MyTag</code></pre></td></tr></table>
 </div>
 </div>
-<p>3.浏览器访问，<a href="http://localhost:8080/drools-wb">http://localhost:8080/drools-wb</a></p>
+<h3 id="3-浏览器访问-http-localhost-8080-drools-wb">3.浏览器访问，<a href="http://localhost:8080/drools-wb">http://localhost:8080/drools-wb</a></h3>
 
 <blockquote>
 <p>参考资料：</p>
@@ -292,7 +313,7 @@ docker build -rm -t drools-workbench:MyTag .</code></pre></td></tr></table>
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">2019-01-24</span>
+    <span class="item-content">2019-01-26</span>
   </p>
   
   

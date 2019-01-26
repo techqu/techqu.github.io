@@ -1,17 +1,17 @@
 基于 Drools 可以构建一个全面的业务自动化平台，用于业务规则管理，业务资源优化和复杂事件处理（CEP）。组织或企业可以将复杂的决策逻辑整合到业务线应用程序中，并在市场条件发生变化时快速更新基础业务规则，有效提高业务的能力
 <!--more-->
 
-## 一、docker尝鲜
+## 一、快速部署
 1.拉取基础镜像，命令如下：
 
   ```shell
   docker run -p 8080:8080 -p 8001:8001 -d --name drools-workbench jboss/drools-workbench-showcase:7.15.0.Final
   docker run -p 8180:8080 -d --name kie-server --link drools-workbench:kie_wb jboss/kie-server-showcase:7.15.0.Final
   ```
-2.已经可以访问了，http://localhost:8080/drools-wb
+2.[点击访问](http://localhost:8080/drools-wb)，账号密码：admin/admin
 
 
-## 二、实践问题
+## 二、问题
 
 ### 1.drools中文规则乱码问题
 
@@ -28,20 +28,34 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
 
 由于Docker默认设置，一旦移除了容器，该容器中的数据也将被删除,如果需要删除并创建新的工作台容器，则会出现问题。
 
-默认情况下，工作台容器的内部GIT根目录位于 `/opt/jboss/wildfly/bin/.niogit`，因此您可以通过使用docker 的 volumne 机制来使此目录在docker中保持不变：
+默认情况下，工作台容器的内部GIT根目录位于 `/opt/jboss/wildfly/bin/.niogit`，因此你可以通过使用docker 的 volumne 机制来使此目录在docker中保持不变：
 
 挂载目录，centos下创建`/home/myuser/web_git/mygit`，修改文件夹及其子文件夹文件权限，命令如下：
 
 ```shell
-chomd -R 777 home/;
+chmod -R 777 home/;
 ```
 ```shell
 # Use -v :
 docker run -p 8080:8080 -p 8001:8001 -v /home/myuser/wb_git:/opt/jboss/wildfly/bin/.niogit:Z -d --name drools-workbench jboss/drools-workbench-showcase:7.15.0.Final
 ```
 
-如上面的命令，现在你的workbench git存储库将在你的本地文件系统路径 `/home/myuser/wb_git` 中持久化。 因此，如果您删除此容器并使用相同的共享卷启动一个新容器，您也可以在新工作台的容器中找到所有数据。
+如上面的命令，现在你的workbench git存储库将在你的本地文件系统路径 `/home/myuser/wb_git` 中持久化。 因此，如果你删除此容器并使用相同的共享卷启动一个新容器，你也可以在新工作台的容器中找到所有数据。
 
+### 4.drools规则源文件如何拿到
+
+比如我想下载 MySpace 空间中的 Mortgages 项目的源代码，使用ssh协议通过git下载即可，地址在 `MySpace-> Mortgages -> 设置  -> General Settings `的URL参数中。
+
+
+如下图所示：
+
+![drools-git-ssh](/img/drools-git-ssh.png)
+
+```
+git clone ssh://admin@localhost:8001/MySpace/example-Mortgages
+```
+
+用户名密码就是登陆workbench的用户名密码
 
 ## 三、完整部署流程
 
@@ -61,16 +75,16 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
 
 ```
 
-1.构建镜像，命令如下：
+### 1.构建镜像，命令如下：
 ```shell
-##--rm :设置镜像成功后删除中间容器；
-docker build -rm -t drools-workbench:MyTag .
+
+docker build  -t drools-workbench:MyTag .
 ```
-2.启动镜像，命令如下：
+### 2.启动镜像，命令如下：
 ```shell
 docker run -p 8080:8080 -p 8001:8001 -v /home/myuser/wb_git:/opt/jboss/wildfly/bin/.niogit:Z -d --name drools-workbench drools-workbench:MyTag
 ```
-3.浏览器访问，http://localhost:8080/drools-wb
+### 3.浏览器访问，http://localhost:8080/drools-wb
 
 
 >参考资料：
