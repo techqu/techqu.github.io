@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="瞿广" /><meta name="description" content="基于 Drools 可以构建一个全面的业务自动化平台，用于业务规则管理，业务资源优化和复杂事件处理（CEP）。组织或企业可以将复杂的决策逻辑整合到业务线应用程序中，并在市场条件发生变化时快速更新基础业务规则，有效提高业务的能力
+<meta name="author" content="瞿广" /><meta name="description" content="关于drools的相关介绍就不再赘述了，关于drools网上的资料都很少，或者都有些老了，最近折腾了一下，记录下安装部署的过程，希望能节省下大家的时间。
 " /><meta name="keywords" content="Drools, docker, 容器" />
 
 
@@ -42,25 +42,25 @@
 
 
 <meta property="og:title" content="Drools 7.15.0 docker容器方式部署" />
-<meta property="og:description" content="基于 Drools 可以构建一个全面的业务自动化平台，用于业务规则管理，业务资源优化和复杂事件处理（CEP）。组织或企业可以将复杂的决策逻辑整合到业务线应用程序中，并在市场条件发生变化时快速更新基础业务规则，有效提高业务的能力" />
+<meta property="og:description" content="关于drools的相关介绍就不再赘述了，关于drools网上的资料都很少，或者都有些老了，最近折腾了一下，记录下安装部署的过程，希望能节省下大家的时间。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://techqu.github.io/post/drools-7.15.0.final-docker-deploy/" /><meta property="article:published_time" content="2019-01-24T14:56:49&#43;08:00"/>
 <meta property="article:modified_time" content="2019-01-26T14:56:49&#43;08:00"/>
 
 <meta itemprop="name" content="Drools 7.15.0 docker容器方式部署">
-<meta itemprop="description" content="基于 Drools 可以构建一个全面的业务自动化平台，用于业务规则管理，业务资源优化和复杂事件处理（CEP）。组织或企业可以将复杂的决策逻辑整合到业务线应用程序中，并在市场条件发生变化时快速更新基础业务规则，有效提高业务的能力">
+<meta itemprop="description" content="关于drools的相关介绍就不再赘述了，关于drools网上的资料都很少，或者都有些老了，最近折腾了一下，记录下安装部署的过程，希望能节省下大家的时间。">
 
 
 <meta itemprop="datePublished" content="2019-01-24T14:56:49&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-26T14:56:49&#43;08:00" />
-<meta itemprop="wordCount" content="1037">
+<meta itemprop="wordCount" content="1007">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Drools 7.15.0 docker容器方式部署"/>
-<meta name="twitter:description" content="基于 Drools 可以构建一个全面的业务自动化平台，用于业务规则管理，业务资源优化和复杂事件处理（CEP）。组织或企业可以将复杂的决策逻辑整合到业务线应用程序中，并在市场条件发生变化时快速更新基础业务规则，有效提高业务的能力"/>
+<meta name="twitter:description" content="关于drools的相关介绍就不再赘述了，关于drools网上的资料都很少，或者都有些老了，最近折腾了一下，记录下安装部署的过程，希望能节省下大家的时间。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -75,7 +75,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">学习、记录、分享</a>
+    <a href="/" class="logo">miao</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -88,7 +88,7 @@
     <a href="/">
         <li class="mobile-menu-item">主页</li>
       </a><a href="/post/">
-        <li class="mobile-menu-item">归档</li>
+        <li class="mobile-menu-item">全部文章</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
@@ -101,7 +101,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">学习、记录、分享</a>
+  <a href="/" class="logo">miao</a>
 </div>
 
 <nav class="site-navbar">
@@ -109,7 +109,7 @@
     <li class="menu-item">
         <a class="menu-item-link" href="/">主页</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">归档</a>
+        <a class="menu-item-link" href="/post/">全部文章</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
@@ -134,7 +134,7 @@
         <div class="post-category">
             <a href="/categories/drools/"> drools </a>
             </div>
-          <span class="more-meta"> 1037 words </span>
+          <span class="more-meta"> 1007 words </span>
           <span class="more-meta"> 3 mins read </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
@@ -167,7 +167,7 @@
   </div>
 </div>
     <div class="post-content">
-      <p>基于 Drools 可以构建一个全面的业务自动化平台，用于业务规则管理，业务资源优化和复杂事件处理（CEP）。组织或企业可以将复杂的决策逻辑整合到业务线应用程序中，并在市场条件发生变化时快速更新基础业务规则，有效提高业务的能力</p>
+      <p>关于drools的相关介绍就不再赘述了，关于drools网上的资料都很少，或者都有些老了，最近折腾了一下，记录下安装部署的过程，希望能节省下大家的时间。</p>
 
 <h2 id="一-快速部署">一、快速部署</h2>
 

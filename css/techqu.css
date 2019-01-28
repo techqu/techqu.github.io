@@ -7,3 +7,54 @@
 
 
 
+@media(min-width:1185px){
+
+.post{
+  padding: 3em 5em;
+  margin: 0 5em 3em 5em;
+  background-color: #fff;
+
+}
+#header{
+  margin: 0 8em;
+  padding: 1em 1em 0em;
+}
+#content{
+  margin:0 auto;
+  width:1080px;
+}
+
+#mobile-panel {
+  width: auto
+}
+.content-wrapper {
+  padding: 3em 0 1px;
+}
+.main {
+  background-color: #f2f2f5;
+} 
+
+ .post .post-header {
+  margin-bottom: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px LightGrey solid;
+}
+/* .archive {
+  margin: 0 20em;
+} */
+#post-toc {
+  margin-left: 50% !important;
+}
+  }
+
+@media(min-width:1300px) and (max-width:1600px){
+  #post-toc {
+    margin-left: 60% !important;
+  }
+}
+@media(min-width:1180px) and (max-width:1300px){
+  #post-toc {
+    margin-left: 65% !important;
+  }
+}
