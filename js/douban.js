@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('.douban_item').each(function () {
         var id = $(this).attr('date-dbid').toString();
+        var cacheUrl= "https://images.weserv.nl/?url="
         if (id.length < 9) {
             var url = "https://api.douban.com/v2/movie/subject/" + id + "?apikey=0dad551ec0f84ed02907ff5c42e8ec70";
             $.ajax({
@@ -25,7 +26,7 @@ $(document).ready(function () {
                         db_casts + " / 类型：" + db_genres + " / " + data.year +
                         "</time><section style='max-height:75px;overflow:hidden;' class='post-preview--excerpt'>" +
                         data.summary +
-                        "</section></div></div><div class='post-preview--image' style='background-image:url(" + data.images
+                        "</section></div></div><div class='post-preview--image' style='background-image:url(" + cacheUrl+data.images
                         .large + ");'></div>");
                 }
             });
@@ -47,7 +48,7 @@ $(document).ready(function () {
                         " / " + data.pubdate +
                         "</time><section style='max-height:75px;overflow:hidden;' class='post-preview--excerpt'>" +
                         data.summary +
-                        "</section></div></div><div class='post-preview--image' style='background-image:url(" + data.images
+                        "</section></div></div><div class='post-preview--image' style='background-image:url(" +cacheUrl+ data.images
                         .large + ");'></div>");
                 }
             });
