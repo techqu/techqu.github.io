@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    var meta="<meta name='referrer' content='no-referrer' />";
+    $("head").prepend(meta);
+    console.log(123)
     $('.douban_item').each(function () {
         var id = $(this).attr('date-dbid').toString();
         if (id.length < 9) {
