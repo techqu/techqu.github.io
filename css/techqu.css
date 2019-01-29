@@ -81,6 +81,12 @@
 #post-toc {
   margin-left: 50% !important;
 }
+
+.terms-tags {
+  font-size: larger;
+  font-weight: 700;
+}
+
   }
 
 @media(min-width:1300px) and (max-width:1600px){

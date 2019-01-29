@@ -47,6 +47,24 @@
     </item>
     
     <item>
+      <title>mongo</title>
+      <link>https://techqu.github.io/categories/mongo/</link>
+      <pubDate>Tue, 29 Jan 2019 15:01:21 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/categories/mongo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://techqu.github.io/categories/mysql/</link>
+      <pubDate>Tue, 29 Jan 2019 14:08:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>事务</title>
       <link>https://techqu.github.io/categories/%E4%BA%8B%E5%8A%A1/</link>
       <pubDate>Tue, 15 Jan 2019 10:53:02 +0800</pubDate>
@@ -97,6 +115,15 @@
       <pubDate>Thu, 17 Jan 2019 15:12:03 +0800</pubDate>
       
       <guid>https://techqu.github.io/categories/%E5%AE%B9%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>工具使用</title>
+      <link>https://techqu.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 29 Jan 2019 15:01:21 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</guid>
       <description></description>
     </item>
     

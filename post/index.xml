@@ -6,10 +6,29 @@
     <description>Recent content in Posts on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 24 Jan 2019 14:56:49 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 29 Jan 2019 15:01:21 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mongo Export Csv</title>
+      <link>https://techqu.github.io/post/mongo-export-csv/</link>
+      <pubDate>Tue, 29 Jan 2019 15:01:21 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mongo-export-csv/</guid>
+      <description>&lt;p&gt;mongo 上查询数据，导出excel，并解决Mac上的Excel在导入CSV文件不支持utf-8的问题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mysql 使用Navicat 导出数据库表结构</title>
+      <link>https://techqu.github.io/post/mysql-navicat-structure-doc/</link>
+      <pubDate>Tue, 29 Jan 2019 14:08:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-navicat-structure-doc/</guid>
+      <description>&lt;p&gt;我们在写数据库设计文档的时候，会需要对数据库表进行设计的编写，手动写的话会很费时间费精力，尤其是如果有大量的表需要写的时候，就更加浪费时间了。下面就让我给大家讲一个简单方法。
+我的是在Navicat中导出的数据库表。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Drools 7.15.0 docker容器方式部署</title>

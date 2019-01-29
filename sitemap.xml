@@ -3,6 +3,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://techqu.github.io/post/mongo-export-csv/</loc>
+    <lastmod>2019-01-29T15:01:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/mysql-navicat-structure-doc/</loc>
+    <lastmod>2019-01-29T14:08:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://techqu.github.io/post/drools-7.15.0.final-docker-deploy/</loc>
     <lastmod>2019-01-26T14:56:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -25,6 +39,13 @@
   
   <url>
     <loc>https://techqu.github.io/post/15-lock-in-java/</loc>
+    <lastmod>2019-01-19T07:56:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/about/</loc>
     <lastmod>2019-01-19T07:56:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -164,13 +185,6 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/about/</loc>
-    <lastmod>2019-01-10T20:25:33+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://techqu.github.io/post/booklist/</loc>
     <lastmod>2019-01-06T15:24:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -304,14 +318,14 @@
   
   <url>
     <loc>https://techqu.github.io/post/</loc>
-    <lastmod>2019-01-26T14:56:49+08:00</lastmod>
+    <lastmod>2019-01-29T15:01:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://techqu.github.io/</loc>
-    <lastmod>2019-01-26T14:56:49+08:00</lastmod>
+    <lastmod>2019-01-29T15:01:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -373,8 +387,22 @@
   </url>
   
   <url>
+    <loc>https://techqu.github.io/categories/mongo/</loc>
+    <lastmod>2019-01-29T15:01:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://techqu.github.io/tags/mysql/</loc>
     <lastmod>2018-12-19T17:32:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/categories/mysql/</loc>
+    <lastmod>2019-01-29T14:08:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -443,6 +471,13 @@
   </url>
   
   <url>
+    <loc>https://techqu.github.io/tags/%E5%AE%B9%E5%99%A8/</loc>
+    <lastmod>2019-01-18T15:12:03+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://techqu.github.io/categories/%E5%AE%B9%E5%99%A8/</loc>
     <lastmod>2019-01-18T15:12:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -450,8 +485,8 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/tags/%E5%AE%B9%E5%99%A8/</loc>
-    <lastmod>2019-01-18T15:12:03+08:00</lastmod>
+    <loc>https://techqu.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2019-01-29T15:01:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

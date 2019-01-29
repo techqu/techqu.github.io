@@ -6,10 +6,29 @@
     <description>Recent content on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 24 Jan 2019 14:56:49 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 29 Jan 2019 15:01:21 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mongo Export Csv</title>
+      <link>https://techqu.github.io/post/mongo-export-csv/</link>
+      <pubDate>Tue, 29 Jan 2019 15:01:21 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mongo-export-csv/</guid>
+      <description>&lt;p&gt;mongo 上查询数据，导出excel，并解决Mac上的Excel在导入CSV文件不支持utf-8的问题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mysql 使用Navicat 导出数据库表结构</title>
+      <link>https://techqu.github.io/post/mysql-navicat-structure-doc/</link>
+      <pubDate>Tue, 29 Jan 2019 14:08:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-navicat-structure-doc/</guid>
+      <description>&lt;p&gt;我们在写数据库设计文档的时候，会需要对数据库表进行设计的编写，手动写的话会很费时间费精力，尤其是如果有大量的表需要写的时候，就更加浪费时间了。下面就让我给大家讲一个简单方法。
+我的是在Navicat中导出的数据库表。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Drools 7.15.0 docker容器方式部署</title>
@@ -47,6 +66,15 @@
       
       <guid>https://techqu.github.io/post/15-lock-in-java/</guid>
       <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于</title>
+      <link>https://techqu.github.io/about/</link>
+      <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/about/</guid>
+      <description>从14年参加工作，到现在也有三四年了，业余时间也都有学习，可惜一直感觉工作中能用上的东西很少，学了angular、react、vue、ion</description>
     </item>
     
     <item>
@@ -267,15 +295,6 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
 &lt;li&gt;外网受限，英文受限，无法获得一手资料&lt;/li&gt;
 &lt;li&gt;急于求成，心态浮躁，不求甚解，没有自己的思考&lt;/li&gt;
 &lt;/ol&gt;</description>
-    </item>
-    
-    <item>
-      <title>关于</title>
-      <link>https://techqu.github.io/about/</link>
-      <pubDate>Thu, 10 Jan 2019 20:25:33 +0800</pubDate>
-      
-      <guid>https://techqu.github.io/about/</guid>
-      <description>从14年参加工作，到现在也有三四年了，业余时间也都有学习，可惜一直感觉工作中能用上的东西很少，学了angular、react、vue、ion</description>
     </item>
     
     <item>
