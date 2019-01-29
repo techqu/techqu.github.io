@@ -7,6 +7,10 @@
 
 
 
+.post .post-content .read-more {
+    text-align: right;
+}
+
 @media(min-width:1185px){
 
   .body{
