@@ -2,29 +2,58 @@
 
   .post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6 {
     color: #ba3925;
-    font-weight: 1200
+    font-weight: 600!important;
   }
 
+.post .post-content h1 {
+    border-bottom: 1px solid #ddd;
+    margin-top: 2em;
+    font-size: 2em;
+}
+
+.post .post-content h2 {
+  border-bottom: 1px solid #ddd;
+  margin-top: 1.5em;
+  font-size: 1.5em;
+}
+.post .post-content h3 {
+  margin-top: 1.5em;
+  font-size: 1.3em;
+}
+
+.post .post-content h4 {
+  margin-top: 1.3em;
+  font-size: 1.1em;
+}
 
 
 .post .post-content .read-more {
     text-align: right;
 }
 
+html{
+  font-size: 18px;
+}
+body{
+  line-height: 1.8;
+  border-top:unset;
+}
+
+.header .site-navbar .menu .menu-item+.menu-item {
+  margin-left: 18px;
+}
 @media(min-width:1185px){
 
-  .body{
-    line-height: 1.8;
-  }
+
 .post{
   padding: 3em 5em;
-  margin: 0 5em 3em 5em;
+  margin: 0 4em 3em ;
   background-color: #fff;
 
 }
 #header{
   margin: 0 8em;
-  padding: 1em 1em 0em;
+  padding: 0em 1em 0em;
 }
 #content{
   margin:0 auto;
@@ -84,7 +113,7 @@
 
 .terms-tags {
   font-size: larger;
-  font-weight: 700;
+  font-weight: 500;
 }
 
   }
