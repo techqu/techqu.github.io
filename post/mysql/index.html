@@ -142,69 +142,48 @@
 
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content always-active">
+  <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li>
 <ul>
 <li>
 <ul>
 <li><a href="#基础架构-一条sql查询语句是如何执行的">基础架构：一条SQL查询语句是如何执行的</a>
 <ul>
-<li>
-<ul>
 <li><a href="#mysql架构组成">mysql架构组成</a></li>
 </ul></li>
-</ul></li>
 <li><a href="#日志系统-一条sql更新语句是如何执行的">日志系统：一条SQL更新语句是如何执行的</a>
-<ul>
-<li>
 <ul>
 <li><a href="#innoddb-redo-log">InnodDB redo log</a></li>
 <li><a href="#mysql-binlog-归档日志">MYSQL binlog（归档日志）</a></li>
 <li><a href="#不同点">不同点</a></li>
 <li><a href="#redolog两阶段提交">redolog两阶段提交</a></li>
 </ul></li>
-</ul></li>
 <li><a href="#事务隔离-为什么你改了我还看不见">事务隔离：为什么你改了我还看不见</a>
-<ul>
-<li>
 <ul>
 <li><a href="#sql标准的事务隔离级别">SQL标准的事务隔离级别</a></li>
 <li><a href="#事务隔离的实现">事务隔离的实现</a></li>
 <li><a href="#事务的启动方式">事务的启动方式</a></li>
 </ul></li>
-</ul></li>
 <li><a href="#深入浅出索引-上">深入浅出索引(上)</a>
-<ul>
-<li>
 <ul>
 <li><a href="#索引的常见类型">索引的常见类型</a></li>
 <li><a href="#innodb的索引类型">InnoDB的索引类型</a></li>
 <li><a href="#索引维护">索引维护</a></li>
 </ul></li>
-</ul></li>
 <li><a href="#深入浅出索引-下">深入浅出索引(下)</a>
-<ul>
-<li>
 <ul>
 <li><a href="#覆盖索引">覆盖索引</a></li>
 <li><a href="#最左前缀原则">最左前缀原则</a></li>
 <li><a href="#索引下推">索引下推</a></li>
 </ul></li>
-</ul></li>
 <li><a href="#全局锁和表锁">全局锁和表锁</a>
-<ul>
-<li>
 <ul>
 <li><a href="#全局锁的典型使用场景是-做全库逻辑备份">全局锁的典型使用场景是，做全库逻辑备份</a></li>
 <li><a href="#表级锁">表级锁</a></li>
 </ul></li>
-</ul></li>
 <li><a href="#行锁">行锁</a></li>
 <li><a href="#事务到底是隔离的还是不隔离的">事务到底是隔离的还是不隔离的</a></li>
 <li><a href="#普通索引和唯一索引-应该如何选择">普通索引和唯一索引，应该如何选择</a></li>
-</ul></li>
 <li><a href="#in和or对比的结论">in和OR对比的结论：</a></li>
 </ul></li>
 </ul>
@@ -214,9 +193,9 @@
     <div class="post-content">
       <p>MYSQL实战45讲-极客时间笔记</p>
 
-<h3 id="基础架构-一条sql查询语句是如何执行的">基础架构：一条SQL查询语句是如何执行的</h3>
+<h2 id="基础架构-一条sql查询语句是如何执行的">基础架构：一条SQL查询语句是如何执行的</h2>
 
-<h5 id="mysql架构组成">mysql架构组成</h5>
+<h3 id="mysql架构组成">mysql架构组成</h3>
 
 <ul>
 <li>server端
@@ -227,115 +206,121 @@
 <li>优化器：执行计划生成、索引选择</li>
 <li>执行器：操作引擎、返回结果</li>
 </ul></li>
-
-<li><p>存储引擎：存储数据，提供读写接口</p>
-
-<h3 id="日志系统-一条sql更新语句是如何执行的">日志系统：一条SQL更新语句是如何执行的</h3>
-
-<h5 id="innoddb-redo-log">InnodDB redo log</h5></li>
-
-<li><p>WAL技术：Write-Ahead Logging，先写日志，再写磁盘</p></li>
-
-<li><p>当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到redo log里，并更新内存。其它合适时间再写入磁盘</p>
-
-<h5 id="mysql-binlog-归档日志">MYSQL binlog（归档日志）</h5></li>
+<li>存储引擎：存储数据，提供读写接口</li>
 </ul>
 
-<h5 id="不同点">不同点</h5>
+<h2 id="日志系统-一条sql更新语句是如何执行的">日志系统：一条SQL更新语句是如何执行的</h2>
+
+<h3 id="innoddb-redo-log">InnodDB redo log</h3>
+
+<ul>
+<li>WAL技术：Write-Ahead Logging，先写日志，再写磁盘</li>
+<li>当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到redo log里，并更新内存。其它合适时间再写入磁盘</li>
+</ul>
+
+<h3 id="mysql-binlog-归档日志">MYSQL binlog（归档日志）</h3>
+
+<h3 id="不同点">不同点</h3>
 
 <ul>
 <li>redo log是InnoDB引擎特有的，binlog是MYSQL的Server层实现的，所有引擎都能用</li>
 <li>redo log是物理日志，记录的是“在某个数据页上做了什么修改”；binlog是逻辑日志，记录的是这个语句的原始逻辑。</li>
-
-<li><p>redo log是循环写的，空间固定会用完；binlog是可以追加写入的，写到一定大小会切换到下一个文件，不会覆盖以前的日志。</p>
-
-<h5 id="redolog两阶段提交">redolog两阶段提交</h5></li>
-
-<li><p>简单说，redo log 和binlog都可以用于表示事务的提交状态，而两阶段提交就是让这两个状态保持逻辑上的一致。</p></li>
+<li>redo log是循环写的，空间固定会用完；binlog是可以追加写入的，写到一定大小会切换到下一个文件，不会覆盖以前的日志。</li>
 </ul>
 
-<h3 id="事务隔离-为什么你改了我还看不见">事务隔离：为什么你改了我还看不见</h3>
+<h3 id="redolog两阶段提交">redolog两阶段提交</h3>
+
+<ul>
+<li>简单说，redo log 和binlog都可以用于表示事务的提交状态，而两阶段提交就是让这两个状态保持逻辑上的一致。</li>
+</ul>
+
+<h2 id="事务隔离-为什么你改了我还看不见">事务隔离：为什么你改了我还看不见</h2>
 
 <ul>
 <li>ACID</li>
+<li>可能出现的问题：脏读、不可重复读、幻读</li>
+</ul>
 
-<li><p>可能出现的问题：脏读、不可重复读、幻读</p>
-
-<h5 id="sql标准的事务隔离级别">SQL标准的事务隔离级别</h5></li>
-
-<li><p>读未提交</p></li>
-
-<li><p>读已提交</p></li>
-
-<li><p>可重复读</p></li>
-
-<li><p>串行化</p>
-
-<h5 id="事务隔离的实现">事务隔离的实现</h5>
-
-<h5 id="事务的启动方式">事务的启动方式</h5>
-
-<h3 id="深入浅出索引-上">深入浅出索引(上)</h3>
-
-<h5 id="索引的常见类型">索引的常见类型</h5>
-
-<h5 id="innodb的索引类型">InnoDB的索引类型</h5>
-
-<h5 id="索引维护">索引维护</h5>
-
-<h3 id="深入浅出索引-下">深入浅出索引(下)</h3></li>
-
-<li><p>回到主键索引树搜索的过程，称为回表</p>
-
-<h5 id="覆盖索引">覆盖索引</h5></li>
-
-<li><p>由于覆盖索引可以减少书的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段</p>
-
-<h5 id="最左前缀原则">最左前缀原则</h5>
+<h3 id="sql标准的事务隔离级别">SQL标准的事务隔离级别</h3>
 
 <ul>
-<li><p>第一原则是，如果通过调整顺序，可以少维护一个索引，那么这个顺序往往需要优先考虑采用的。</p>
+<li>读未提交</li>
+<li>读已提交</li>
+<li>可重复读</li>
+<li>串行化</li>
+</ul>
 
-<h5 id="索引下推">索引下推</h5></li>
-</ul></li>
+<h3 id="事务隔离的实现">事务隔离的实现</h3>
 
-<li><p>mysql5.6之后引入索引下推优化（index condition pushdown），可以在索引遍历过程中，对索引中包含的字段先做判断，直接过滤调不满足条件的记录，减少回表次数</p>
+<h3 id="事务的启动方式">事务的启动方式</h3>
 
-<h3 id="全局锁和表锁">全局锁和表锁</h3>
+<h2 id="深入浅出索引-上">深入浅出索引(上)</h2>
 
-<h5 id="全局锁的典型使用场景是-做全库逻辑备份">全局锁的典型使用场景是，做全库逻辑备份</h5>
+<h3 id="索引的常见类型">索引的常见类型</h3>
 
-<h5 id="表级锁">表级锁</h5>
+<h3 id="innodb的索引类型">InnoDB的索引类型</h3>
+
+<h3 id="索引维护">索引维护</h3>
+
+<h2 id="深入浅出索引-下">深入浅出索引(下)</h2>
 
 <ul>
+<li>回到主键索引树搜索的过程，称为回表</li>
+</ul>
+
+<h3 id="覆盖索引">覆盖索引</h3>
+
+<ul>
+<li>由于覆盖索引可以减少书的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段</li>
+</ul>
+
+<h3 id="最左前缀原则">最左前缀原则</h3>
+
+<ul>
+<li>第一原则是，如果通过调整顺序，可以少维护一个索引，那么这个顺序往往需要优先考虑采用的。</li>
+</ul>
+
+<h3 id="索引下推">索引下推</h3>
+
+<ul>
+<li>mysql5.6之后引入索引下推优化（index condition pushdown），可以在索引遍历过程中，对索引中包含的字段先做判断，直接过滤调不满足条件的记录，减少回表次数</li>
+</ul>
+
+<h2 id="全局锁和表锁">全局锁和表锁</h2>
+
+<h3 id="全局锁的典型使用场景是-做全库逻辑备份">全局锁的典型使用场景是，做全库逻辑备份</h3>
+
+<h3 id="表级锁">表级锁</h3>
+
+<ol>
 <li>表锁 lock tables &hellip; read/write ,一般不使用</li>
-<li>元数据锁（meta data lock，MDL）MYSQL5.5引入MDL</li>
+<li>元数据锁（meta data lock，MDL）MYSQL5.5引入MDL
+
+<ul>
 <li>当对一个表做增删改查操作的时候，加MDL读锁；</li>
-
-<li><p>当要对表做结构变更操作的时候，加MDL写锁；</p>
-
-<h3 id="行锁">行锁</h3></li>
+<li>当要对表做结构变更操作的时候，加MDL写锁；</li>
 </ul></li>
+</ol>
 
-<li><p>两阶段锁协议</p></li>
+<h2 id="行锁">行锁</h2>
 
-<li><p>死锁和死锁检测</p>
+<ul>
+<li>两阶段锁协议</li>
+<li>死锁和死锁检测</li>
+</ul>
 
-<h3 id="事务到底是隔离的还是不隔离的">事务到底是隔离的还是不隔离的</h3>
+<h2 id="事务到底是隔离的还是不隔离的">事务到底是隔离的还是不隔离的</h2>
 
 <ul>
 <li>“快照”在MVCC里是怎么工作的</li>
+<li>InnoDB利用了“所有数据都有多个版本”的这个特性，实现了“秒级创建快照”的能力</li>
+</ul>
 
-<li><p>InnoDB利用了“所有数据都有多个版本”的这个特性，实现了“秒级创建快照”的能力</p>
+<h2 id="普通索引和唯一索引-应该如何选择">普通索引和唯一索引，应该如何选择</h2>
 
-<h3 id="普通索引和唯一索引-应该如何选择">普通索引和唯一索引，应该如何选择</h3></li>
-</ul></li>
-
-<li><p>从普通索引和唯一索引的选择开始，分享了数据的查询和更新过程，然后说明了change buffer的机制以及应用场景，最后讲到了索引选择的实践。</p></li>
-
-<li><p>由于唯一索引用不上change buffer的优化机制，因此如果业务可以接受，从性能角度出发，建议优先考虑非唯一索引。</p></li>
-
-<li></li>
+<ul>
+<li>从普通索引和唯一索引的选择开始，分享了数据的查询和更新过程，然后说明了change buffer的机制以及应用场景，最后讲到了索引选择的实践。</li>
+<li>由于唯一索引用不上change buffer的优化机制，因此如果业务可以接受，从性能角度出发，建议优先考虑非唯一索引。</li>
 </ul>
 
 <h2 id="in和or对比的结论">in和OR对比的结论：</h2>
@@ -421,8 +406,7 @@
   
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 

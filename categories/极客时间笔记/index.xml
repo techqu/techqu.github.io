@@ -6,10 +6,19 @@
     <description>Recent content in 极客时间笔记 on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 17 Jan 2019 15:12:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 31 Jan 2019 13:39:29 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>谈谈测试</title>
+      <link>https://techqu.github.io/post/test-about/</link>
+      <pubDate>Thu, 31 Jan 2019 13:39:29 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/test-about/</guid>
+      <description>&lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Docker的实现原理</title>
