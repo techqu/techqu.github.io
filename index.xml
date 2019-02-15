@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>Java Interview Resource List</title>
+      <link>https://techqu.github.io/post/java-interview-resource-list/</link>
+      <pubDate>Fri, 15 Feb 2019 17:40:34 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-resource-list/</guid>
+      <description>&lt;p&gt;总结了一些面试资源清单&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Dubbo解析及原理浅析</title>
+      <link>https://techqu.github.io/post/java-dubbo-principle/</link>
+      <pubDate>Fri, 15 Feb 2019 15:41:23 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-dubbo-principle/</guid>
+      <description>一、Duboo基本概念解释 Dubbo (incubating) |ˈdʌbəʊ| 是一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智</description>
+    </item>
+    
+    <item>
       <title>你应该知道的 RPC 原理</title>
       <link>https://techqu.github.io/post/java-rpc/</link>
       <pubDate>Fri, 15 Feb 2019 11:10:56 +0800</pubDate>

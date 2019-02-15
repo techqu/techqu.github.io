@@ -10,6 +10,20 @@
   </url>
   
   <url>
+    <loc>https://techqu.github.io/post/java-interview-resource-list/</loc>
+    <lastmod>2019-02-15T17:40:34+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/java-dubbo-principle/</loc>
+    <lastmod>2019-02-15T15:41:23+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://techqu.github.io/post/java-rpc/</loc>
     <lastmod>2019-02-15T11:10:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -366,15 +380,15 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/categories/jvm/</loc>
-    <lastmod>2018-12-24T18:48:04+08:00</lastmod>
+    <loc>https://techqu.github.io/tags/jvm/</loc>
+    <lastmod>2018-12-24T19:03:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://techqu.github.io/tags/jvm/</loc>
-    <lastmod>2018-12-24T19:03:40+08:00</lastmod>
+    <loc>https://techqu.github.io/categories/jvm/</loc>
+    <lastmod>2018-12-24T18:48:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -422,15 +436,15 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/categories/java/</loc>
-    <lastmod>2019-02-12T15:12:30+08:00</lastmod>
+    <loc>https://techqu.github.io/tags/java/</loc>
+    <lastmod>2019-01-19T07:56:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://techqu.github.io/tags/java/</loc>
-    <lastmod>2019-01-19T07:56:14+08:00</lastmod>
+    <loc>https://techqu.github.io/categories/java/</loc>
+    <lastmod>2019-02-12T15:12:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -457,15 +471,15 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/categories/mysql/</loc>
-    <lastmod>2019-01-29T14:08:24+08:00</lastmod>
+    <loc>https://techqu.github.io/tags/mysql/</loc>
+    <lastmod>2018-12-19T17:32:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://techqu.github.io/tags/mysql/</loc>
-    <lastmod>2018-12-19T17:32:22+08:00</lastmod>
+    <loc>https://techqu.github.io/categories/mysql/</loc>
+    <lastmod>2019-01-29T14:08:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -555,14 +569,14 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/categories/%E5%AE%B9%E5%99%A8/</loc>
+    <loc>https://techqu.github.io/tags/%E5%AE%B9%E5%99%A8/</loc>
     <lastmod>2019-01-18T15:12:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://techqu.github.io/tags/%E5%AE%B9%E5%99%A8/</loc>
+    <loc>https://techqu.github.io/categories/%E5%AE%B9%E5%99%A8/</loc>
     <lastmod>2019-01-18T15:12:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -674,7 +688,7 @@
   
   <url>
     <loc>https://techqu.github.io/categories/%E9%9D%A2%E8%AF%95/</loc>
-    <lastmod>2019-02-15T11:10:56+08:00</lastmod>
+    <lastmod>2019-02-15T17:40:34+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
