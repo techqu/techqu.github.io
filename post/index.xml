@@ -6,10 +6,86 @@
     <description>Recent content in Posts on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 12 Feb 2019 15:12:30 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 16 Jan 2019 10:42:50 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2018总结-2019展望</title>
+      <link>https://techqu.github.io/post/2018-2019/</link>
+      <pubDate>Wed, 16 Jan 2019 10:42:50 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/2018-2019/</guid>
+      <description>2018总结 一、个人 结婚 体重暴涨 工作能力进步 了解了面试准备的重要性 二、了解和学习 领域驱动设计 devops spring security ldap service mesh mysql 网络协议 kubernetes jvm etl kylin 数据结构与算法 并发</description>
+    </item>
+    
+    <item>
+      <title>你应该知道的 RPC 原理</title>
+      <link>https://techqu.github.io/post/java-rpc/</link>
+      <pubDate>Fri, 15 Feb 2019 11:10:56 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-rpc/</guid>
+      <description>&lt;p&gt;在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。&lt;/p&gt;
+
+&lt;p&gt;而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;其它团队要使用我们的服务，我们的服务该怎么发布以便他人调用？&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;下文我们将对这两个问题展开探讨。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java并发编程：线程池的使用</title>
+      <link>https://techqu.github.io/post/java-thread-pool/</link>
+      <pubDate>Thu, 14 Feb 2019 15:04:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-thread-pool/</guid>
+      <description>&lt;p&gt;在前面的文章中，我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：&lt;/p&gt;
+
+&lt;p&gt;　　如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。&lt;/p&gt;
+
+&lt;p&gt;　　那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？&lt;/p&gt;
+
+&lt;p&gt;　　在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池，首先我们从最核心的ThreadPoolExecutor类中的方法讲起，然后再讲述它的实现原理，接着给出了它的使用示例，最后讨论了一下如何合理配置线程池的大小。&lt;/p&gt;
+
+&lt;p&gt;　　若有不正之处请多多谅解，并欢迎批评指正。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>全面理解Java内存模型</title>
+      <link>https://techqu.github.io/post/jmm-java/</link>
+      <pubDate>Thu, 14 Feb 2019 11:26:21 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/jmm-java/</guid>
+      <description>Java内存模型即Java Memory Model，简称JMM。 JMM定义了Java 虚拟机(JVM)在计算机内存(RAM)中的工作方式。JVM是整个计算</description>
+    </item>
+    
+    <item>
+      <title>最新拼多多技术部面试题：幻读&#43;分段锁&#43;死锁&#43;Spring Cloud&#43;秒杀</title>
+      <link>https://techqu.github.io/post/interview-exp-pdd/</link>
+      <pubDate>Wed, 13 Feb 2019 08:30:08 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/interview-exp-pdd/</guid>
+      <description>一面 简短自我介绍 事务的ACID，其中把事务的隔离性详细解释一遍 脏读、幻影读、不可重复读 红黑树、二叉树的算法 平常用到哪些集合类？ArrayLi</description>
+    </item>
+    
+    <item>
+      <title>5年经验Java程序员帝都面试20天，拿下数个offer，最终选择了百度</title>
+      <link>https://techqu.github.io/post/interview-exp-baidu/</link>
+      <pubDate>Wed, 13 Feb 2019 07:56:41 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/interview-exp-baidu/</guid>
+      <description>&lt;p&gt;从事Java开发也有5年经验了，7月初来到帝都，开启面试经历，前后20天左右，主面互联网公司，一二线大公司或者是融资中的创业公司都面试过，拿了一些offer，其中包括奇虎360，最后综合决定还是去百度了。&lt;/p&gt;
+
+&lt;p&gt;首先不同面试官面试风格一定不同，我这里就是总结这些天面试Java开发过程中的大多数问题，综合分类有Java基础，框架，多线程，网络通信，数据库以及设计模式，算法等几个模块。&lt;/p&gt;
+
+&lt;p&gt;一名3年工作经验的Java程序员应该具备的技能，这可能是Java程序员们比较关心的内容。我这里要说明一下，以下列举的内容不是都要会的东西&amp;mdash;-但是如果你掌握得越多，最终能得到的评价、拿到的薪水势必也越高。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Tomcat Overview</title>
@@ -45,7 +121,9 @@
       <pubDate>Thu, 31 Jan 2019 13:39:29 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/test-about/</guid>
-      <description>&lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://techqu.github.io/img/undraw/undraw_mobile_testing_reah.png&#34; alt=&#34;mobile_testing&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -82,7 +160,7 @@
       <pubDate>Mon, 21 Jan 2019 16:34:26 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/booklist-zhengshitang-2018/</guid>
-      <description>-- 政事堂按： 关于《朱镕基讲话实录》(丛书)，记得当年从新华书店买书的时候，多半只是为了给自己书架填充的更好看，可是随着近几年改革的推进，越来</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://techqu.github.io/img/undraw/undraw_reading_list_4boi.png&#34; alt=&#34;reading_list&#34; /&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -154,15 +232,6 @@
       <guid>https://techqu.github.io/post/ipconfig/</guid>
       <description>&lt;p&gt;从一行查看IP地址的命令开始讲解，
 Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>2018总结-2019展望</title>
-      <link>https://techqu.github.io/post/2018-2019/</link>
-      <pubDate>Wed, 16 Jan 2019 10:42:50 +0800</pubDate>
-      
-      <guid>https://techqu.github.io/post/2018-2019/</guid>
-      <description>2018总结 一、个人 结婚 体重暴涨 工作能力进步 了解了面试准备的重要性 二、了解和学习 领域驱动设计 devops spring security ldap service mesh mysql 网络协议 kubernetes jvm etl kylin 数据结构与算法 并发</description>
     </item>
     
     <item>
@@ -381,7 +450,7 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
       <pubDate>Mon, 24 Dec 2018 18:48:04 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/jvm-performance-optimization/</guid>
-      <description>&lt;p&gt;包含年轻代大小选择和年老代大小的选择&lt;/p&gt;</description>
+      <description>&lt;p&gt;linux性能调优和年轻代大小选择和年老代大小的选择&lt;/p&gt;</description>
     </item>
     
     <item>

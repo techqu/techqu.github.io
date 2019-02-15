@@ -1,4 +1,6 @@
 
+![mobile_testing](/img/undraw/undraw_mobile_testing_reah.png)
+
 简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划
 
 

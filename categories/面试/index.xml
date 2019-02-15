@@ -6,10 +6,77 @@
     <description>Recent content in 面试 on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Dec 2018 21:45:56 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 15 Feb 2019 11:10:56 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/categories/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>你应该知道的 RPC 原理</title>
+      <link>https://techqu.github.io/post/java-rpc/</link>
+      <pubDate>Fri, 15 Feb 2019 11:10:56 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-rpc/</guid>
+      <description>&lt;p&gt;在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。&lt;/p&gt;
+
+&lt;p&gt;而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;其它团队要使用我们的服务，我们的服务该怎么发布以便他人调用？&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;下文我们将对这两个问题展开探讨。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java并发编程：线程池的使用</title>
+      <link>https://techqu.github.io/post/java-thread-pool/</link>
+      <pubDate>Thu, 14 Feb 2019 15:04:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-thread-pool/</guid>
+      <description>&lt;p&gt;在前面的文章中，我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：&lt;/p&gt;
+
+&lt;p&gt;　　如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。&lt;/p&gt;
+
+&lt;p&gt;　　那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？&lt;/p&gt;
+
+&lt;p&gt;　　在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池，首先我们从最核心的ThreadPoolExecutor类中的方法讲起，然后再讲述它的实现原理，接着给出了它的使用示例，最后讨论了一下如何合理配置线程池的大小。&lt;/p&gt;
+
+&lt;p&gt;　　若有不正之处请多多谅解，并欢迎批评指正。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>最新拼多多技术部面试题：幻读&#43;分段锁&#43;死锁&#43;Spring Cloud&#43;秒杀</title>
+      <link>https://techqu.github.io/post/interview-exp-pdd/</link>
+      <pubDate>Wed, 13 Feb 2019 08:30:08 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/interview-exp-pdd/</guid>
+      <description>一面 简短自我介绍 事务的ACID，其中把事务的隔离性详细解释一遍 脏读、幻影读、不可重复读 红黑树、二叉树的算法 平常用到哪些集合类？ArrayLi</description>
+    </item>
+    
+    <item>
+      <title>5年经验Java程序员帝都面试20天，拿下数个offer，最终选择了百度</title>
+      <link>https://techqu.github.io/post/interview-exp-baidu/</link>
+      <pubDate>Wed, 13 Feb 2019 07:56:41 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/interview-exp-baidu/</guid>
+      <description>&lt;p&gt;从事Java开发也有5年经验了，7月初来到帝都，开启面试经历，前后20天左右，主面互联网公司，一二线大公司或者是融资中的创业公司都面试过，拿了一些offer，其中包括奇虎360，最后综合决定还是去百度了。&lt;/p&gt;
+
+&lt;p&gt;首先不同面试官面试风格一定不同，我这里就是总结这些天面试Java开发过程中的大多数问题，综合分类有Java基础，框架，多线程，网络通信，数据库以及设计模式，算法等几个模块。&lt;/p&gt;
+
+&lt;p&gt;一名3年工作经验的Java程序员应该具备的技能，这可能是Java程序员们比较关心的内容。我这里要说明一下，以下列举的内容不是都要会的东西&amp;mdash;-但是如果你掌握得越多，最终能得到的评价、拿到的薪水势必也越高。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
+      <link>https://techqu.github.io/post/15-lock-in-java/</link>
+      <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/15-lock-in-java/</guid>
+      <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>简历模版</title>

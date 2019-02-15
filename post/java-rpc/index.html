@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>你应该知道的 RPC 原理 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="伯乐在线 - 占利军" /><meta name="description" content="在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。
+而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：
+ 要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？
+ 其它团队要使用我们的服务，我们的服务该怎么发布以便他人调用？
+  下文我们将对这两个问题展开探讨。
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/java-rpc/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="你应该知道的 RPC 原理" />
+<meta property="og:description" content="在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。
+
+而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：
+
+
+要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？
+
+其它团队要使用我们的服务，我们的服务该怎么发布以便他人调用？
+
+
+下文我们将对这两个问题展开探讨。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/java-rpc/" /><meta property="article:published_time" content="2019-02-15T11:10:56&#43;08:00"/>
+<meta property="article:modified_time" content="2019-02-15T11:10:56&#43;08:00"/>
+
+<meta itemprop="name" content="你应该知道的 RPC 原理">
+<meta itemprop="description" content="在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。
+
+而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：
+
+
+要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？
+
+其它团队要使用我们的服务，我们的服务该怎么发布以便他人调用？
+
+
+下文我们将对这两个问题展开探讨。">
+
+
+<meta itemprop="datePublished" content="2019-02-15T11:10:56&#43;08:00" />
+<meta itemprop="dateModified" content="2019-02-15T11:10:56&#43;08:00" />
+<meta itemprop="wordCount" content="4919">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="你应该知道的 RPC 原理"/>
+<meta name="twitter:description" content="在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。
+
+而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：
+
+
+要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？
+
+其它团队要使用我们的服务，我们的服务该怎么发布以便他人调用？
+
+
+下文我们将对这两个问题展开探讨。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">miao</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">miao</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">你应该知道的 RPC 原理</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-02-15 </span>
+        <div class="post-category">
+            <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+            </div>
+          <span class="more-meta"> 约 4919 字 </span>
+          <span class="more-meta"> 预计阅读 10 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-如何调用他人的远程服务">1 如何调用他人的远程服务？</a>
+<ul>
+<li><a href="#1-1-怎么做到透明化远程服务调用">1.1 怎么做到透明化远程服务调用？</a></li>
+<li><a href="#1-2-怎么对消息进行编码和解码">1.2  怎么对消息进行编码和解码？</a>
+<ul>
+<li><a href="#1-2-1-确定消息数据结构">1.2.1 确定消息数据结构</a></li>
+<li><a href="#1-2-2-序列化">1.2.2 序列化</a></li>
+</ul></li>
+<li><a href="#1-3-通信">1.3  通信</a></li>
+<li><a href="#1-4-消息里为什么要带有requestid">1.4  消息里为什么要带有requestID？</a>
+<ul>
+<li><a href="#于是这里出现以下两个问题">于是这里出现以下两个问题：</a></li>
+<li><a href="#怎么解决呢">怎么解决呢？</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#2-如何发布自己的服务">2 如何发布自己的服务？</a></li>
+<li><a href="#3-小结">3 小结</a></li>
+<li><a href="#4-一些开源的rpc框架">4 一些开源的RPC框架</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。</p>
+
+<p>而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：</p>
+
+<ol>
+<li><p>要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？</p></li>
+
+<li><p>其它团队要使用我们的服务，我们的服务该怎么发布以便他人调用？</p></li>
+</ol>
+
+<p>下文我们将对这两个问题展开探讨。</p>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">HelloWorldService</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="nf">sayHello</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">);</span>
+<span class="o">}</span>
+
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorldServiceImpl</span> <span class="kd">implements</span> <span class="n">HelloWorldService</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">sayHello</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">&#34;hello world &#34;</span> <span class="o">+</span> <span class="n">msg</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"> <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">HelloWorldService</span> <span class="n">helloWorldService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloWorldServiceImpl</span><span class="o">();</span>
+         <span class="n">helloWorldService</span><span class="o">.</span><span class="na">sayHello</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">);</span>
+     <span class="o">}</span>
+ <span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="1-如何调用他人的远程服务">1 如何调用他人的远程服务？</h2>
+
+<p>由于各服务部署在不同机器，服务间的调用免不了网络通信过程，服务消费方每调用一个服务都要写一坨网络通信相关的代码，不仅复杂而且极易出错。</p>
+
+<p>如果有一种方式能让我们像调用本地服务一样调用远程服务，而让调用者对网络通信这些细节透明，那么将大大提高生产力，比如服务消费方在执行<code>helloWorldService.sayHello(“test”)</code>时，实质上调用的是远端的服务。</p>
+
+<p>这种方式其实就是<strong>RPC（Remote Procedure Call Protocol）</strong>，在各大互联网公司中被广泛使用，如阿里巴巴的<strong>hsf、dubbo（开源）、Facebook的thrift（开源）、Google grpc（开源）、Twitter的finagle</strong>等。</p>
+
+<p>要让网络通信细节对使用者透明，我们自然需要对通信细节进行封装，我们先看下一个RPC调用的流程：</p>
+
+<p>1）服务消费方（client）调用以本地调用方式调用服务；</p>
+
+<p>2）client stub接收到调用后负责将方法、参数等组装成能够进行网络传输的消息体；</p>
+
+<p>3）client stub找到服务地址，并将消息发送到服务端；</p>
+
+<p>4）server stub收到消息后进行解码；</p>
+
+<p>5）server stub根据解码结果调用本地的服务；</p>
+
+<p>6）本地服务执行并将结果返回给server stub；</p>
+
+<p>7）server stub将返回结果打包成消息并发送至消费方；</p>
+
+<p>8）client stub接收到消息，并进行解码；</p>
+
+<p>9）服务消费方得到最终结果。</p>
+
+<p>RPC的目标就是要2~8这些步骤都封装起来，让用户对这些细节透明。</p>
+
+<h3 id="1-1-怎么做到透明化远程服务调用">1.1 怎么做到透明化远程服务调用？</h3>
+
+<p>怎么封装通信细节才能让用户像以本地调用方式调用远程服务呢？对java来说就是使用代理！java代理有两种方式：</p>
+
+<p>1） jdk 动态代理；</p>
+
+<p>2）字节码生成。尽管字节码生成方式实现的代理更为强大和高效，但代码不易维护，大部分公司实现RPC框架时还是选择动态代理方式。</p>
+
+<p>下面简单介绍下动态代理怎么实现我们的需求。我们需要实现RPCProxyClient代理类，代理类的invoke方法中封装了与远端服务通信的细节，消费方首先从RPCProxyClient获得服务提供方的接口，当执行<code>helloWorldService.sayHello(“test”)</code>方法时就会调用invoke方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RPCProxyClient</span> <span class="kd">implements</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">InvocationHandler</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Object</span> <span class="n">obj</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">RPCProxyClient</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">obj</span><span class="o">=</span><span class="n">obj</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="cm">/**
+</span><span class="cm">     * 得到被代理对象;
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span> <span class="nf">getProxy</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">Proxy</span><span class="o">.</span><span class="na">newProxyInstance</span><span class="o">(</span><span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getClassLoader</span><span class="o">(),</span>
+                <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getInterfaces</span><span class="o">(),</span> <span class="k">new</span> <span class="n">RPCProxyClient</span><span class="o">(</span><span class="n">obj</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 调用此方法执行
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">Object</span> <span class="n">proxy</span><span class="o">,</span> <span class="n">Method</span> <span class="n">method</span><span class="o">,</span> <span class="n">Object</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+        <span class="c1">//结果参数;
+</span><span class="c1"></span>        <span class="n">Object</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>
+        <span class="c1">// ...执行通信相关逻辑
+</span><span class="c1"></span>        <span class="c1">// ...
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HelloWorldService</span> <span class="n">helloWorldService</span> <span class="o">=</span> <span class="o">(</span><span class="n">HelloWorldService</span><span class="o">)</span><span class="n">RPCProxyClient</span><span class="o">.</span><span class="na">getProxy</span><span class="o">(</span><span class="n">HelloWorldService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">helloWorldService</span><span class="o">.</span><span class="na">sayHello</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="1-2-怎么对消息进行编码和解码">1.2  怎么对消息进行编码和解码？</h3>
+
+<h4 id="1-2-1-确定消息数据结构">1.2.1 确定消息数据结构</h4>
+
+<p>上节讲了invoke里需要封装通信细节，而通信的第一步就是要确定客户端和服务端相互通信的消息结构。客户端的请求消息结构一般需要包括以下内容：</p>
+
+<p>1）接口名称</p>
+
+<p>在我们的例子里接口名是“HelloWorldService”，如果不传，服务端就不知道调用哪个接口了；</p>
+
+<p>2）方法名</p>
+
+<p>一个接口内可能有很多方法，如果不传方法名服务端也就不知道调用哪个方法；</p>
+
+<p>3）参数类型&amp;参数值</p>
+
+<p>参数类型有很多，比如有bool、int、long、double、string、map、list，甚至如struct（class）；</p>
+
+<p>以及相应的参数值；</p>
+
+<p>4）超时时间</p>
+
+<p>5）requestID，标识唯一请求id，在下面一节会详细描述requestID的用处。</p>
+
+<p>同理服务端返回的消息结构一般包括以下内容。</p>
+
+<p>1）返回值</p>
+
+<p>2）状态code</p>
+
+<p>3）requestID</p>
+
+<h4 id="1-2-2-序列化">1.2.2 序列化</h4>
+
+<p>一旦确定了消息的数据结构后，下一步就是要考虑序列化与反序列化了。</p>
+
+<p>什么是序列化？序列化就是将数据结构或对象转换成二进制串的过程，也就是编码的过程。</p>
+
+<p>什么是反序列化？将在序列化过程中所生成的二进制串转换成数据结构或者对象的过程。</p>
+
+<p>为什么需要序列化？转换为二进制串后才好进行网络传输嘛！为什么需要反序列化？将二进制转换为对象才好进行后续处理！</p>
+
+<p>现如今序列化的方案越来越多，每种序列化方案都有优点和缺点，它们在设计之初有自己独特的应用场景，那到底选择哪种呢？从RPC的角度上看，主要看三点：</p>
+
+<p>1）<strong>通用性</strong>，比如是否能支持Map等复杂的数据结构；</p>
+
+<p>2）<strong>性能</strong>，包括时间复杂度和空间复杂度，由于RPC框架将会被公司几乎所有服务使用，如果序列化上能节约一点时间，对整个公司的收益都将非常可观，同理如果序列化上能节约一点内存，网络带宽也能省下不少；</p>
+
+<p>3）<strong>可扩展性</strong>，对互联网公司而言，业务变化快，如果序列化协议具有良好的可扩展性，支持自动增加新的业务字段，删除老的字段，而不影响老的服务，这将大大提供系统的健壮性。</p>
+
+<p>目前国内各大互联网公司广泛使用<strong>hessian、protobuf、thrift、avro</strong>等成熟的序列化解决方案来搭建RPC框架，这些都是久经考验的解决方案。</p>
+
+<h3 id="1-3-通信">1.3  通信</h3>
+
+<p>消息数据结构被序列化为二进制串后，下一步就要进行网络通信了。目前有两种IO通信模型：</p>
+
+<p>1）BIO；</p>
+
+<p>2）NIO。</p>
+
+<p>一般RPC框架需要支持这两种IO模型，原理可参考：<a href="http://blog.jobbole.com/88984/">《一个故事讲清楚 NIO》</a>。</p>
+
+<p>如何实现RPC的IO通信框架？</p>
+
+<p>1）使用java nio方式自研，这种方式较为复杂，而且很有可能出现隐藏bug，见过一些互联网公司使用这种方式；</p>
+
+<p>2）基于mina，mina在早几年比较火热，不过这些年版本更新缓慢；</p>
+
+<p>3）基于netty，现在很多RPC框架都直接基于netty这一IO通信框架，比如阿里巴巴的HSF、dubbo，Twitter的finagle等。</p>
+
+<h3 id="1-4-消息里为什么要带有requestid">1.4  消息里为什么要带有requestID？</h3>
+
+<p>如果使用netty的话，一般会用<code>channel.writeAndFlush()</code>方法来发送消息二进制串，这个方法调用后对于整个远程调用(从发出请求到接收到结果)来说是一个异步的，即对于当前线程来说，将请求发送出来后，线程就可以往后执行了，至于服务端的结果，是服务端处理完成后，再以消息的形式发送给客户端的。</p>
+
+<h4 id="于是这里出现以下两个问题">于是这里出现以下两个问题：</h4>
+
+<ol>
+<li><p>怎么让当前线程“暂停”，等结果回来后，再向后执行？</p></li>
+
+<li><p>如果有多个线程同时进行远程方法调用，这时建立在client server之间的socket连接上会有很多双方发送的消息传递，前后顺序也可能是随机的，server处理完结果后，将结果消息发送给client，client收到很多消息，怎么知道哪个消息结果是原先哪个线程调用的？</p></li>
+</ol>
+
+<p>如下图所示，线程A和线程B同时向client socket发送请求requestA和requestB，socket先后将requestB和requestA发送至server，而server可能将responseA先返回，尽管requestA请求到达时间更晚。我们需要一种机制保证responseA丢给ThreadA，responseB丢给ThreadB。</p>
+
+<h4 id="怎么解决呢">怎么解决呢？</h4>
+
+<ol>
+<li><p><code>client</code>线程每次通过<code>socket</code>调用一次远程接口前，生成一个唯一的ID，即<code>requestID</code>（<code>requestID</code>必需保证在一个Socket连接里面是唯一的），一般常常使用<code>AtomicLong</code>从0开始累计数字生成唯一ID；</p></li>
+
+<li><p>将处理结果的回调对象<code>callback</code>，存放到全局<code>ConcurrentHashMap</code>里面<code>put(requestID, callback)</code>；</p></li>
+
+<li><p>当线程调用<code>channel.writeAndFlush()</code>发送消息后，紧接着执行<code>callback</code>的<code>get()</code>方法试图获取远程返回的结果。在<code>get()</code>内部，则使用<code>synchronized</code>获取回调对象<code>callback</code>的锁，再先检测是否已经获取到结果，如果没有，然后调用<code>callback</code>的<code>wait()</code>方法，释放<code>callback</code>上的锁，让当前线程处于等待状态。</p></li>
+
+<li><p>服务端接收到请求并处理后，将<code>response</code>结果（此结果中包含了前面的<code>requestID</code>）发送给客户端，客户端<code>socket</code>连接上专门监听消息的线程收到消息，分析结果，取到<code>requestID</code>，再从前面的<code>ConcurrentHashMap</code>里面<code>get(requestID)</code>，从而找到<code>callback</code>对象，再用<code>synchronized</code>获取<code>callback</code>上的锁，将方法调用结果设置到<code>callback</code>对象里，再调用<code>callback.notifyAll()</code>唤醒前面处于等待状态的线程。</p></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="n">Object</span> <span class="nf">get</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// 旋锁
+</span><span class="c1"></span>            <span class="k">while</span> <span class="o">(!</span><span class="n">isDone</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// 是否有结果了
+</span><span class="c1"></span>                <span class="n">wait</span><span class="o">();</span> <span class="c1">//没结果是释放锁，让当前线程处于等待状态
+</span><span class="c1"></span>            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">setDone</span><span class="o">(</span><span class="n">Response</span> <span class="n">res</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">;</span>
+        <span class="n">isDone</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//获取锁，因为前面wait()已经释放了callback的锁了
+</span><span class="c1"></span>            <span class="n">notifyAll</span><span class="o">();</span> <span class="c1">// 唤醒处于等待的线程
+</span><span class="c1"></span>        <span class="o">}</span>
+    <span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="2-如何发布自己的服务">2 如何发布自己的服务？</h2>
+
+<p>如何让别人使用我们的服务呢？有同学说很简单嘛，告诉使用者服务的IP以及端口就可以了啊。确实是这样，这里问题的关键在于是自动告知还是人肉告知。</p>
+
+<p>人肉告知的方式：如果你发现你的服务一台机器不够，要再添加一台，这个时候就要告诉调用者我现在有两个ip了，你们要轮询调用来实现负载均衡；调用者咬咬牙改了，结果某天一台机器挂了，调用者发现服务有一半不可用，他又只能手动修改代码来删除挂掉那台机器的ip。现实生产环境当然不会使用人肉方式。</p>
+
+<p>有没有一种方法能实现自动告知，即机器的增添、剔除对调用方透明，调用者不再需要写死服务提供方地址？当然可以，现如今zookeeper被广泛用于实现服务自动注册与发现功能！</p>
+
+<p>简单来讲，zookeeper可以充当一个服务注册表（Service Registry），让多个服务提供者形成一个集群，让服务消费者通过服务注册表获取具体的服务访问地址（ip+端口）去访问具体的服务提供者。如下图所示：</p>
+
+<p>具体来说，zookeeper就是个分布式文件系统，每当一个服务提供者部署后都要将自己的服务注册到zookeeper的某一路径上:<code>/{service}/{version}/{ip:port}</code>, 比如我们的HelloWorldService部署到两台机器，那么zookeeper上就会创建两条目录：分别为<code>/HelloWorldService/1.0.0/100.19.20.01:16888</code>  <code>/HelloWorldService/1.0.0/100.19.20.02:16888</code>。</p>
+
+<p>zookeeper提供了“心跳检测”功能，它会定时向各个服务提供者发送一个请求（实际上建立的是一个 socket 长连接），如果长期没有响应，服务中心就认为该服务提供者已经“挂了”，并将其剔除，比如<code>100.19.20.02</code>这台机器如果宕机了，那么zookeeper上的路径就会只剩<code>/HelloWorldService/1.0.0/100.19.20.01:16888</code>。</p>
+
+<p>服务消费者会去监听相应路径（<code>/HelloWorldService/1.0.0</code>），一旦路径上的数据有任务变化（增加或减少），zookeeper都会通知服务消费方服务提供者地址列表已经发生改变，从而进行更新。</p>
+
+<p>更为重要的是zookeeper 与生俱来的容错容灾能力（比如leader选举），可以确保服务注册表的高可用性。</p>
+
+<h2 id="3-小结">3 小结</h2>
+
+<p>RPC几乎是每一个从学校进入互联网公司的同学都要首先学习的框架，之前面试过一个在大型互联网公司工作过两年的同学，对RPC还是停留在使用层面，这是不应该的。本文也仅是对RPC的一个比较粗糙的描述，希望对大家有所帮助，错误之处也请指出修正。</p>
+
+<h2 id="4-一些开源的rpc框架">4 一些开源的RPC框架</h2>
+
+<p><a href="https://github.com/alibaba/dubbo">https://github.com/alibaba/dubbo</a></p>
+
+<p><a href="http://thrift.apache.org/?cm_mc_uid=87762817217214314008006&amp;cm_mc_sid_50200000=1444181090">http://thrift.apache.org/?cm_mc_uid=87762817217214314008006&amp;cm_mc_sid_50200000=1444181090</a></p>
+
+<blockquote>
+<p>原文地址：<a href="http://blog.jobbole.com/92290/">http://blog.jobbole.com/92290/</a></p>
+</blockquote>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">伯乐在线 - 占利军</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-02-15</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/2018-2019/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">2018总结-2019展望</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/java-thread-pool/">
+            <span class="next-text nav-default">Java并发编程：线程池的使用</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

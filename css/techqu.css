@@ -31,6 +31,9 @@
     text-align: right;
 }
 
+.post .post-content code {
+  font-size: 18px;
+}
 html{
   font-size: 18px;
 }

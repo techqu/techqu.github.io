@@ -83,15 +83,6 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>JVM性能调优</title>
-      <link>https://techqu.github.io/post/jvm-performance-optimization/</link>
-      <pubDate>Mon, 24 Dec 2018 18:48:04 +0800</pubDate>
-      
-      <guid>https://techqu.github.io/post/jvm-performance-optimization/</guid>
-      <description>&lt;p&gt;包含年轻代大小选择和年老代大小的选择&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>JVM 工具</title>
       <link>https://techqu.github.io/post/jvm-tools/</link>
       <pubDate>Mon, 24 Dec 2018 18:08:25 +0800</pubDate>

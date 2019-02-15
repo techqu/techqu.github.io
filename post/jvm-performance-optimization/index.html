@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="瞿广" /><meta name="description" content="包含年轻代大小选择和年老代大小的选择
+<meta name="author" content="瞿广" /><meta name="description" content="linux性能调优和年轻代大小选择和年老代大小的选择
 " /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
 
 
@@ -42,25 +42,25 @@
 
 
 <meta property="og:title" content="JVM性能调优" />
-<meta property="og:description" content="包含年轻代大小选择和年老代大小的选择" />
+<meta property="og:description" content="linux性能调优和年轻代大小选择和年老代大小的选择" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://techqu.github.io/post/jvm-performance-optimization/" /><meta property="article:published_time" content="2018-12-24T18:48:04&#43;08:00"/>
 <meta property="article:modified_time" content="2018-12-24T18:48:04&#43;08:00"/>
 
 <meta itemprop="name" content="JVM性能调优">
-<meta itemprop="description" content="包含年轻代大小选择和年老代大小的选择">
+<meta itemprop="description" content="linux性能调优和年轻代大小选择和年老代大小的选择">
 
 
 <meta itemprop="datePublished" content="2018-12-24T18:48:04&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-24T18:48:04&#43;08:00" />
-<meta itemprop="wordCount" content="766">
+<meta itemprop="wordCount" content="1146">
 
 
 
 <meta itemprop="keywords" content="java,JVM,虚拟机," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="JVM性能调优"/>
-<meta name="twitter:description" content="包含年轻代大小选择和年老代大小的选择"/>
+<meta name="twitter:description" content="linux性能调优和年轻代大小选择和年老代大小的选择"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -132,10 +132,10 @@
       <div class="post-meta">
         <span class="post-time"> 2018-12-24 </span>
         <div class="post-category">
-            <a href="/categories/tech/"> Tech </a>
+            <a href="/categories/jvm/"> JVM </a>
             </div>
-          <span class="more-meta"> 约 766 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1146 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -147,6 +147,15 @@
 <ul>
 <li>
 <ul>
+<li><a href="#1-性能优化是什么">1.性能优化是什么</a></li>
+<li><a href="#2-性能的几个维度">2.性能的几个维度</a>
+<ul>
+<li><a href="#1-cpu">1.CPU</a></li>
+<li><a href="#2-io">2. IO</a></li>
+<li><a href="#3-memory">3.Memory</a></li>
+<li><a href="#4-network">4.Network</a></li>
+</ul></li>
+<li><a href="#cpu负载高如何定位">cpu负载高如何定位</a></li>
 <li><a href="#年轻代大小选择">年轻代大小选择</a></li>
 <li><a href="#年老代大小选择">年老代大小选择</a></li>
 </ul></li>
@@ -155,7 +164,62 @@
   </div>
 </div>
     <div class="post-content">
-      <p>包含年轻代大小选择和年老代大小的选择</p>
+      <p>linux性能调优和年轻代大小选择和年老代大小的选择</p>
+
+<h2 id="1-性能优化是什么">1.性能优化是什么</h2>
+
+<p>就是发挥机器本来的性能</p>
+
+<h2 id="2-性能的几个维度">2.性能的几个维度</h2>
+
+<h3 id="1-cpu">1.CPU</h3>
+
+<ol>
+<li><code>vmstat</code></li>
+</ol>
+
+<p><a href="http://www.man7.org/linux/man-pages/man8/vmstat.8.html">http://www.man7.org/linux/man-pages/man8/vmstat.8.html</a></p>
+
+<p>首先检查 cpu，cpu 使用率要提升而不是降低,
+CPU 空闲并不一定是没事做，也有可能是锁或者外部资源瓶颈。</p>
+
+<ol>
+<li><code>top</code></li>
+</ol>
+
+<h3 id="2-io">2. IO</h3>
+
+<ul>
+<li>命令：iostat</li>
+<li>如： <code>iostat -xd l</code></li>
+<li>地址：<a href="http://www.man7.org/linux/man-pages/man1/iostat.1.html">http://www.man7.org/linux/man-pages/man1/iostat.1.html</a>
+<br /></li>
+</ul>
+
+<h3 id="3-memory">3.Memory</h3>
+
+<ul>
+<li>命令 free</li>
+<li>如：<code>free -g</code></li>
+</ul>
+
+<h3 id="4-network">4.Network</h3>
+
+<h2 id="cpu负载高如何定位">cpu负载高如何定位</h2>
+
+<p>A.<code>top</code>找到cpu高的进程（原理：方法是由线程执行的，线程是在进程下，找到进程下cpu最高的线程就能定位到方法）</p>
+
+<p>B.<code>shift+H</code> 切换到线程模型 找到线程执行cpu高的线程号</p>
+
+<p>C.用jstack导出线程的dump
+<code>Jstack pid &gt; p.txt</code></p>
+
+<p>有时候这个问题没有那么明显一致cpu很高，
+可能是间歇性的cpu高，有时候能抓住这个线程还是要看运气</p>
+
+<p>D.把线程号转16进制 printf &ldquo;%x \n&rdquo; 40437</p>
+
+<p>F.到刚刚导出的p.txt里检索定位到 转完16进制的线程号</p>
 
 <h2 id="年轻代大小选择">年轻代大小选择</h2>
 

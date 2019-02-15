@@ -11,6 +11,15 @@
     
     
     <item>
+      <title>JVM</title>
+      <link>https://techqu.github.io/categories/jvm/</link>
+      <pubDate>Mon, 24 Dec 2018 18:48:04 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/categories/jvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Tech</title>
       <link>https://techqu.github.io/categories/tech/</link>
       <pubDate>Sun, 13 Jan 2019 10:06:30 +0800</pubDate>
@@ -34,15 +43,6 @@
       <pubDate>Tue, 12 Feb 2019 15:12:30 +0800</pubDate>
       
       <guid>https://techqu.github.io/categories/java/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>java面试</title>
-      <link>https://techqu.github.io/categories/java%E9%9D%A2%E8%AF%95/</link>
-      <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
-      
-      <guid>https://techqu.github.io/categories/java%E9%9D%A2%E8%AF%95/</guid>
       <description></description>
     </item>
     
@@ -238,7 +238,7 @@
     <item>
       <title>面试</title>
       <link>https://techqu.github.io/categories/%E9%9D%A2%E8%AF%95/</link>
-      <pubDate>Wed, 19 Dec 2018 21:45:56 +0800</pubDate>
+      <pubDate>Fri, 15 Feb 2019 11:10:56 +0800</pubDate>
       
       <guid>https://techqu.github.io/categories/%E9%9D%A2%E8%AF%95/</guid>
       <description></description>
