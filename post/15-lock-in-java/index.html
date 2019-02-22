@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2019-01-19T07:56:14&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-19T07:56:14&#43;08:00" />
-<meta itemprop="wordCount" content="5467">
+<meta itemprop="wordCount" content="5357">
 
 
 
@@ -135,7 +135,7 @@
             <a href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"> 并发编程 </a>
             <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
             </div>
-          <span class="more-meta"> 约 5467 字 </span>
+          <span class="more-meta"> 约 5357 字 </span>
           <span class="more-meta"> 预计阅读 11 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -228,185 +228,102 @@
 <h3 id="可重入锁">可重入锁</h3>
 
 <p>广义上的可重入锁指的是可重复可递归调用的锁，在外层使用锁之后，在内层仍然可以使用，并且不发生死锁（前提得是同一个对象或者class），这样的锁就叫做可重入锁。ReentrantLock和synchronized都是可重入锁</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">setA</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">{</span>
- <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
- <span class="n">setB</span><span class="o">();</span>
-<span class="o">}</span>
-<span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">setB</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">{</span>
- <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-java">synchronized void setA() throws Exception{
+ Thread.sleep(1000);
+ setB();
+}
+synchronized void setB() throws Exception{
+ Thread.sleep(1000);
+}
+</code></pre>
+
 <p>上面的代码就是一个可重入锁的一个特点，如果不是可重入锁的话，setB可能不会被当前线程执行，可能造成死锁。</p>
 
 <h3 id="不可重入锁">不可重入锁</h3>
 
 <p>不可重入锁，与可重入锁相反，不可递归调用，递归调用就发生死锁。看到一个经典的讲解，使用自旋锁来模拟一个不可重入锁，代码如下</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.concurrent.atomic.AtomicReference</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UnreentrantLock</span> <span class="o">{</span>
- <span class="kd">private</span> <span class="n">AtomicReference</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;</span> <span class="n">owner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AtomicReference</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;();</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lock</span><span class="o">()</span> <span class="o">{</span>
- <span class="n">Thread</span> <span class="n">current</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
- <span class="c1">//这句是很经典的“自旋”语法，AtomicInteger中也有
-</span><span class="c1"></span>      <span class="k">for</span> <span class="o">(;;)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(!</span><span class="n">owner</span><span class="o">.</span><span class="na">compareAndSet</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">current</span><span class="o">))</span> <span class="o">{</span>
-            <span class="k">return</span><span class="o">;</span>
-            <span class="o">}</span>
-      <span class="o">}</span>
- <span class="o">}</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unlock</span><span class="o">()</span> <span class="o">{</span>
- <span class="n">Thread</span> <span class="n">current</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
- <span class="n">owner</span><span class="o">.</span><span class="na">compareAndSet</span><span class="o">(</span><span class="n">current</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
- <span class="o">}</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-java">import java.util.concurrent.atomic.AtomicReference;
+public class UnreentrantLock {
+ private AtomicReference&lt;Thread&gt; owner = new AtomicReference&lt;Thread&gt;();
+ public void lock() {
+ Thread current = Thread.currentThread();
+ //这句是很经典的“自旋”语法，AtomicInteger中也有
+      for (;;) {
+            if (!owner.compareAndSet(null, current)) {
+            return;
+            }
+      }
+ }
+ public void unlock() {
+ Thread current = Thread.currentThread();
+ owner.compareAndSet(current, null);
+ }
+}
+</code></pre>
+
 <p>代码也比较简单，使用原子引用 AtomicReference 来存放线程，同一线程两次调用lock()方法，如果不执行unlock()释放锁的话，第二次调用自旋的时候就会产生死锁，这个锁就不是可重入的，而实际上同一个线程不必每次都去释放锁再来获取锁，这样的调度切换是很耗资源的。</p>
 
 <p>把它变成一个可重入锁：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.concurrent.atomic.AtomicReference</span><span class="o">;</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UnreentrantLock</span> <span class="o">{</span>
- <span class="kd">private</span> <span class="n">AtomicReference</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;</span> <span class="n">owner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AtomicReference</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;();</span>
- <span class="kd">private</span> <span class="kt">int</span> <span class="n">state</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lock</span><span class="o">()</span> <span class="o">{</span>
-  <span class="n">Thread</span> <span class="n">current</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">current</span> <span class="o">==</span> <span class="n">owner</span><span class="o">.</span><span class="na">get</span><span class="o">())</span> <span class="o">{</span>
-    <span class="n">state</span><span class="o">++;</span>
-    <span class="k">return</span><span class="o">;</span>
-  <span class="o">}</span>
- <span class="c1">//这句是很经典的“自旋”式语法，AtomicInteger中也有
-</span><span class="c1"></span>  <span class="k">for</span> <span class="o">(;;)</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(!</span><span class="n">owner</span><span class="o">.</span><span class="na">compareAndSet</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">current</span><span class="o">))</span> <span class="o">{</span>
-    <span class="k">return</span><span class="o">;</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
- <span class="o">}</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unlock</span><span class="o">()</span> <span class="o">{</span>
- <span class="n">Thread</span> <span class="n">current</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
-  <span class="k">if</span> <span class="o">(</span><span class="n">current</span> <span class="o">==</span> <span class="n">owner</span><span class="o">.</span><span class="na">get</span><span class="o">())</span> <span class="o">{</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">state</span> <span class="o">!=</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">state</span><span class="o">--;</span>
-      <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-      <span class="n">owner</span><span class="o">.</span><span class="na">compareAndSet</span><span class="o">(</span><span class="n">current</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-      <span class="o">}</span>
-  <span class="o">}</span>
- <span class="o">}</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-java">import java.util.concurrent.atomic.AtomicReference;
+public class UnreentrantLock {
+ private AtomicReference&lt;Thread&gt; owner = new AtomicReference&lt;Thread&gt;();
+ private int state = 0;
+ public void lock() {
+  Thread current = Thread.currentThread();
+    if (current == owner.get()) {
+    state++;
+    return;
+  }
+ //这句是很经典的“自旋”式语法，AtomicInteger中也有
+  for (;;) {
+    if (!owner.compareAndSet(null, current)) {
+    return;
+    }
+  }
+ }
+ public void unlock() {
+ Thread current = Thread.currentThread();
+  if (current == owner.get()) {
+      if (state != 0) {
+      state--;
+      } else {
+      owner.compareAndSet(current, null);
+      }
+  }
+ }
+}
+</code></pre>
+
 <p>在执行每次操作之前，判断当前锁持有者是否是当前对象，采用state计数，不用每次去释放锁。</p>
 
 <h3 id="reentrantlock中可重入锁实现">ReentrantLock中可重入锁实现</h3>
 
 <p>这里看非公平锁的锁获取方法：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">final</span> <span class="kt">boolean</span> <span class="nf">nonfairTryAcquire</span><span class="o">(</span><span class="kt">int</span> <span class="n">acquires</span><span class="o">)</span> <span class="o">{</span>
-	<span class="kd">final</span> <span class="n">Thread</span> <span class="n">current</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
-	<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getState</span><span class="o">();</span>
-	<span class="k">if</span> <span class="o">(</span><span class="n">c</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">compareAndSetState</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">acquires</span><span class="o">))</span> <span class="o">{</span>
-			<span class="n">setExclusiveOwnerThread</span><span class="o">(</span><span class="n">current</span><span class="o">);</span>
-			<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-		<span class="o">}</span>
-	<span class="o">}</span>
-	<span class="c1">//就是这里
-</span><span class="c1"></span>	<span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">current</span> <span class="o">==</span> <span class="n">getExclusiveOwnerThread</span><span class="o">())</span> <span class="o">{</span>
-		<span class="kt">int</span> <span class="n">nextc</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">acquires</span><span class="o">;</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">nextc</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="c1">// overflow
-</span><span class="c1"></span>			<span class="k">throw</span> <span class="k">new</span> <span class="n">Error</span><span class="o">(</span><span class="s">&#34;Maximum lock count exceeded&#34;</span><span class="o">);</span>
-		<span class="n">setState</span><span class="o">(</span><span class="n">nextc</span><span class="o">);</span>
-		<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-java">final boolean nonfairTryAcquire(int acquires) {
+	final Thread current = Thread.currentThread();
+	int c = getState();
+	if (c == 0) {
+		if (compareAndSetState(0, acquires)) {
+			setExclusiveOwnerThread(current);
+			return true;
+		}
+	}
+	//就是这里
+	else if (current == getExclusiveOwnerThread()) {
+		int nextc = c + acquires;
+		if (nextc &lt; 0) // overflow
+			throw new Error(&quot;Maximum lock count exceeded&quot;);
+		setState(nextc);
+		return true;
+	}
+	return false;
+}
+</code></pre>
+
 <p>在AQS中维护了一个<code>private volatile int state</code>来计数重入次数，避免了频繁的持有释放操作，这样既提升了效率，又避免了死锁。</p>
 
 <h2 id="独享锁-共享锁">独享锁 / 共享锁</h2>
@@ -530,40 +447,23 @@
 <h4 id="java如何实现自旋锁">Java如何实现自旋锁？</h4>
 
 <p>下面是个简单的例子：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpinLock</span> <span class="o">{</span>
- <span class="kd">private</span> <span class="n">AtomicReference</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;</span> <span class="n">cas</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AtomicReference</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;();</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lock</span><span class="o">()</span> <span class="o">{</span>
- <span class="n">Thread</span> <span class="n">current</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
- <span class="c1">// 利用CAS
-</span><span class="c1"></span>  <span class="k">while</span> <span class="o">(!</span><span class="n">cas</span><span class="o">.</span><span class="na">compareAndSet</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">current</span><span class="o">))</span> <span class="o">{</span>
-  <span class="c1">// DO nothing
-</span><span class="c1"></span>  <span class="o">}</span>
- <span class="o">}</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unlock</span><span class="o">()</span> <span class="o">{</span>
-  <span class="n">Thread</span> <span class="n">current</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
-  <span class="n">cas</span><span class="o">.</span><span class="na">compareAndSet</span><span class="o">(</span><span class="n">current</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-java">public class SpinLock {
+ private AtomicReference&lt;Thread&gt; cas = new AtomicReference&lt;Thread&gt;();
+ public void lock() {
+ Thread current = Thread.currentThread();
+ // 利用CAS
+  while (!cas.compareAndSet(null, current)) {
+  // DO nothing
+  }
+ }
+  public void unlock() {
+  Thread current = Thread.currentThread();
+  cas.compareAndSet(current, null);
+  }
+}
+</code></pre>
+
 <p>lock（)方法利用的CAS，当第一个线程A获取锁的时候，能够成功获取到，不会进入while循环，如果此时线程A没有释放锁，另一个线程B又来获取锁，此时由于不满足CAS，所以就会进入while循环，不断判断是否满足CAS，直到A线程调用unlock方法释放了该锁。</p>
 
 <h4 id="自旋锁存在的问题">自旋锁存在的问题</h4>
@@ -583,62 +483,34 @@
 <p>而且，即使第二次能够成功获取，那么当第一次释放锁的时候，第二次获取到的锁也会被释放，而这是不合理的。</p>
 
 <p>为了实现可重入锁，我们需要引入一个计数器，用来记录获取锁的线程数。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReentrantSpinLock</span> <span class="o">{</span>
- <span class="kd">private</span> <span class="n">AtomicReference</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;</span> <span class="n">cas</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AtomicReference</span><span class="o">&lt;</span><span class="n">Thread</span><span class="o">&gt;();</span>
- <span class="kd">private</span> <span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lock</span><span class="o">()</span> <span class="o">{</span>
-  <span class="n">Thread</span> <span class="n">current</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">current</span> <span class="o">==</span> <span class="n">cas</span><span class="o">.</span><span class="na">get</span><span class="o">())</span> <span class="o">{</span> <span class="c1">// 如果当前线程已经获取到了锁，线程数增加一，然后返回
-</span><span class="c1"></span>      <span class="n">count</span><span class="o">++;</span>
-      <span class="k">return</span><span class="o">;</span>
-      <span class="o">}</span>
-  <span class="c1">// 如果没获取到锁，则通过CAS自旋
-</span><span class="c1"></span>      <span class="k">while</span> <span class="o">(!</span><span class="n">cas</span><span class="o">.</span><span class="na">compareAndSet</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">current</span><span class="o">))</span> <span class="o">{</span>
-      <span class="c1">// DO nothing
-</span><span class="c1"></span>      <span class="o">}</span>
-  <span class="o">}</span>
- <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unlock</span><span class="o">()</span> <span class="o">{</span>
- <span class="n">Thread</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">cur</span> <span class="o">==</span> <span class="n">cas</span><span class="o">.</span><span class="na">get</span><span class="o">())</span> <span class="o">{</span>
-          <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span><span class="c1">// 如果大于0，表示当前线程多次获取了该锁，释放锁通过count减一来模拟
-</span><span class="c1"></span>          <span class="n">count</span><span class="o">--;</span>
-          <span class="o">}</span> <span class="k">else</span> <span class="o">{</span><span class="c1">// 如果count==0，可以将锁释放，这样就能保证获取锁的次数与释放锁的次数是一致的了。
-</span><span class="c1"></span>          <span class="n">cas</span><span class="o">.</span><span class="na">compareAndSet</span><span class="o">(</span><span class="n">cur</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-          <span class="o">}</span>
-    <span class="o">}</span>
- <span class="o">}</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-java">public class ReentrantSpinLock {
+ private AtomicReference&lt;Thread&gt; cas = new AtomicReference&lt;Thread&gt;();
+ private int count;
+ public void lock() {
+  Thread current = Thread.currentThread();
+      if (current == cas.get()) { // 如果当前线程已经获取到了锁，线程数增加一，然后返回
+      count++;
+      return;
+      }
+  // 如果没获取到锁，则通过CAS自旋
+      while (!cas.compareAndSet(null, current)) {
+      // DO nothing
+      }
+  }
+ public void unlock() {
+ Thread cur = Thread.currentThread();
+    if (cur == cas.get()) {
+          if (count &gt; 0) {// 如果大于0，表示当前线程多次获取了该锁，释放锁通过count减一来模拟
+          count--;
+          } else {// 如果count==0，可以将锁释放，这样就能保证获取锁的次数与释放锁的次数是一致的了。
+          cas.compareAndSet(cur, null);
+          }
+    }
+ }
+}
+</code></pre>
+
 <h4 id="自旋锁与互斥锁">自旋锁与互斥锁</h4>
 
 <ul>
@@ -733,7 +605,7 @@
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>

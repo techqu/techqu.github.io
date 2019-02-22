@@ -57,7 +57,7 @@
 
 <meta itemprop="datePublished" content="2019-01-19T13:18:56&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-19T13:18:56&#43;08:00" />
-<meta itemprop="wordCount" content="6213">
+<meta itemprop="wordCount" content="5956">
 
 
 
@@ -140,8 +140,8 @@
         <div class="post-category">
             <a href="/categories/drools/"> drools </a>
             </div>
-          <span class="more-meta"> 约 6213 字 </span>
-          <span class="more-meta"> 预计阅读 13 分钟 </span>
+          <span class="more-meta"> 约 5956 字 </span>
+          <span class="more-meta"> 预计阅读 12 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -214,42 +214,19 @@
 
 <ul>
 <li><p>单行注释</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">rule &#34;Testing Comments&#34;
+
+<pre><code>rule &quot;Testing Comments&quot;
 when
     // this is a single line comment
     eval( true ) // this is a comment in the same line of a pattern
 then
     // this is a comment inside a semantic code block
-end</pre></td></tr></table>
-</div>
-</div></li>
+end
+</code></pre></li>
 
 <li><p>多行注释</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">rule &#34;Test Multi-line Comments&#34;
+
+<pre><code>rule &quot;Test Multi-line Comments&quot;
 when
     /* this is a multi-line comment
     in the left hand side of a rule */
@@ -257,9 +234,8 @@ eval( true )
 then
     /* and this is a multi-line comment
     in the right hand side of a rule */
-end</pre></td></tr></table>
-</div>
-</div></li>
+end
+</code></pre></li>
 </ul>
 
 <h3 id="pakage">Pakage</h3>
@@ -278,41 +254,23 @@ end</pre></td></tr></table>
 <p><code>global</code>用于定义全局变量。</p>
 
 <p>Rules:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">global java.util.List myGlobalList;
 
-rule &#34;Using a global&#34;
+<pre><code>global java.util.List myGlobalList;
+
+rule &quot;Using a global&quot;
 when
   eval( true )
 then
-  myGlobalList.add( &#34;Hello World&#34; );
-end</pre></td></tr></table>
-</div>
-</div>
+  myGlobalList.add( &quot;Hello World&quot; );
+end
+</code></pre>
+
 <p>Set the global value:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">List list = new ArrayList();
+
+<pre><code>List list = new ArrayList();
 KieSession kieSession = kiebase.newKieSession();
-kieSession.setGlobal( &#34;myGlobalList&#34;, list );</pre></td></tr></table>
-</div>
-</div></li>
+kieSession.setGlobal( &quot;myGlobalList&quot;, list );
+</code></pre></li>
 </ul>
 
 <h3 id="function">Function</h3>
@@ -321,32 +279,18 @@ kieSession.setGlobal( &#34;myGlobalList&#34;, list );</pre></td></tr></table>
 <li><p>function</p>
 
 <p><code>function</code>是一种将语义代码放置在规则源文件中的方法，而不是普通的Java类</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">function String hello(String name) {
-  return &#34;Hello &#34;+name+&#34;!&#34;;
+
+<pre><code>function String hello(String name) {
+  return &quot;Hello &quot;+name+&quot;!&quot;;
 }
 import function my.package.Foo.hello
-rule &#34;using a static function&#34;
+rule &quot;using a static function&quot;
 when
   eval( true )
 then
-  System.out.println( hello( &#34;Bob&#34; ) );
-end</pre></td></tr></table>
-</div>
-</div></li>
+  System.out.println( hello( &quot;Bob&quot; ) );
+end
+</code></pre></li>
 </ul>
 
 <h3 id="query">Query</h3>
@@ -356,50 +300,28 @@ end</pre></td></tr></table>
 </ul>
 
 <p><code>query</code>是一种搜索工作内存中与指定条件匹配的事实的简单方法.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">  对所有30岁以上的人的简单查询
-  query &#34;people over the age of 30&#34;
+
+<pre><code>  对所有30岁以上的人的简单查询
+  query &quot;people over the age of 30&quot;
       person : Person( age &gt; 30 )
   end
 
   查询超过x岁的人，以及居住在y的人
-  query &#34;people over the age of x&#34;  (int x, String y)
+  query &quot;people over the age of x&quot;  (int x, String y)
       person : Person( age &gt; x, location == y )
   end
 
-  QueryResults results = ksession.getQueryResults( &#34;people over the age of 30&#34; );
-  System.out.println( &#34;we have &#34; + results.size() + &#34; people over the age  of 30&#34; );
+  QueryResults results = ksession.getQueryResults( &quot;people over the age of 30&quot; );
+  System.out.println( &quot;we have &quot; + results.size() + &quot; people over the age  of 30&quot; );
 
-  System.out.println( &#34;These people are are over 30:&#34; );
+  System.out.println( &quot;These people are are over 30:&quot; );
 
   for ( QueryResultsRow row : results ) {
-      Person person = ( Person ) row.get( &#34;person&#34; );
-      System.out.println( person.getName() + &#34;\n&#34; );
-  }</pre></td></tr></table>
-</div>
-</div>
+      Person person = ( Person ) row.get( &quot;person&quot; );
+      System.out.println( person.getName() + &quot;\n&quot; );
+  }
+</code></pre>
+
 <h3 id="rule">Rule</h3>
 
 <p><code>rule</code>定义规则。<code>rule &quot;ruleName&quot;</code>。</p>
@@ -519,28 +441,8 @@ end</pre></td></tr></table>
 
 <p><code>Left Hand Side</code>（<code>LHS</code>）是规则的条件部分的公共名称。它由零个或多个条件元素组成。
   如果LHS为空，它将被认为是一个条件元素，它总是为真，并且当创建一个新的WorkingMemory会话时，它将被激活一次。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">      Conditions / LHS —匹配模式（Patterns）
+
+<pre><code>      Conditions / LHS —匹配模式（Patterns）
 
       没有字段约束的Pattern
       Person()
@@ -556,9 +458,9 @@ end</pre></td></tr></table>
       $bob : Person( name == “bob” )字段绑定的Pattern
 
       变量约束的Pattern
-      Person( name == $name )</pre></td></tr></table>
-</div>
-</div>
+      Person( name == $name )
+</code></pre>
+
 <p>Drools提供了十二种类型比较操作符:
       <code>&gt;</code>  <code>&gt;=</code>  <code>&lt;</code>  <code>&lt;=</code>  <code>==</code>  <code>!=</code>  <code>contains</code>  <code>not contains</code>  <code>memberOf</code>  <code>not memberOf</code> <code>matches</code> <code>not matches</code></p>
 
@@ -566,18 +468,11 @@ end</pre></td></tr></table>
 <li><p>contains</p>
 
 <p>运算符<code>contains</code>用于检查作为Collection或elements的字段是否包含指定的值.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">  Cheese( name contains &#34;tilto&#34; )
-  Person( fullName contains &#34;Jr&#34; )
-  String( this contains &#34;foo&#34; )</pre></td></tr></table>
-</div>
-</div></li>
+
+<pre><code>  Cheese( name contains &quot;tilto&quot; )
+  Person( fullName contains &quot;Jr&quot; )
+  String( this contains &quot;foo&quot; )
+</code></pre></li>
 
 <li><p>not contains</p>
 
@@ -586,14 +481,9 @@ end</pre></td></tr></table>
 <li><p>memberOf</p>
 
 <p>运算符<code>memberOf</code>用于检查字段是否是集合的成员或元素;该集合必须是一个变量。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">  CheeseCounter( cheese memberOf $matureCheeses )</pre></td></tr></table>
-</div>
-</div></li>
+
+<pre><code>  CheeseCounter( cheese memberOf $matureCheeses )
+</code></pre></li>
 
 <li><p>not memberOf</p>
 
@@ -602,14 +492,9 @@ end</pre></td></tr></table>
 <li><p>matches</p>
 
 <p>正则表达式匹配，与java不同的是，不用考虑&rsquo;/&lsquo;的转义问题</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">  Cheese( type matches &#34;(Buffalo)?\\S*Mozarella&#34; )</pre></td></tr></table>
-</div>
-</div></li>
+
+<pre><code>  Cheese( type matches &quot;(Buffalo)?\\S*Mozarella&quot; )
+</code></pre></li>
 
 <li><p>not matches</p>
 
@@ -618,14 +503,10 @@ end</pre></td></tr></table>
 
 <p>其他条件元素：
   - exists</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">存在。检查Working Memory是否存在某物。使用模式`exists`，则规则将只激活最多一次，而不管在工作存储器中存在与存在模式中的条件匹配的数据量</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>存在。检查Working Memory是否存在某物。使用模式`exists`，则规则将只激活最多一次，而不管在工作存储器中存在与存在模式中的条件匹配的数据量
+</code></pre>
+
 <ul>
 <li><p>not</p>
 
@@ -689,105 +570,58 @@ end</pre></td></tr></table>
 <h3 id="动态规则">动态规则</h3>
 
 <h4 id="动态获取kiesession">动态获取KieSession</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">KieSession</span> <span class="nf">getKieSession</span><span class="o">(</span><span class="n">String</span> <span class="n">rules</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">KieServices</span> <span class="n">kieServices</span> <span class="o">=</span> <span class="n">KieServices</span><span class="o">.</span><span class="na">Factory</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
-        <span class="n">KieFileSystem</span> <span class="n">kfs</span> <span class="o">=</span> <span class="n">kieServices</span><span class="o">.</span><span class="na">newKieFileSystem</span><span class="o">();</span>
-        <span class="n">kfs</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;src/main/resources/rules/rules.drl&#34;</span><span class="o">,</span> <span class="n">rules</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
-        <span class="n">KieBuilder</span> <span class="n">kieBuilder</span> <span class="o">=</span> <span class="n">kieServices</span><span class="o">.</span><span class="na">newKieBuilder</span><span class="o">(</span><span class="n">kfs</span><span class="o">).</span><span class="na">buildAll</span><span class="o">();</span>
-        <span class="n">Results</span> <span class="n">results</span> <span class="o">=</span> <span class="n">kieBuilder</span><span class="o">.</span><span class="na">getResults</span><span class="o">();</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">results</span><span class="o">.</span><span class="na">hasMessages</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">kie</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">builder</span><span class="o">.</span><span class="na">Message</span><span class="o">.</span><span class="na">Level</span><span class="o">.</span><span class="na">ERROR</span><span class="o">))</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">results</span><span class="o">.</span><span class="na">getMessages</span><span class="o">());</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="n">BusinessException</span><span class="o">(</span><span class="n">300003</span><span class="o">,</span><span class="n">results</span><span class="o">.</span><span class="na">getMessages</span><span class="o">().</span><span class="na">toString</span><span class="o">(),</span><span class="n">4</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="n">KieContainer</span> <span class="n">kieContainer</span> <span class="o">=</span> <span class="n">kieServices</span><span class="o">.</span><span class="na">newKieContainer</span><span class="o">(</span><span class="n">kieServices</span><span class="o">.</span><span class="na">getRepository</span><span class="o">().</span><span class="na">getDefaultReleaseId</span><span class="o">());</span>
-        <span class="n">KieBase</span> <span class="n">kieBase</span> <span class="o">=</span> <span class="n">kieContainer</span><span class="o">.</span><span class="na">getKieBase</span><span class="o">();</span>
 
-        <span class="k">return</span> <span class="n">kieBase</span><span class="o">.</span><span class="na">newKieSession</span><span class="o">();</span>
-    <span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+<pre><code class="language-java">    public KieSession getKieSession(String rules) {
+        KieServices kieServices = KieServices.Factory.get();
+        KieFileSystem kfs = kieServices.newKieFileSystem();
+        kfs.write(&quot;src/main/resources/rules/rules.drl&quot;, rules.getBytes());
+        KieBuilder kieBuilder = kieServices.newKieBuilder(kfs).buildAll();
+        Results results = kieBuilder.getResults();
+        if (results.hasMessages(org.kie.api.builder.Message.Level.ERROR)) {
+            System.out.println(results.getMessages());
+            throw new BusinessException(300003,results.getMessages().toString(),4);
+        }
+        KieContainer kieContainer = kieServices.newKieContainer(kieServices.getRepository().getDefaultReleaseId());
+        KieBase kieBase = kieContainer.getKieBase();
+
+        return kieBase.newKieSession();
+    }
+</code></pre>
+
 <h4 id="激活规则">激活规则</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    KieSession kieSession = rulesService.getKieSession(rule);
+
+<pre><code>    KieSession kieSession = rulesService.getKieSession(rule);
     Gson gson = new Gson();
     Person person = gson.fromJson(json, Person.class);
     kieSession.insert(person);
     kieSession.fireAllRules();
-    kieSession.dispose();</pre></td></tr></table>
-</div>
-</div>
+    kieSession.dispose();
+</code></pre>
+
 <h3 id="决策表">决策表</h3>
 
 <h4 id="将文件翻译为drl文件">将文件翻译为drl文件</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    public String getRuleTable() {
+
+<pre><code>    public String getRuleTable() {
         //把excel翻译成drl文件
         SpreadsheetCompiler compiler = new SpreadsheetCompiler();
-        String rules = compiler.compile(ResourceFactory.newClassPathResource(RULES_PATH + File.separator + &#34;rule.xlsx&#34;, &#34;UTF-8&#34;), &#34;rule-table&#34;);
+        String rules = compiler.compile(ResourceFactory.newClassPathResource(RULES_PATH + File.separator + &quot;rule.xlsx&quot;, &quot;UTF-8&quot;), &quot;rule-table&quot;);
         System.out.println(rules);
         return rules;
-    }</pre></td></tr></table>
-</div>
-</div>
+    }
+</code></pre>
+
 <h4 id="将文件流翻译为drl文件">将文件流翻译为drl文件</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    public String getRuleTable(InputStream inputStream) {
+
+<pre><code>    public String getRuleTable(InputStream inputStream) {
         //把excel翻译成drl文件
         SpreadsheetCompiler compiler = new SpreadsheetCompiler();
-        String rules = compiler.compile(ResourceFactory.newInputStreamResource(inputStream, &#34;UTF-8&#34;), &#34;rule-table&#34;);
-        logger.info(&#34;get rule from xls:&#34; + rules);
+        String rules = compiler.compile(ResourceFactory.newInputStreamResource(inputStream, &quot;UTF-8&quot;), &quot;rule-table&quot;);
+        logger.info(&quot;get rule from xls:&quot; + rules);
         return rules;
-    }</pre></td></tr></table>
-</div>
-</div>
+    }
+</code></pre>
+
 <h2 id="drools-example">Drools-Example</h2>
 
 <p>使用Drools来解决一些复杂的逻辑问题。</p>
@@ -802,98 +636,51 @@ end</pre></td></tr></table>
 <p>1元钱一瓶汽水，喝完后两个空瓶换一瓶汽水，问：小明有20元钱，最多可以喝到几瓶汽水？</p></li>
 
 <li><p>rule</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    <span class="kn">package</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span>
 
-    <span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span><span class="p">.</span><span class="nx">bean</span><span class="p">.</span><span class="nx">XiaoMing</span><span class="p">;</span>
+<pre><code>    package com.xu.drools
+
+    import com.xu.drools.bean.XiaoMing;
 
 
-    <span class="c1">// 小明喝汽水问题
-</span><span class="c1"></span>    <span class="c1">// 1元钱一瓶汽水，喝完后两个空瓶换一瓶汽水，问：小明有20元钱，最多可以喝到几瓶汽水？
-</span><span class="c1"></span>    <span class="c1">// 规则1：1元钱一瓶汽水
-</span><span class="c1"></span>    <span class="c1">// 规则2：两个空瓶换一瓶汽水
-</span><span class="c1"></span>
-    <span class="c1">//规则1：1元钱一瓶汽水。有钱就买水，空瓶+1，钱-1，喝水+1；
-</span><span class="c1"></span>    <span class="nx">rule</span> <span class="s">&#34;rule1&#34;</span>
-        <span class="nx">salience</span> <span class="mi">3</span>
-        <span class="nx">when</span>
-            <span class="err">$</span><span class="nx">m</span><span class="p">:</span><span class="nf">XiaoMing</span><span class="p">(</span><span class="nx">money</span><span class="p">&gt;</span><span class="mi">0</span><span class="p">);</span>
-        <span class="nx">then</span>
-            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;有钱即可喝水，钱：&#34;</span><span class="o">+</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getMoney</span><span class="p">());</span>
-            <span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">setBottle</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getBottle</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-            <span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">setMoney</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getMoney</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-            <span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">setDrink</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getDrink</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-            <span class="nf">update</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">)</span>
-    <span class="nx">end</span>
+    // 小明喝汽水问题
+    // 1元钱一瓶汽水，喝完后两个空瓶换一瓶汽水，问：小明有20元钱，最多可以喝到几瓶汽水？
+    // 规则1：1元钱一瓶汽水
+    // 规则2：两个空瓶换一瓶汽水
 
-    <span class="c1">//规则2：两个空瓶换一瓶汽水。有空瓶就换钱，空瓶-2，钱+1；
-</span><span class="c1"></span>    <span class="nx">rule</span> <span class="s">&#34;rule2&#34;</span>
-        <span class="nx">salience</span> <span class="mi">2</span>
-        <span class="nx">when</span>
-            <span class="err">$</span><span class="nx">m</span><span class="p">:</span><span class="nf">XiaoMing</span><span class="p">(</span><span class="nx">bottle</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">);</span>
-        <span class="nx">then</span>
-            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;有瓶子就换钱，瓶子：&#34;</span><span class="o">+</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getBottle</span><span class="p">());</span>
-            <span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">setBottle</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getBottle</span><span class="p">()</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
-            <span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">setMoney</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getMoney</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-            <span class="nf">update</span><span class="p">(</span><span class="err">$</span><span class="nx">m</span><span class="p">)</span>
-    <span class="nx">end</span>
+    //规则1：1元钱一瓶汽水。有钱就买水，空瓶+1，钱-1，喝水+1；
+    rule &quot;rule1&quot;
+        salience 3
+        when
+            $m:XiaoMing(money&gt;0);
+        then
+            System.out.println(&quot;有钱即可喝水，钱：&quot;+$m.getMoney());
+            $m.setBottle($m.getBottle()+1);
+            $m.setMoney($m.getMoney()-1);
+            $m.setDrink($m.getDrink()+1);
+            update($m)
+    end
 
-    <span class="c1">//规则3，打印已经喝掉的数量
-</span><span class="c1"></span>    <span class="nx">rule</span> <span class="s">&#34;rule3&#34;</span>
-        <span class="nx">salience</span> <span class="mi">1</span>
-        <span class="nx">when</span>
-            <span class="err">$</span><span class="nx">m</span><span class="p">:</span><span class="nf">XiaoMing</span><span class="p">();</span>
-        <span class="nx">then</span>
-            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;总共喝掉：&#34;</span><span class="o">+</span><span class="err">$</span><span class="nx">m</span><span class="p">.</span><span class="nf">getDrink</span><span class="p">());</span>
-    <span class="nx">end</span></pre></td></tr></table>
-</div>
-</div></li>
+    //规则2：两个空瓶换一瓶汽水。有空瓶就换钱，空瓶-2，钱+1；
+    rule &quot;rule2&quot;
+        salience 2
+        when
+            $m:XiaoMing(bottle&gt;=2);
+        then
+            System.out.println(&quot;有瓶子就换钱，瓶子：&quot;+$m.getBottle());
+            $m.setBottle($m.getBottle()-2);
+            $m.setMoney($m.getMoney()+1);
+            update($m)
+    end
+
+    //规则3，打印已经喝掉的数量
+    rule &quot;rule3&quot;
+        salience 1
+        when
+            $m:XiaoMing();
+        then
+            System.out.println(&quot;总共喝掉：&quot;+$m.getDrink());
+    end
+</code></pre></li>
 </ul>
 
 <h3 id="worldproblem">WorldProblem</h3>
@@ -913,132 +700,68 @@ end</pre></td></tr></table>
 <p><code>感觉有更好的方法，但是写不出规则来0.0</code></p></li>
 
 <li><p>rule</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    <span class="kn">package</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span>
 
-    <span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span><span class="p">.</span><span class="nx">bean</span><span class="p">.</span><span class="nx">Student</span><span class="p">;</span>
-    <span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span><span class="p">.</span><span class="nx">bean</span><span class="p">.</span><span class="nx">World</span>
+<pre><code>    package com.xu.drools
 
-    <span class="nx">rule</span> <span class="s">&#34;find jia1&#34;</span>
-        <span class="nx">salience</span> <span class="mi">2</span>
-    <span class="nx">when</span>
-            <span class="err">$</span><span class="nx">jia1</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;jia&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;C&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">==</span><span class="s">&#34;2&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">!=</span><span class="s">&#34;3&#34;</span><span class="p">)</span>
-        <span class="nx">then</span>
-            <span class="nf">insert</span><span class="p">(</span> <span class="nx">new</span> <span class="nf">World</span><span class="p">(</span><span class="err">$</span><span class="nx">jia1</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="err">$</span><span class="nx">jia1</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">())</span> <span class="p">);</span>
-    <span class="nx">end</span>
+    import com.xu.drools.bean.Student;
+    import com.xu.drools.bean.World
 
-    <span class="nx">rule</span> <span class="s">&#34;find jia2&#34;</span>
-        <span class="nx">salience</span> <span class="mi">2</span>
-        <span class="nx">when</span>
-            <span class="err">$</span><span class="nx">jia2</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;jia&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;C&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">!=</span><span class="s">&#34;2&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">==</span><span class="s">&#34;3&#34;</span><span class="p">)</span>
-        <span class="nx">then</span>
-            <span class="nf">insert</span><span class="p">(</span> <span class="nx">new</span> <span class="nf">World</span><span class="p">(</span><span class="err">$</span><span class="nx">jia2</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="err">$</span><span class="nx">jia2</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">())</span> <span class="p">);</span>
-    <span class="nx">end</span>
+    rule &quot;find jia1&quot;
+        salience 2
+    when
+            $jia1 : Student(name == &quot;jia&quot;,word1==&quot;A&quot;,word2==&quot;C&quot;,desc1==&quot;2&quot;,desc2!=&quot;3&quot;)
+        then
+            insert( new World($jia1.getDesc1(),0,$jia1.getDesc2()) );
+    end
 
-    <span class="nx">rule</span> <span class="s">&#34;find yi1&#34;</span>
-        <span class="nx">salience</span> <span class="mi">3</span>
-        <span class="nx">when</span>
-            <span class="err">$</span><span class="nx">yi1</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;yi&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;B&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">==</span><span class="s">&#34;1&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">!=</span><span class="s">&#34;3&#34;</span><span class="p">);</span>
-            <span class="err">$</span><span class="nx">w</span> <span class="p">:</span> <span class="nf">World</span><span class="p">(</span><span class="nx">a</span><span class="o">==</span><span class="err">$</span><span class="nx">yi1</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">())</span>
-        <span class="nx">then</span>
-            <span class="err">$</span><span class="nx">w</span><span class="p">.</span><span class="nf">setB</span><span class="p">(</span><span class="err">$</span><span class="nx">yi1</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">());</span>
-            <span class="nf">update</span><span class="p">(</span><span class="err">$</span><span class="nx">w</span><span class="p">)</span>
-    <span class="nx">end</span>
+    rule &quot;find jia2&quot;
+        salience 2
+        when
+            $jia2 : Student(name == &quot;jia&quot;,word1==&quot;A&quot;,word2==&quot;C&quot;,desc1!=&quot;2&quot;,desc2==&quot;3&quot;)
+        then
+            insert( new World($jia2.getDesc1(),0,$jia2.getDesc2()) );
+    end
 
-    <span class="nx">rule</span> <span class="s">&#34;find yi2&#34;</span>
-        <span class="nx">salience</span> <span class="mi">3</span>
-        <span class="nx">when</span>
-            <span class="err">$</span><span class="nx">yi2</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;yi&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;B&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">==</span><span class="s">&#34;1&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">!=</span><span class="s">&#34;3&#34;</span><span class="p">)</span>
-            <span class="err">$</span><span class="nx">w</span> <span class="p">:</span> <span class="nf">World</span><span class="p">(</span><span class="nx">a</span><span class="o">==</span><span class="err">$</span><span class="nx">yi2</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">())</span>
-        <span class="nx">then</span>
-            <span class="err">$</span><span class="nx">w</span><span class="p">.</span><span class="nf">setB</span><span class="p">(</span><span class="err">$</span><span class="nx">yi2</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">());</span>
-            <span class="nf">update</span><span class="p">(</span><span class="err">$</span><span class="nx">w</span><span class="p">)</span>
-    <span class="nx">end</span>
+    rule &quot;find yi1&quot;
+        salience 3
+        when
+            $yi1 : Student(name == &quot;yi&quot;,word1==&quot;A&quot;,word2==&quot;B&quot;,desc1==&quot;1&quot;,desc2!=&quot;3&quot;);
+            $w : World(a==$yi1.getDesc1())
+        then
+            $w.setB($yi1.getDesc2());
+            update($w)
+    end
+
+    rule &quot;find yi2&quot;
+        salience 3
+        when
+            $yi2 : Student(name == &quot;yi&quot;,word1==&quot;A&quot;,word2==&quot;B&quot;,desc1==&quot;1&quot;,desc2!=&quot;3&quot;)
+            $w : World(a==$yi2.getDesc1())
+        then
+            $w.setB($yi2.getDesc2());
+            update($w)
+    end
 
 
-    <span class="nx">rule</span> <span class="s">&#34;find bing1&#34;</span>
-        <span class="nx">salience</span> <span class="mi">4</span>
-        <span class="nx">when</span>
-            <span class="err">$</span><span class="nx">bing1</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;bing&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;B&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">==</span><span class="s">&#34;3&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">!=</span><span class="s">&#34;2&#34;</span><span class="p">)</span>
-            <span class="err">$</span><span class="nx">w</span> <span class="p">:</span> <span class="nf">World</span><span class="p">(</span><span class="nx">a</span><span class="o">==</span><span class="err">$</span><span class="nx">bing1</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">(),</span><span class="nx">b</span><span class="o">==</span><span class="err">$</span><span class="nx">bing1</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">())</span>
-        <span class="nx">then</span>
-            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;-------&#34;</span><span class="o">+</span><span class="err">$</span><span class="nx">w</span><span class="p">.</span><span class="nf">toString</span><span class="p">());</span>
-    <span class="nx">end</span>
+    rule &quot;find bing1&quot;
+        salience 4
+        when
+            $bing1 : Student(name == &quot;bing&quot;,word1==&quot;A&quot;,word2==&quot;B&quot;,desc1==&quot;3&quot;,desc2!=&quot;2&quot;)
+            $w : World(a==$bing1.getDesc1(),b==$bing1.getDesc2())
+        then
+            System.out.println(&quot;-------&quot;+$w.toString());
+    end
 
 
-    <span class="nx">rule</span> <span class="s">&#34;find bing2&#34;</span>
-        <span class="nx">salience</span> <span class="mi">4</span>
-        <span class="nx">when</span>
-            <span class="err">$</span><span class="nx">bing2</span> <span class="p">:</span> <span class="nf">Student</span><span class="p">(</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;bing&#34;</span><span class="p">,</span><span class="nx">word1</span><span class="o">==</span><span class="s">&#34;A&#34;</span><span class="p">,</span><span class="nx">word2</span><span class="o">==</span><span class="s">&#34;B&#34;</span><span class="p">,</span><span class="nx">desc1</span><span class="o">!=</span><span class="s">&#34;3&#34;</span><span class="p">,</span><span class="nx">desc2</span><span class="o">==</span><span class="s">&#34;2&#34;</span><span class="p">)</span>
-            <span class="err">$</span><span class="nx">w</span> <span class="p">:</span> <span class="nf">World</span><span class="p">(</span><span class="nx">a</span><span class="o">==</span><span class="err">$</span><span class="nx">bing2</span><span class="p">.</span><span class="nf">getDesc1</span><span class="p">(),</span><span class="nx">b</span><span class="o">==</span><span class="err">$</span><span class="nx">bing2</span><span class="p">.</span><span class="nf">getDesc2</span><span class="p">())</span>
-        <span class="nx">then</span>
-            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span><span class="s">&#34;-------&#34;</span><span class="o">+</span><span class="err">$</span><span class="nx">w</span><span class="p">.</span><span class="nf">toString</span><span class="p">());</span>
-    <span class="nx">end</span></pre></td></tr></table>
-</div>
-</div></li>
+    rule &quot;find bing2&quot;
+        salience 4
+        when
+            $bing2 : Student(name == &quot;bing&quot;,word1==&quot;A&quot;,word2==&quot;B&quot;,desc1!=&quot;3&quot;,desc2==&quot;2&quot;)
+            $w : World(a==$bing2.getDesc1(),b==$bing2.getDesc2())
+        then
+            System.out.println(&quot;-------&quot;+$w.toString());
+    end
+</code></pre></li>
 </ul>
 
 <h3 id="golferproblem">GolferProblem</h3>
@@ -1063,104 +786,54 @@ end</pre></td></tr></table>
 </ul></li>
 
 <li><p>rule</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    <span class="kn">package</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span>
 
-    <span class="kn">import</span> <span class="nx">com</span><span class="p">.</span><span class="nx">xu</span><span class="p">.</span><span class="nx">drools</span><span class="p">.</span><span class="nx">bean</span><span class="p">.</span><span class="nx">Golfer</span><span class="p">;</span>
+<pre><code>    package com.xu.drools
 
-    <span class="nx">rule</span> <span class="s">&#34;find solution&#34;</span>
-        <span class="nx">when</span>
-            <span class="c1">//1.高尔夫球员Fred,目前不知道他的位置和衣服颜色
-</span><span class="c1"></span>            <span class="err">$</span><span class="nx">fred</span> <span class="p">:</span> <span class="nf">Golfer</span><span class="p">(</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;Fred&#34;</span> <span class="p">)</span>
+    import com.xu.drools.bean.Golfer;
 
-            <span class="c1">//3.Joe排在第2个位置
-</span><span class="c1"></span>            <span class="err">$</span><span class="nx">joe</span> <span class="p">:</span> <span class="nf">Golfer</span><span class="p">(</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;Joe&#34;</span><span class="p">,</span>
-                    <span class="nx">position</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span>
-                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
-                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">color</span> <span class="p">)</span>
+    rule &quot;find solution&quot;
+        when
+            //1.高尔夫球员Fred,目前不知道他的位置和衣服颜色
+            $fred : Golfer( name == &quot;Fred&quot; )
 
-            <span class="c1">//4.Bob穿着格子短裤
-</span><span class="c1"></span>            <span class="err">$</span><span class="nx">bob</span> <span class="p">:</span> <span class="nf">Golfer</span><span class="p">(</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;Bob&#34;</span><span class="p">,</span>
-                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
-                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
-                    <span class="nx">color</span> <span class="o">==</span> <span class="s">&#34;plaid&#34;</span><span class="p">,</span>
-                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">color</span><span class="p">,</span>
-                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nx">color</span> <span class="p">)</span>
+            //3.Joe排在第2个位置
+            $joe : Golfer( name == &quot;Joe&quot;,
+                    position == 2,
+                    position != $fred.position,
+                    color != $fred.color )
 
-            <span class="c1">//5.Tom没有排在第1位或第4位，也没有穿橙色衣服
-</span><span class="c1"></span>            <span class="err">$</span><span class="nx">tom</span> <span class="p">:</span> <span class="nf">Golfer</span><span class="p">(</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&#34;Tom&#34;</span><span class="p">,</span>
-                    <span class="nx">position</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span>
-                    <span class="nx">position</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">,</span>
-                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
-                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
-                    <span class="nx">position</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">bob</span><span class="p">.</span><span class="nx">position</span><span class="p">,</span>
-                    <span class="nx">color</span> <span class="o">!=</span> <span class="s">&#34;orange&#34;</span><span class="p">,</span>
-                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">color</span><span class="p">,</span>
-                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nx">color</span><span class="p">,</span>
-                    <span class="nx">color</span> <span class="o">!=</span> <span class="err">$</span><span class="nx">bob</span><span class="p">.</span><span class="nx">color</span> <span class="p">)</span>
+            //4.Bob穿着格子短裤
+            $bob : Golfer( name == &quot;Bob&quot;,
+                    position != $fred.position,
+                    position != $joe.position,
+                    color == &quot;plaid&quot;,
+                    color != $fred.color,
+                    color != $joe.color )
 
-            <span class="c1">//2.Fred右边紧挨着的球员穿蓝色衣服
-</span><span class="c1"></span>            <span class="nf">Golfer</span><span class="p">(</span> <span class="nx">position</span> <span class="o">==</span> <span class="p">(</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nx">position</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">),</span>
-                        <span class="nx">color</span> <span class="o">==</span> <span class="s">&#34;blue&#34;</span><span class="p">,</span>
-                        <span class="nx">this</span> <span class="nf">in</span> <span class="p">(</span> <span class="err">$</span><span class="nx">joe</span><span class="p">,</span> <span class="err">$</span><span class="nx">bob</span><span class="p">,</span> <span class="err">$</span><span class="nx">tom</span> <span class="p">)</span> <span class="p">)</span>
+            //5.Tom没有排在第1位或第4位，也没有穿橙色衣服
+            $tom : Golfer( name == &quot;Tom&quot;,
+                    position != 1,
+                    position != 4,
+                    position != $fred.position,
+                    position != $joe.position,
+                    position != $bob.position,
+                    color != &quot;orange&quot;,
+                    color != $fred.color,
+                    color != $joe.color,
+                    color != $bob.color )
 
-        <span class="nx">then</span>
-            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span> <span class="s">&#34;Fred &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nf">getPosition</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">fred</span><span class="p">.</span><span class="nf">getColor</span><span class="p">()</span> <span class="p">);</span>
-            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span> <span class="s">&#34;Joe &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nf">getPosition</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">joe</span><span class="p">.</span><span class="nf">getColor</span><span class="p">()</span> <span class="p">);</span>
-            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span> <span class="s">&#34;Bob &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">bob</span><span class="p">.</span><span class="nf">getPosition</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">bob</span><span class="p">.</span><span class="nf">getColor</span><span class="p">()</span> <span class="p">);</span>
-            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nb">println</span><span class="p">(</span> <span class="s">&#34;Tom &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">tom</span><span class="p">.</span><span class="nf">getPosition</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="err">$</span><span class="nx">tom</span><span class="p">.</span><span class="nf">getColor</span><span class="p">()</span> <span class="p">);</span>
-    <span class="nx">end</span></pre></td></tr></table>
-</div>
-</div></li>
+            //2.Fred右边紧挨着的球员穿蓝色衣服
+            Golfer( position == ( $fred.position + 1 ),
+                        color == &quot;blue&quot;,
+                        this in ( $joe, $bob, $tom ) )
+
+        then
+            System.out.println( &quot;Fred &quot; + $fred.getPosition() + &quot; &quot; + $fred.getColor() );
+            System.out.println( &quot;Joe &quot; + $joe.getPosition() + &quot; &quot; + $joe.getColor() );
+            System.out.println( &quot;Bob &quot; + $bob.getPosition() + &quot; &quot; + $bob.getColor() );
+            System.out.println( &quot;Tom &quot; + $tom.getPosition() + &quot; &quot; + $tom.getColor() );
+    end
+</code></pre></li>
 </ul>
     </div>
 
@@ -1235,7 +908,7 @@ end</pre></td></tr></table>
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script>

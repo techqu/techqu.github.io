@@ -46,7 +46,7 @@
 <meta property="og:description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://techqu.github.io/" />
-<meta property="og:updated_time" content="2019-01-14T14:53:02&#43;08:00"/>
+<meta property="og:updated_time" content="2019-01-15T10:53:02&#43;08:00"/>
 
 <meta itemprop="name" content="Quguang 学习笔记">
 <meta itemprop="description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等">
@@ -120,6 +120,104 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/transaction-tcc/">分布式事务-TCC事务：最终一致性</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-15 </span>
+      <div class="post-category">
+          <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
+          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"> 分布式 </a>
+          </div>
+        <span class="more-meta"> 约 3582 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      TCC 事务：最终一致性 方案简介 TCC（Try-Confirm-Cancel）的概念，最早是由 Pat Helland 于 2007 年发表的一篇名为《Life beyond Distributed Transactions:an Aposta
+    </div>
+    <div class="read-more">
+      <a href="/post/transaction-tcc/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/transaction-local-msg-tb/">分布式事务-本地消息表：最终一致性</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-15 </span>
+      <div class="post-category">
+          <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
+          </div>
+        <span class="more-meta"> 约 1159 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      本地消息表：最终一致性 方案简介 本地消息表的方案最初是由 eBay 提出，核心思路是将分布式事务拆分成本地事务进行处理。 方案通过在事务主动发起方额外新建
+    </div>
+    <div class="read-more">
+      <a href="/post/transaction-local-msg-tb/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/distributed-consistency/">从分布式一致性谈到CAP理论、BASE理论、分布式事务</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-14 </span>
+      <div class="post-category">
+          <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
+          </div>
+        <span class="more-meta"> 约 4363 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>什么是事务，简单说事务就是要么全不做，要么全做。一部分做一部分不做就会出一致性问题。</p>
+
+<p>传统的单体应用不会横跨多个数据库，可以通过单机事务保证一致性。</p>
+
+<p>然而在海量数据的场景下，需要对数据库做拆分，即分库分表，而Cobar、MyCat这类分库分表中间并不提供分布式事务的特性，并且基于二阶段提交的分布式事务性能较差，对于大多数业务场景来说，并不需要强一致，只需要保证最终一致性即可。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/distributed-consistency/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/transaction-2pc/">分布式事务-2PC(二阶段提交)</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-14 </span>
+      <div class="post-category">
+          <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
+          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"> 分布式 </a>
+          </div>
+        <span class="more-meta"> 约 1994 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      2PC(二阶段提交)方案：强一致性 方案简介 二阶段提交协议（Two-phase Commit，即 2PC）是常用的分布式事务解决方案，即将事务的提
+    </div>
+    <div class="read-more">
+      <a href="/post/transaction-2pc/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/transaction-3pc/">分布式事务-3PC(三阶段提交)</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2019-01-14 </span>
@@ -127,7 +225,7 @@
           <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
           <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"> 分布式 </a>
           </div>
-        <span class="more-meta"> 约 3963 字 </span>
+        <span class="more-meta"> 约 3876 字 </span>
         <span class="more-meta"> 预计阅读 8 分钟 </span>
     </div>
   </header>
@@ -138,118 +236,6 @@
     </div>
     <div class="read-more">
       <a href="/post/transaction-3pc/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/what-is-devops/">什么是Devops？</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-13 </span>
-      <div class="post-category">
-          <a href="/categories/tech/"> Tech </a>
-          </div>
-        <span class="more-meta"> 约 1244 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <blockquote>
-<p>DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。</p>
-</blockquote>
-
-<p>它不仅仅是流程，它不仅仅是产品或工具，它完全是人员，流程和工具，共同努力实现目标。最终以小增量单位实现价值，持续交付给终端用户，我认为这非常重要。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/what-is-devops/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/devops-in-action/">Devops实践</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-13 </span>
-      <div class="post-category">
-          <a href="/categories/tech/"> Tech </a>
-          </div>
-        <span class="more-meta"> 约 1863 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="1-配置管理">1、配置管理</h2>
-
-<p>很多应用程序需要一些配置通过组合的配置文件，命令行参数和环境变量。
-这些配置应该与镜像内容分离以保持容器化应用程序的可移植性。</p>
-
-<p>方案一、第三方产品
-携程apollo</p>
-
-<p>方案二、k8s的configmap+ansible
-ConfigMap API资源提供了将配置数据注入容器的机制，同时保持容器不受kubernetes的影响。ConfigMap可用于存储细粒度信息如单个属性，或粗粒度信息如整个配置文件或JSON对象。</p>
-
-<p>视频介绍 <a href="http://fast.wistia.net/embed/iframe/qrqfj371b6?popover=true">ansible来了</a></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/devops-in-action/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/reading-note-your-light-on/">《你的灯亮着吗?》-读书笔记</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-12 </span>
-      <div class="post-category">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"> 读书笔记 </a>
-          </div>
-        <span class="more-meta"> 约 15 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      在微信读书app上很快就看完了
-    </div>
-    <div class="read-more">
-      <a href="/post/reading-note-your-light-on/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/reading-note-influence/">《影响力》-读书笔记</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-12 </span>
-      <div class="post-category">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"> 读书笔记 </a>
-          <a href="/categories/%E5%BF%83%E7%90%86%E5%AD%A6/"> 心理学 </a>
-          </div>
-        <span class="more-meta"> 约 444 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>主要讲的是作者对于顺从性的研究，到底是什么因素让一个人向另一个人说了“行”？哪些技术能最有效地利用这些因素。作者研究了顺从心理学，先是在实验室，后来在社会上进行参与式观察。</p>
-
-<p>顺从职业者：销售员、筹款家、广告商等。</p>
-
-<p>最后总结了六个基本类型，每一类型都是从一种能指导人们行为的基本心理原则衍生出来的，正因为如此，这些策略就具有了左右人们行为的力量，分别是 ：</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/reading-note-influence/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -310,7 +296,7 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>

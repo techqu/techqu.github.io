@@ -1,6 +1,16 @@
 
 在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。
 
+```Java
+
+ public class Test {
+     public static void main(String[] args) {
+         HelloWorldService helloWorldService = new HelloWorldServiceImpl();
+         helloWorldService.sayHello("test");
+     }
+ }
+```
+
 而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：
 
 1. 要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？
@@ -11,33 +21,6 @@
 <!--more-->
 
 
-
-```Java
-
-public interface HelloWorldService {
-    String sayHello(String msg);
-}
-
-
-
-public class HelloWorldServiceImpl implements HelloWorldService {
-    @Override
-    public String sayHello(String msg) {
-        String result = "hello world " + msg;
-        System.out.println(result);
-        return result;
-    }
-
-```
-```Java
-
- public class Test {
-     public static void main(String[] args) {
-         HelloWorldService helloWorldService = new HelloWorldServiceImpl();
-         helloWorldService.sayHello("test");
-     }
- }
-```
 ## 1 如何调用他人的远程服务？
 由于各服务部署在不同机器，服务间的调用免不了网络通信过程，服务消费方每调用一个服务都要写一坨网络通信相关的代码，不仅复杂而且极易出错。
 
@@ -45,12 +28,10 @@ public class HelloWorldServiceImpl implements HelloWorldService {
 
 这种方式其实就是**RPC（Remote Procedure Call Protocol）**，在各大互联网公司中被广泛使用，如阿里巴巴的**hsf、dubbo（开源）、Facebook的thrift（开源）、Google grpc（开源）、Twitter的finagle**等。
 
-RPC基本流程图： 
+
+要让网络通信细节对使用者透明，我们需要对通信细节进行封装，我们先看下一个RPC调用的流程涉及到哪些通信细节：
+
 ![java-rpc](/img/java-rpc.png)
-要让网络通信细节对使用者透明，我们自然需要对通信细节进行封装，我们先看下一个RPC调用的流程：
-
-
-
 
 1）服务消费方（client）调用以本地调用方式调用服务；
 
@@ -206,7 +187,7 @@ public class Test {
 
 如下图所示，线程A和线程B同时向client socket发送请求requestA和requestB，socket先后将requestB和requestA发送至server，而server可能将responseA先返回，尽管requestA请求到达时间更晚。我们需要一种机制保证responseA丢给ThreadA，responseB丢给ThreadB。
 
-
+![java-rpc-client-server](/img/java-rpc-client-server.png)
 
 #### 怎么解决呢？
 
@@ -253,9 +234,9 @@ private void setDone(Response res) {
 - Etcd
 
 
-简单来讲，zookeeper可以充当一个服务注册表（Service Registry），让多个服务提供者形成一个集群，让服务消费者通过服务注册表获取具体的服务访问地址（ip+端口）去访问具体的服务提供者。如下图所示：
+简单来讲，zookeeper可以充当一个**服务注册表（Service Registry）**，让多个服务提供者形成一个集群，让**服务消费者**通过服务注册表获取具体的服务访问地址（ip+端口）去访问具体的服务提供者。如下图所示：
 
-
+![java-rpc-zk](/img/java-rpc-zk.png)
 
 具体来说，zookeeper就是个分布式文件系统，每当一个服务提供者部署后都要将自己的服务注册到zookeeper的某一路径上:` /{service}/{version}/{ip:port}`, 比如我们的HelloWorldService部署到两台机器，那么zookeeper上就会创建两条目录：分别为`/HelloWorldService/1.0.0/100.19.20.01:16888`  `/HelloWorldService/1.0.0/100.19.20.02:16888`。
 
@@ -266,8 +247,14 @@ zookeeper提供了“心跳检测”功能，它会定时向各个服务提供�
 更为重要的是zookeeper 与生俱来的容错容灾能力（比如leader选举），可以确保服务注册表的高可用性。
 
 
+## 3 RPC与web service
+### RPC
 
-## 3 小结
+![java-rpc-framework](/img/java-rpc-framework.png)
+
+### web service
+![java-rpc-webservice-framework](/img/java-rpc-webservice-framework.png)
+## 4 小结
 使用到的技术：
 
 1. 动态代理 
@@ -286,4 +273,4 @@ RPC几乎是每一个从学校进入互联网公司的同学都要首先学习�
 - Apache Thrift ：https://thrift.apache.org/
 
 
-> 原文地址：http://blog.jobbole.com/92290/
+> 原文地址：https://my.oschina.net/hosee/blog/711632

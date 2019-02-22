@@ -21,6 +21,42 @@
     </item>
     
     <item>
+      <title>OSI七层网络模型分别是哪七层？各运行那些协议？</title>
+      <link>https://techqu.github.io/post/network-osi/</link>
+      <pubDate>Wed, 20 Feb 2019 15:29:44 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/network-osi/</guid>
+      <description>层 协议 应用层 DHCP · DNS · FTP · Gopher · HTTP · IMAP4 · IRC · NNTP · XMPP · POP3 · SIP · SMTP ·SNMP · SSH · TELNET · RPC · RTCP · RTP · RTSP · SDP · SOAP · GTP · STUN · NTP · SSDP 表示层 HTTP/HTML · FTP · Telnet · ASN</description>
+    </item>
+    
+    <item>
+      <title>秒杀系统架构分析与实战</title>
+      <link>https://techqu.github.io/post/java-seckill-action/</link>
+      <pubDate>Mon, 18 Feb 2019 09:08:09 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-seckill-action/</guid>
+      <description>1 秒杀业务分析 正常电子商务流程 （1）查询商品； （2）创建订单； （3）扣减库存； （4）更新订单； （5）付款； （6）卖家发货； 秒杀业务的特性 （1</description>
+    </item>
+    
+    <item>
+      <title>如何设计一个秒杀系统</title>
+      <link>https://techqu.github.io/post/java-how-to-design-seckill/</link>
+      <pubDate>Mon, 18 Feb 2019 08:56:11 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-how-to-design-seckill/</guid>
+      <description>什么是秒杀 秒杀场景一般会在电商网站举行一些活动或者节假日在12306网站上抢票时遇到。对于电商网站中一些稀缺或者特价商品，电商网站一般会在约</description>
+    </item>
+    
+    <item>
+      <title>分布式系统唯一ID生成方案汇总</title>
+      <link>https://techqu.github.io/post/java-distributed-id/</link>
+      <pubDate>Sun, 17 Feb 2019 12:57:39 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-distributed-id/</guid>
+      <description>&lt;p&gt;系统唯一ID是我们在设计一个系统的时候常常会遇见的问题，也常常为这个问题而纠结。生成ID的方法有很多，适应不同的场景、需求以及性能要求。所以有些比较复杂的系统会有多个ID生成的策略。下面就介绍一些常见的ID生成策略。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Java Interview Resource List</title>
       <link>https://techqu.github.io/post/java-interview-resource-list/</link>
       <pubDate>Fri, 15 Feb 2019 17:40:34 +0800</pubDate>
@@ -45,6 +81,15 @@
       
       <guid>https://techqu.github.io/post/java-rpc/</guid>
       <description>&lt;p&gt;在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Java&#34;&gt;
+ public class Test {
+     public static void main(String[] args) {
+         HelloWorldService helloWorldService = new HelloWorldServiceImpl();
+         helloWorldService.sayHello(&amp;quot;test&amp;quot;);
+     }
+ }
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：&lt;/p&gt;
 

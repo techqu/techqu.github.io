@@ -6,10 +6,19 @@
     <description>Recent content in 网络协议 on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 16 Jan 2019 18:51:01 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Feb 2019 15:29:44 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OSI七层网络模型分别是哪七层？各运行那些协议？</title>
+      <link>https://techqu.github.io/post/network-osi/</link>
+      <pubDate>Wed, 20 Feb 2019 15:29:44 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/network-osi/</guid>
+      <description>层 协议 应用层 DHCP · DNS · FTP · Gopher · HTTP · IMAP4 · IRC · NNTP · XMPP · POP3 · SIP · SMTP ·SNMP · SSH · TELNET · RPC · RTCP · RTP · RTSP · SDP · SOAP · GTP · STUN · NTP · SSDP 表示层 HTTP/HTML · FTP · Telnet · ASN</description>
+    </item>
     
     <item>
       <title>Ipconfig:最熟悉又陌生的命令行</title>

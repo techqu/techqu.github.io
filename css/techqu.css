@@ -26,17 +26,28 @@
   font-size: 1.1em;
 }
 
-
+.post .post-content h5,.post .post-content h6 {
+  font-size: 1em;
+}
 .post .post-content .read-more {
     text-align: right;
 }
 
 .post .post-content code {
-  font-size: 18px;
+  font-size: 14px;
+  background-color: #f8f8f8;
 }
+
+
+.post .post-content pre{
+  /* background-color:unset; */
+  background-color: #f8f8f8;
+} 
+
 html{
-  font-size: 18px;
+  font-size: 16px;
 }
+
 body{
   line-height: 1.8;
   border-top:unset;

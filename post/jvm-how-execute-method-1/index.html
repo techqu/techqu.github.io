@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2018-12-25T22:52:53&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-25T22:52:53&#43;08:00" />
-<meta itemprop="wordCount" content="1959">
+<meta itemprop="wordCount" content="1917">
 
 
 
@@ -135,7 +135,7 @@
             <a href="/categories/tech/"> Tech </a>
             <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
             </div>
-          <span class="more-meta"> 约 1959 字 </span>
+          <span class="more-meta"> 约 1917 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -166,22 +166,14 @@
 <h2 id="一-重载与重写">一、重载与重写</h2>
 
 <p>同一个类中出现多个名字相同，并且参数类型相同的方法，那么他们的参数类型必须不同。这些方法之间的关系，我们称为重载。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">小知识：这个限制可以通过字节码工具绕开。
+
+<pre><code>小知识：这个限制可以通过字节码工具绕开。
 也就是说，在编译完成之后，我们可以再向 class 文件中添加方法名和参数类型相同，而返回类型不同的方法。
 当这种包括多个方法名相同、参数类型相同，而返回类型不同的方法的类，出现在 Java 编译器的用户类路径上时，它是怎么确定需要调用哪个方法的呢？
 当前版本的 Java 编译器会直接选取第一个方法名以及参数类型匹配的方法。
-并且，它会根据所选取方法的返回类型来决定可不可以通过编译，以及需不需要进行值转换等。</pre></td></tr></table>
-</div>
-</div>
+并且，它会根据所选取方法的返回类型来决定可不可以通过编译，以及需不需要进行值转换等。
+</code></pre>
+
 <h2 id="二-jvm-的静态绑定和动态绑定">二、JVM 的静态绑定和动态绑定</h2>
 
 <h3 id="1-java虚拟机是怎么识别方法的">1.Java虚拟机是怎么识别方法的。</h3>
@@ -205,64 +197,36 @@ Java虚拟机中关于方法重写的判断同样基于方法描述符。如果�
 <li>invokeinterface：用于调用接口方法。</li>
 <li>invokedynamic：用于调用动态方法。</li>
 </ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">客户</span> <span class="o">{</span>
-  <span class="kt">boolean</span> <span class="nf">isVIP</span><span class="o">();</span>
-<span class="o">}</span>
 
-<span class="kd">class</span> <span class="nc">商户</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">折后价格</span> <span class="o">(</span><span class="kt">double</span> <span class="n">原价</span><span class="o">,</span> <span class="n">客户</span> <span class="n">某客户</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="n">原价</span> <span class="o">*</span> <span class="n">0</span><span class="o">.</span><span class="na">8d</span><span class="o">;</span>
-  <span class="o">}</span>
-<span class="o">}</span>
+<pre><code class="language-java">interface 客户 {
+  boolean isVIP();
+}
 
-<span class="kd">class</span> <span class="nc">奸商</span> <span class="kd">extends</span> <span class="n">商户</span> <span class="o">{</span>
-  <span class="nd">@Override</span>
-  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">折后价格</span> <span class="o">(</span><span class="kt">double</span> <span class="n">原价</span><span class="o">,</span> <span class="n">客户</span> <span class="n">某客户</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">某客户</span><span class="o">.</span><span class="na">isVIP</span><span class="o">())</span> <span class="o">{</span>                         <span class="c1">// invokeinterface
-</span><span class="c1"></span>      <span class="k">return</span> <span class="n">原价</span> <span class="o">*</span> <span class="n">价格歧视</span> <span class="o">();</span>                    <span class="c1">// invokestatic
-</span><span class="c1"></span>    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="kd">super</span><span class="o">.</span> <span class="nf">折后价格</span> <span class="o">(</span><span class="n">原价</span><span class="o">,</span> <span class="n">某客户</span><span class="o">);</span>          <span class="c1">// invokespecial
-</span><span class="c1"></span>    <span class="o">}</span>
-  <span class="o">}</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="nf">价格歧视</span> <span class="o">()</span> <span class="o">{</span>
-    <span class="c1">// 咱们的杀熟算法太粗暴了，应该将客户城市作为随机数生成器的种子。
-</span><span class="c1"></span>    <span class="k">return</span> <span class="k">new</span> <span class="n">Random</span><span class="o">()</span>                          <span class="c1">// invokespecial
-</span><span class="c1"></span>           <span class="o">.</span><span class="na">nextDouble</span><span class="o">()</span>                         <span class="c1">// invokevirtual
-</span><span class="c1"></span>           <span class="o">+</span> <span class="n">0</span><span class="o">.</span><span class="na">8d</span><span class="o">;</span>
-  <span class="o">}</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+class 商户 {
+  public double 折后价格 (double 原价, 客户 某客户) {
+    return 原价 * 0.8d;
+  }
+}
+
+class 奸商 extends 商户 {
+  @Override
+  public double 折后价格 (double 原价, 客户 某客户) {
+    if (某客户.isVIP()) {                         // invokeinterface
+      return 原价 * 价格歧视 ();                    // invokestatic
+    } else {
+      return super. 折后价格 (原价, 某客户);          // invokespecial
+    }
+  }
+  public static double 价格歧视 () {
+    // 咱们的杀熟算法太粗暴了，应该将客户城市作为随机数生成器的种子。
+    return new Random()                          // invokespecial
+           .nextDouble()                         // invokevirtual
+           + 0.8d;
+  }
+}
+
+</code></pre>
+
 <h2 id="三-调用指令的符号引用">三、调用指令的符号引用</h2>
 
 <p>在编译过程中，我们并不知道目标方法的具体内存地址。因此，Java编译器会暂时用符号引用来表示该目标方法。
@@ -271,26 +235,10 @@ Java虚拟机中关于方法重写的判断同样基于方法描述符。如果�
 <p>符号引用存储在class文件的常量池之中。根据目标方法是否为接口方法，这些引用可分为接口符号引用和非接口符号引用。</p>
 
 <p>利用“javap -v”打印某个类的常量池</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">// 在奸商.class 的常量池中，
-//#16 为接口符号引用，指向接口方法 &#34; 客户.isVIP()&#34;。
-//而 #22 为非接口符号引用，指向静态方法 &#34; 奸商. 价格歧视 ()&#34;。
+
+<pre><code>// 在奸商.class 的常量池中，
+//#16 为接口符号引用，指向接口方法 &quot; 客户.isVIP()&quot;。
+//而 #22 为非接口符号引用，指向静态方法 &quot; 奸商. 价格歧视 ()&quot;。
 
 
 
@@ -300,9 +248,9 @@ Constant pool:
   #16 = InterfaceMethodref #27.#29        // 客户.isVIP:()Z
 ...
   #22 = Methodref          #1.#33         // 奸商. 价格歧视:()D
-...</pre></td></tr></table>
-</div>
-</div>
+...
+</code></pre>
+
 <p>上一篇中我曾提到过，在执行使用了符号引用的字节码前，Java虚拟机需要解析这些符号引用，并替换为实际引用。</p>
 
 <p>对于非接口符号引用，假定该符号引用所指向的类为C，则Java虚拟机会按照如下步骤进行查找。</p>
@@ -399,7 +347,7 @@ Constant pool:
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>

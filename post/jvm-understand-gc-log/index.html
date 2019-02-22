@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2018-12-24T19:03:40&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-24T19:03:40&#43;08:00" />
-<meta itemprop="wordCount" content="3383">
+<meta itemprop="wordCount" content="3325">
 
 
 
@@ -134,7 +134,7 @@
         <div class="post-category">
             <a href="/categories/tech/"> Tech </a>
             </div>
-          <span class="more-meta"> 约 3383 字 </span>
+          <span class="more-meta"> 约 3325 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -164,22 +164,8 @@
 <p>1、GC 分为两种：Minor GC、Full GC ( 或称为 Major GC )。</p>
 
 <p>2、Minor GC 是发生在新生代中的垃圾收集动作，所采用的是复制算法。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">a、新生代几乎是所有 Java 对象出生的地方，即 Java 对象申请的内存以及存放都是在这个地方。
+
+<pre><code>a、新生代几乎是所有 Java 对象出生的地方，即 Java 对象申请的内存以及存放都是在这个地方。
 b、Java 中的大部分对象通常不需长久存活，具有朝生夕灭的性质。
 c、当一个对象被判定为 “死亡” 的时候，GC 就有责任来回收掉这部分对象的内存空间。
 d、新生代是 GC 收集垃圾的频繁区域。
@@ -189,9 +175,9 @@ f、 然后清理所使用过的 Eden 以及 Survivor 区域 ( 即 from 区域 )
 g、以后对象在 Survivor 区每熬过一次 Minor GC，就将对象的年龄 + 1，
 h、当对象的年龄达到某个值时 ( 默认是 15 岁，可以通过参数 -XX:MaxTenuringThreshold 来设定 )，这些对象就会成为    
         老年代。
-j、但这也不是一定的，对于一些较大的对象 ( 即需要分配一块较大的连续内存空间 ) 则是直接进入到老年代。</pre></td></tr></table>
-</div>
-</div>
+j、但这也不是一定的，对于一些较大的对象 ( 即需要分配一块较大的连续内存空间 ) 则是直接进入到老年代。
+</code></pre>
+
 <p>3、Full GC 是发生在老年代的垃圾收集动作，所采用的是标记-清除算法。</p>
 
 <ol>
@@ -238,30 +224,18 @@ CPU时间与墙钟时间的区别是，墙钟时间包括各种非运算的等�
 </ul>
 
 <h2 id="gc-日志2">GC 日志2</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>   
-     <span class="n">Object</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>   
-     <span class="n">System</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>  
-     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span> 
-     <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>   
-     <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>   
-     <span class="n">System</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>  
-     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-java">public static void main(String[] args) {   
+     Object obj = new Object();   
+     System.gc();  
+     System.out.println(); 
+     obj = new Object();   
+     obj = new Object();   
+     System.gc();  
+     System.out.println();
+}
+</code></pre>
+
 <blockquote>
 <p>设置 JVM 参数为 -XX:+PrintGCDetails，使得控制台能够显示 GC 相关的日志信息，执行上面代码，下面是其中一次执行的结果。</p>
 </blockquote>
@@ -270,81 +244,37 @@ CPU时间与墙钟时间的区别是，墙钟时间包括各种非运算的等�
 <img src="/img/gc-log2-2.png" alt="gc-log" /></p>
 
 <h2 id="gc-日志3">GC 日志3</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/** 
-</span><span class="cm">  -Xms60m 
-</span><span class="cm">  -Xmx60m 
-</span><span class="cm">  -Xmn20m 
-</span><span class="cm">  -XX:NewRatio=2 ( 若 Xms = Xmx, 并且设定了 Xmn, 那么该项配置就不需要配置了 ) 
-</span><span class="cm">  -XX:SurvivorRatio=8 
-</span><span class="cm">  -XX:PermSize=30m  (PermSize=30m; support was removed in 8.0)
-</span><span class="cm">  -XX:MaxPermSize=30m (MaxPermSize=30m; support was removed in 8.0)
-</span><span class="cm">  -XX:+PrintGCDetails
-</span><span class="cm">  */</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-     <span class="n">newTest</span><span class="o">().</span><span class="na">doTest</span><span class="o">();</span>
-<span class="o">}</span>
 
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">doTest</span><span class="o">(){</span>
-     <span class="n">Integer</span> <span class="n">M</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="n">1024</span><span class="o">*</span> <span class="n">1024</span><span class="o">*</span> <span class="n">1</span><span class="o">);</span>  <span class="c1">//单位, 兆(M)
-</span><span class="c1"></span>     <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1</span><span class="o">*</span> <span class="n">M</span><span class="o">];</span> <span class="c1">//申请 1M 大小的内存空间
-</span><span class="c1"></span>     <span class="n">bytes</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  <span class="c1">//断开引用链
-</span><span class="c1"></span>     <span class="n">System</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>   <span class="c1">//通知 GC 收集垃圾
-</span><span class="c1"></span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-     <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1</span><span class="o">*</span> <span class="n">M</span><span class="o">];</span>  <span class="c1">//重新申请 1M 大小的内存空间
-</span><span class="c1"></span>     <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1</span><span class="o">*</span> <span class="n">M</span><span class="o">];</span>  <span class="c1">//再次申请 1M 大小的内存空间
-</span><span class="c1"></span>     <span class="n">System</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>
-     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+<pre><code class="language-java">/** 
+  -Xms60m 
+  -Xmx60m 
+  -Xmn20m 
+  -XX:NewRatio=2 ( 若 Xms = Xmx, 并且设定了 Xmn, 那么该项配置就不需要配置了 ) 
+  -XX:SurvivorRatio=8 
+  -XX:PermSize=30m  (PermSize=30m; support was removed in 8.0)
+  -XX:MaxPermSize=30m (MaxPermSize=30m; support was removed in 8.0)
+  -XX:+PrintGCDetails
+  */
+public static void main(String[] args) {
+     newTest().doTest();
+}
+
+public void doTest(){
+     Integer M = new Integer(1024* 1024* 1);  //单位, 兆(M)
+     byte[] bytes = new byte[1* M]; //申请 1M 大小的内存空间
+     bytes = null;  //断开引用链
+     System.gc();   //通知 GC 收集垃圾
+     System.out.println();
+     bytes = new byte[1* M];  //重新申请 1M 大小的内存空间
+     bytes = new byte[1* M];  //再次申请 1M 大小的内存空间
+     System.gc();
+     System.out.println();
+}
+</code></pre>
+
 <p>按上面代码中注释的信息设定 jvm 相关的参数项，并执行程序，下面是一次执行完成控制台打印的结果：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">[ GC [ PSYoungGen:  1351K -&gt; 288K (18432K) ]  1351K -&gt; 288K (59392K), 0.0012389 secs ]  [ Times: user=0.00 sys=0.00, real=0.00 secs ]
+
+<pre><code>[ GC [ PSYoungGen:  1351K -&gt; 288K (18432K) ]  1351K -&gt; 288K (59392K), 0.0012389 secs ]  [ Times: user=0.00 sys=0.00, real=0.00 secs ]
 [ Full GC (System)  [ PSYoungGen:  288K -&gt; 0K (18432K) ]  [ PSOldGen:  0K -&gt; 160K (40960K) ]  288K -&gt; 160K (59392K)  [ PSPermGen:  2942K -&gt; 2942K (30720K) ],  0.0057649 secs ] [ Times:  user=0.00  sys=0.00,  real=0.01 secs ] 
 [ GC [ PSYoungGen:  2703K -&gt; 1056K (18432K) ]  2863K -&gt; 1216K(59392K),  0.0008206 secs ]  [ Times: user=0.00 sys=0.00, real=0.00 secs ]
 [ Full GC (System)  [ PSYoungGen:  1056K -&gt; 0K (18432K) ]  [ PSOldGen:  160K -&gt; 1184K (40960K) ]  1216K -&gt; 1184K (59392K)  [ PSPermGen:  2951K -&gt; 2951K (30720K) ], 0.0052445 secs ]  [ Times: user=0.02 sys=0.00, real=0.01 secs ] 
@@ -356,9 +286,9 @@ Heap PSYoungGen     
  PSOldGen        total 40960K, used 1184K [0x00000000fc400000, 0x00000000fec00000, 0x00000000fec00000)  
    object space 40960K, 2% used [0x00000000fc400000,0x00000000fc5281f8,0x00000000fec00000) 
  PSPermGen       total 30720K, used 2959K [0x00000000fa600000, 0x00000000fc400000, 0x00000000fc400000)  
-   object space 30720K, 9% used [0x00000000fa600000,0x00000000fa8e3ce0,0x00000000fc400000)</pre></td></tr></table>
-</div>
-</div>
+   object space 30720K, 9% used [0x00000000fa600000,0x00000000fa8e3ce0,0x00000000fc400000)
+</code></pre>
+
 <ol>
 <li><p>堆中新生代的内存空间为 18432K ( 约 18M )，eden 的内存空间为 16384K ( 约 16M)，from / to survivor 的内存空间为 2048K ( 约 2M)。</p></li>
 
@@ -467,7 +397,7 @@ Heap PSYoungGen     
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>

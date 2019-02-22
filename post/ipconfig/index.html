@@ -55,7 +55,7 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr">
 
 <meta itemprop="datePublished" content="2019-01-16T18:51:01&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-16T18:51:01&#43;08:00" />
-<meta itemprop="wordCount" content="3224">
+<meta itemprop="wordCount" content="3178">
 
 
 
@@ -138,7 +138,7 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr"/>
             <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
             <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"> 网络协议 </a>
             </div>
-          <span class="more-meta"> 约 3224 字 </span>
+          <span class="more-meta"> 约 3178 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -167,40 +167,22 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr"/>
       <p>从一行查看IP地址的命令开始讲解，
 Window上是ipconfig，Linux上是ifconfig，和 ip addr</p>
 
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">root@test:~# ip addr
-<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default 
-    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
-    inet <span class="m">127</span>.0.0.1/8 scope host lo
+<pre><code class="language-shell">root@test:~# ip addr
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
     inet6 ::1/128 scope host 
        valid_lft forever preferred_lft forever
 
-<span class="m">2</span>: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether fa:16:3e:c7:79:75 brd ff:ff:ff:ff:ff:ff
-    inet <span class="m">10</span>.100.122.2/24 brd <span class="m">10</span>.100.122.255 scope global eth0
+    inet 10.100.122.2/24 brd 10.100.122.255 scope global eth0
        valid_lft forever preferred_lft forever
     inet6 fe80::f816:3eff:fec7:7975/64 scope link 
-       valid_lft forever preferred_lft forever</code></pre></td></tr></table>
-</div>
-</div>
+       valid_lft forever preferred_lft forever
+</code></pre>
+
 <p>这个命令显示了这台机器上所有的网卡。大部分的网卡都会有一个IP地址，当然，这不是必须的。</p>
 
 <p>如上，<code>10.100.122.2</code>就是一个IP地址。这个地址被点分割为四个部分，每个部分8个bit，所以IP地址总共是32位。这样产生的IP地址的数量很快就不够用了。因为不够用，于是就有了IPv6，也就是上面的输出结果里面<code>inet6 fe80::f816:3eff:fec7:7975/64</code>。这个有128位，现在看是够用了。</p>
@@ -246,20 +228,8 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr</p>
 
 <p>在某些情况下，我们需要将多个小网络合并成一个大网络，每个网络主机ID变多，
 网络ID变少，原来的主机ID位向网络ID位借位。其目的是节约路由器的记录数</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">举例：
+
+<pre><code>举例：
 220.78.10101000.0   168
 220.78.10101001.0   169
 220.78.10101010.0   170
@@ -267,9 +237,9 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr</p>
 220.78.10101100.0   172
 220.78.10101101.0   173
 220.78.10101110.0   174
-220.78.10101111.0   175</pre></td></tr></table>
-</div>
-</div>
+220.78.10101111.0   175
+</code></pre>
+
 <p>这8个IP地址就可以合并为一个ip来节省路由器的资源，加快访问速度,<code>220.78.168.0/21</code></p>
 
 <h2 id="公有ip和私有ip">公有IP和私有IP</h2>
@@ -347,75 +317,40 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr</p>
 
 <li><p>用CIDR表示：</p></li>
 </ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">  step1：将子网掩码由二进制转换为十进制
+
+<pre><code>  step1：将子网掩码由二进制转换为十进制
               255.255.224.0
               11111111.11111111.11100000.00000000
   step2：CIDR表示为
-              172.16.100.200/19</pre></td></tr></table>
-</div>
-</div>
+              172.16.100.200/19
+</code></pre>
+
 <ol>
 <li>网络ID是多少</li>
 </ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">step1：将IP地址由二进制转换为十进制
+
+<pre><code>step1：将IP地址由二进制转换为十进制
             10101100.00010000.01100100.11001000
 step2：将二进制的IP地址与二进制的子网掩码进行运算 子网掩码为1时保留原IP位 否则为0
             1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 0 0 1 0 0. 1 1 0 0 1 0 0 0
             1 1 1 1 1 1 1 1. 1 1 1 1 1 1 1 1. 1 1 1 0 0 0 0 0. 0 0 0 0 0 0 0 0
         =   1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 0 0 0 0 0. 0 0 0 0 0 0 0 0
 step3:将二进制的结果转换为十进制
-            172.16.96.0/19</pre></td></tr></table>
-</div>
-</div>
+            172.16.96.0/19
+</code></pre>
+
 <ol>
 <li>网络主机数有多少</li>
 </ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">num=2^(32-19)-2</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>num=2^(32-19)-2
+</code></pre>
+
 <ol>
 <li>网络主机的范围是多少</li>
 </ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">step1：将长度为子网掩码为1的数IP记录下来（即网络ID）
+
+<pre><code>step1：将长度为子网掩码为1的数IP记录下来（即网络ID）
             1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 x x x x x . x x x x x x x x
             1 1 1 1 1 1 1 1. 1 1 1 1 1 1 1 1. 1 1 1 
 step2：将x全部变为0即最小值 将x全部变为1即最大值
@@ -423,9 +358,9 @@ step2：将x全部变为0即最小值 将x全部变为1即最大值
             1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 x 1 1 1 1 .255
 step3：将二进制的结果转换为十进制（ip的最后一组不能为0和255）
             最小值：172.16.96.1
-            最大值：172.16.177.254</pre></td></tr></table>
-</div>
-</div>
+            最大值：172.16.177.254
+</code></pre>
+
 <blockquote>
 <p>参考文章：<a href="https://time.geekbang.org/column/article/7772">https://time.geekbang.org/column/article/7772</a></p>
 </blockquote>
@@ -502,7 +437,7 @@ step3：将二进制的结果转换为十进制（ip的最后一组不能为0和
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>

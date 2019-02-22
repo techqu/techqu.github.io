@@ -5,3 +5,4 @@
 - [GITHUB-Snailclimb/JavaGuide](https://github.com/Snailclimb/JavaGuide)
 - [GITHUB-kdn251/interviews](https://github.com/kdn251/interviews/blob/master/README-zh-cn.md)
 - [GITHUB-crossoverjie](https://github.com/crossoverJie/JCSprout) , 想要获得更好的阅读体验可以点击[个人博客地址](https://crossoverjie.top/JCSprout/#/)
+- [GITHUB-《后端架构师技术图谱》](https://github.com/xingshaocheng/architect-awesome)

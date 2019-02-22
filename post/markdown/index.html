@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2018-12-20T10:58:38&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-20T10:58:38&#43;08:00" />
-<meta itemprop="wordCount" content="7415">
+<meta itemprop="wordCount" content="7068">
 
 
 
@@ -134,7 +134,7 @@
         <div class="post-category">
             <a href="/categories/tech/"> Tech </a>
             </div>
-          <span class="more-meta"> 约 7415 字 </span>
+          <span class="more-meta"> 约 7068 字 </span>
           <span class="more-meta"> 预计阅读 15 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -273,14 +273,10 @@
 </ol>
 
 <p>给出一些例子代码：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">return shell_exec(&#34;echo $input | $markdown_script&#34;);</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>return shell_exec(&quot;echo $input | $markdown_script&quot;);
+</code></pre>
+
 <p>这是区块引用， 这是区块引用</p>
 
 <p>这是区块引用
@@ -316,45 +312,18 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 <p><img src="/img/home-bg-09.jpg" alt="Alt text" /></p>
 
 <h3 id="代码块">代码块</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">a</span><span class="o">{</span>
-       <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
-       <span class="o">}</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-java">public class a{
+       public static void main (String args[]){
+       }
+}
+</code></pre>
+
 <h3 id="流程图">流程图</h3>
 
 <h4 id="代码如下">代码如下：</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">```flowchart
+
+<pre><code>```flowchart
 st=&gt;start: Start|past:&gt;http://www.google.com[blank]
 e=&gt;end: End:&gt;http://www.google.com
 op1=&gt;operation: My Operation|past
@@ -370,30 +339,12 @@ cond(yes, right)-&gt;c2
 cond(no)-&gt;sub1(left)-&gt;op1
 c2(yes)-&gt;io-&gt;e
 c2(no)-&gt;op2-&gt;e
-```</pre></td></tr></table>
-</div>
-</div>
+```
+</code></pre>
+
 <h4 id="效果">效果</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-flowchart" data-lang="flowchart"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-flowchart" data-lang="flowchart">st=&gt;start: Start|past:&gt;http://www.google.com[blank]
+
+<pre><code class="language-flowchart">st=&gt;start: Start|past:&gt;http://www.google.com[blank]
 e=&gt;end: End:&gt;http://www.google.com
 op1=&gt;operation: My Operation|past
 op2=&gt;operation: Stuff|current
@@ -407,80 +358,48 @@ st-&gt;op1(right)-&gt;cond
 cond(yes, right)-&gt;c2
 cond(no)-&gt;sub1(left)-&gt;op1
 c2(yes)-&gt;io-&gt;e
-c2(no)-&gt;op2-&gt;e</code></pre></td></tr></table>
-</div>
-</div>
+c2(no)-&gt;op2-&gt;e
+</code></pre>
+
 <h3 id="时序图">时序图</h3>
 
 <h4 id="代码如下-1">代码如下：</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">```sequence
+
+<pre><code>```sequence
 Title: Here is a title
 A-&gt;B: Normal line
 B--&gt;C: Dashed line
 C-&gt;&gt;D: Open arrow
 D--&gt;&gt;A: Dashed open arrow
-```</pre></td></tr></table>
-</div>
-</div>
+```
+</code></pre>
+
 <h4 id="效果-1">效果</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-sequence" data-lang="sequence"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sequence" data-lang="sequence">Title: Here is a title
+
+<pre><code class="language-sequence">Title: Here is a title
 A-&gt;B: Normal line
 B--&gt;C: Dashed line
 C-&gt;&gt;D: Open arrow
-D--&gt;&gt;A: Dashed open arrow</code></pre></td></tr></table>
-</div>
-</div>
+D--&gt;&gt;A: Dashed open arrow
+</code></pre>
+
 <p>inline html 测试</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>header1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>header2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>header3<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>内容1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>内容2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>内容3<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;header1&lt;/td&gt;
+        &lt;td&gt;header2&lt;/td&gt;
+        &lt;td&gt;header3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;内容1&lt;/td&gt;
+            &lt;td&gt;内容2&lt;/td&gt;
+            &lt;td&gt;内容3&lt;/td&gt;
+        &lt;/tr&gt;
+&lt;/table&gt;
+
+</code></pre>
+
 <h3 id="html-table">html table</h3>
 
 <table class = "altrowstable">
@@ -572,28 +491,17 @@ D--&gt;&gt;A: Dashed open arrow</code></pre></td></tr></table>
 </blockquote>
 
 <h1 id="markdown">Markdown</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"># H1
+
+<pre><code># H1
 ## H2
 ### H3
 #### H4
 ##### H5
 ###### H6
 ### Duplicate Header
-### Duplicate Header</pre></td></tr></table>
-</div>
-</div>
+### Duplicate Header
+</code></pre>
+
 <h1 id="h1-1">H1</h1>
 
 <h2 id="h2">H2</h2>
@@ -611,20 +519,13 @@ D--&gt;&gt;A: Dashed open arrow</code></pre></td></tr></table>
 <h3 id="duplicate-header-1">Duplicate Header</h3>
 
 <h2 id="paragraphs">Paragraphs</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">This is a paragraph.
+
+<pre><code>This is a paragraph.
 I am still part of the paragraph.
 
-New paragraph.</pre></td></tr></table>
-</div>
-</div>
+New paragraph.
+</code></pre>
+
 <p>This is a paragraph.
 I am still part of the paragraph.</p>
 
@@ -647,52 +548,8 @@ I am still part of the paragraph.</p>
 <p>A footnote with link<sup class="footnote-ref" id="fnref:pa"><a href="#fn:pa">4</a></sup></p>
 
 <h2 id="inline">Inline</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">`inline block`
+
+<pre><code>`inline block`
 
 &lt;kbd&gt;ctrl&lt;/kbd&gt;+&lt;kbd&gt;alt&lt;/kbd&gt;+&lt;kbd&gt;del&lt;/kbd&gt;
 
@@ -732,9 +589,10 @@ __~~_strike italic 2 bold 2_~~__ and _~~__strike italic 2 bold 2__~~_
 
 **~~_strike italic 2 bold 1_~~** and _~~**strike italic 2 bold 1**~~_
 
-__~~*strike italic 1 bold 2*~~__ and *~~__strike italic 1 bold 2__~~*</pre></td></tr></table>
-</div>
-</div>
+__~~*strike italic 1 bold 2*~~__ and *~~__strike italic 1 bold 2__~~*
+
+</code></pre>
+
 <p><code>inline block</code></p>
 
 <p><kbd>ctrl</kbd>+<kbd>alt</kbd>+<kbd>del</kbd></p>
@@ -774,34 +632,12 @@ __~~*strike italic 1 bold 2*~~__ and *~~__strike italic 1 bold 2__~~*</pre></td>
 <p><strong><del><em>strike italic 1 bold 2</em></del></strong> and <em><del><strong>strike italic 1 bold 2</strong></del></em></p>
 
 <h2 id="links">Links</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">Web image
-![Web Picture](http://www.revolunet.com/static/parisjs8/img/logo-revolunet-carre.jpg &#34;Web Picture&#34;)
+
+<pre><code>Web image
+![Web Picture](http://www.revolunet.com/static/parisjs8/img/logo-revolunet-carre.jpg &quot;Web Picture&quot;)
 
 Local image
-![Local Picture](logo-revolunet-carre.jpg &#34;Local Picture&#34;)
+![Local Picture](logo-revolunet-carre.jpg &quot;Local Picture&quot;)
 
 contact@revolunet.com
 
@@ -813,11 +649,11 @@ https://github.com/revolunet/sublimetext-markdown-preview/
 
 This is a link https://github.com/revolunet/sublimetext-markdown-preview/.
 
-This is a link &#34;https://github.com/revolunet/sublimetext-markdown-preview/&#34;.
+This is a link &quot;https://github.com/revolunet/sublimetext-markdown-preview/&quot;.
 
-With this link (https://github.com/revolunet/sublimetext-markdown-preview/), it still works.</pre></td></tr></table>
-</div>
-</div>
+With this link (https://github.com/revolunet/sublimetext-markdown-preview/), it still works.
+</code></pre>
+
 <p>Web image
 <img src="http://www.revolunet.com/static/parisjs8/img/logo-revolunet-carre.jpg" alt="Web Picture" title="Web Picture" /></p>
 
@@ -843,43 +679,20 @@ With this link (https://github.com/revolunet/sublimetext-markdown-preview/), it 
 <h2 id="abbreviation">Abbreviation</h2>
 
 <p>Abbreviations source are found in a separate markdown file specified in frontmatter.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">The HTML specification 
+
+<pre><code>The HTML specification 
 is maintained by the W3C.
 
 *[HTML]: Hyper Text Markup Language
-*[W3C]:  World Wide Web Consortium</pre></td></tr></table>
-</div>
-</div>
+*[W3C]:  World Wide Web Consortium
+</code></pre>
+
 <p>The HTML specification
 is maintained by the W3C.</p>
 
 <h2 id="unordered-list">Unordered List</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">Unordered List
+
+<pre><code>Unordered List
 
 - item 1
     * item A
@@ -890,9 +703,9 @@ is maintained by the W3C.</p>
         + item c
     * item C
 - item 2
-- item 3</pre></td></tr></table>
-</div>
-</div>
+- item 3
+</code></pre>
+
 <p>Unordered List</p>
 
 <ul>
@@ -915,23 +728,8 @@ more text
 </ul>
 
 <h2 id="ordered-list">Ordered List</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">Ordered List
+
+<pre><code>Ordered List
 
 1. item 1
     1. item A
@@ -942,9 +740,9 @@ more text
         3. item c
     3. item C
 2. item 2
-3. item 3</pre></td></tr></table>
-</div>
-</div>
+3. item 3
+</code></pre>
+
 <p>Ordered List</p>
 
 <ol>
@@ -967,23 +765,8 @@ more text
 </ol>
 
 <h2 id="task-list">Task List</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">Task List
+
+<pre><code>Task List
 
 - [X] item 1
     * [X] item A
@@ -994,9 +777,9 @@ more text
         + [x] item c
     * [X] item C
 - [ ] item 2
-- [ ] item 3</pre></td></tr></table>
-</div>
-</div>
+- [ ] item 3
+</code></pre>
+
 <p>Task List</p>
 
 <ul class="task-list">
@@ -1021,37 +804,8 @@ more text
 <h2 id="mixed-lists">Mixed Lists</h2>
 
 <p><code>Really Mixed Lists</code> should break with <code>sane_lists</code> on.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">Mixed Lists
+
+<pre><code>Mixed Lists
 
 - item 1
     * [X] item A
@@ -1076,9 +830,9 @@ Really Mixed Lists
         + [ ] item c
     3. item C
 2. item 2
-- [X] item 3</pre></td></tr></table>
-</div>
-</div>
+- [X] item 3
+</code></pre>
+
 <p>Mixed Lists</p>
 
 <ul class="task-list">
@@ -1122,24 +876,15 @@ more text
 </ul>
 
 <h2 id="dictionary">Dictionary</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">Dictionary
+
+<pre><code>Dictionary
 :   item 1
 
     item 2
 
-    item 3</pre></td></tr></table>
-</div>
-</div>
+    item 3
+</code></pre>
+
 <dl>
 <dt>Dictionary</dt>
 <dd><p>item 1</p>
@@ -1150,40 +895,24 @@ more text
 </dl>
 
 <h2 id="blocks">Blocks</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    This is a block.
-    
-    This is more of a block.</pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">This is a block.
 
-This is more of a block.</pre></td></tr></table>
-</div>
-</div>
+<pre><code>    This is a block.
+    
+    This is more of a block.
+
+</code></pre>
+
+<pre><code>This is a block.
+
+This is more of a block.
+</code></pre>
+
 <h2 id="block-quotes">Block Quotes</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">&gt; This is a block quote
-&gt;&gt; How does it look?</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>&gt; This is a block quote
+&gt;&gt; How does it look?
+</code></pre>
+
 <blockquote>
 <p>This is a block quote.
 &gt; How does it look?
@@ -1193,35 +922,13 @@ I think it looks good.</p>
 <h2 id="fenced-block">Fenced Block</h2>
 
 <p>Assuming guessing is not enabled.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">```
+
+<pre><code>```
 // Fenced **without** highlighting
 function doIt() {
     for (var i = 1; i &lt;= slen ; i^^) {
-        setTimeout(&#34;document.z.textdisplay.value = newMake()&#34;, i*300);
-        setTimeout(&#34;window.status = newMake()&#34;, i*300);
+        setTimeout(&quot;document.z.textdisplay.value = newMake()&quot;, i*300);
+        setTimeout(&quot;window.status = newMake()&quot;, i*300);
     }
 }
 ```
@@ -1230,70 +937,40 @@ function doIt() {
 // Fenced **with** highlighting
 function doIt() {
     for (var i = 1; i &lt;= slen ; i^^) {
-        setTimeout(&#34;document.z.textdisplay.value = newMake()&#34;, i*300);
-        setTimeout(&#34;window.status = newMake()&#34;, i*300);
+        setTimeout(&quot;document.z.textdisplay.value = newMake()&quot;, i*300);
+        setTimeout(&quot;window.status = newMake()&quot;, i*300);
     }
 }
-```</pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">// Fenced **without** highlighting
+```
+</code></pre>
+
+<pre><code>// Fenced **without** highlighting
 function doIt() {
     for (var i = 1; i &lt;= slen ; i^^) {
-        setTimeout(&#34;document.z.textdisplay.value = newMake()&#34;, i*300);
-        setTimeout(&#34;window.status = newMake()&#34;, i*300);
+        setTimeout(&quot;document.z.textdisplay.value = newMake()&quot;, i*300);
+        setTimeout(&quot;window.status = newMake()&quot;, i*300);
     }
-}</pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Fenced **with** highlighting
-</span><span class="c1"></span><span class="kd">function</span> <span class="nx">doIt</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="nx">slen</span> <span class="p">;</span> <span class="nx">i</span><span class="o">^^</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">setTimeout</span><span class="p">(</span><span class="s2">&#34;document.z.textdisplay.value = newMake()&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="o">*</span><span class="mi">300</span><span class="p">);</span>
-        <span class="nx">setTimeout</span><span class="p">(</span><span class="s2">&#34;window.status = newMake()&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="o">*</span><span class="mi">300</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div>
+}
+</code></pre>
+
+<pre><code class="language-javascript">// Fenced **with** highlighting
+function doIt() {
+    for (var i = 1; i &lt;= slen ; i^^) {
+        setTimeout(&quot;document.z.textdisplay.value = newMake()&quot;, i*300);
+        setTimeout(&quot;window.status = newMake()&quot;, i*300);
+    }
+}
+</code></pre>
+
 <h2 id="tables">Tables</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">| _Colors_      | Fruits          | Vegetable         |
+
+<pre><code>| _Colors_      | Fruits          | Vegetable         |
 | ------------- |:---------------:| -----------------:|
 | Red           | *Apple*         | [Pepper](#Tables) |
 | ~~Orange~~    | Oranges         | **Carrot**        |
-| Green         | ~~***Pears***~~ | Spinach           |</pre></td></tr></table>
-</div>
-</div>
+| Green         | ~~***Pears***~~ | Spinach           |
+</code></pre>
+
 <table>
 <thead>
 <tr>
@@ -1527,22 +1204,14 @@ function doIt() {
 </table>
 
 <h2 id="smart-strong">Smart Strong</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">Text with double__underscore__words.
+
+<pre><code>Text with double__underscore__words.
 
 __Strong__ still works.
 
-__this__works__too__</pre></td></tr></table>
-</div>
-</div>
+__this__works__too__
+</code></pre>
+
 <p>Text with double<strong>underscore</strong>words.</p>
 
 <p><strong>Strong</strong> still works.</p>
@@ -1550,26 +1219,16 @@ __this__works__too__</pre></td></tr></table>
 <p><strong>this</strong>works<strong>too</strong></p>
 
 <h2 id="smarty">Smarty</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">&#34;double quotes&#34;
 
-&#39;single quotes&#39;
+<pre><code>&quot;double quotes&quot;
+
+'single quotes'
 
 da--sh
 
-elipsis...</pre></td></tr></table>
-</div>
-</div>
+elipsis...
+</code></pre>
+
 <p>&ldquo;double quotes&rdquo;</p>
 
 <p>&lsquo;single quotes&rsquo;</p>
@@ -1579,41 +1238,8 @@ elipsis...</pre></td></tr></table>
 <p>elipsis&hellip;</p>
 
 <h2 id="neseted-fences">Neseted Fences</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">    ```
+
+<pre><code>    ```
     This will still be parsed
     as a normal indented code block.
     ```
@@ -1642,87 +1268,52 @@ as a fenced code block.
         &gt; ```
         &gt; Blockquotes?
         &gt; Not a problem!
-        &gt; ```</pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">```
+        &gt; ```
+</code></pre>
+
+<pre><code>```
 This will still be parsed
 as a normal indented code block.
-```</pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">This will still be parsed
-as a fenced code block.</pre></td></tr></table>
-</div>
-</div>
+```
+</code></pre>
+
+<pre><code>This will still be parsed
+as a fenced code block.
+</code></pre>
+
 <ul>
 <li><p>This is a list that contains multiple code blocks.</p>
 
 <ul>
 <li><p>Here is an indented block</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">```
+
+<pre><code>```
 This will still be parsed
 as a normal indented code block.
-```</pre></td></tr></table>
-</div>
-</div></li>
+```
+</code></pre></li>
 
 <li><p>Here is a fenced code block:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">This will still be parsed
-as a fenced code block.</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>This will still be parsed
+as a fenced code block.
+</code></pre>
+
 <blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">Blockquotes?
-Not a problem!</pre></td></tr></table>
-</div>
-</div></blockquote></li>
+<pre><code>Blockquotes?
+Not a problem!
+</code></pre>
+</blockquote></li>
 </ul></li>
 </ul>
 
 <h1 id="others">Others</h1>
 
 <h2 id="section-7">Github Emoji</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">This is a test for emoji 😄.  The emojis are images linked to github assets .</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>This is a test for emoji 😄.  The emojis are images linked to github assets .
+</code></pre>
+
 <p>This is a test for emoji 😄.  The emojis are images linked to github assets .</p>
 
 <h3 id="people">People</h3>
@@ -1746,32 +1337,8 @@ Not a problem!</pre></td></tr></table>
 <p>💯🔢🅰️🆎🔤🔡🉑♒️♈️◀️⏬:arrow_double_up:⬇️:arrow_down_small:▶️:arrow_heading_down:⤴️:arrow_left:↙️:arrow_lower_right:➡️:arrow_right_hook:⬆️:arrow_up_down:🔼:arrow_upper_left:↗️:arrows_clockwise:🔄:b::baby_symbol::back:🛄:ballot_box_with_check:‼️:black_circle:⬛️:black_medium_small_square:◼️:black_small_square:🔲:cancer::capital_abcd:♑️:chart:🚸:cinema::cl::clock1:🕙:clock1030:🕚:clock1130:🕛:clock1230:🕜:clock2:🕝:clock3:🕞:clock4:🕟:clock5:🕠:clock6:🕡:clock7:🕢:clock8:🕣:clock9:🕤:congratulations:🆒©️:curly_loop:💱:customs::diamond_shape_with_a_dot_inside:🚯:eight::eight_pointed_black_star:✳️:end::fast_forward:5️⃣4️⃣🆓♊️#️⃣💟:heavy_check_mark:➗:heavy_dollar_sign:❗️:heavy_minus_sign:✖️:heavy_plus_sign:🆔🉐:information_source:⁉️:keycap_ten:🈁🔵:large_blue_diamond:🔶:left_luggage::left_right_arrow:↩️:leo::libra::link::m:🚹🚇:mobile_phone_off:❎:new::ng::nine::no_bicycles:⛔️:no_entry_sign:📵:no_pedestrians:🚭:non-potable_water:⭕️🅾️🆗🔛1️⃣⛎🅿️〽️:passport_control:♓️🚰:put_litter_in_its_place:🔘:recycle:🔴:registered:🔁:repeat_one:🚻:rewind:🈂️♐️♏️:secret:7️⃣:signal_strength:6️⃣🔯:small_blue_diamond:🔸:small_red_triangle:🔻:soon::sos::symbols:♉️3️⃣™️🔝🔱🔀:two::u5272::u5408:🈺:u6307:🈷️🈶🈵🈚️🈸🈲🈳:underage:🆙📳:virgo::vs:〰️:wc:♿️:white_check_mark:⚪️:white_flower:⬜️:white_medium_small_square:◻️:white_small_square:🔳:womens::x::zero:</p>
 
 <h2 id="insert">Insert</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">^^insert^^
+
+<pre><code>^^insert^^
 
 ^^*insert italic*^^  *^^insert italic 2^^*
 
@@ -1791,9 +1358,9 @@ __^^_insert italic bold_^^__  _^^__insert italic bold 2__^^_
 
 **^^_insert italic bold_^^**  _^^**insert italic bold 2**^^_
 
-__^^*insert italic bold*^^__  *^^__insert italic bold 2__^^*</pre></td></tr></table>
-</div>
-</div>
+__^^*insert italic bold*^^__  *^^__insert italic bold 2__^^*
+</code></pre>
+
 <p>^^insert^^</p>
 
 <p>^^<em>insert italic</em>^^  <em>^^insert italic 2^^</em></p>
@@ -1817,25 +1384,8 @@ __^^*insert italic bold*^^__  *^^__insert italic bold 2__^^*</pre></td></tr></ta
 <p><strong>^^<em>insert italic bold</em>^^</strong>  <em>^^<strong>insert italic bold 2</strong>^^</em></p>
 
 <h2 id="math">Math</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">$$ evidence\_{i}=\sum\_{j}W\_{ij}x\_{j}+b\_{i} $$
+
+<pre><code>$$ evidence\_{i}=\sum\_{j}W\_{ij}x\_{j}+b\_{i} $$
 
 $p(x|y) = \frac{p(y|x)p(x)}{p(y)}$, \(p(x|y) = \frac{p(y|x)p(x)}{p(y)}\).
 
@@ -1848,9 +1398,9 @@ $$
 \begin{align}
     p(v_i=1|\mathbf{h}) &amp; = \sigma\left(\sum_j w_{ij}h_j + b_i\right) \\
     p(h_j=1|\mathbf{v}) &amp; = \sigma\left(\sum_i w_{ij}v_i + c_j\right)
-\end{align}</pre></td></tr></table>
-</div>
-</div>
+\end{align}
+</code></pre>
+
 <p>$$ evidence_{i}=\sum_{j}W_{ij}x_{j}+b_{i} $$</p>
 
 <p>$p(x|y) = \frac{p(y|x)p(x)}{p(y)}$, (p(x|y) = \frac{p(y|x)p(x)}{p(y)}).</p>
@@ -1865,14 +1415,10 @@ $$
 \end{align}</p>
 
 <h2 id="网易云音乐">网易云音乐</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{% music &#34;28196554&#34; %}}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{% music &quot;28196554&quot; %}}
+</code></pre>
+
   <iframe style="max-width: 100%"
       class="music163"
       frameborder="no"
@@ -1885,14 +1431,10 @@ $$
     </iframe>
 
 <h2 id="youtube">YouTube</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{{% youtube &#34;wC5pJm8RAu4&#34; %}}</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{{% youtube &quot;wC5pJm8RAu4&quot; %}}
+</code></pre>
+
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="//www.youtube-nocookie.com/embed/wC5pJm8RAu4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
@@ -1995,7 +1537,7 @@ $$
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>

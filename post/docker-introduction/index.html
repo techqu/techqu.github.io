@@ -75,7 +75,7 @@ Docker容器具有以下3个特点：
 
 <meta itemprop="datePublished" content="2019-01-17T15:12:03&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-18T15:12:03&#43;08:00" />
-<meta itemprop="wordCount" content="4545">
+<meta itemprop="wordCount" content="4514">
 
 
 
@@ -167,7 +167,7 @@ Docker容器具有以下3个特点：
             <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
             <a href="/categories/%E5%AE%B9%E5%99%A8/"> 容器 </a>
             </div>
-          <span class="more-meta"> 约 4545 字 </span>
+          <span class="more-meta"> 约 4514 字 </span>
           <span class="more-meta"> 预计阅读 10 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -209,53 +209,34 @@ Docker容器具有以下3个特点：
 <p>假设你已经有了一个 Linux 操作系统上的 Docker 项目在运行，比如我的环境是 Ubuntu 16.04 和 Docker CE 18.05。</p>
 
 <p>接下来，让我们首先创建一个容器来试试。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker run -it busybox /bin/sh</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-shell">$ docker run -it busybox /bin/sh
+</code></pre>
+
 <p>这样，我的 Ubuntu 16.04 机器就变成了一个宿主机，而一个运行着 /bin/sh 的容器，就跑在了这个宿主机里面。</p>
 
 <p>上面的例子和原理，如果你已经玩过 Docker，一定不会感到陌生。此时，如果我们在容器里执行一下 ps 指令，就会发现一些更有趣的事情：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">/ <span class="c1"># ps</span>
+
+<pre><code class="language-shell">/ # ps
 PID  USER   TIME COMMAND
-  <span class="m">1</span> root   <span class="m">0</span>:00 /bin/sh
-  <span class="m">10</span> root   <span class="m">0</span>:00 ps</code></pre></td></tr></table>
-</div>
-</div>
+  1 root   0:00 /bin/sh
+  10 root   0:00 ps
+</code></pre>
+
 <p>可以看到，我们在 Docker 里最开始执行的 /bin/sh ，就是这个容器内部的第 1 号进程（PID=1），而这个容器里一共只有两个进程在运行。这就意味着，前面执行的 /bin/sh，以及我们刚刚执行的 ps，已经被 Docker 隔离在了一个跟宿主机完全不同的世界当中。</p>
 
 <p><strong>这种技术，就是 Linux 里面的 Namespace 机制</strong>。而 Namespace 的使用方式也非常有意思：它其实只是 Linux 创建新进程的一个可选参数。我们知道，在 Linux 系统中创建线程的系统调用是 <code>clone()</code>，比如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">int pid = clone(main_function, stack_size, SIGCHLD, NULL); </pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>int pid = clone(main_function, stack_size, SIGCHLD, NULL); 
+</code></pre>
+
 <p>这个系统调用就会为我们创建一个新的进程，并且返回它的进程号pid。</p>
 
 <p>而当我们用clone（）系统调用创建一个新进程时，就可以在参数中指定 CLONE_NEWPID 参数，比如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">int pid = clone(main_function, stack_size, CLONE_NEWPID | SIGCHLD, NULL); </pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>int pid = clone(main_function, stack_size, CLONE_NEWPID | SIGCHLD, NULL); 
+</code></pre>
+
 <p>这时，新创建的这个进程将会“看到”一个全新的进程空间，在这个进程空间里，它的 PID 是 1。之所以说“看到”，是因为这只是一个“障眼法”，在宿主机真实的进程空间里，这个进程的 PID 还是真实的数值，比如 100。</p>
 
 <p>当然，我们还可以多次执行上面的 clone() 调用，这样就会创建多个 PID Namespace，而每个 Namespace 里的应用进程，都会认为自己是当前容器里的第 1 号进程，它们既看不到宿主机里真正的进程空间，也看不到其他 PID Namespace 里的具体情况。</p>
@@ -340,29 +321,18 @@ PID  USER   TIME COMMAND
 。而对于 Docker 等 Linux 容器项目来说，它们只需要在每个子系统下面，为每个容器创建一个控制组（即创建一个新目录），然后在启动容器进程之后，把这个进程的 PID 填写到对应控制组的 tasks 文件中就可以了。</p>
 
 <p>而至于在这些控制组下面的资源文件里填上什么值，就靠用户执行 docker run 时的参数指定了，比如这样一条命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ docker run -it --cpu-period<span class="o">=</span><span class="m">100000</span> --cpu-quota<span class="o">=</span><span class="m">20000</span> ubuntu /bin/bash</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-shell">$ docker run -it --cpu-period=100000 --cpu-quota=20000 ubuntu /bin/bash
+</code></pre>
+
 <p>在启动这个容器后，我们可以通过查看 Cgroups 文件系统下，CPU 子系统中，“docker”这个控制组里的资源限制文件的内容来确认：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ cat /sys/fs/cgroup/cpu/docker/5d5c9f67d/cpu.cfs_period_us 
-<span class="m">100000</span>
+
+<pre><code class="language-shell">$ cat /sys/fs/cgroup/cpu/docker/5d5c9f67d/cpu.cfs_period_us 
+100000
 $ cat /sys/fs/cgroup/cpu/docker/5d5c9f67d/cpu.cfs_quota_us 
-<span class="m">20000</span></code></pre></td></tr></table>
-</div>
-</div>
+20000
+</code></pre>
+
 <p>这就意味着这个 Docker 容器，只能使用到 20% 的 CPU 带宽。</p>
 
 <h2 id="三-rootfs的文件系统">三、rootfs的文件系统</h2>
@@ -382,29 +352,19 @@ $ cat /sys/fs/cgroup/cpu/docker/5d5c9f67d/cpu.cfs_quota_us
 <p>不难想到，我们可以在容器进程启动之前重新挂载它的整个根目录“/”。而由于 Mount Namespace 的存在，这个挂载对宿主机不可见，所以容器进程就可以在里面随便折腾了。</p>
 
 <p>在 Linux 操作系统里，有一个名为 chroot 的命令可以帮助你在 shell 中方便地完成这个工作。顾名思义，它的作用就是帮你“change root file system”，即改变进程的根目录到你指定的位置。它的用法也非常简单。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#执行 chroot 命令，告诉操作系统，我们将使用 $HOME/test 目录作为 /bin/bash 进程的根目录：</span>
-$ chroot <span class="nv">$HOME</span>/test /bin/bash</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-shell">#执行 chroot 命令，告诉操作系统，我们将使用 $HOME/test 目录作为 /bin/bash 进程的根目录：
+$ chroot $HOME/test /bin/bash
+</code></pre>
+
 <p>而这个挂载在容器根目录上、用来为容器进程提供隔离后执行环境的文件系统，就是所谓的“容器镜像”。它还有一个更为专业的名字，叫作：rootfs（根文件系统）。</p>
 
 <p>所以，一个最常见的 rootfs，或者说容器镜像，会包括如下所示的一些目录和文件，比如 /bin，/etc，/proc 等等：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ls /
-bin dev etc home lib lib64 mnt opt proc root run sbin sys tmp usr var</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-shell">$ ls /
+bin dev etc home lib lib64 mnt opt proc root run sbin sys tmp usr var
+</code></pre>
+
 <p>而你进入容器之后执行的 /bin/bash，就是 /bin 目录下的可执行文件，与宿主机的 /bin/bash 完全不同。</p>
 
 <p><strong>现在，你应该可以理解，对 Docker 项目来说，它最核心的原理实际上就是为待创建的用户进程：</strong></p>
@@ -444,56 +404,32 @@ bin dev etc home lib lib64 mnt opt proc root run sbin sys tmp usr var</code></pr
 <p>当然，这个想法不是凭空臆造出来的，而是用到了一种叫作联合文件系统（Union File System）的能力。</p>
 
 <p>Union File System 也叫 UnionFS，最主要的功能是将多个不同位置的目录联合挂载（union mount）到同一个目录下。比如，我现在有两个目录 A 和 B，它们分别有两个文件：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ tree
+
+<pre><code class="language-shell">$ tree
 .
 ├── A
 │  ├── a
 │  └── x
 └── B
   ├── b
-  └── x</code></pre></td></tr></table>
-</div>
-</div>
+  └── x
+</code></pre>
+
 <p>然后，我使用联合挂载的方式，将这两个目录挂载到一个公共的目录 C 上：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mkdir C
-$ mount -t aufs -o <span class="nv">dirs</span><span class="o">=</span>./A:./B none ./C</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-shell">$ mkdir C
+$ mount -t aufs -o dirs=./A:./B none ./C
+</code></pre>
+
 <p>这时，我再查看目录 C 的内容，就能看到目录 A 和 B 下的文件被合并到了一起：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ tree ./C
+
+<pre><code class="language-shell">$ tree ./C
 ./C
 ├── a
 ├── b
-└── x</code></pre></td></tr></table>
-</div>
-</div>
+└── x
+</code></pre>
+
 <p>可以看到，在这个合并后的目录 C 里，有 a、b、x 三个文件，并且 x 文件只有一份。这，就是“合并”的含义。此外，如果你在目录 C 里对 a、b、x 文件做修改，这些修改也会在对应的目录 A、B 中生效。</p>
 
 <p>我的环境是 Ubuntu 16.04 和 Docker CE 18.05，这对组合默认使用的是 AuFS 这个联合文件系统的实现。你可以通过 docker info 命令，查看到这个信息。AuFS 的全称是 Another UnionFS，后改名为 Alternative UnionFS，再后来干脆改名叫作 Advance UnionFS.</p>
@@ -587,7 +523,7 @@ $ mount -t aufs -o <span class="nv">dirs</span><span class="o">=</span>./A:./B n
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>

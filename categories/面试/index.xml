@@ -28,6 +28,15 @@
       <guid>https://techqu.github.io/post/java-rpc/</guid>
       <description>&lt;p&gt;在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。&lt;/p&gt;
 
+&lt;pre&gt;&lt;code class=&#34;language-Java&#34;&gt;
+ public class Test {
+     public static void main(String[] args) {
+         HelloWorldService helloWorldService = new HelloWorldServiceImpl();
+         helloWorldService.sayHello(&amp;quot;test&amp;quot;);
+     }
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：&lt;/p&gt;
 
 &lt;ol&gt;

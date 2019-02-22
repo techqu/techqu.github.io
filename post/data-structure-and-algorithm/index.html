@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2018-12-04T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-12-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="763">
+<meta itemprop="wordCount" content="2078">
 
 
 
@@ -136,8 +136,8 @@
             <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
             <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"> 数据结构与算法 </a>
             </div>
-          <span class="more-meta"> 约 763 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 2078 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -152,8 +152,17 @@
 <li>
 <ul>
 <li><a href="#复杂度分析">复杂度分析</a></li>
+</ul></li>
+<li><a href="#线性表-linear-list">线性表（Linear list）</a>
+<ul>
 <li><a href="#数组">数组</a></li>
-<li><a href="#链表">链表</a></li>
+<li><a href="#链表-linked-list">链表 （Linked list）</a>
+<ul>
+<li><a href="#缓存淘汰算法">缓存淘汰算法</a></li>
+<li><a href="#思考题-如何判断字符串是否回文">思考题：如何判断字符串是否回文？</a></li>
+<li><a href="#如何轻松写出正确的链表代码">如何轻松写出正确的链表代码？：</a></li>
+<li><a href="#练习">练习</a></li>
+</ul></li>
 <li><a href="#栈">栈</a></li>
 <li><a href="#队列">队列</a></li>
 <li><a href="#递归">递归</a></li>
@@ -185,6 +194,9 @@
 </ul></li>
 <li><a href="#工业级别的散列表">工业级别的散列表</a></li>
 <li><a href="#哈希算法">哈希算法</a></li>
+</ul></li>
+<li><a href="#非线性表">非线性表</a>
+<ul>
 <li><a href="#二叉树">二叉树</a>
 <ul>
 <li>
@@ -201,6 +213,8 @@
 <li><a href="#图">图</a></li>
 <li><a href="#深度和广度优先搜索">深度和广度优先搜索</a></li>
 <li><a href="#字符串匹配">字符串匹配</a></li>
+<li><a href="#trie树">Trie树</a></li>
+<li><a href="#ac自动机">AC自动机</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -212,15 +226,154 @@
 
 <h3 id="复杂度分析">复杂度分析</h3>
 
-<h3 id="数组">数组</h3>
+<ol>
+<li>时间复杂度</li>
+<li>空间复杂度</li>
+</ol>
 
-<h3 id="链表">链表</h3>
+<p>不同情况下，同一段代码的时间复杂度可能是不一样的。这时候需要以下三个：</p>
 
 <ul>
-<li>理解指针或引用的含义</li>
-<li>警惕指针丢失和内存泄漏</li>
-<li>利用哨兵简化实现难度</li>
+<li><strong>最好情况时间复杂度</strong>，就是在最理想情况下，执行这段代码的时间复杂度。</li>
+<li><strong>最坏情况时间复杂度</strong>，在最糟糕的情况下，执行这段代码的时间复杂度。</li>
+<li><strong>平均情况时间复杂度</strong>，也就是概率论中的加权平均值，也叫期望值，所以也叫加权平均时间复杂度或者期望时间复杂度</li>
 </ul>
+
+<p>另外还有一个更高级的<strong>均摊时间复杂度</strong></p>
+
+<p>对一个数据结构进行一组连续操作中，大部分情况下时间复杂度都很低，只有个别情况下时间复杂度比较高，而且这些操作之间存在前后连贯的时序关系，这个时候我们就可以将这一组操作放在一块分析，看是否能将较高时间复杂度那次操作的耗时，平摊到其他时间复杂度比较低的操作上。而且，在能够应用均摊时间复杂度分析的场合，一般均摊时间复杂度就等于最好情况时间复杂度。</p>
+
+<h2 id="线性表-linear-list">线性表（Linear list）</h2>
+
+<p>
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+    
+    
+    
+  
+
+
+
+<a href="https://en.wikipedia.org/wiki/%e7%ba%bf%e6%80%a7%e8%a1%a8">线性表</a>
+就是数据排成一条线一样的结构。每个线性表上的数据最多只有前和后两个方向</p>
+
+<p><img src="/img/linear-list.png" alt="linear-list" /></p>
+
+<h3 id="数组">数组</h3>
+
+<p>从数组存储的内存模型上来看，“下标”最确切的定义应该是“偏移（offset）”，相当于首地址的偏移</p>
+
+<p>面试常见：数组和链表区别</p>
+
+<p>数组支持随机访问，根据下标随机访问的时间复杂度为O(1)</p>
+
+<p>低效的”插入“和”删除“
+- “插入”-替换到最后，这样就不用全部右移。快排就是用了这个思想
+- “删除”-标记再一起删除</p>
+
+<h3 id="链表-linked-list">链表 （Linked list）</h3>
+
+<h4 id="缓存淘汰算法">缓存淘汰算法</h4>
+
+<ol>
+<li>先入先出策略 FIFO（First in，First out）</li>
+<li>最少使用策略 LFU（Least Frequently Used）</li>
+<li>最近最少使用策略 LRU（Least Recently Used）</li>
+</ol>
+
+<p>分类：<strong>单链表、双向链表</strong>(LinkedHashMap,空间换时间，再联想到缓存)、<strong>循环链表</strong></p>
+
+<p>特点：</p>
+
+<p>插入和删除都是O（1）的时间复杂度</p>
+
+<p>随机访问只能依次遍历，时间复杂度为O（n）</p>
+
+<h4 id="思考题-如何判断字符串是否回文">思考题：如何判断字符串是否回文？</h4>
+
+<ol>
+<li><p>快慢指针算法快速找到单链表中间值</p>
+
+<p>普通方法就是遍历两次，第一次遍历得到链表长度，第二次遍历得到中间值。时间复杂度为1.5n。（这里需要强调1.5）
+快速链表方法就是利用两个指针，慢指针每次移动一个数据，快指针每次移动两个数据。最外层的循环用快指针。当快指针遍历完后，内层慢指针刚好循环到一半。时间复杂度为0.5n。代码如下：</p>
+
+<pre><code>class  GetMidVaule(LinkList L, elmType *e){
+    LinkList k,m;
+    k=m=L;
+    for(int i=0;k.next!=null;i++){
+    k=k.next.next;
+    m=m.next;
+    }
+    *e=m.data;
+}
+</code></pre></li>
+
+<li><p>从中间节点对后半部分逆序，或者将前半部分逆序</p></li>
+
+<li><p>一次循环比较，判断是否回文</p></li>
+
+<li><p>恢复现场</p></li>
+</ol>
+
+<p>//TODO 代码实现</p>
+
+<h4 id="如何轻松写出正确的链表代码">如何轻松写出正确的链表代码？：</h4>
+
+<p>前提：写好链表代码不容易，复杂的比如链表反转、有序链表合并，广大面试者中写好的不足10%</p>
+
+<p>技巧：</p>
+
+<ul>
+<li><p><strong>理解指针或引用的含义</strong></p>
+
+<p>将某个变量赋值给指针，实际上就是将这个变量的地址赋值给指针，或者反过来说，指针中存储了这个变量的内存地址，指向了这个变量，通过指针就能找到这个变量</p></li>
+
+<li><p><strong>警惕指针丢失和内存泄漏</strong></p>
+
+<p>插入结点时，一定要注意操作的顺序。删除结点时，一定要记得手动释放内存空间。java不需要</p></li>
+
+<li><p><strong>利用哨兵简化实现难度</strong></p>
+
+<p>针对链表的插入、删除操作，需要对插入第一个结点和删除最后一个结点的情况进行特殊处理</p></li>
+
+<li><p><strong>重点留意边界条件处理</strong></p></li>
+
+<li><p><strong>举例画图，辅助思考</strong></p></li>
+
+<li><p><strong>多写多练，没有捷径</strong></p></li>
+</ul>
+
+<h4 id="练习">练习</h4>
+
+<ol>
+<li>单链表反转</li>
+<li>链表中有环的检测</li>
+<li>两个有序的链表合并</li>
+<li>删除链表倒数第n个结点</li>
+<li>求链表的中间结点</li>
+</ol>
+
+<blockquote>
+<p><strong>写链表代码是最考验逻辑思维能力的</strong>。链表代码写的好坏，可以看出一个人写代码是否够细心，考虑问题是否全面。</p>
+</blockquote>
 
 <h3 id="栈">栈</h3>
 
@@ -355,6 +508,10 @@
 <li>应用七：分布式存储（一致性哈希）</li>
 </ul>
 
+<h2 id="非线性表">非线性表</h2>
+
+<p><img src="/img/linear-list-0.png" alt="linear-list" /></p>
+
 <h3 id="二叉树">二叉树</h3>
 
 <h5 id="类型">类型</h5>
@@ -397,6 +554,10 @@
 <h3 id="深度和广度优先搜索">深度和广度优先搜索</h3>
 
 <h3 id="字符串匹配">字符串匹配</h3>
+
+<h3 id="trie树">Trie树</h3>
+
+<h3 id="ac自动机">AC自动机</h3>
     </div>
 
     <div class="post-copyright">
@@ -473,7 +634,7 @@
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>

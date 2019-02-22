@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2019-01-24T14:56:49&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-26T14:56:49&#43;08:00" />
-<meta itemprop="wordCount" content="1007">
+<meta itemprop="wordCount" content="929">
 
 
 
@@ -134,8 +134,8 @@
         <div class="post-category">
             <a href="/categories/drools/"> drools </a>
             </div>
-          <span class="more-meta"> 约 1007 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 929 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -172,16 +172,11 @@
 <h2 id="一-快速部署">一、快速部署</h2>
 
 <p>1.拉取基础镜像，命令如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">  docker run -p <span class="m">8080</span>:8080 -p <span class="m">8001</span>:8001 -d --name drools-workbench jboss/drools-workbench-showcase:7.15.0.Final
-  docker run -p <span class="m">8180</span>:8080 -d --name kie-server --link drools-workbench:kie_wb jboss/kie-server-showcase:7.15.0.Final</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-shell">  docker run -p 8080:8080 -p 8001:8001 -d --name drools-workbench jboss/drools-workbench-showcase:7.15.0.Final
+  docker run -p 8180:8080 -d --name kie-server --link drools-workbench:kie_wb jboss/kie-server-showcase:7.15.0.Final
+</code></pre>
+
 <p>2.<a href="http://localhost:8080/drools-wb">点击访问</a>，账号密码：admin/admin</p>
 
 <h2 id="二-问题">二、问题</h2>
@@ -193,14 +188,10 @@
 <h3 id="2-容器时区问题">2.容器时区问题</h3>
 
 <p>由于docker中默认是零时区，需要在dockerfile中设置容器的时区，内容如下</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="k">RUN</span> ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">&#39;Asia/Shanghai&#39;</span> &gt; /etc/timezone</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-Dockerfile">RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &amp;&amp; echo 'Asia/Shanghai' &gt; /etc/timezone
+</code></pre>
+
 <h3 id="3-drools规则持久化保存">3.drools规则持久化保存</h3>
 
 <p>由于Docker默认设置，一旦移除了容器，该容器中的数据也将被删除,如果需要删除并创建新的工作台容器，则会出现问题。</p>
@@ -208,23 +199,14 @@
 <p>默认情况下，工作台容器的内部GIT根目录位于 <code>/opt/jboss/wildfly/bin/.niogit</code>，因此你可以通过使用docker 的 volumne 机制来使此目录在docker中保持不变：</p>
 
 <p>挂载目录，centos下创建<code>/home/myuser/web_git/mygit</code>，修改文件夹及其子文件夹文件权限，命令如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">chmod -R <span class="m">777</span> home/<span class="p">;</span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Use -v :</span>
-docker run -p <span class="m">8080</span>:8080 -p <span class="m">8001</span>:8001 -v /home/myuser/wb_git:/opt/jboss/wildfly/bin/.niogit:Z -d --name drools-workbench jboss/drools-workbench-showcase:7.15.0.Final</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-shell">chmod -R 777 home/;
+</code></pre>
+
+<pre><code class="language-shell"># Use -v :
+docker run -p 8080:8080 -p 8001:8001 -v /home/myuser/wb_git:/opt/jboss/wildfly/bin/.niogit:Z -d --name drools-workbench jboss/drools-workbench-showcase:7.15.0.Final
+</code></pre>
+
 <p>如上面的命令，现在你的workbench git存储库将在你的本地文件系统路径 <code>/home/myuser/wb_git</code> 中持久化。 因此，如果你删除此容器并使用相同的共享卷启动一个新容器，你也可以在新工作台的容器中找到所有数据。</p>
 
 <h3 id="4-drools规则源文件如何拿到">4.drools规则源文件如何拿到</h3>
@@ -234,63 +216,40 @@ docker run -p <span class="m">8080</span>:8080 -p <span class="m">8001</span>:80
 <p>如下图所示：</p>
 
 <p><img src="/img/drools-git-ssh.png" alt="drools-git-ssh" /></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">git clone ssh://admin@localhost:8001/MySpace/example-Mortgages</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>git clone ssh://admin@localhost:8001/MySpace/example-Mortgages
+</code></pre>
+
 <p>用户名密码就是登陆workbench的用户名密码</p>
 
 <h2 id="三-完整部署流程">三、完整部署流程</h2>
 
 <p>完整的dockerfile如下</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">From</span><span class="s"> jboss/drools-workbench-showcase:7.15.0.Final</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c">####JVM最大堆内存调大#####</span><span class="err">
-</span><span class="err"></span><span class="k">ENV</span><span class="s"> JAVA_OPTS -Xms256m -Xmx4096m -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c"># Added files are chowned to root user, change it to the jboss one.</span><span class="err">
-</span><span class="err"></span>USER root<span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c">###docker容器时间同步配置####</span><span class="err">
-</span><span class="err"></span><span class="k">RUN</span> ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">&#39;Asia/Shanghai&#39;</span> &gt; /etc/timezone</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-dockerfile">From jboss/drools-workbench-showcase:7.15.0.Final
+
+####JVM最大堆内存调大#####
+ENV JAVA_OPTS -Xms256m -Xmx4096m -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8
+
+# Added files are chowned to root user, change it to the jboss one.
+USER root
+
+###docker容器时间同步配置####
+RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &amp;&amp; echo 'Asia/Shanghai' &gt; /etc/timezone
+
+</code></pre>
+
 <h3 id="1-构建镜像-命令如下">1.构建镜像，命令如下：</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">docker build  -t drools-workbench:MyTag .</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-shell">
+docker build  -t drools-workbench:MyTag .
+</code></pre>
+
 <h3 id="2-启动镜像-命令如下">2.启动镜像，命令如下：</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">docker run -p <span class="m">8080</span>:8080 -p <span class="m">8001</span>:8001 -v /home/myuser/wb_git:/opt/jboss/wildfly/bin/.niogit:Z -d --name drools-workbench drools-workbench:MyTag</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-shell">docker run -p 8080:8080 -p 8001:8001 -v /home/myuser/wb_git:/opt/jboss/wildfly/bin/.niogit:Z -d --name drools-workbench drools-workbench:MyTag
+</code></pre>
+
 <h3 id="3-浏览器访问-http-localhost-8080-drools-wb">3.浏览器访问，<a href="http://localhost:8080/drools-wb">http://localhost:8080/drools-wb</a></h3>
 
 <blockquote>
@@ -377,7 +336,7 @@ docker run -p <span class="m">8080</span>:8080 -p <span class="m">8001</span>:80
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>

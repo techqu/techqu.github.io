@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2019-01-29T15:01:21&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-29T15:01:21&#43;08:00" />
-<meta itemprop="wordCount" content="501">
+<meta itemprop="wordCount" content="481">
 
 
 
@@ -135,7 +135,7 @@
             <a href="/categories/mongo/"> mongo </a>
             <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
             </div>
-          <span class="more-meta"> 约 501 字 </span>
+          <span class="more-meta"> 约 481 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -166,72 +166,45 @@
 <h2 id="一-导出方法">一、导出方法</h2>
 
 <p>控制台命令如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">mongo localhost:27017/cdd-prejudication /path/to/query.js &gt; xxx.csv</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-sh">mongo localhost:27017/cdd-prejudication /path/to/query.js &gt; xxx.csv
+</code></pre>
+
 <p>query.js 是根据你的mongo查询语句编写，主要是在后面用 <code>for</code>循环打印输出的字段，用逗号分割，这样就能拼成csv文件</p>
 
 <p>我的query.js如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">db</span><span class="p">.</span><span class="nx">getCollection</span><span class="p">(</span><span class="s1">&#39;cdd-prejudication.pengyuan_phoneNoCheck_rsp&#39;</span><span class="p">)</span>
-<span class="p">.</span><span class="nx">aggregate</span><span class="p">(</span>
-  <span class="p">[</span>
-    <span class="p">{</span><span class="nx">$unwind</span><span class="o">:</span><span class="s1">&#39;$response.returnValue.cisReport&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">$project</span><span class="o">:</span><span class="p">{</span><span class="nx">reportID</span><span class="o">:</span><span class="s1">&#39;$response.returnValue.cisReport.reportID&#39;</span><span class="p">,</span><span class="nx">username</span><span class="o">:</span><span class="s1">&#39;$username&#39;</span><span class="p">,</span><span class="nx">idCard</span><span class="o">:</span><span class="s1">&#39;$idCard&#39;</span><span class="p">}}</span>
-  <span class="p">])</span>
-<span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
-    <span class="kd">function</span><span class="p">(</span><span class="nb">document</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">print</span><span class="p">(</span><span class="s2">&#34;\t&#34;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">reportID</span> <span class="o">+</span> <span class="s2">&#34;,&#34;</span> <span class="o">+</span> <span class="nb">document</span><span class="p">.</span><span class="nx">username</span> <span class="o">+</span> <span class="s2">&#34;,\t&#34;</span> <span class="o">+</span> <span class="nb">document</span><span class="p">.</span><span class="nx">idCard</span><span class="o">+</span><span class="s2">&#34;&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-javascript">db.getCollection('cdd-prejudication.pengyuan_phoneNoCheck_rsp')
+.aggregate(
+  [
+    {$unwind:'$response.returnValue.cisReport'},
+    {$project:{reportID:'$response.returnValue.cisReport.reportID',username:'$username',idCard:'$idCard'}}
+  ])
+.forEach(
+    function(document) {
+        print(&quot;\t&quot;+document.reportID + &quot;,&quot; + document.username + &quot;,\t&quot; + document.idCard+&quot;&quot;);
+    }
+)
+
+</code></pre>
+
 <p>根据自己的需要自行编写</p>
 
 <h2 id="二-问题">二、问题</h2>
 
 <h3 id="1-csv文件会中文乱码-mac上的excel在导入csv文件不支持utf-8">1.csv文件会中文乱码（Mac上的Excel在导入CSV文件不支持utf-8）</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">vim 源文件</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>vim 源文件
+</code></pre>
+
 <p>使用查看文件编码
 <code>:set fileencoding</code></p>
 
 <p>通过Mac上的iconv工具将文件编码由UTF8转为GB18030</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">iconv -f UTF8 -t GB18030 源文件.csv &gt;新文件.csv</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>iconv -f UTF8 -t GB18030 源文件.csv &gt;新文件.csv
+</code></pre>
+
 <h3 id="2-科学计数法问题">2. 科学计数法问题</h3>
 
 <ul>
@@ -244,36 +217,21 @@
 <p>需要解析数组，必须使用mongo的 <a href="https://docs.mongodb.com/manual/aggregation/#aggregation-pipeline">Aggregation Pipeline</a>命令了</p>
 
 <p>有如下结构的数据：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{ &#34;_id&#34; : 1, &#34;item&#34; : &#34;ABC1&#34;, sizes: [ &#34;S&#34;, &#34;M&#34;, &#34;L&#34;] }</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{ &quot;_id&quot; : 1, &quot;item&quot; : &quot;ABC1&quot;, sizes: [ &quot;S&quot;, &quot;M&quot;, &quot;L&quot;] }
+</code></pre>
+
 <p>下面的 aggregation $unwind 将数组遍历</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">db.inventory.aggregate( [ { $unwind : &#34;$sizes&#34; } ] )</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>db.inventory.aggregate( [ { $unwind : &quot;$sizes&quot; } ] )
+</code></pre>
+
 <p>返回结果，变成了三条</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{ &#34;_id&#34; : 1, &#34;item&#34; : &#34;ABC1&#34;, &#34;sizes&#34; : &#34;S&#34; }
-{ &#34;_id&#34; : 1, &#34;item&#34; : &#34;ABC1&#34;, &#34;sizes&#34; : &#34;M&#34; }
-{ &#34;_id&#34; : 1, &#34;item&#34; : &#34;ABC1&#34;, &#34;sizes&#34; : &#34;L&#34; }</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>{ &quot;_id&quot; : 1, &quot;item&quot; : &quot;ABC1&quot;, &quot;sizes&quot; : &quot;S&quot; }
+{ &quot;_id&quot; : 1, &quot;item&quot; : &quot;ABC1&quot;, &quot;sizes&quot; : &quot;M&quot; }
+{ &quot;_id&quot; : 1, &quot;item&quot; : &quot;ABC1&quot;, &quot;sizes&quot; : &quot;L&quot; }
+</code></pre>
     </div>
 
     <div class="post-copyright">
@@ -347,7 +305,7 @@
       <i class="iconfont icon-up"></i>
     </div>
   </div>
-  
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
