@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《MYSQL实战45讲》-如何快速复制一张表 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/mysql-how-to-copy-table/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="《MYSQL实战45讲》-如何快速复制一张表" />
+<meta property="og:description" content="本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/mysql-how-to-copy-table/" /><meta property="article:published_time" content="2019-02-25T08:00:23&#43;08:00"/>
+<meta property="article:modified_time" content="2019-02-25T08:00:23&#43;08:00"/>
+
+<meta itemprop="name" content="《MYSQL实战45讲》-如何快速复制一张表">
+<meta itemprop="description" content="本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。">
+
+
+<meta itemprop="datePublished" content="2019-02-25T08:00:23&#43;08:00" />
+<meta itemprop="dateModified" content="2019-02-25T08:00:23&#43;08:00" />
+<meta itemprop="wordCount" content="1390">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《MYSQL实战45讲》-如何快速复制一张表"/>
+<meta name="twitter:description" content="本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">miao</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">miao</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《MYSQL实战45讲》-如何快速复制一张表</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-02-25 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
+            <a href="/categories/mysql/"> MySQL </a>
+            </div>
+          <span class="more-meta"> 约 1390 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#mysqldump-方法">mysqldump 方法</a></li>
+<li><a href="#导出-csv-文件">导出 CSV 文件</a></li>
+<li><a href="#物理拷贝方法">物理拷贝方法</a></li>
+<li><a href="#小结">小结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。</p>
+
+<pre><code class="language-sql">create database db1;
+use db1;
+
+create table t(id int primary key, a int, b int, index(a))engine=innodb;
+delimiter ;;
+  create procedure idata()
+  begin
+    declare i int;
+    set i=1;
+    while(i&lt;=1000)do
+      insert into t values(i,i,i);
+      set i=i+1;
+    end while;
+  end;;
+delimiter ;
+call idata();
+
+create database db2;
+create table db2.t like db1.t
+
+</code></pre>
+
+<h2 id="mysqldump-方法">mysqldump 方法</h2>
+
+<pre><code class="language-shell">
+mysqldump -h$host -P$port -u$user --add-locks=0 --no-create-info --single-transaction  --set-gtid-purged=OFF db1 t --where=&quot;a&gt;900&quot; --result-file=/client_tmp/t.sql
+
+</code></pre>
+
+<p>这条命令中，主要参数含义如下：</p>
+
+<ol>
+<li>–single-transaction 的作用是，在导出数据的时候不需要对表 db1.t 加表锁，而是使用 <code>START TRANSACTION WITH CONSISTENT SNAPSHOT</code>的方法；</li>
+<li>–add-locks 设置为 0，表示在输出的文件结果里，不增加&rdquo; LOCK TABLES</li>
+<li>–no-create-info 的意思是，不需要导出表结构；</li>
+<li>–set-gtid-purged=off 表示的是，不输出跟 GTID 相关的信息；</li>
+<li>–result-file 指定了输出文件的路径，其中 client 表示生成的文件是在客户端机器上的。</li>
+<li>-skip-extend-insert 不拼接成一条大的insert语句</li>
+</ol>
+
+<p>然后，你可以通过下面这条命令，将这些 INSERT 语句放到 db2 库里去执行</p>
+
+<pre><code class="language-shell">
+mysql -h127.0.0.1 -P13000  -uroot db2 -e &quot;source /client_tmp/t.sql&quot;
+
+</code></pre>
+
+<p>需要说明的是，source并不是SQL语句，而是一个客户端命令。</p>
+
+<ol>
+<li>打开文件，默认以分号为结尾读取一条条的SQL语句；</li>
+<li>将SQL语句发送到服务端执行</li>
+</ol>
+
+<p>也就是说，服务端执行的并不是这个“source t.sql”语句，而是 INSERT 语句。所以，不论是在慢查询日志（slow log），还是bin log，记录的都是这些要被真正执行的 INSERT 语句。</p>
+
+<h2 id="导出-csv-文件">导出 CSV 文件</h2>
+
+<pre><code class="language-sql">
+select * from db1.t where a&gt;900 into outfile '/server_tmp/t.csv';
+
+</code></pre>
+
+<pre><code class="language-sql">load data infile '/server_tmp/t.csv' into table db2.t;
+</code></pre>
+
+<h2 id="物理拷贝方法">物理拷贝方法</h2>
+
+<p>能不能直接把db1.t表的frm文件和ibd文件拷贝到db2的目录下？</p>
+
+<p>不能，因为，一个InnoDB表，除了包含这两个物理文件外，还需要在数据字典中注册。直接拷贝这两个文件的话，因为数据字典中没有db2.t这个表，系统是不会识别和接受他们的。</p>
+
+<p>MySQL 5.6 版本引入了<strong>可传输表空间（transport tablespace）</strong>的方法，可以通过导出+导入表空间的方式,实现物理拷贝表的功能。</p>
+
+<p>假设我们现在的目标是在db1库下，复制一个跟表t相同的表r，具体的执行步骤如下：</p>
+
+<ol>
+<li>执行 <code>create table r like t</code>,创建一个相同表结构的空表；</li>
+<li>执行 <code>alter table r discard tablespace</code>,这时候 r.ibd 文件会被删除</li>
+<li>执行 <code>flush table t for export</code>,这时候db1目录下会生成一个t.cfg文件</li>
+<li>在db1目录下执行 <code>cp t.cfg r.cfg ; cp t.ibd r.ibd</code> 这两个命令（这里需注意，拷贝得到的两个文件MySQL进程要有读写权限）；</li>
+<li>执行 <code>unlock tables</code>,这时候t.cfg文件会被删除；</li>
+<li>执行<code>alter table r import tablespace</code>，将这个r.ibd文件作为表的新的表空间，由于这个文件的数据内容和t.ibd是相同的，所以表r中就有了和表t相同的数据</li>
+</ol>
+
+<p><img src="/img/mysql-transport-tablespace.jpg" alt="mysql-transport-tablespace" /></p>
+
+<h2 id="小结">小结</h2>
+
+<p>三种方式优越点对比</p>
+
+<ol>
+<li><p><strong>物理拷贝的方式速度最快</strong>，尤其对于大表拷贝来说是最快的方法。如果出现误删表的情况，用备份恢复出误删之前的临时库，然后再把临时库中的表拷贝到生产库上，是恢复数据最快的方法。但是，这种方法的使用也有一定的<strong>局限性</strong>：</p>
+
+<ul>
+<li>必须是全表拷贝，不能只拷贝部分数据；</li>
+<li>需要到服务器上拷贝数据，在用户无法登录数据库主机的场景下无法使用；</li>
+<li>由于是通过拷贝物理文件实现的，源表和目标表都是使用 InnoDB 引擎时才能使用。</li>
+</ul></li>
+
+<li><p>用 mysqldump 生成包含 INSERT 语句文件的方法，可以在 where 参数增加过滤条件，来实现只导出部分数据。这个方式的不足之一是，<strong>不能使用 join 这种比较复杂的 where 条件写法。</strong></p></li>
+
+<li><p>用 <code>select … into outfile</code> 的方法是最灵活的，支持所有的 SQL 写法。但，这个方法的缺点之一就是，<strong>每次只能导出一张表的数据，而且表结构也需要另外的语句单独备份</strong>。</p></li>
+</ol>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-02-25</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/2018-2019/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">2018总结-2019展望</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/mysql-how-join-run/">
+            <span class="next-text nav-default">《MYSQL实战45讲》-Join语句是怎么执行的</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

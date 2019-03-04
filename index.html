@@ -143,6 +143,54 @@
 
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/mysql-how-to-copy-table/">《MYSQL实战45讲》-如何快速复制一张表</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-25 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
+          <a href="/categories/mysql/"> MySQL </a>
+          </div>
+        <span class="more-meta"> 约 1390 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/mysql-how-to-copy-table/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/mysql-how-join-run/">《MYSQL实战45讲》-Join语句是怎么执行的</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-22 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
+          <a href="/categories/mysql/"> MySQL </a>
+          </div>
+        <span class="more-meta"> 约 2967 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&lt;=1000)do insert into t2 values(i, i, i); set i=i+1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *
+    </div>
+    <div class="read-more">
+      <a href="/post/mysql-how-join-run/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/network-osi/">OSI七层网络模型分别是哪七层？各运行那些协议？</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2019-02-20 </span>
@@ -181,48 +229,6 @@
     </div>
     <div class="read-more">
       <a href="/post/java-seckill-action/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/java-how-to-design-seckill/">如何设计一个秒杀系统</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-02-18 </span>
-      
-        <span class="more-meta"> 约 1981 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      什么是秒杀 秒杀场景一般会在电商网站举行一些活动或者节假日在12306网站上抢票时遇到。对于电商网站中一些稀缺或者特价商品，电商网站一般会在约
-    </div>
-    <div class="read-more">
-      <a href="/post/java-how-to-design-seckill/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/java-distributed-id/">分布式系统唯一ID生成方案汇总</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-02-17 </span>
-      
-        <span class="more-meta"> 约 3307 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>系统唯一ID是我们在设计一个系统的时候常常会遇见的问题，也常常为这个问题而纠结。生成ID的方法有很多，适应不同的场景、需求以及性能要求。所以有些比较复杂的系统会有多个ID生成的策略。下面就介绍一些常见的ID生成策略。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/java-distributed-id/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

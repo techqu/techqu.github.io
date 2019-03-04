@@ -46,7 +46,7 @@
 <meta property="og:description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://techqu.github.io/" />
-<meta property="og:updated_time" content="2019-02-13T08:30:08&#43;08:00"/>
+<meta property="og:updated_time" content="2019-02-14T15:04:47&#43;08:00"/>
 
 <meta itemprop="name" content="Quguang 学习笔记">
 <meta itemprop="description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等">
@@ -118,6 +118,58 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/java-thread-pool/">Java并发编程：线程池的使用</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-14 </span>
+      <div class="post-category">
+          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+          </div>
+        <span class="more-meta"> 约 12948 字 </span>
+        <span class="more-meta"> 预计阅读 26 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>在前面的文章中，我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：</p>
+
+<p>　　如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。</p>
+
+<p>　　那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？</p>
+
+<p>　　在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池，首先我们从最核心的ThreadPoolExecutor类中的方法讲起，然后再讲述它的实现原理，接着给出了它的使用示例，最后讨论了一下如何合理配置线程池的大小。</p>
+
+<p>　　若有不正之处请多多谅解，并欢迎批评指正。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/java-thread-pool/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/jmm-java/">全面理解Java内存模型</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-14 </span>
+      
+        <span class="more-meta"> 约 5405 字 </span>
+        <span class="more-meta"> 预计阅读 11 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Java内存模型即Java Memory Model，简称JMM。 JMM定义了Java 虚拟机(JVM)在计算机内存(RAM)中的工作方式。JVM是整个计算
+    </div>
+    <div class="read-more">
+      <a href="/post/jmm-java/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/interview-exp-pdd/">最新拼多多技术部面试题：幻读&#43;分段锁&#43;死锁&#43;Spring Cloud&#43;秒杀</a></h1>
@@ -196,57 +248,6 @@
     </div>
     <div class="read-more">
       <a href="/post/tomcat-overview/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/springboot-how-run/">SpringBoot 究竟是如何跑起来的?</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-02-12 </span>
-      
-        <span class="more-meta"> 约 3233 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>不得不说 SpringBoot 太复杂了，我本来只想研究一下 SpringBoot 最简单的 HelloWorld 程序是如何从 main 方法一步一步跑起来的，但是这却是一个相当深的坑。你可以试着沿着调用栈代码一层一层的深入进去，如果你不打断点，你根本不知道接下来程序会往哪里流动。这个不同于我研究过去的 Go 语言、Python 语言框架，它们通常都非常直接了当，设计上清晰易懂，代码写起来简单，里面的实现同样也很简单。但是 SpringBoot 不是，它的外表轻巧简单，但是它的里面就像一只巨大的怪兽，这只怪兽有千百只脚把自己缠绕在一起，把爱研究源码的读者绕的晕头转向。</p>
-
-<p>但是这 Java 编程的世界 SpringBoot 就是老大哥，你却不得不服。即使你的心中有千万头草泥马在奔跑，但是它就是天下第一。如果你是一个学院派的程序员，看到这种现象你会怀疑人生，你不得不接受一个规则 —— 受市场最欢迎的未必就是设计的最好的，里面夹杂着太多其它的非理性因素。</p>
-
-<p>经过了一番痛苦的折磨，我还是把 SpringBoot 的运行原理摸清楚了，这里分享给大家。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/springboot-how-run/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/test-about/">谈谈测试</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-31 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%B5%8B%E8%AF%95/"> 测试 </a>
-          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-          </div>
-        <span class="more-meta"> 约 4423 字 </span>
-        <span class="more-meta"> 预计阅读 9 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p><img src="/img/undraw/undraw_mobile_testing_reah.png" alt="mobile_testing" /></p>
-
-<p>简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/test-about/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

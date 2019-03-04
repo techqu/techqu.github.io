@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>《MYSQL实战45讲》-如何快速复制一张表</title>
+      <link>https://techqu.github.io/post/mysql-how-to-copy-table/</link>
+      <pubDate>Mon, 25 Feb 2019 08:00:23 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-how-to-copy-table/</guid>
+      <description>&lt;p&gt;本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》-Join语句是怎么执行的</title>
+      <link>https://techqu.github.io/post/mysql-how-join-run/</link>
+      <pubDate>Fri, 22 Feb 2019 22:27:38 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-how-join-run/</guid>
+      <description>1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&amp;lt;=1000)do insert into t2 values(i, i, i); set i=i+1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *</description>
+    </item>
+    
+    <item>
       <title>OSI七层网络模型分别是哪七层？各运行那些协议？</title>
       <link>https://techqu.github.io/post/network-osi/</link>
       <pubDate>Wed, 20 Feb 2019 15:29:44 +0800</pubDate>
@@ -179,7 +197,7 @@
     </item>
     
     <item>
-      <title>谈谈测试</title>
+      <title>《软件测试52讲》-谈谈测试</title>
       <link>https://techqu.github.io/post/test-about/</link>
       <pubDate>Thu, 31 Jan 2019 13:39:29 +0800</pubDate>
       
@@ -256,7 +274,7 @@
     </item>
     
     <item>
-      <title>Docker的实现原理</title>
+      <title>《深入剖析Kubernetes》-Docker的实现原理</title>
       <link>https://techqu.github.io/post/docker-introduction/</link>
       <pubDate>Thu, 17 Jan 2019 15:12:03 +0800</pubDate>
       
@@ -275,7 +293,7 @@
     </item>
     
     <item>
-      <title>Kubernetes 入门</title>
+      <title>《深入剖析Kubernetes》-入门</title>
       <link>https://techqu.github.io/post/kubernetes-introduction/</link>
       <pubDate>Thu, 17 Jan 2019 08:41:16 +0800</pubDate>
       
@@ -288,7 +306,7 @@
     </item>
     
     <item>
-      <title>Ipconfig:最熟悉又陌生的命令行</title>
+      <title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</title>
       <link>https://techqu.github.io/post/ipconfig/</link>
       <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
       
@@ -481,7 +499,7 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>JVM是如何执行方法调用的？（下）</title>
+      <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（下）</title>
       <link>https://techqu.github.io/post/jvm-how-execute-method-2/</link>
       <pubDate>Wed, 26 Dec 2018 11:45:43 +0800</pubDate>
       
@@ -490,7 +508,7 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>JVM是如何执行方法调用的？（上）</title>
+      <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（上）</title>
       <link>https://techqu.github.io/post/jvm-how-execute-method-1/</link>
       <pubDate>Tue, 25 Dec 2018 22:52:53 +0800</pubDate>
       
@@ -585,7 +603,7 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>MYSQL实战45讲-笔记</title>
+      <title>《MYSQL实战45讲》-笔记</title>
       <link>https://techqu.github.io/post/mysql/</link>
       <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
       
@@ -608,7 +626,7 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>数据结构与算法-基础篇</title>
+      <title>《数据结构与算法之美》-基础篇</title>
       <link>https://techqu.github.io/post/data-structure-and-algorithm/</link>
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       
@@ -617,7 +635,7 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>数据结构与算法-高级篇</title>
+      <title>《数据结构与算法之美》-高级篇</title>
       <link>https://techqu.github.io/post/data-structure-and-algorithm.1/</link>
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       

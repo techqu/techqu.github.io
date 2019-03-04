@@ -134,7 +134,7 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>JVM是如何执行方法调用的？（下）</title>
+      <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（下）</title>
       <link>https://techqu.github.io/post/jvm-how-execute-method-2/</link>
       <pubDate>Wed, 26 Dec 2018 11:45:43 +0800</pubDate>
       
@@ -143,7 +143,7 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>JVM是如何执行方法调用的？（上）</title>
+      <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（上）</title>
       <link>https://techqu.github.io/post/jvm-how-execute-method-1/</link>
       <pubDate>Tue, 25 Dec 2018 22:52:53 +0800</pubDate>
       

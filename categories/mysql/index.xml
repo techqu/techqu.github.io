@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mysql on Quguang 学习笔记</title>
+    <title>MySQL on Quguang 学习笔记</title>
     <link>https://techqu.github.io/categories/mysql/</link>
-    <description>Recent content in mysql on Quguang 学习笔记</description>
+    <description>Recent content in MySQL on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 29 Jan 2019 14:08:24 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 Feb 2019 08:00:23 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《MYSQL实战45讲》-如何快速复制一张表</title>
+      <link>https://techqu.github.io/post/mysql-how-to-copy-table/</link>
+      <pubDate>Mon, 25 Feb 2019 08:00:23 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-how-to-copy-table/</guid>
+      <description>&lt;p&gt;本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》-Join语句是怎么执行的</title>
+      <link>https://techqu.github.io/post/mysql-how-join-run/</link>
+      <pubDate>Fri, 22 Feb 2019 22:27:38 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-how-join-run/</guid>
+      <description>1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&amp;lt;=1000)do insert into t2 values(i, i, i); set i=i+1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *</description>
+    </item>
     
     <item>
       <title>Mysql 使用Navicat 导出数据库表结构</title>
@@ -19,6 +37,15 @@
       <guid>https://techqu.github.io/post/mysql-navicat-structure-doc/</guid>
       <description>&lt;p&gt;我们在写数据库设计文档的时候，会需要对数据库表进行设计的编写，手动写的话会很费时间费精力，尤其是如果有大量的表需要写的时候，就更加浪费时间了。下面就让我给大家讲一个简单方法。
 我的是在Navicat中导出的数据库表。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》-笔记</title>
+      <link>https://techqu.github.io/post/mysql/</link>
+      <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql/</guid>
+      <description>&lt;p&gt;MYSQL实战45讲-极客时间笔记&lt;/p&gt;</description>
     </item>
     
   </channel>

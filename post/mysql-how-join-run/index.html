@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《MYSQL实战45讲》-Join语句是怎么执行的 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&amp;lt;=1000)do insert into t2 values(i, i, i); set i=i&#43;1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/mysql-how-join-run/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="《MYSQL实战45讲》-Join语句是怎么执行的" />
+<meta property="og:description" content="1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&lt;=1000)do insert into t2 values(i, i, i); set i=i&#43;1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/mysql-how-join-run/" /><meta property="article:published_time" content="2019-02-22T22:27:38&#43;08:00"/>
+<meta property="article:modified_time" content="2019-02-22T22:27:38&#43;08:00"/>
+
+<meta itemprop="name" content="《MYSQL实战45讲》-Join语句是怎么执行的">
+<meta itemprop="description" content="1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&lt;=1000)do insert into t2 values(i, i, i); set i=i&#43;1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *">
+
+
+<meta itemprop="datePublished" content="2019-02-22T22:27:38&#43;08:00" />
+<meta itemprop="dateModified" content="2019-02-22T22:27:38&#43;08:00" />
+<meta itemprop="wordCount" content="2967">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《MYSQL实战45讲》-Join语句是怎么执行的"/>
+<meta name="twitter:description" content="1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&lt;=1000)do insert into t2 values(i, i, i); set i=i&#43;1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">miao</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">miao</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《MYSQL实战45讲》-Join语句是怎么执行的</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-02-22 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
+            <a href="/categories/mysql/"> MySQL </a>
+            </div>
+          <span class="more-meta"> 约 2967 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-准备工作">1 准备工作：</a></li>
+<li><a href="#2-三种方法">2 三种方法</a></li>
+<li><a href="#2-1-index-nested-loop-join">2.1 Index Nested-Loop Join</a>
+<ul>
+<li><a href="#执行流程">执行流程：</a></li>
+<li><a href="#流程分析">流程分析</a></li>
+<li><a href="#如果不使用join">如果不使用join:</a></li>
+<li><a href="#问题二-怎么选择驱动表">问题二：怎么选择驱动表？</a></li>
+<li><a href="#结论">结论：</a></li>
+</ul></li>
+<li><a href="#2-2-simple-nested-loop-join">2.2 Simple Nested-loop join</a></li>
+<li><a href="#2-3-block-nested-loop-join">2.3 Block Nested-Loop Join</a>
+<ul>
+<li>
+<ul>
+<li><a href="#过程就变成了">过程就变成了：</a></li>
+<li><a href="#我们再来看-这种情况下驱动表的选择问题">我们再来看，这种情况下驱动表的选择问题。</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#3-最后回答开篇">3.最后回答开篇</a>
+<ul>
+<li><a href="#第一个问题-能不能用join语句">第一个问题：能不能用join语句？</a></li>
+<li><a href="#第二个问题是-如果要是用join-应该选择大表做驱动表还是用小表做驱动表">第二个问题是：如果要是用join，应该选择大表做驱动表还是用小表做驱动表</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="1-准备工作">1 准备工作：</h2>
+
+<pre><code>CREATE TABLE `t2` (
+  `id` int(11) NOT NULL,
+  `a` int(11) DEFAULT NULL,
+  `b` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `a` (`a`)
+) ENGINE=InnoDB;
+
+drop procedure idata;
+delimiter ;;
+create procedure idata()
+begin
+  declare i int;
+  set i=1;
+  while(i&lt;=1000)do
+    insert into t2 values(i, i, i);
+    set i=i+1;
+  end while;
+end;;
+delimiter ;
+call idata();
+
+create table t1 like t2;
+insert into t1 (select * from t2 where id&lt;=100)
+
+</code></pre>
+
+<p>简单解释：</p>
+
+<ul>
+<li>dll 表名T1, 字段：id,a,b</li>
+<li>dll 表名T2, 字段：id,a,b</li>
+<li>id和a上有索引，b上无索引</li>
+<li>往T2插入1000行数据，t1插入100行</li>
+</ul>
+
+<h2 id="2-三种方法">2 三种方法</h2>
+
+<h2 id="2-1-index-nested-loop-join">2.1 Index Nested-Loop Join</h2>
+
+<pre><code class="language-sql">selec * from t1 straight_join t2 on (t1.a = t2.a)
+</code></pre>
+
+<p>t1是驱动表，t2是被驱动表</p>
+
+<h3 id="执行流程">执行流程：</h3>
+
+<ol>
+<li>从表 t1 中读入一行数据R；</li>
+<li>从数据行 R 中，取出 a 字段到表 t2 里去查找；</li>
+<li>取出表 t2 中满足条件的行，更 R 组成一行，作为结果集的一部分；</li>
+<li>重复执行步骤 1 和 3 ，知道 t1 的末尾循环结束。</li>
+</ol>
+
+<p>在形式上，这个过程就跟我们写成程序时的嵌套查询类似，并且可以用上被驱动表的索引，所以我们成为<strong>“Index Nested-Loop Join”，简称NLJ</strong></p>
+
+<h3 id="流程分析">流程分析</h3>
+
+<p>在这个流程中：</p>
+
+<ol>
+<li>对驱动表t1做了全表扫描，这个过程需要扫描100行；</li>
+<li>而对于每一行R，根据a字段去表t2查找，走的是树搜索过程，由于我们构造的数据都是一一对应的，因此每次的搜索过程都只扫描一行，也是总共扫描100行</li>
+<li>所以，整个执行流程，总扫描行数是200行。</li>
+</ol>
+
+<h3 id="如果不使用join">如果不使用join:</h3>
+
+<ol>
+<li>执行select * from t1，查出t1的所有数据，100行</li>
+<li>循环遍历这100行：
+
+<ul>
+<li>从每一行R取出字段a的值$R.a;</li>
+<li>执行select * from t2 where a=$R.a;</li>
+<li>把返回结果和R构成结果集的一行。</li>
+</ul></li>
+</ol>
+
+<p>可以看到，在这个查询过程，也是扫描了200行，但是总共执行了101条语句，<strong>比直接join多了100次交互</strong>。除此之外，<strong>客户端还要自己拼接SQL语句。</strong></p>
+
+<p>显然，这么做还不如直接join好。</p>
+
+<h3 id="问题二-怎么选择驱动表">问题二：怎么选择驱动表？</h3>
+
+<p>在这个join语句执行过程中，驱动表是走全表扫描，而被驱动表是走树搜索。</p>
+
+<p>假设被驱动表的行数是M。每次在被驱动表一行数据，要先搜索索引a，再搜索主键索引。每次搜索一棵树近似复杂度是以 2 为底的M的对数，记为log2M，所以再被驱动表上查一行的时间复杂度是 2*log2M。</p>
+
+<h3 id="结论">结论：</h3>
+
+<ol>
+<li>使用join语句，性能比强行拆成多个单表执行sql语句的性能要好。</li>
+<li>如果使用join语句的话，需要让小表做驱动表</li>
+</ol>
+
+<p>但是，需要注意，这个结论的前提是<strong>“可以使用被驱动表的索引”</strong></p>
+
+<h2 id="2-2-simple-nested-loop-join">2.2 Simple Nested-loop join</h2>
+
+<p>我们现在把sql语句改成这样</p>
+
+<pre><code class="language-sql">select * from t1 straight_join t2 on (t1.a = t2.b)
+</code></pre>
+
+<p>由于表t2的字段b上没有索引，因此再用图2的执行流程时，每次到t2去匹配的时候，就要做一次全表扫描</p>
+
+<p>这时，每次t2去匹配的时候，就要做一次全表扫描。这个sql请求就要扫描表t2多大100次，总共扫描100*1000=10万行。</p>
+
+<p>当然MYSQL没有使用这个方法，而是下面的 <code>Block Nested-Loop Join</code></p>
+
+<h2 id="2-3-block-nested-loop-join">2.3 Block Nested-Loop Join</h2>
+
+<p>这时候，被驱动表上没有可用的索引，算法的流程是这样的：</p>
+
+<ol>
+<li>把表t1的数据读入线程内存<code>join_buffer</code>中，由于我们这个语句中写的是select *，因此是把整个t1放入了内存；</li>
+<li>扫描表t2，把表t2的每一行取出来，跟<code>join_buffer</code>中的数据做对比，满足join条件的，作为结果集的一部分返回。</li>
+</ol>
+
+<p>可以看到，在这个过程中，对表t1和t2都做了一次全表扫描，因此总的扫描行数是1100.由于<code>join_buffer</code>是以无序数组的方式组织的，因此对表t2中的每一行，都要做100次判断，总共需要在内存中做的判断次数是：100*1000=10万行。</p>
+
+<p>前面我们说过，如果使用<code>Simple Nested-Loop Join</code>算法进行查询，扫描行数也是10万行。因此，从时间复杂度上来说，这两个算法是一样的。但是Block Nested-Loop Join算法的这10万次判断是内存操作，速度上会快很多，性能也更好</p>
+
+<p>接下来，我们来看一下，在这种情况下，应该选择哪个表做驱动表。</p>
+
+<p>假设小表的行数据是N，大表的行数是M，那么在这个算法里：</p>
+
+<ol>
+<li>两个表都做一次全表扫描，所以总的扫描行数是M+N；</li>
+<li>内存中的判断次数是M*N</li>
+</ol>
+
+<p>可以看到，调换这两个算式重的M和N没有区别，因此这时候选择大表还是小表做驱动表，执行耗时是一样的。</p>
+
+<p>然后，你可能马上就会问了，这个例子里t1才100行，要是表t1是一个大表，<code>join_buffer</code>放不下怎么办呢？</p>
+
+<p><code>join_buffer</code> 的大小是由<code>join_buffer_size</code>设定的，默认值是256k。如果放不下t1的所有数据的话，策略很简单，就是分段放。我把<code>join_buffer_size</code>改成1200，再执行：</p>
+
+<h4 id="过程就变成了">过程就变成了：</h4>
+
+<ol>
+<li>扫描表t1，顺序读取数据行放入<code>join_buffer</code>中，放完第88行<code>join_buffer</code>满了，继续第二步</li>
+<li>扫描表t2，把t2中的每一行取出来，跟<code>join_buffer</code>中的数据做对比，满足join条件的，作为结果集的一部分返回；</li>
+<li>清空<code>join_buffer</code></li>
+<li>继续扫描表t1，顺序读取最后的12行数据放入<code>join_buffer</code>中，继续执行第2步</li>
+</ol>
+
+<p>这个流程才体现出了这个算法名字中“Block”的由来，表示“分块去join”</p>
+
+<p>可以看到，这时候由于表t1被分成两次放入<code>join_buffer</code>中，导致表t2会被扫描两次，但是判断等值条件的次数还是不变的，（88+12）*1000=10万次。</p>
+
+<h4 id="我们再来看-这种情况下驱动表的选择问题">我们再来看，这种情况下驱动表的选择问题。</h4>
+
+<p>假设，驱动表的数据行数是N，需要分K段才能完成算法流程，被驱动表的数据行数是M。</p>
+
+<p>注意，这里的 K 不是常数，N 越大 K 就会越大，因此把 K 表示为λ*N，显然λ的取值范围是 (0,1)。</p>
+
+<p>所以，在这个算法的执行过程中：</p>
+
+<ul>
+<li>扫描行数是 <code>N+λ*N*M</code>；</li>
+<li>内存判断 <code>N*M</code> 次。</li>
+</ul>
+
+<p>显然，内存判断次数是不受选择哪个表作为驱动表影响的。而考虑到扫描行数，在 M 和 N 大小确定的情况下，N 小一些，整个算式的结果会更小。</p>
+
+<p>当然，你会发现，在 N+λ*N*M 这个式子里，λ才是影响扫描行数的关键因素，这个值越小越好。</p>
+
+<p>刚刚我们说了 N 越大，分段数 K 越大。那么，N 固定的时候，什么参数会影响 K 的大小呢？（也就是λ的大小）答案是 <code>join_buffer_size</code>。<code>join_buffer_size</code>越大，一次可以放入的行越多，分成的段数也就越少，对被驱动表的全表扫描次数就越少。</p>
+
+<p>这就是为什么，你可能会看到一些建议告诉你，如果你的 join 语句很慢，就把 <code>join_buffer_size</code> 改大。</p>
+
+<h2 id="3-最后回答开篇">3.最后回答开篇</h2>
+
+<p>理解了MYSQL执行join的两种算法，我们来回答文章开头的两个问题：</p>
+
+<h3 id="第一个问题-能不能用join语句">第一个问题：能不能用join语句？</h3>
+
+<ol>
+<li>如果可以使用Index Nested-Loop Join算法，也就是说可以用上被驱动表的索引，其实是没问题的。</li>
+<li>如果使用Block Nested-Loop Join算法，扫描行数就会过多。尤其是在大表上的join操作，这样可能要扫描被驱动表很多次，会占用大量的系统资源。所以这种join尽量不要用</li>
+</ol>
+
+<p>所以你在判断要不要使用 join 语句时，就是看 explain 结果里面，Extra 字段里面有没有出现“Block Nested Loop”字样。</p>
+
+<h3 id="第二个问题是-如果要是用join-应该选择大表做驱动表还是用小表做驱动表">第二个问题是：如果要是用join，应该选择大表做驱动表还是用小表做驱动表</h3>
+
+<ol>
+<li>如果是Index Nested-Loop Join算法，应该选择小表做驱动表；</li>
+<li>如果是Block Nested-Loop Join算法：
+
+<ul>
+<li>在<code>join_buffer_size</code>足够大的时候，是一样的；</li>
+<li>在<code>join_buffer_size</code>不够大的时候（这种情况更常见），应该选择小表做驱动表。</li>
+</ul></li>
+</ol>
+
+<p>所以这个问题的结论是，<strong>总是应该使用小表做驱动表</strong></p>
+
+<p>如何定义“小表”</p>
+
+<ol>
+<li>加入了限定条件，相对小的表</li>
+<li>select的字段少一些的，<code>join_buffer</code>需要放入的数据也小一些</li>
+</ol>
+
+<p>所以，更准确的说，<strong>在决定哪个表做驱动表的时候，应该是两个表按照各自的条件过滤，过滤完成之后，计算参与join的各个字段的总数据量，数据量小的那个表，就是“小表”，应该作为驱动表</strong></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-02-22</span>
+  </p>
+  
+  
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/mysql-how-to-copy-table/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">《MYSQL实战45讲》-如何快速复制一张表</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/network-osi/">
+            <span class="next-text nav-default">OSI七层网络模型分别是哪七层？各运行那些协议？</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>
