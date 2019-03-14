@@ -6,26 +6,35 @@
     <description>Recent content in 数据结构 on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Nov 2018 15:03:48 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>《数据结构与算法之美》-基础篇</title>
+      <title>《数据结构与算法之美》-基础篇(1)</title>
       <link>https://techqu.github.io/post/data-structure-and-algorithm/</link>
-      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/data-structure-and-algorithm/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>《数据结构与算法之美》-高级篇</title>
+      <title>《数据结构与算法之美》-基础篇(2)</title>
       <link>https://techqu.github.io/post/data-structure-and-algorithm.1/</link>
-      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/data-structure-and-algorithm.1/</guid>
+      <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《数据结构与算法之美》-高级篇</title>
+      <link>https://techqu.github.io/post/data-structure-and-algorithm.2/</link>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-and-algorithm.2/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
     </item>
     

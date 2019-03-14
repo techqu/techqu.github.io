@@ -156,20 +156,29 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>《数据结构与算法之美》-基础篇</title>
+      <title>《数据结构与算法之美》-基础篇(1)</title>
       <link>https://techqu.github.io/post/data-structure-and-algorithm/</link>
-      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/data-structure-and-algorithm/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>《数据结构与算法之美》-高级篇</title>
+      <title>《数据结构与算法之美》-基础篇(2)</title>
       <link>https://techqu.github.io/post/data-structure-and-algorithm.1/</link>
-      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/data-structure-and-algorithm.1/</guid>
+      <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《数据结构与算法之美》-高级篇</title>
+      <link>https://techqu.github.io/post/data-structure-and-algorithm.2/</link>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-and-algorithm.2/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
     </item>
     

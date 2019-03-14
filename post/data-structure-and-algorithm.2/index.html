@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>《数据结构与算法之美》-基础篇(2) - Quguang 学习笔记</title>
+  <title>《数据结构与算法之美》-高级篇 - Quguang 学习笔记</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.52 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://techqu.github.io/post/data-structure-and-algorithm.1/" />
+<link rel="canonical" href="https://techqu.github.io/post/data-structure-and-algorithm.2/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,25 +41,25 @@
 <link rel="stylesheet" href="/css/techqu.css">
 
 
-<meta property="og:title" content="《数据结构与算法之美》-基础篇(2)" />
+<meta property="og:title" content="《数据结构与算法之美》-高级篇" />
 <meta property="og:description" content="本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://techqu.github.io/post/data-structure-and-algorithm.1/" /><meta property="article:published_time" content="2018-11-18T15:03:48&#43;08:00"/>
+<meta property="og:url" content="https://techqu.github.io/post/data-structure-and-algorithm.2/" /><meta property="article:published_time" content="2018-11-18T15:03:48&#43;08:00"/>
 <meta property="article:modified_time" content="2018-11-18T15:03:48&#43;08:00"/>
 
-<meta itemprop="name" content="《数据结构与算法之美》-基础篇(2)">
+<meta itemprop="name" content="《数据结构与算法之美》-高级篇">
 <meta itemprop="description" content="本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景">
 
 
 <meta itemprop="datePublished" content="2018-11-18T15:03:48&#43;08:00" />
 <meta itemprop="dateModified" content="2018-11-18T15:03:48&#43;08:00" />
-<meta itemprop="wordCount" content="1212">
+<meta itemprop="wordCount" content="785">
 
 
 
 <meta itemprop="keywords" content="数据结构,算法," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="《数据结构与算法之美》-基础篇(2)"/>
+<meta name="twitter:title" content="《数据结构与算法之美》-高级篇"/>
 <meta name="twitter:description" content="本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景"/>
 
 <!--[if lte IE 9]>
@@ -127,7 +127,7 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">《数据结构与算法之美》-基础篇(2)</h1>
+      <h1 class="post-title">《数据结构与算法之美》-高级篇</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2018-11-18 </span>
@@ -136,8 +136,8 @@
             <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
             <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"> 数据结构与算法 </a>
             </div>
-          <span class="more-meta"> 约 1212 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 785 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -149,34 +149,17 @@
 <ul>
 <li>
 <ul>
-<li><a href="#非线性表">非线性表</a></li>
-<li><a href="#二叉树">二叉树</a>
-<ul>
-<li><a href="#类型">类型</a></li>
-<li><a href="#存储方法">存储方法</a></li>
-<li><a href="#遍历">遍历</a></li>
-<li><a href="#查找树">查找树</a></li>
-</ul></li>
-<li><a href="#红黑树">红黑树</a></li>
-<li><a href="#递归树">递归树</a></li>
-<li><a href="#堆和堆排序">堆和堆排序</a>
-<ul>
-<li><a href="#堆的应用-如何快速获取到top-10最热门的搜索关键词">堆的应用：如何快速获取到Top 10最热门的搜索关键词？</a></li>
-</ul></li>
-<li><a href="#图">图</a>
-<ul>
-<li><a href="#图的表示-如何存储微博-微信等网络社交重的三度好友关系">图的表示：如何存储微博、微信等网络社交重的三度好友关系</a></li>
-</ul></li>
-<li><a href="#深度和广度优先搜索">深度和广度优先搜索</a></li>
-<li><a href="#字符串匹配">字符串匹配</a>
-<ul>
-<li><a href="#bf算法">BF算法</a></li>
-<li><a href="#rk算法">RK算法</a></li>
-<li><a href="#bm算法">BM算法</a></li>
-<li><a href="#kmp算法">KMP算法</a></li>
-</ul></li>
-<li><a href="#trie树">Trie树</a></li>
-<li><a href="#ac自动机">AC自动机</a></li>
+<li><a href="#贪心算法-如何使用贪心算法实现huffman压缩编码">贪心算法：如何使用贪心算法实现Huffman压缩编码？</a></li>
+<li><a href="#分治算法-谈一谈大规模计算框架mapreduce中的分治思想">分治算法：谈一谈大规模计算框架MapReduce中的分治思想</a></li>
+<li><a href="#回溯算法">回溯算法</a></li>
+<li><a href="#动态规划">动态规划</a></li>
+<li><a href="#拓扑排序">拓扑排序</a></li>
+<li><a href="#最短路径-地图软件是如何计算最优出行路径的">最短路径：地图软件是如何计算最优出行路径的？</a></li>
+<li><a href="#位图-如何实现网页爬虫中的url去重功能">位图：如何实现网页爬虫中的URL去重功能？</a></li>
+<li><a href="#概率统计-如何利用朴素贝叶斯算法过滤垃圾短信">概率统计：如何利用朴素贝叶斯算法过滤垃圾短信？</a></li>
+<li><a href="#向量空间-如何实现一个简单的音乐推荐系统">向量空间：如何实现一个简单的音乐推荐系统？</a></li>
+<li><a href="#b-树-mysql数据库索引是如何实现的">B+树：MySQL数据库索引是如何实现的？</a></li>
+<li><a href="#并行算法-如何利用并行处理提高算法的执行效率">并行算法：如何利用并行处理提高算法的执行效率?</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -185,108 +168,57 @@
     <div class="post-content">
       <p>本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景</p>
 
-<h2 id="非线性表">非线性表</h2>
+<h2 id="贪心算法-如何使用贪心算法实现huffman压缩编码">贪心算法：如何使用贪心算法实现Huffman压缩编码？</h2>
 
-<p><img src="/img/linear-list-0.png" alt="linear-list" /></p>
+<p>贪心算法有很多经典应用。比如霍夫曼编码（Huffman Coding）、Prim和Kruskal最小生成树算法、还有Dijkstra单源最短路径算法。</p>
 
-<h2 id="二叉树">二叉树</h2>
+<h2 id="分治算法-谈一谈大规模计算框架mapreduce中的分治思想">分治算法：谈一谈大规模计算框架MapReduce中的分治思想</h2>
 
-<h3 id="类型">类型</h3>
+<p>分治算法（divide and conquer）的核心思想其实就是四个字，分而治之，也就是将原问题划分成n个规模较小，并且结构与原问题相似的子问题，递归地解决这些子问题，然后再合并其结果，就得到原问题的解。</p>
+
+<h2 id="回溯算法">回溯算法</h2>
+
+<p>深度优先搜索算法利用的是回溯算法思想。它除了用来知道深度优先搜索这种经典的算法设计之外，还可以用在很多实际的软件开发场景中，比如正则表达式匹配、编译原理重的语法分析等。</p>
+
+<p>除此之外，很多经典的数学问题都可以用回溯算法解决，比如数独、八皇后、0-1背包、图的着色、旅行商问题、全排列等等。</p>
+
+<h2 id="动态规划">动态规划</h2>
+
+<p>动态规划比较适合用来求解最优问题，比如求最大值、最小值等等。他可以非常显著地降低时间复杂度，提高代码的执行效率。</p>
 
 <ul>
-<li>满二叉树：叶子节点全部在最底层，除了叶子节点，每个节点都有左右两个子节点</li>
-<li>完全二叉树：叶子节点都在最底下两层，最后一层的叶子节点都靠左排列，并且除了最后一层，其它层的</li>
+<li>0-1背包问题</li>
+<li>0-1背包问题升级版</li>
 </ul>
 
-<h3 id="存储方法">存储方法</h3>
+<h2 id="拓扑排序">拓扑排序</h2>
 
-<ul>
-<li>链式存储法</li>
-<li>顺序存储法</li>
-</ul>
+<h2 id="最短路径-地图软件是如何计算最优出行路径的">最短路径：地图软件是如何计算最优出行路径的？</h2>
 
-<h3 id="遍历">遍历</h3>
+<h2 id="位图-如何实现网页爬虫中的url去重功能">位图：如何实现网页爬虫中的URL去重功能？</h2>
 
-<ul>
-<li>中序遍历</li>
-<li>先序遍历</li>
-<li>后序遍历
-<br /></li>
-</ul>
+<p>BitMap。因为，布隆过滤器本身就是基于位图的，是对位图的一种改进。</p>
 
-<h3 id="查找树">查找树</h3>
+<p>问题：我们有一千万个整数，整数的范围在1到1亿之间。如何快速查找某个整数是否在1千万个整数中呢？</p>
 
-<ul>
-<li><p>二叉查找树（Binary Search Tree，BST）</p>
-
-<p>二叉查找树要求，在树中的任意一个节点，其左子树中的每个节点的值，都小于这个节点的值，而右子树节点的值都大于这个节点的值。
-缺陷：特殊情况下会退化成链表</p></li>
-
-<li><p>平衡二叉查找树</p>
-
-<ul>
-<li>平衡二叉查找树，比如AVL树、红黑树、Splay Tree（伸展树）、Treap（树堆）</li>
-<li>发明平衡二叉查找树这类数据结构的初衷是，解决普通二叉查找树在频繁的插入、删除等动态更新的情况下，出现时间复杂度退化的问题</li>
-</ul></li>
-</ul>
-
-<p>散列表的插入、删除、查找操作的时间复杂度都可以做到常量级的O(1)，非常高效。而二叉查找树在比较平衡的情况下，插入、查找操作时间复杂度才是O(㏒n),相对散列表，好像并没有什么优势，那我们为什么还要用二叉查找树？</p>
+<h2 id="概率统计-如何利用朴素贝叶斯算法过滤垃圾短信">概率统计：如何利用朴素贝叶斯算法过滤垃圾短信？</h2>
 
 <ol>
-<li>散列表中的数据无序存储</li>
-<li>散列表扩容耗时很多</li>
-<li>因为哈希冲突的存在和哈希函数的耗时，也不一定比平衡二叉查找树的效率高</li>
-<li>散列表的构造比二叉查找树要复杂，比如散列函数的设计、冲突解决办法、扩容、缩容等。平衡查找树只需要考虑平衡性这一个问题，而且这个问题的解决方案比较成熟、固定。</li>
-<li>最后，为了避免过多的散列冲突，散列表装载因子不能太大，特别是基于开放寻址法解决冲突的散列表，不然会浪费一定的存储空间。</li>
+<li>基于黑名单的过滤器</li>
+<li>基于规则的过滤器</li>
+<li>基于概率统计的过滤器</li>
 </ol>
 
-<p>综上所述，平衡二叉查找树在某些方面还是优于散列表，所以，这两者的存在并不冲突。需要结合具体的需求来选择使用哪一个。</p>
+<h2 id="向量空间-如何实现一个简单的音乐推荐系统">向量空间：如何实现一个简单的音乐推荐系统？</h2>
 
-<h2 id="红黑树">红黑树</h2>
+<ul>
+<li>找到跟你口味偏好相似的用户，把他们爱听的歌曲推荐给你；</li>
+<li>找出跟你喜爱的歌曲特征相似的歌曲，把这些歌曲推荐给你。</li>
+</ul>
 
-<h2 id="递归树">递归树</h2>
+<h2 id="b-树-mysql数据库索引是如何实现的">B+树：MySQL数据库索引是如何实现的？</h2>
 
-<h2 id="堆和堆排序">堆和堆排序</h2>
-
-<h3 id="堆的应用-如何快速获取到top-10最热门的搜索关键词">堆的应用：如何快速获取到Top 10最热门的搜索关键词？</h3>
-
-<h2 id="图">图</h2>
-
-<h3 id="图的表示-如何存储微博-微信等网络社交重的三度好友关系">图的表示：如何存储微博、微信等网络社交重的三度好友关系</h3>
-
-<h2 id="深度和广度优先搜索">深度和广度优先搜索</h2>
-
-<h2 id="字符串匹配">字符串匹配</h2>
-
-<p>比如java中的<code>indexOf()</code>，Python中的<code>find()</code>函数等，它们底层就是以来接下来要讲的字符串匹配算法</p>
-
-<h3 id="bf算法">BF算法</h3>
-
-<p>全称是 Brute force，也叫朴素匹配算法</p>
-
-<h3 id="rk算法">RK算法</h3>
-
-<p>是BF算法的改进，巧妙的借助了哈希算法，让匹配的效率有了很大的提升。</p>
-
-<h3 id="bm算法">BM算法</h3>
-
-<h3 id="kmp算法">KMP算法</h3>
-
-<h2 id="trie树">Trie树</h2>
-
-<p>像Google、百度这样的操作引擎，它们的关键词提示功能非常全面和精准，肯定做了很多优化，但底层最基本的原理就是这种数据结构：Trie树</p>
-
-<p>Trie树，也叫“字典树”，它是一个树形结构。它是一种专门处理字符串匹配的数据结构，用来解决在一组字符串集合中快速查找某个字符串的问题。</p>
-
-<p>其他解决方法，比如散列表、红黑树，或者前面的字符串匹配算法</p>
-
-<p><strong>Trie树的本质，就是利用字符串之间的公共前缀，将重复的前缀合并在一起</strong></p>
-
-<h2 id="ac自动机">AC自动机</h2>
-
-<p>如何实现一个高性能的敏感词过滤系统呢？这就要用到多模式串匹配算法</p>
-
-<p>之前的BF算法、RK算法、BM算法、KMP算法都是单模式串匹配算法，Trie树是多模式串匹配算法</p>
+<h2 id="并行算法-如何利用并行处理提高算法的执行效率">并行算法：如何利用并行处理提高算法的执行效率?</h2>
     </div>
 
     <div class="post-copyright">
@@ -306,16 +238,12 @@
           <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/data-structure-and-algorithm/">
+        <a class="prev" href="/post/data-structure-and-algorithm.1/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">《数据结构与算法之美》-基础篇(1)</span>
+            <span class="prev-text nav-default">《数据结构与算法之美》-基础篇(2)</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/data-structure-and-algorithm.2/">
-            <span class="next-text nav-default">《数据结构与算法之美》-高级篇</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
+        
       </nav>
     </footer>
   </article>

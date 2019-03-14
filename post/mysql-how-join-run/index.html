@@ -142,7 +142,7 @@
 
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content always-active">
+  <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
 <li>
@@ -233,7 +233,7 @@ insert into t1 (select * from t2 where id&lt;=100)
 <li>重复执行步骤 1 和 3 ，知道 t1 的末尾循环结束。</li>
 </ol>
 
-<p>在形式上，这个过程就跟我们写成程序时的嵌套查询类似，并且可以用上被驱动表的索引，所以我们成为<strong>“Index Nested-Loop Join”，简称NLJ</strong></p>
+<p>在形式上，这个过程就跟我们写成程序时的嵌套查询类似，并且<strong>可以用上被驱动表的索引，所以我们成为“Index Nested-Loop Join”，简称NLJ</strong></p>
 
 <h3 id="流程分析">流程分析</h3>
 

@@ -10,6 +10,20 @@
   </url>
   
   <url>
+    <loc>https://techqu.github.io/post/mysql-transaction/</loc>
+    <lastmod>2019-03-14T17:23:42+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</loc>
+    <lastmod>2019-03-07T16:54:30+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://techqu.github.io/post/mysql-how-to-copy-table/</loc>
     <lastmod>2019-02-25T08:00:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -389,7 +403,7 @@
   
   <url>
     <loc>https://techqu.github.io/post/mysql/</loc>
-    <lastmod>2018-12-19T17:32:22+08:00</lastmod>
+    <lastmod>2019-02-22T22:27:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -403,14 +417,21 @@
   
   <url>
     <loc>https://techqu.github.io/post/data-structure-and-algorithm/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-18T15:03:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://techqu.github.io/post/data-structure-and-algorithm.1/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-18T15:03:48+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/data-structure-and-algorithm.2/</loc>
+    <lastmod>2018-11-18T15:03:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -660,14 +681,14 @@
   
   <url>
     <loc>https://techqu.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-18T15:03:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://techqu.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-18T15:03:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -695,7 +716,7 @@
   
   <url>
     <loc>https://techqu.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-18T15:03:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

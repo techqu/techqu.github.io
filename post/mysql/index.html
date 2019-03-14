@@ -45,15 +45,15 @@
 <meta property="og:description" content="MYSQL实战45讲-极客时间笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://techqu.github.io/post/mysql/" /><meta property="article:published_time" content="2018-12-19T17:32:22&#43;08:00"/>
-<meta property="article:modified_time" content="2018-12-19T17:32:22&#43;08:00"/>
+<meta property="article:modified_time" content="2019-02-22T22:27:38&#43;08:00"/>
 
 <meta itemprop="name" content="《MYSQL实战45讲》-笔记">
 <meta itemprop="description" content="MYSQL实战45讲-极客时间笔记">
 
 
 <meta itemprop="datePublished" content="2018-12-19T17:32:22&#43;08:00" />
-<meta itemprop="dateModified" content="2018-12-19T17:32:22&#43;08:00" />
-<meta itemprop="wordCount" content="1278">
+<meta itemprop="dateModified" content="2019-02-22T22:27:38&#43;08:00" />
+<meta itemprop="wordCount" content="1422">
 
 
 
@@ -135,7 +135,7 @@
             <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
             <a href="/categories/mysql/"> MySQL </a>
             </div>
-          <span class="more-meta"> 约 1278 字 </span>
+          <span class="more-meta"> 约 1422 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -186,6 +186,12 @@
 <li><a href="#事务到底是隔离的还是不隔离的">事务到底是隔离的还是不隔离的</a></li>
 <li><a href="#普通索引和唯一索引-应该如何选择">普通索引和唯一索引，应该如何选择</a></li>
 <li><a href="#in和or对比的结论">in和OR对比的结论：</a></li>
+<li><a href="#18-为什么这些sql语句逻辑相同-性能却差异巨大">18|为什么这些SQL语句逻辑相同，性能却差异巨大？</a>
+<ul>
+<li><a href="#案例一-条件字段函数操作">案例一：条件字段函数操作</a></li>
+</ul></li>
+<li><a href="#案例二-隐式类型转换">案例二： 隐式类型转换</a></li>
+<li><a href="#按理三-隐式字符编码转换">按理三： 隐式字符编码转换</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -333,6 +339,18 @@
 <p>1.in或or在字段有添加索引的情况下，查询很快，两者查询速度没有什么区别；</p>
 
 <p>2.in或or在字段没有添加索引的情况下,所连接的字段越多(1or2or3or4or&hellip;&hellip;)，or比in的查询效率低很多</p>
+
+<h2 id="18-为什么这些sql语句逻辑相同-性能却差异巨大">18|为什么这些SQL语句逻辑相同，性能却差异巨大？</h2>
+
+<h3 id="案例一-条件字段函数操作">案例一：条件字段函数操作</h3>
+
+<p><strong>对索引字段做函数操作，可能会破坏索引值的有序性，因此优化器就决定放弃走树搜索功能</strong></p>
+
+<p>比如对 t_modified 字段加了 month（）函数操作，导致了全索引扫描。无法使用索引的快速定位能力了。</p>
+
+<h2 id="案例二-隐式类型转换">案例二： 隐式类型转换</h2>
+
+<h2 id="按理三-隐式字符编码转换">按理三： 隐式字符编码转换</h2>
     </div>
 
     <div class="post-copyright">
@@ -342,7 +360,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-12-19</span>
+    <span class="item-content">2019-02-22</span>
   </p>
   
   

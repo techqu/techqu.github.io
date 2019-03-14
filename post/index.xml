@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>《MYSQL实战45讲》- 行锁、死锁、事务</title>
+      <link>https://techqu.github.io/post/mysql-transaction/</link>
+      <pubDate>Thu, 14 Mar 2019 17:23:42 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-transaction/</guid>
+      <description>行锁 MySQL的行锁是在引擎层由各个引擎自己实现的。比如MyISAM引擎就不支持行锁。不支持行锁意味着并发控制只能使用表锁，对于这种引擎的表</description>
+    </item>
+    
+    <item>
+      <title>归并排序</title>
+      <link>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</link>
+      <pubDate>Thu, 07 Mar 2019 16:54:30 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</guid>
+      <description>归并排序的原理 归并排序的核心思想还是蛮简单的。如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两</description>
+    </item>
+    
+    <item>
       <title>《MYSQL实战45讲》-如何快速复制一张表</title>
       <link>https://techqu.github.io/post/mysql-how-to-copy-table/</link>
       <pubDate>Mon, 25 Feb 2019 08:00:23 +0800</pubDate>
@@ -626,20 +644,29 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>《数据结构与算法之美》-基础篇</title>
+      <title>《数据结构与算法之美》-基础篇(1)</title>
       <link>https://techqu.github.io/post/data-structure-and-algorithm/</link>
-      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/data-structure-and-algorithm/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>《数据结构与算法之美》-高级篇</title>
+      <title>《数据结构与算法之美》-基础篇(2)</title>
       <link>https://techqu.github.io/post/data-structure-and-algorithm.1/</link>
-      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/data-structure-and-algorithm.1/</guid>
+      <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《数据结构与算法之美》-高级篇</title>
+      <link>https://techqu.github.io/post/data-structure-and-algorithm.2/</link>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-and-algorithm.2/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
     </item>
     

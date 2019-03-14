@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>《数据结构与算法之美》-基础篇 - Quguang 学习笔记</title>
+  <title>《数据结构与算法之美》-基础篇(1) - Quguang 学习笔记</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -41,25 +41,25 @@
 <link rel="stylesheet" href="/css/techqu.css">
 
 
-<meta property="og:title" content="《数据结构与算法之美》-基础篇" />
+<meta property="og:title" content="《数据结构与算法之美》-基础篇(1)" />
 <meta property="og:description" content="本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://techqu.github.io/post/data-structure-and-algorithm/" /><meta property="article:published_time" content="2018-12-04T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2018-12-04T00:00:00&#43;00:00"/>
+<meta property="og:url" content="https://techqu.github.io/post/data-structure-and-algorithm/" /><meta property="article:published_time" content="2018-11-18T15:03:48&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-18T15:03:48&#43;08:00"/>
 
-<meta itemprop="name" content="《数据结构与算法之美》-基础篇">
+<meta itemprop="name" content="《数据结构与算法之美》-基础篇(1)">
 <meta itemprop="description" content="本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法">
 
 
-<meta itemprop="datePublished" content="2018-12-04T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-12-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2724">
+<meta itemprop="datePublished" content="2018-11-18T15:03:48&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-18T15:03:48&#43;08:00" />
+<meta itemprop="wordCount" content="3320">
 
 
 
 <meta itemprop="keywords" content="数据结构,算法," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="《数据结构与算法之美》-基础篇"/>
+<meta name="twitter:title" content="《数据结构与算法之美》-基础篇(1)"/>
 <meta name="twitter:description" content="本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法"/>
 
 <!--[if lte IE 9]>
@@ -127,34 +127,30 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">《数据结构与算法之美》-基础篇</h1>
+      <h1 class="post-title">《数据结构与算法之美》-基础篇(1)</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-12-04 </span>
+        <span class="post-time"> 2018-11-18 </span>
         <div class="post-category">
             <a href="/categories/tech/"> Tech </a>
             <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
             <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"> 数据结构与算法 </a>
             </div>
-          <span class="more-meta"> 约 2724 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 3320 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
 
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content always-active">
+  <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
 <li>
 <ul>
-<li>
-<ul>
 <li><a href="#复杂度分析">复杂度分析</a></li>
-</ul></li>
-<li><a href="#线性表-linear-list">线性表（Linear list）</a>
-<ul>
+<li><a href="#线性表-linear-list">线性表（Linear list）</a></li>
 <li><a href="#数组">数组</a></li>
 <li><a href="#链表-linked-list">链表 （Linked list）</a>
 <ul>
@@ -178,56 +174,26 @@
 <ul>
 <li><a href="#递归需要满足的三个条件">递归需要满足的三个条件</a></li>
 <li><a href="#如何编写递归代码">如何编写递归代码？</a></li>
+<li><a href="#调试递推代码">调试递推代码</a></li>
 </ul></li>
 <li><a href="#排序">排序</a>
 <ul>
-<li>
-<ul>
 <li><a href="#基本的排序">基本的排序</a></li>
+</ul></li>
 <li><a href="#分治思想-o-nlogn">分治思想 O(nlogn)</a></li>
 <li><a href="#线性排序-linear-sort-不基于比较">线性排序（Linear sort），不基于比较</a></li>
-</ul></li>
-</ul></li>
 <li><a href="#二分查找">二分查找</a>
-<ul>
-<li>
 <ul>
 <li><a href="#最简单的情况">最简单的情况</a></li>
 <li><a href="#二分查找的局限性">二分查找的局限性</a></li>
 <li><a href="#三个容易出错的地方">三个容易出错的地方</a></li>
 </ul></li>
-</ul></li>
 <li><a href="#跳表">跳表</a></li>
 <li><a href="#散列表">散列表</a>
 <ul>
-<li>
-<ul>
 <li><a href="#两个核心问题">两个核心问题</a></li>
-</ul></li>
-</ul></li>
 <li><a href="#工业级别的散列表">工业级别的散列表</a></li>
 <li><a href="#哈希算法">哈希算法</a></li>
-</ul></li>
-<li><a href="#非线性表">非线性表</a>
-<ul>
-<li><a href="#二叉树">二叉树</a>
-<ul>
-<li>
-<ul>
-<li><a href="#类型">类型</a></li>
-<li><a href="#存储方法">存储方法</a></li>
-<li><a href="#遍历">遍历</a></li>
-<li><a href="#查找树">查找树</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#红黑树">红黑树</a></li>
-<li><a href="#递归树">递归树</a></li>
-<li><a href="#堆和堆排序">堆和堆排序</a></li>
-<li><a href="#图">图</a></li>
-<li><a href="#深度和广度优先搜索">深度和广度优先搜索</a></li>
-<li><a href="#字符串匹配">字符串匹配</a></li>
-<li><a href="#trie树">Trie树</a></li>
-<li><a href="#ac自动机">AC自动机</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -237,7 +203,7 @@
     <div class="post-content">
       <p>本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法</p>
 
-<h3 id="复杂度分析">复杂度分析</h3>
+<h2 id="复杂度分析">复杂度分析</h2>
 
 <ol>
 <li>时间复杂度</li>
@@ -290,7 +256,7 @@
 
 <p><img src="/img/linear-list.png" alt="linear-list" /></p>
 
-<h3 id="数组">数组</h3>
+<h2 id="数组">数组</h2>
 
 <p>从数组存储的内存模型上来看，“下标”最确切的定义应该是“偏移（offset）”，相当于首地址的偏移</p>
 
@@ -302,9 +268,9 @@
 - “插入”-替换到最后，这样就不用全部右移。快排就是用了这个思想
 - “删除”-标记再一起删除</p>
 
-<h3 id="链表-linked-list">链表 （Linked list）</h3>
+<h2 id="链表-linked-list">链表 （Linked list）</h2>
 
-<h4 id="缓存淘汰算法">缓存淘汰算法</h4>
+<h3 id="缓存淘汰算法">缓存淘汰算法</h3>
 
 <ol>
 <li>先入先出策略 FIFO（First in，First out）</li>
@@ -320,7 +286,7 @@
 
 <p>随机访问只能依次遍历，时间复杂度为O（n）</p>
 
-<h4 id="思考题-如何判断字符串是否回文">思考题：如何判断字符串是否回文？</h4>
+<h3 id="思考题-如何判断字符串是否回文">思考题：如何判断字符串是否回文？</h3>
 
 <ol>
 <li><p>快慢指针算法快速找到单链表中间值</p>
@@ -348,7 +314,7 @@
 
 <p>//TODO 代码实现</p>
 
-<h4 id="如何轻松写出正确的链表代码">如何轻松写出正确的链表代码？：</h4>
+<h3 id="如何轻松写出正确的链表代码">如何轻松写出正确的链表代码？：</h3>
 
 <p>前提：写好链表代码不容易，复杂的比如链表反转、有序链表合并，广大面试者中写好的不足10%</p>
 
@@ -374,7 +340,7 @@
 <li><p><strong>多写多练，没有捷径</strong></p></li>
 </ul>
 
-<h4 id="练习">练习</h4>
+<h3 id="练习">练习</h3>
 
 <ol>
 <li>单链表反转</li>
@@ -388,18 +354,18 @@
 <p><strong>写链表代码是最考验逻辑思维能力的</strong>。链表代码写的好坏，可以看出一个人写代码是否够细心，考虑问题是否全面。</p>
 </blockquote>
 
-<h3 id="栈">栈</h3>
+<h2 id="栈">栈</h2>
 
 <p>栈是一种“操作受限”的线性表，只允许在一端插入和删除数据。</p>
 
-<h4 id="顺序栈和链式栈">顺序栈和链式栈</h4>
+<h3 id="顺序栈和链式栈">顺序栈和链式栈</h3>
 
 <ul>
 <li>顺序栈：用数组实现的栈，我们叫做顺序栈</li>
 <li>链式栈：用链表实现的栈，我们叫做链式栈</li>
 </ul>
 
-<h4 id="栈的应用">栈的应用</h4>
+<h3 id="栈的应用">栈的应用</h3>
 
 <ul>
 <li>函数调用中的，函数调用栈</li>
@@ -407,15 +373,15 @@
 <li>栈在括号匹配中的应用</li>
 </ul>
 
-<h3 id="队列">队列</h3>
+<h2 id="队列">队列</h2>
 
 <p>队列跟栈一样，也是一种操作受限的线性表数据结构</p>
 
-<h4 id="顺序队列和链式队列">顺序队列和链式队列</h4>
+<h3 id="顺序队列和链式队列">顺序队列和链式队列</h3>
 
-<h4 id="循环队列">循环队列</h4>
+<h3 id="循环队列">循环队列</h3>
 
-<h4 id="阻塞队列和并发队列">阻塞队列和并发队列</h4>
+<h3 id="阻塞队列和并发队列">阻塞队列和并发队列</h3>
 
 <p>阻塞队列其实就是在队列的基础上加了阻塞操作。
 简单来说，就是在队列为空的时候，从队头取数据会被阻塞，直到队列中有了数据才能返回；
@@ -427,11 +393,11 @@
 
 <p>在实战篇将Disruptor的时候，我们再详细讲并发队列的应用。</p>
 
-<h3 id="递归">递归</h3>
+<h2 id="递归">递归</h2>
 
 <p>从我个人学习数据结构与算法的经历来看，有两个最难理解的知识点，一个是<strong>动态规划</strong>，另一个就是<strong>递归</strong>。学会递归非常重要，比如DFS深度优先搜索、前中后序二叉树遍历等等。</p>
 
-<h4 id="递归需要满足的三个条件">递归需要满足的三个条件</h4>
+<h3 id="递归需要满足的三个条件">递归需要满足的三个条件</h3>
 
 <ol>
 <li>一个问题的解可以分成几个自问题的解</li>
@@ -439,11 +405,56 @@
 <li>存在递归终止条件</li>
 </ol>
 
-<h4 id="如何编写递归代码">如何编写递归代码？</h4>
+<h3 id="如何编写递归代码">如何编写递归代码？</h3>
 
 <p>最关键的是<strong>写出递推公式，找到终止条件</strong>，剩下将递推公式转化成代码就很简单了</p>
 
-<h3 id="排序">排序</h3>
+<blockquote>
+<p>假如这里有n个台阶，每次你可以跨1个台阶或者2个台阶，请问走这n个台阶有多少种走法？如果有7个台阶，你可以2，2，2，1 这样子上去，也可以 1，2，1，1，2 这样子上去，总之走法有很多，那如何用编程求得总共有多少种走法呢？</p>
+</blockquote>
+
+<p>我们仔细想下，实际上，可以根据第一步的走法把所有走法分为两类，第一类是第一步走了 1 个台阶，另一类是第一步走了 2 个台阶。所以n个台阶的走法就等于先走 1 阶后，n-1 个台阶的走法 加上 先走 2 阶后，n-2 个台阶的走法。用公式表示就是：</p>
+
+<pre><code>f(n) = f(n-1)+f(n-2)
+</code></pre>
+
+<p>有了递推公式，递归代码基本上就完成了一半。用小点的数得出递归终止条件就是f(1)=1,f(2)=2.</p>
+
+<p>我们把递归终止条件和刚刚得到的递推公式放到一起就是这样的：</p>
+
+<pre><code>f(1)=1;
+f(2)=2;
+f(n)=f(n-1)+f(n-2);
+</code></pre>
+
+<p>转化成递归代码</p>
+
+<pre><code>int f(int n) {
+    if(n == 1) return 1;
+    if(n ==2 ) return 2;
+    return f(n-1)+f(n-2);
+}
+</code></pre>
+
+<p><strong>写递归代码的关键就是找到如何将大问题分解为小问题的规律，并且基于此写出递推公式，然后再推敲终止条件，最后将递推公式和终止条件翻译成代码</strong></p>
+
+<p><strong>只要遇到递归，我们就把它抽象成一个递推公式，不用想一层层的调用关系，不要试图用人脑去分解递归的每个步骤</strong></p>
+
+<p>容易出的问题</p>
+
+<ul>
+<li>堆栈溢出</li>
+<li>重复计算</li>
+</ul>
+
+<h3 id="调试递推代码">调试递推代码</h3>
+
+<ol>
+<li>打印日志发现，递归值</li>
+<li>结合条件断点进行调试</li>
+</ol>
+
+<h2 id="排序">排序</h2>
 
 <table>
 <thead>
@@ -479,22 +490,32 @@
 </tbody>
 </table>
 
-<h5 id="基本的排序">基本的排序</h5>
+<h3 id="基本的排序">基本的排序</h3>
 
 <ul>
-<li>插入排序-优化（希尔排序）</li>
-<li>冒泡排序</li>
-<li>选择排序</li>
+<li><p>插入排序-优化（希尔排序）</p>
+
+<p>思考：一个有序数组，我们往里面添加一个新的数据后，如何继续保持数据有序呢？很简单，我们只要遍历数组，找到数据应该插入的位置将其插入即可。</p>
+
+<p>左侧未已排序区间，右侧为未排序区间；两种操作，一种是元素的比较，一种是元素的移动。</p></li>
+
+<li><p>冒泡排序</p>
+
+<p>只会操作相邻的两个数据。每次冒泡操作都会对相邻的两个元素进行比较，看是否满足大小关系要求。如果不满足就让它俩互换。一次冒泡会让至少一个元素移动到它应该在的位置，重复n次，就完成了n个数据的排序工作。</p></li>
+
+<li><p>选择排序</p>
+
+<p>选择排序算法的实现思路类似插入排序，也分已排序区间和未排序区间。但是选择排序每次会从未排序区间中找到最小的元素，将其放到已排序区间的末尾。</p></li>
 </ul>
 
-<h5 id="分治思想-o-nlogn">分治思想 O(nlogn)</h5>
+<h2 id="分治思想-o-nlogn">分治思想 O(nlogn)</h2>
 
 <ul>
 <li>归并排序-<em>待学习</em></li>
 <li>快速排序-<em>待学习</em></li>
 </ul>
 
-<h5 id="线性排序-linear-sort-不基于比较">线性排序（Linear sort），不基于比较</h5>
+<h2 id="线性排序-linear-sort-不基于比较">线性排序（Linear sort），不基于比较</h2>
 
 <ul>
 <li>桶排序</li>
@@ -504,14 +525,14 @@
 
 <p>如何实现一个通用的排序方法</p>
 
-<h3 id="二分查找">二分查找</h3>
+<h2 id="二分查找">二分查找</h2>
 
-<h5 id="最简单的情况">最简单的情况</h5>
+<h3 id="最简单的情况">最简单的情况</h3>
 
 <p>有序数据中不存在重复元素
 可以用循环和递归两种方式实现</p>
 
-<h5 id="二分查找的局限性">二分查找的局限性</h5>
+<h3 id="二分查找的局限性">二分查找的局限性</h3>
 
 <ul>
 <li>首先，二分查找依赖的是顺序表结构，也就是数组</li>
@@ -520,7 +541,7 @@
 <li>最后，数据量太大也不适合用二分查找，要求有很大的连续的内存空间</li>
 </ul>
 
-<h5 id="三个容易出错的地方">三个容易出错的地方</h5>
+<h3 id="三个容易出错的地方">三个容易出错的地方</h3>
 
 <ul>
 <li>循环退出条件</li>
@@ -528,16 +549,16 @@
 <li>low和high的更新</li>
 </ul>
 
-<h3 id="跳表">跳表</h3>
+<h2 id="跳表">跳表</h2>
 
 <p>为链表建立多级索引的结构叫做跳表</p>
 
-<h3 id="散列表">散列表</h3>
+<h2 id="散列表">散列表</h2>
 
 <p>散列表用的就是 数组支持按照下标访问的时候，时间复杂度为O1的特性。
 通过散列函数，将键值转化为数组下标，从对应的数组下标位置取数据。</p>
 
-<h5 id="两个核心问题">两个核心问题</h5>
+<h3 id="两个核心问题">两个核心问题</h3>
 
 <ul>
 <li>散列函数设计</li>
@@ -569,57 +590,6 @@
 <li>应用六：数据分片</li>
 <li>应用七：分布式存储（一致性哈希）</li>
 </ul>
-
-<h2 id="非线性表">非线性表</h2>
-
-<p><img src="/img/linear-list-0.png" alt="linear-list" /></p>
-
-<h3 id="二叉树">二叉树</h3>
-
-<h5 id="类型">类型</h5>
-
-<ul>
-<li>满二叉树：叶子节点全部在最底层，除了叶子节点，每个节点都有左右两个子节点</li>
-<li>完全二叉树：叶子节点都在最底下两层，最后一层的叶子节点都靠左排列，并且除了最后一层，其它层的</li>
-</ul>
-
-<h5 id="存储方法">存储方法</h5>
-
-<ul>
-<li>链式存储法</li>
-<li>顺序存储法</li>
-</ul>
-
-<h5 id="遍历">遍历</h5>
-
-<ul>
-<li>中序遍历</li>
-<li>先序遍历</li>
-<li>后序遍历</li>
-</ul>
-
-<h5 id="查找树">查找树</h5>
-
-<ul>
-<li>二叉查找树</li>
-<li>平衡二叉查找树</li>
-</ul>
-
-<h3 id="红黑树">红黑树</h3>
-
-<h3 id="递归树">递归树</h3>
-
-<h3 id="堆和堆排序">堆和堆排序</h3>
-
-<h3 id="图">图</h3>
-
-<h3 id="深度和广度优先搜索">深度和广度优先搜索</h3>
-
-<h3 id="字符串匹配">字符串匹配</h3>
-
-<h3 id="trie树">Trie树</h3>
-
-<h3 id="ac自动机">AC自动机</h3>
     </div>
 
     <div class="post-copyright">
@@ -629,7 +599,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-12-04</span>
+    <span class="item-content">2018-11-18</span>
   </p>
   
   
@@ -645,7 +615,7 @@
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/data-structure-and-algorithm.1/">
-            <span class="next-text nav-default">《数据结构与算法之美》-高级篇</span>
+            <span class="next-text nav-default">《数据结构与算法之美》-基础篇(2)</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
