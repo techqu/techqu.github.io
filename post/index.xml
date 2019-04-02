@@ -39,7 +39,7 @@
     </item>
     
     <item>
-      <title>Mysql Question 03</title>
+      <title>《MYSQL实战45讲》- Question 03</title>
       <link>https://techqu.github.io/post/mysql-question-03/</link>
       <pubDate>Wed, 27 Mar 2019 15:49:58 +0800</pubDate>
       
@@ -57,12 +57,12 @@
     </item>
     
     <item>
-      <title>Python 入门</title>
+      <title>Python 学习入门</title>
       <link>https://techqu.github.io/post/python-helloword/</link>
       <pubDate>Tue, 19 Mar 2019 20:04:31 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/python-helloword/</guid>
-      <description>Python基础语法 输入与输出 name = raw_input(&amp;quot;What&#39;s your name?&amp;quot;) sum = 100+100 print (&#39;hello,%s&#39; %name) print (&#39;sum = %d&#39; %sum) raw_input 是 Python2.7 的输入函数，在 python3.x 里可以直接使用 input，赋值给变量 name，print</description>
+      <description>&lt;p&gt;学习了python的基础语法、变量类型、条件语句、数据结构、模块引用等&lt;/p&gt;</description>
     </item>
     
     <item>

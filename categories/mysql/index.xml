@@ -6,10 +6,19 @@
     <description>Recent content in MySQL on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 20 Mar 2019 08:49:19 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Mar 2019 15:49:58 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《MYSQL实战45讲》- Question 03</title>
+      <link>https://techqu.github.io/post/mysql-question-03/</link>
+      <pubDate>Wed, 27 Mar 2019 15:49:58 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-question-03/</guid>
+      <description>join的写法 如果用left join，左边的表一定是驱动表吗？ 如果两个表的join包含多个条件的等值匹配，是都要写到 on 里面呢，还是只把一个条</description>
+    </item>
     
     <item>
       <title>《MYSQL实战45讲》- Order By</title>
