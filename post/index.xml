@@ -21,6 +21,80 @@
     </item>
     
     <item>
+      <title>Linux三剑客之AWK学习</title>
+      <link>https://techqu.github.io/post/linux-awk/</link>
+      <pubDate>Tue, 02 Apr 2019 13:24:32 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/linux-awk/</guid>
+      <description>&lt;p&gt;awk是一个强大的文本分析工具，相对于grep的查找，sed的编辑，awk在其对数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-内容简介</title>
+      <link>https://techqu.github.io/post/java-concurrent/</link>
+      <pubDate>Wed, 27 Mar 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-concurrent/</guid>
+      <description>&lt;p&gt;这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个&lt;strong&gt;核心矛盾一直存在，就是这三者的速度差异&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mysql Question 03</title>
+      <link>https://techqu.github.io/post/mysql-question-03/</link>
+      <pubDate>Wed, 27 Mar 2019 15:49:58 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-question-03/</guid>
+      <description>join的写法 如果用left join，左边的表一定是驱动表吗？ 如果两个表的join包含多个条件的等值匹配，是都要写到 on 里面呢，还是只把一个条</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- Order By</title>
+      <link>https://techqu.github.io/post/mysql-orderby/</link>
+      <pubDate>Wed, 20 Mar 2019 08:49:19 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-orderby/</guid>
+      <description>&lt;p&gt;在你开发应用时，一定会遇到需要根据指定的字段来显式结果的需求。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 入门</title>
+      <link>https://techqu.github.io/post/python-helloword/</link>
+      <pubDate>Tue, 19 Mar 2019 20:04:31 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/python-helloword/</guid>
+      <description>Python基础语法 输入与输出 name = raw_input(&amp;quot;What&#39;s your name?&amp;quot;) sum = 100+100 print (&#39;hello,%s&#39; %name) print (&#39;sum = %d&#39; %sum) raw_input 是 Python2.7 的输入函数，在 python3.x 里可以直接使用 input，赋值给变量 name，print</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 唯一索引和普通索引</title>
+      <link>https://techqu.github.io/post/mysql-index-unique-and-normal/</link>
+      <pubDate>Sat, 16 Mar 2019 15:26:14 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-index-unique-and-normal/</guid>
+      <description>&lt;p&gt;在不同的业务场景下，应该选择普通索引，还是唯一索引呢？接下来，我们就从这两种索引对查询语句和更新语句的性能影响来进行分析。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 深入浅出索引</title>
+      <link>https://techqu.github.io/post/mysql-index/</link>
+      <pubDate>Sat, 16 Mar 2019 15:25:44 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-index/</guid>
+      <description>&lt;p&gt;简单来说，索引的出现其实就是为了提高数据查询的效率，就像书的目录一样。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 事务隔离</title>
+      <link>https://techqu.github.io/post/mysql-transaction-2/</link>
+      <pubDate>Fri, 15 Mar 2019 09:26:22 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-transaction-2/</guid>
+      <description>&lt;p&gt;如果是可重复读隔离级别，事务T启动的时候会创建一个视图read-view，之后事务T执行期间，即使有其他事务修改了数据，事务T看到的仍然跟在启动时看到的一样。也就是说，一个在可重复读隔离级别下执行的事务，好像与世无争，不受外界影响。&lt;/p&gt;
+
+&lt;p&gt;但是，一个事务要更新一行，如果刚好有另外一个事务拥有这一行的行锁，它又不能这么超然了，会被锁住，进入等待状态。问题是，既然进入了等待状态，那么等到这个事务自己获取到行锁要更新数据的时候，它读到的值又是什么呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>《MYSQL实战45讲》- 行锁、死锁、事务</title>
       <link>https://techqu.github.io/post/mysql-transaction/</link>
       <pubDate>Thu, 14 Mar 2019 17:23:42 +0800</pubDate>

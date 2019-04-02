@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-03-14T17:23:42&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-14T17:23:42&#43;08:00" />
-<meta itemprop="wordCount" content="978">
+<meta itemprop="wordCount" content="1512">
 
 
 
@@ -130,9 +130,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2019-03-14 </span>
-        
-          <span class="more-meta"> 约 978 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
+            <a href="/categories/mysql/"> MySQL </a>
+            </div>
+          <span class="more-meta"> 约 1512 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -153,6 +156,7 @@
 <ul>
 <li><a href="#sql标准的事务隔离级别">SQL标准的事务隔离级别</a></li>
 </ul></li>
+<li><a href="#乐观锁和mvcc的区别">乐观锁和MVCC的区别</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -210,6 +214,26 @@
 <li>可重复读，一个事务执行过程中看到的数据，总是跟这个事务在启动时看到的数据是一致的。当然在可重复读隔离级别下，未提交变更对其他事务也是不可见的。</li>
 <li>串行化，当出现读写锁冲突的时候，后访问的事务必须等前一个事务执行完成，才能继续执行。</li>
 </ul>
+
+<h2 id="乐观锁和mvcc的区别">乐观锁和MVCC的区别</h2>
+
+<p>在数据库中，并发控制是指在多个用户、进程、线程同时对数据库进行操作时，如何保证事务的一致性和隔离性，同时最大程度地并发。</p>
+
+<p>当多个用户、进程、线程同时对数据库进行操作时，会出现3种冲突情形：</p>
+
+<ol>
+<li>读-读，不存在任何问题</li>
+<li>读-写，有隔离性问题，可能遇到脏读（读到未提交的数据），幻影读等。</li>
+<li>写-写，可能丢失更新</li>
+</ol>
+
+<p>要解决冲突，一种办法就是锁，即基于锁的并发控制，比如2PL，这种方式开销比较高，而且无法完全避免死锁。</p>
+
+<p>多版本并发控制（MVCC）是一种用来解决读-写冲突的无锁并发控制，也就是为了事务分配单向增长的时间戳，为每个修改保存一个版本，版本与事务时间戳关联，读操作只读该事务开始前的数据库的快照。这样在读操作不用阻塞写操作，写操作不用阻塞读操作的同时，避免了脏读和不可重复读。</p>
+
+<p>乐观并发控制（OCC）是一种用来解决写-写冲突的无锁并发控制，认为事务间争用没有那么多，所以先进行修改，在提交事务前，检查一下事务开始后，有没有新的提交改变，如果没有就提交，如果有就放弃并重试。乐观并发控制类似自旋锁。乐观并发控制适用于低数据争用，写冲突比较少的环境。</p>
+
+<p>多版本并发控制可以结合基于锁的并发控制来解决写-写冲突，即 MVCC+2PL，也可以结合乐观并发控制来解决写-写冲突。</p>
     </div>
 
     <div class="post-copyright">
@@ -219,16 +243,20 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-03-14</span>
+    <span class="item-content">
+        2019-03-14
+        
+    </span>
   </p>
   
   
-</div><footer class="post-footer">
+</div>
+<footer class="post-footer">
       
       <nav class="post-nav">
-        <a class="prev" href="/post/2018-2019/">
+        <a class="prev" href="/post/mysql-transaction-2/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">2018总结-2019展望</span>
+            <span class="prev-text nav-default">《MYSQL实战45讲》- 事务隔离</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/data-structure-and-algorithm-merge-sort/">

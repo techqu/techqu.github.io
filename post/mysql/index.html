@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2018-12-19T17:32:22&#43;08:00" />
 <meta itemprop="dateModified" content="2019-02-22T22:27:38&#43;08:00" />
-<meta itemprop="wordCount" content="1422">
+<meta itemprop="wordCount" content="2098">
 
 
 
@@ -135,8 +135,8 @@
             <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
             <a href="/categories/mysql/"> MySQL </a>
             </div>
-          <span class="more-meta"> 约 1422 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 2098 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -222,22 +222,46 @@
 
 <h2 id="日志系统-一条sql更新语句是如何执行的">日志系统：一条SQL更新语句是如何执行的</h2>
 
+<pre><code>mysql&gt; create table T(ID int primary key, c int);
+
+mysql&gt; update T set c=c+1 where ID=2;
+
+</code></pre>
+
 <h3 id="innoddb-redo-log">InnodDB redo log</h3>
+
+<p>如果每次的更新操作都需要写进磁盘，然后磁盘也要找到对应的那条记录，然后再更新，整个过程IO成本、查找成本都很高。为了解决这个问题，MySQL的设计者就用了类似酒店掌柜粉板的思路来提升更新效率。</p>
+
+<p>具体来说，当有一条记录需要更新的时候，InnoDB引擎就会把记录写到redo log（粉板）里面，并更新内存，这个时候更新就算完成了。同时，InnoDB引擎会在适当的时候，将这个操作记录更新到磁盘里面，而这个更新往往是在系统比较空闲的时候，这就像打烊以后掌柜做的事。</p>
 
 <ul>
 <li>WAL技术：Write-Ahead Logging，先写日志，再写磁盘</li>
 <li>当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到redo log里，并更新内存。其它合适时间再写入磁盘</li>
 </ul>
 
+<p>有了redo log，Inno DB就可以保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为<strong>crash-safe</strong></p>
+
 <h3 id="mysql-binlog-归档日志">MYSQL binlog（归档日志）</h3>
+
+<p>redo log是 InnoDB 引擎特有的日志，而Server层也有自己的日志，称为binlog。</p>
 
 <h3 id="不同点">不同点</h3>
 
-<ul>
+<ol>
 <li>redo log是InnoDB引擎特有的，binlog是MYSQL的Server层实现的，所有引擎都能用</li>
 <li>redo log是物理日志，记录的是“在某个数据页上做了什么修改”；binlog是逻辑日志，记录的是这个语句的原始逻辑。</li>
 <li>redo log是循环写的，空间固定会用完；binlog是可以追加写入的，写到一定大小会切换到下一个文件，不会覆盖以前的日志。</li>
-</ul>
+</ol>
+
+<p>我们来看执行器和InnoDB引擎在执行这个简单的 update 语句时的内部流程。</p>
+
+<ol>
+<li>执行器先找引擎取 ID=2 这一行。 ID 是主键，引擎直接用树搜索找到这一行。如果ID=2 这一行所在的数据页本来就在内存中，就直接返回给执行器；否则，需要先从磁盘读入内存，然后再返回。</li>
+<li>执行器拿到引擎给的行数据，把这个值加上 1 ，比如原来是 N ， 现在就是 N+1 ，得到新的一行数据，再调用引擎接口写入这行新数据。</li>
+<li>引擎将这行数据更新到内存中，同时将这个更新操作记录到 redo log里面，此时 redo log处于 prepare状体啊。然后告知执行期执行完成了，随时可以提交事务。</li>
+<li>执行器生成这个操作的binlog，并把binlog写入磁盘。</li>
+<li>执行器调用引擎的提交事务接口，引擎把刚刚写入的redo log改成 提交（commit）状态，更新完成。</li>
+</ol>
 
 <h3 id="redolog两阶段提交">redolog两阶段提交</h3>
 
@@ -360,11 +384,15 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-02-22</span>
+    <span class="item-content">
+        2019-02-22
+        
+    </span>
   </p>
   
   
-</div><footer class="post-footer">
+</div>
+<footer class="post-footer">
       
       <nav class="post-nav">
         <a class="prev" href="/post/resume/">

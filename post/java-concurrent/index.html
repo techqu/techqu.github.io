@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《Java并发编程实战》-内容简介 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个核心矛盾一直存在，就是这三者的速度差异。
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/java-concurrent/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="《Java并发编程实战》-内容简介" />
+<meta property="og:description" content="这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个核心矛盾一直存在，就是这三者的速度差异。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/java-concurrent/" /><meta property="article:published_time" content="2019-03-27T17:31:24&#43;08:00"/>
+<meta property="article:modified_time" content="2019-03-27T17:31:24&#43;08:00"/>
+
+<meta itemprop="name" content="《Java并发编程实战》-内容简介">
+<meta itemprop="description" content="这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个核心矛盾一直存在，就是这三者的速度差异。">
+
+
+<meta itemprop="datePublished" content="2019-03-27T17:31:24&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-27T17:31:24&#43;08:00" />
+<meta itemprop="wordCount" content="3586">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《Java并发编程实战》-内容简介"/>
+<meta name="twitter:description" content="这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个核心矛盾一直存在，就是这三者的速度差异。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">miao</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">miao</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《Java并发编程实战》-内容简介</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-27 </span>
+        
+          <span class="more-meta"> 约 3586 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#01-可见性-原子性和有序性问题-并发编程bug的源头">01| 可见性、原子性和有序性问题：并发编程Bug的源头</a>
+<ul>
+<li><a href="#源头之一-缓存导致的可见性问题">源头之一：缓存导致的可见性问题</a></li>
+<li><a href="#源头之二-线程切换带来的原子性问题">源头之二：线程切换带来的原子性问题</a></li>
+<li><a href="#源头之一-编译优化带来的有序性问题">源头之一：编译优化带来的有序性问题</a>
+<ul>
+<li><a href="#双重检查锁定">双重检查锁定</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#02-java-内存模型-看java如何解决可见性和有序性">02|java 内存模型：看Java如何解决可见性和有序性</a>
+<ul>
+<li><a href="#什么是java内存模型">什么是Java内存模型</a></li>
+<li><a href="#使用volatile的困惑">使用volatile的困惑</a></li>
+<li><a href="#happens-before-规则">Happens-Before 规则</a></li>
+<li><a href="#被忽视的final">被忽视的final</a></li>
+</ul></li>
+<li><a href="#03-互斥锁-上-解决原子性问题">03|互斥锁（上）：解决原子性问题</a></li>
+<li><a href="#04-互斥锁-下-如何用一把锁保护多个资源">04|互斥锁（下）：如何用一把锁保护多个资源？</a></li>
+<li><a href="#05-一不小心就死锁了-怎么办">05|一不小心就死锁了，怎么办？</a>
+<ul>
+<li><a href="#如何预防死锁">如何预防死锁</a></li>
+<li><a href="#1-破坏占用且等待时间">1.破坏占用且等待时间</a></li>
+<li><a href="#2-破坏不可抢占条件">2.破坏不可抢占条件</a></li>
+<li><a href="#3-破坏循环等待条件">3.破坏循环等待条件</a></li>
+</ul></li>
+<li><a href="#06-用-等待-通知-机制优化循环等待">06|用“等待-通知”机制优化循环等待</a></li>
+<li><a href="#07-安全性-活跃性以及性能问题">07|安全性、活跃性以及性能问题</a>
+<ul>
+<li><a href="#安全性问题">安全性问题</a></li>
+<li><a href="#活跃性问题">活跃性问题</a></li>
+<li><a href="#性能问题">性能问题</a></li>
+</ul></li>
+<li><a href="#08-管程-并发编程的万能钥匙">08|管程：并发编程的万能钥匙</a>
+<ul>
+<li><a href="#mesa模型">MESA模型</a></li>
+</ul></li>
+<li><a href="#09-java线程-上-java线程的生命周期">09|Java线程（上）：Java线程的生命周期</a>
+<ul>
+<li><a href="#通用的线程生命周期">通用的线程生命周期</a></li>
+<li><a href="#java中线程的生命周期">Java中线程的生命周期</a></li>
+</ul></li>
+<li><a href="#10-java线程-中-创建多少线程才是合适的">10|Java线程（中）：创建多少线程才是合适的？</a></li>
+<li><a href="#11-java线程-下-为什么局部变量是线程安全的">11|Java线程（下）：为什么局部变量是线程安全的？</a></li>
+<li><a href="#12-如何用面向对象思想写好并发程序">12|如何用面向对象思想写好并发程序？</a></li>
+<li><a href="#13-理论基础模块热点问题答疑">13|理论基础模块热点问题答疑</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个<strong>核心矛盾一直存在，就是这三者的速度差异</strong>。</p>
+
+<h2 id="01-可见性-原子性和有序性问题-并发编程bug的源头">01| 可见性、原子性和有序性问题：并发编程Bug的源头</h2>
+
+<p>为了合理利用CPU的高性能，平衡这三者的速度差异，计算机体系机构、操作系统、编译程序都做出了贡献，主要体现为：</p>
+
+<ol>
+<li>CPU增加了缓存，以均衡与内存的速度差异；</li>
+<li>操作系统增加了进程、线程、以分时复用CPU，进而均衡CPU与I/O设备的速度差异；</li>
+<li>编译程序优化指令执行次序，使得缓存能够得到更加合理地利用。</li>
+</ol>
+
+<h3 id="源头之一-缓存导致的可见性问题">源头之一：缓存导致的可见性问题</h3>
+
+<p>共享内存和工作内存</p>
+
+<p>一个线程对共享变量的修改，另外一个线程能够立刻看到，我们称为<strong>可见性。</strong></p>
+
+<h3 id="源头之二-线程切换带来的原子性问题">源头之二：线程切换带来的原子性问题</h3>
+
+<p>一个 count+=1 操作，至少需要三条CPU指令。</p>
+
+<p>我们把一个或者多个操作在CPU执行的过程中不被中断的特性称为<strong>原子性</strong>。CPU能保证的原子操作是CPU指令级别的，而不是高级语言的操作符。因此，很多时候我们需要在高级语言层面来保证操作的原子性。</p>
+
+<h3 id="源头之一-编译优化带来的有序性问题">源头之一：编译优化带来的有序性问题</h3>
+
+<p>有序性指的是程序按照代码的先后顺序执行。编译器为了优化性能，有时会改变程序中语句的先后顺序。</p>
+
+<h4 id="双重检查锁定">双重检查锁定</h4>
+
+<p><strong>当 instance 为 null 时，两个线程可以并发地进入 if 语句内部。</strong>然后，一个线程进入 synchronized 块来初始化 singleton ，而另一个线程则被阻断。当第一个线程退出 synchronized 块时，等待着的线程进入并创建另一个 Singleton 对象。注意：当第二个线程进入 synchronized 块时，它并没有检查 instance 是否非 null。</p>
+
+<p>为处理上面的问题，我们需要对 singleton 进行第二次检查。这就是“双重检查锁定”名称的由来</p>
+
+<pre><code class="language-java">//懒汉式单例
+public class Singleton {
+  static Singleton instance;
+  static Singleton getInstance(){
+    if (instance == null) {
+      synchronized(Singleton.class) {
+        if (instance == null)
+          instance = new Singleton();
+        }
+    }
+    return instance;
+  }
+}
+</code></pre>
+
+<p>最后，需要加 volatile 关键字 防止指令重排序。</p>
+
+<h2 id="02-java-内存模型-看java如何解决可见性和有序性">02|java 内存模型：看Java如何解决可见性和有序性</h2>
+
+<h3 id="什么是java内存模型">什么是Java内存模型</h3>
+
+<p>导致可见性的原因是缓存，导致有序性的原因是编译优化，那解决可见性、有序性最直接的办法就是<strong>按需禁用缓存以及编译优化</strong></p>
+
+<p>Java内存模型规范了JVM如何提供按需禁用缓存和编译优化的办法。具体来说，这些方法包括 <strong>volatile、synchronized 和 final</strong>三个关键字，以及六项 <strong>Happens-Before规则。</strong></p>
+
+<h3 id="使用volatile的困惑">使用volatile的困惑</h3>
+
+<h3 id="happens-before-规则">Happens-Before 规则</h3>
+
+<p>真正要表达的是：<strong>前面一个操作的结果对后续操作是可见的</strong></p>
+
+<p>比较正式的说法是：Happens-Before 约束了编译器的优化行为，虽允许编译器优化，但是要求编译器优化后一定遵守 Happens-Before 规则。</p>
+
+<ol>
+<li>程序的顺序性规则</li>
+<li>volatile 变量规则</li>
+<li>传递性</li>
+<li>管程中锁的规则</li>
+<li>线程 start（）规则</li>
+<li>线程 join（）规则</li>
+</ol>
+
+<h3 id="被忽视的final">被忽视的final</h3>
+
+<h2 id="03-互斥锁-上-解决原子性问题">03|互斥锁（上）：解决原子性问题</h2>
+
+<p>java语言提供的锁技术：synchronized</p>
+
+<h2 id="04-互斥锁-下-如何用一把锁保护多个资源">04|互斥锁（下）：如何用一把锁保护多个资源？</h2>
+
+<p>用不用的锁对受保护资源进行精细化管理，能够提升性能。这种锁还有个名字，叫<strong>细粒度锁</strong></p>
+
+<p>原子性的本质是什么？其实是不可分割，不可分割只是外在表现，其本质是多个资源间有一致性的要求，操作的中间状态对外不可见。所以<strong>解决原子性问题，是要保证中间状态对外不可见。</strong></p>
+
+<h2 id="05-一不小心就死锁了-怎么办">05|一不小心就死锁了，怎么办？</h2>
+
+<p>使用细粒度锁可以提高并行度，是性能优化的一个重要手段。</p>
+
+<p>但是，使用细粒度锁是有代价的，这个代价就是可能会导致死锁。</p>
+
+<p><strong>死锁</strong>的一个比较专业的定义是：<strong>一组互相竞争资源的线程因互相等待，导致永久阻塞的现象</strong></p>
+
+<h3 id="如何预防死锁">如何预防死锁</h3>
+
+<p>要避免死锁就需要分析死锁发生的条件，有个叫Coffman的牛人早就总结过了，只有一下四个条件都发生时才会出现：</p>
+
+<ol>
+<li>互斥，共享资源X和Y只能被一个线程占用；</li>
+<li>占有且等待，线程T1已经取得共享资源X，在等待共享资源Y的时候，不释放共享资源X；</li>
+<li>不可抢占，其他线程不能强行抢占线程T1占有的资源；</li>
+<li>循环等待，线程T1等待线程T2占有的资源，线程T2等待线程T1占有的资源，就是循环等待。</li>
+</ol>
+
+<p>反过来分析，也就是说<strong>只要我们破坏其中一个，就可以成功避免死锁的发生</strong></p>
+
+<p>第一个条件互斥，我们没法破坏，我们用锁为的就是互斥。</p>
+
+<ol>
+<li>对于占有且等待，我们可以一次性申请所有的资源，这样就不存在等待了；</li>
+<li>对于不可抢占，占用部分资源的线程进一步申请其他资源时，如果申请不到，可以主动释放它占有的资源，这样不可抢占这个条件就破坏掉了；</li>
+<li>对于循环等待，可以靠按序申请资源来预防。所谓按序申请，是指资源是有线性顺序的，申请的时候可以先申请资源需要大的，这样线性化后自然就不存在循环了。</li>
+</ol>
+
+<p>具体如何实现：</p>
+
+<h3 id="1-破坏占用且等待时间">1.破坏占用且等待时间</h3>
+
+<h3 id="2-破坏不可抢占条件">2.破坏不可抢占条件</h3>
+
+<p>核心是要能够主动释放它所占有的资源，这一点synchronized是做不到的。原因是 synchronized 申请资源的时候如果申请不到，线程直接进入阻塞状态了，而线程进入阻塞状态，啥都干不了，也释放不了线程已经占有的资源。</p>
+
+<p>不过 java.util.concurrent这个包下面提供的Lock是可以轻松解决这个问题的。</p>
+
+<h3 id="3-破坏循环等待条件">3.破坏循环等待条件</h3>
+
+<p>破坏这个条件，需要对资源进行排序，然后按序申请资源。这个实现非常简单，我们假设每个账户都有不同的属性id，这个id可以作为排序字段，申请的时候，我们可以按照从小到大的顺序来申请。比如下面代码中，1-6出的代码对转出账户（this）和转入账户（target）排序，然后按照序号从小到大的顺序锁定账户。这样就不存在“循环”等待了。</p>
+
+<pre><code class="language-java">class Account {
+  private int id;
+  private int balance;
+  // 转账
+  void transfer(Account target, int amt){
+    Account left = this        ①
+    Account right = target;    ②
+    if (this.id &gt; target.id) { ③
+      left = target;           ④
+      right = this;            ⑤
+    }                          ⑥
+    // 锁定序号小的账户
+    synchronized(left){
+      // 锁定序号大的账户
+      synchronized(right){ 
+        if (this.balance &gt; amt){
+          this.balance -= amt;
+          target.balance += amt;
+        }
+      }
+    }
+  } 
+}
+
+</code></pre>
+
+<h2 id="06-用-等待-通知-机制优化循环等待">06|用“等待-通知”机制优化循环等待</h2>
+
+<p>一个完整的等待-通知机制：线程首先获得互斥锁，当线程要求的条件不满足时，释放互斥锁，进入等待状态；当要求的条件满足时，通知等待的线程，重新获取互斥锁。</p>
+
+<p>等待队列和互斥锁是一对一的关系，每个互斥锁都有自己独立的等待队列。</p>
+
+<p>尽量使用notifyAll（）</p>
+
+<h2 id="07-安全性-活跃性以及性能问题">07|安全性、活跃性以及性能问题</h2>
+
+<h3 id="安全性问题">安全性问题</h3>
+
+<p>数据竞争</p>
+
+<p>竞态条件，指的是程序的执行结果依赖线程执行的顺序</p>
+
+<h3 id="活跃性问题">活跃性问题</h3>
+
+<p>除了死锁外，还有两种情况，分别是“活锁”和“饥饿”</p>
+
+<p>有时线程虽然没有发生阻塞，但仍然会存在执行不下去的情况，这就是所谓的“活锁”</p>
+
+<p>互相谦让，结果又相撞了，如果发生在编程世界，有可能会一直谦让下去。成为没有发生阻塞但依然执行不下去的活锁。</p>
+
+<p>解决活锁的方案很简单，谦让时，尝试等待一个随机的时间就可以了。“等待一个随机时间”的方案虽然很简单，但非常有效，Raft 这样知名的分布式一致性算法中也用到了它。</p>
+
+<p>饥饿，所谓饥饿指的是线程因无法访问所需资源而无法执行下去的情况。在cpu繁忙的时候，优先级低的线程得到执行的机会很小，就可能发生线程饥饿；持有锁的线程，如果执行的时间过长，也可能导致“饥饿”问题。</p>
+
+<p>解决“饥饿”问题的方案很简单，有三种方案：</p>
+
+<ol>
+<li>保证资源充足</li>
+<li>公平地分配资源</li>
+<li>避免持有锁的线程长时间执行。</li>
+</ol>
+
+<h3 id="性能问题">性能问题</h3>
+
+<p>第一，既然使用锁会带来性能问题，那最好的方案自然是使用无锁的算法和数据结构了。例如线程本地存储（thread local storage，TLS）、写入时复制（Copy on write）、乐观锁；Java并发包里面的原子类也是一种无锁的数据结构；Disruptor则是一个无锁的内存队列，性能都非常好。。。</p>
+
+<p>第二，减少锁持有的时间。互斥锁本质上是将并行的程序串行化，所以要增加并行度，一定要减少锁持有的时间。如锁分段技术，读写锁等等。</p>
+
+<p>性能方面三个指标，吞吐量、延迟和并发量：</p>
+
+<ol>
+<li>吞吐量：指的是单位时间内能处理的请求数量。吞吐量越高，说明性能越好。</li>
+<li>延迟： 指的是从发出请求到收到响应的时间。延迟越小，说明性能越好。</li>
+<li>并发量：指的是能同时处理的请求数量，一般来说随着并发量的增加、延迟也会增加。所以延迟这个指标，一般都会基于并发量来说的。</li>
+</ol>
+
+<h2 id="08-管程-并发编程的万能钥匙">08|管程：并发编程的万能钥匙</h2>
+
+<p>管程，对应的英文是Monitor，直译是监视器。</p>
+
+<h3 id="mesa模型">MESA模型</h3>
+
+<h2 id="09-java线程-上-java线程的生命周期">09|Java线程（上）：Java线程的生命周期</h2>
+
+<p>对于有生命周期的事物，要学好它，思路非常简单，只要能搞懂<strong>生命周期中各个节点的状态转换机制</strong>就可以了</p>
+
+<h3 id="通用的线程生命周期">通用的线程生命周期</h3>
+
+<p>通用的线程生命周期基本上可以用下图这个“五态模型”来描述。这五态分别是：<strong>初始状态、可运行状态、运行状态、休眠状态和终止状态</strong></p>
+
+<h3 id="java中线程的生命周期">Java中线程的生命周期</h3>
+
+<p>Java语言中的线程共有六种状态，分别的：</p>
+
+<ol>
+<li>NEW（初始化状态）</li>
+<li>RUNNABLE（可运行/运行状态）</li>
+<li>BLOCKED（阻塞状态）</li>
+<li>WAITING（无时限等待）</li>
+<li>TIMED_WAITING（有时限等待）</li>
+<li>TERMINATED（终止状态）</li>
+</ol>
+
+<p>Java线程中的BLOCKED、WAITING、TIMED_WAITING是一种状态，即前面我们提到的休眠状态。也就是说<strong>只要Java
+线程处于这三种状态之一，那么这个线程就永远没有CPU的使用权</strong></p>
+
+<h2 id="10-java线程-中-创建多少线程才是合适的">10|Java线程（中）：创建多少线程才是合适的？</h2>
+
+<h2 id="11-java线程-下-为什么局部变量是线程安全的">11|Java线程（下）：为什么局部变量是线程安全的？</h2>
+
+<h2 id="12-如何用面向对象思想写好并发程序">12|如何用面向对象思想写好并发程序？</h2>
+
+<h2 id="13-理论基础模块热点问题答疑">13|理论基础模块热点问题答疑</h2>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-03-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/linux-awk/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Linux三剑客之AWK学习</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/mysql-question-03/">
+            <span class="next-text nav-default">Mysql Question 03</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>
