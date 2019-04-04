@@ -19,6 +19,7 @@ awk其名称得自于它的创始人 Alfred Aho 、Peter Weinberger 和 Brian Ke
 
 通常，awk是以文件的一行为处理单位的。awk每接收文件的一行，然后执行相应的命令，来处理文本。
 
+> **再次说明， awk 对输入文件中的每一行都执行这个脚本。**
 
 
 ## 调用awk

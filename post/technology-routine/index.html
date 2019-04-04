@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>技术路线的选择重要但不具有决定性 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="最近微软在技术上连续有大动作，在PDC上发布了Windows Azure云计算平台，预告了Visual Studio 2010、.NET 4.0和C# 4.0。如果放在几年前，我相信微软粉丝们一定是欢声雷动，不过这次情况有点不太一样，在网上看到有人在抱怨微软技术更新速度太快而且四面出击，还有人扬言要改弦更张，投奔Linux或者Java阵营。我本人也收到一封来信，写信人大意是说自己大学时选择.NET路线，一路跟下来很辛苦，2.0还没学好，人家已经4.0预览了，感到很困惑，问我该怎么办。老实讲，这样的问题我无法回答，每个人具体情况不同，所应该采取的态度和解决方案也不同。 从我自己来讲，其实技术路线问题也曾长时间地困扰我，所以我想把我现在的一些想法摊出来跟大家分享一下。罗列如下：
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/technology-routine/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="技术路线的选择重要但不具有决定性" />
+<meta property="og:description" content="最近微软在技术上连续有大动作，在PDC上发布了Windows Azure云计算平台，预告了Visual Studio 2010、.NET 4.0和C# 4.0。如果放在几年前，我相信微软粉丝们一定是欢声雷动，不过这次情况有点不太一样，在网上看到有人在抱怨微软技术更新速度太快而且四面出击，还有人扬言要改弦更张，投奔Linux或者Java阵营。我本人也收到一封来信，写信人大意是说自己大学时选择.NET路线，一路跟下来很辛苦，2.0还没学好，人家已经4.0预览了，感到很困惑，问我该怎么办。老实讲，这样的问题我无法回答，每个人具体情况不同，所应该采取的态度和解决方案也不同。
+从我自己来讲，其实技术路线问题也曾长时间地困扰我，所以我想把我现在的一些想法摊出来跟大家分享一下。罗列如下：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/technology-routine/" /><meta property="article:published_time" content="2019-04-04T18:35:09&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-04T18:35:09&#43;08:00"/>
+
+<meta itemprop="name" content="技术路线的选择重要但不具有决定性">
+<meta itemprop="description" content="最近微软在技术上连续有大动作，在PDC上发布了Windows Azure云计算平台，预告了Visual Studio 2010、.NET 4.0和C# 4.0。如果放在几年前，我相信微软粉丝们一定是欢声雷动，不过这次情况有点不太一样，在网上看到有人在抱怨微软技术更新速度太快而且四面出击，还有人扬言要改弦更张，投奔Linux或者Java阵营。我本人也收到一封来信，写信人大意是说自己大学时选择.NET路线，一路跟下来很辛苦，2.0还没学好，人家已经4.0预览了，感到很困惑，问我该怎么办。老实讲，这样的问题我无法回答，每个人具体情况不同，所应该采取的态度和解决方案也不同。
+从我自己来讲，其实技术路线问题也曾长时间地困扰我，所以我想把我现在的一些想法摊出来跟大家分享一下。罗列如下：">
+
+
+<meta itemprop="datePublished" content="2019-04-04T18:35:09&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-04T18:35:09&#43;08:00" />
+<meta itemprop="wordCount" content="3924">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="技术路线的选择重要但不具有决定性"/>
+<meta name="twitter:description" content="最近微软在技术上连续有大动作，在PDC上发布了Windows Azure云计算平台，预告了Visual Studio 2010、.NET 4.0和C# 4.0。如果放在几年前，我相信微软粉丝们一定是欢声雷动，不过这次情况有点不太一样，在网上看到有人在抱怨微软技术更新速度太快而且四面出击，还有人扬言要改弦更张，投奔Linux或者Java阵营。我本人也收到一封来信，写信人大意是说自己大学时选择.NET路线，一路跟下来很辛苦，2.0还没学好，人家已经4.0预览了，感到很困惑，问我该怎么办。老实讲，这样的问题我无法回答，每个人具体情况不同，所应该采取的态度和解决方案也不同。
+从我自己来讲，其实技术路线问题也曾长时间地困扰我，所以我想把我现在的一些想法摊出来跟大家分享一下。罗列如下："/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">miao</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">miao</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">技术路线的选择重要但不具有决定性</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-04 </span>
+        
+          <span class="more-meta"> 约 3924 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#一-根据我长期的观察-做开发技术的人按照其人生路线设计-可以分成几类">一、根据我长期的观察，做开发技术的人按照其人生路线设计，可以分成几类。</a></li>
+<li><a href="#二-对个体软件人来说-什么是核心竞争力-不是时间差-不是技术-不是基本功-不是什么思想-也不是聪明脑瓜-而是你独特的个性知识经验组合">二、 <strong>对个体软件人来说，什么是核心竞争力？不是时间差，不是技术，不是基本功，不是什么思想，也不是聪明脑瓜，而是你独特的个性知识经验组合。</strong></a></li>
+<li><a href="#三-虽然技术路线的选择不是核心竞争力-也不应该具有决定性-但对于个人职业路线还是具有比较重要的影响力">三、 虽然技术路线的选择不是核心竞争力，也不应该具有决定性，但对于个人职业路线还是具有比较重要的影响力。</a></li>
+<li><a href="#四-几年前我刚加入csdn的时候-net和java之争是最热门的话题-现在回过头看-其实当时无论你选择那条路-如果认真做下去-搞些实事-别玩虚活的话-现在都应该有成就了">四、 几年前我刚加入CSDN的时候，.NET和Java之争是最热门的话题。现在回过头看，其实当时无论你选择那条路，如果认真做下去，搞些实事，别玩虚活的话，现在都应该有成就了。</a></li>
+<li><a href="#五-不过我相信未来不同技术流的应用领域会出现一些明显的分化">五、 不过我相信未来不同技术流的应用领域会出现一些明显的分化。</a></li>
+<li><a href="#六-几年前还有一个热烈争论-就是java和c-之争-现在实际上尘埃已经落定-两个语言的定位已经分道扬镳">六、 几年前还有一个热烈争论，就是Java和C#之争。现在实际上尘埃已经落定，两个语言的定位已经分道扬镳。</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>最近微软在技术上连续有大动作，在PDC上发布了Windows Azure云计算平台，预告了Visual Studio 2010、.NET 4.0和C# 4.0。如果放在几年前，我相信微软粉丝们一定是欢声雷动，不过这次情况有点不太一样，在网上看到有人在抱怨微软技术更新速度太快而且四面出击，还有人扬言要改弦更张，投奔Linux或者Java阵营。我本人也收到一封来信，写信人大意是说自己大学时选择.NET路线，一路跟下来很辛苦，2.0还没学好，人家已经4.0预览了，感到很困惑，问我该怎么办。老实讲，这样的问题我无法回答，每个人具体情况不同，所应该采取的态度和解决方案也不同。
+从我自己来讲，其实技术路线问题也曾长时间地困扰我，所以我想把我现在的一些想法摊出来跟大家分享一下。罗列如下：</p>
+
+<h3 id="一-根据我长期的观察-做开发技术的人按照其人生路线设计-可以分成几类">一、根据我长期的观察，做开发技术的人按照其人生路线设计，可以分成几类。</h3>
+
+<ol>
+<li><p><strong>第一类是把自己的命运寄托在一项事业上。</strong>这样的人知道自己想干什么，而且有能力把技术当工具来实现自己的想法和事业。这里所说的事业是广义的，并不是说你非要自己开公司当老板，而是说你认可一件事情，比如促进人们交流和言论自由，带给大家更多娱乐，提升大众身心健康水平，增强国家国防实力，或者提升某个行业的信息化水平，然后你能够以技术为手段，在这个事情上做出成绩。这种人做着自己认为值得一生投入的事情，愿意领略这一追求带来的人生起伏并且无怨无悔，我认为这是做技术的最高层次。</p></li>
+
+<li><p><strong>第二类是把自己的命运寄托在组织和团队上。</strong>这种人虽然不知道自己到底想干什么，但是技术水平出色，而且综合素质突出，勇于变化，能够把技术当敲门砖进入某个优秀的团队，以团队的目标为目标，依据团队的需求而转型或者坚持，跟团队一起干出一番成绩。这类人有令人羡慕的职业背景，在大公司里高薪厚禄，生活比较安定舒适，但是中年以后会经常自问到底做了什么自己想做的事情，为自己过于风平浪静的人生感到惆怅。但总的来说，这个层次也是比较高的。</p></li>
+
+<li><p><strong>第三种是把命运寄托在技术上。</strong>这种人有能力成为技术的专家，然后就希望奇货可居，待价而沽，把技能当商品出售谋求富足人生。这种人没有大的人生目标，不想把自己的命运跟企业和组织绑定在一起，也不愿意做什么改变，只是满足于技术高手的层面，寄希望于其技术专长能够长期值钱，有点投机主义者的意思。</p></li>
+
+<li><p><strong>第四种是还处于出卖劳动力的阶段，</strong>在这里就不多说了。</p></li>
+</ol>
+
+<p>我想说的是，在过去很多年里，很多技术人实际上是把自己定位在第三种人里。而实际上，只有成为第一类和第二类人，才算达到了比较成功的状态。第三类人实际上最危险，因为技术的变迁不但是可能的，而且是一定的。他们要么马上被淘汰，要么追得老了累了追不动了以后被淘汰，被淘汰只是时间问题。</p>
+
+<p>因此，如果你认为某个软件技术的兴起或者衰落对你个人的职业生涯构成了决定性的影响，那么你可能正走在错误的路线上，应当尽快改弦更张。</p>
+
+<h3 id="二-对个体软件人来说-什么是核心竞争力-不是时间差-不是技术-不是基本功-不是什么思想-也不是聪明脑瓜-而是你独特的个性知识经验组合">二、 <strong>对个体软件人来说，什么是核心竞争力？不是时间差，不是技术，不是基本功，不是什么思想，也不是聪明脑瓜，而是你独特的个性知识经验组合。</strong></h3>
+
+<p>有人看到新技术出来了，急急忙忙赶上去尝鲜，以为自己快人一步，就能如何如何，实际上这种想法根本不靠谱，最多在论坛博客上风光两天，等这项技术投入实际应用以后一点便宜也占不到。</p>
+
+<p><strong>有人把某个技术、框架、平台研究得里外通透，以为这样就能奇货可居。</strong>实践中，这种人能红火一时，但很难超过5年。这是现阶段技术发展生命周期所决定的。此外，现在越来越多人意识到了，能够靠读书看文章读代码做练习学会的东西没什么门槛，智力正常的人只要愿意花功夫，都不难达到你的程度。有的人认为，自己有能力驾驭技术潮流，哪个红学哪个。我在技术行业里不敢说阅人无数，见过的高手上百是有的，说句不怕得罪人的话，能够连续抓住两个以上的潮流并且始终处于领先位置的人及其少见，一只手就数的过来。更常见的情况是，上一个阶段的成功会成为下一个阶段的障碍，所谓随机应变屹立潮头之说，往往只不过是当红小生给自己壮胆的狂言，时过境迁之后，他就只能听着新一代当红小生的豪言壮语而默默苦笑。</p>
+
+<p><strong>有人强调基本功，这是对的。</strong>在任何技术性行业里都一样，基础打得多深，上面就能造得多高。现实中，基本功扎实的人很少见，这跟中国教育的弊病有关，所以基本功好的人，一般应变能力强，学习速度快，比较受欢迎。但说基本功是核心竞争力，还是没有抓住本质。我们经常能看到基本功差不多的两个人，一个发展的很好，一个发展平平，这表明基本功成功职业生涯的是重要条件，但不是决定因素。</p>
+
+<p>有人强调这个那个思想，实际上软件行业里的伟大的思想就那么屈指可数的几个，窗户纸一点就破，其他衍生出来的思想，就跟技术风潮一样，各领风骚三五年，成不了你核心竞争力。</p>
+
+<p>那么核心竞争力是什么？我观察圈子里很多成功和不成功的技术人，提出一个观点，那就是个人的核心竞争力是是他独特的个性知识经验组合。这个行业里拥挤着上百万聪明人，彼此之间真正的不同在哪里？不在于你学的是什么技术，学得多深，IQ多少，而在于你身上有别人没有的独特的个性、背景、知识和经验的组合。如果这种组合，1，绝无仅有；2，在实践中有价值，3，具有可持续发展性，那你就具备核心竞争力。因此，当设计自己的发展路线时，应当最大限度地加强和发挥自己独特的组合，而不是寻求单项的超越。而构建自己独特组合的方式，主要是通过实践，其次是要有意识地构造。关于这个观点，话题太大，我不打算赘述。</p>
+
+<h3 id="三-虽然技术路线的选择不是核心竞争力-也不应该具有决定性-但对于个人职业路线还是具有比较重要的影响力">三、 虽然技术路线的选择不是核心竞争力，也不应该具有决定性，但对于个人职业路线还是具有比较重要的影响力。</h3>
+
+<p>但这并不是说，我们应该煞有介事地把自己归于Java或者.NET技术阵营，整天捧本书吭哧吭哧啃。<strong>正确的态度应该是着重于你要干的事情，然后认真把这件事情做好，通过必要的学习将所需的知识体系构筑完整，在整个过程中及时更新知识体系。</strong>只有心理没谱的人，才会为新技术的推出感到惶恐，因为他不知道自己要干什么，也就不知道自己要学什么，看到什么东西出来了都以为如果不学就会落伍，才会觉得是个压力，日积月累，才会痛苦彷徨嚷嚷怎么办。相反，如果你很清楚地知道自己要做什么，就会发现，其实必须及时更新的知识变化并不频繁，大多数新鲜玩意根本不在自己关注范围内，任他三仙落地，五佛升天，与我何干？因此完全可以安步当车，稳扎稳打。</p>
+
+<h3 id="四-几年前我刚加入csdn的时候-net和java之争是最热门的话题-现在回过头看-其实当时无论你选择那条路-如果认真做下去-搞些实事-别玩虚活的话-现在都应该有成就了">四、 几年前我刚加入CSDN的时候，.NET和Java之争是最热门的话题。现在回过头看，其实当时无论你选择那条路，如果认真做下去，搞些实事，别玩虚活的话，现在都应该有成就了。</h3>
+
+<p>当然，客观上来说，这几年微软技术变化是比较快，弯弯绕得比较多，相比之下，如果当时你选择的是Java，可能这几年过的比较幸福一些，这是事实。我对此并不是没有自己的看法，但是这毕竟不是多么大的问题，实际上Java这几年折腾得也够猛，只不过作为一个比较开放的领域，Java为其追随者保留了更多的自由度，而微软的追随者大多数有一种被驱赶的感觉而已。话说回来， 微软的技术变革并不是没有章法的，其今天的技术架构，早在2003年就已经明明白白地公诸于众，只不过因为某些微妙的原因，一些微软跟随者这几年被带着兜了一些圈子，浪费了一些精力，比较辛苦。不过，现在.NET技术体系的尘埃基本落定，从体系结构上看，相对稳定的时期已经到来，投资微软技术可以放心。</p>
+
+<h3 id="五-不过我相信未来不同技术流的应用领域会出现一些明显的分化">五、 不过我相信未来不同技术流的应用领域会出现一些明显的分化。</h3>
+
+<p>在中国，涉及国防、国家安全、命脉产业和关键行业的服务端要害系统，国产化改造是阻挡不住的潮流，长期来看，开源和Java将在这个领域占据主导低位。其他的领域，随着微软技术变革的的大势确定，相信微软的优势不可小觑。这里没有考虑中国政府可能做出的产业调整政策。这次微软黑屏事件，无论是否出于微软本意，其最大的效果在于向有关部门展示了一下其信息战力，中国政军内部有关机构对此不可能不加以警惕，这是否会引起中国国内IT产业政策的调整，现在还不得而知。但我相信，微软系统恐怕将在不长的时间里与中国关键要害领域的核心系统彻底说拜拜。未来中国IT系统的格局，很有可能是居庙堂之高则清一色Linux/Java，处江湖之远则Windows占主导。</p>
+
+<h3 id="六-几年前还有一个热烈争论-就是java和c-之争-现在实际上尘埃已经落定-两个语言的定位已经分道扬镳">六、 几年前还有一个热烈争论，就是Java和C#之争。现在实际上尘埃已经落定，两个语言的定位已经分道扬镳。</h3>
+
+<p>Java实际上已经落实了成为系统语言的诺言，在现在的计算机体系结构上，Java与15年前的C一样，可以成为构造基础设施的利器，而且其性能相当不错，完全突破了之前人们对虚拟机语言的认识局限性。我相信在未来，Java将有效地侵蚀C语言的一些曾经以为千秋万代永不变色的地盘。虽然同时Java也在向上发展，但是其力度与C#不可同日而语。相反，C#主要是在往上发展，即将成为超级瑞士军刀，微软版十全大补膏，所有于应用开发有意义的特性都要加上，从编程语言发展来看，它将成为一株奇葩。作为一个编程语言的爱好者，我正饶有兴致地注视着史上特性最丰富语言C#的发展动向。但是，不得不指出，C#的弱点在脚跟。自从用它开发Longhorn Avalon失败以后，微软暂时放弃了让C#成为系统语言的努力，专心专意让C#变成应用开发领域的超级无敌霸王3000，而在核心领域，仍然是C++、COM当关。这就出现了有趣的局面，在可见的未来，微软体系内真正的核心软件基础设施，还是将由微软自己用C++来构造，而组合装配的应用开发，则由C#完成。VB和CLR平台上的其他动态语言都不会有太多机会，因为C#将穷尽神智正常者一切关于语言的幻想。</p>
+
+<p>以上几点，如果有人现在要选择技术路线，可以参考一下。但切记，技术路线的选择重要，但不具有决定意义。</p>
+
+<blockquote>
+<p>本文转自孟大08年写的博文，<a href="https://blog.csdn.net/myan/article/details/3247071">《技术路线的选择重要但不具有决定性》</a></p>
+</blockquote>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-04-04
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/2018-2019/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">2018总结-2019展望</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/linux-awk/">
+            <span class="next-text nav-default">Linux三剑客之AWK学习</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

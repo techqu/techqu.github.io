@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2019-03-27T17:31:24&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-27T17:31:24&#43;08:00" />
-<meta itemprop="wordCount" content="3586">
+<meta itemprop="wordCount" content="3933">
 
 
 
@@ -132,7 +132,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-03-27 </span>
         
-          <span class="more-meta"> 约 3586 字 </span>
+          <span class="more-meta"> 约 3933 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -190,6 +190,9 @@
 <li><a href="#11-java线程-下-为什么局部变量是线程安全的">11|Java线程（下）：为什么局部变量是线程安全的？</a></li>
 <li><a href="#12-如何用面向对象思想写好并发程序">12|如何用面向对象思想写好并发程序？</a></li>
 <li><a href="#13-理论基础模块热点问题答疑">13|理论基础模块热点问题答疑</a></li>
+<li><a href="#14-lock和condition-上-隐藏在并发包中的管程">14|Lock和Condition（上）：隐藏在并发包中的管程</a></li>
+<li><a href="#15-lock和condition-下-dubbo如何用管程实现异步转同步">15|Lock和Condition（下）：Dubbo如何用管程实现异步转同步？</a></li>
+<li><a href="#16-semaphore-如何快速实现一个限流器">16|Semaphore：如何快速实现一个限流器</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -407,7 +410,12 @@ public class Singleton {
 
 <p>管程，对应的英文是Monitor，直译是监视器。</p>
 
+<p>所谓管程，指的是管理共享变量以及对共享变量的操作过程，让他们支持并发。翻译为Java领域的语言，就是管理类的成员变量和成员方法，让这个类是线程安全的。</p>
+
 <h3 id="mesa模型">MESA模型</h3>
+
+<p>管程解决互斥问题的思路很简单，就是将共享变量及其对共享变量的操作统一封装起来。管程X将共享变量queue这个队列和相关的操作 enq（）、出队deq（）都封装起来了；
+线程A和线程B如果想queue，只能通过调用管程提供的enq（）和deq（）方法来实现；enq（）、deq（）保证互斥性，只允许一个线程进入管程。前面章节的互斥锁用法，其背后的模型其实就是它。</p>
 
 <h2 id="09-java线程-上-java线程的生命周期">09|Java线程（上）：Java线程的生命周期</h2>
 
@@ -440,6 +448,12 @@ public class Singleton {
 <h2 id="12-如何用面向对象思想写好并发程序">12|如何用面向对象思想写好并发程序？</h2>
 
 <h2 id="13-理论基础模块热点问题答疑">13|理论基础模块热点问题答疑</h2>
+
+<h2 id="14-lock和condition-上-隐藏在并发包中的管程">14|Lock和Condition（上）：隐藏在并发包中的管程</h2>
+
+<h2 id="15-lock和condition-下-dubbo如何用管程实现异步转同步">15|Lock和Condition（下）：Dubbo如何用管程实现异步转同步？</h2>
+
+<h2 id="16-semaphore-如何快速实现一个限流器">16|Semaphore：如何快速实现一个限流器</h2>
     </div>
 
     <div class="post-copyright">

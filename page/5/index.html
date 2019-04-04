@@ -46,7 +46,7 @@
 <meta property="og:description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://techqu.github.io/" />
-<meta property="og:updated_time" content="2019-02-14T15:04:47&#43;08:00"/>
+<meta property="og:updated_time" content="2019-02-15T11:10:56&#43;08:00"/>
 
 <meta itemprop="name" content="Quguang 学习笔记">
 <meta itemprop="description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等">
@@ -118,6 +118,48 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/java-rpc/">你应该知道的 RPC 原理</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-15 </span>
+      <div class="post-category">
+          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+          </div>
+        <span class="more-meta"> 约 5164 字 </span>
+        <span class="more-meta"> 预计阅读 11 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。</p>
+
+<pre><code class="language-Java">
+ public class Test {
+     public static void main(String[] args) {
+         HelloWorldService helloWorldService = new HelloWorldServiceImpl();
+         helloWorldService.sayHello(&quot;test&quot;);
+     }
+ }
+</code></pre>
+
+<p>而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：</p>
+
+<ol>
+<li><p>要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？</p></li>
+
+<li><p>其它团队要使用我们的服务，我们的服务该怎么发布以便他人调用？</p></li>
+</ol>
+
+<p>下文我们将对这两个问题展开探讨。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/java-rpc/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/java-thread-pool/">Java并发编程：线程池的使用</a></h1>
@@ -216,38 +258,6 @@
     </div>
     <div class="read-more">
       <a href="/post/interview-exp-baidu/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/tomcat-overview/">Tomcat Overview</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-02-12 </span>
-      <div class="post-category">
-          <a href="/categories/tomcat/"> tomcat </a>
-          <a href="/categories/java/"> java </a>
-          <a href="/categories/springmvc/"> springmvc </a>
-          <a href="/categories/servlet/"> servlet </a>
-          </div>
-        <span class="more-meta"> 约 2548 字 </span>
-        <span class="more-meta"> 预计阅读 6 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="tomcat-server的组成部分">Tomcat Server的组成部分</h2>
-
-<h3 id="1-1-server">1.1 – Server</h3>
-
-<p>A Server element represents the entire Catalina servlet container. (Singleton)</p>
-
-<h3 id="1-2-service">1.2 – Service</h3>
-    </div>
-    <div class="read-more">
-      <a href="/post/tomcat-overview/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

@@ -120,6 +120,33 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/distributed-consistency/">从分布式一致性谈到CAP理论、BASE理论、分布式事务</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-14 </span>
+      <div class="post-category">
+          <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
+          </div>
+        <span class="more-meta"> 约 4363 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>什么是事务，简单说事务就是要么全不做，要么全做。一部分做一部分不做就会出一致性问题。</p>
+
+<p>传统的单体应用不会横跨多个数据库，可以通过单机事务保证一致性。</p>
+
+<p>然而在海量数据的场景下，需要对数据库做拆分，即分库分表，而Cobar、MyCat这类分库分表中间并不提供分布式事务的特性，并且基于二阶段提交的分布式事务性能较差，对于大多数业务场景来说，并不需要强一致，只需要保证最终一致性即可。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/distributed-consistency/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/transaction-2pc/">分布式事务-2PC(二阶段提交)</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2019-01-14 </span>
@@ -223,29 +250,6 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </div>
     <div class="read-more">
       <a href="/post/devops-in-action/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/reading-note-your-light-on/">《你的灯亮着吗?》-读书笔记</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-12 </span>
-      <div class="post-category">
-          <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"> 读书笔记 </a>
-          </div>
-        <span class="more-meta"> 约 15 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      在微信读书app上很快就看完了
-    </div>
-    <div class="read-more">
-      <a href="/post/reading-note-your-light-on/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
