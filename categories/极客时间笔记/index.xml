@@ -6,10 +6,23 @@
     <description>Recent content in 极客时间笔记 on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 27 Mar 2019 15:49:58 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Apr 2019 17:04:30 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《数据结构与算法之美》-红黑树</title>
+      <link>https://techqu.github.io/post/data-structure-red-black-tree/</link>
+      <pubDate>Fri, 12 Apr 2019 17:04:30 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-red-black-tree/</guid>
+      <description>&lt;p&gt;很多书籍里，但凡讲到平衡二叉查找树，就会拿红黑树作为例子。不仅如此，如果你有一定的开发经验，你会发现，在工程中，很多用到平衡二叉查找树的地方都会用红黑树。你有没有想过，&lt;/p&gt;
+
+&lt;p&gt;Java TreeMap实现了SortedMap接口，也就是说会按照key的大小顺序对Map中的元素进行排序，key大小的评判可以通过其本身的自然顺序（natural ordering），也可以通过构造时传入的比较器（Comparator）。&lt;/p&gt;
+
+&lt;p&gt;TreeMap底层通过红黑树（Red-Black tree）实现，也就意味着containsKey(), get(), put(), remove()都有着log(n)的时间复杂度。其具体算法实现参照了《算法导论》。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>《MYSQL实战45讲》- Question 03</title>
@@ -65,6 +78,15 @@
       
       <guid>https://techqu.github.io/post/mysql-transaction/</guid>
       <description>行锁 MySQL的行锁是在引擎层由各个引擎自己实现的。比如MyISAM引擎就不支持行锁。不支持行锁意味着并发控制只能使用表锁，对于这种引擎的表</description>
+    </item>
+    
+    <item>
+      <title>《数据结构与算法之美》-归并排序</title>
+      <link>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</link>
+      <pubDate>Thu, 07 Mar 2019 16:54:30 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</guid>
+      <description>归并排序的原理 归并排序的核心思想还是蛮简单的。如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两</description>
     </item>
     
     <item>

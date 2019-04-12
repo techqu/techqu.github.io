@@ -21,6 +21,46 @@
     </item>
     
     <item>
+      <title>《数据结构与算法之美》-红黑树</title>
+      <link>https://techqu.github.io/post/data-structure-red-black-tree/</link>
+      <pubDate>Fri, 12 Apr 2019 17:04:30 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-red-black-tree/</guid>
+      <description>&lt;p&gt;很多书籍里，但凡讲到平衡二叉查找树，就会拿红黑树作为例子。不仅如此，如果你有一定的开发经验，你会发现，在工程中，很多用到平衡二叉查找树的地方都会用红黑树。你有没有想过，&lt;/p&gt;
+
+&lt;p&gt;Java TreeMap实现了SortedMap接口，也就是说会按照key的大小顺序对Map中的元素进行排序，key大小的评判可以通过其本身的自然顺序（natural ordering），也可以通过构造时传入的比较器（Comparator）。&lt;/p&gt;
+
+&lt;p&gt;TreeMap底层通过红黑树（Red-Black tree）实现，也就意味着containsKey(), get(), put(), remove()都有着log(n)的时间复杂度。其具体算法实现参照了《算法导论》。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>简单理解Zookeeper的Leader选举</title>
+      <link>https://techqu.github.io/post/zk-election/</link>
+      <pubDate>Fri, 12 Apr 2019 15:10:41 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/zk-election/</guid>
+      <description>Leader选举是保证分布式数据一致性的关键所在。Leader选举分为Zookeeper集群初始化启动时选举和Zookeeper集群运行期间</description>
+    </item>
+    
+    <item>
+      <title>2020考研准备</title>
+      <link>https://techqu.github.io/post/kaoyan-plan-2020/</link>
+      <pubDate>Sat, 06 Apr 2019 10:22:26 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/kaoyan-plan-2020/</guid>
+      <description>一天的学习时间 数学复习计划 复习资料 数学复习资料 英语复习资料 政治复习资料 辅导老师 视频资源 2020考研数学视频汇总 链接：https://pan.</description>
+    </item>
+    
+    <item>
+      <title>991“数据结构与C语言程序设计”考试大纲（2019版）</title>
+      <link>https://techqu.github.io/post/beihang-991-2019/</link>
+      <pubDate>Fri, 05 Apr 2019 17:35:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/beihang-991-2019/</guid>
+      <description>&lt;p&gt;2019年“数据结构与C语言程序设计”考试内容包括“数据结构”与“C语言程序设计”两门课程的内容，各占比例50%。试卷满分为150分。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>技术路线的选择重要但不具有决定性</title>
       <link>https://techqu.github.io/post/technology-routine/</link>
       <pubDate>Thu, 04 Apr 2019 18:35:09 +0800</pubDate>
@@ -114,7 +154,7 @@
     </item>
     
     <item>
-      <title>归并排序</title>
+      <title>《数据结构与算法之美》-归并排序</title>
       <link>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</link>
       <pubDate>Thu, 07 Mar 2019 16:54:30 +0800</pubDate>
       

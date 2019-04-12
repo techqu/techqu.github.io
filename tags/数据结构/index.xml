@@ -6,10 +6,23 @@
     <description>Recent content in 数据结构 on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 18 Nov 2018 15:03:48 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Apr 2019 17:04:30 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《数据结构与算法之美》-红黑树</title>
+      <link>https://techqu.github.io/post/data-structure-red-black-tree/</link>
+      <pubDate>Fri, 12 Apr 2019 17:04:30 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-red-black-tree/</guid>
+      <description>&lt;p&gt;很多书籍里，但凡讲到平衡二叉查找树，就会拿红黑树作为例子。不仅如此，如果你有一定的开发经验，你会发现，在工程中，很多用到平衡二叉查找树的地方都会用红黑树。你有没有想过，&lt;/p&gt;
+
+&lt;p&gt;Java TreeMap实现了SortedMap接口，也就是说会按照key的大小顺序对Map中的元素进行排序，key大小的评判可以通过其本身的自然顺序（natural ordering），也可以通过构造时传入的比较器（Comparator）。&lt;/p&gt;
+
+&lt;p&gt;TreeMap底层通过红黑树（Red-Black tree）实现，也就意味着containsKey(), get(), put(), remove()都有着log(n)的时间复杂度。其具体算法实现参照了《算法导论》。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>《数据结构与算法之美》-基础篇(1)</title>
