@@ -28,59 +28,24 @@
 ![英语辅导老师](/img/kaoyan/英语辅导老师.png)
 
 
-## 视频资源
-
-### 2020考研数学视频汇总
-链接：https://pan.baidu.com/s/16tbCYtPYHhxZIHlA9CtoXg 
-提取码：zbc2 
-复制这段内容后打开百度网盘手机App，操作更方便哦
-
-![数学视频截图](/img/kaoyan/数学视频截图.png)
+## 数学学习步骤
+我建议小小白不要过度依靠视频，不是要小小白们放弃视频，我认为学习数学的正确步骤应该是这样的：
 
 
-### 2020考研政治视频汇总
-链接：https://pan.baidu.com/s/1Wgw9snFMJFahOkyjauBMYw 
-提取码：vlpr 
-复制这段内容后打开百度网盘手机App，操作更方便哦
 
-![政治视频截图](/img/kaoyan/政治视频截图.png)
+**1，观看某章节视频；**
 
+**2，做课后习题，基础习题等（做题时不要看答案）；**
 
-### 2020考研英语
+**3，拿出答案，批改自己错误之处；**
 
- 文都英语 
- 链接：https://pan.baidu.com/s/1z2d4UtECUCaGNOvSb1Ga5g 
-提取码：c7gv 
-复制这段内容后打开百  度网盘手机App，操作更方便哦
+**4，再次打开某章节视频，专门看错误之处的知识点，查漏补缺；**
 
- 谭剑波英语
- 链接：https://pan.baidu.com/s/1_HHh7ZFLreTb0v2eaH6jDQ 
-提取码：c6n6 
-复制这段内容后打开百  度网盘手机App，操作更方便哦
+**5，拿出错题本，记录知识点和重点例题；**
+
+**6，在考前一个星期、一个月、两个月的时候拿出这道题重新计算。**
 
 
- 何凯文专项
- 链接：https://pan.baidu.com/s/1GZwNCot9lb-kGVj-YptnaQ 
-提取码：e937 
-复制这段内容后打开百  度网盘手机App，操作更方便哦
- 
- 海文钻石班
- 链接：https://pan.baidu.com/s/11cQhAc70dFY5knXzeXx2Sw 
-提取码：s0yn 
-复制这段内容后打开百  度网盘手机App，操作更方便哦
-
- 海文英语
- 链接：https://pan.baidu.com/s/10yVCRKSFrq88uUEhgTR6FA 
-提取码：e8ju 
-复制这段内容后打开百  度网盘手机App，操作更方便哦
 
 
- 橙啦英语
- 链接：https://pan.baidu.com/s/1DssrSn6os7TizLMYYtC4og 
-提取码：cgfu 
-复制这段内容后打开百  度网盘手机App，操作更方便哦
- 
- 陈正康英语
- 链接：https://pan.baidu.com/s/18uHGW0oFxi3AY4egyQwp4g 
-提取码：ikce 
-复制这段内容后打开百  度网盘手机App，操作更方便哦
+这是学数学最高效的方法，在学习数学的过程中，刷习题一定是花费我们时间最多的！题做得越多，就越能发现自己的错误和不足之处。

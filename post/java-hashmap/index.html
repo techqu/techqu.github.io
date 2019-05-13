@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Java Hashmap - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="在Java中，保存数据有两种比较简单的数据结构：数组和链表。数组的特点是：寻址容易，插入和删除困难；而链表的特点是：寻址困难，插入和删除容易" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/java-hashmap/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="Java Hashmap" />
+<meta property="og:description" content="在Java中，保存数据有两种比较简单的数据结构：数组和链表。数组的特点是：寻址容易，插入和删除困难；而链表的特点是：寻址困难，插入和删除容易" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/java-hashmap/" /><meta property="article:published_time" content="2019-04-22T17:22:31&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-22T17:22:31&#43;08:00"/>
+
+<meta itemprop="name" content="Java Hashmap">
+<meta itemprop="description" content="在Java中，保存数据有两种比较简单的数据结构：数组和链表。数组的特点是：寻址容易，插入和删除困难；而链表的特点是：寻址困难，插入和删除容易">
+
+
+<meta itemprop="datePublished" content="2019-04-22T17:22:31&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-22T17:22:31&#43;08:00" />
+<meta itemprop="wordCount" content="2327">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java Hashmap"/>
+<meta name="twitter:description" content="在Java中，保存数据有两种比较简单的数据结构：数组和链表。数组的特点是：寻址容易，插入和删除困难；而链表的特点是：寻址困难，插入和删除容易"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">miao</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">miao</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Java Hashmap</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-22 </span>
+        
+          <span class="more-meta"> 约 2327 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#哈希冲突">哈希冲突</a></li>
+</ul></li>
+<li><a href="#参考文章">参考文章：</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>在Java中，保存数据有两种比较简单的数据结构：数组和链表。数组的特点是：寻址容易，插入和删除困难；而链表的特点是：寻址困难，插入和删除容易。上面我们提到过，常用的哈希函数的冲突解决办法中有一种方法叫做链地址法，其实就是将数组和链表组合在一起，发挥了两者的优势，我们可以将其理解为链表的数组。</p>
+
+<p><strong>静态成员变量</strong></p>
+
+<ul>
+<li>HashMap中size表示当前共有多少个KV对</li>
+<li>capacity表示当前HashMap的容量是多少，默认值是16，每次扩容都是成倍的。</li>
+<li>loadFactor是装载因子，当Map中元素个数超过loadFactor* capacity的值时，会触发扩容。</li>
+<li>loadFactor* capacity可以用threshold表示。</li>
+</ul>
+
+<pre><code class="language-java">/**
+  * 默认初始大小，值为16，要求必须为2的幂
+  */
+ static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4; // aka 16
+ 
+ /**
+  * 最大容量，必须不大于2^30
+  */
+ static final int MAXIMUM_CAPACITY = 1 &lt;&lt; 30;
+
+/**
+ * 默认加载因子，值为0.75
+ */
+static final float DEFAULT_LOAD_FACTOR = 0.75f;
+
+/**
+ * hash冲突默认采用单链表存储，当单链表节点个数大于8时，会转化为红黑树存储
+ */
+static final int TREEIFY_THRESHOLD = 8;
+
+/**
+ * hash冲突默认采用单链表存储，当单链表节点个数大于8时，会转化为红黑树存储。
+ * 当红黑树中节点少于6时，则转化为单链表存储
+ */
+static final int UNTREEIFY_THRESHOLD = 6;
+
+/**
+ * hash冲突默认采用单链表存储，当单链表节点个数大于8时，会转化为红黑树存储。
+ * 但是有一个前提：要求数组长度大于64，否则不会进行转化
+ */
+static final int MIN_TREEIFY_CAPACITY = 64;
+</code></pre>
+
+<p>当我们要对一个链表数组中的某个元素进行增删的时候，首先要知道他应该保存在这个链表数组中的哪个位置，即他在这个数组中的下标。而hash()方法的功能就是根据Key来定位其在HashMap中的位置。HashTable、ConcurrentHashMap同理。</p>
+
+<p>在上代码之前，我们先来做个简单分析。我们知道，hash方法的功能是根据Key来定位这个K-V在链表数组中的位置的。也就是hash方法的输入应该是个Object类型的Key，输出应该是个int类型的数组下标。如果让你设计这个方法，你会怎么做？</p>
+
+<p>其实简单，我们只要调用Object对象的hashCode()方法，该方法会返回一个整数，然后用这个数对HashMap或者HashTable的容量进行取模就行了。没错，其实基本原理就是这个，只不过，在具体实现上，由两个方法<code>int hash(Object k)</code>和<code>int indexFor(int h, int length)</code>来实现。但是考虑到效率等问题，HashMap的实现会稍微复杂一点。</p>
+
+<blockquote>
+<p>hash ：该方法主要是将Object转换成一个整型。</p>
+
+<p>indexFor ：该方法主要是将hash生成的整型转换成链表数组中的下标。</p>
+</blockquote>
+
+<p><strong>HashMap In Java 7</strong></p>
+
+<pre><code class="language-java">final int hash(Object k) {
+   int h = hashSeed;
+   if (0 != h &amp;&amp; k instanceof String) {
+       return sun.misc.Hashing.stringHash32((String) k);
+   }
+
+   h ^= k.hashCode();
+   h ^= (h &gt;&gt;&gt; 20) ^ (h &gt;&gt;&gt; 12);
+   return h ^ (h &gt;&gt;&gt; 7) ^ (h &gt;&gt;&gt; 4);
+}
+
+static int indexFor(int h, int length) {
+   return h &amp; (length-1);
+}
+</code></pre>
+
+<p>前面我说过，indexFor方法其实主要是将hash生成的整型转换成链表数组中的下标。那么<code>return h &amp; (length-1);</code>是什么意思呢？其实，他就是取模。Java之所有使用位运算(&amp;)来代替取模运算(%)，最主要的考虑就是效率。</p>
+
+<blockquote>
+<p>位运算(&amp;)效率要比代替取模运算(%)高很多，主要原因是位运算直接对内存数据进行操作，不需要转成十进制，因此处理速度非常快。</p>
+
+<p>原理是：<strong>X % 2^n = X &amp; (2^n - 1)</strong></p>
+</blockquote>
+
+<p>所以，<code>return h &amp; (length-1);</code>只要保证length的长度是2^n的话，就可以实现取模运算了。而HashMap中的length也确实是2的倍数，初始值是16，之后每次扩充为原来的2倍。</p>
+
+<h3 id="哈希冲突">哈希冲突</h3>
+
+<p>两个不同的键值，在对数组长度进行按位与运算后得到的结果相同，这不就发生了冲突吗。那么如何解决这种冲突呢，来看下Java是如何做的。</p>
+
+<p>其中的主要代码部分如下：</p>
+
+<pre><code class="language-java">h ^= k.hashCode();
+h ^= (h &gt;&gt;&gt; 20) ^ (h &gt;&gt;&gt; 12);
+return h ^ (h &gt;&gt;&gt; 7) ^ (h &gt;&gt;&gt; 4);
+</code></pre>
+
+<p>这段代码是为了对key的hashCode进行扰动计算，防止不同hashCode的高位不同但低位相同导致的hash冲突。<strong>简单点说，就是为了把高位的特征和低位的特征组合起来，降低哈希冲突的概率，也就是说，尽量做到任何一位的变化都能对最终得到的结果产生影响。</strong></p>
+
+<p><strong>HashMap In Java 7</strong></p>
+
+<pre><code class="language-java">private int hash(Object k) {
+   // hashSeed will be zero if alternative hashing is disabled.
+   return hashSeed ^ k.hashCode();
+}
+</code></pre>
+
+<p>而HashTable中也没有indexOf方法，取而代之的是这段代码：</p>
+
+<pre><code class="language-java">int index = (hash &amp; 0x7FFFFFFF) % tab.length;
+</code></pre>
+
+<p>也就是说，HashMap和HashTable对于计算数组下标这件事，采用了两种方法。HashMap采用的是位运算，而HashTable采用的是直接取模。</p>
+
+<blockquote>
+<p>为啥要把hash值和0x7FFFFFFF做一次按位与操作呢，主要是为了保证得到的index的的二进制的第一位为0（一个32位的有符号数和0x7FFFFFFF做按位与操作，其实就是在取绝对值。），也就是为了得到一个正数。因为有符号数第一位0代表正数，1代表负数。</p>
+</blockquote>
+
+<p>至此，我们看完了Java 7中HashMap和HashTable中对于hash的实现，我们来做个简单的总结。</p>
+
+<p>HashMap默认的初始化大小为16，之后每次扩充为原来的2倍。</p>
+
+<p>HashTable默认的初始大小为11，之后每次扩充为原来的2n+1。</p>
+
+<p>当哈希表的大小为素数时，简单的取模哈希的结果会更加均匀，所以单从这一点上看，HashTable的哈希表大小选择，似乎更高明些。因为hash结果越分散效果越好。</p>
+
+<p>在取模计算时，如果模数是2的幂，那么我们可以直接使用位运算来得到结果，效率要大大高于做除法。所以从hash计算的效率上，又是HashMap更胜一筹。</p>
+
+<p>但是，HashMap为了提高效率使用位运算代替哈希，这又引入了哈希分布不均匀的问题，所以HashMap为解决这问题，又对hash算法做了一些改进，进行了扰动计算。</p>
+
+<h2 id="参考文章">参考文章：</h2>
+
+<ul>
+<li><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1556189793&amp;ver=1568&amp;signature=n-rCQjLgj0xxhoHvKm79lCUYC8otDb0oq0lQzSmLVEdlzwDoraWwLZP0YmNaB-*1MmGkAOVJhhjinpf2slMhp-YfKVSAd2ijgcPVZNnCoN65DVz6ijkbJBPPZrPbN4c5&amp;new=1">彻底理解HashMap的元素插入原理</a></li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&amp;mid=2650120877&amp;idx=1&amp;sn=401bb7094d41918f1a6e142b6c66aaac&amp;chksm=f36bbf8cc41c369aa44c319942b06ca0f119758b22e410e8f705ba56b9ac6d4042fe686dbed4&amp;scene=21#wechat_redirect">全网把Map中的hash()分析的最透彻的文章，别无二家。</a></li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&amp;mid=2650121359&amp;idx=1&amp;sn=c63d62be1a36db675c62e341044f10e0&amp;chksm=f36bb9aec41c30b8b369428db1286d3de9bc04675057cde49632f3ba50db2d0a69451d6ec080&amp;scene=21#wechat_redirect">关于HashMap容量的初始化，还有这么多学问。</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-04-22
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/mysql-index-b&#43;tree/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Mysql  B&#43;tree 索引</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/ci-cd-introduce/">
+            <span class="next-text nav-default">CI CD Introduce</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

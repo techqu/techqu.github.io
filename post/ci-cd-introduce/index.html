@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>CI CD Introduce - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="持续交付到底有什么价值 持续交付是软件研发人员，如何将一个好点子，以最快的速度交付给用户的方法。我们可以把 “持续交付”定义为“一套软件工程方法" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/ci-cd-introduce/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="CI CD Introduce" />
+<meta property="og:description" content="持续交付到底有什么价值 持续交付是软件研发人员，如何将一个好点子，以最快的速度交付给用户的方法。我们可以把 “持续交付”定义为“一套软件工程方法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/ci-cd-introduce/" /><meta property="article:published_time" content="2019-04-19T15:23:49&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-19T15:23:49&#43;08:00"/>
+
+<meta itemprop="name" content="CI CD Introduce">
+<meta itemprop="description" content="持续交付到底有什么价值 持续交付是软件研发人员，如何将一个好点子，以最快的速度交付给用户的方法。我们可以把 “持续交付”定义为“一套软件工程方法">
+
+
+<meta itemprop="datePublished" content="2019-04-19T15:23:49&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-19T15:23:49&#43;08:00" />
+<meta itemprop="wordCount" content="2998">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CI CD Introduce"/>
+<meta name="twitter:description" content="持续交付到底有什么价值 持续交付是软件研发人员，如何将一个好点子，以最快的速度交付给用户的方法。我们可以把 “持续交付”定义为“一套软件工程方法"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">miao</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">miao</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">CI CD Introduce</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-19 </span>
+        
+          <span class="more-meta"> 约 2998 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#持续交付到底有什么价值">持续交付到底有什么价值</a>
+<ul>
+<li><a href="#持续集成-持续交付和持续部署的关系">持续集成、持续交付和持续部署的关系</a></li>
+</ul></li>
+<li><a href="#影响持续交付的因素有哪些">影响持续交付的因素有哪些？</a></li>
+<li><a href="#持续交付和devops">持续交付和Devops</a>
+<ul>
+<li><a href="#认识devops">认识DevOps</a></li>
+</ul></li>
+<li><a href="#一切的源头-代码分支策略的选择">一切的源头，代码分支策略的选择</a>
+<ul>
+<li><a href="#谈谈主干开发-tbd">谈谈主干开发（TBD）</a></li>
+<li><a href="#谈谈特性分支开发">谈谈特性分支开发</a>
+<ul>
+<li><a href="#git-flow">Git Flow</a></li>
+<li><a href="#github-flow">GitHub Flow</a></li>
+<li><a href="#gitlab-flow">GitLab Flow</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#手把手教你依赖管理">手把手教你依赖管理</a>
+<ul>
+<li><a href="#maven">Maven</a></li>
+</ul></li>
+<li><a href="#代码回滚">代码回滚</a>
+<ul>
+<li><a href="#1-个人分支回滚">1. 个人分支回滚</a></li>
+<li><a href="#第二-集成分支上线前回滚">第二，集成分支上线前回滚</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="持续交付到底有什么价值">持续交付到底有什么价值</h2>
+
+<p>持续交付是软件研发人员，如何将一个好点子，以最快的速度交付给用户的方法。我们可以把 “持续交付”定义为“一套软件工程方法论和许许多多的最佳实践的集合”。</p>
+
+<h3 id="持续集成-持续交付和持续部署的关系">持续集成、持续交付和持续部署的关系</h3>
+
+<p>我们通常会把软件研发工作拆解，拆分成不同模块或不同团队后进行编码，编码完成后，进行集成构建和测试。这个从编码到构建再到测试的反复持续过程，就叫作“持续集成”。</p>
+
+<p>这个在“持续集成”之后，获取外部对软件的反馈再通过“持续集成”进行优化的过程就叫作“持续交付”，它是“持续集成”的自然延续。</p>
+
+<p>而“持续部署”就是将可交付产品，快速且安全地交付用户使用的一套方法和系统，它是“持续交付”的最后“一公里”。</p>
+
+<p>持续交付的价值不仅仅局限于简单地提高产品交付的效率，它还通过统一标准、规范流程、工具化、自动化等等方式，影响着整个研发生命周期。</p>
+
+<h2 id="影响持续交付的因素有哪些">影响持续交付的因素有哪些？</h2>
+
+<p>与绝大多数理论分析一样，影响持续交付的因素也可归结为:人(组织和文化)，事(流程)， 物(架构)。</p>
+
+<h2 id="持续交付和devops">持续交付和Devops</h2>
+
+<p>DevOps 的概念一直在向外延伸，包括了:运营和用户，以及快速、良好、及时的 反馈机制等内容，已经超出了“持续交付”本身所涵盖的范畴。而持续交付则一直被视作 DevOps的核心实践之一被广泛谈及。</p>
+
+<h3 id="认识devops">认识DevOps</h3>
+
+<p>目前，人们对DevOps的看法，可以大致概括为DevOps是一组技术，一个职能、一种文 化，和一种组织架构四种。</p>
+
+<ul>
+<li>第一，DevOps是一组技术，包括:自动化运维、持续交付、高频部署、Docker等内容。</li>
+<li>第二，DevOps是一个职能，这也是我在各个场合最常听到的观点。</li>
+<li>第三，DevOps是一种文化，推倒Dev与Ops之间的阻碍墙。</li>
+<li>第四，DevOps是一种组织架构，将Dev和Ops置于一个团队内，一同工作，同化目标，以 达到 DevOps文化地彻底贯彻。</li>
+</ul>
+
+<h2 id="一切的源头-代码分支策略的选择">一切的源头，代码分支策略的选择</h2>
+
+<h3 id="谈谈主干开发-tbd">谈谈主干开发（TBD）</h3>
+
+<p>主干开发是一个源代码控制的分支模型，开发者在一个称为 “trunk” 的分支(Git 称
+master) 中对代码进行协作，除了发布分支外没有其他开发分支。</p>
+
+<h3 id="谈谈特性分支开发">谈谈特性分支开发</h3>
+
+<p>和主干开发相对的是 “特性分支开发” 。在这个大类里面，我会给你分析Git Flow、GitHub Flow 和 GitLab Flow这三个常用的模型。</p>
+
+<h4 id="git-flow">Git Flow</h4>
+
+<h4 id="github-flow">GitHub Flow</h4>
+
+<p>GitHub Flow 是 GitHub 所使用的一种简单流程。该流程只使用master和特性分支，并借助 GitHub 的 pull request 功能。</p>
+
+<p>在 GitHub Flow 中，master 分支中包含稳定的代码，它已经或即将被部署到生产环境。
+任何开发人员都不允许把未测试或未审查的代码直接提交到 master 分支。对代码的任何 修改，包括Bug 修复、热修复、新功能开发等都在单独的分支中进行。不管是一行代码的 小改动，还是需要几个星期开发的新功能，都采用同样的方式来管理。</p>
+
+<p>GitHub Flow 的好处在于非常简单实用，开发人员需要注意的事项非常少，很容易形成习惯。当 需要修改时，只要从 master 分支创建新分支，完成之后通过 pull request 和相关的代码审查， 合并回 master 分支就可以了</p>
+
+<h4 id="gitlab-flow">GitLab Flow</h4>
+
+<p>上面提到的GitHub Flow，适用于特性分支合入master后就能马上部署到线上的这类项目，但并不是所有团队都使用GitHub或使用pull request功能，而是使用开源平台GitLab，特别是对于公 司级别而言，代码作为资产，不会随意维护在较公开的GitHub上</p>
+
+<p>GitLab Flow 针对不同的发布场景，在GitHub Flow(特性分支加master分支)的基础上做了改 良，额外衍生出了三个子类模型</p>
+
+<p>带生产分支</p>
+
+<ol>
+<li>无法控制准确的发布时间，但又要求不停集成的。</li>
+<li>需要创建一个production分支来放置发布的代码。</li>
+</ol>
+
+<p>带环境分支</p>
+
+<ol>
+<li>要求所有代码都在逐个环境中测试通过。</li>
+<li>需要为不同的环境建立不同的分支。</li>
+</ol>
+
+<p>带发布分支</p>
+
+<ol>
+<li>用于对外界发布软件的项目，同时需要维护多个发布版本。</li>
+<li>尽可能晚地从master拉取发布分支。</li>
+<li>Bug的修改应先合并到master，然后cherry pick到release分支</li>
+</ol>
+
+<p>特性分支的优点：
+1. 不同功能可以在独立的分支上做开发，消除了功能稳 定前彼此干扰的问题。
+2. 容易保证主干分支的质量:只要不把没开发好的特性 分支合入主干分支，那么主干分支就不会带上有问题的 功能。</p>
+
+<p>特性分支的缺点：
+1. 如果不及时做merge，那么 把特性分支合到主干分支会比 较麻烦。
+2. 如果要做CI/CD，需要对不同 分支配备不同的构建环境。</p>
+
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>情况</th>
+<th>适合的分支策略</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>开发团队系统设计和开发能力强。 有一套有效的特性切换的实施机制，保证上线后无需修改代 码就能够修改系统行为。 需要快速迭代，想获得CI/CD所有好处。</td>
+<td>主干开发</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>不具备主干开发能力。有预定的发布周期。需要执行严格的发布流程。</td>
+<td>Git Flow</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>不具备主干开发能力。 随时集成随时发布:分支集成后经过代码评审和自动化测 试，就可以立即发布的应用。</td>
+<td>GitHub Flow</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>不具备主干开发能力。 无法控制准确的发布时间，但又要求不停集成。</td>
+<td>GitLab Flow(带 生产分支)</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>不具备主干开发能力。需要逐个通过各个测试环境验证。</td>
+<td>GitLab Flow(带 环境分支)</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>不具备主干开发能力。需要对外发布和维护不同版本。</td>
+<td>GitLab Flow(带 发布分支)</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="手把手教你依赖管理">手把手教你依赖管理</h2>
+
+<h3 id="maven">Maven</h3>
+
+<p>Maven 的依赖仲裁原则如下。</p>
+
+<p>第一原则: 最短路径优先原则。 比如，A 依赖了 B和C，而 B 也依赖了 C，那么 Maven 会使 用 A 依赖的 C 的版本，因为它的路径是最短的。</p>
+
+<p>第二原则: 第一声明优先原则。 比如，A 依赖了 B和C，B 和 C 分别依赖了 D，那么 Maven 会使用 B 依赖的 D 的版本，因为它是最先声明的。</p>
+
+<p>Maven 最佳实践：</p>
+
+<ol>
+<li>生产环境尽量不使用 SNAPSHOT或者是带有范围的依赖版本，可以减少上线后的不确定 性，我们必须保证，测试环境的包和生产环境是一致的。</li>
+<li>将 POM分成多个层次的继承关系</li>
+<li>在父模块多使用 dependencyManagement 来定义依赖，子模块在使用该依赖时，就可以不 用指定依赖的版本，这样做可以使多个子模块的依赖版本高度统一，同时还能简化子模块配 置。</li>
+<li>对于一组依赖的控制，可以使用BOM(Bill of Materials) 进行版本定义。一般情况下，框架 部门有一个统一的BOM 来管理公共组件的版本，当用户引用了该BOM后，在使用框架提供 的组件时无需指定版本。即使使用了多个组件，也不会有版本冲突的问题，因为框架部门的 专家们已经在BOM中为各个组件配置了经过测试的稳定版本。 BOM是一个非常有用的工具，因为面对大量依赖时，作为用户你不知道具体应该使用它们 的哪些版本、这些版本之间是否有相互依赖、相互依赖是否有冲突，使用BOM 就可以让用 户规避这些细节问题了。</li>
+<li>对于版本相同的依赖使用 properties 定义，可以大大减少重复劳动，且易于改动。上面的 pom.xml 片段，就是使用了 properties 来定义两个一样的版本号的依赖。</li>
+<li>不要在在线编译环境中使用 mvn install 命令，否则会埋下很多意想不到并且非常难以排查的 坑:该命令会将同项目中编译产生的jar包缓存在编译系统本地，覆盖mvn仓库中真正应该被 引用的jar包。</li>
+<li>禁止变更了代码不改版本号就上传到中央仓库的行为。否则，会覆盖原有版本，使得一个版 本出现二义性的问题。</li>
+</ol>
+
+<h2 id="代码回滚">代码回滚</h2>
+
+<h3 id="1-个人分支回滚">1. 个人分支回滚</h3>
+
+<pre><code class="language-shell">$ git checkout feature-x   
+$ git reset --hard  C3的HASH值
+</code></pre>
+
+<p>如果feature-x已经push到远端代码平台了，则远端分支也需要回滚：</p>
+
+<pre><code class="language-shell">$ git push -f origin  feature-x
+</code></pre>
+
+<h3 id="第二-集成分支上线前回滚">第二，集成分支上线前回滚</h3>
+
+<p>针对图2中集成分支上线前的情况说明：</p>
+
+<p>假定走特性分支开发模式，上面的commit都是特性分支通过merge request合入 master 产生的commit。</p>
+
+<p>集成后，测试环境中发现C4和C6的功能有问题，不能上线，需马上回滚代码，以便 C5 的功能上线。</p>
+
+<p>团队成员可以在 GitLab 上找到C4和C6合入master的合并请求，然后点击 revert 。如图4所示。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-04-19
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/java-hashmap/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Java Hashmap</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/data-structure-red-black-tree/">
+            <span class="next-text nav-default">《数据结构与算法之美》-红黑树</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

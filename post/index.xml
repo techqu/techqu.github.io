@@ -21,6 +21,33 @@
     </item>
     
     <item>
+      <title>Mysql  B&#43;tree 索引</title>
+      <link>https://techqu.github.io/post/mysql-index-b&#43;tree/</link>
+      <pubDate>Thu, 09 May 2019 18:43:28 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-index-b&#43;tree/</guid>
+      <description>&lt;p&gt;众所周知，Mysql中的索引结构是用B+Tree实现的，那么具体是如何来构建的呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Hashmap</title>
+      <link>https://techqu.github.io/post/java-hashmap/</link>
+      <pubDate>Mon, 22 Apr 2019 17:22:31 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-hashmap/</guid>
+      <description>在Java中，保存数据有两种比较简单的数据结构：数组和链表。数组的特点是：寻址容易，插入和删除困难；而链表的特点是：寻址困难，插入和删除容易</description>
+    </item>
+    
+    <item>
+      <title>CI CD Introduce</title>
+      <link>https://techqu.github.io/post/ci-cd-introduce/</link>
+      <pubDate>Fri, 19 Apr 2019 15:23:49 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/ci-cd-introduce/</guid>
+      <description>持续交付到底有什么价值 持续交付是软件研发人员，如何将一个好点子，以最快的速度交付给用户的方法。我们可以把 “持续交付”定义为“一套软件工程方法</description>
+    </item>
+    
+    <item>
       <title>《数据结构与算法之美》-红黑树</title>
       <link>https://techqu.github.io/post/data-structure-red-black-tree/</link>
       <pubDate>Fri, 12 Apr 2019 17:04:30 +0800</pubDate>
@@ -48,7 +75,7 @@
       <pubDate>Sat, 06 Apr 2019 10:22:26 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/kaoyan-plan-2020/</guid>
-      <description>一天的学习时间 数学复习计划 复习资料 数学复习资料 英语复习资料 政治复习资料 辅导老师 视频资源 2020考研数学视频汇总 链接：https://pan.</description>
+      <description>一天的学习时间 数学复习计划 复习资料 数学复习资料 英语复习资料 政治复习资料 辅导老师 数学学习步骤 我建议小小白不要过度依靠视频，不是要小小白们放弃视</description>
     </item>
     
     <item>
@@ -769,10 +796,10 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>《数据结构与算法之美》-基础篇(1)</title>
-      <link>https://techqu.github.io/post/data-structure-and-algorithm/</link>
+      <link>https://techqu.github.io/post/data-structure-and-algorithm.0/</link>
       <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/data-structure-and-algorithm/</guid>
+      <guid>https://techqu.github.io/post/data-structure-and-algorithm.0/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法&lt;/p&gt;</description>
     </item>
     

@@ -58,6 +58,7 @@ B+树为了维护索引有序性，在插入新值的时候需要做必要的维
 
 ## 覆盖索引
 
+
 回到主键索引树搜索的过程，我们称为回表。由于查询结果所需要的数据只在主键索引上有，所以不得不回表。
 
 如果执行的语句是`select ID from T where k between 3 and 5`，这时只需要查ID的值，而ID的值已经在k索引树上了，因此可以直接提供查询结果，不需要回表。也就是说，在这个查询里面，索引k已经“覆盖了”我们的查询需求，我们称为覆盖索引。
@@ -66,6 +67,19 @@ B+树为了维护索引有序性，在插入新值的时候需要做必要的维
 
 ## 最左前缀原则
 
+```sql
+CREATE TABLE `tuser` (
+  `id` int(11) NOT NULL,
+  `id_card` varchar(32) DEFAULT NULL,
+  `name` varchar(32) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `ismale` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_card` (`id_card`),
+  KEY `name_age` (`name`,`age`)
+) ENGINE=InnoDB
+
+```
 这个最左前缀可以是联合索引的最左N个字段，也可以是字符串索引的最左M个字符。
 
 **在建立联合索引的时候，如何安排索引内的顺序。**
@@ -75,6 +89,7 @@ B+树为了维护索引有序性，在插入新值的时候需要做必要的维
 
 ## 索引下推
 
+
 **MySQL5.6引入的索引下推优化，可以在索引遍历过程中，对索引中包含的字段先做判断，直接过滤掉不满足条件的记录，减少回表次数。**
 
 
@@ -82,5 +97,7 @@ B+树为了维护索引有序性，在插入新值的时候需要做必要的维
 mysql> select * from tuser where name like '张 %' and age=10 and ismale=1;
 ```
 
-InnoDB在(name,age)索引内部就判断了age是否等于10，对于不等于10的记录，直接判断跳过。
+根据前缀索引规则，所以这个语句在搜索索引树的时候，只能用“张”，找到第一个满足条件的记录ID3.
+
+但是由于索引下推，InnoDB在(name,age)索引内部就判断了age是否等于10，对于不等于10的记录，直接判断跳过。
 

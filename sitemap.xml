@@ -10,6 +10,27 @@
   </url>
   
   <url>
+    <loc>https://techqu.github.io/post/mysql-index-b&#43;tree/</loc>
+    <lastmod>2019-05-09T18:43:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/java-hashmap/</loc>
+    <lastmod>2019-04-22T17:22:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/ci-cd-introduce/</loc>
+    <lastmod>2019-04-19T15:23:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://techqu.github.io/post/data-structure-red-black-tree/</loc>
     <lastmod>2019-04-12T17:04:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -507,7 +528,7 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/post/data-structure-and-algorithm/</loc>
+    <loc>https://techqu.github.io/post/data-structure-and-algorithm.0/</loc>
     <lastmod>2018-11-18T15:03:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -549,7 +570,7 @@
   
   <url>
     <loc>https://techqu.github.io/categories/mysql/</loc>
-    <lastmod>2019-03-27T15:49:58+08:00</lastmod>
+    <lastmod>2019-05-09T18:43:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

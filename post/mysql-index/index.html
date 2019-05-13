@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2019-03-16T15:25:44&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-16T15:25:44&#43;08:00" />
-<meta itemprop="wordCount" content="1811">
+<meta itemprop="wordCount" content="1903">
 
 
 
@@ -135,7 +135,7 @@
             <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
             <a href="/categories/mysql/"> MySQL </a>
             </div>
-          <span class="more-meta"> 约 1811 字 </span>
+          <span class="more-meta"> 约 1903 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -232,6 +232,19 @@ index (k))engine=InnoDB;
 
 <h2 id="最左前缀原则">最左前缀原则</h2>
 
+<pre><code class="language-sql">CREATE TABLE `tuser` (
+  `id` int(11) NOT NULL,
+  `id_card` varchar(32) DEFAULT NULL,
+  `name` varchar(32) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `ismale` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_card` (`id_card`),
+  KEY `name_age` (`name`,`age`)
+) ENGINE=InnoDB
+
+</code></pre>
+
 <p>这个最左前缀可以是联合索引的最左N个字段，也可以是字符串索引的最左M个字符。</p>
 
 <p><strong>在建立联合索引的时候，如何安排索引内的顺序。</strong></p>
@@ -248,7 +261,9 @@ index (k))engine=InnoDB;
 <pre><code class="language-sql">mysql&gt; select * from tuser where name like '张 %' and age=10 and ismale=1;
 </code></pre>
 
-<p>InnoDB在(name,age)索引内部就判断了age是否等于10，对于不等于10的记录，直接判断跳过。</p>
+<p>根据前缀索引规则，所以这个语句在搜索索引树的时候，只能用“张”，找到第一个满足条件的记录ID3.</p>
+
+<p>但是由于索引下推，InnoDB在(name,age)索引内部就判断了age是否等于10，对于不等于10的记录，直接判断跳过。</p>
     </div>
 
     <div class="post-copyright">

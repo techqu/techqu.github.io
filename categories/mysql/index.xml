@@ -6,10 +6,19 @@
     <description>Recent content in MySQL on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 27 Mar 2019 15:49:58 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 09 May 2019 18:43:28 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mysql  B&#43;tree 索引</title>
+      <link>https://techqu.github.io/post/mysql-index-b&#43;tree/</link>
+      <pubDate>Thu, 09 May 2019 18:43:28 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/mysql-index-b&#43;tree/</guid>
+      <description>&lt;p&gt;众所周知，Mysql中的索引结构是用B+Tree实现的，那么具体是如何来构建的呢？&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>《MYSQL实战45讲》- Question 03</title>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《数据结构与算法之美》-基础篇(1) - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="     &#34;瞿广&#34;" /><meta name="description" content="本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/data-structure-and-algorithm.0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="《数据结构与算法之美》-基础篇(1)" />
+<meta property="og:description" content="本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/data-structure-and-algorithm.0/" /><meta property="article:published_time" content="2018-11-18T15:03:48&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-18T15:03:48&#43;08:00"/>
+
+<meta itemprop="name" content="《数据结构与算法之美》-基础篇(1)">
+<meta itemprop="description" content="本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法">
+
+
+<meta itemprop="datePublished" content="2018-11-18T15:03:48&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-18T15:03:48&#43;08:00" />
+<meta itemprop="wordCount" content="3320">
+
+
+
+<meta itemprop="keywords" content="数据结构,算法," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《数据结构与算法之美》-基础篇(1)"/>
+<meta name="twitter:description" content="本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">miao</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">miao</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《数据结构与算法之美》-基础篇(1)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-18 </span>
+        <div class="post-category">
+            <a href="/categories/tech/"> Tech </a>
+            <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
+            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"> 数据结构与算法 </a>
+            </div>
+          <span class="more-meta"> 约 3320 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#复杂度分析">复杂度分析</a></li>
+<li><a href="#线性表-linear-list">线性表（Linear list）</a></li>
+<li><a href="#数组">数组</a></li>
+<li><a href="#链表-linked-list">链表 （Linked list）</a>
+<ul>
+<li><a href="#缓存淘汰算法">缓存淘汰算法</a></li>
+<li><a href="#思考题-如何判断字符串是否回文">思考题：如何判断字符串是否回文？</a></li>
+<li><a href="#如何轻松写出正确的链表代码">如何轻松写出正确的链表代码？：</a></li>
+<li><a href="#练习">练习</a></li>
+</ul></li>
+<li><a href="#栈">栈</a>
+<ul>
+<li><a href="#顺序栈和链式栈">顺序栈和链式栈</a></li>
+<li><a href="#栈的应用">栈的应用</a></li>
+</ul></li>
+<li><a href="#队列">队列</a>
+<ul>
+<li><a href="#顺序队列和链式队列">顺序队列和链式队列</a></li>
+<li><a href="#循环队列">循环队列</a></li>
+<li><a href="#阻塞队列和并发队列">阻塞队列和并发队列</a></li>
+</ul></li>
+<li><a href="#递归">递归</a>
+<ul>
+<li><a href="#递归需要满足的三个条件">递归需要满足的三个条件</a></li>
+<li><a href="#如何编写递归代码">如何编写递归代码？</a></li>
+<li><a href="#调试递推代码">调试递推代码</a></li>
+</ul></li>
+<li><a href="#排序">排序</a>
+<ul>
+<li><a href="#基本的排序">基本的排序</a></li>
+</ul></li>
+<li><a href="#分治思想-o-nlogn">分治思想 O(nlogn)</a></li>
+<li><a href="#线性排序-linear-sort-不基于比较">线性排序（Linear sort），不基于比较</a></li>
+<li><a href="#二分查找">二分查找</a>
+<ul>
+<li><a href="#最简单的情况">最简单的情况</a></li>
+<li><a href="#二分查找的局限性">二分查找的局限性</a></li>
+<li><a href="#三个容易出错的地方">三个容易出错的地方</a></li>
+</ul></li>
+<li><a href="#跳表">跳表</a></li>
+<li><a href="#散列表">散列表</a>
+<ul>
+<li><a href="#两个核心问题">两个核心问题</a></li>
+<li><a href="#工业级别的散列表">工业级别的散列表</a></li>
+<li><a href="#哈希算法">哈希算法</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法</p>
+
+<h2 id="复杂度分析">复杂度分析</h2>
+
+<ol>
+<li>时间复杂度</li>
+<li>空间复杂度</li>
+</ol>
+
+<p>不同情况下，同一段代码的时间复杂度可能是不一样的。这时候需要以下三个：</p>
+
+<ul>
+<li><strong>最好情况时间复杂度</strong>，就是在最理想情况下，执行这段代码的时间复杂度。</li>
+<li><strong>最坏情况时间复杂度</strong>，在最糟糕的情况下，执行这段代码的时间复杂度。</li>
+<li><strong>平均情况时间复杂度</strong>，也就是概率论中的加权平均值，也叫期望值，所以也叫加权平均时间复杂度或者期望时间复杂度</li>
+</ul>
+
+<p>另外还有一个更高级的<strong>均摊时间复杂度</strong></p>
+
+<p>对一个数据结构进行一组连续操作中，大部分情况下时间复杂度都很低，只有个别情况下时间复杂度比较高，而且这些操作之间存在前后连贯的时序关系，这个时候我们就可以将这一组操作放在一块分析，看是否能将较高时间复杂度那次操作的耗时，平摊到其他时间复杂度比较低的操作上。而且，在能够应用均摊时间复杂度分析的场合，一般均摊时间复杂度就等于最好情况时间复杂度。</p>
+
+<h2 id="线性表-linear-list">线性表（Linear list）</h2>
+
+<p>
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+    
+    
+    
+  
+
+
+
+<a href="https://en.wikipedia.org/wiki/%e7%ba%bf%e6%80%a7%e8%a1%a8">线性表</a>
+就是数据排成一条线一样的结构。每个线性表上的数据最多只有前和后两个方向</p>
+
+<p><img src="/img/linear-list.png" alt="linear-list" /></p>
+
+<h2 id="数组">数组</h2>
+
+<p>从数组存储的内存模型上来看，“下标”最确切的定义应该是“偏移（offset）”，相当于首地址的偏移</p>
+
+<p>面试常见：数组和链表区别</p>
+
+<p>数组支持随机访问，根据下标随机访问的时间复杂度为O(1)</p>
+
+<p>低效的”插入“和”删除“
+- “插入”-替换到最后，这样就不用全部右移。快排就是用了这个思想
+- “删除”-标记再一起删除</p>
+
+<h2 id="链表-linked-list">链表 （Linked list）</h2>
+
+<h3 id="缓存淘汰算法">缓存淘汰算法</h3>
+
+<ol>
+<li>先入先出策略 FIFO（First in，First out）</li>
+<li>最少使用策略 LFU（Least Frequently Used）</li>
+<li>最近最少使用策略 LRU（Least Recently Used）</li>
+</ol>
+
+<p>分类：<strong>单链表、双向链表</strong>(LinkedHashMap,空间换时间，再联想到缓存)、<strong>循环链表</strong></p>
+
+<p>特点：</p>
+
+<p>插入和删除都是O（1）的时间复杂度</p>
+
+<p>随机访问只能依次遍历，时间复杂度为O（n）</p>
+
+<h3 id="思考题-如何判断字符串是否回文">思考题：如何判断字符串是否回文？</h3>
+
+<ol>
+<li><p>快慢指针算法快速找到单链表中间值</p>
+
+<p>普通方法就是遍历两次，第一次遍历得到链表长度，第二次遍历得到中间值。时间复杂度为1.5n。（这里需要强调1.5）
+快速链表方法就是利用两个指针，慢指针每次移动一个数据，快指针每次移动两个数据。最外层的循环用快指针。当快指针遍历完后，内层慢指针刚好循环到一半。时间复杂度为0.5n。代码如下：</p>
+
+<pre><code>class  GetMidVaule(LinkList L, elmType *e){
+    LinkList k,m;
+    k=m=L;
+    for(int i=0;k.next!=null;i++){
+    k=k.next.next;
+    m=m.next;
+    }
+    *e=m.data;
+}
+</code></pre></li>
+
+<li><p>从中间节点对后半部分逆序，或者将前半部分逆序</p></li>
+
+<li><p>一次循环比较，判断是否回文</p></li>
+
+<li><p>恢复现场</p></li>
+</ol>
+
+<p>//TODO 代码实现</p>
+
+<h3 id="如何轻松写出正确的链表代码">如何轻松写出正确的链表代码？：</h3>
+
+<p>前提：写好链表代码不容易，复杂的比如链表反转、有序链表合并，广大面试者中写好的不足10%</p>
+
+<p>技巧：</p>
+
+<ul>
+<li><p><strong>理解指针或引用的含义</strong></p>
+
+<p>将某个变量赋值给指针，实际上就是将这个变量的地址赋值给指针，或者反过来说，指针中存储了这个变量的内存地址，指向了这个变量，通过指针就能找到这个变量</p></li>
+
+<li><p><strong>警惕指针丢失和内存泄漏</strong></p>
+
+<p>插入结点时，一定要注意操作的顺序。删除结点时，一定要记得手动释放内存空间。java不需要</p></li>
+
+<li><p><strong>利用哨兵简化实现难度</strong></p>
+
+<p>针对链表的插入、删除操作，需要对插入第一个结点和删除最后一个结点的情况进行特殊处理</p></li>
+
+<li><p><strong>重点留意边界条件处理</strong></p></li>
+
+<li><p><strong>举例画图，辅助思考</strong></p></li>
+
+<li><p><strong>多写多练，没有捷径</strong></p></li>
+</ul>
+
+<h3 id="练习">练习</h3>
+
+<ol>
+<li>单链表反转</li>
+<li>链表中有环的检测</li>
+<li>两个有序的链表合并</li>
+<li>删除链表倒数第n个结点</li>
+<li>求链表的中间结点</li>
+</ol>
+
+<blockquote>
+<p><strong>写链表代码是最考验逻辑思维能力的</strong>。链表代码写的好坏，可以看出一个人写代码是否够细心，考虑问题是否全面。</p>
+</blockquote>
+
+<h2 id="栈">栈</h2>
+
+<p>栈是一种“操作受限”的线性表，只允许在一端插入和删除数据。</p>
+
+<h3 id="顺序栈和链式栈">顺序栈和链式栈</h3>
+
+<ul>
+<li>顺序栈：用数组实现的栈，我们叫做顺序栈</li>
+<li>链式栈：用链表实现的栈，我们叫做链式栈</li>
+</ul>
+
+<h3 id="栈的应用">栈的应用</h3>
+
+<ul>
+<li>函数调用中的，函数调用栈</li>
+<li>编译器利用栈来实现表达式求值</li>
+<li>栈在括号匹配中的应用</li>
+</ul>
+
+<h2 id="队列">队列</h2>
+
+<p>队列跟栈一样，也是一种操作受限的线性表数据结构</p>
+
+<h3 id="顺序队列和链式队列">顺序队列和链式队列</h3>
+
+<h3 id="循环队列">循环队列</h3>
+
+<h3 id="阻塞队列和并发队列">阻塞队列和并发队列</h3>
+
+<p>阻塞队列其实就是在队列的基础上加了阻塞操作。
+简单来说，就是在队列为空的时候，从队头取数据会被阻塞，直到队列中有了数据才能返回；
+如果队列已满，那么插入操作就会被阻塞，直到队列中有空闲位置后再插入数据。</p>
+
+<p>上述的定义就是一个“生产者-消费者模型”！</p>
+
+<p>线程安全的队列我们叫作并发队列。最简单的实现方式是直接在<code>enqueue()</code>,<code>dequeue()</code>方法上加锁，但是锁力度大并发度会比较低,同一时刻仅允许一个存或者取操作。实际上，基于数组的循环队列，利用CAS原子操作，可以实现非常高效的并发队列。这也是循环队列比链式队列应用更加广泛的原因。</p>
+
+<p>在实战篇将Disruptor的时候，我们再详细讲并发队列的应用。</p>
+
+<h2 id="递归">递归</h2>
+
+<p>从我个人学习数据结构与算法的经历来看，有两个最难理解的知识点，一个是<strong>动态规划</strong>，另一个就是<strong>递归</strong>。学会递归非常重要，比如DFS深度优先搜索、前中后序二叉树遍历等等。</p>
+
+<h3 id="递归需要满足的三个条件">递归需要满足的三个条件</h3>
+
+<ol>
+<li>一个问题的解可以分成几个自问题的解</li>
+<li>这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样</li>
+<li>存在递归终止条件</li>
+</ol>
+
+<h3 id="如何编写递归代码">如何编写递归代码？</h3>
+
+<p>最关键的是<strong>写出递推公式，找到终止条件</strong>，剩下将递推公式转化成代码就很简单了</p>
+
+<blockquote>
+<p>假如这里有n个台阶，每次你可以跨1个台阶或者2个台阶，请问走这n个台阶有多少种走法？如果有7个台阶，你可以2，2，2，1 这样子上去，也可以 1，2，1，1，2 这样子上去，总之走法有很多，那如何用编程求得总共有多少种走法呢？</p>
+</blockquote>
+
+<p>我们仔细想下，实际上，可以根据第一步的走法把所有走法分为两类，第一类是第一步走了 1 个台阶，另一类是第一步走了 2 个台阶。所以n个台阶的走法就等于先走 1 阶后，n-1 个台阶的走法 加上 先走 2 阶后，n-2 个台阶的走法。用公式表示就是：</p>
+
+<pre><code>f(n) = f(n-1)+f(n-2)
+</code></pre>
+
+<p>有了递推公式，递归代码基本上就完成了一半。用小点的数得出递归终止条件就是f(1)=1,f(2)=2.</p>
+
+<p>我们把递归终止条件和刚刚得到的递推公式放到一起就是这样的：</p>
+
+<pre><code>f(1)=1;
+f(2)=2;
+f(n)=f(n-1)+f(n-2);
+</code></pre>
+
+<p>转化成递归代码</p>
+
+<pre><code>int f(int n) {
+    if(n == 1) return 1;
+    if(n ==2 ) return 2;
+    return f(n-1)+f(n-2);
+}
+</code></pre>
+
+<p><strong>写递归代码的关键就是找到如何将大问题分解为小问题的规律，并且基于此写出递推公式，然后再推敲终止条件，最后将递推公式和终止条件翻译成代码</strong></p>
+
+<p><strong>只要遇到递归，我们就把它抽象成一个递推公式，不用想一层层的调用关系，不要试图用人脑去分解递归的每个步骤</strong></p>
+
+<p>容易出的问题</p>
+
+<ul>
+<li>堆栈溢出</li>
+<li>重复计算</li>
+</ul>
+
+<h3 id="调试递推代码">调试递推代码</h3>
+
+<ol>
+<li>打印日志发现，递归值</li>
+<li>结合条件断点进行调试</li>
+</ol>
+
+<h2 id="排序">排序</h2>
+
+<table>
+<thead>
+<tr>
+<th>章节</th>
+<th>排序算法</th>
+<th>时间复杂度</th>
+<th>是否基于比较</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>11</td>
+<td>冒泡、插入、选择</td>
+<td>On的平方</td>
+<td>是</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>快排、归并</td>
+<td>O（nlogn）</td>
+<td>是</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>桶、计数、基数</td>
+<td>O（n）</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="基本的排序">基本的排序</h3>
+
+<ul>
+<li><p>插入排序-优化（希尔排序）</p>
+
+<p>思考：一个有序数组，我们往里面添加一个新的数据后，如何继续保持数据有序呢？很简单，我们只要遍历数组，找到数据应该插入的位置将其插入即可。</p>
+
+<p>左侧未已排序区间，右侧为未排序区间；两种操作，一种是元素的比较，一种是元素的移动。</p></li>
+
+<li><p>冒泡排序</p>
+
+<p>只会操作相邻的两个数据。每次冒泡操作都会对相邻的两个元素进行比较，看是否满足大小关系要求。如果不满足就让它俩互换。一次冒泡会让至少一个元素移动到它应该在的位置，重复n次，就完成了n个数据的排序工作。</p></li>
+
+<li><p>选择排序</p>
+
+<p>选择排序算法的实现思路类似插入排序，也分已排序区间和未排序区间。但是选择排序每次会从未排序区间中找到最小的元素，将其放到已排序区间的末尾。</p></li>
+</ul>
+
+<h2 id="分治思想-o-nlogn">分治思想 O(nlogn)</h2>
+
+<ul>
+<li>归并排序-<em>待学习</em></li>
+<li>快速排序-<em>待学习</em></li>
+</ul>
+
+<h2 id="线性排序-linear-sort-不基于比较">线性排序（Linear sort），不基于比较</h2>
+
+<ul>
+<li>桶排序</li>
+<li>计数排序</li>
+<li>基数排序</li>
+</ul>
+
+<p>如何实现一个通用的排序方法</p>
+
+<h2 id="二分查找">二分查找</h2>
+
+<h3 id="最简单的情况">最简单的情况</h3>
+
+<p>有序数据中不存在重复元素
+可以用循环和递归两种方式实现</p>
+
+<h3 id="二分查找的局限性">二分查找的局限性</h3>
+
+<ul>
+<li>首先，二分查找依赖的是顺序表结构，也就是数组</li>
+<li>其次，二分查找针对的是有序数据</li>
+<li>再次，数据量太小不适合用二分查找，顺序遍历足够</li>
+<li>最后，数据量太大也不适合用二分查找，要求有很大的连续的内存空间</li>
+</ul>
+
+<h3 id="三个容易出错的地方">三个容易出错的地方</h3>
+
+<ul>
+<li>循环退出条件</li>
+<li>mid的取值</li>
+<li>low和high的更新</li>
+</ul>
+
+<h2 id="跳表">跳表</h2>
+
+<p>为链表建立多级索引的结构叫做跳表</p>
+
+<h2 id="散列表">散列表</h2>
+
+<p>散列表用的就是 数组支持按照下标访问的时候，时间复杂度为O1的特性。
+通过散列函数，将键值转化为数组下标，从对应的数组下标位置取数据。</p>
+
+<h3 id="两个核心问题">两个核心问题</h3>
+
+<ul>
+<li>散列函数设计</li>
+<li>散列冲突解决
+
+<ul>
+<li>开放寻址法（线性探测、二次探测、双重散列）</li>
+<li>链表法</li>
+</ul></li>
+</ul>
+
+<h3 id="工业级别的散列表">工业级别的散列表</h3>
+
+<h3 id="哈希算法">哈希算法</h3>
+
+<ul>
+<li>应用一：安全加密
+
+<ul>
+<li>MD5</li>
+<li>SHA</li>
+<li>DES</li>
+<li>AES</li>
+</ul></li>
+<li>应用二：唯一标识</li>
+<li>应用三：数据校验</li>
+<li>应用四：散列函数</li>
+<li>应用五：负载均衡</li>
+<li>应用六：数据分片</li>
+<li>应用七：分布式存储（一致性哈希）</li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">     "瞿广"</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-11-18
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/thread-notify/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">线程间通信</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/data-structure-and-algorithm.1/">
+            <span class="next-text nav-default">《数据结构与算法之美》-基础篇(2)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>
