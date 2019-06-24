@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Introduction to DDD CQRS and Event - Quguang 学习笔记</title>
+  <title>关于 DDD、CQRS和Event Souring - Quguang 学习笔记</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="瞿广" /><meta name="description" content="I recently started learning about domain driven design, CQRS and event sourcing. Up until now, I have been mostly involved in projects that use a ‘classic’ N tier/layer architecture with a relational database. As projects become more complex, I noticed that this model doesn’t always work well. A while ago, I wrote an article about the N-layer myth which already exposed some of the issues I feel this type of architecture has. The first thing I tried was applying domain driven design within such an architecture.
+<meta name="author" content="瞿广" /><meta name="description" content="我最近开始学习域驱动设计，CQRS和事件溯源。 到目前为止，我主要参与了使用“经典”N层/层架构和关系数据库的项目。 随着项目变得越来越复杂，我注意到这个模型并不总是很好。 不久之前，我写了一篇关于N层神话的文章，它已经暴露了我觉得这种类型的架构所带来的一些问题。 我尝试的第一件事是在这样的架构中应用域驱动设计。
 " /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
 
 
@@ -41,26 +41,26 @@
 <link rel="stylesheet" href="/css/techqu.css">
 
 
-<meta property="og:title" content="Introduction to DDD CQRS and Event" />
-<meta property="og:description" content="I recently started learning about domain driven design, CQRS and event sourcing. Up until now, I have been mostly involved in projects that use a ‘classic’ N tier/layer architecture with a relational database. As projects become more complex, I noticed that this model doesn’t always work well.  A while ago, I wrote an article about the N-layer myth which already exposed some of the issues I feel this type of architecture has. The first thing I tried was applying domain driven design within such an architecture." />
+<meta property="og:title" content="关于 DDD、CQRS和Event Souring" />
+<meta property="og:description" content="我最近开始学习域驱动设计，CQRS和事件溯源。 到目前为止，我主要参与了使用“经典”N层/层架构和关系数据库的项目。 随着项目变得越来越复杂，我注意到这个模型并不总是很好。 不久之前，我写了一篇关于N层神话的文章，它已经暴露了我觉得这种类型的架构所带来的一些问题。 我尝试的第一件事是在这样的架构中应用域驱动设计。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://techqu.github.io/post/introduction-to-ddd-cqrs-and-event/" /><meta property="article:published_time" content="2019-06-19T10:47:53&#43;08:00"/>
 <meta property="article:modified_time" content="2019-06-19T10:47:53&#43;08:00"/>
 
-<meta itemprop="name" content="Introduction to DDD CQRS and Event">
-<meta itemprop="description" content="I recently started learning about domain driven design, CQRS and event sourcing. Up until now, I have been mostly involved in projects that use a ‘classic’ N tier/layer architecture with a relational database. As projects become more complex, I noticed that this model doesn’t always work well.  A while ago, I wrote an article about the N-layer myth which already exposed some of the issues I feel this type of architecture has. The first thing I tried was applying domain driven design within such an architecture.">
+<meta itemprop="name" content="关于 DDD、CQRS和Event Souring">
+<meta itemprop="description" content="我最近开始学习域驱动设计，CQRS和事件溯源。 到目前为止，我主要参与了使用“经典”N层/层架构和关系数据库的项目。 随着项目变得越来越复杂，我注意到这个模型并不总是很好。 不久之前，我写了一篇关于N层神话的文章，它已经暴露了我觉得这种类型的架构所带来的一些问题。 我尝试的第一件事是在这样的架构中应用域驱动设计。">
 
 
 <meta itemprop="datePublished" content="2019-06-19T10:47:53&#43;08:00" />
 <meta itemprop="dateModified" content="2019-06-19T10:47:53&#43;08:00" />
-<meta itemprop="wordCount" content="2954">
+<meta itemprop="wordCount" content="4908">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Introduction to DDD CQRS and Event"/>
-<meta name="twitter:description" content="I recently started learning about domain driven design, CQRS and event sourcing. Up until now, I have been mostly involved in projects that use a ‘classic’ N tier/layer architecture with a relational database. As projects become more complex, I noticed that this model doesn’t always work well.  A while ago, I wrote an article about the N-layer myth which already exposed some of the issues I feel this type of architecture has. The first thing I tried was applying domain driven design within such an architecture."/>
+<meta name="twitter:title" content="关于 DDD、CQRS和Event Souring"/>
+<meta name="twitter:description" content="我最近开始学习域驱动设计，CQRS和事件溯源。 到目前为止，我主要参与了使用“经典”N层/层架构和关系数据库的项目。 随着项目变得越来越复杂，我注意到这个模型并不总是很好。 不久之前，我写了一篇关于N层神话的文章，它已经暴露了我觉得这种类型的架构所带来的一些问题。 我尝试的第一件事是在这样的架构中应用域驱动设计。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -127,34 +127,34 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Introduction to DDD CQRS and Event</h1>
+      <h1 class="post-title">关于 DDD、CQRS和Event Souring</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2019-06-19 </span>
         
-          <span class="more-meta"> 约 2954 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 4908 字 </span>
+          <span class="more-meta"> 预计阅读 10 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
 
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
+  <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
 <li>
 <ul>
 <li><a href="#domain-driven-design">Domain driven design</a>
 <ul>
-<li><a href="#the-problem-with-ddd-and-the-typical-n-layer-architecture">The problem with DDD and the typical N-layer architecture</a></li>
-<li><a href="#is-there-a-better-solution">Is there a better solution?</a></li>
+<li><a href="#ddd应用于经典的n层架构的问题">DDD应用于经典的N层架构的问题</a></li>
+<li><a href="#有更好的解决办法吗">有更好的解决办法吗?</a></li>
 </ul></li>
 <li><a href="#cqrs">CQRS</a></li>
 <li><a href="#event-sourcing">Event sourcing</a>
 <ul>
-<li><a href="#performance">Performance</a></li>
-<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#性能">性能</a></li>
+<li><a href="#结论">结论</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -162,18 +162,19 @@
   </div>
 </div>
     <div class="post-content">
-      <p>I recently started learning about domain driven design, CQRS and event sourcing. Up until now, I have been mostly involved in projects that use a ‘classic’ N tier/layer architecture with a relational database. As projects become more complex, I noticed that this model doesn’t always work well.  A while ago, I wrote an article about the N-layer myth which already exposed some of the issues I feel this type of architecture has. The first thing I tried was applying domain driven design within such an architecture.</p>
+      <p>我最近开始学习域驱动设计，CQRS和事件溯源。 到目前为止，我主要参与了使用“经典”N层/层架构和关系数据库的项目。 随着项目变得越来越复杂，我注意到这个模型并不总是很好。 不久之前，我写了一篇关于N层神话的文章，它已经暴露了我觉得这种类型的架构所带来的一些问题。 我尝试的第一件事是在这样的架构中应用域驱动设计。</p>
 
 <h2 id="domain-driven-design">Domain driven design</h2>
 
-<p>So, what is domain driven design actually? In domain driven design, language is the most important factor. What you want to have is the problem domain explicitly expressed inside your code. In essence, as a developer, you want to speak the same language as your business.
-Domain driven design can be very simple or very complex. The following is the simplest example I could think of:</p>
+<p>那么，实际上领域驱动设计是什么？ 在领域驱动设计中，语言是最重要的因素。 我们希望的是在代码中明确表达出领域业务。 从本质上讲，作为开发人员，是希望使用与业务相同的语言。</p>
+
+<p>领域驱动设计可以非常简单或非常复杂。 以下是我能想到的最简单的例子：</p>
 
 <pre><code class="language-java">
-    var acc = new Account();
-    var acc2 = new Account();
+var acc = new Account();
+var acc2 = new Account();
 acc.Balance+=10;acc2.Balance-=10;
-
+//贫血模型
 public class Account {
     public decimal Balance
     {
@@ -183,13 +184,13 @@ public class Account {
 }
 </code></pre>
 
-<p>Here, the logic lives outside of our Account-class. There’s no notion of a transfer and it’s just simply adding and subtracting. This is more of a procedural coding style where you’re just manipulating data. The next snippet shows a very simplistic form of using language to make the behavior explicit (also notice the setter is now private):</p>
+<p>在这里，业务逻辑存在于我们的帐户类之外。 没有转移的概念，它只是简单地添加和减去。 这更像是一种程序编码风格，你只是在操纵数据。 下一个片段显示了一种非常简单的使用语言形式来使行为显式化（注意到setter现在是私有的）：</p>
 
 <pre><code class="language-java">
-    var acc = new Account();
-    var acc2 = new Account(); 
-    acc.TransferMoneyTo(acc2,10);
-
+var acc = new Account();
+var acc2 = new Account(); 
+acc.TransferMoneyTo(acc2,10);
+//充血模型
 public class Account {
     public decimal Balance
 
@@ -206,115 +207,126 @@ public class Account {
 
 </code></pre>
 
-<p>Now, obviously there’s much more to domain driven design then this, but the essence is the focus on language and making the implicit explicit.</p>
+<p>现在，显然域驱动设计还有更多，但实质上是关注语言并使隐晦的业务明确的表达出来。（原句： but the essence is the focus on language and making the implicit explicit.）</p>
 
-<h3 id="the-problem-with-ddd-and-the-typical-n-layer-architecture">The problem with DDD and the typical N-layer architecture</h3>
+<h3 id="ddd应用于经典的n层架构的问题">DDD应用于经典的N层架构的问题</h3>
 
-<p>While applying DDD to a classic N layer architecture I ran into a few issues and I came to the conclusion to DDD is nearly impossible in such an architecture.</p>
+<p>在将DDD应用于经典的N层架构时，我遇到了一些问题，而我得出了在这样的架构中几乎不可能使用DDD的结论。</p>
 
-<p>The first reason that I feel true DDD is impossible, is that all your descriptive domain language gets obfuscated by handling the persistence. Sure, we have ORM-frameworks, like Entity Framework and NHibernate, but you still need a lot of mapping and infrastructure code which takes away focus of the domain model. An ORM also doesn’t always allow you to map your domain model to a database model either (as an example see this question by me on Stack Overflow: How to map a Value Type which has a reference to an entity?).
-So you need to introduce changes in your domain model to accommodate for the database. This is a leaky abstraction, which in my opinion is worse then no abstraction at all.
-Having a single database model not only forces you to map your domain to a database model, but it also forces you to map your domain model to views. The code needed to do all this kind of mapping rapidly obfuscates your domain language.</p>
+<p>1.我感觉真正的DDD的第一个不可能的原因是，因为所有描述领域的语言都会因为处理数据持久化问题而被搞得十分混乱。当然，我们有ORM框架，比如Entity Framework和NHibernate，但是你仍然需要大量的映射和基础代码，这些会导致无法专注于领域建模。 ORM也不总是允许你将域模型映射到数据库模型（作为示例，我在Stack Overflow上看到这个问题：<a href="http://stackoverflow.com/questions/17275030/how-to-map-a-value-type-which-has-a-reference-to-an-entity">如何映射具有对实体的引用的值类型？</a>。</p>
 
-<p>Secondly, since we’re dealing with a relational database, we tend to design from the bottom up. When we think about our domain model, we think in data-models (ie: one-to-many, may-to-many). We know the constraints and thus when we model, we unknowingly model towards these constraints. While a data model can give you some good information about the domain, I feel a behavioral model is much more valuable.</p>
+<p>因此，你需要在域模型中引入更改以适应数据库。这是一种有问题的抽象，在我看来更糟糕的是没有抽象。</p>
 
-<p>A third reason that it makes our design more complicated then it should be is that we think we need immediate consistency. This seems an important issue but I think we’re putting too much value on immediate consistency. We trick ourselves into thinking that if we have a single source of truth (the database), we always have immediate consistency. The reality is, we are already in a state of eventual consistency. Think about a simple use case: a user edits a product description. In the time between reading the product from the database and the user saving the new value, there’s already a window for someone to change that product or maybe even delete it. We ignore these cases because they are rare. Isn’t it strange that we consider immediate consistency to be a priority but then ignore the cases where it goes wrong? Maybe it’s not all that important after all.</p>
+<p>拥有单一数据库模型不仅会强制你将领域模型映射到数据库模型，还会强制你将领域模型映射到视图。完成所有这种映射所需的代码会快速混淆你的域语言。</p>
 
-<p>Given these problems, I notice more and more that domain driven design is not possible with a classic layered architecture. Even when using well-known patterns like Repositories, Unit of work and the likes, you almost always end up either with a thick layer of services and an anemic domain model (think lots of getters and setters and no methods) or with a domain model that is handling too many things (think data access code inside your entities).</p>
+<p>2.其次，由于我们正在处理关系数据库，我们倾向于自下而上设计。当我们考虑我们的领域模型时，我们会考虑数据模型（即：一对多，多对多）。我们知道约束，因此当我们建模时，我们会在不知不觉中用这些约束进行建模。虽然数据模型可以为你提供有关领域的一些有用的信息，但我觉得行为模型更有价值。</p>
 
-<h3 id="is-there-a-better-solution">Is there a better solution?</h3>
+<p>3.它使我们的设计更复杂的第三个原因是我们认为我们需要强一致性。这似乎是一个重要的问题，但我认为我们对强一致性给予了太多的重视。我们欺骗自己认为如果我们有一个单一的数据来源（数据库），我们总是能满足强一致性。实际情况是，我们其实已经处于最终一致的状态。想想一个简单的用例：用户编辑产品描述。在从数据库读取产品和保存新值的用户之间的时间内，已经有人可以更改该产品或甚至删除它的窗口。我们忽略了这些情况，因为它们很少见。我们认为强一致性是一个优先事项但是忽略它出错的情况，这不奇怪吗？也许它其实不是那么重要。</p>
 
-<p>Given these issues I wondered whether there was a better approach, so I started looking into CQRS and event sourcing. I’m still in the early phases of the learning process and at first sight it looks complicated. The reason for that is that it’s a big shift from the classic approach. What I want to accomplish with this blog post is describe these approaches, give an overview of what such an architecture looks like and show the opportunities it presents.</p>
+<p>鉴于这些问题，我注意到越来越多的领域驱动设计无法通过经典的分层架构实现。即使使用诸如存储库repository，工作单元等众所周知的模式，我们也几乎总是使用超长的service层和贫血域模型（模型里是大量的getter和setter，没有业务方法）或是处理了太多事情的领域模型（想想你的实体内的数据访问代码）。</p>
+
+<h3 id="有更好的解决办法吗">有更好的解决办法吗?</h3>
+
+<p>鉴于这些问题，我想知道是否有更好的方法，所以我开始研究CQRS和事件溯源。 我还处于学习过程的早期阶段，乍一看它看起来很复杂。 原因在于它与传统方法有很大的不同。 我想在这篇博文中完成的是描述这些方法，概述这样的架构是什么样的，并展示它所呈现的机会。</p>
 
 <h2 id="cqrs">CQRS</h2>
 
-<p>CQRS stands for “Command Query Responsibility Segregation”. It means that you should separate reading and writing into two different parts of your application.</p>
+<p>CQRS代表“Command Query Responsibility Segregation”,也就是我们常说的读写隔离，这意味着你应该将读写分成应用程序的两个不同部分。</p>
 
-<p>In a layered architecture, our domain is expressed in a set of (usually data-centric) classes. On top of that, there is a layer of services that persist these objects into the database and retrieve them (usually via a repository and a unit of work-pattern). In general, reading and writing are treated the same way. Objects pass through the same layers and get transformed on their way up to the view and down to the database. The following diagram shows a generic example of what happens when you read or write:</p>
+<p>在分层体系结构中，我们的领域以一组（通常以数据为中心）类表示。 最重要的是，有一层服务将这些对象持久存储到数据库中并检索它们（通常通过repository和工作模式单元）。 一般来说，读和写的处理方式相同。 对象通过相同的层并在前往视图和向下到数据库的过程中进行转换。</p>
 
-<p><a href="/content/images/2013/12/image31.png"><img src="/content/images/2013/12/image_thumb31.png" alt="image" title="image" /></a></p>
+<p>下图显示了读取或写入时发生的 <strong>分层架构情况</strong> 示例：</p>
 
-<p>All objects pass through the same layers, undergoing all the same <strong>transformations</strong> when we’re writing and when we’re reading. When we write, we <strong>map</strong> from a view model to a domain entity and then the ORM maps the entity to a database table. When reading, we do the opposite transformation. This is a very <strong>data-driven</strong> approach. Is all this mapping really necessary?
-With CQRS, we basically treat reading and writing very differently. The following diagram shows an example of the read and the write side in a CQRS model:</p>
+<p><img src="/img/n-layer-architecture.png" alt="image" /></p>
 
-<p><a href="/content/images/2013/12/image41.png"><img src="/content/images/2013/12/image_thumb41.png" alt="image" title="image" /></a></p>
+<p>所有对象都经过相同的层，在我们写和读时经历所有相同的 <strong>转换</strong>。 当我们写时，我们<strong>将</strong>从视图模型映射到领域实体，然后ORM将实体映射到数据库表。 在读时，我们做了相反的转变。 这是一种 <strong>数据驱动的</strong> 方法。 所有这些映射真的有必要吗？
+使用CQRS，我们基本上以非常不同的方式对待读和写。
+下图显示了 <strong>CQRS模型</strong>中的读取和写入侧的示例：</p>
 
-<p>The writing goes as follows:</p>
+<p><img src="/img/CQRS.png" alt="image" /></p>
+
+<p>写的过程如下：</p>
 
 <ol>
-<li>The view constructs a command and passes it to a command handler.</li>
-<li>The command handler then applies that command to a domain class.</li>
-<li>The domain class sends out an event with what happened</li>
-<li>An event handler catches these events and persists the changes.</li>
-<li>The read side is very simple: each view has a dedicated ‘source’ (this could be a simple table or a view).</li>
+<li>视图构造一个命令并将其传递给命令处理handler程序。</li>
+<li>然后，命令处理程序将该命令应用于领域类。</li>
+<li>领域类发送一个发生的事件</li>
+<li>事件处理程序捕获这些事件并保存这些更改。</li>
+<li>读取方面非常简单：每个视图都有一个专用的“源”（这可以是一个简单的表或视图）。</li>
 </ol>
 
-<p>At first, this whole idea seemed very odd to me and I saw some problems with it:</p>
+<p>起初，这整个想法对我来说似乎很奇怪，我看到了一些问题：</p>
 
 <ul>
-<li>Aren’t we introducing more layers on the write side?
-Yes, but these are very thin layers. The only thing the command handler does is accept a command and find the correct entity (or aggregate if we’re speaking DDD) to apply the command to.
-The event handler is only charged with applying changes to the database.</li>
-<li>How do you apply logic to the data that the view gets?
-The idea behind this concept is that the domain layer prepares the data. When the event handler receives the changes in the data, it can handle that in different ways. One way would be to just save the values in the database. However, it could also decide to save a view optimized form of that same data to a secondary storage. That way, when the view gets it, it’s already processed.</li>
+<li>我们是在写入方面引入更多层吗？
+   是的，但这些是非常轻量的层。 命令处理程序唯一做的就是接受命令并找到正确的实体（或者如果我们用DDD的术语叫做aggregate聚合）以应用命令。
+   事件处理程序仅负责将更改应用于数据库。</li>
+<li>如何将逻辑应用于视图获取的数据？
+   这个概念背后的想法是领域层准备数据。 当事件处理程序收到数据中的更改时，它可以以不同的方式处理它。 一种方法是只保存数据库中的值。 但是，它还可以决定将相同数据的视图优化形式保存到辅助存储。 这样，当视图获得它时，它已经被处理。</li>
 </ul>
 
-<p>After I realized that these problems weren’t actually that difficult to overcome I saw the advantages this system offers:</p>
+<p>在我意识到这些问题实际上并不难以克服之后，我看到了这个系统提供的优势：</p>
 
 <ul>
-<li>The command handler takes away a lot of the logic that we would normally put in services and puts it back into the domain model, where it belongs.</li>
-<li>The event handler takes all of the persistence logic out of the domain model.</li>
-<li>As a result the domain model is focused on one thing: domain logic.</li>
-<li>The read side can be much more efficient, since it can go to the database directly (with optimized data access code) and get preprocessed data. This is a big benefit since reading is done an order of magnitude more than writing (consider how many tweets you send versus how many you read).</li>
-<li>If you were to separate the application in different tiers (as opposed to layers) you can scale the read and the write side independently. This is a huge benefit, because usually you need to scale because one of the sides is getting slow (usually the read side).</li>
-<li>Apart from separating the read and write side into different tiers, it’s also easier to separate the horizontal layers. The commands and events that are sent are just POCO’s and they can easily be serialized over the wire.</li>
-<li>Since commands and events are easily serializable, you can store them them as well. This gives you a lot of possibilities such as logging and auditing. Event sourcing is also based on this capability.</li>
+<li>命令处理程序消除了我们通常会在服务中放入的许多逻辑，并将其放回到它所属的领域模型中。</li>
+<li>事件处理程序将所有持久性逻辑从域模型中删除。</li>
+<li>因此，领域模型专注于一件事：领域本身的逻辑。</li>
+<li>读取方可以更加高效，因为它可以直接进入数据库（使用优化的数据访问代码）并获得预处理数据。这是一个很大的好处，因为读比写多一个数量级（考虑你发送的推文数量与你阅读的数量相比）。</li>
+<li>如果要将应用程序分成不同的tiers (而不是 layers)，则可以单独扩展读取和写入侧。这是一个巨大的好处，因为通常你需要扩展，在其中一方变慢的时候（通常是读取方）。</li>
+<li>除了将读写侧分成不同的层之外，还可以更容易地分离水平层。发送的命令和事件只是POCO，它们可以通过线路轻松序列化。</li>
+<li>由于命令和事件很容易序列化，因此你也可以将它们存储起来。这为你提供了许多可能性，例如日志记录和审计。事件溯源也基于此功能。</li>
 </ul>
+
+<blockquote>
+<p>POCO（Plain Old C#/CLR Object），意为：纯老式的 C#/CLR 对象，也可以称为简单的 C#/CLR 对象，POCO 的概念来自于 POJO（Plain Old Java Object），POJO 的内在含义是指那些没有从任何类继承、也没有实现任何接口，更没有被其它框架侵入的 C# 对象</p>
+</blockquote>
 
 <h2 id="event-sourcing">Event sourcing</h2>
 
-<p>So then, what is event sourcing? Event sourcing is another shift in paradigm, which blew me away at first. When using a regular database, we usually create a record in the database and then perform some updates on that same record, read it a few times until it eventually gets deleted. Essentially we’re always saving the latest snapshot of the data. If you take a step back, you see that actually we’re deleting data all the time. Whenever you perform a delete or an update in your database you are deleting data. Think about that for a moment, do you really want to delete data? How do you know that in few months time this data is not going to be important?</p>
+<p>那么，什么是事件溯源？事件溯源是范式的另一个转变，一开始就让我感到震惊。使用常规数据库时，我们通常会在数据库中创建一条记录，然后对同一条记录执行一些更新，读取几次，直到最终被删除。基本上我们总是保存数据的最新快照。如果你退后一步，你会发现我们实际上一直在删除数据。无论何时在数据库中执行删除或更新，都将删除数据。想一想，你真的想删除数据吗？你怎么知道在几个月的时间内这些数据不重要？</p>
 
-<p>There are a few approaches to prevent deleting data (such as doing a soft delete) but all of them focus on actual deletes. An update is also a delete. Furthermore a soft delete still only keeps the last available snapshot in the database. Frankly, I have seen this technique being used a lot. I have hardly seen a recovery from such a record though, since it’s probably not the snapshot you wanted anyway.</p>
+<p>有一些方法可以防止删除数据（例如进行逻辑删除），但所有这些方法都集中在实际的删除上。更新也是删除。此外，逻辑删除仍然只保留数据库中的最后一个可用快照。坦率地说，我已经看到这种技术被大量使用了。我几乎没有看到从这样的记录恢复，因为它可能不是你想要的快照。</p>
 
-<p>What if we save all the snapshots, meaning every state our data has ever been in?</p>
+<p>如果我们保存所有快照，即我们的数据所处的每个状态，该怎么办？</p>
 
-<p>A better approach is to save the deltas between each version. When we use events and look at all the events that were ever submitted for a certain entity, could we reproduce our entity in whatever state it has ever been? Sure we can, and that is exactly what event sourcing is. So, instead of inserting data, updating it and deleting it, our system now only does inserts. Doesn’t that sound a lot easier? Let me repeat that, we now only do inserts!!</p>
+<p>更好的方法是保存每个版本之间的增量。当我们使用事件并查看为某个实体提交的所有事件时，我们能否以任何状态重现我们的实体？当然，我们可以，这正是溯源的所在。因此，我们的系统现在只进行插入，而不是插入数据，更新和删除数据。听起来不是那么容易吗？让我再说一遍，我们现在只做插入!!</p>
 
-<p>Let’s see an example of what an event log looks and how that translates to the state of an object.</p>
+<p>让我们看一个事件日志以及如何转换为对象状态的示例。</p>
 
-<p><a href="/content/images/2013/12/image21.png"><img src="/content/images/2013/12/image_thumb21.png" alt="image" title="image" /></a></p>
+<p><img src="/img/cqrs-product.png" alt="image" /></p>
 
-<p>In this diagram you can see we have three events: <em>ProductCreated</em>, <em>ProductPriceUpdated</em> and <em>ProductRenamed</em>. If, instead of saving the product that resulted from these events, we’d store the events themselves, we can <strong>recreate</strong> the Product at any given time by just walking up the stack and applying each <strong>transformation</strong>. This is the basic concept behind event sourcing.
-While this seems highly inefficient, it means that we can now get the state of an entity at any given point in history. Not deleting any data opens up really interesting scenarios. Let’s take a look at an example.</p>
+<p>在此图中，你可以看到我们有三个事件：<strong>ProductCreated</strong>，<strong>ProductPriceUpdated</strong> 和 <strong>ProductRenamed</strong>。如果我们不是保存由这些事件产生的产品，而是自己存储事件，我们可以在任何给定时间 <strong>重新创建</strong> 产品，只需向上移动堆栈并应用每个 <strong>转换</strong>。这是事件溯源背后的基本概念。
+虽然这看起来非常低效，但这意味着我们现在可以在历史的任何给定点获得实体的状态。不删除任何数据会打开非常有趣的场景。我们来看一个例子吧。</p>
 
-<p>Suppose your company sells furniture and you have a customer database. Marketing regularly wants us to send out a promotion to everyone who has changed their address in the last year because they are likely to buy new furniture.</p>
+<p>假设你的公司销售家具并且你拥有客户数据库。市场营销经常要求我们向去年改变地址的每个人发送促销活动，因为他们可能会购买新家具。</p>
 
-<p>In a typical architecture, to solve this need, you add a field in the database (“lastAddressModification”), you add the same field to the customer and if necessary modify your persistence mechanism. In your service layer, you add a check to see whether the address has changed and if so you update the field. All is well, and from now, whenever someone changes their address they’ll get a promotion. From now on! What did you have to do to get this working? You had to modify the database, make changes to the persistence mechanism (either mapping or SQL queries), modify your domain objects and the service layer.</p>
+<p>在典型的体系结构中，要解决此需求，可以在数据库中添加一个字段（“lastAddressModification”），向客户添加相同的字段，并在必要时修改持久性机制。在服务层中，添加一个检查以查看地址是否已更改，如果是，则更新该字段。一切都很好，从现在开始，每当有人改变他们的地址，他们都会得到晋升。从现在开始！为了让这个工作，你需要做些什么？你必须修改数据库，更改持久性机制（映射或SQL查询），修改域对象和服务层。</p>
 
-<p>Consider implementing this with event sourcing. Since you have all the events, you only need to do one thing: when you walk up the stack of events, you check whether an event occurred in the last month which involved an address change. The moment you implement this feature, it will start working and it will start working retroactively for events that occurred before you implemented this functionality.</p>
+<p>考虑通过事件溯源实现这一点。由于你拥有所有事件，因此你只需要执行以下操作：当你向上查看事件堆栈时，可以检查上个月是否发生了涉及地址更改的事件。一旦你实现此功能，它将开始工作，它将开始追溯性地执行此功能之前发生的事件。</p>
 
-<p>This method can be very useful for all kinds of functionality that we considered impossible. An answer I usually hear is that there’s no need for this and that the business doesn’t ask for this. I think the reason is that we trained them not to ask for it, because we considered it impossible.</p>
+<p>这种方法对于我们认为不可能的各种功能非常有用。我经常听到的答案是，没有必要这样做，而且业务部门也没有要求这样做。我认为原因是我们习惯于告诉他们不要求这样，因为我们认为这是不可能的。</p>
 
-<h3 id="performance">Performance</h3>
+<h3 id="性能">性能</h3>
 
-<p>As I said, this seems highly inefficient, and it can be. When you have a lot of events for a certain entity, it can take a while to walk up the stack. One thing to consider is that you only need to this when you receive a command. In all other cases the data will be available in a denormalized form, optimized for reading (a snapshot). However, if you happen to have hundreds of events (which is unlikely), it can still be slow. A solution for that problem takes us back to where we started, albeit with a small difference. We can store snapshots.</p>
+<p>正如我所说，这似乎非常低效。当某个实体有很多事件时，可能需要一段时间才能完成堆栈。需要考虑的一件事是，只有在收到命令时才需要这样做。在所有其他情况下，数据将以非规范化形式提供，并针对读取进行了优化（快照）。但是，如果你碰巧有数百个事件（这不太可能），它仍然可能很慢。解决这个问题的方法将我们带回到我们开始的地方，尽管区别不大。我们可以存储快照。</p>
 
-<p>Now instead of travelling the stack from the bottom up, we travel from the top until we find a snapshot. Then we apply all the events that happened after that snapshot to get to the current state. In case you need to access other historical data (such as in the previous example) you can still do the bottom up approach though.</p>
+<p>现在我们不是从下往上移动堆栈，而是从顶部开始直到找到快照。然后我们应用该快照之后发生的所有事件以进入当前状态。如果你需要访问其他历史数据（例如在前面的示例中），你仍然可以执行自下而上的方法。</p>
 
-<p>This solution works, but if possible I think it should be avoided. The reason is that you are creating a dependency on your snapshots. If you don’t have snapshots, your domain model can vary as much as you want. As long as you still know how to apply a past event to it, you can modify whatever you want. If you work with snapshots you create a dependency on that snapshot and you have to take it into account when you modify the domain model. A possible solution for that is to recalculate the snapshots when your domain changes, but that’s again adding overhead, which you’d want to avoid as much as possible.</p>
+<p>这个解决方案有效，但如果可能，我认为应该避免。原因是你正在创建对快照的依赖关系。如果你没有快照，则你的域模型可以根据需要变化。只要你仍然知道如何将过去的事件应用于它，你就可以修改你想要的任何内容。如果使用快照，则会对该快照创建依赖关系，并且在修改域模型时必须将其考虑在内。一个可能的解决方案是在域更改时重新计算快照，但这又会增加开销，这是应该尽可能避免的情况。</p>
 
-<h3 id="conclusion">Conclusion</h3>
+<h3 id="结论">结论</h3>
 
-<p>Domain driven design, CQRS and event sourcing are really interesting and powerful techniques. Instead of solving complex problems they approach it from a different perspective so that they become simple problems.
-Would I use it in any application? No, I think the domain needs to be complex enough in order to get benefit out of it. That being said, I don’t consider myself experienced enough to recommend at which point it becomes beneficial or not. I guess time will tell that.
-I hope in this post I have been able to give you a bit of an overview of what DDD, CQRS and event sourcing is.</p>
+<p>领域驱动设计，CQRS和事件溯源是非常有趣和强大的技术。对于复杂的问题，它们是从不同的角度处理它们，以便它们成为简单的问题。
+我会在任何应用程序中使用它吗？ 不，我认为领域需要足够复杂才能从中获益。 话虽如此，我认为自己没有足够的经验来推荐它在哪一点上变得有益。 我想时间会证明这一点。
+我希望在这篇文章中我能够给你一些关于DDD，CQRS和事件溯源的概述。</p>
 
 <blockquote>
-<p>Note: Given that these topics are relatively new to me, why would I write a blog post about it?
-The first reason is that I want to vocalize what I have learnt so far, it helps me understand things better. Secondly, when looking for information, it took me a while to get the big picture and I think I get it now, so I want to write it down for anyone who is in the same situation as I am.
-And last but not least, this is kind of an open-ended question to experts in the field to see whether I’m making any incorrect assumptions. So any comments, criticism and suggestions are more then welcome.</p>
+<p>Note: 注意：鉴于这些主题对我来说相对较新，为什么我会写一篇关于它的博客文章？
+第一个原因是我想分享到目前为止我学到的东西，这有助于我更好地理解事物。 其次，在寻找信息时，花了我一段时间才能了解全局，我想我现在已经明白了，所以我想把它写下来和那些和我一样处于同样情况的人。
+最后但并非最不重要的是，对于该领域的专家来说，这是一个开放性的问题，看看我是否做出了任何不正确的结论。 所以任何评论，批评和建议都会受到欢迎。</p>
 </blockquote>
+
+<p>原文链接：<a href="https://www.kenneth-truyers.net/2013/12/05/introduction-to-domain-driven-design-cqrs-and-event-sourcing/">Introduction to Domain Driven Design, CQRS and Event Sourcing</a></p>
     </div>
 
     <div class="post-copyright">

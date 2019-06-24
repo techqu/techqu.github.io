@@ -21,12 +21,12 @@
     </item>
     
     <item>
-      <title>Introduction to DDD CQRS and Event</title>
+      <title>关于 DDD、CQRS和Event Souring</title>
       <link>https://techqu.github.io/post/introduction-to-ddd-cqrs-and-event/</link>
       <pubDate>Wed, 19 Jun 2019 10:47:53 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/introduction-to-ddd-cqrs-and-event/</guid>
-      <description>&lt;p&gt;I recently started learning about domain driven design, CQRS and event sourcing. Up until now, I have been mostly involved in projects that use a ‘classic’ N tier/layer architecture with a relational database. As projects become more complex, I noticed that this model doesn’t always work well.  A while ago, I wrote an article about the N-layer myth which already exposed some of the issues I feel this type of architecture has. The first thing I tried was applying domain driven design within such an architecture.&lt;/p&gt;</description>
+      <description>&lt;p&gt;我最近开始学习域驱动设计，CQRS和事件溯源。 到目前为止，我主要参与了使用“经典”N层/层架构和关系数据库的项目。 随着项目变得越来越复杂，我注意到这个模型并不总是很好。 不久之前，我写了一篇关于N层神话的文章，它已经暴露了我觉得这种类型的架构所带来的一些问题。 我尝试的第一件事是在这样的架构中应用域驱动设计。&lt;/p&gt;</description>
     </item>
     
     <item>
