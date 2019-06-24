@@ -21,6 +21,235 @@
     </item>
     
     <item>
+      <title>Java面试-设计高可用架构</title>
+      <link>https://techqu.github.io/post/java-interview-ha-01/</link>
+      <pubDate>Mon, 20 May 2019 15:06:10 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-ha-01/</guid>
+      <description>&lt;p&gt;前半部分，专注在高并发这一块，缓存架构，承载高并发，在各种高并发导致的令人崩溃/异常的场景下，运行着&lt;/p&gt;
+
+&lt;p&gt;缓存架构，高可用性，在各种系统的各个地方有乱七八糟的异常和故障的情况下，整套缓存系统还能继续健康的run着&lt;/p&gt;
+
+&lt;p&gt;HA，HAProxy，主备服务间的切换，这就做到了高可用性，主备实例，多冗余实例，高可用最最基础的东西&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Mysql Shading05</title>
+      <link>https://techqu.github.io/post/java-interview-mysql-shading05/</link>
+      <pubDate>Fri, 17 May 2019 18:26:55 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mysql-shading05/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;你们有没有做MySQL读写分离？如何实现mysql的读写分离？MySQL主从复制原理的是啥？如何解决mysql主从同步的延时问题？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Mysql Shading04</title>
+      <link>https://techqu.github.io/post/java-interview-mysql-shading04/</link>
+      <pubDate>Fri, 17 May 2019 18:19:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mysql-shading04/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;分库分表之后，id主键如何处理？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Mysql Shading03</title>
+      <link>https://techqu.github.io/post/java-interview-mysql-shading03/</link>
+      <pubDate>Fri, 17 May 2019 17:41:34 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mysql-shading03/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;如何设计可以动态扩容缩容的分库分表方案？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Mysql Shading02</title>
+      <link>https://techqu.github.io/post/java-interview-mysql-shading02/</link>
+      <pubDate>Fri, 17 May 2019 17:30:42 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mysql-shading02/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Mysql 分库分表</title>
+      <link>https://techqu.github.io/post/java-interview-mysql-shading01/</link>
+      <pubDate>Fri, 17 May 2019 16:12:09 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mysql-shading01/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview 如何设计一个高并发系统？</title>
+      <link>https://techqu.github.io/post/java-interview-gaobingfa/</link>
+      <pubDate>Thu, 16 May 2019 18:51:25 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-gaobingfa/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;如何设计一个高并发系统？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-redis的持久化</title>
+      <link>https://techqu.github.io/post/java-interview-cache06/</link>
+      <pubDate>Thu, 16 May 2019 18:11:25 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache06/</guid>
+      <description>01_面试题以及解答思路介绍 1、面试题 redis的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？ 2、面</description>
+    </item>
+    
+    <item>
+      <title>Java面试-如何保证Redis的高并发和高可用</title>
+      <link>https://techqu.github.io/post/java-interview-cache05/</link>
+      <pubDate>Thu, 16 May 2019 17:48:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache05/</guid>
+      <description>&lt;h2 id=&#34;01-面试题以及解答思路介绍&#34;&gt;01_面试题以及解答思路介绍&lt;/h2&gt;
+
+&lt;p&gt;1、面试题&lt;/p&gt;
+
+&lt;p&gt;如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-redis的过期策略</title>
+      <link>https://techqu.github.io/post/java-interview-cache04/</link>
+      <pubDate>Thu, 16 May 2019 17:47:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache04/</guid>
+      <description>1、面试题 redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？ 2、面试官心里分析 1）老师啊，我往redis里写的数据</description>
+    </item>
+    
+    <item>
+      <title>Java面试-redis 数据类型</title>
+      <link>https://techqu.github.io/post/java-interview-cache03/</link>
+      <pubDate>Thu, 16 May 2019 17:38:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache03/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;redis都有哪些数据类型？分别在哪些场景下使用比较合适？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-为什么redis是单线程的但是还可以支撑高并发</title>
+      <link>https://techqu.github.io/post/java-interview-cache02/</link>
+      <pubDate>Thu, 16 May 2019 17:28:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache02/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;redis和memcached有什么区别？redis的线程模型是什么？为什么单线程的redis比多线程的memcached效率要高得多（为什么redis是单线程的但是还可以支撑高并发）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-缓存是如何使用的？</title>
+      <link>https://techqu.github.io/post/java-interview-cache01/</link>
+      <pubDate>Thu, 16 May 2019 17:18:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache01/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ自己设计一个</title>
+      <link>https://techqu.github.io/post/java-interview-mq07/</link>
+      <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq07/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ延时以及过期失效</title>
+      <link>https://techqu.github.io/post/java-interview-mq06/</link>
+      <pubDate>Wed, 15 May 2019 19:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq06/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ消息的顺序性</title>
+      <link>https://techqu.github.io/post/java-interview-mq05/</link>
+      <pubDate>Wed, 15 May 2019 18:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq05/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如何保证消息的顺序性？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ可靠性传输</title>
+      <link>https://techqu.github.io/post/java-interview-mq04/</link>
+      <pubDate>Wed, 15 May 2019 17:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq04/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如何保证消息的可靠性传输（如何处理消息丢失的问题）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ重复消费</title>
+      <link>https://techqu.github.io/post/java-interview-mq03/</link>
+      <pubDate>Wed, 15 May 2019 16:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq03/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ高可用</title>
+      <link>https://techqu.github.io/post/java-interview-mq02/</link>
+      <pubDate>Wed, 15 May 2019 15:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq02/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如何保证消息队列的高可用啊？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ技术选型</title>
+      <link>https://techqu.github.io/post/java-interview-mq01/</link>
+      <pubDate>Wed, 15 May 2019 14:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq01/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Shishan01</title>
+      <link>https://techqu.github.io/post/java-interview-shishan01/</link>
+      <pubDate>Wed, 15 May 2019 13:32:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-shishan01/</guid>
+      <description>&lt;p&gt;因为java面试题是一个较为大的体系，所以我们会拆分为几季来讲解，预计是会推出3季，本次是第一季，第一季课程包含的内容如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Mysql  B&#43;tree 索引</title>
       <link>https://techqu.github.io/post/mysql-index-b&#43;tree/</link>
       <pubDate>Thu, 09 May 2019 18:43:28 +0800</pubDate>
@@ -39,7 +268,7 @@
     </item>
     
     <item>
-      <title>CI CD Introduce</title>
+      <title>《持续交付》</title>
       <link>https://techqu.github.io/post/ci-cd-introduce/</link>
       <pubDate>Fri, 19 Apr 2019 15:23:49 +0800</pubDate>
       

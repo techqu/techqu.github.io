@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Java Interview Shishan01 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="因为java面试题是一个较为大的体系，所以我们会拆分为几季来讲解，预计是会推出3季，本次是第一季，第一季课程包含的内容如下：
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/java-interview-shishan01/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="Java Interview Shishan01" />
+<meta property="og:description" content="因为java面试题是一个较为大的体系，所以我们会拆分为几季来讲解，预计是会推出3季，本次是第一季，第一季课程包含的内容如下：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/java-interview-shishan01/" /><meta property="article:published_time" content="2019-05-15T13:32:03&#43;08:00"/>
+<meta property="article:modified_time" content="2019-05-15T13:32:03&#43;08:00"/>
+
+<meta itemprop="name" content="Java Interview Shishan01">
+<meta itemprop="description" content="因为java面试题是一个较为大的体系，所以我们会拆分为几季来讲解，预计是会推出3季，本次是第一季，第一季课程包含的内容如下：">
+
+
+<meta itemprop="datePublished" content="2019-05-15T13:32:03&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-15T13:32:03&#43;08:00" />
+<meta itemprop="wordCount" content="3932">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java Interview Shishan01"/>
+<meta name="twitter:description" content="因为java面试题是一个较为大的体系，所以我们会拆分为几季来讲解，预计是会推出3季，本次是第一季，第一季课程包含的内容如下："/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">专注</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">专注</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Java Interview Shishan01</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-15 </span>
+        <div class="post-category">
+            <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+            </div>
+          <span class="more-meta"> 约 3932 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-分布式系统">1、分布式系统</a>
+<ul>
+<li><a href="#1-1-为什么要进行系统拆分">1.1 为什么要进行系统拆分？</a></li>
+<li><a href="#1-2-分布式服务框架">1.2 分布式服务框架</a></li>
+<li><a href="#1-3-分布式锁">1.3 分布式锁</a></li>
+<li><a href="#1-4-分布式事务">1.4 分布式事务</a></li>
+<li><a href="#1-5-分布式会话">1.5 分布式会话</a></li>
+</ul></li>
+<li><a href="#2-高并发架构">2、高并发架构</a>
+<ul>
+<li><a href="#2-1-如何设计一个高并发系统">2.1 如何设计一个高并发系统？</a></li>
+<li><a href="#2-2-消息队列">2.2 消息队列</a></li>
+<li><a href="#2-3-搜索引擎">2.3 搜索引擎</a></li>
+<li><a href="#2-4-缓存">2.4 缓存</a></li>
+<li><a href="#2-5-分库分表">2.5 分库分表</a></li>
+<li><a href="#2-6-读写分离">2.6 读写分离</a></li>
+</ul></li>
+<li><a href="#3-高可用架构">3、高可用架构</a>
+<ul>
+<li><a href="#3-1-如何设计一个高可用系统">3.1 如何设计一个高可用系统？</a></li>
+<li><a href="#3-2-限流">3.2 限流</a></li>
+<li><a href="#3-3-熔断">3.3 熔断</a></li>
+<li><a href="#3-4-降级">3.4 降级</a></li>
+</ul></li>
+<li><a href="#这个课程针对的人群">这个课程针对的人群</a></li>
+<li><a href="#这个课程的定位">这个课程的定位：</a></li>
+<li><a href="#所以针对这个定位-我进行几点说明">所以针对这个定位，我进行几点说明：</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>因为java面试题是一个较为大的体系，所以我们会拆分为几季来讲解，预计是会推出3季，本次是第一季，第一季课程包含的内容如下：</p>
+
+<h2 id="1-分布式系统">1、分布式系统</h2>
+
+<h3 id="1-1-为什么要进行系统拆分">1.1 为什么要进行系统拆分？</h3>
+
+<p>（1）为什么要进行系统拆分？如何进行系统拆分？拆分后不用dubbo可以吗？dubbo和thrift有什么区别呢？</p>
+
+<h3 id="1-2-分布式服务框架">1.2 分布式服务框架</h3>
+
+<p>（1）说一下的dubbo的工作原理？注册中心挂了可以继续通信吗？</p>
+
+<p>（2）dubbo支持哪些序列化协议？说一下hessian的数据结构？PB知道吗？为什么PB的效率是最高的？</p>
+
+<p>（3）dubbo负载均衡策略和高可用策略都有哪些？动态代理策略呢？</p>
+
+<p>（4）dubbo的spi思想是什么？</p>
+
+<p>（5）如何基于dubbo进行服务治理、服务降级、失败重试以及超时重试？</p>
+
+<p>（6）分布式服务接口的幂等性如何设计（比如不能重复扣款）？</p>
+
+<p>（7）分布式服务接口请求的顺序性如何保证？</p>
+
+<p>（8）如何自己设计一个类似dubbo的rpc框架？</p>
+
+<h3 id="1-3-分布式锁">1.3 分布式锁</h3>
+
+<p>（1）使用redis如何设计分布式锁？使用zk来设计分布式锁可以吗？这两种分布式锁的实现方式哪种效率比较高？</p>
+
+<h3 id="1-4-分布式事务">1.4 分布式事务</h3>
+
+<p>（1）分布式事务了解吗？你们如何解决分布式事务问题的？TCC如果出现网络连不通怎么办？XA的一致性如何保证？</p>
+
+<h3 id="1-5-分布式会话">1.5 分布式会话</h3>
+
+<p>（1）集群部署时的分布式session如何实现？</p>
+
+<h2 id="2-高并发架构">2、高并发架构</h2>
+
+<h3 id="2-1-如何设计一个高并发系统">2.1 如何设计一个高并发系统？</h3>
+
+<h3 id="2-2-消息队列">2.2 消息队列</h3>
+
+<p>（1）为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么优点和缺点啊？</p>
+
+<p>（2）如何保证消息队列的高可用啊？</p>
+
+<p>（3）如何保证消息不被重复消费啊（如何进行消息队列的幂等性问题）？</p>
+
+<p>（4）如何保证消息的可靠性传输（如何处理消息丢失的问题）？</p>
+
+<p>（5）如何保证消息的顺序性？</p>
+
+<p>（6）如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？</p>
+
+<p>（7）如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路</p>
+
+<h3 id="2-3-搜索引擎">2.3 搜索引擎</h3>
+
+<p>（1）es的分布式架构原理能说一下么（es是如何实现分布式的啊）？</p>
+
+<p>（2）es写入数据的工作原理是什么啊？es查询数据的工作原理是什么啊？底层的lucene介绍一下呗？倒排索引了解吗？</p>
+
+<p>（3）es在数据量很大的情况下（数十亿级别）如何提高查询效率啊？</p>
+
+<p>（4）es生产集群的部署架构是什么？每个索引的数据量大概有多少？每个索引大概有多少个分片？</p>
+
+<h3 id="2-4-缓存">2.4 缓存</h3>
+
+<p>（1）在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？</p>
+
+<p>（2）redis和memcached有什么区别？redis的线程模型是什么？为什么单线程的redis比多线程的memcached效率要高得多？</p>
+
+<p>（3）redis都有哪些数据类型？分别在哪些场景下使用比较合适？</p>
+
+<p>（5）redis的过期策略都有哪些？手写一下LRU代码实现？</p>
+
+<p>（6）如何保证Redis高并发、高可用、持久化？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？</p>
+
+<p>（7）redis的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？</p>
+
+<p>（8）redis集群模式的工作原理能说一下么？在集群模式下，redis的key是如何寻址的？分布式寻址都有哪些算法？了解一致性hash算法吗？如何动态增加和删除一个节点？</p>
+
+<p>（9）了解什么是redis的雪崩和穿透？redis崩溃之后会怎么样？系统该如何应对这种情况？如何处理redis的穿透？</p>
+
+<p>（10）如何保证缓存与数据库的双写一致性？</p>
+
+<p>（11）redis的并发竞争问题是什么？如何解决这个问题？了解Redis事务的CAS方案吗？</p>
+
+<p>（12）生产环境中的redis是怎么部署的？</p>
+
+<h3 id="2-5-分库分表">2.5 分库分表</h3>
+
+<p>（2）为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？</p>
+
+<p>（3）现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？</p>
+
+<p>（4）如何设计可以动态扩容缩容的分库分表方案？</p>
+
+<p>（5）分库分表之后，id主键如何处理？</p>
+
+<h3 id="2-6-读写分离">2.6 读写分离</h3>
+
+<p>（1）如何实现mysql的读写分离？MySQL主从复制原理的是啥？如何解决mysql主从同步的延时问题？</p>
+
+<h2 id="3-高可用架构">3、高可用架构</h2>
+
+<h3 id="3-1-如何设计一个高可用系统">3.1 如何设计一个高可用系统？</h3>
+
+<h3 id="3-2-限流">3.2 限流</h3>
+
+<p>（1）如何限流？在工作中是怎么做的？说一下具体的实现？</p>
+
+<h3 id="3-3-熔断">3.3 熔断</h3>
+
+<p>（1）如何进行熔断？熔断框架都有哪些？具体实现原理知道吗？</p>
+
+<h3 id="3-4-降级">3.4 降级</h3>
+
+<p>（1）如何进行降级？</p>
+
+<hr />
+
+<h2 id="这个课程针对的人群">这个课程针对的人群</h2>
+
+<p>（1）好多同学出去面试，尤其是面互联网行业的Java职位，经常会问一些消息队列、缓存、分库分表、分布式系统之类的问题，但是可能不少同学之前没有搞过这些，或者略知一二，但是被面试官几个连环炮就给打蒙了</p>
+
+<p>（2）<strong>或者是不少同学很长时间不面试了，最近要找工作，需要短期突击快速准备一下常见的面试题，至少先给自己热个身，不至于面试的时候一问三不知</strong></p>
+
+<p>（3）或者是不面试，但是对这套技术体系不怎么会的同学，可以用这个课程算是扫盲，快速夯实一下互联网公司技术栈的一些基础</p>
+
+<p>（4）如果你看一眼，觉得自己基本都会，那么可以绕行，这个课程应该不适合你，可以加我助理QQ，未来我会出一些高级的免费课程</p>
+
+<h2 id="这个课程的定位">这个课程的定位：</h2>
+
+<p>（1）两周让你快速突击完整的互联网java工程师面试中要掌握的技术体系</p>
+
+<p>（2）针对的是互联网行业的普通java岗位常问的一些面试题，不是针对一些高级、资深、专家等高阶岗位的面试，因为你要是面那些高阶岗位，靠两三周突击是不可能的</p>
+
+<p>（3）所以这里很多问题以及问题的解答，基本可能都是属于科普性的，有一些技术实力比较好的同学，不要看到后面来骂我，说讲的啥，这么简单，都是些入门和基础，确实是，我也觉得这些问题都很简单，但是确实大量的java同学面试被问到可能都答不出来，所以这个课程是有针对人群的。觉得这个课程讲解内容过于简单的同学，请绕道，这个课程就别看了，但是欢迎关注我们的公众号，后面我们可能还会推出更加高级的一些免费课程。</p>
+
+<p>（4）讲解方式走短平快路线，大白话+手工画图，语言精简不拖拉，不说废话，每个问题都直击问题要点即可。课程出发点是帮助那些想要在2周之内完成面试准备，出去找工作的那帮同学</p>
+
+<p>（5）对每个面试题都给你先剖析一下面试官问这个面试题背后的愿意是什么？他为什么要问你这个问题？</p>
+
+<p>（6）能解答每个问题背后的基本原理，至少被问到这些问题别一无所知，自己能回答出来一些原理以及技术方案，代表至少你有这个知识积累</p>
+
+<p>（7）能在面试现场动手画图讲解</p>
+
+<p>（8）能对常见的要求写代码的环节现场手写代码</p>
+
+<p>（9）试想，面试考察范围那么大，如果你每个技术都想要深入学习达到精通，上手能用，能做项目，那你任何一个技术都要学习很长时间。但是面试的时候可不是那么问的，不会问你api和具体操作步骤，主要考察思想、原理以及经验。所以这里我们为了面试准备，就是对每个技术讲解面试的时候常问的一些问题。</p>
+
+<p>能达到这个标准，那么可以短期内快速提升你对常见面试题的应答能力，让很多同学也许在一些互联网java面试时，也许原本很多题目都几乎说不出什么回答，到现在学完这个课程之后可以基本回答常见的技术体系内的面试题</p>
+
+<p>这个课程，主要设计思想就是针对有面试需求的同学，短期内，短平快的突击一下，大幅度增强你在面试现场的一个表现，增加你通过面试的机会，让你跟很多普通的工程师在面试时的表现迅速拉开差距</p>
+
+<h2 id="所以针对这个定位-我进行几点说明">所以针对这个定位，我进行几点说明：</h2>
+
+<p>1、面试题剖析如何回答时，我会剔除掉很多不必要的细节，就突出很重点。比如有的技术，网上一些博客也许会零零散散写几十点，但是面试的时候你不是背书，不是背博客来回答的，就是讲出来几个重点就可以了。所以有些东西也许我没讲，但是大家要明白不是我不讲，是因为我们要挑重点了解，在面试的时候挑重点来说。</p>
+
+<p>2、<strong>对大部分技术点，不会动手去落地实践，比如说RabbitMQ的高可用性，我们就是剖析MQ高可用部署的一个原理，现场大量手工绘图讲清楚如何回答这个东西，确保你被问到的时候，能说清楚整个高可用部署架构以及现场动手画图。</strong>但是我不会带着你去安装虚拟机，然后安装rabbitmq，然后再部署高可用架构，然后再进行高可用容灾演练。因为我们的定位是短期内快随突击面试题，转为面试准备，不是动手项目实战课程。</p>
+
+<p>3、对很多技术，我们的定位就是面试被问到的时候，你可以回答出其基本原理，我们不可能对有些技术点刨根问底，深挖到源码级别，那是需要大量时间去讲解的，不是所谓的两三周短平快可以突击的完的。所以确实有可能对于一些要求很高的公司，是可能存在一个问题，人家问你一个问题，你答出来了，接着深挖，你答不出来了，那么此时是没办法的，你要想对各种技术都有深入底层的功底，那不是两三周的事儿，而是两三年的苦功夫才能得到的。</p>
+
+<p>4、有些特别简单的问题，明显只要是个java工程师，学过java的都该知道的问题，我就不讲了。比如说equals和hashcode是啥关系？string类为啥是final的？这类问题，实在是太过基础。</p>
+
+<p>所以特别用几分钟时间跟大家说明白这个问题，大家了解一下这个课程定位，后面学习的时候相信就不会产生什么歧义、误会以及不满了。</p>
+
+<p>最后一点说明，这个课程会作为“石杉码农学院”一个长期对外开放的免费课程，大家在学习这个课程之后，去外面面试，如果遇到这个课程里没有涵盖掉的问题，然后你觉得是比较难的比较典型的问题，可以通过微信公众号给我们留言，我们会定期免费持续更新这个课程的，持续解答更多的面试题</p>
+
+<p>同时我们这里还会定期发布一些同学给我们反馈的互联网公司的java面试经历，我们会整理成文章后发布出来，供大家参考</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-05-15
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/java-interview-mq01/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Java面试-MQ技术选型</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/mysql-index-b&#43;tree/">
+            <span class="next-text nav-default">Mysql  B&#43;tree 索引</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

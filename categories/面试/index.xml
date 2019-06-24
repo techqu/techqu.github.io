@@ -6,10 +6,160 @@
     <description>Recent content in 面试 on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 15 Feb 2019 17:40:34 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 May 2019 18:11:25 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/categories/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java面试-redis的持久化</title>
+      <link>https://techqu.github.io/post/java-interview-cache06/</link>
+      <pubDate>Thu, 16 May 2019 18:11:25 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache06/</guid>
+      <description>01_面试题以及解答思路介绍 1、面试题 redis的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？ 2、面</description>
+    </item>
+    
+    <item>
+      <title>Java面试-如何保证Redis的高并发和高可用</title>
+      <link>https://techqu.github.io/post/java-interview-cache05/</link>
+      <pubDate>Thu, 16 May 2019 17:48:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache05/</guid>
+      <description>&lt;h2 id=&#34;01-面试题以及解答思路介绍&#34;&gt;01_面试题以及解答思路介绍&lt;/h2&gt;
+
+&lt;p&gt;1、面试题&lt;/p&gt;
+
+&lt;p&gt;如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-redis的过期策略</title>
+      <link>https://techqu.github.io/post/java-interview-cache04/</link>
+      <pubDate>Thu, 16 May 2019 17:47:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache04/</guid>
+      <description>1、面试题 redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？ 2、面试官心里分析 1）老师啊，我往redis里写的数据</description>
+    </item>
+    
+    <item>
+      <title>Java面试-redis 数据类型</title>
+      <link>https://techqu.github.io/post/java-interview-cache03/</link>
+      <pubDate>Thu, 16 May 2019 17:38:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache03/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;redis都有哪些数据类型？分别在哪些场景下使用比较合适？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-为什么redis是单线程的但是还可以支撑高并发</title>
+      <link>https://techqu.github.io/post/java-interview-cache02/</link>
+      <pubDate>Thu, 16 May 2019 17:28:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache02/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;redis和memcached有什么区别？redis的线程模型是什么？为什么单线程的redis比多线程的memcached效率要高得多（为什么redis是单线程的但是还可以支撑高并发）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-缓存是如何使用的？</title>
+      <link>https://techqu.github.io/post/java-interview-cache01/</link>
+      <pubDate>Thu, 16 May 2019 17:18:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-cache01/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ自己设计一个</title>
+      <link>https://techqu.github.io/post/java-interview-mq07/</link>
+      <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq07/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ延时以及过期失效</title>
+      <link>https://techqu.github.io/post/java-interview-mq06/</link>
+      <pubDate>Wed, 15 May 2019 19:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq06/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ消息的顺序性</title>
+      <link>https://techqu.github.io/post/java-interview-mq05/</link>
+      <pubDate>Wed, 15 May 2019 18:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq05/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如何保证消息的顺序性？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ可靠性传输</title>
+      <link>https://techqu.github.io/post/java-interview-mq04/</link>
+      <pubDate>Wed, 15 May 2019 17:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq04/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如何保证消息的可靠性传输（如何处理消息丢失的问题）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ重复消费</title>
+      <link>https://techqu.github.io/post/java-interview-mq03/</link>
+      <pubDate>Wed, 15 May 2019 16:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq03/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ高可用</title>
+      <link>https://techqu.github.io/post/java-interview-mq02/</link>
+      <pubDate>Wed, 15 May 2019 15:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq02/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;如何保证消息队列的高可用啊？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-MQ技术选型</title>
+      <link>https://techqu.github.io/post/java-interview-mq01/</link>
+      <pubDate>Wed, 15 May 2019 14:36:47 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mq01/</guid>
+      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
+
+&lt;p&gt;为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Shishan01</title>
+      <link>https://techqu.github.io/post/java-interview-shishan01/</link>
+      <pubDate>Wed, 15 May 2019 13:32:03 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-shishan01/</guid>
+      <description>&lt;p&gt;因为java面试题是一个较为大的体系，所以我们会拆分为几季来讲解，预计是会推出3季，本次是第一季，第一季课程包含的内容如下：&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Java Interview Resource List</title>

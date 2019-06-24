@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2019-03-16T15:25:44&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-16T15:25:44&#43;08:00" />
-<meta itemprop="wordCount" content="1903">
+<meta itemprop="wordCount" content="2988">
 
 
 
@@ -75,7 +75,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">miao</a>
+    <a href="/" class="logo">专注</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -101,7 +101,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">miao</a>
+  <a href="/" class="logo">专注</a>
 </div>
 
 <nav class="site-navbar">
@@ -135,8 +135,8 @@
             <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
             <a href="/categories/mysql/"> MySQL </a>
             </div>
-          <span class="more-meta"> 约 1903 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2988 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -154,6 +154,7 @@
 <li><a href="#覆盖索引">覆盖索引</a></li>
 <li><a href="#最左前缀原则">最左前缀原则</a></li>
 <li><a href="#索引下推">索引下推</a></li>
+<li><a href="#总结">总结：</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -264,6 +265,52 @@ index (k))engine=InnoDB;
 <p>根据前缀索引规则，所以这个语句在搜索索引树的时候，只能用“张”，找到第一个满足条件的记录ID3.</p>
 
 <p>但是由于索引下推，InnoDB在(name,age)索引内部就判断了age是否等于10，对于不等于10的记录，直接判断跳过。</p>
+
+<h2 id="总结">总结：</h2>
+
+<p>一：</p>
+
+<ol>
+<li>索引的作用：提高数据查询效率</li>
+<li>常见索引模型：哈希表、有序数组、搜索树</li>
+<li>哈希表：键 - 值(key - value)。</li>
+<li>哈希思路：把值放在数组里，用一个哈希函数把key换算成一个确定的位置，然后把value放在数组的这个位置</li>
+<li>哈希冲突的处理办法：链表</li>
+<li>哈希表适用场景：只有等值查询的场景</li>
+<li>有序数组：按顺序存储。查询用二分法就可以快速查询，时间复杂度是：O(log(N))</li>
+<li>有序数组查询效率高，更新效率低</li>
+<li>有序数组的适用场景：静态存储引擎。</li>
+<li>二叉搜索树：每个节点的左儿子小于父节点，父节点又小于右儿子</li>
+<li>二叉搜索树：查询时间复杂度O(log(N))，更新时间复杂度O(log(N))</li>
+<li>数据库存储大多不适用二叉树，因为树高过高，会适用N叉树</li>
+<li>InnoDB中的索引模型：B+Tree</li>
+<li>索引类型：主键索引、非主键索引
+主键索引的叶子节点存的是整行的数据(聚簇索引)，非主键索引的叶子节点内容是主键的值(二级索引)</li>
+<li>主键索引和普通索引的区别：主键索引只要搜索ID这个B+Tree即可拿到数据。普通索引先搜索索引拿到主键值，再到主键索引树搜索一次(回表)</li>
+<li>一个数据页满了，按照B+Tree算法，新增加一个数据页，叫做页分裂，会导致性能下降。空间利用率降低大概50%。当相邻的两个数据页利用率很低的时候会做数据页合并，合并的过程是分裂过程的逆过程。</li>
+<li>从性能和存储空间方面考量，自增主键往往是更合理的选择。</li>
+</ol>
+
+<p>思考题：</p>
+
+<ul>
+<li>如果删除，新建主键索引，会同时去修改普通索引对应的主键索引，性能消耗比较大。</li>
+<li>删除重建普通索引貌似影响不大，不过要注意在业务低谷期操作，避免影响业务。</li>
+</ul>
+
+<p>二：</p>
+
+<ol>
+<li>回表：回到主键索引树搜索的过程，称为回表</li>
+<li>覆盖索引：某索引已经覆盖了查询需求，称为覆盖索引，例如：select ID from T where k between 3 and 5</li>
+<li>在引擎内部使用覆盖索引在索引K上其实读了三个记录，R3~R5(对应的索引k上的记录项)，但对于MySQL的Server层来说，它就是找引擎拿到了两条记录，因此MySQL认为扫描行数是2</li>
+<li>最左前缀原则：B+Tree这种索引结构，可以利用索引的&rdquo;最左前缀&rdquo;来定位记录</li>
+<li>只要满足最左前缀，就可以利用索引来加速检索。</li>
+<li>最左前缀可以是联合索引的最左N个字段，也可以是字符串索引的最左M个字符</li>
+<li>第一原则是：如果通过调整顺序，可以少维护一个索引，那么这个顺序往往就是需要优先考虑采用的。</li>
+<li>索引下推：在MySQL5.6之前，只能从根据最左前缀查询到ID开始一个个回表。到主键索引上找出数据行，再对比字段值。</li>
+<li>MySQL5.6引入的索引下推优化，可以在索引遍历过程中，对索引中包含的字段先做判断，直接过滤掉不满足条件的记录，减少回表次数</li>
+</ol>
     </div>
 
     <div class="post-copyright">

@@ -46,7 +46,7 @@
 <meta property="og:description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://techqu.github.io/" />
-<meta property="og:updated_time" content="2018-12-24T15:46:28&#43;08:00"/>
+<meta property="og:updated_time" content="2019-01-15T10:53:02&#43;08:00"/>
 
 <meta itemprop="name" content="Quguang 学习笔记">
 <meta itemprop="description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等">
@@ -68,7 +68,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">miao</a>
+    <a href="/" class="logo">专注</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -94,7 +94,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">miao</a>
+  <a href="/" class="logo">专注</a>
 </div>
 
 <nav class="site-navbar">
@@ -120,130 +120,122 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/how-jvm-load-java-class/">Java虚拟机是如何加载Java类的?</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/transaction-tcc/">分布式事务-TCC事务：最终一致性</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2018-12-24 </span>
+      <span class="post-time"> 2019-01-15 </span>
       <div class="post-category">
-          <a href="/categories/tech/"> Tech </a>
+          <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
+          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"> 分布式 </a>
           </div>
-        <span class="more-meta"> 约 1272 字 </span>
+        <span class="more-meta"> 约 3582 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      TCC 事务：最终一致性 方案简介 TCC（Try-Confirm-Cancel）的概念，最早是由 Pat Helland 于 2007 年发表的一篇名为《Life beyond Distributed Transactions:an Aposta
+    </div>
+    <div class="read-more">
+      <a href="/post/transaction-tcc/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/transaction-local-msg-tb/">分布式事务-本地消息表：最终一致性</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-15 </span>
+      <div class="post-category">
+          <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
+          </div>
+        <span class="more-meta"> 约 1159 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p>Java虚拟机是如何加载Java类的?</p>
-
-<p>虚拟机规范并没有指明二进制字节流要从一个Class文件获取，或者说根本没有指明从哪里获取、怎样获取。这种开放使得Java在很多领域得到充分运用，例如：</p>
-
-<ul>
-<li>从ZIP包中读取，这很常见，成为JAR，EAR，WAR格式的基础</li>
-<li>从网络中获取，最典型的应用就是Applet</li>
-<li>运行时计算生成，最典型的是动态代理技术，在java.lang.reflect.Proxy中，就是用了ProxyGenerator.generateProxyClass来- 为特定接口生成形式为“*$Proxy”的代理类的二进制字节流</li>
-<li>由其他文件生成，最典型的JSP应用，由JSP文件生成对应的Class类</li>
-</ul>
-
-<p>从class文件到内存中的类，按先后顺序需要经过<strong>加载、链接、以及初始化</strong>三大步骤。</p>
+      本地消息表：最终一致性 方案简介 本地消息表的方案最初是由 eBay 提出，核心思路是将分布式事务拆分成本地事务进行处理。 方案通过在事务主动发起方额外新建
     </div>
     <div class="read-more">
-      <a href="/post/how-jvm-load-java-class/" class="read-more-link">阅读更多</a>
+      <a href="/post/transaction-local-msg-tb/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/roadmap/">Java工程师成神之路（2018修订版）</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/distributed-consistency/">从分布式一致性谈到CAP理论、BASE理论、分布式事务</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2018-12-20 </span>
+      <span class="post-time"> 2019-01-14 </span>
       <div class="post-category">
-          <a href="/categories/tech/"> Tech </a>
-          <a href="/categories/%E6%AF%95%E7%94%9F%E7%9B%AE%E6%A0%87/"> 毕生目标 </a>
+          <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
           </div>
-        <span class="more-meta"> 约 4402 字 </span>
+        <span class="more-meta"> 约 4363 字 </span>
         <span class="more-meta"> 预计阅读 9 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p>网罗了比较全面的java技术栈。</p>
+      <p>什么是事务，简单说事务就是要么全不做，要么全做。一部分做一部分不做就会出一致性问题。</p>
 
-<p>本文基于微信公众号文章基础上添加，原文链接：
-<a href="https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg">https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg</a></p>
+<p>传统的单体应用不会横跨多个数据库，可以通过单机事务保证一致性。</p>
+
+<p>然而在海量数据的场景下，需要对数据库做拆分，即分库分表，而Cobar、MyCat这类分库分表中间并不提供分布式事务的特性，并且基于二阶段提交的分布式事务性能较差，对于大多数业务场景来说，并不需要强一致，只需要保证最终一致性即可。</p>
     </div>
     <div class="read-more">
-      <a href="/post/roadmap/" class="read-more-link">阅读更多</a>
+      <a href="/post/distributed-consistency/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/markdown/">markdown语法示例</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/transaction-2pc/">分布式事务-2PC(二阶段提交)</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2018-12-20 </span>
+      <span class="post-time"> 2019-01-14 </span>
       <div class="post-category">
-          <a href="/categories/tech/"> Tech </a>
+          <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
+          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"> 分布式 </a>
           </div>
-        <span class="more-meta"> 约 7068 字 </span>
-        <span class="more-meta"> 预计阅读 15 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>本文是markdown语法的示例</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/markdown/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/jvm-garabage-collection/">对象存活判断、垃圾收集算法和垃圾收集器</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-12-20 </span>
-      <div class="post-category">
-          <a href="/categories/tech/"> Tech </a>
-          </div>
-        <span class="more-meta"> 约 3340 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/jvm-garabage-collection/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/resume/">简历模版</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-12-19 </span>
-      <div class="post-category">
-          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
-          </div>
-        <span class="more-meta"> 约 1806 字 </span>
+        <span class="more-meta"> 约 1994 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p>本文是一个markdown风格语法的简历模版，转载自网络</p>
+      2PC(二阶段提交)方案：强一致性 方案简介 二阶段提交协议（Two-phase Commit，即 2PC）是常用的分布式事务解决方案，即将事务的提
     </div>
     <div class="read-more">
-      <a href="/post/resume/" class="read-more-link">阅读更多</a>
+      <a href="/post/transaction-2pc/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/transaction-3pc/">分布式事务-3PC(三阶段提交)</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-14 </span>
+      <div class="post-category">
+          <a href="/categories/%E4%BA%8B%E5%8A%A1/"> 事务 </a>
+          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"> 分布式 </a>
+          </div>
+        <span class="more-meta"> 约 3876 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      方案简介 三阶段提交协议，是二阶段提交协议的改进版本，与二阶段提交不同的是，引入超时机制。同时在协调者和参与者中都引入超时机制。 3PC把2PC
+    </div>
+    <div class="read-more">
+      <a href="/post/transaction-3pc/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

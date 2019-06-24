@@ -46,7 +46,7 @@
 <meta property="og:description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://techqu.github.io/" />
-<meta property="og:updated_time" content="2019-03-15T09:26:22&#43;08:00"/>
+<meta property="og:updated_time" content="2019-05-15T19:36:47&#43;08:00"/>
 
 <meta itemprop="name" content="Quguang 学习笔记">
 <meta itemprop="description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等">
@@ -68,7 +68,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">miao</a>
+    <a href="/" class="logo">专注</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -94,7 +94,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">miao</a>
+  <a href="/" class="logo">专注</a>
 </div>
 
 <nav class="site-navbar">
@@ -120,122 +120,130 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mysql-transaction-2/">《MYSQL实战45讲》- 事务隔离</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/java-interview-mq06/">Java面试-MQ延时以及过期失效</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-03-15 </span>
+      <span class="post-time"> 2019-05-15 </span>
       <div class="post-category">
-          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-          <a href="/categories/mysql/"> MySQL </a>
+          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+          <a href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"> 消息队列 </a>
           </div>
-        <span class="more-meta"> 约 1619 字 </span>
+        <span class="more-meta"> 约 1565 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p>如果是可重复读隔离级别，事务T启动的时候会创建一个视图read-view，之后事务T执行期间，即使有其他事务修改了数据，事务T看到的仍然跟在启动时看到的一样。也就是说，一个在可重复读隔离级别下执行的事务，好像与世无争，不受外界影响。</p>
+      <h3 id="1-面试题">1、面试题</h3>
 
-<p>但是，一个事务要更新一行，如果刚好有另外一个事务拥有这一行的行锁，它又不能这么超然了，会被锁住，进入等待状态。问题是，既然进入了等待状态，那么等到这个事务自己获取到行锁要更新数据的时候，它读到的值又是什么呢？</p>
+<p>如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？</p>
     </div>
     <div class="read-more">
-      <a href="/post/mysql-transaction-2/" class="read-more-link">阅读更多</a>
+      <a href="/post/java-interview-mq06/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mysql-transaction/">《MYSQL实战45讲》- 行锁、死锁、事务</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/java-interview-mq05/">Java面试-MQ消息的顺序性</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-03-14 </span>
+      <span class="post-time"> 2019-05-15 </span>
       <div class="post-category">
-          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-          <a href="/categories/mysql/"> MySQL </a>
+          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+          <a href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"> 消息队列 </a>
           </div>
-        <span class="more-meta"> 约 1512 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span class="more-meta"> 约 716 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      行锁 MySQL的行锁是在引擎层由各个引擎自己实现的。比如MyISAM引擎就不支持行锁。不支持行锁意味着并发控制只能使用表锁，对于这种引擎的表
+      <h3 id="1-面试题">1、面试题</h3>
+
+<p>如何保证消息的顺序性？</p>
     </div>
     <div class="read-more">
-      <a href="/post/mysql-transaction/" class="read-more-link">阅读更多</a>
+      <a href="/post/java-interview-mq05/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/data-structure-and-algorithm-merge-sort/">《数据结构与算法之美》-归并排序</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/java-interview-mq04/">Java面试-MQ可靠性传输</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-03-07 </span>
+      <span class="post-time"> 2019-05-15 </span>
       <div class="post-category">
-          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"> 数据结构与算法 </a>
+          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+          <a href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"> 消息队列 </a>
           </div>
-        <span class="more-meta"> 约 485 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span class="more-meta"> 约 3160 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      归并排序的原理 归并排序的核心思想还是蛮简单的。如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两
+      <h3 id="1-面试题">1、面试题</h3>
+
+<p>如何保证消息的可靠性传输（如何处理消息丢失的问题）？</p>
     </div>
     <div class="read-more">
-      <a href="/post/data-structure-and-algorithm-merge-sort/" class="read-more-link">阅读更多</a>
+      <a href="/post/java-interview-mq04/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mysql-how-to-copy-table/">《MYSQL实战45讲》-如何快速复制一张表</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/java-interview-mq03/">Java面试-MQ重复消费</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-02-25 </span>
+      <span class="post-time"> 2019-05-15 </span>
       <div class="post-category">
-          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-          <a href="/categories/mysql/"> MySQL </a>
+          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+          <a href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"> 消息队列 </a>
           </div>
-        <span class="more-meta"> 约 1390 字 </span>
+        <span class="more-meta"> 约 1313 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p>本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。</p>
+      <h3 id="1-面试题">1、面试题</h3>
+
+<p>如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？</p>
     </div>
     <div class="read-more">
-      <a href="/post/mysql-how-to-copy-table/" class="read-more-link">阅读更多</a>
+      <a href="/post/java-interview-mq03/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mysql-how-join-run/">《MYSQL实战45讲》-Join语句是怎么执行的</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/java-interview-mq02/">Java面试-MQ高可用</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-02-22 </span>
+      <span class="post-time"> 2019-05-15 </span>
       <div class="post-category">
-          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-          <a href="/categories/mysql/"> MySQL </a>
+          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+          <a href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"> 消息队列 </a>
           </div>
-        <span class="more-meta"> 约 2967 字 </span>
+        <span class="more-meta"> 约 2968 字 </span>
         <span class="more-meta"> 预计阅读 6 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&lt;=1000)do insert into t2 values(i, i, i); set i=i+1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *
+      <h3 id="1-面试题">1、面试题</h3>
+
+<p>如何保证消息队列的高可用啊？</p>
     </div>
     <div class="read-more">
-      <a href="/post/mysql-how-join-run/" class="read-more-link">阅读更多</a>
+      <a href="/post/java-interview-mq02/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
