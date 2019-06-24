@@ -6,13 +6,68 @@
     <description>Recent content in 面试 on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 16 May 2019 18:11:25 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 May 2019 18:26:55 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/categories/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Java面试-redis的持久化</title>
+      <title>Java面试-高并发-MySQL读写分离</title>
+      <link>https://techqu.github.io/post/java-interview-mysql-shading05/</link>
+      <pubDate>Fri, 17 May 2019 18:26:55 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mysql-shading05/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;你们有没有做MySQL读写分离？如何实现mysql的读写分离？MySQL主从复制原理的是啥？如何解决mysql主从同步的延时问题？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-Mysql全局唯一的id</title>
+      <link>https://techqu.github.io/post/java-interview-mysql-shading04/</link>
+      <pubDate>Fri, 17 May 2019 18:19:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mysql-shading04/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;分库分表之后，id主键如何处理？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-Mysql 动态扩容缩容的分库分表方案</title>
+      <link>https://techqu.github.io/post/java-interview-mysql-shading03/</link>
+      <pubDate>Fri, 17 May 2019 17:41:34 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mysql-shading03/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;如何设计可以动态扩容缩容的分库分表方案？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-Mysql-怎么把你那个单库单表的系统给迁移到分库分表上</title>
+      <link>https://techqu.github.io/post/java-interview-mysql-shading02/</link>
+      <pubDate>Fri, 17 May 2019 17:30:42 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mysql-shading02/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-Mysql 分库分表</title>
+      <link>https://techqu.github.io/post/java-interview-mysql-shading01/</link>
+      <pubDate>Fri, 17 May 2019 16:12:09 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-mysql-shading01/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-redis的持久化</title>
       <link>https://techqu.github.io/post/java-interview-cache06/</link>
       <pubDate>Thu, 16 May 2019 18:11:25 +0800</pubDate>
       
@@ -21,7 +76,7 @@
     </item>
     
     <item>
-      <title>Java面试-如何保证Redis的高并发和高可用</title>
+      <title>Java面试-高并发-如何保证Redis的高并发和高可用</title>
       <link>https://techqu.github.io/post/java-interview-cache05/</link>
       <pubDate>Thu, 16 May 2019 17:48:03 +0800</pubDate>
       
@@ -34,7 +89,7 @@
     </item>
     
     <item>
-      <title>Java面试-redis的过期策略</title>
+      <title>Java面试-高并发-redis的过期策略</title>
       <link>https://techqu.github.io/post/java-interview-cache04/</link>
       <pubDate>Thu, 16 May 2019 17:47:24 +0800</pubDate>
       
@@ -43,7 +98,7 @@
     </item>
     
     <item>
-      <title>Java面试-redis 数据类型</title>
+      <title>Java面试-高并发-redis 数据类型</title>
       <link>https://techqu.github.io/post/java-interview-cache03/</link>
       <pubDate>Thu, 16 May 2019 17:38:03 +0800</pubDate>
       
@@ -54,7 +109,7 @@
     </item>
     
     <item>
-      <title>Java面试-为什么redis是单线程的但是还可以支撑高并发</title>
+      <title>Java面试-高并发-为什么redis是单线程的但是还可以支撑高并发</title>
       <link>https://techqu.github.io/post/java-interview-cache02/</link>
       <pubDate>Thu, 16 May 2019 17:28:03 +0800</pubDate>
       
@@ -65,7 +120,7 @@
     </item>
     
     <item>
-      <title>Java面试-缓存是如何使用的？</title>
+      <title>Java面试-高并发-缓存是如何使用的？</title>
       <link>https://techqu.github.io/post/java-interview-cache01/</link>
       <pubDate>Thu, 16 May 2019 17:18:03 +0800</pubDate>
       
@@ -76,7 +131,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ自己设计一个</title>
+      <title>Java面试-高并发-MQ自己设计一个(7)</title>
       <link>https://techqu.github.io/post/java-interview-mq07/</link>
       <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
       
@@ -87,7 +142,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ延时以及过期失效</title>
+      <title>Java面试-高并发-MQ延时以及过期失效(6)</title>
       <link>https://techqu.github.io/post/java-interview-mq06/</link>
       <pubDate>Wed, 15 May 2019 19:36:47 +0800</pubDate>
       
@@ -98,7 +153,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ消息的顺序性</title>
+      <title>Java面试-高并发-MQ消息的顺序性(5)</title>
       <link>https://techqu.github.io/post/java-interview-mq05/</link>
       <pubDate>Wed, 15 May 2019 18:36:47 +0800</pubDate>
       
@@ -109,7 +164,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ可靠性传输</title>
+      <title>Java面试-高并发-MQ可靠性传输(4)</title>
       <link>https://techqu.github.io/post/java-interview-mq04/</link>
       <pubDate>Wed, 15 May 2019 17:36:47 +0800</pubDate>
       
@@ -120,7 +175,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ重复消费</title>
+      <title>Java面试-高并发-MQ重复消费(3)</title>
       <link>https://techqu.github.io/post/java-interview-mq03/</link>
       <pubDate>Wed, 15 May 2019 16:36:47 +0800</pubDate>
       
@@ -131,7 +186,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ高可用</title>
+      <title>Java面试-高并发-MQ的高可用(2)</title>
       <link>https://techqu.github.io/post/java-interview-mq02/</link>
       <pubDate>Wed, 15 May 2019 15:36:47 +0800</pubDate>
       
@@ -142,7 +197,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ技术选型</title>
+      <title>Java面试-高并发-MQ技术选型(1)</title>
       <link>https://techqu.github.io/post/java-interview-mq01/</link>
       <pubDate>Wed, 15 May 2019 14:36:47 +0800</pubDate>
       
@@ -153,7 +208,7 @@
     </item>
     
     <item>
-      <title>Java Interview Shishan01</title>
+      <title>互联网Java工程师面试突击训练-课程目录</title>
       <link>https://techqu.github.io/post/java-interview-shishan01/</link>
       <pubDate>Wed, 15 May 2019 13:32:03 +0800</pubDate>
       

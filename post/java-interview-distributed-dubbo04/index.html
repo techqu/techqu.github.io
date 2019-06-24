@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Java面试 分布式系统-dubbo负载均衡策略和集群容错策略 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="1、面试题 dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/java-interview-distributed-dubbo04/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="Java面试 分布式系统-dubbo负载均衡策略和集群容错策略" />
+<meta property="og:description" content="1、面试题
+
+dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/java-interview-distributed-dubbo04/" /><meta property="article:published_time" content="2019-05-21T14:53:52&#43;08:00"/>
+<meta property="article:modified_time" content="2019-05-21T14:53:52&#43;08:00"/>
+
+<meta itemprop="name" content="Java面试 分布式系统-dubbo负载均衡策略和集群容错策略">
+<meta itemprop="description" content="1、面试题
+
+dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？">
+
+
+<meta itemprop="datePublished" content="2019-05-21T14:53:52&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-21T14:53:52&#43;08:00" />
+<meta itemprop="wordCount" content="1607">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java面试 分布式系统-dubbo负载均衡策略和集群容错策略"/>
+<meta name="twitter:description" content="1、面试题
+
+dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">专注</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">专注</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Java面试 分布式系统-dubbo负载均衡策略和集群容错策略</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-21 </span>
+        
+          <span class="more-meta"> 约 1607 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-面试题">1、面试题</a></li>
+<li><a href="#2-面试官心里分析">2、面试官心里分析</a></li>
+<li><a href="#3-面试题剖析">3、面试题剖析</a>
+<ul>
+<li><a href="#1-dubbo负载均衡策略">（1）dubbo负载均衡策略</a>
+<ul>
+<li><a href="#1-random-loadbalance">1）random loadbalance</a></li>
+<li><a href="#2-roundrobin-loadbalance">2）roundrobin loadbalance</a></li>
+<li><a href="#3-leastactive-loadbalance">3）leastactive loadbalance</a></li>
+<li><a href="#4-consistanthash-loadbalance">4）consistanthash loadbalance</a></li>
+</ul></li>
+<li><a href="#2-dubbo集群容错策略">（2）dubbo集群容错策略</a>
+<ul>
+<li><a href="#1-failover-cluster-失败重试">1）failover cluster 失败重试</a></li>
+<li><a href="#2-failfast-cluster-快速失败">2）failfast cluster 快速失败</a></li>
+<li><a href="#3-failsafe-cluster-失败安全">3）failsafe cluster 失败安全</a></li>
+<li><a href="#4-failback-cluster模式-失败自动恢复">4）failback cluster模式 失败自动恢复</a></li>
+<li><a href="#5-forking-cluster-并行调用">5）forking cluster 并行调用</a></li>
+<li><a href="#6-broadcacst-cluster-广播调用">6）broadcacst cluster 广播调用</a></li>
+</ul></li>
+<li><a href="#3-dubbo动态代理策略">（3）dubbo动态代理策略</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="1-面试题">1、面试题</h2>
+
+<p>dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？</p>
+
+<h2 id="2-面试官心里分析">2、面试官心里分析</h2>
+
+<p>继续深问吧，这些都是用dubbo必须知道的一些东西，你得知道基本原理，知道序列化是什么协议，还得知道具体用dubbo的时候，如何负载均衡，如何高可用，如何动态代理。</p>
+
+<p>说白了，就是看你对dubbo熟悉不熟悉：</p>
+
+<p>（1）dubbo工作原理：服务注册，注册中心，消费者，代理通信，负载均衡</p>
+
+<p>（2）网络通信、序列化：dubbo协议，长连接，NIO，hessian序列化协议</p>
+
+<p>（3）负载均衡策略，集群容错策略，动态代理策略：dubbo跑起来的时候一些功能是如何运转的，怎么做负载均衡？怎么做集群容错？怎么生成动态代理？</p>
+
+<p>（4）dubbo SPI机制：你了解不了解dubbo的SPI机制？如何基于SPI机制对dubbo进行扩展？</p>
+
+<h2 id="3-面试题剖析">3、面试题剖析</h2>
+
+<h3 id="1-dubbo负载均衡策略">（1）dubbo负载均衡策略</h3>
+
+<h4 id="1-random-loadbalance">1）random loadbalance</h4>
+
+<p>默认情况下，dubbo是random load balance随机调用实现负载均衡，可以对provider不同实例设置不同的权重，会按照权重来负载均衡，权重越大分配流量越高，一般就用这个默认的就可以了。</p>
+
+<h4 id="2-roundrobin-loadbalance">2）roundrobin loadbalance</h4>
+
+<p>还有roundrobin loadbalance，这个的话默认就是均匀地将流量打到各个机器上去，但是如果各个机器的性能不一样，容易导致性能差的机器负载过高。所以此时需要调整权重，让性能差的机器承载权重小一些，流量少一些。</p>
+
+<p>跟运维同学申请机器，有的时候，我们运气，正好公司资源比较充足，刚刚有一批热气腾腾，刚刚做好的一批虚拟机新鲜出炉，配置都比较高。8核+16g，机器，2台。过了一段时间，我感觉2台机器有点不太够，我去找运维同学，哥儿们，你能不能再给我1台机器，4核+8G的机器。我还是得要。</p>
+
+<h4 id="3-leastactive-loadbalance">3）leastactive loadbalance</h4>
+
+<p>这个就是自动感知一下，如果某个机器性能越差，那么接收的请求越少，越不活跃，此时就会给不活跃的性能差的机器更少的请求</p>
+
+<h4 id="4-consistanthash-loadbalance">4）consistanthash loadbalance</h4>
+
+<p>一致性Hash算法，相同参数的请求一定分发到一个provider上去，provider挂掉的时候，会基于虚拟节点均匀分配剩余的流量，抖动不会太大。如果你需要的不是随机负载均衡，是要一类请求都到一个节点，那就走这个一致性hash策略。</p>
+
+<h3 id="2-dubbo集群容错策略">（2）dubbo集群容错策略</h3>
+
+<h4 id="1-failover-cluster-失败重试">1）failover cluster 失败重试</h4>
+
+<p>当服务消费方调用服务提供者失败后自动切换到其他服务提供者服务器进行重试。这通常用于读操作或者具有幂等的写操作，需要注意的是重试会带来更长延迟。可通过 retries=&ldquo;2&rdquo; 来设置重试次数（不含第一次）。</p>
+
+<p>接口级别配置重试次数方法<code>&lt;dubbo:reference retries=&quot;2&quot; /&gt;</code> ，如上配置当服务消费方调用服务失败后，会再重试两次，也就是说最多会做三次调用，这里的配置对该接口的所有方法生效。当然你也可以针对某个方法配置重试次数如下：</p>
+
+<pre><code>&lt;dubbo:reference&gt;
+    &lt;dubbo:method name=&quot;sayHello&quot; retries=&quot;2&quot; /&gt;
+&lt;/dubbo:reference&gt;
+</code></pre>
+
+<h4 id="2-failfast-cluster-快速失败">2）failfast cluster 快速失败</h4>
+
+<p>当服务消费方调用服务提供者失败后，立即报错，也就是只调用一次。通常这种模式用于非幂等性的写操作。</p>
+
+<h4 id="3-failsafe-cluster-失败安全">3）failsafe cluster 失败安全</h4>
+
+<p>出现异常时忽略掉，常用于不重要的接口调用，比如记录日志</p>
+
+<h4 id="4-failback-cluster模式-失败自动恢复">4）failback cluster模式 失败自动恢复</h4>
+
+<p>失败了后台自动记录请求，然后定时重发，比较适合于写消息队列这种</p>
+
+<h4 id="5-forking-cluster-并行调用">5）forking cluster 并行调用</h4>
+
+<p>当消费方调用一个接口方法后，Dubbo Client会并行调用多个服务提供者的服务，只要一个成功即返回。这种模式通常用于实时性要求较高的读操作，但需要浪费更多服务资源。可通过 forks=&ldquo;2&rdquo; 来设置最大并行数。</p>
+
+<h4 id="6-broadcacst-cluster-广播调用">6）broadcacst cluster 广播调用</h4>
+
+<p>当消费者调用一个接口方法后，Dubbo Client会逐个调用所有服务提供者，任意一台调用异常则这次调用就标志失败。这种模式通常用于通知所有提供者更新缓存或日志等本地资源信息。</p>
+
+<h3 id="3-dubbo动态代理策略">（3）dubbo动态代理策略</h3>
+
+<p>默认使用javassist动态字节码生成，创建代理类</p>
+
+<p>但是可以通过spi扩展机制配置自己的动态代理策略</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-05-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/java-interview-distributed-dubbo05/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Java Interview Distributed Dubbo05</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/java-interview-distributed-dubbo03/">
+            <span class="next-text nav-default">Java Interview Distributed Dubbo03</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

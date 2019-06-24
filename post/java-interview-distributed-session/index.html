@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Java面试 分布式会话 - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="1、面试题 集群部署时的分布式session如何实现？
+" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/java-interview-distributed-session/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="Java面试 分布式会话" />
+<meta property="og:description" content="1、面试题
+
+集群部署时的分布式session如何实现？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/java-interview-distributed-session/" /><meta property="article:published_time" content="2019-05-21T17:55:57&#43;08:00"/>
+<meta property="article:modified_time" content="2019-05-21T17:55:57&#43;08:00"/>
+
+<meta itemprop="name" content="Java面试 分布式会话">
+<meta itemprop="description" content="1、面试题
+
+集群部署时的分布式session如何实现？">
+
+
+<meta itemprop="datePublished" content="2019-05-21T17:55:57&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-21T17:55:57&#43;08:00" />
+<meta itemprop="wordCount" content="1468">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java面试 分布式会话"/>
+<meta name="twitter:description" content="1、面试题
+
+集群部署时的分布式session如何实现？"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">专注</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">专注</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Java面试 分布式会话</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-21 </span>
+        
+          <span class="more-meta"> 约 1468 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-面试题">1、面试题</a></li>
+<li><a href="#2-面试官心里分析">2、面试官心里分析</a></li>
+<li><a href="#3-面试题剖析">3、面试题剖析</a>
+<ul>
+<li><a href="#1-tomcat-redis">（1）tomcat + redis</a></li>
+<li><a href="#2-spring-session-redis">（2）spring session + redis</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="1-面试题">1、面试题</h2>
+
+<p>集群部署时的分布式session如何实现？</p>
+
+<h2 id="2-面试官心里分析">2、面试官心里分析</h2>
+
+<p>面试官问了你一堆dubbo是怎么玩儿的，你会玩儿dubbo就可以把单块系统弄成分布式系统，然后分布式之后接踵而来的就是一堆问题，最大的问题就是分布式事务、接口幂等性、分布式锁，还有最后一个就是分布式session。</p>
+
+<p>当然了，分布式系统中的问题何止这么一点，非常之多，复杂度很高，但是这里就是说下常见的几个，也是面试的时候常问的几个。</p>
+
+<h2 id="3-面试题剖析">3、面试题剖析</h2>
+
+<p><img src="/img/01_分布式会话是什么.png" alt="01_分布式会话是什么" /></p>
+
+<p>session是啥？浏览器有个cookie，在一段时间内这个cookie都存在，然后每次发请求过来都带上一个特殊的jsessionid cookie，就根据这个东西，在服务端可以维护一个对应的session域，里面可以放点儿数据。</p>
+
+<p>一般只要你没关掉浏览器，cookie还在，那么对应的那个session就在，但是cookie没了，session就没了。常见于什么购物车之类的东西，还有登录状态保存之类的。</p>
+
+<p>这个不多说了，懂java的都该知道这个。</p>
+
+<p>但是你单块系统的时候这么玩儿session没问题啊，但是你要是分布式系统了呢，那么多的服务，session状态在哪儿维护啊？</p>
+
+<p>其实方法很多，但是常用的是两种：</p>
+
+<h3 id="1-tomcat-redis">（1）tomcat + redis</h3>
+
+<p>这个其实还挺方便的，就是使用session的代码跟以前一样，还是基于tomcat原生的session支持即可，然后就是用一个叫做Tomcat RedisSessionManager的东西，让所有我们部署的tomcat都将session数据存储到redis即可。</p>
+
+<p>在tomcat的配置文件中，配置一下</p>
+
+<pre><code class="language-xml">&lt;Valve className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve&quot; /&gt;
+
+&lt;Manager className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionManager&quot;
+         host=&quot;{redis.host}&quot;
+         port=&quot;{redis.port}&quot;
+         database=&quot;{redis.dbnum}&quot;
+         maxInactiveInterval=&quot;60&quot;/&gt;
+</code></pre>
+
+<p>搞一个类似上面的配置即可，你看是不是就是用了RedisSessionManager，然后指定了redis的host和 port就ok了。</p>
+
+<pre><code class="language-xml">&lt;Valve className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve&quot; /&gt;
+&lt;Manager className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionManager&quot;
+	 sentinelMaster=&quot;mymaster&quot;
+	 sentinels=&quot;&lt;sentinel1-ip&gt;:26379,&lt;sentinel2-ip&gt;:26379,&lt;sentinel3-ip&gt;:26379&quot;
+	 maxInactiveInterval=&quot;60&quot;/&gt;
+</code></pre>
+
+<p>还可以用上面这种方式基于redis哨兵支持的redis高可用集群来保存session数据，都是ok的</p>
+
+<h3 id="2-spring-session-redis">（2）spring session + redis</h3>
+
+<p>分布式会话的这个东西重耦合在tomcat中，如果我要将web容器迁移成jetty，难道你重新把jetty都配置一遍吗？</p>
+
+<p>因为上面那种tomcat + redis的方式好用，但是会严重依赖于web容器，不好将代码移植到其他web容器上去，尤其是你要是换了技术栈咋整？比如换成了spring cloud或者是spring boot之类的。还得好好思忖思忖。</p>
+
+<p>所以现在比较好的还是基于java一站式解决方案，spring了。人家spring基本上包掉了大部分的我们需要使用的框架了，spirng cloud做微服务了，spring boot做脚手架了，所以用sping session是一个很好的选择。</p>
+
+<p>pom.xml</p>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.springframework.session&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-session-data-redis&lt;/artifactId&gt;
+  &lt;version&gt;1.2.1.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+  &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+  &lt;version&gt;2.8.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>spring配置文件中</p>
+
+<pre><code class="language-xml">&lt;bean id=&quot;redisHttpSessionConfiguration&quot;
+     class=&quot;org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration&quot;&gt;
+    &lt;property name=&quot;maxInactiveIntervalInSeconds&quot; value=&quot;600&quot;/&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;jedisPoolConfig&quot; class=&quot;redis.clients.jedis.JedisPoolConfig&quot;&gt;
+    &lt;property name=&quot;maxTotal&quot; value=&quot;100&quot; /&gt;
+    &lt;property name=&quot;maxIdle&quot; value=&quot;10&quot; /&gt;
+&lt;/bean&gt;
+
+&lt;bean id=&quot;jedisConnectionFactory&quot;
+      class=&quot;org.springframework.data.redis.connection.jedis.JedisConnectionFactory&quot; destroy-method=&quot;destroy&quot;&gt;
+    &lt;property name=&quot;hostName&quot; value=&quot;${redis_hostname}&quot;/&gt;
+    &lt;property name=&quot;port&quot; value=&quot;${redis_port}&quot;/&gt;
+    &lt;property name=&quot;password&quot; value=&quot;${redis_pwd}&quot; /&gt;
+    &lt;property name=&quot;timeout&quot; value=&quot;3000&quot;/&gt;
+    &lt;property name=&quot;usePool&quot; value=&quot;true&quot;/&gt;
+    &lt;property name=&quot;poolConfig&quot; ref=&quot;jedisPoolConfig&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+
+<p>web.xml</p>
+
+<pre><code class="language-xml">&lt;filter&gt;
+    &lt;filter-name&gt;springSessionRepositoryFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;springSessionRepositoryFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre>
+
+<p>示例代码</p>
+
+<pre><code class="language-java">@Controller
+@RequestMapping(&quot;/test&quot;)
+public class TestController {
+
+@RequestMapping(&quot;/putIntoSession&quot;)
+@ResponseBody
+    public String putIntoSession(HttpServletRequest request, String username){
+        request.getSession().setAttribute(&quot;name&quot;,  “leo”);
+
+        return &quot;ok&quot;;
+    }
+
+@RequestMapping(&quot;/getFromSession&quot;)
+@ResponseBody
+    public String getFromSession(HttpServletRequest request, Model model){
+        String name = request.getSession().getAttribute(&quot;name&quot;);
+        return name;
+    }
+}
+</code></pre>
+
+<p>上面的代码就是ok的，给sping session配置基于redis来存储session数据，然后配置了一个spring session的过滤器，这样的话，session相关操作都会交给spring session来管了。接着在代码中，就用原生的session操作，就是直接基于spring sesion从redis中获取数据了。</p>
+
+<p>实现分布式的会话，有很多种很多种方式，我说的只不过比较常见的两种方式，tomcat + redis早期比较常用；近些年，重耦合到tomcat中去，通过spring session来实现。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-05-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/introduction-to-ddd-cqrs-and-event/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Introduction to DDD CQRS and Event</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/java-interview-distributed-dubbo07/">
+            <span class="next-text nav-default">Java Interview Distributed 分布式服务接口的幂等性和顺序性</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

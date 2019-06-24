@@ -46,7 +46,7 @@
 <meta property="og:description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://techqu.github.io/" />
-<meta property="og:updated_time" content="2019-02-22T22:27:38&#43;08:00"/>
+<meta property="og:updated_time" content="2019-04-02T13:24:32&#43;08:00"/>
 
 <meta itemprop="name" content="Quguang 学习笔记">
 <meta itemprop="description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等">
@@ -120,110 +120,113 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mysql-how-join-run/">《MYSQL实战45讲》-Join语句是怎么执行的</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/linux-awk/">Linux三剑客之AWK学习</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-02-22 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-          <a href="/categories/mysql/"> MySQL </a>
-          </div>
-        <span class="more-meta"> 约 2967 字 </span>
-        <span class="more-meta"> 预计阅读 6 分钟 </span>
+      <span class="post-time"> 2019-04-02 </span>
+      
+        <span class="more-meta"> 约 3561 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&lt;=1000)do insert into t2 values(i, i, i); set i=i+1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *
+      <p>awk是一个强大的文本分析工具，相对于grep的查找，sed的编辑，awk在其对数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。</p>
     </div>
     <div class="read-more">
-      <a href="/post/mysql-how-join-run/" class="read-more-link">阅读更多</a>
+      <a href="/post/linux-awk/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/network-osi/">OSI七层网络模型分别是哪七层？各运行那些协议？</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/java-concurrent/">《Java并发编程实战》-内容简介</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-02-20 </span>
+      <span class="post-time"> 2019-03-27 </span>
+      
+        <span class="more-meta"> 约 3933 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个<strong>核心矛盾一直存在，就是这三者的速度差异</strong>。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/java-concurrent/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/mysql-question-03/">《MYSQL实战45讲》- Question 03</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-03-27 </span>
       <div class="post-category">
-          <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"> 网络协议 </a>
+          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
+          <a href="/categories/mysql/"> MySQL </a>
           </div>
-        <span class="more-meta"> 约 347 字 </span>
+        <span class="more-meta"> 约 157 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      层 协议 应用层 DHCP · DNS · FTP · Gopher · HTTP · IMAP4 · IRC · NNTP · XMPP · POP3 · SIP · SMTP ·SNMP · SSH · TELNET · RPC · RTCP · RTP · RTSP · SDP · SOAP · GTP · STUN · NTP · SSDP 表示层 HTTP/HTML · FTP · Telnet · ASN
+      join的写法 如果用left join，左边的表一定是驱动表吗？ 如果两个表的join包含多个条件的等值匹配，是都要写到 on 里面呢，还是只把一个条
     </div>
     <div class="read-more">
-      <a href="/post/network-osi/" class="read-more-link">阅读更多</a>
+      <a href="/post/mysql-question-03/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/java-seckill-action/">秒杀系统架构分析与实战</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/mysql-orderby/">《MYSQL实战45讲》- Order By</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-02-18 </span>
-      
-        <span class="more-meta"> 约 12899 字 </span>
-        <span class="more-meta"> 预计阅读 26 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      1 秒杀业务分析 正常电子商务流程 （1）查询商品； （2）创建订单； （3）扣减库存； （4）更新订单； （5）付款； （6）卖家发货； 秒杀业务的特性 （1
-    </div>
-    <div class="read-more">
-      <a href="/post/java-seckill-action/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/java-how-to-design-seckill/">如何设计一个秒杀系统</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-02-18 </span>
-      
-        <span class="more-meta"> 约 1981 字 </span>
+      <span class="post-time"> 2019-03-20 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
+          <a href="/categories/mysql/"> MySQL </a>
+          </div>
+        <span class="more-meta"> 约 1727 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      什么是秒杀 秒杀场景一般会在电商网站举行一些活动或者节假日在12306网站上抢票时遇到。对于电商网站中一些稀缺或者特价商品，电商网站一般会在约
+      <p>在你开发应用时，一定会遇到需要根据指定的字段来显式结果的需求。</p>
     </div>
     <div class="read-more">
-      <a href="/post/java-how-to-design-seckill/" class="read-more-link">阅读更多</a>
+      <a href="/post/mysql-orderby/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/java-distributed-id/">分布式系统唯一ID生成方案汇总</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/python-helloword/">Python 学习入门</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-02-17 </span>
-      
-        <span class="more-meta"> 约 3307 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
+      <span class="post-time"> 2019-03-19 </span>
+      <div class="post-category">
+          <a href="/categories/python/"> python </a>
+          </div>
+        <span class="more-meta"> 约 1473 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p>系统唯一ID是我们在设计一个系统的时候常常会遇见的问题，也常常为这个问题而纠结。生成ID的方法有很多，适应不同的场景、需求以及性能要求。所以有些比较复杂的系统会有多个ID生成的策略。下面就介绍一些常见的ID生成策略。</p>
+      <p>学习了python的基础语法、变量类型、条件语句、数据结构、模块引用等</p>
     </div>
     <div class="read-more">
-      <a href="/post/java-distributed-id/" class="read-more-link">阅读更多</a>
+      <a href="/post/python-helloword/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Java面试-MQ自己设计一个</title>
+      <title>Java面试-高并发-MQ自己设计一个(7)</title>
       <link>https://techqu.github.io/post/java-interview-mq07/</link>
       <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
       
@@ -23,7 +23,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ延时以及过期失效</title>
+      <title>Java面试-高并发-MQ延时以及过期失效(6)</title>
       <link>https://techqu.github.io/post/java-interview-mq06/</link>
       <pubDate>Wed, 15 May 2019 19:36:47 +0800</pubDate>
       
@@ -34,7 +34,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ消息的顺序性</title>
+      <title>Java面试-高并发-MQ消息的顺序性(5)</title>
       <link>https://techqu.github.io/post/java-interview-mq05/</link>
       <pubDate>Wed, 15 May 2019 18:36:47 +0800</pubDate>
       
@@ -45,7 +45,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ可靠性传输</title>
+      <title>Java面试-高并发-MQ可靠性传输(4)</title>
       <link>https://techqu.github.io/post/java-interview-mq04/</link>
       <pubDate>Wed, 15 May 2019 17:36:47 +0800</pubDate>
       
@@ -56,7 +56,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ重复消费</title>
+      <title>Java面试-高并发-MQ重复消费(3)</title>
       <link>https://techqu.github.io/post/java-interview-mq03/</link>
       <pubDate>Wed, 15 May 2019 16:36:47 +0800</pubDate>
       
@@ -67,7 +67,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ高可用</title>
+      <title>Java面试-高并发-MQ的高可用(2)</title>
       <link>https://techqu.github.io/post/java-interview-mq02/</link>
       <pubDate>Wed, 15 May 2019 15:36:47 +0800</pubDate>
       
@@ -78,7 +78,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ技术选型</title>
+      <title>Java面试-高并发-MQ技术选型(1)</title>
       <link>https://techqu.github.io/post/java-interview-mq01/</link>
       <pubDate>Wed, 15 May 2019 14:36:47 +0800</pubDate>
       

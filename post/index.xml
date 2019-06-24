@@ -21,20 +21,139 @@
     </item>
     
     <item>
-      <title>Java面试-设计高可用架构</title>
+      <title>Introduction to DDD CQRS and Event</title>
+      <link>https://techqu.github.io/post/introduction-to-ddd-cqrs-and-event/</link>
+      <pubDate>Wed, 19 Jun 2019 10:47:53 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/introduction-to-ddd-cqrs-and-event/</guid>
+      <description>&lt;p&gt;I recently started learning about domain driven design, CQRS and event sourcing. Up until now, I have been mostly involved in projects that use a ‘classic’ N tier/layer architecture with a relational database. As projects become more complex, I noticed that this model doesn’t always work well.  A while ago, I wrote an article about the N-layer myth which already exposed some of the issues I feel this type of architecture has. The first thing I tried was applying domain driven design within such an architecture.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试 分布式会话</title>
+      <link>https://techqu.github.io/post/java-interview-distributed-session/</link>
+      <pubDate>Tue, 21 May 2019 17:55:57 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-distributed-session/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;集群部署时的分布式session如何实现？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Distributed 分布式服务接口的幂等性和顺序性</title>
+      <link>https://techqu.github.io/post/java-interview-distributed-dubbo07/</link>
+      <pubDate>Tue, 21 May 2019 17:35:10 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo07/</guid>
+      <description>1、面试题 分布式服务接口的幂等性如何设计（比如不能重复扣款）？ 2、面试官心里分析 从这个问题开始，面试官就已经进入了实际的生产问题的面试了 一个</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Distributed Dubbo服务治理、服务降级06</title>
+      <link>https://techqu.github.io/post/java-interview-distributed-dubbo06/</link>
+      <pubDate>Tue, 21 May 2019 16:46:51 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo06/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;如何基于dubbo进行服务治理、服务降级、失败重试以及超时重试？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Distributed Dubbo05</title>
+      <link>https://techqu.github.io/post/java-interview-distributed-dubbo05/</link>
+      <pubDate>Tue, 21 May 2019 16:01:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo05/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;dubbo的spi思想是什么？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试 分布式系统-dubbo负载均衡策略和集群容错策略</title>
+      <link>https://techqu.github.io/post/java-interview-distributed-dubbo04/</link>
+      <pubDate>Tue, 21 May 2019 14:53:52 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo04/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Distributed Dubbo03</title>
+      <link>https://techqu.github.io/post/java-interview-distributed-dubbo03/</link>
+      <pubDate>Tue, 21 May 2019 14:41:19 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo03/</guid>
+      <description>1、面试题 dubbo支持哪些通信协议？支持哪些序列化协议？ 2、面试官心里分析 上一个问题，说说dubbo的基本工作原理，那是你必须知道的，至少</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Distributed Dubbo02</title>
+      <link>https://techqu.github.io/post/java-interview-distributed-dubbo02/</link>
+      <pubDate>Tue, 21 May 2019 14:32:22 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo02/</guid>
+      <description>1、面试题 说一下的dubbo的工作原理？注册中心挂了可以继续通信吗？说说一次rpc请求的流程？ 2、面试官心里分析 MQ、ES、Redis、Du</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Distributed 什么是分布式？</title>
+      <link>https://techqu.github.io/post/java-interview-distributed-introduce01/</link>
+      <pubDate>Tue, 21 May 2019 10:49:00 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-distributed-introduce01/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;为什么要进行系统拆分？如何进行系统拆分？拆分后不用dubbo可以吗？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Distributed Zk02</title>
+      <link>https://techqu.github.io/post/java-interview-distributed-zk02/</link>
+      <pubDate>Mon, 20 May 2019 16:56:21 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-distributed-zk02/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;一般实现分布式锁都有哪些方式？使用redis如何设计分布式锁？使用zk来设计分布式锁可以吗？这两种分布式锁的实现方式哪种效率比较高？&lt;/p&gt;
+
+&lt;h2 id=&#34;2-面试官心里分析&#34;&gt;2、面试官心里分析&lt;/h2&gt;
+
+&lt;p&gt;其实一般问问题，都是这么问的，先问问你zk，然后其实是要过度的zk关联的一些问题里去，比如分布式锁。因为在分布式系统开发中，分布式锁的使用场景还是很常见的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Distributed Zk01</title>
+      <link>https://techqu.github.io/post/java-interview-distributed-zk01/</link>
+      <pubDate>Mon, 20 May 2019 16:50:16 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/java-interview-distributed-zk01/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;zk都有哪些使用场景？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高可用-设计高可用架构</title>
       <link>https://techqu.github.io/post/java-interview-ha-01/</link>
       <pubDate>Mon, 20 May 2019 15:06:10 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/java-interview-ha-01/</guid>
       <description>&lt;p&gt;前半部分，专注在高并发这一块，缓存架构，承载高并发，在各种高并发导致的令人崩溃/异常的场景下，运行着&lt;/p&gt;
 
-&lt;p&gt;缓存架构，高可用性，在各种系统的各个地方有乱七八糟的异常和故障的情况下，整套缓存系统还能继续健康的run着&lt;/p&gt;
+&lt;p&gt;缓存架构，&lt;strong&gt;高可用性，在各种系统的各个地方有乱七八糟的异常和故障的情况下，整套缓存系统还能继续健康的run着&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;HA，HAProxy，主备服务间的切换，这就做到了高可用性，主备实例，多冗余实例，高可用最最基础的东西&lt;/p&gt;</description>
+&lt;p&gt;HA，HAProxy，主备服务间的切换，这就做到了高可用性，主备实例，多冗余实例，高可用最最基础的东西&lt;/p&gt;
+
+&lt;p&gt;什么样的情况下，可能会导致系统的崩溃，以及系统不可用，针对各种各样的一些情况，然后我们用什么技术，去保护整个系统处于高可用的一个情况下&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Java Interview Mysql Shading05</title>
+      <title>Java面试-高并发-MySQL读写分离</title>
       <link>https://techqu.github.io/post/java-interview-mysql-shading05/</link>
       <pubDate>Fri, 17 May 2019 18:26:55 +0800</pubDate>
       
@@ -45,7 +164,7 @@
     </item>
     
     <item>
-      <title>Java Interview Mysql Shading04</title>
+      <title>Java面试-高并发-Mysql全局唯一的id</title>
       <link>https://techqu.github.io/post/java-interview-mysql-shading04/</link>
       <pubDate>Fri, 17 May 2019 18:19:24 +0800</pubDate>
       
@@ -56,7 +175,7 @@
     </item>
     
     <item>
-      <title>Java Interview Mysql Shading03</title>
+      <title>Java面试-高并发-Mysql 动态扩容缩容的分库分表方案</title>
       <link>https://techqu.github.io/post/java-interview-mysql-shading03/</link>
       <pubDate>Fri, 17 May 2019 17:41:34 +0800</pubDate>
       
@@ -67,7 +186,7 @@
     </item>
     
     <item>
-      <title>Java Interview Mysql Shading02</title>
+      <title>Java面试-高并发-Mysql-怎么把你那个单库单表的系统给迁移到分库分表上</title>
       <link>https://techqu.github.io/post/java-interview-mysql-shading02/</link>
       <pubDate>Fri, 17 May 2019 17:30:42 +0800</pubDate>
       
@@ -78,7 +197,7 @@
     </item>
     
     <item>
-      <title>Java Interview Mysql 分库分表</title>
+      <title>Java面试-高并发-Mysql 分库分表</title>
       <link>https://techqu.github.io/post/java-interview-mysql-shading01/</link>
       <pubDate>Fri, 17 May 2019 16:12:09 +0800</pubDate>
       
@@ -89,7 +208,7 @@
     </item>
     
     <item>
-      <title>Java Interview 如何设计一个高并发系统？</title>
+      <title>Java面试-如何设计一个高并发系统？</title>
       <link>https://techqu.github.io/post/java-interview-gaobingfa/</link>
       <pubDate>Thu, 16 May 2019 18:51:25 +0800</pubDate>
       
@@ -100,7 +219,7 @@
     </item>
     
     <item>
-      <title>Java面试-redis的持久化</title>
+      <title>Java面试-高并发-redis的持久化</title>
       <link>https://techqu.github.io/post/java-interview-cache06/</link>
       <pubDate>Thu, 16 May 2019 18:11:25 +0800</pubDate>
       
@@ -109,7 +228,7 @@
     </item>
     
     <item>
-      <title>Java面试-如何保证Redis的高并发和高可用</title>
+      <title>Java面试-高并发-如何保证Redis的高并发和高可用</title>
       <link>https://techqu.github.io/post/java-interview-cache05/</link>
       <pubDate>Thu, 16 May 2019 17:48:03 +0800</pubDate>
       
@@ -122,7 +241,7 @@
     </item>
     
     <item>
-      <title>Java面试-redis的过期策略</title>
+      <title>Java面试-高并发-redis的过期策略</title>
       <link>https://techqu.github.io/post/java-interview-cache04/</link>
       <pubDate>Thu, 16 May 2019 17:47:24 +0800</pubDate>
       
@@ -131,7 +250,7 @@
     </item>
     
     <item>
-      <title>Java面试-redis 数据类型</title>
+      <title>Java面试-高并发-redis 数据类型</title>
       <link>https://techqu.github.io/post/java-interview-cache03/</link>
       <pubDate>Thu, 16 May 2019 17:38:03 +0800</pubDate>
       
@@ -142,7 +261,7 @@
     </item>
     
     <item>
-      <title>Java面试-为什么redis是单线程的但是还可以支撑高并发</title>
+      <title>Java面试-高并发-为什么redis是单线程的但是还可以支撑高并发</title>
       <link>https://techqu.github.io/post/java-interview-cache02/</link>
       <pubDate>Thu, 16 May 2019 17:28:03 +0800</pubDate>
       
@@ -153,7 +272,7 @@
     </item>
     
     <item>
-      <title>Java面试-缓存是如何使用的？</title>
+      <title>Java面试-高并发-缓存是如何使用的？</title>
       <link>https://techqu.github.io/post/java-interview-cache01/</link>
       <pubDate>Thu, 16 May 2019 17:18:03 +0800</pubDate>
       
@@ -164,7 +283,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ自己设计一个</title>
+      <title>Java面试-高并发-MQ自己设计一个(7)</title>
       <link>https://techqu.github.io/post/java-interview-mq07/</link>
       <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
       
@@ -175,7 +294,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ延时以及过期失效</title>
+      <title>Java面试-高并发-MQ延时以及过期失效(6)</title>
       <link>https://techqu.github.io/post/java-interview-mq06/</link>
       <pubDate>Wed, 15 May 2019 19:36:47 +0800</pubDate>
       
@@ -186,7 +305,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ消息的顺序性</title>
+      <title>Java面试-高并发-MQ消息的顺序性(5)</title>
       <link>https://techqu.github.io/post/java-interview-mq05/</link>
       <pubDate>Wed, 15 May 2019 18:36:47 +0800</pubDate>
       
@@ -197,7 +316,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ可靠性传输</title>
+      <title>Java面试-高并发-MQ可靠性传输(4)</title>
       <link>https://techqu.github.io/post/java-interview-mq04/</link>
       <pubDate>Wed, 15 May 2019 17:36:47 +0800</pubDate>
       
@@ -208,7 +327,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ重复消费</title>
+      <title>Java面试-高并发-MQ重复消费(3)</title>
       <link>https://techqu.github.io/post/java-interview-mq03/</link>
       <pubDate>Wed, 15 May 2019 16:36:47 +0800</pubDate>
       
@@ -219,7 +338,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ高可用</title>
+      <title>Java面试-高并发-MQ的高可用(2)</title>
       <link>https://techqu.github.io/post/java-interview-mq02/</link>
       <pubDate>Wed, 15 May 2019 15:36:47 +0800</pubDate>
       
@@ -230,7 +349,7 @@
     </item>
     
     <item>
-      <title>Java面试-MQ技术选型</title>
+      <title>Java面试-高并发-MQ技术选型(1)</title>
       <link>https://techqu.github.io/post/java-interview-mq01/</link>
       <pubDate>Wed, 15 May 2019 14:36:47 +0800</pubDate>
       
@@ -241,7 +360,7 @@
     </item>
     
     <item>
-      <title>Java Interview Shishan01</title>
+      <title>互联网Java工程师面试突击训练-课程目录</title>
       <link>https://techqu.github.io/post/java-interview-shishan01/</link>
       <pubDate>Wed, 15 May 2019 13:32:03 +0800</pubDate>
       

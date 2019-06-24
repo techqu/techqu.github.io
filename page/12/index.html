@@ -46,7 +46,7 @@
 <meta property="og:description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://techqu.github.io/" />
-<meta property="og:updated_time" content="2019-01-29T15:01:21&#43;08:00"/>
+<meta property="og:updated_time" content="2019-02-17T12:57:39&#43;08:00"/>
 
 <meta itemprop="name" content="Quguang 学习笔记">
 <meta itemprop="description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等">
@@ -120,118 +120,138 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mongo-export-csv/">Mongo Export Csv</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/java-distributed-id/">分布式系统唯一ID生成方案汇总</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-01-29 </span>
-      <div class="post-category">
-          <a href="/categories/mongo/"> mongo </a>
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
-          </div>
-        <span class="more-meta"> 约 481 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>mongo 上查询数据，导出excel，并解决Mac上的Excel在导入CSV文件不支持utf-8的问题</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/mongo-export-csv/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mysql-navicat-structure-doc/">Mysql 使用Navicat 导出数据库表结构</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-29 </span>
-      <div class="post-category">
-          <a href="/categories/mysql/"> MySQL </a>
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
-          </div>
-        <span class="more-meta"> 约 258 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>我们在写数据库设计文档的时候，会需要对数据库表进行设计的编写，手动写的话会很费时间费精力，尤其是如果有大量的表需要写的时候，就更加浪费时间了。下面就让我给大家讲一个简单方法。
-我的是在Navicat中导出的数据库表。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/mysql-navicat-structure-doc/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/drools-7.15.0.final-docker-deploy/">Drools 7.15.0 docker容器方式部署</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-24 </span>
-      <div class="post-category">
-          <a href="/categories/drools/"> drools </a>
-          </div>
-        <span class="more-meta"> 约 929 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>关于drools的相关介绍就不再赘述了，关于drools网上的资料都很少，或者都有些老了，最近折腾了一下，记录下安装部署的过程，希望能节省下大家的时间。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/drools-7.15.0.final-docker-deploy/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/booklist-zhengshitang-2018/">政事堂书单 2018</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-21 </span>
+      <span class="post-time"> 2019-02-17 </span>
       
-        <span class="more-meta"> 约 2679 字 </span>
-        <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span class="more-meta"> 约 3307 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p><img src="/img/undraw/undraw_reading_list_4boi.png" alt="reading_list" /></p>
+      <p>系统唯一ID是我们在设计一个系统的时候常常会遇见的问题，也常常为这个问题而纠结。生成ID的方法有很多，适应不同的场景、需求以及性能要求。所以有些比较复杂的系统会有多个ID生成的策略。下面就介绍一些常见的ID生成策略。</p>
     </div>
     <div class="read-more">
-      <a href="/post/booklist-zhengshitang-2018/" class="read-more-link">阅读更多</a>
+      <a href="/post/java-distributed-id/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/drools-wb-translation/">Drools Documentation</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/java-interview-resource-list/">Java Interview Resource List</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-01-19 </span>
+      <span class="post-time"> 2019-02-15 </span>
       <div class="post-category">
-          <a href="/categories/drools/"> drools </a>
+          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
           </div>
-        <span class="more-meta"> 约 5956 字 </span>
-        <span class="more-meta"> 预计阅读 12 分钟 </span>
+        <span class="more-meta"> 约 148 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <blockquote>
-<p>转载自：<a href="https://github.com/MyHerux/drools-springboot">MyHerux/drools-springboot</a></p>
-</blockquote>
+      <p>总结了一些面试资源清单</p>
     </div>
     <div class="read-more">
-      <a href="/post/drools-wb-translation/" class="read-more-link">阅读更多</a>
+      <a href="/post/java-interview-resource-list/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/java-dubbo-principle/">Dubbo解析及原理浅析</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-15 </span>
+      
+        <span class="more-meta"> 约 3298 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      一、Duboo基本概念解释 Dubbo (incubating) |ˈdʌbəʊ| 是一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智
+    </div>
+    <div class="read-more">
+      <a href="/post/java-dubbo-principle/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/java-rpc/">你应该知道的 RPC 原理</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-15 </span>
+      <div class="post-category">
+          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+          </div>
+        <span class="more-meta"> 约 5164 字 </span>
+        <span class="more-meta"> 预计阅读 11 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。</p>
+
+<pre><code class="language-Java">
+ public class Test {
+     public static void main(String[] args) {
+         HelloWorldService helloWorldService = new HelloWorldServiceImpl();
+         helloWorldService.sayHello(&quot;test&quot;);
+     }
+ }
+</code></pre>
+
+<p>而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：</p>
+
+<ol>
+<li><p>要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？</p></li>
+
+<li><p>其它团队要使用我们的服务，我们的服务该怎么发布以便他人调用？</p></li>
+</ol>
+
+<p>下文我们将对这两个问题展开探讨。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/java-rpc/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/java-thread-pool/">Java并发编程：线程池的使用</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-14 </span>
+      <div class="post-category">
+          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
+          </div>
+        <span class="more-meta"> 约 12948 字 </span>
+        <span class="more-meta"> 预计阅读 26 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>在前面的文章中，我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：</p>
+
+<p>　　如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。</p>
+
+<p>　　那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？</p>
+
+<p>　　在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池，首先我们从最核心的ThreadPoolExecutor类中的方法讲起，然后再讲述它的实现原理，接着给出了它的使用示例，最后讨论了一下如何合理配置线程池的大小。</p>
+
+<p>　　若有不正之处请多多谅解，并欢迎批评指正。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/java-thread-pool/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
