@@ -10,6 +10,27 @@
   </url>
   
   <url>
+    <loc>https://techqu.github.io/post/spring-design-pattern/</loc>
+    <lastmod>2019-07-05T15:00:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/springboot-prevent-repeat-submit/</loc>
+    <lastmod>2019-07-05T14:48:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/k8s-jenkins-docker-ci/</loc>
+    <lastmod>2019-07-02T11:50:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://techqu.github.io/post/introduction-to-ddd-cqrs-and-event/</loc>
     <lastmod>2019-06-19T10:47:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -905,6 +926,13 @@
   </url>
   
   <url>
+    <loc>https://techqu.github.io/categories/spring/</loc>
+    <lastmod>2019-07-05T15:00:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://techqu.github.io/categories/springmvc/</loc>
     <lastmod>2019-02-12T15:12:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1109,6 +1137,13 @@
   <url>
     <loc>https://techqu.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
     <lastmod>2018-12-24T19:03:40+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2019-07-05T15:00:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
