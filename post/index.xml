@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>怎样阅读spring源码</title>
+      <link>https://techqu.github.io/post/how-to-read-spring-source-code/</link>
+      <pubDate>Fri, 12 Jul 2019 11:51:07 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/how-to-read-spring-source-code/</guid>
+      <description>一、链接：https://www.zhihu.com/question/21346206/answer/101789659 建议不要硬着头皮看</description>
+    </item>
+    
+    <item>
+      <title>关于线性代数</title>
+      <link>https://techqu.github.io/post/math-linear-algebra/</link>
+      <pubDate>Wed, 10 Jul 2019 18:58:15 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/math-linear-algebra/</guid>
+      <description>&lt;p&gt;线性代数课程，无论你从行列式入手还是直接从矩阵入手，从一开始就充斥着莫名其妙。比如说，在全国一般工科院系教学中应用最广泛的同济线性代数教材（现在到了第四版），一上来就介绍逆序数这个“前无古人，后无来者”的古怪概念，然后用逆序数给出行列式的一个极不直观的定义，接着是一些简直犯傻的行列式性质和习题——把这行乘一个系数加到另一行上，再把那一列减过来，折腾得那叫一个热闹，可就是压根看不出这个东西有嘛用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Spring是如何运用设计模式的？</title>
       <link>https://techqu.github.io/post/spring-design-pattern/</link>
       <pubDate>Fri, 05 Jul 2019 15:00:05 +0800</pubDate>
