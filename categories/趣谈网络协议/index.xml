@@ -13,10 +13,10 @@
     
     <item>
       <title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</title>
-      <link>https://techqu.github.io/post/ipconfig/</link>
+      <link>https://techqu.github.io/post/geektime-network-protocol-ipconfig/</link>
       <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/ipconfig/</guid>
+      <guid>https://techqu.github.io/post/geektime-network-protocol-ipconfig/</guid>
       <description>&lt;p&gt;从一行查看IP地址的命令开始讲解，
 Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
     </item>

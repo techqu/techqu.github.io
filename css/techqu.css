@@ -44,6 +44,10 @@
   background-color: #f8f8f8;
 } 
 
+#post-toc {
+  width: 360px !important;
+}
+
 html{
   font-size: 16px;
 }
@@ -124,6 +128,7 @@ body{
 #post-toc {
   margin-left: 50% !important;
 }
+
 
 .terms-tags {
   font-size: larger;

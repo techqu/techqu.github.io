@@ -10,6 +10,55 @@
   </url>
   
   <url>
+    <loc>https://techqu.github.io/post/geektime-java-concurrent-in-action.2/</loc>
+    <lastmod>2019-07-27T17:31:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/</loc>
+    <lastmod>2019-07-27T17:31:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/</loc>
+    <lastmod>2019-07-27T17:31:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/geektime-java-concurrent-in-action.0/</loc>
+    <lastmod>2019-07-27T17:31:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/geektime-network-protocol-udp-tcp/</loc>
+    <lastmod>2019-07-25T14:38:50+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/vim/</loc>
+    <lastmod>2019-07-20T17:15:57+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/saas-hrm/</loc>
+    <lastmod>2019-07-15T10:32:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://techqu.github.io/post/how-to-read-spring-source-code/</loc>
     <lastmod>2019-07-12T11:51:07+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -283,7 +332,7 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/post/ci-cd-introduce/</loc>
+    <loc>https://techqu.github.io/post/geektime-ci-cd-introduce/</loc>
     <lastmod>2019-04-19T15:23:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -332,13 +381,6 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/post/java-concurrent/</loc>
-    <lastmod>2019-03-27T17:31:24+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://techqu.github.io/post/mysql-question-03/</loc>
     <lastmod>2019-03-27T15:49:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -346,15 +388,22 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/post/mysql-orderby/</loc>
-    <lastmod>2019-03-20T08:49:19+08:00</lastmod>
+    <loc>https://techqu.github.io/post/python-helloword/</loc>
+    <lastmod>2019-03-19T20:04:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://techqu.github.io/post/python-helloword/</loc>
-    <lastmod>2019-03-19T20:04:31+08:00</lastmod>
+    <loc>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</loc>
+    <lastmod>2019-03-07T16:54:30+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://techqu.github.io/post/mysql-orderby/</loc>
+    <lastmod>2019-03-20T08:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -383,13 +432,6 @@
   <url>
     <loc>https://techqu.github.io/post/mysql-transaction/</loc>
     <lastmod>2019-03-14T17:23:42+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</loc>
-    <lastmod>2019-03-07T16:54:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -584,7 +626,7 @@
   </url>
   
   <url>
-    <loc>https://techqu.github.io/post/ipconfig/</loc>
+    <loc>https://techqu.github.io/post/geektime-network-protocol-ipconfig/</loc>
     <lastmod>2019-01-16T18:51:01+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -898,6 +940,13 @@
   </url>
   
   <url>
+    <loc>https://techqu.github.io/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/</loc>
+    <lastmod>2019-07-27T17:31:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://techqu.github.io/categories/kubernetes/</loc>
     <lastmod>2019-01-17T08:41:16+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1094,7 +1143,7 @@
   
   <url>
     <loc>https://techqu.github.io/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2019-04-12T17:04:30+08:00</lastmod>
+    <lastmod>2019-07-27T17:31:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

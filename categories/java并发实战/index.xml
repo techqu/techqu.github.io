@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java并发实战 on Quguang 学习笔记</title>
+    <link>https://techqu.github.io/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/</link>
+    <description>Recent content in java并发实战 on Quguang 学习笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 27 Jul 2019 17:31:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://techqu.github.io/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>《Java并发编程实战》-3-并发设计模式</title>
+      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.2/</link>
+      <pubDate>Sat, 27 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.2/</guid>
+      <description>28|Immutability模式：如何利用不可变性解决问题？ 29|Copy-on-Write模式：不是延时策略的COW 30| 线程本地存储模式：</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-2-并发工具类(下)</title>
+      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/</link>
+      <pubDate>Fri, 26 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/</guid>
+      <description>21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-2-并发工具类(上)</title>
+      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/</link>
+      <pubDate>Fri, 26 Jul 2019 17:30:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/</guid>
+      <description>14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-1-理论基础篇</title>
+      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.0/</link>
+      <pubDate>Thu, 25 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.0/</guid>
+      <description>&lt;p&gt;这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个&lt;strong&gt;核心矛盾一直存在，就是这三者的速度差异&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

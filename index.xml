@@ -21,6 +21,74 @@
     </item>
     
     <item>
+      <title>《Java并发编程实战》-3-并发设计模式</title>
+      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.2/</link>
+      <pubDate>Sat, 27 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.2/</guid>
+      <description>28|Immutability模式：如何利用不可变性解决问题？ 29|Copy-on-Write模式：不是延时策略的COW 30| 线程本地存储模式：</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-2-并发工具类(下)</title>
+      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/</link>
+      <pubDate>Fri, 26 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/</guid>
+      <description>21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-2-并发工具类(上)</title>
+      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/</link>
+      <pubDate>Fri, 26 Jul 2019 17:30:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/</guid>
+      <description>14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-1-理论基础篇</title>
+      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.0/</link>
+      <pubDate>Thu, 25 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.0/</guid>
+      <description>&lt;p&gt;这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个&lt;strong&gt;核心矛盾一直存在，就是这三者的速度差异&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《趣谈网络协议》- Udp Tcp</title>
+      <link>https://techqu.github.io/post/geektime-network-protocol-udp-tcp/</link>
+      <pubDate>Thu, 25 Jul 2019 14:38:50 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/geektime-network-protocol-udp-tcp/</guid>
+      <description>&lt;p&gt;传输层里比较重要的两个协议，一个是 TCP，一个是
+UDP。对于不从事底层开发的人员来讲，或者对于开发应用的人来讲，最常用的就是这两个协议。由于
+面试的时候，这两个协议经常会被放在一起问&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>编辑器之神-Vim学习</title>
+      <link>https://techqu.github.io/post/vim/</link>
+      <pubDate>Sat, 20 Jul 2019 17:15:57 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/vim/</guid>
+      <description>&lt;p&gt;编辑器之神-vim
+神的编辑器-emacs&lt;/p&gt;
+
+&lt;p&gt;最近开始使用vim键盘流，原因是写代码时真心不想再去碰鼠标，来回切换很麻烦。以下是记录了一些常用但是我不会的快捷键&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>传统Saas项目实例</title>
+      <link>https://techqu.github.io/post/saas-hrm/</link>
+      <pubDate>Mon, 15 Jul 2019 10:32:05 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/saas-hrm/</guid>
+      <description>一、初识SaaS 云服务的三种模式 iaas、Paas、Saas 二、系统架构 分布式ID生成器 三、SaaS系统用户权限设计 多租户SaaS平台的数据</description>
+    </item>
+    
+    <item>
       <title>怎样阅读spring源码</title>
       <link>https://techqu.github.io/post/how-to-read-spring-source-code/</link>
       <pubDate>Fri, 12 Jul 2019 11:51:07 +0800</pubDate>
@@ -93,7 +161,7 @@
     </item>
     
     <item>
-      <title>Java面试 分布式会话</title>
+      <title>Java面试-分布式会话</title>
       <link>https://techqu.github.io/post/java-interview-distributed-session/</link>
       <pubDate>Tue, 21 May 2019 17:55:57 +0800</pubDate>
       
@@ -104,7 +172,7 @@
     </item>
     
     <item>
-      <title>Java Interview Distributed 分布式服务接口的幂等性和顺序性</title>
+      <title>Java面试-分布式 分布式服务接口的幂等性和顺序性</title>
       <link>https://techqu.github.io/post/java-interview-distributed-dubbo07/</link>
       <pubDate>Tue, 21 May 2019 17:35:10 +0800</pubDate>
       
@@ -113,7 +181,7 @@
     </item>
     
     <item>
-      <title>Java Interview Distributed Dubbo服务治理、服务降级06</title>
+      <title>Java面试-分布式 Dubbo服务治理、服务降级</title>
       <link>https://techqu.github.io/post/java-interview-distributed-dubbo06/</link>
       <pubDate>Tue, 21 May 2019 16:46:51 +0800</pubDate>
       
@@ -124,7 +192,7 @@
     </item>
     
     <item>
-      <title>Java Interview Distributed Dubbo05</title>
+      <title>Java面试-分布式 Dubbo的spi思想</title>
       <link>https://techqu.github.io/post/java-interview-distributed-dubbo05/</link>
       <pubDate>Tue, 21 May 2019 16:01:24 +0800</pubDate>
       
@@ -135,7 +203,7 @@
     </item>
     
     <item>
-      <title>Java面试 分布式系统-dubbo负载均衡策略和集群容错策略</title>
+      <title>Java面试 分布式-dubbo负载均衡策略和集群容错策略</title>
       <link>https://techqu.github.io/post/java-interview-distributed-dubbo04/</link>
       <pubDate>Tue, 21 May 2019 14:53:52 +0800</pubDate>
       
@@ -146,7 +214,7 @@
     </item>
     
     <item>
-      <title>Java Interview Distributed Dubbo03</title>
+      <title>Java面试-分布式 Dubbo的协议</title>
       <link>https://techqu.github.io/post/java-interview-distributed-dubbo03/</link>
       <pubDate>Tue, 21 May 2019 14:41:19 +0800</pubDate>
       
@@ -155,7 +223,7 @@
     </item>
     
     <item>
-      <title>Java Interview Distributed Dubbo02</title>
+      <title>Java面试-分布式 Dubbo的原理</title>
       <link>https://techqu.github.io/post/java-interview-distributed-dubbo02/</link>
       <pubDate>Tue, 21 May 2019 14:32:22 +0800</pubDate>
       
@@ -164,7 +232,7 @@
     </item>
     
     <item>
-      <title>Java Interview Distributed 什么是分布式？</title>
+      <title>Java面试-分布式-什么是分布式？</title>
       <link>https://techqu.github.io/post/java-interview-distributed-introduce01/</link>
       <pubDate>Tue, 21 May 2019 10:49:00 +0800</pubDate>
       
@@ -175,7 +243,7 @@
     </item>
     
     <item>
-      <title>Java Interview Distributed Zk02</title>
+      <title>Java面试-分布式-分布式锁</title>
       <link>https://techqu.github.io/post/java-interview-distributed-zk02/</link>
       <pubDate>Mon, 20 May 2019 16:56:21 +0800</pubDate>
       
@@ -190,7 +258,7 @@
     </item>
     
     <item>
-      <title>Java Interview Distributed Zk01</title>
+      <title>Java面试-分布式 Zookeeper的使用场景</title>
       <link>https://techqu.github.io/post/java-interview-distributed-zk01/</link>
       <pubDate>Mon, 20 May 2019 16:50:16 +0800</pubDate>
       
@@ -271,7 +339,7 @@
     </item>
     
     <item>
-      <title>Java面试-如何设计一个高并发系统？</title>
+      <title>Java面试-高并发-如何设计一个高并发系统？</title>
       <link>https://techqu.github.io/post/java-interview-gaobingfa/</link>
       <pubDate>Thu, 16 May 2019 18:51:25 +0800</pubDate>
       
@@ -451,10 +519,10 @@
     
     <item>
       <title>《持续交付》</title>
-      <link>https://techqu.github.io/post/ci-cd-introduce/</link>
+      <link>https://techqu.github.io/post/geektime-ci-cd-introduce/</link>
       <pubDate>Fri, 19 Apr 2019 15:23:49 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/ci-cd-introduce/</guid>
+      <guid>https://techqu.github.io/post/geektime-ci-cd-introduce/</guid>
       <description>持续交付到底有什么价值 持续交付是软件研发人员，如何将一个好点子，以最快的速度交付给用户的方法。我们可以把 “持续交付”定义为“一套软件工程方法</description>
     </item>
     
@@ -518,15 +586,6 @@
     </item>
     
     <item>
-      <title>《Java并发编程实战》-内容简介</title>
-      <link>https://techqu.github.io/post/java-concurrent/</link>
-      <pubDate>Wed, 27 Mar 2019 17:31:24 +0800</pubDate>
-      
-      <guid>https://techqu.github.io/post/java-concurrent/</guid>
-      <description>&lt;p&gt;这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个&lt;strong&gt;核心矛盾一直存在，就是这三者的速度差异&lt;/strong&gt;。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>《MYSQL实战45讲》- Question 03</title>
       <link>https://techqu.github.io/post/mysql-question-03/</link>
       <pubDate>Wed, 27 Mar 2019 15:49:58 +0800</pubDate>
@@ -536,21 +595,30 @@
     </item>
     
     <item>
+      <title>Python 学习入门</title>
+      <link>https://techqu.github.io/post/python-helloword/</link>
+      <pubDate>Thu, 21 Mar 2019 20:04:31 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/python-helloword/</guid>
+      <description>&lt;p&gt;学习了python的基础语法、变量类型、条件语句、数据结构、模块引用等&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《数据结构与算法之美》-归并排序</title>
+      <link>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</link>
+      <pubDate>Thu, 21 Mar 2019 16:54:30 +0800</pubDate>
+      
+      <guid>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</guid>
+      <description>归并排序的原理 归并排序的核心思想还是蛮简单的。如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两</description>
+    </item>
+    
+    <item>
       <title>《MYSQL实战45讲》- Order By</title>
       <link>https://techqu.github.io/post/mysql-orderby/</link>
       <pubDate>Wed, 20 Mar 2019 08:49:19 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/mysql-orderby/</guid>
       <description>&lt;p&gt;在你开发应用时，一定会遇到需要根据指定的字段来显式结果的需求。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Python 学习入门</title>
-      <link>https://techqu.github.io/post/python-helloword/</link>
-      <pubDate>Tue, 19 Mar 2019 20:04:31 +0800</pubDate>
-      
-      <guid>https://techqu.github.io/post/python-helloword/</guid>
-      <description>&lt;p&gt;学习了python的基础语法、变量类型、条件语句、数据结构、模块引用等&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -589,15 +657,6 @@
       
       <guid>https://techqu.github.io/post/mysql-transaction/</guid>
       <description>行锁 MySQL的行锁是在引擎层由各个引擎自己实现的。比如MyISAM引擎就不支持行锁。不支持行锁意味着并发控制只能使用表锁，对于这种引擎的表</description>
-    </item>
-    
-    <item>
-      <title>《数据结构与算法之美》-归并排序</title>
-      <link>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</link>
-      <pubDate>Thu, 07 Mar 2019 16:54:30 +0800</pubDate>
-      
-      <guid>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</guid>
-      <description>归并排序的原理 归并排序的核心思想还是蛮简单的。如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两</description>
     </item>
     
     <item>
@@ -850,7 +909,7 @@
       <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
       
       <guid>https://techqu.github.io/about/</guid>
-      <description>关于工作 从14年参加工作，到现在也有三四年了，业余时间也都有学习，可惜一直感觉工作中能用上的东西很少。 前端、服务端（java,python）</description>
+      <description>关于我 从14年参加工作，业余时间也都有学习，可惜一直感觉工作中能用上的东西很少,也担心自己陷入低效率勤奋，想找到科学正确的学习方法。 主力操作</description>
     </item>
     
     <item>
@@ -905,10 +964,10 @@
     
     <item>
       <title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</title>
-      <link>https://techqu.github.io/post/ipconfig/</link>
+      <link>https://techqu.github.io/post/geektime-network-protocol-ipconfig/</link>
       <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/ipconfig/</guid>
+      <guid>https://techqu.github.io/post/geektime-network-protocol-ipconfig/</guid>
       <description>&lt;p&gt;从一行查看IP地址的命令开始讲解，
 Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
     </item>

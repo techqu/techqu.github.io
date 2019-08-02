@@ -6,7 +6,7 @@
     <description>Recent content in python on Quguang 学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 19 Mar 2019 20:04:31 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 Mar 2019 20:04:31 +0800</lastBuildDate>
     
 	<atom:link href="https://techqu.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Python 学习入门</title>
       <link>https://techqu.github.io/post/python-helloword/</link>
-      <pubDate>Tue, 19 Mar 2019 20:04:31 +0800</pubDate>
+      <pubDate>Thu, 21 Mar 2019 20:04:31 +0800</pubDate>
       
       <guid>https://techqu.github.io/post/python-helloword/</guid>
       <description>&lt;p&gt;学习了python的基础语法、变量类型、条件语句、数据结构、模块引用等&lt;/p&gt;</description>

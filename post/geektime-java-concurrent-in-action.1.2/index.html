@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《Java并发编程实战》-2-并发工具类(下) - Quguang 学习笔记</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="瞿广" /><meta name="description" content="21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/douban.css">
+<link rel="stylesheet" href="/css/techqu.css">
+
+
+<meta property="og:title" content="《Java并发编程实战》-2-并发工具类(下)" />
+<meta property="og:description" content="21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/" /><meta property="article:published_time" content="2019-07-26T17:31:24&#43;08:00"/>
+<meta property="article:modified_time" content="2019-07-27T17:31:24&#43;08:00"/>
+
+<meta itemprop="name" content="《Java并发编程实战》-2-并发工具类(下)">
+<meta itemprop="description" content="21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全">
+
+
+<meta itemprop="datePublished" content="2019-07-26T17:31:24&#43;08:00" />
+<meta itemprop="dateModified" content="2019-07-27T17:31:24&#43;08:00" />
+<meta itemprop="wordCount" content="3538">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《Java并发编程实战》-2-并发工具类(下)"/>
+<meta name="twitter:description" content="21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">专注</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">全部文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">专注</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">全部文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《Java并发编程实战》-2-并发工具类(下)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-07-26 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
+            <a href="/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/"> java并发实战 </a>
+            </div>
+          <span class="more-meta"> 约 3538 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#21-原子类-无锁工具类的典范-重点学习">21|原子类：无锁工具类的典范(重点学习)</a>
+<ul>
+<li><a href="#无锁方案的实现原理">无锁方案的实现原理</a></li>
+<li><a href="#看-java-如何实现原子化的-count-1">看 Java 如何实现原子化的 count += 1</a></li>
+<li><a href="#原子类概览">原子类概览</a>
+<ul>
+<li><a href="#1-原子化的基本数据类型">1. 原子化的基本数据类型</a></li>
+<li><a href="#2-原子化的对象引用类型">2. 原子化的对象引用类型</a></li>
+<li><a href="#3-原子化数组">3. 原子化数组</a></li>
+<li><a href="#4-原子化对象属性更新器">4. 原子化对象属性更新器</a></li>
+<li><a href="#5-原子化的累加器">5. 原子化的累加器</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#22-executor与线程池-如何创建正确的线程池">22|Executor与线程池：如何创建正确的线程池？</a></li>
+<li><a href="#23-future-如何用多线程实现最优的-烧水泡茶-程序">23|Future:如何用多线程实现最优的“烧水泡茶”程序？</a></li>
+<li><a href="#24-completablefuture-异步编程没那么难">24|CompletableFuture：异步编程没那么难</a></li>
+<li><a href="#25-completionservice-如何批量执行异步任务">25|CompletionService:如何批量执行异步任务</a></li>
+<li><a href="#26-forkjoin-单机版的mapreduce">26|ForkJoin：单机版的MapReduce</a></li>
+<li><a href="#27-并发工具类热点问题答疑">27|并发工具类热点问题答疑</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h2 id="21-原子类-无锁工具类的典范-重点学习">21|原子类：无锁工具类的典范(重点学习)</h2>
+
+<p>前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，<code>add10K()</code>   这个方法不是线 程安全的，问题就出在变量 count 的可见性和 <code>count+=1</code> 的原子性上。<strong>可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。</strong></p>
+
+<pre><code class="language-java">public class Test{
+  long count = 0;
+  void add10k(){
+    int idx = 0;
+    while(idx++&lt;1000) {
+      count +=1;
+    }
+  }
+}
+</code></pre>
+
+<p><strong>其实对于简单的原子性问题，还有一种无锁方案。Java SDK 并发包将这种无锁方案封装提炼之 后，实现了一系列的原子类。</strong>不过，在深入介绍原子类的实现之前，我们先看看如何利用原子类 解决累加器问题，这样你会对原子类有个初步的认识。</p>
+
+<p>在下面的代码中，我们将原来的 long 型变量 count 替换为了原子类 AtomicLong，原来的<code>count +=1</code>
+替换成了<code>count.getAndIncrement()</code>，仅需要这两处简单的改动就能使 <code>add10K()</code>方法变成线程安 全的，原子类的使用还是挺简单的。</p>
+
+<pre><code class="language-java">public class Test{
+  AtomicLong count = new AtomicLong(0);
+  void add10k(){
+    int idx = 0;
+    while(idx++&lt;1000) {
+      count.getAndIncrement();
+    }
+  }
+}
+</code></pre>
+
+<p>无锁方案相对互斥锁方案，最大的好处就是<strong>性能</strong>。互斥锁方案为了保证互斥性，需要执行加锁、 解锁操作，而加锁、解锁操作本身就消耗性能;同时拿不到锁的线程还会进入阻塞状态，进而触 发线程切换，线程切换对性能的消耗也很大。 相比之下，无锁方案则完全没有加锁、解锁的性能 消耗，同时还能保证互斥性，既解决了问题，又没有带来新的问题，可谓绝佳方案。那它是如何 做到的呢?</p>
+
+<h3 id="无锁方案的实现原理">无锁方案的实现原理</h3>
+
+<p>其实原子类性能高的秘密很简单，硬件支持而已。<strong>CPU 为了解决并发问题，提供了 CAS 指令</strong> (CAS，全称是 Compare And Swap，即“比较并交换”)。</p>
+
+<p>CAS 指令包含 3 个参数:共享变量 的内存地址 A、用于比较的值 B 和共享变量的新值 C;并且只有当内存中地址 A 处的值等于 B 时，才能将内存中地址 A 处的值更新为新值 C。<strong>作为一条 CPU 指令，CAS 指令本身是能够保证原子性的。</strong></p>
+
+<p>你可以通过下面 CAS 指令的模拟代码来理解 CAS 的工作原理。在下面的模拟程序中有两个参数， 一个是期望值 expect，另一个是需要写入的新值 newValue，<strong>只有当目前 count 的值和期望值 expect 相等时，才会将 count 更新为 newValue。</strong></p>
+
+<pre><code class="language-java">class SimulatedCAS{
+  int count;
+  synchronized int cas(
+  int expect, int newValue){
+  // 读目前 count 的值
+  int curValue = count;
+  // 比较目前 count 值是否 == 期望值
+  if(curValue == expect){
+  // 如果是，则更新 count 的值
+  count = newValue;
+  }
+  // 返回写入前的值
+  return curValue;
+  }
+  }
+
+</code></pre>
+
+<p>你仔细地再次思考一下这句话，“只有当目前 count 的值和期望值 expect 相等时，才会将 count 更新为 newValue。”要怎么理解这句话呢?</p>
+
+<p>对于前面提到的累加器的例子，<code>count += 1</code>
+的一个核心问题是:基于内存中 count 的当前值 A 计算出来的<code>count+=1</code>为 A+1，在将 A+1 写入
+内存的时候，很可能此时内存中 count 已经被其他线程更新过了，这样就会导致错误地覆盖其他 线程写入的值(如果你觉得理解起来还有困难，建议你再重新看看《01 | 可见性、原子性和有序 性问题:并发编程 Bug 的源头》)。也就是说，只有当内存中 count 的值等于期望值 A 时，才能 将内存中 count 的值更新为计算结果 A+1，这不就是 CAS 的语义吗</p>
+
+<p>使用 CAS 来解决并发问题，一般都会伴随着自旋，而所谓自旋，其实就是循环尝试。例如，实现 一个线程安全的count += 1
+操作，“CAS+ 自旋”的实现方案如下所示，首先计算 <code>newValue = count+1</code>，如果 <code>cas(count,newValue)</code> 返回的值不等于 count，则意味着线程在执行完代码1处之后，执行代码2 处之前，count 的值被其他线程更新过。那此时该怎么处理呢?可以采用自旋方案，就像下面代 码中展示的，可以重新读 count 最新的值来计算 newValue 并尝试再次更新，直到成功。</p>
+
+<pre><code class="language-java">  class SimulatedCAS{ volatile int count; // 实现 count+=1 
+  addOne(){
+
+    do{
+      newValue = count+1; //1
+      }while(count != cas(count,newValue)//2 
+    }
+
+ // 模拟实现 CAS，仅用来帮助理解
+ synchronized int cas(
+ int expect, int newValue){
+ // 读目前 count 的值
+ int curValue = count;
+ // 比较目前 count 值是否 == 期望值
+ if(curValue == expect){
+ // 如果是，则更新 count 的值
+ count= newValue;
+ }
+ // 返回写入前的值
+ return curValue;
+ }
+ }
+</code></pre>
+
+<p>通过上面的示例代码，想必你已经发现了，CAS 这种无锁方案，完全没有加锁、解锁操作，即便 两个线程完全同时执行 addOne() 方法，也不会有线程被阻塞，所以相对于互斥锁方案来说，性 能好了很多。
+但是在 CAS 方案中，有一个问题可能会常被你忽略，那就是ABA的问题。什么是 ABA 问题呢?</p>
+
+<p>前面我们提到“如果 cas(count,newValue) 返回的值不等于count，意味着线程在执行完代码1处 之后，执行代码2处之前，count 的值被其他线程更新过”，那如果 cas(count,newValue) 返回 的值等于count，是否就能够认为 count 的值没有被其他线程更新过呢?显然不是的，假设 count 原本是 A，线程 T1 在执行完代码1处之后，执行代码2处之前，有可能 <strong>count 被线程 T2 更新成 了 B，之后又被 T3 更新回了 A，</strong>这样线程 T1 虽然看到的一直是 A，但是其实已经被其他线程 <strong>更新过</strong>了，这就是 ABA 问题。</p>
+
+<p>可能大多数情况下我们并不关心 ABA 问题，例如数值的原子递增，但也不能所有情况下都不关 心，例如 <strong>原子化的更新对象</strong>很可能就需要关心 ABA 问题，因为两个 A 虽然相等，但是第二个 A 的属性可能已经发生变化了。所以在使用 CAS 方案的时候，一定要先 check 一下。</p>
+
+<h3 id="看-java-如何实现原子化的-count-1">看 Java 如何实现原子化的 count += 1</h3>
+
+<p>在本文开始部分，我们使用原子类<code>AtomicLong的getAndIncrement()</code>方法替代了count += 1 ，从而实现了线程安全。原子类 AtomicLong 的<code>getAndIncrement()</code>方法内部就是基于 CAS 实现
+的，下面我们来看看Java是如何使用CAS来实现原子化的count += 1的。</p>
+
+<p>在 Java 1.8 版本中，<code>getAndIncrement()</code> 方法会转调 <code>unsafe.getAndAddLong()</code>方法。这里 <code>this</code> 和<code>valueOffset</code>两个参数可以唯一确定共享变量的内存地址。</p>
+
+<pre><code class="language-java">final long getAndIncrement() { 
+   return unsafe.getAndAddLong( this, valueOffset, 1L); 
+     }
+</code></pre>
+
+<p><code>unsafe.getAndAddLong()</code> 方法的源码如下，该方法首先会在内存中读取共享变量的值，之后循环 调用 <code>compareAndSwapLong()</code> 方法来尝试设置共享变量的值，直到成功为止。 <code>compareAndSwapLong()</code>是一个 <code>native</code> 方法，只有当内存中共享变量的值等于 expected 时，才 会将共享变量的值更新为 x，并且返回 true;否则返回 fasle。<code>compareAndSwapLong</code> 的语义和 CAS 指令的语义的差别仅仅是返回值不同而已。</p>
+
+<pre><code class="language-java">public final long getAndAddLong( Object o, long offset, long delta){ long v;
+do{
+// 读取内存中的值
+    v = getLongVolatile(o, offset);
+  } while (!compareAndSwapLong(
+      o, offset, v, v + delta));
+  return v;
+}
+// 原子性地将变量更新为 x
+// 条件是内存中的值等于 expected
+// 更新成功则返回 true
+native boolean compareAndSwapLong( Object o, long offset, long expected, long x);
+</code></pre>
+
+<p>另外，需要你注意的是，<code>getAndAddLong()</code>方法的实现，基本上就是 CAS 使用的经典范例。所以 请你再次体会下面这段抽象后的代码片段，它在很多无锁程序中经常出现。Java 提供的原子类里 面 CAS 一般被实现为 <code>compareAndSet()</code>，<code>compareAndSet()</code> 的语义和 CAS 指令的语义的差别仅 仅是返回值不同而已，compareAndSet() 里面如果更新成功，则会返回 true，否则返回 false。</p>
+
+<pre><code class="language-java">do {
+// 获取当前值
+oldV = xxxx;
+// 根据当前值计算新值 newV = ...oldV...
+}while(!compareAndSet(oldV,newV);
+</code></pre>
+
+<h3 id="原子类概览">原子类概览</h3>
+
+<p>Java SDK 并发包里提供的原子类内容很丰富，我们可以将它们分为五个类别:原子化的基本数据 类型、原子化的对象引用类型、原子化数组、原子化对象属性更新器和原子化的累加器。这五个 类别提供的方法基本上是相似的，并且每个类别都有若干原子类，你可以通过下面的原子类组成 概览图来获得一个全局的印象。下面我们详细解读这五个类别。</p>
+
+<h4 id="1-原子化的基本数据类型">1. 原子化的基本数据类型</h4>
+
+<p>相关实现有 AtomicBoolean、AtomicInteger 和 AtomicLong，提供的方法主要有以下这些，详情 你可以参考 SDK 的源代码，都很简单，这里就不详细介绍了。</p>
+
+<h4 id="2-原子化的对象引用类型">2. 原子化的对象引用类型</h4>
+
+<p>相关实现有 AtomicReference、AtomicStampedReference 和 AtomicMarkableReference，利用 它们可以实现对象引用的原子化更新</p>
+
+<h4 id="3-原子化数组">3. 原子化数组</h4>
+
+<p>相关实现有 AtomicIntegerArray、AtomicLongArray 和 AtomicReferenceArray，利用这些原子 类，我们可以原子化地更新数组里面的每一个元素。</p>
+
+<h4 id="4-原子化对象属性更新器">4. 原子化对象属性更新器</h4>
+
+<p>相关实现有 AtomicIntegerFieldUpdater、AtomicLongFieldUpdater 和 AtomicReferenceFieldUpdater，利用它们可以原子化地更新对象的属性，这三个方法都是利用反 射机制实现的，创建更新器的方法如下:</p>
+
+<pre><code class="language-java">public static &lt;U&gt;
+ AtomicXXXFieldUpdater&lt;U&gt;
+ newUpdater(Class&lt;U&gt; tclass,
+ String fieldName)
+</code></pre>
+
+<h4 id="5-原子化的累加器">5. 原子化的累加器</h4>
+
+<p>DoubleAccumulator、DoubleAdder、LongAccumulator 和 LongAdder，这四个类仅仅用来执行 累加操作，相比原子化的基本数据类型，速度更快，但是不支持 compareAndSet() 方法。如果你 仅仅需要累加操作，使用原子化的累加器性能会更好。</p>
+
+<h2 id="22-executor与线程池-如何创建正确的线程池">22|Executor与线程池：如何创建正确的线程池？</h2>
+
+<h2 id="23-future-如何用多线程实现最优的-烧水泡茶-程序">23|Future:如何用多线程实现最优的“烧水泡茶”程序？</h2>
+
+<h2 id="24-completablefuture-异步编程没那么难">24|CompletableFuture：异步编程没那么难</h2>
+
+<h2 id="25-completionservice-如何批量执行异步任务">25|CompletionService:如何批量执行异步任务</h2>
+
+<h2 id="26-forkjoin-单机版的mapreduce">26|ForkJoin：单机版的MapReduce</h2>
+
+<h2 id="27-并发工具类热点问题答疑">27|并发工具类热点问题答疑</h2>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">瞿广</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-07-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/geektime-java-concurrent-in-action.2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">《Java并发编程实战》-3-并发设计模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/geektime-java-concurrent-in-action.1.1/">
+            <span class="next-text nav-default">《Java并发编程实战》-2-并发工具类(上)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
+  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">瞿广</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+<script src="/js/douban.js"></script>
+
+
+</body>
+</html>

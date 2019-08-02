@@ -46,7 +46,7 @@
 <meta property="og:description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://techqu.github.io/" />
-<meta property="og:updated_time" content="2019-01-19T13:18:56&#43;08:00"/>
+<meta property="og:updated_time" content="2019-02-12T10:22:20&#43;08:00"/>
 
 <meta itemprop="name" content="Quguang 学习笔记">
 <meta itemprop="description" content="专注于IT互联网，包括但不限于Java语言(golang)、Go、Android、Python、项目管理、抖音分析、软件架构等">
@@ -120,132 +120,123 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/drools-wb-translation/">Drools Documentation</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/springboot-how-run/">SpringBoot 究竟是如何跑起来的?</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2019-01-19 </span>
+      <span class="post-time"> 2019-02-12 </span>
+      
+        <span class="more-meta"> 约 3233 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>不得不说 SpringBoot 太复杂了，我本来只想研究一下 SpringBoot 最简单的 HelloWorld 程序是如何从 main 方法一步一步跑起来的，但是这却是一个相当深的坑。你可以试着沿着调用栈代码一层一层的深入进去，如果你不打断点，你根本不知道接下来程序会往哪里流动。这个不同于我研究过去的 Go 语言、Python 语言框架，它们通常都非常直接了当，设计上清晰易懂，代码写起来简单，里面的实现同样也很简单。但是 SpringBoot 不是，它的外表轻巧简单，但是它的里面就像一只巨大的怪兽，这只怪兽有千百只脚把自己缠绕在一起，把爱研究源码的读者绕的晕头转向。</p>
+
+<p>但是这 Java 编程的世界 SpringBoot 就是老大哥，你却不得不服。即使你的心中有千万头草泥马在奔跑，但是它就是天下第一。如果你是一个学院派的程序员，看到这种现象你会怀疑人生，你不得不接受一个规则 —— 受市场最欢迎的未必就是设计的最好的，里面夹杂着太多其它的非理性因素。</p>
+
+<p>经过了一番痛苦的折磨，我还是把 SpringBoot 的运行原理摸清楚了，这里分享给大家。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/springboot-how-run/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/test-about/">《软件测试52讲》-谈谈测试</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-31 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%B5%8B%E8%AF%95/"> 测试 </a>
+          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
+          </div>
+        <span class="more-meta"> 约 4423 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p><img src="/img/undraw/undraw_mobile_testing_reah.png" alt="mobile_testing" /></p>
+
+<p>简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/test-about/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/mongo-export-csv/">Mongo Export Csv</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-29 </span>
+      <div class="post-category">
+          <a href="/categories/mongo/"> mongo </a>
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
+          </div>
+        <span class="more-meta"> 约 481 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>mongo 上查询数据，导出excel，并解决Mac上的Excel在导入CSV文件不支持utf-8的问题</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/mongo-export-csv/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/mysql-navicat-structure-doc/">Mysql 使用Navicat 导出数据库表结构</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-29 </span>
+      <div class="post-category">
+          <a href="/categories/mysql/"> MySQL </a>
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
+          </div>
+        <span class="more-meta"> 约 258 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>我们在写数据库设计文档的时候，会需要对数据库表进行设计的编写，手动写的话会很费时间费精力，尤其是如果有大量的表需要写的时候，就更加浪费时间了。下面就让我给大家讲一个简单方法。
+我的是在Navicat中导出的数据库表。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/mysql-navicat-structure-doc/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/drools-7.15.0.final-docker-deploy/">Drools 7.15.0 docker容器方式部署</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-24 </span>
       <div class="post-category">
           <a href="/categories/drools/"> drools </a>
           </div>
-        <span class="more-meta"> 约 5956 字 </span>
-        <span class="more-meta"> 预计阅读 12 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <blockquote>
-<p>转载自：<a href="https://github.com/MyHerux/drools-springboot">MyHerux/drools-springboot</a></p>
-</blockquote>
-    </div>
-    <div class="read-more">
-      <a href="/post/drools-wb-translation/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/15-lock-in-java/">Java 中15种锁的介绍：公平锁，可重入锁等等……</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-19 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"> 并发编程 </a>
-          <a href="/categories/%E9%9D%A2%E8%AF%95/"> 面试 </a>
-          </div>
-        <span class="more-meta"> 约 5357 字 </span>
-        <span class="more-meta"> 预计阅读 11 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>Java 中15种锁的介绍</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/15-lock-in-java/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/course-introduction/">值得一看的网络课程收集</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-18 </span>
-      
-        <span class="more-meta"> 约 1742 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>前言：搜罗来一些不错的网络课程，比如Coursera, edX, Udacity上</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/course-introduction/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/docker-introduction/">《深入剖析Kubernetes》-Docker的实现原理</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-17 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-          <a href="/categories/%E5%AE%B9%E5%99%A8/"> 容器 </a>
-          </div>
-        <span class="more-meta"> 约 4514 字 </span>
-        <span class="more-meta"> 预计阅读 10 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”</p>
-
-<p>Docker容器具有以下3个特点：</p>
-
-<ul>
-<li><strong>轻量级</strong>：在同一台宿主机上的容器共享系统Kernel，这使得他们可以迅速启动而且占有的内存极少。镜像是以分层文件系统构造的，这可以让它们共享相同的文件，使得磁盘使用率和镜像下载速度得到提高。</li>
-<li><strong>开放</strong>：Docker容器基于开放标准，这使得Docker容器可以运行在主流Linux发行版和Windows操作系统上。</li>
-<li><strong>安全</strong>：容器将各个应用程序隔离开来，这给所有的应用程序提供了一层额外的安全防护。</li>
-</ul>
-
-<p>对于Docker等大多数Linux容器来说，<strong>Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。</strong></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/docker-introduction/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/kubernetes-introduction/">《深入剖析Kubernetes》-入门</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-17 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-          <a href="/categories/kubernetes/"> kubernetes </a>
-          </div>
-        <span class="more-meta"> 约 786 字 </span>
+        <span class="more-meta"> 约 929 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p>首先，Kubernetes项目要解决的问题是什么？</p>
-
-<p>编排？调度？容器云？还是集群管理？</p>
-
-<p>对于大多数用户来说，他们希望Kubernetes项目带来的体验是确定的：现在我有了应用的容器镜像，请帮我在一个给定的集群上把这个应用运行起来。更进一步地说，我还希望Kubernetes能给我提供路由网关、水平扩展、监控、备份、灾难恢复等一系列运维能力。这不就是经典Paas（比如，Cloud Foundry）项目的能力吗?</p>
+      <p>关于drools的相关介绍就不再赘述了，关于drools网上的资料都很少，或者都有些老了，最近折腾了一下，记录下安装部署的过程，希望能节省下大家的时间。</p>
     </div>
     <div class="read-more">
-      <a href="/post/kubernetes-introduction/" class="read-more-link">阅读更多</a>
+      <a href="/post/drools-7.15.0.final-docker-deploy/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
