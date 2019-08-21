@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>java on Mainroad</title>
+    <title>java on stay hungry stay foolish</title>
     <link>/tags/java/</link>
-    <description>Recent content in java on Mainroad</description>
+    <description>Recent content in java on stay hungry stay foolish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Jan 2019 07:56:14 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 12 Feb 2019 15:12:30 +0800</lastBuildDate>
     
 	<atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Tomcat Overview</title>
+      <link>/post/tomcat-overview/</link>
+      <pubDate>Tue, 12 Feb 2019 15:12:30 +0800</pubDate>
+      
+      <guid>/post/tomcat-overview/</guid>
+      <description>&lt;h2 id=&#34;tomcat-server的组成部分&#34;&gt;Tomcat Server的组成部分&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-1-server&#34;&gt;1.1 – Server&lt;/h3&gt;
+
+&lt;p&gt;A Server element represents the entire Catalina servlet container. (Singleton)&lt;/p&gt;
+
+&lt;h3 id=&#34;1-2-service&#34;&gt;1.2 – Service&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
       <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
-      <link>/post/15-lock-in-java/</link>
+      <link>/post/java-15-lock/</link>
       <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
       
-      <guid>/post/15-lock-in-java/</guid>
+      <guid>/post/java-15-lock/</guid>
       <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
     </item>
     
@@ -39,18 +54,8 @@
       <pubDate>Sun, 13 Jan 2019 10:03:47 +0800</pubDate>
       
       <guid>/post/devops-in-action/</guid>
-      <description>&lt;h2 id=&#34;1-配置管理&#34;&gt;1、配置管理&lt;/h2&gt;
-
-&lt;p&gt;很多应用程序需要一些配置通过组合的配置文件，命令行参数和环境变量。
-这些配置应该与镜像内容分离以保持容器化应用程序的可移植性。&lt;/p&gt;
-
-&lt;p&gt;方案一、第三方产品
-携程apollo&lt;/p&gt;
-
-&lt;p&gt;方案二、k8s的configmap+ansible
-ConfigMap API资源提供了将配置数据注入容器的机制，同时保持容器不受kubernetes的影响。ConfigMap可用于存储细粒度信息如单个属性，或粗粒度信息如整个配置文件或JSON对象。&lt;/p&gt;
-
-&lt;p&gt;视频介绍 &lt;a href=&#34;http://fast.wistia.net/embed/iframe/qrqfj371b6?popover=true&#34;&gt;ansible来了&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;强调业务目标，以用户的价值为唯一的评判标准，团队的考核评价机制也要改变，个体和团队的成功都要放在整个开发-运维生命周期内来进行评价，开发完成了很多用户需求不一定是成功，运维保障系统不down机也不一定是成功！只有用户想要的功能被及时实现了，被成功部署了，被稳定使用了才算成功。
+就是把敏捷开发部门和运维部门之间的围墙打通，形成闭环&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -103,7 +108,16 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     </item>
     
     <item>
-      <title>高效学习</title>
+      <title>《稀缺》-读书笔记</title>
+      <link>/post/reading-note-scarcity/</link>
+      <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
+      
+      <guid>/post/reading-note-scarcity/</guid>
+      <description>这里填写文章文章摘要。</description>
+    </item>
+    
+    <item>
+      <title>learn method</title>
       <link>/post/learn-method/</link>
       <pubDate>Sat, 12 Jan 2019 11:59:01 +0800</pubDate>
       

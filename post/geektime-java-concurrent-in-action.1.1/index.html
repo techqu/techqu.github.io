@@ -4,16 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>《Java并发编程实战》-2-并发工具类(上) - Mainroad</title>
+	<title>《Java并发编程实战》-2-并发工具类(上) - stay hungry stay foolish</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="《Java并发编程实战》-2-并发工具类(上)" />
-<meta property="og:description" content="14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中 Lock 用于解决互斥 问题，Condition 用于解决同步问题。
-原因是 synchronized 申请资源的时候，如果申请不到，线程直 接进入阻塞状态了，而线程进入阻塞状态，啥都干不了，也释放不了线程已经占有的资源。但我 们希望的是:
-对于“不可抢占”这个条件，占用部分资源的线程进一步申请其他资源时，如果申 请不到，可以主动释放它占有的资源，这样不可抢占这个条件就破坏掉了。
-如果我们重新设计一把互斥锁去解决这个问题，那该怎么设计呢?我觉得有三种方案。
- 能够响应中断。synchronized 的问题是，持有锁 A 后，如果尝试获取锁 B 失败，那么线程就 进入阻塞状态，一旦发生死锁，就没有任何机会来唤醒阻塞的线程。但如果阻塞状态的线程能 够响应中断信号，也就是说当我们给阻塞的线程发送中断信号的时候，能够唤醒它，那它就有 机会释放曾经持有的锁 A。这样就破坏了不可抢占条件了。 支持超时。如果线程在一段时间之内没有获取到锁，不是进入阻塞状态，而是返回一个错误， 那这个线程也有机会释放曾经持有的锁。这样也能破坏不可抢占条件。 非阻塞地获取锁。如果尝试获取锁失败，并不进入阻塞状态，而是直接返回，那这个线程也有 机会释放曾经持有的锁。这样也能破坏不可抢占条件。  这三种方案可以全面弥补 synchronized 的问题。到这里相信你应该也能理解了，这三个方案就 是“重复造轮子”的主要原因，体现在 API 上，就是 Lock 接口的三个方法。详情如下:
-// 支持中断的 API void lockInterruptibly() throws InterruptedException; // 支持超时的 API boolean tryLock(long time, TimeUnit unit) throws InterruptedException; // 支持非阻塞获取锁的 API boolean tryLock();  如何保证可见性 Java SDK 里面锁的实现非常复杂，这里我就不展开细说了，但是原理还是 需要简单介绍一下:它是利用了 volatile 相关的 Happens-Before 规则。Java SDK 里面的 ReentrantLock，内部持有一个 volatile 的成员变量 state，获取锁的时候，会读写 state 的值; 解锁的时候，也会读写 state 的值(简化后的代码如下面所示)。也就是说，在执行 value&#43;=1 之前，程序先读写了一次 volatile 变量 state，在执行 value&#43;=1 之后，又读写了一次 volatile 变量 state。" />
+<meta property="og:description" content="在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中Lock 用于解决互斥 问题，Condition 用于解决同步问题。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/geektime-java-concurrent-in-action.1.1/" />
 <meta property="article:published_time" content="2019-07-26T17:30:24+08:00" />
@@ -21,12 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="《Java并发编程实战》-2-并发工具类(上)"/>
-<meta name="twitter:description" content="14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中 Lock 用于解决互斥 问题，Condition 用于解决同步问题。
-原因是 synchronized 申请资源的时候，如果申请不到，线程直 接进入阻塞状态了，而线程进入阻塞状态，啥都干不了，也释放不了线程已经占有的资源。但我 们希望的是:
-对于“不可抢占”这个条件，占用部分资源的线程进一步申请其他资源时，如果申 请不到，可以主动释放它占有的资源，这样不可抢占这个条件就破坏掉了。
-如果我们重新设计一把互斥锁去解决这个问题，那该怎么设计呢?我觉得有三种方案。
- 能够响应中断。synchronized 的问题是，持有锁 A 后，如果尝试获取锁 B 失败，那么线程就 进入阻塞状态，一旦发生死锁，就没有任何机会来唤醒阻塞的线程。但如果阻塞状态的线程能 够响应中断信号，也就是说当我们给阻塞的线程发送中断信号的时候，能够唤醒它，那它就有 机会释放曾经持有的锁 A。这样就破坏了不可抢占条件了。 支持超时。如果线程在一段时间之内没有获取到锁，不是进入阻塞状态，而是返回一个错误， 那这个线程也有机会释放曾经持有的锁。这样也能破坏不可抢占条件。 非阻塞地获取锁。如果尝试获取锁失败，并不进入阻塞状态，而是直接返回，那这个线程也有 机会释放曾经持有的锁。这样也能破坏不可抢占条件。  这三种方案可以全面弥补 synchronized 的问题。到这里相信你应该也能理解了，这三个方案就 是“重复造轮子”的主要原因，体现在 API 上，就是 Lock 接口的三个方法。详情如下:
-// 支持中断的 API void lockInterruptibly() throws InterruptedException; // 支持超时的 API boolean tryLock(long time, TimeUnit unit) throws InterruptedException; // 支持非阻塞获取锁的 API boolean tryLock();  如何保证可见性 Java SDK 里面锁的实现非常复杂，这里我就不展开细说了，但是原理还是 需要简单介绍一下:它是利用了 volatile 相关的 Happens-Before 规则。Java SDK 里面的 ReentrantLock，内部持有一个 volatile 的成员变量 state，获取锁的时候，会读写 state 的值; 解锁的时候，也会读写 state 的值(简化后的代码如下面所示)。也就是说，在执行 value&#43;=1 之前，程序先读写了一次 volatile 变量 state，在执行 value&#43;=1 之后，又读写了一次 volatile 变量 state。"/>
+<meta name="twitter:description" content="在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中Lock 用于解决互斥 问题，Condition 用于解决同步问题。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -41,13 +31,43 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="Mainroad" rel="home">
-				<div class="logo__title">Mainroad</div>
+			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
+				<div class="logo__title">stay hungry stay foolish</div>
 				<div class="logo__tagline">Just another site</div>
 			</a>
 		</div>
-		<div class="divider"></div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/post/2018-2019/">2018-2019</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">about me</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/post/learn-method/">learn method</a>
+		</li>
+	</ul>
+</nav>
+
 	</div>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/monokai.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/django.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/vim.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/gradle.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/tex.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
 </header>
 		<div class="wrapper flex">
 			<div class="primary">
@@ -65,7 +85,7 @@
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/geektime_note" rel="category">geektime_note</a>, <a class="meta__link" href="/categories/java%e5%b9%b6%e5%8f%91%e5%ae%9e%e6%88%98" rel="category">java并发实战</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/java%e5%b9%b6%e5%8f%91%e5%ae%9e%e6%88%98" rel="category">java并发实战</a></span>
 </div>
 </div>
 		</header>
@@ -125,13 +145,11 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
+			<p>在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有<strong>两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作</strong>。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中<strong>Lock 用于解决互斥 问题，Condition 用于解决同步问题。</strong></p>
 
 <h2 id="14-lock和condition-上-隐藏在并发包中的管程">14|Lock和Condition（上）：隐藏在并发包中的管程</h2>
 
 <h3 id="再造管程的理由">再造管程的理由</h3>
-
-<p>在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中 Lock 用于解决互斥 问题，Condition 用于解决同步问题。</p>
 
 <p>原因是 synchronized 申请资源的时候，如果申请不到，线程直 接进入阻塞状态了，而线程进入阻塞状态，啥都干不了，也释放不了线程已经占有的资源。但我 们希望的是:</p>
 
@@ -815,7 +833,6 @@ List 里面只有一个实现类就是CopyOnWriteArrayList。CopyOnWrite，顾�
 
 <p>Java 并发容器的内容很多，但鉴于篇幅有限，我们只是对一些关键点进行了梳理和介绍。
 而在实际工作中，你不单要清楚每种容器的特性，还要能选对容器，这才是关键，至于每种容器 的用法，用的时候看一下 API 说明就可以了，这些容器的使用都不难。在文中，我们甚至都没有 介绍 Java 容器的快速失败机制(Fail-Fast)，原因就在于当你选对容器的时候，根本不会触发 它。</p>
-
 		</div>
 	</article>
 </main>
@@ -849,7 +866,7 @@ List 里面只有一个实现类就是CopyOnWriteArrayList。CopyOnWrite，顾�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Mainroad.
+			&copy; 2019 stay hungry stay foolish.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>spring on Mainroad</title>
+    <title>spring on stay hungry stay foolish</title>
     <link>/categories/spring/</link>
-    <description>Recent content in spring on Mainroad</description>
+    <description>Recent content in spring on stay hungry stay foolish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Jul 2019 15:00:05 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 11:51:07 +0800</lastBuildDate>
     
 	<atom:link href="/categories/spring/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>怎样阅读spring源码</title>
+      <link>/post/how-to-read-spring-source-code/</link>
+      <pubDate>Fri, 12 Jul 2019 11:51:07 +0800</pubDate>
+      
+      <guid>/post/how-to-read-spring-source-code/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Spring是如何运用设计模式的？</title>

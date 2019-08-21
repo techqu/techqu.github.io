@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>锁 on Mainroad</title>
+    <title>锁 on stay hungry stay foolish</title>
     <link>/tags/%E9%94%81/</link>
-    <description>Recent content in 锁 on Mainroad</description>
+    <description>Recent content in 锁 on stay hungry stay foolish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 19 Jan 2019 07:56:14 +0800</lastBuildDate>
@@ -13,10 +13,10 @@
     
     <item>
       <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
-      <link>/post/15-lock-in-java/</link>
+      <link>/post/java-15-lock/</link>
       <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
       
-      <guid>/post/15-lock-in-java/</guid>
+      <guid>/post/java-15-lock/</guid>
       <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
     </item>
     

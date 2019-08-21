@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>《深入拆解Java虚拟机》 on stay hungry stay foolish</title>
+    <link>/tags/%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
+    <description>Recent content in 《深入拆解Java虚拟机》 on stay hungry stay foolish</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Dec 2018 22:52:53 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（上）</title>
+      <link>/post/geektime-jvm-how-execute-method-1/</link>
+      <pubDate>Tue, 25 Dec 2018 22:52:53 +0800</pubDate>
+      
+      <guid>/post/geektime-jvm-how-execute-method-1/</guid>
+      <description>&lt;p&gt;JVM是如何执行方法调用的？（上）&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

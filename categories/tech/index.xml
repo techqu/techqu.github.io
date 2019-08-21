@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tech on Mainroad</title>
+    <title>Tech on stay hungry stay foolish</title>
     <link>/categories/tech/</link>
-    <description>Recent content in Tech on Mainroad</description>
+    <description>Recent content in Tech on stay hungry stay foolish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 04 Aug 2019 15:32:03 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Sun, 04 Aug 2019 15:32:03 +0800</pubDate>
       
       <guid>/post/geektime-jvm-01/</guid>
-      <description></description>
+      <description>&lt;p&gt;整个专栏将分为四大模块:基本原理、高效实现、代码优化、虚拟机黑科技&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -52,18 +52,8 @@
       <pubDate>Sun, 13 Jan 2019 10:03:47 +0800</pubDate>
       
       <guid>/post/devops-in-action/</guid>
-      <description>&lt;h2 id=&#34;1-配置管理&#34;&gt;1、配置管理&lt;/h2&gt;
-
-&lt;p&gt;很多应用程序需要一些配置通过组合的配置文件，命令行参数和环境变量。
-这些配置应该与镜像内容分离以保持容器化应用程序的可移植性。&lt;/p&gt;
-
-&lt;p&gt;方案一、第三方产品
-携程apollo&lt;/p&gt;
-
-&lt;p&gt;方案二、k8s的configmap+ansible
-ConfigMap API资源提供了将配置数据注入容器的机制，同时保持容器不受kubernetes的影响。ConfigMap可用于存储细粒度信息如单个属性，或粗粒度信息如整个配置文件或JSON对象。&lt;/p&gt;
-
-&lt;p&gt;视频介绍 &lt;a href=&#34;http://fast.wistia.net/embed/iframe/qrqfj371b6?popover=true&#34;&gt;ansible来了&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;强调业务目标，以用户的价值为唯一的评判标准，团队的考核评价机制也要改变，个体和团队的成功都要放在整个开发-运维生命周期内来进行评价，开发完成了很多用户需求不一定是成功，运维保障系统不down机也不一定是成功！只有用户想要的功能被及时实现了，被成功部署了，被稳定使用了才算成功。
+就是把敏捷开发部门和运维部门之间的围墙打通，形成闭环&lt;/p&gt;</description>
     </item>
     
     <item>

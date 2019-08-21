@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>JVM on Mainroad</title>
+    <title>JVM on stay hungry stay foolish</title>
     <link>/categories/jvm/</link>
-    <description>Recent content in JVM on Mainroad</description>
+    <description>Recent content in JVM on stay hungry stay foolish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Dec 2018 18:48:04 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 19 Aug 2019 17:49:12 +0800</lastBuildDate>
     
 	<atom:link href="/categories/jvm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>java内存溢出分析工具：jmap使用实战</title>
+      <link>/post/java-jvm-jmap/</link>
+      <pubDate>Mon, 19 Aug 2019 17:49:12 +0800</pubDate>
+      
+      <guid>/post/java-jvm-jmap/</guid>
+      <description>&lt;p&gt;java内存溢出分析工具：jmap使用实战&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>JVM性能调优</title>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>geektime on stay hungry stay foolish</title>
+    <link>/categories/geektime/</link>
+    <description>Recent content in geektime on stay hungry stay foolish</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Aug 2019 20:34:10 +0800</lastBuildDate>
+    
+	<atom:link href="/categories/geektime/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>《Java性能调优实战》</title>
+      <link>/post/geektime-java-performance/</link>
+      <pubDate>Sun, 04 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance/</guid>
+      <description>&lt;p&gt;为什么要做性能调优?一款线上产品如果没有经过性能测试，那它就好比是一颗定时炸弹，你不知道它什么时候会出现问题，你也
+不清楚它能承受的极限在哪儿。&lt;/p&gt;
+
+&lt;p&gt;好的系统性能调优不仅仅可以提高系统的性能，还能为公司节省资源。这也是我们做性能调优的最直接的目
+的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《深入拆解Java虚拟机》-课程目录</title>
+      <link>/post/geektime-jvm-01/</link>
+      <pubDate>Sun, 04 Aug 2019 15:32:03 +0800</pubDate>
+      
+      <guid>/post/geektime-jvm-01/</guid>
+      <description>&lt;p&gt;整个专栏将分为四大模块:基本原理、高效实现、代码优化、虚拟机黑科技&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-3-并发设计模式</title>
+      <link>/post/geektime-java-concurrent-in-action.2/</link>
+      <pubDate>Sat, 27 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-concurrent-in-action.2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-2-并发工具类(下)</title>
+      <link>/post/geektime-java-concurrent-in-action.1.2/</link>
+      <pubDate>Fri, 26 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-concurrent-in-action.1.2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-2-并发工具类(上)</title>
+      <link>/post/geektime-java-concurrent-in-action.1.1/</link>
+      <pubDate>Fri, 26 Jul 2019 17:30:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-concurrent-in-action.1.1/</guid>
+      <description>&lt;p&gt;在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有&lt;strong&gt;两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作&lt;/strong&gt;。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中&lt;strong&gt;Lock 用于解决互斥 问题，Condition 用于解决同步问题。&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-1-理论基础篇</title>
+      <link>/post/geektime-java-concurrent-in-action.0/</link>
+      <pubDate>Thu, 25 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-concurrent-in-action.0/</guid>
+      <description>&lt;p&gt;这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个&lt;strong&gt;核心矛盾一直存在，就是这三者的速度差异&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《趣谈网络协议》- Udp Tcp</title>
+      <link>/post/geektime-network-protocol-udp-tcp/</link>
+      <pubDate>Thu, 25 Jul 2019 14:38:50 +0800</pubDate>
+      
+      <guid>/post/geektime-network-protocol-udp-tcp/</guid>
+      <description>&lt;p&gt;传输层里比较重要的两个协议，一个是 TCP，一个是
+UDP。对于不从事底层开发的人员来讲，或者对于开发应用的人来讲，最常用的就是这两个协议。由于
+面试的时候，这两个协议经常会被放在一起问&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《数据结构与算法之美》-红黑树</title>
+      <link>/post/data-structure-red-black-tree/</link>
+      <pubDate>Fri, 12 Apr 2019 17:04:30 +0800</pubDate>
+      
+      <guid>/post/data-structure-red-black-tree/</guid>
+      <description>&lt;p&gt;很多书籍里，但凡讲到平衡二叉查找树，就会拿红黑树作为例子。不仅如此，如果你有一定的开发经验，你会发现，在工程中，很多用到平衡二叉查找树的地方都会用红黑树。你有没有想过，&lt;/p&gt;
+
+&lt;p&gt;Java TreeMap实现了SortedMap接口，也就是说会按照key的大小顺序对Map中的元素进行排序，key大小的评判可以通过其本身的自然顺序（natural ordering），也可以通过构造时传入的比较器（Comparator）。&lt;/p&gt;
+
+&lt;p&gt;TreeMap底层通过红黑树（Red-Black tree）实现，也就意味着containsKey(), get(), put(), remove()都有着log(n)的时间复杂度。其具体算法实现参照了《算法导论》。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- Question 03</title>
+      <link>/post/mysql-question-03/</link>
+      <pubDate>Wed, 27 Mar 2019 15:49:58 +0800</pubDate>
+      
+      <guid>/post/mysql-question-03/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《数据结构与算法之美》-归并排序</title>
+      <link>/post/data-structure-and-algorithm-merge-sort/</link>
+      <pubDate>Thu, 21 Mar 2019 16:54:30 +0800</pubDate>
+      
+      <guid>/post/data-structure-and-algorithm-merge-sort/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- Order By</title>
+      <link>/post/mysql-orderby/</link>
+      <pubDate>Wed, 20 Mar 2019 08:49:19 +0800</pubDate>
+      
+      <guid>/post/mysql-orderby/</guid>
+      <description>&lt;p&gt;在你开发应用时，一定会遇到需要根据指定的字段来显式结果的需求。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 唯一索引和普通索引</title>
+      <link>/post/mysql-index-unique-and-normal/</link>
+      <pubDate>Sat, 16 Mar 2019 15:26:14 +0800</pubDate>
+      
+      <guid>/post/mysql-index-unique-and-normal/</guid>
+      <description>&lt;p&gt;在不同的业务场景下，应该选择普通索引，还是唯一索引呢？接下来，我们就从这两种索引对查询语句和更新语句的性能影响来进行分析。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 深入浅出索引</title>
+      <link>/post/mysql-index/</link>
+      <pubDate>Sat, 16 Mar 2019 15:25:44 +0800</pubDate>
+      
+      <guid>/post/mysql-index/</guid>
+      <description>&lt;p&gt;简单来说，索引的出现其实就是为了提高数据查询的效率，就像书的目录一样。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 事务隔离</title>
+      <link>/post/mysql-transaction-2/</link>
+      <pubDate>Fri, 15 Mar 2019 09:26:22 +0800</pubDate>
+      
+      <guid>/post/mysql-transaction-2/</guid>
+      <description>&lt;p&gt;如果是可重复读隔离级别，事务T启动的时候会创建一个视图read-view，之后事务T执行期间，即使有其他事务修改了数据，事务T看到的仍然跟在启动时看到的一样。也就是说，一个在可重复读隔离级别下执行的事务，好像与世无争，不受外界影响。&lt;/p&gt;
+
+&lt;p&gt;但是，一个事务要更新一行，如果刚好有另外一个事务拥有这一行的行锁，它又不能这么超然了，会被锁住，进入等待状态。问题是，既然进入了等待状态，那么等到这个事务自己获取到行锁要更新数据的时候，它读到的值又是什么呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 行锁、死锁、事务</title>
+      <link>/post/mysql-transaction/</link>
+      <pubDate>Thu, 14 Mar 2019 17:23:42 +0800</pubDate>
+      
+      <guid>/post/mysql-transaction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》-如何快速复制一张表</title>
+      <link>/post/mysql-how-to-copy-table/</link>
+      <pubDate>Mon, 25 Feb 2019 08:00:23 +0800</pubDate>
+      
+      <guid>/post/mysql-how-to-copy-table/</guid>
+      <description>&lt;p&gt;本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》-Join语句是怎么执行的</title>
+      <link>/post/mysql-how-join-run/</link>
+      <pubDate>Fri, 22 Feb 2019 22:27:38 +0800</pubDate>
+      
+      <guid>/post/mysql-how-join-run/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《软件测试52讲》-谈谈测试</title>
+      <link>/post/test-about/</link>
+      <pubDate>Thu, 31 Jan 2019 13:39:29 +0800</pubDate>
+      
+      <guid>/post/test-about/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/img/undraw/undraw_mobile_testing_reah.png&#34; alt=&#34;mobile_testing&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《深入剖析Kubernetes》-Docker的实现原理</title>
+      <link>/post/docker-introduction/</link>
+      <pubDate>Thu, 17 Jan 2019 15:12:03 +0800</pubDate>
+      
+      <guid>/post/docker-introduction/</guid>
+      <description>&lt;p&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”&lt;/p&gt;
+
+&lt;p&gt;Docker容器具有以下3个特点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;轻量级&lt;/strong&gt;：在同一台宿主机上的容器共享系统Kernel，这使得他们可以迅速启动而且占有的内存极少。镜像是以分层文件系统构造的，这可以让它们共享相同的文件，使得磁盘使用率和镜像下载速度得到提高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开放&lt;/strong&gt;：Docker容器基于开放标准，这使得Docker容器可以运行在主流Linux发行版和Windows操作系统上。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全&lt;/strong&gt;：容器将各个应用程序隔离开来，这给所有的应用程序提供了一层额外的安全防护。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于Docker等大多数Linux容器来说，&lt;strong&gt;Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《深入剖析Kubernetes》-入门</title>
+      <link>/post/kubernetes-introduction/</link>
+      <pubDate>Thu, 17 Jan 2019 08:41:16 +0800</pubDate>
+      
+      <guid>/post/kubernetes-introduction/</guid>
+      <description>&lt;p&gt;首先，Kubernetes项目要解决的问题是什么？&lt;/p&gt;
+
+&lt;p&gt;编排？调度？容器云？还是集群管理？&lt;/p&gt;
+
+&lt;p&gt;对于大多数用户来说，他们希望Kubernetes项目带来的体验是确定的：现在我有了应用的容器镜像，请帮我在一个给定的集群上把这个应用运行起来。更进一步地说，我还希望Kubernetes能给我提供路由网关、水平扩展、监控、备份、灾难恢复等一系列运维能力。这不就是经典Paas（比如，Cloud Foundry）项目的能力吗?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</title>
+      <link>/post/geektime-network-protocol-ipconfig/</link>
+      <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
+      
+      <guid>/post/geektime-network-protocol-ipconfig/</guid>
+      <description>&lt;p&gt;从一行查看IP地址的命令开始讲解，
+Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（下）</title>
+      <link>/post/geektime-jvm-how-execute-method-2/</link>
+      <pubDate>Wed, 26 Dec 2018 11:45:43 +0800</pubDate>
+      
+      <guid>/post/geektime-jvm-how-execute-method-2/</guid>
+      <description>&lt;p&gt;《极客时间-深入拆解java虚拟机》笔记&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（上）</title>
+      <link>/post/geektime-jvm-how-execute-method-1/</link>
+      <pubDate>Tue, 25 Dec 2018 22:52:53 +0800</pubDate>
+      
+      <guid>/post/geektime-jvm-how-execute-method-1/</guid>
+      <description>&lt;p&gt;JVM是如何执行方法调用的？（上）&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》-笔记</title>
+      <link>/post/mysql/</link>
+      <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
+      
+      <guid>/post/mysql/</guid>
+      <description>&lt;p&gt;MYSQL实战45讲-极客时间笔记&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《数据结构与算法之美》-基础篇(1)</title>
+      <link>/post/data-structure-and-algorithm.0/</link>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
+      
+      <guid>/post/data-structure-and-algorithm.0/</guid>
+      <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《数据结构与算法之美》-基础篇(2)</title>
+      <link>/post/data-structure-and-algorithm.1/</link>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
+      
+      <guid>/post/data-structure-and-algorithm.1/</guid>
+      <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《数据结构与算法之美》-高级篇</title>
+      <link>/post/data-structure-and-algorithm.2/</link>
+      <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
+      
+      <guid>/post/data-structure-and-algorithm.2/</guid>
+      <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devops on stay hungry stay foolish</title>
+    <link>/categories/devops/</link>
+    <description>Recent content in devops on stay hungry stay foolish</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Jul 2019 11:50:35 +0800</lastBuildDate>
+    
+	<atom:link href="/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>基于Kubernetes/Jenkins/Harbor/Sonarqube搭建微服务CICD系统</title>
+      <link>/post/k8s-jenkins-docker-ci/</link>
+      <pubDate>Tue, 02 Jul 2019 11:50:35 +0800</pubDate>
+      
+      <guid>/post/k8s-jenkins-docker-ci/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;项目说明&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;14个JAVA spring cloud 微服务项目&lt;/p&gt;
+
+&lt;p&gt;5个Node项目&lt;/p&gt;
+
+&lt;p&gt;1个Node项目VUE生成静态页面做前端+nginx&lt;/p&gt;
+
+&lt;p&gt;pgsql&lt;/p&gt;
+
+&lt;p&gt;redis&lt;/p&gt;
+
+&lt;p&gt;rabbitmq&lt;/p&gt;
+
+&lt;p&gt;emqx&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《持续交付》</title>
+      <link>/post/geektime-ci-cd-introduce/</link>
+      <pubDate>Fri, 19 Apr 2019 15:23:49 +0800</pubDate>
+      
+      <guid>/post/geektime-ci-cd-introduce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Devops实践</title>
+      <link>/post/devops-in-action/</link>
+      <pubDate>Sun, 13 Jan 2019 10:03:47 +0800</pubDate>
+      
+      <guid>/post/devops-in-action/</guid>
+      <description>&lt;p&gt;强调业务目标，以用户的价值为唯一的评判标准，团队的考核评价机制也要改变，个体和团队的成功都要放在整个开发-运维生命周期内来进行评价，开发完成了很多用户需求不一定是成功，运维保障系统不down机也不一定是成功！只有用户想要的功能被及时实现了，被成功部署了，被稳定使用了才算成功。
+就是把敏捷开发部门和运维部门之间的围墙打通，形成闭环&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

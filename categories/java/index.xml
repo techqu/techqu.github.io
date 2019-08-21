@@ -1,15 +1,124 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>java on Mainroad</title>
+    <title>java on stay hungry stay foolish</title>
     <link>/categories/java/</link>
-    <description>Recent content in java on Mainroad</description>
+    <description>Recent content in java on stay hungry stay foolish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Feb 2019 15:12:30 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 04 Aug 2019 20:34:10 +0800</lastBuildDate>
     
 	<atom:link href="/categories/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《Java性能调优实战》</title>
+      <link>/post/geektime-java-performance/</link>
+      <pubDate>Sun, 04 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance/</guid>
+      <description>&lt;p&gt;为什么要做性能调优?一款线上产品如果没有经过性能测试，那它就好比是一颗定时炸弹，你不知道它什么时候会出现问题，你也
+不清楚它能承受的极限在哪儿。&lt;/p&gt;
+
+&lt;p&gt;好的系统性能调优不仅仅可以提高系统的性能，还能为公司节省资源。这也是我们做性能调优的最直接的目
+的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>怎样阅读spring源码</title>
+      <link>/post/how-to-read-spring-source-code/</link>
+      <pubDate>Fri, 12 Jul 2019 11:51:07 +0800</pubDate>
+      
+      <guid>/post/how-to-read-spring-source-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 分布式服务接口的幂等性和顺序性</title>
+      <link>/post/java-interview-distributed-dubbo07/</link>
+      <pubDate>Tue, 21 May 2019 17:35:10 +0800</pubDate>
+      
+      <guid>/post/java-interview-distributed-dubbo07/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 Dubbo服务治理、服务降级</title>
+      <link>/post/java-interview-distributed-dubbo06/</link>
+      <pubDate>Tue, 21 May 2019 16:46:51 +0800</pubDate>
+      
+      <guid>/post/java-interview-distributed-dubbo06/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;如何基于dubbo进行服务治理、服务降级、失败重试以及超时重试？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 Dubbo的spi思想</title>
+      <link>/post/java-interview-distributed-dubbo05/</link>
+      <pubDate>Tue, 21 May 2019 16:01:24 +0800</pubDate>
+      
+      <guid>/post/java-interview-distributed-dubbo05/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;dubbo的spi思想是什么？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试 分布式-dubbo负载均衡策略和集群容错策略</title>
+      <link>/post/java-interview-distributed-dubbo04/</link>
+      <pubDate>Tue, 21 May 2019 14:53:52 +0800</pubDate>
+      
+      <guid>/post/java-interview-distributed-dubbo04/</guid>
+      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
+
+&lt;p&gt;dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 Dubbo的协议</title>
+      <link>/post/java-interview-distributed-dubbo03/</link>
+      <pubDate>Tue, 21 May 2019 14:41:19 +0800</pubDate>
+      
+      <guid>/post/java-interview-distributed-dubbo03/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 Dubbo的原理</title>
+      <link>/post/java-interview-distributed-dubbo02/</link>
+      <pubDate>Tue, 21 May 2019 14:32:22 +0800</pubDate>
+      
+      <guid>/post/java-interview-distributed-dubbo02/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java Hashmap</title>
+      <link>/post/java-hashmap/</link>
+      <pubDate>Mon, 22 Apr 2019 17:22:31 +0800</pubDate>
+      
+      <guid>/post/java-hashmap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>如何设计一个秒杀系统</title>
+      <link>/post/java-how-to-design-seckill/</link>
+      <pubDate>Mon, 18 Feb 2019 08:56:11 +0800</pubDate>
+      
+      <guid>/post/java-how-to-design-seckill/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>分布式系统唯一ID生成方案汇总</title>
+      <link>/post/java-distributed-id/</link>
+      <pubDate>Sun, 17 Feb 2019 12:57:39 +0800</pubDate>
+      
+      <guid>/post/java-distributed-id/</guid>
+      <description>&lt;p&gt;系统唯一ID是我们在设计一个系统的时候常常会遇见的问题，也常常为这个问题而纠结。生成ID的方法有很多，适应不同的场景、需求以及性能要求。所以有些比较复杂的系统会有多个ID生成的策略。下面就介绍一些常见的ID生成策略。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Tomcat Overview</title>

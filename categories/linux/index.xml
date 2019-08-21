@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on stay hungry stay foolish</title>
+    <link>/categories/linux/</link>
+    <description>Recent content in linux on stay hungry stay foolish</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Apr 2019 13:24:32 +0800</lastBuildDate>
+    
+	<atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux三剑客之AWK学习</title>
+      <link>/post/linux-awk/</link>
+      <pubDate>Tue, 02 Apr 2019 13:24:32 +0800</pubDate>
+      
+      <guid>/post/linux-awk/</guid>
+      <description>&lt;p&gt;awk是一个强大的文本分析工具，相对于grep的查找，sed的编辑，awk在其对数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

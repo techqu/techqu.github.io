@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>《趣谈网络协议》 on Mainroad</title>
+    <title>《趣谈网络协议》 on stay hungry stay foolish</title>
     <link>/categories/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</link>
-    <description>Recent content in 《趣谈网络协议》 on Mainroad</description>
+    <description>Recent content in 《趣谈网络协议》 on stay hungry stay foolish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Jan 2019 18:51:01 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jul 2019 14:38:50 +0800</lastBuildDate>
     
 	<atom:link href="/categories/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《趣谈网络协议》- Udp Tcp</title>
+      <link>/post/geektime-network-protocol-udp-tcp/</link>
+      <pubDate>Thu, 25 Jul 2019 14:38:50 +0800</pubDate>
+      
+      <guid>/post/geektime-network-protocol-udp-tcp/</guid>
+      <description>&lt;p&gt;传输层里比较重要的两个协议，一个是 TCP，一个是
+UDP。对于不从事底层开发的人员来讲，或者对于开发应用的人来讲，最常用的就是这两个协议。由于
+面试的时候，这两个协议经常会被放在一起问&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</title>

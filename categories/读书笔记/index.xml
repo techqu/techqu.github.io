@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>读书笔记 on Mainroad</title>
+    <title>读书笔记 on stay hungry stay foolish</title>
     <link>/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
-    <description>Recent content in 读书笔记 on Mainroad</description>
+    <description>Recent content in 读书笔记 on stay hungry stay foolish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Jan 2019 17:39:54 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Aug 2019 16:13:00 +0800</lastBuildDate>
     
 	<atom:link href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《暗时间》-读书笔记</title>
+      <link>/post/reading-note-dark-time/</link>
+      <pubDate>Tue, 13 Aug 2019 16:13:00 +0800</pubDate>
+      
+      <guid>/post/reading-note-dark-time/</guid>
+      <description>&lt;p&gt;重视心理学,你比别人往后多看一年，你就比别人领先一年的时间来准备&lt;/p&gt;
+
+&lt;p&gt;人生90%的知识靠自学。设计自己的进度条，类似于项目排期&lt;/p&gt;
+
+&lt;p&gt;专注和持之以恒才是稀缺的,反思&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>《你的灯亮着吗?》-读书笔记</title>
@@ -57,6 +70,15 @@
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
       <guid>/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里填写文章文章摘要。</description>
+    </item>
+    
+    <item>
+      <title>《稀缺》-读书笔记</title>
+      <link>/post/reading-note-scarcity/</link>
+      <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
+      
+      <guid>/post/reading-note-scarcity/</guid>
       <description>这里填写文章文章摘要。</description>
     </item>
     
