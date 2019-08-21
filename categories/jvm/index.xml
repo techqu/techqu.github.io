@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>JVM on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/jvm/</link>
-    <description>Recent content in JVM on Quguang 学习笔记</description>
+    <title>JVM on Mainroad</title>
+    <link>/categories/jvm/</link>
+    <description>Recent content in JVM on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Mon, 24 Dec 2018 18:48:04 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/jvm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/jvm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JVM性能调优</title>
-      <link>https://techqu.github.io/post/jvm-performance-optimization/</link>
+      <link>/post/jvm-performance-optimization/</link>
       <pubDate>Mon, 24 Dec 2018 18:48:04 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-performance-optimization/</guid>
+      <guid>/post/jvm-performance-optimization/</guid>
       <description>&lt;p&gt;linux性能调优和年轻代大小选择和年老代大小的选择&lt;/p&gt;</description>
     </item>
     

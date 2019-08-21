@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>设计模式 on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
-    <description>Recent content in 设计模式 on Quguang 学习笔记</description>
+    <title>设计模式 on Mainroad</title>
+    <link>/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 设计模式 on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Fri, 05 Jul 2019 15:00:05 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Spring是如何运用设计模式的？</title>
-      <link>https://techqu.github.io/post/spring-design-pattern/</link>
+      <link>/post/spring-design-pattern/</link>
       <pubDate>Fri, 05 Jul 2019 15:00:05 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/spring-design-pattern/</guid>
+      <guid>/post/spring-design-pattern/</guid>
       <description>&lt;p&gt;关于设计模式，如果使用得当，将会使我们的代码更加简洁，并且更具扩展性。本文主要讲解Spring中如何使用策略模式，工厂方法模式以及Builder模式。&lt;/p&gt;</description>
     </item>
     

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>考研 on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/%E8%80%83%E7%A0%94/</link>
-    <description>Recent content in 考研 on Quguang 学习笔记</description>
+    <title>考研 on Mainroad</title>
+    <link>/categories/%E8%80%83%E7%A0%94/</link>
+    <description>Recent content in 考研 on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Sat, 06 Apr 2019 10:22:26 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/%E8%80%83%E7%A0%94/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/%E8%80%83%E7%A0%94/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2020考研准备</title>
-      <link>https://techqu.github.io/post/kaoyan-plan-2020/</link>
+      <link>/post/kaoyan-plan-2020/</link>
       <pubDate>Sat, 06 Apr 2019 10:22:26 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/kaoyan-plan-2020/</guid>
-      <description>一天的学习时间 数学复习计划 复习资料 数学复习资料 英语复习资料 政治复习资料 辅导老师 数学学习步骤 我建议小小白不要过度依靠视频，不是要小小白们放弃视</description>
+      <guid>/post/kaoyan-plan-2020/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>991“数据结构与C语言程序设计”考试大纲（2019版）</title>
-      <link>https://techqu.github.io/post/beihang-991-2019/</link>
+      <link>/post/beihang-991-2019/</link>
       <pubDate>Fri, 05 Apr 2019 17:35:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/beihang-991-2019/</guid>
+      <guid>/post/beihang-991-2019/</guid>
       <description>&lt;p&gt;2019年“数据结构与C语言程序设计”考试内容包括“数据结构”与“C语言程序设计”两门课程的内容，各占比例50%。试卷满分为150分。&lt;/p&gt;</description>
     </item>
     

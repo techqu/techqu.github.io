@@ -1,67 +1,138 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Quguang 学习笔记</title>
-    <link>https://techqu.github.io/</link>
-    <description>Recent content on Quguang 学习笔记</description>
+    <title>Mainroad</title>
+    <link>/</link>
+    <description>Recent content on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 16 Jan 2019 10:42:50 +0800</lastBuildDate>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 19 Aug 2019 17:49:12 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2018总结-2019展望</title>
-      <link>https://techqu.github.io/post/2018-2019/</link>
+      <link>/post/2018-2019/</link>
       <pubDate>Wed, 16 Jan 2019 10:42:50 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/2018-2019/</guid>
-      <description>2018总结 一、个人 结婚 体重暴涨 工作能力进步 了解了面试准备的重要性 二、了解和学习 领域驱动设计 devops spring security ldap service mesh mysql 网络协议 kubernetes jvm etl kylin 数据结构与算法 并发</description>
+      <guid>/post/2018-2019/</guid>
+      <description>&lt;p&gt;个人2019年，年度目标&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>java内存溢出分析工具：jmap使用实战</title>
+      <link>/post/java-jvm-jmap/</link>
+      <pubDate>Mon, 19 Aug 2019 17:49:12 +0800</pubDate>
+      
+      <guid>/post/java-jvm-jmap/</guid>
+      <description>&lt;p&gt;java内存溢出分析工具：jmap使用实战&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java排序算法</title>
+      <link>/post/java-sort-01/</link>
+      <pubDate>Sat, 17 Aug 2019 19:48:51 +0800</pubDate>
+      
+      <guid>/post/java-sort-01/</guid>
+      <description>&lt;p&gt;总结简单的排序算法&lt;/p&gt;
+
+&lt;p&gt;有个不错的网站，动画演示各种算法：&lt;a href=&#34;https://visualgo.net/zh/sorting&#34;&gt;visualgo&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《暗时间》-读书笔记</title>
+      <link>/post/reading-note-%E6%9A%97%E6%97%B6%E9%97%B4-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 13 Aug 2019 16:13:00 +0800</pubDate>
+      
+      <guid>/post/reading-note-%E6%9A%97%E6%97%B6%E9%97%B4-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;重视心理学&lt;/p&gt;
+
+&lt;p&gt;你比别人往后多看一年，你就比别人领先一年的时间来准备&lt;/p&gt;
+
+&lt;p&gt;人生90%的知识靠自学。&lt;/p&gt;
+
+&lt;p&gt;设计自己的进度条，类似于项目排期&lt;/p&gt;
+
+&lt;p&gt;专注和持之以恒才是稀缺的&lt;/p&gt;
+
+&lt;p&gt;反思&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《深入浅出计算机组成原理》-基础篇</title>
+      <link>/post/geektime-computer-system-organization-and-architecture-00/</link>
+      <pubDate>Thu, 08 Aug 2019 14:50:26 +0800</pubDate>
+      
+      <guid>/post/geektime-computer-system-organization-and-architecture-00/</guid>
+      <description>&lt;p&gt;如果找出各大学计算机系的培养计划，你会发现，它们都有差不多十来门核心课程。其中，“计算机组成原理”是入门和底层层面的第一课。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》</title>
+      <link>/post/geektime-java-performance/</link>
+      <pubDate>Sun, 04 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《深入拆解Java虚拟机》-课程目录</title>
+      <link>/post/geektime-jvm-01/</link>
+      <pubDate>Sun, 04 Aug 2019 15:32:03 +0800</pubDate>
+      
+      <guid>/post/geektime-jvm-01/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《Java并发编程实战》-3-并发设计模式</title>
-      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.2/</link>
+      <link>/post/geektime-java-concurrent-in-action.2/</link>
       <pubDate>Sat, 27 Jul 2019 17:31:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.2/</guid>
-      <description>28|Immutability模式：如何利用不可变性解决问题？ 29|Copy-on-Write模式：不是延时策略的COW 30| 线程本地存储模式：</description>
+      <guid>/post/geektime-java-concurrent-in-action.2/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《Java并发编程实战》-2-并发工具类(下)</title>
-      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/</link>
+      <link>/post/geektime-java-concurrent-in-action.1.2/</link>
       <pubDate>Fri, 26 Jul 2019 17:31:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/</guid>
-      <description>21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全</description>
+      <guid>/post/geektime-java-concurrent-in-action.1.2/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《Java并发编程实战》-2-并发工具类(上)</title>
-      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/</link>
+      <link>/post/geektime-java-concurrent-in-action.1.1/</link>
       <pubDate>Fri, 26 Jul 2019 17:30:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/</guid>
-      <description>14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领</description>
+      <guid>/post/geektime-java-concurrent-in-action.1.1/</guid>
+      <description>14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中 Lock 用于解决互斥 问题，Condition 用于解决同步问题。
+原因是 synchronized 申请资源的时候，如果申请不到，线程直 接进入阻塞状态了，而线程进入阻塞状态，啥都干不了，也释放不了线程已经占有的资源。但我 们希望的是:
+对于“不可抢占”这个条件，占用部分资源的线程进一步申请其他资源时，如果申 请不到，可以主动释放它占有的资源，这样不可抢占这个条件就破坏掉了。
+如果我们重新设计一把互斥锁去解决这个问题，那该怎么设计呢?我觉得有三种方案。
+ 能够响应中断。synchronized 的问题是，持有锁 A 后，如果尝试获取锁 B 失败，那么线程就 进入阻塞状态，一旦发生死锁，就没有任何机会来唤醒阻塞的线程。但如果阻塞状态的线程能 够响应中断信号，也就是说当我们给阻塞的线程发送中断信号的时候，能够唤醒它，那它就有 机会释放曾经持有的锁 A。这样就破坏了不可抢占条件了。 支持超时。如果线程在一段时间之内没有获取到锁，不是进入阻塞状态，而是返回一个错误， 那这个线程也有机会释放曾经持有的锁。这样也能破坏不可抢占条件。 非阻塞地获取锁。如果尝试获取锁失败，并不进入阻塞状态，而是直接返回，那这个线程也有 机会释放曾经持有的锁。这样也能破坏不可抢占条件。  这三种方案可以全面弥补 synchronized 的问题。到这里相信你应该也能理解了，这三个方案就 是“重复造轮子”的主要原因，体现在 API 上，就是 Lock 接口的三个方法。详情如下:
+// 支持中断的 API void lockInterruptibly() throws InterruptedException; // 支持超时的 API boolean tryLock(long time, TimeUnit unit) throws InterruptedException; // 支持非阻塞获取锁的 API boolean tryLock();  如何保证可见性 Java SDK 里面锁的实现非常复杂，这里我就不展开细说了，但是原理还是 需要简单介绍一下:它是利用了 volatile 相关的 Happens-Before 规则。Java SDK 里面的 ReentrantLock，内部持有一个 volatile 的成员变量 state，获取锁的时候，会读写 state 的值; 解锁的时候，也会读写 state 的值(简化后的代码如下面所示)。也就是说，在执行 value+=1 之前，程序先读写了一次 volatile 变量 state，在执行 value+=1 之后，又读写了一次 volatile 变量 state。</description>
     </item>
     
     <item>
       <title>《Java并发编程实战》-1-理论基础篇</title>
-      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.0/</link>
+      <link>/post/geektime-java-concurrent-in-action.0/</link>
       <pubDate>Thu, 25 Jul 2019 17:31:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.0/</guid>
+      <guid>/post/geektime-java-concurrent-in-action.0/</guid>
       <description>&lt;p&gt;这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个&lt;strong&gt;核心矛盾一直存在，就是这三者的速度差异&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《趣谈网络协议》- Udp Tcp</title>
-      <link>https://techqu.github.io/post/geektime-network-protocol-udp-tcp/</link>
+      <link>/post/geektime-network-protocol-udp-tcp/</link>
       <pubDate>Thu, 25 Jul 2019 14:38:50 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-network-protocol-udp-tcp/</guid>
+      <guid>/post/geektime-network-protocol-udp-tcp/</guid>
       <description>&lt;p&gt;传输层里比较重要的两个协议，一个是 TCP，一个是
 UDP。对于不从事底层开发的人员来讲，或者对于开发应用的人来讲，最常用的就是这两个协议。由于
 面试的时候，这两个协议经常会被放在一起问&lt;/p&gt;</description>
@@ -69,10 +140,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>编辑器之神-Vim学习</title>
-      <link>https://techqu.github.io/post/vim/</link>
+      <link>/post/vim/</link>
       <pubDate>Sat, 20 Jul 2019 17:15:57 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/vim/</guid>
+      <guid>/post/vim/</guid>
       <description>&lt;p&gt;编辑器之神-vim
 神的编辑器-emacs&lt;/p&gt;
 
@@ -81,55 +152,55 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>传统Saas项目实例</title>
-      <link>https://techqu.github.io/post/saas-hrm/</link>
+      <link>/post/saas-hrm/</link>
       <pubDate>Mon, 15 Jul 2019 10:32:05 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/saas-hrm/</guid>
-      <description>一、初识SaaS 云服务的三种模式 iaas、Paas、Saas 二、系统架构 分布式ID生成器 三、SaaS系统用户权限设计 多租户SaaS平台的数据</description>
+      <guid>/post/saas-hrm/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>怎样阅读spring源码</title>
-      <link>https://techqu.github.io/post/how-to-read-spring-source-code/</link>
+      <link>/post/how-to-read-spring-source-code/</link>
       <pubDate>Fri, 12 Jul 2019 11:51:07 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/how-to-read-spring-source-code/</guid>
-      <description>一、链接：https://www.zhihu.com/question/21346206/answer/101789659 建议不要硬着头皮看</description>
+      <guid>/post/how-to-read-spring-source-code/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>关于线性代数</title>
-      <link>https://techqu.github.io/post/math-linear-algebra/</link>
+      <link>/post/math-linear-algebra/</link>
       <pubDate>Wed, 10 Jul 2019 18:58:15 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/math-linear-algebra/</guid>
+      <guid>/post/math-linear-algebra/</guid>
       <description>&lt;p&gt;线性代数课程，无论你从行列式入手还是直接从矩阵入手，从一开始就充斥着莫名其妙。比如说，在全国一般工科院系教学中应用最广泛的同济线性代数教材（现在到了第四版），一上来就介绍逆序数这个“前无古人，后无来者”的古怪概念，然后用逆序数给出行列式的一个极不直观的定义，接着是一些简直犯傻的行列式性质和习题——把这行乘一个系数加到另一行上，再把那一列减过来，折腾得那叫一个热闹，可就是压根看不出这个东西有嘛用。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Spring是如何运用设计模式的？</title>
-      <link>https://techqu.github.io/post/spring-design-pattern/</link>
+      <link>/post/spring-design-pattern/</link>
       <pubDate>Fri, 05 Jul 2019 15:00:05 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/spring-design-pattern/</guid>
+      <guid>/post/spring-design-pattern/</guid>
       <description>&lt;p&gt;关于设计模式，如果使用得当，将会使我们的代码更加简洁，并且更具扩展性。本文主要讲解Spring中如何使用策略模式，工厂方法模式以及Builder模式。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Spring Boot 使用 AOP 防止重复提交</title>
-      <link>https://techqu.github.io/post/springboot-prevent-repeat-submit/</link>
+      <link>/post/springboot-prevent-repeat-submit/</link>
       <pubDate>Fri, 05 Jul 2019 14:48:41 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/springboot-prevent-repeat-submit/</guid>
+      <guid>/post/springboot-prevent-repeat-submit/</guid>
       <description>&lt;p&gt;在传统的web项目中，防止重复提交，通常做法是：后端生成一个唯一的提交令牌（uuid），并存储在服务端。页面提交请求携带这个提交令牌，后端验证并在第一次验证后删除该令牌，保证提交请求的唯一性。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>基于Kubernetes/Jenkins/Harbor/Sonarqube搭建微服务CICD系统</title>
-      <link>https://techqu.github.io/post/k8s-jenkins-docker-ci/</link>
+      <link>/post/k8s-jenkins-docker-ci/</link>
       <pubDate>Tue, 02 Jul 2019 11:50:35 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/k8s-jenkins-docker-ci/</guid>
+      <guid>/post/k8s-jenkins-docker-ci/</guid>
       <description>&lt;p&gt;&lt;strong&gt;项目说明&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;14个JAVA spring cloud 微服务项目&lt;/p&gt;
@@ -146,26 +217,26 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
 
 &lt;p&gt;emqx&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://techqu.github.io/img/micro-service.png&#34; alt=&#34;micro-service.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/micro-service.png&#34; alt=&#34;micro-service.png&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://techqu.github.io/img/ci-jenkins.png&#34; alt=&#34;ci-jenkins.png&#34; /&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;/img/ci-jenkins.png&#34; alt=&#34;ci-jenkins.png&#34; /&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>关于 DDD、CQRS和Event Souring</title>
-      <link>https://techqu.github.io/post/introduction-to-ddd-cqrs-and-event/</link>
+      <link>/post/introduction-to-ddd-cqrs-and-event/</link>
       <pubDate>Wed, 19 Jun 2019 10:47:53 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/introduction-to-ddd-cqrs-and-event/</guid>
+      <guid>/post/introduction-to-ddd-cqrs-and-event/</guid>
       <description>&lt;p&gt;我最近开始学习域驱动设计，CQRS和事件溯源。 到目前为止，我主要参与了使用“经典”N层/层架构和关系数据库的项目。 随着项目变得越来越复杂，我注意到这个模型并不总是很好。 不久之前，我写了一篇关于N层神话的文章，它已经暴露了我觉得这种类型的架构所带来的一些问题。 我尝试的第一件事是在这样的架构中应用域驱动设计。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java面试-分布式会话</title>
-      <link>https://techqu.github.io/post/java-interview-distributed-session/</link>
+      <link>/post/java-interview-distributed-session/</link>
       <pubDate>Tue, 21 May 2019 17:55:57 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-distributed-session/</guid>
+      <guid>/post/java-interview-distributed-session/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;集群部署时的分布式session如何实现？&lt;/p&gt;</description>
@@ -173,19 +244,19 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-分布式 分布式服务接口的幂等性和顺序性</title>
-      <link>https://techqu.github.io/post/java-interview-distributed-dubbo07/</link>
+      <link>/post/java-interview-distributed-dubbo07/</link>
       <pubDate>Tue, 21 May 2019 17:35:10 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo07/</guid>
-      <description>1、面试题 分布式服务接口的幂等性如何设计（比如不能重复扣款）？ 2、面试官心里分析 从这个问题开始，面试官就已经进入了实际的生产问题的面试了 一个</description>
+      <guid>/post/java-interview-distributed-dubbo07/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Java面试-分布式 Dubbo服务治理、服务降级</title>
-      <link>https://techqu.github.io/post/java-interview-distributed-dubbo06/</link>
+      <link>/post/java-interview-distributed-dubbo06/</link>
       <pubDate>Tue, 21 May 2019 16:46:51 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo06/</guid>
+      <guid>/post/java-interview-distributed-dubbo06/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;如何基于dubbo进行服务治理、服务降级、失败重试以及超时重试？&lt;/p&gt;</description>
@@ -193,10 +264,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-分布式 Dubbo的spi思想</title>
-      <link>https://techqu.github.io/post/java-interview-distributed-dubbo05/</link>
+      <link>/post/java-interview-distributed-dubbo05/</link>
       <pubDate>Tue, 21 May 2019 16:01:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo05/</guid>
+      <guid>/post/java-interview-distributed-dubbo05/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;dubbo的spi思想是什么？&lt;/p&gt;</description>
@@ -204,10 +275,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试 分布式-dubbo负载均衡策略和集群容错策略</title>
-      <link>https://techqu.github.io/post/java-interview-distributed-dubbo04/</link>
+      <link>/post/java-interview-distributed-dubbo04/</link>
       <pubDate>Tue, 21 May 2019 14:53:52 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo04/</guid>
+      <guid>/post/java-interview-distributed-dubbo04/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？&lt;/p&gt;</description>
@@ -215,28 +286,28 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-分布式 Dubbo的协议</title>
-      <link>https://techqu.github.io/post/java-interview-distributed-dubbo03/</link>
+      <link>/post/java-interview-distributed-dubbo03/</link>
       <pubDate>Tue, 21 May 2019 14:41:19 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo03/</guid>
-      <description>1、面试题 dubbo支持哪些通信协议？支持哪些序列化协议？ 2、面试官心里分析 上一个问题，说说dubbo的基本工作原理，那是你必须知道的，至少</description>
+      <guid>/post/java-interview-distributed-dubbo03/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Java面试-分布式 Dubbo的原理</title>
-      <link>https://techqu.github.io/post/java-interview-distributed-dubbo02/</link>
+      <link>/post/java-interview-distributed-dubbo02/</link>
       <pubDate>Tue, 21 May 2019 14:32:22 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-distributed-dubbo02/</guid>
-      <description>1、面试题 说一下的dubbo的工作原理？注册中心挂了可以继续通信吗？说说一次rpc请求的流程？ 2、面试官心里分析 MQ、ES、Redis、Du</description>
+      <guid>/post/java-interview-distributed-dubbo02/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Java面试-分布式-什么是分布式？</title>
-      <link>https://techqu.github.io/post/java-interview-distributed-introduce01/</link>
+      <link>/post/java-interview-distributed-introduce01/</link>
       <pubDate>Tue, 21 May 2019 10:49:00 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-distributed-introduce01/</guid>
+      <guid>/post/java-interview-distributed-introduce01/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;为什么要进行系统拆分？如何进行系统拆分？拆分后不用dubbo可以吗？&lt;/p&gt;</description>
@@ -244,10 +315,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-分布式-分布式锁</title>
-      <link>https://techqu.github.io/post/java-interview-distributed-zk02/</link>
+      <link>/post/java-interview-distributed-zk02/</link>
       <pubDate>Mon, 20 May 2019 16:56:21 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-distributed-zk02/</guid>
+      <guid>/post/java-interview-distributed-zk02/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;一般实现分布式锁都有哪些方式？使用redis如何设计分布式锁？使用zk来设计分布式锁可以吗？这两种分布式锁的实现方式哪种效率比较高？&lt;/p&gt;
@@ -259,10 +330,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-分布式 Zookeeper的使用场景</title>
-      <link>https://techqu.github.io/post/java-interview-distributed-zk01/</link>
+      <link>/post/java-interview-distributed-zk01/</link>
       <pubDate>Mon, 20 May 2019 16:50:16 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-distributed-zk01/</guid>
+      <guid>/post/java-interview-distributed-zk01/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;zk都有哪些使用场景？&lt;/p&gt;</description>
@@ -270,10 +341,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高可用-设计高可用架构</title>
-      <link>https://techqu.github.io/post/java-interview-ha-01/</link>
+      <link>/post/java-interview-ha-01/</link>
       <pubDate>Mon, 20 May 2019 15:06:10 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-ha-01/</guid>
+      <guid>/post/java-interview-ha-01/</guid>
       <description>&lt;p&gt;前半部分，专注在高并发这一块，缓存架构，承载高并发，在各种高并发导致的令人崩溃/异常的场景下，运行着&lt;/p&gt;
 
 &lt;p&gt;缓存架构，&lt;strong&gt;高可用性，在各种系统的各个地方有乱七八糟的异常和故障的情况下，整套缓存系统还能继续健康的run着&lt;/strong&gt;&lt;/p&gt;
@@ -285,10 +356,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-MySQL读写分离</title>
-      <link>https://techqu.github.io/post/java-interview-mysql-shading05/</link>
+      <link>/post/java-interview-mysql-shading05/</link>
       <pubDate>Fri, 17 May 2019 18:26:55 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mysql-shading05/</guid>
+      <guid>/post/java-interview-mysql-shading05/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;你们有没有做MySQL读写分离？如何实现mysql的读写分离？MySQL主从复制原理的是啥？如何解决mysql主从同步的延时问题？&lt;/p&gt;</description>
@@ -296,10 +367,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-Mysql全局唯一的id</title>
-      <link>https://techqu.github.io/post/java-interview-mysql-shading04/</link>
+      <link>/post/java-interview-mysql-shading04/</link>
       <pubDate>Fri, 17 May 2019 18:19:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mysql-shading04/</guid>
+      <guid>/post/java-interview-mysql-shading04/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;分库分表之后，id主键如何处理？&lt;/p&gt;</description>
@@ -307,10 +378,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-Mysql 动态扩容缩容的分库分表方案</title>
-      <link>https://techqu.github.io/post/java-interview-mysql-shading03/</link>
+      <link>/post/java-interview-mysql-shading03/</link>
       <pubDate>Fri, 17 May 2019 17:41:34 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mysql-shading03/</guid>
+      <guid>/post/java-interview-mysql-shading03/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;如何设计可以动态扩容缩容的分库分表方案？&lt;/p&gt;</description>
@@ -318,10 +389,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-Mysql-怎么把你那个单库单表的系统给迁移到分库分表上</title>
-      <link>https://techqu.github.io/post/java-interview-mysql-shading02/</link>
+      <link>/post/java-interview-mysql-shading02/</link>
       <pubDate>Fri, 17 May 2019 17:30:42 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mysql-shading02/</guid>
+      <guid>/post/java-interview-mysql-shading02/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？&lt;/p&gt;</description>
@@ -329,10 +400,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-Mysql 分库分表</title>
-      <link>https://techqu.github.io/post/java-interview-mysql-shading01/</link>
+      <link>/post/java-interview-mysql-shading01/</link>
       <pubDate>Fri, 17 May 2019 16:12:09 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mysql-shading01/</guid>
+      <guid>/post/java-interview-mysql-shading01/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;</description>
@@ -340,10 +411,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-如何设计一个高并发系统？</title>
-      <link>https://techqu.github.io/post/java-interview-gaobingfa/</link>
+      <link>/post/java-interview-gaobingfa/</link>
       <pubDate>Thu, 16 May 2019 18:51:25 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-gaobingfa/</guid>
+      <guid>/post/java-interview-gaobingfa/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;如何设计一个高并发系统？&lt;/p&gt;</description>
@@ -351,19 +422,19 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-redis的持久化</title>
-      <link>https://techqu.github.io/post/java-interview-cache06/</link>
+      <link>/post/java-interview-cache06/</link>
       <pubDate>Thu, 16 May 2019 18:11:25 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-cache06/</guid>
-      <description>01_面试题以及解答思路介绍 1、面试题 redis的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？ 2、面</description>
+      <guid>/post/java-interview-cache06/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Java面试-高并发-如何保证Redis的高并发和高可用</title>
-      <link>https://techqu.github.io/post/java-interview-cache05/</link>
+      <link>/post/java-interview-cache05/</link>
       <pubDate>Thu, 16 May 2019 17:48:03 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-cache05/</guid>
+      <guid>/post/java-interview-cache05/</guid>
       <description>&lt;h2 id=&#34;01-面试题以及解答思路介绍&#34;&gt;01_面试题以及解答思路介绍&lt;/h2&gt;
 
 &lt;p&gt;1、面试题&lt;/p&gt;
@@ -373,19 +444,19 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-redis的过期策略</title>
-      <link>https://techqu.github.io/post/java-interview-cache04/</link>
+      <link>/post/java-interview-cache04/</link>
       <pubDate>Thu, 16 May 2019 17:47:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-cache04/</guid>
-      <description>1、面试题 redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？ 2、面试官心里分析 1）老师啊，我往redis里写的数据</description>
+      <guid>/post/java-interview-cache04/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Java面试-高并发-redis 数据类型</title>
-      <link>https://techqu.github.io/post/java-interview-cache03/</link>
+      <link>/post/java-interview-cache03/</link>
       <pubDate>Thu, 16 May 2019 17:38:03 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-cache03/</guid>
+      <guid>/post/java-interview-cache03/</guid>
       <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
 
 &lt;p&gt;redis都有哪些数据类型？分别在哪些场景下使用比较合适？&lt;/p&gt;</description>
@@ -393,10 +464,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-为什么redis是单线程的但是还可以支撑高并发</title>
-      <link>https://techqu.github.io/post/java-interview-cache02/</link>
+      <link>/post/java-interview-cache02/</link>
       <pubDate>Thu, 16 May 2019 17:28:03 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-cache02/</guid>
+      <guid>/post/java-interview-cache02/</guid>
       <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
 
 &lt;p&gt;redis和memcached有什么区别？redis的线程模型是什么？为什么单线程的redis比多线程的memcached效率要高得多（为什么redis是单线程的但是还可以支撑高并发）？&lt;/p&gt;</description>
@@ -404,10 +475,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-缓存是如何使用的？</title>
-      <link>https://techqu.github.io/post/java-interview-cache01/</link>
+      <link>/post/java-interview-cache01/</link>
       <pubDate>Thu, 16 May 2019 17:18:03 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-cache01/</guid>
+      <guid>/post/java-interview-cache01/</guid>
       <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
 
 &lt;p&gt;在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？&lt;/p&gt;</description>
@@ -415,10 +486,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-MQ自己设计一个(7)</title>
-      <link>https://techqu.github.io/post/java-interview-mq07/</link>
+      <link>/post/java-interview-mq07/</link>
       <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mq07/</guid>
+      <guid>/post/java-interview-mq07/</guid>
       <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
 
 &lt;p&gt;如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路&lt;/p&gt;</description>
@@ -426,10 +497,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-MQ延时以及过期失效(6)</title>
-      <link>https://techqu.github.io/post/java-interview-mq06/</link>
+      <link>/post/java-interview-mq06/</link>
       <pubDate>Wed, 15 May 2019 19:36:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mq06/</guid>
+      <guid>/post/java-interview-mq06/</guid>
       <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
 
 &lt;p&gt;如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？&lt;/p&gt;</description>
@@ -437,10 +508,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-MQ消息的顺序性(5)</title>
-      <link>https://techqu.github.io/post/java-interview-mq05/</link>
+      <link>/post/java-interview-mq05/</link>
       <pubDate>Wed, 15 May 2019 18:36:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mq05/</guid>
+      <guid>/post/java-interview-mq05/</guid>
       <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
 
 &lt;p&gt;如何保证消息的顺序性？&lt;/p&gt;</description>
@@ -448,10 +519,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-MQ可靠性传输(4)</title>
-      <link>https://techqu.github.io/post/java-interview-mq04/</link>
+      <link>/post/java-interview-mq04/</link>
       <pubDate>Wed, 15 May 2019 17:36:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mq04/</guid>
+      <guid>/post/java-interview-mq04/</guid>
       <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
 
 &lt;p&gt;如何保证消息的可靠性传输（如何处理消息丢失的问题）？&lt;/p&gt;</description>
@@ -459,10 +530,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-MQ重复消费(3)</title>
-      <link>https://techqu.github.io/post/java-interview-mq03/</link>
+      <link>/post/java-interview-mq03/</link>
       <pubDate>Wed, 15 May 2019 16:36:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mq03/</guid>
+      <guid>/post/java-interview-mq03/</guid>
       <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
 
 &lt;p&gt;如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？&lt;/p&gt;</description>
@@ -470,10 +541,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-MQ的高可用(2)</title>
-      <link>https://techqu.github.io/post/java-interview-mq02/</link>
+      <link>/post/java-interview-mq02/</link>
       <pubDate>Wed, 15 May 2019 15:36:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mq02/</guid>
+      <guid>/post/java-interview-mq02/</guid>
       <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
 
 &lt;p&gt;如何保证消息队列的高可用啊？&lt;/p&gt;</description>
@@ -481,10 +552,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java面试-高并发-MQ技术选型(1)</title>
-      <link>https://techqu.github.io/post/java-interview-mq01/</link>
+      <link>/post/java-interview-mq01/</link>
       <pubDate>Wed, 15 May 2019 14:36:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mq01/</guid>
+      <guid>/post/java-interview-mq01/</guid>
       <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
 
 &lt;p&gt;为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？&lt;/p&gt;</description>
@@ -492,46 +563,46 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>互联网Java工程师面试突击训练-课程目录</title>
-      <link>https://techqu.github.io/post/java-interview-shishan01/</link>
+      <link>/post/java-interview-shishan01/</link>
       <pubDate>Wed, 15 May 2019 13:32:03 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-shishan01/</guid>
+      <guid>/post/java-interview-shishan01/</guid>
       <description>&lt;p&gt;因为java面试题是一个较为大的体系，所以我们会拆分为几季来讲解，预计是会推出3季，本次是第一季，第一季课程包含的内容如下：&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mysql  B&#43;tree 索引</title>
-      <link>https://techqu.github.io/post/mysql-index-b&#43;tree/</link>
+      <link>/post/mysql-index-b&#43;tree/</link>
       <pubDate>Thu, 09 May 2019 18:43:28 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-index-b&#43;tree/</guid>
+      <guid>/post/mysql-index-b&#43;tree/</guid>
       <description>&lt;p&gt;众所周知，Mysql中的索引结构是用B+Tree实现的，那么具体是如何来构建的呢？&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java Hashmap</title>
-      <link>https://techqu.github.io/post/java-hashmap/</link>
+      <link>/post/java-hashmap/</link>
       <pubDate>Mon, 22 Apr 2019 17:22:31 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-hashmap/</guid>
-      <description>在Java中，保存数据有两种比较简单的数据结构：数组和链表。数组的特点是：寻址容易，插入和删除困难；而链表的特点是：寻址困难，插入和删除容易</description>
+      <guid>/post/java-hashmap/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《持续交付》</title>
-      <link>https://techqu.github.io/post/geektime-ci-cd-introduce/</link>
+      <link>/post/geektime-ci-cd-introduce/</link>
       <pubDate>Fri, 19 Apr 2019 15:23:49 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-ci-cd-introduce/</guid>
-      <description>持续交付到底有什么价值 持续交付是软件研发人员，如何将一个好点子，以最快的速度交付给用户的方法。我们可以把 “持续交付”定义为“一套软件工程方法</description>
+      <guid>/post/geektime-ci-cd-introduce/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《数据结构与算法之美》-红黑树</title>
-      <link>https://techqu.github.io/post/data-structure-red-black-tree/</link>
+      <link>/post/data-structure-red-black-tree/</link>
       <pubDate>Fri, 12 Apr 2019 17:04:30 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/data-structure-red-black-tree/</guid>
+      <guid>/post/data-structure-red-black-tree/</guid>
       <description>&lt;p&gt;很多书籍里，但凡讲到平衡二叉查找树，就会拿红黑树作为例子。不仅如此，如果你有一定的开发经验，你会发现，在工程中，很多用到平衡二叉查找树的地方都会用红黑树。你有没有想过，&lt;/p&gt;
 
 &lt;p&gt;Java TreeMap实现了SortedMap接口，也就是说会按照key的大小顺序对Map中的元素进行排序，key大小的评判可以通过其本身的自然顺序（natural ordering），也可以通过构造时传入的比较器（Comparator）。&lt;/p&gt;
@@ -541,110 +612,110 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>简单理解Zookeeper的Leader选举</title>
-      <link>https://techqu.github.io/post/zk-election/</link>
+      <link>/post/zk-election/</link>
       <pubDate>Fri, 12 Apr 2019 15:10:41 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/zk-election/</guid>
-      <description>Leader选举是保证分布式数据一致性的关键所在。Leader选举分为Zookeeper集群初始化启动时选举和Zookeeper集群运行期间</description>
+      <guid>/post/zk-election/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>2020考研准备</title>
-      <link>https://techqu.github.io/post/kaoyan-plan-2020/</link>
+      <link>/post/kaoyan-plan-2020/</link>
       <pubDate>Sat, 06 Apr 2019 10:22:26 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/kaoyan-plan-2020/</guid>
-      <description>一天的学习时间 数学复习计划 复习资料 数学复习资料 英语复习资料 政治复习资料 辅导老师 数学学习步骤 我建议小小白不要过度依靠视频，不是要小小白们放弃视</description>
+      <guid>/post/kaoyan-plan-2020/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>991“数据结构与C语言程序设计”考试大纲（2019版）</title>
-      <link>https://techqu.github.io/post/beihang-991-2019/</link>
+      <link>/post/beihang-991-2019/</link>
       <pubDate>Fri, 05 Apr 2019 17:35:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/beihang-991-2019/</guid>
+      <guid>/post/beihang-991-2019/</guid>
       <description>&lt;p&gt;2019年“数据结构与C语言程序设计”考试内容包括“数据结构”与“C语言程序设计”两门课程的内容，各占比例50%。试卷满分为150分。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>技术路线的选择重要但不具有决定性</title>
-      <link>https://techqu.github.io/post/technology-routine/</link>
+      <link>/post/technology-routine/</link>
       <pubDate>Thu, 04 Apr 2019 18:35:09 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/technology-routine/</guid>
+      <guid>/post/technology-routine/</guid>
       <description>&lt;p&gt;最近微软在技术上连续有大动作，在PDC上发布了Windows Azure云计算平台，预告了Visual Studio 2010、.NET 4.0和C# 4.0。如果放在几年前，我相信微软粉丝们一定是欢声雷动，不过这次情况有点不太一样，在网上看到有人在抱怨微软技术更新速度太快而且四面出击，还有人扬言要改弦更张，投奔Linux或者Java阵营。我本人也收到一封来信，写信人大意是说自己大学时选择.NET路线，一路跟下来很辛苦，2.0还没学好，人家已经4.0预览了，感到很困惑，问我该怎么办。老实讲，这样的问题我无法回答，每个人具体情况不同，所应该采取的态度和解决方案也不同。
 从我自己来讲，其实技术路线问题也曾长时间地困扰我，所以我想把我现在的一些想法摊出来跟大家分享一下。罗列如下：&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Linux三剑客之AWK学习</title>
-      <link>https://techqu.github.io/post/linux-awk/</link>
+      <link>/post/linux-awk/</link>
       <pubDate>Tue, 02 Apr 2019 13:24:32 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/linux-awk/</guid>
+      <guid>/post/linux-awk/</guid>
       <description>&lt;p&gt;awk是一个强大的文本分析工具，相对于grep的查找，sed的编辑，awk在其对数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》- Question 03</title>
-      <link>https://techqu.github.io/post/mysql-question-03/</link>
+      <link>/post/mysql-question-03/</link>
       <pubDate>Wed, 27 Mar 2019 15:49:58 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-question-03/</guid>
-      <description>join的写法 如果用left join，左边的表一定是驱动表吗？ 如果两个表的join包含多个条件的等值匹配，是都要写到 on 里面呢，还是只把一个条</description>
+      <guid>/post/mysql-question-03/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Python 学习入门</title>
-      <link>https://techqu.github.io/post/python-helloword/</link>
+      <link>/post/python-helloword/</link>
       <pubDate>Thu, 21 Mar 2019 20:04:31 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/python-helloword/</guid>
+      <guid>/post/python-helloword/</guid>
       <description>&lt;p&gt;学习了python的基础语法、变量类型、条件语句、数据结构、模块引用等&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《数据结构与算法之美》-归并排序</title>
-      <link>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</link>
+      <link>/post/data-structure-and-algorithm-merge-sort/</link>
       <pubDate>Thu, 21 Mar 2019 16:54:30 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/data-structure-and-algorithm-merge-sort/</guid>
-      <description>归并排序的原理 归并排序的核心思想还是蛮简单的。如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两</description>
+      <guid>/post/data-structure-and-algorithm-merge-sort/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》- Order By</title>
-      <link>https://techqu.github.io/post/mysql-orderby/</link>
+      <link>/post/mysql-orderby/</link>
       <pubDate>Wed, 20 Mar 2019 08:49:19 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-orderby/</guid>
+      <guid>/post/mysql-orderby/</guid>
       <description>&lt;p&gt;在你开发应用时，一定会遇到需要根据指定的字段来显式结果的需求。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》- 唯一索引和普通索引</title>
-      <link>https://techqu.github.io/post/mysql-index-unique-and-normal/</link>
+      <link>/post/mysql-index-unique-and-normal/</link>
       <pubDate>Sat, 16 Mar 2019 15:26:14 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-index-unique-and-normal/</guid>
+      <guid>/post/mysql-index-unique-and-normal/</guid>
       <description>&lt;p&gt;在不同的业务场景下，应该选择普通索引，还是唯一索引呢？接下来，我们就从这两种索引对查询语句和更新语句的性能影响来进行分析。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》- 深入浅出索引</title>
-      <link>https://techqu.github.io/post/mysql-index/</link>
+      <link>/post/mysql-index/</link>
       <pubDate>Sat, 16 Mar 2019 15:25:44 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-index/</guid>
+      <guid>/post/mysql-index/</guid>
       <description>&lt;p&gt;简单来说，索引的出现其实就是为了提高数据查询的效率，就像书的目录一样。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》- 事务隔离</title>
-      <link>https://techqu.github.io/post/mysql-transaction-2/</link>
+      <link>/post/mysql-transaction-2/</link>
       <pubDate>Fri, 15 Mar 2019 09:26:22 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-transaction-2/</guid>
+      <guid>/post/mysql-transaction-2/</guid>
       <description>&lt;p&gt;如果是可重复读隔离级别，事务T启动的时候会创建一个视图read-view，之后事务T执行期间，即使有其他事务修改了数据，事务T看到的仍然跟在启动时看到的一样。也就是说，一个在可重复读隔离级别下执行的事务，好像与世无争，不受外界影响。&lt;/p&gt;
 
 &lt;p&gt;但是，一个事务要更新一行，如果刚好有另外一个事务拥有这一行的行锁，它又不能这么超然了，会被锁住，进入等待状态。问题是，既然进入了等待状态，那么等到这个事务自己获取到行锁要更新数据的时候，它读到的值又是什么呢？&lt;/p&gt;</description>
@@ -652,91 +723,91 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>《MYSQL实战45讲》- 行锁、死锁、事务</title>
-      <link>https://techqu.github.io/post/mysql-transaction/</link>
+      <link>/post/mysql-transaction/</link>
       <pubDate>Thu, 14 Mar 2019 17:23:42 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-transaction/</guid>
-      <description>行锁 MySQL的行锁是在引擎层由各个引擎自己实现的。比如MyISAM引擎就不支持行锁。不支持行锁意味着并发控制只能使用表锁，对于这种引擎的表</description>
+      <guid>/post/mysql-transaction/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》-如何快速复制一张表</title>
-      <link>https://techqu.github.io/post/mysql-how-to-copy-table/</link>
+      <link>/post/mysql-how-to-copy-table/</link>
       <pubDate>Mon, 25 Feb 2019 08:00:23 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-how-to-copy-table/</guid>
+      <guid>/post/mysql-how-to-copy-table/</guid>
       <description>&lt;p&gt;本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》-Join语句是怎么执行的</title>
-      <link>https://techqu.github.io/post/mysql-how-join-run/</link>
+      <link>/post/mysql-how-join-run/</link>
       <pubDate>Fri, 22 Feb 2019 22:27:38 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-how-join-run/</guid>
-      <description>1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&amp;lt;=1000)do insert into t2 values(i, i, i); set i=i+1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *</description>
+      <guid>/post/mysql-how-join-run/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>OSI七层网络模型分别是哪七层？各运行那些协议？</title>
-      <link>https://techqu.github.io/post/network-osi/</link>
+      <link>/post/network-osi/</link>
       <pubDate>Wed, 20 Feb 2019 15:29:44 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/network-osi/</guid>
-      <description>层 协议 应用层 DHCP · DNS · FTP · Gopher · HTTP · IMAP4 · IRC · NNTP · XMPP · POP3 · SIP · SMTP ·SNMP · SSH · TELNET · RPC · RTCP · RTP · RTSP · SDP · SOAP · GTP · STUN · NTP · SSDP 表示层 HTTP/HTML · FTP · Telnet · ASN</description>
+      <guid>/post/network-osi/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>秒杀系统架构分析与实战</title>
-      <link>https://techqu.github.io/post/java-seckill-action/</link>
+      <link>/post/java-seckill-action/</link>
       <pubDate>Mon, 18 Feb 2019 09:08:09 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-seckill-action/</guid>
-      <description>1 秒杀业务分析 正常电子商务流程 （1）查询商品； （2）创建订单； （3）扣减库存； （4）更新订单； （5）付款； （6）卖家发货； 秒杀业务的特性 （1</description>
+      <guid>/post/java-seckill-action/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>如何设计一个秒杀系统</title>
-      <link>https://techqu.github.io/post/java-how-to-design-seckill/</link>
+      <link>/post/java-how-to-design-seckill/</link>
       <pubDate>Mon, 18 Feb 2019 08:56:11 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-how-to-design-seckill/</guid>
-      <description>什么是秒杀 秒杀场景一般会在电商网站举行一些活动或者节假日在12306网站上抢票时遇到。对于电商网站中一些稀缺或者特价商品，电商网站一般会在约</description>
+      <guid>/post/java-how-to-design-seckill/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>分布式系统唯一ID生成方案汇总</title>
-      <link>https://techqu.github.io/post/java-distributed-id/</link>
+      <link>/post/java-distributed-id/</link>
       <pubDate>Sun, 17 Feb 2019 12:57:39 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-distributed-id/</guid>
+      <guid>/post/java-distributed-id/</guid>
       <description>&lt;p&gt;系统唯一ID是我们在设计一个系统的时候常常会遇见的问题，也常常为这个问题而纠结。生成ID的方法有很多，适应不同的场景、需求以及性能要求。所以有些比较复杂的系统会有多个ID生成的策略。下面就介绍一些常见的ID生成策略。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java Interview Resource List</title>
-      <link>https://techqu.github.io/post/java-interview-resource-list/</link>
+      <link>/post/java-interview-resource-list/</link>
       <pubDate>Fri, 15 Feb 2019 17:40:34 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-resource-list/</guid>
+      <guid>/post/java-interview-resource-list/</guid>
       <description>&lt;p&gt;总结了一些面试资源清单&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Dubbo解析及原理浅析</title>
-      <link>https://techqu.github.io/post/java-dubbo-principle/</link>
+      <link>/post/java-dubbo-principle/</link>
       <pubDate>Fri, 15 Feb 2019 15:41:23 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-dubbo-principle/</guid>
-      <description>一、Duboo基本概念解释 Dubbo (incubating) |ˈdʌbəʊ| 是一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智</description>
+      <guid>/post/java-dubbo-principle/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>你应该知道的 RPC 原理</title>
-      <link>https://techqu.github.io/post/java-rpc/</link>
+      <link>/post/java-rpc/</link>
       <pubDate>Fri, 15 Feb 2019 11:10:56 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-rpc/</guid>
+      <guid>/post/java-rpc/</guid>
       <description>&lt;p&gt;在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-Java&#34;&gt;
@@ -761,10 +832,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java并发编程：线程池的使用</title>
-      <link>https://techqu.github.io/post/java-thread-pool/</link>
+      <link>/post/java-thread-pool/</link>
       <pubDate>Thu, 14 Feb 2019 15:04:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-thread-pool/</guid>
+      <guid>/post/java-thread-pool/</guid>
       <description>&lt;p&gt;在前面的文章中，我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：&lt;/p&gt;
 
 &lt;p&gt;　　如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。&lt;/p&gt;
@@ -778,28 +849,28 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>全面理解Java内存模型</title>
-      <link>https://techqu.github.io/post/jmm-java/</link>
+      <link>/post/jmm-java/</link>
       <pubDate>Thu, 14 Feb 2019 11:26:21 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jmm-java/</guid>
-      <description>Java内存模型即Java Memory Model，简称JMM。 JMM定义了Java 虚拟机(JVM)在计算机内存(RAM)中的工作方式。JVM是整个计算</description>
+      <guid>/post/jmm-java/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>最新拼多多技术部面试题：幻读&#43;分段锁&#43;死锁&#43;Spring Cloud&#43;秒杀</title>
-      <link>https://techqu.github.io/post/interview-exp-pdd/</link>
+      <link>/post/interview-exp-pdd/</link>
       <pubDate>Wed, 13 Feb 2019 08:30:08 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/interview-exp-pdd/</guid>
-      <description>一面 简短自我介绍 事务的ACID，其中把事务的隔离性详细解释一遍 脏读、幻影读、不可重复读 红黑树、二叉树的算法 平常用到哪些集合类？ArrayLi</description>
+      <guid>/post/interview-exp-pdd/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>5年经验Java程序员帝都面试20天，拿下数个offer，最终选择了百度</title>
-      <link>https://techqu.github.io/post/interview-exp-baidu/</link>
+      <link>/post/interview-exp-baidu/</link>
       <pubDate>Wed, 13 Feb 2019 07:56:41 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/interview-exp-baidu/</guid>
+      <guid>/post/interview-exp-baidu/</guid>
       <description>&lt;p&gt;从事Java开发也有5年经验了，7月初来到帝都，开启面试经历，前后20天左右，主面互联网公司，一二线大公司或者是融资中的创业公司都面试过，拿了一些offer，其中包括奇虎360，最后综合决定还是去百度了。&lt;/p&gt;
 
 &lt;p&gt;首先不同面试官面试风格一定不同，我这里就是总结这些天面试Java开发过程中的大多数问题，综合分类有Java基础，框架，多线程，网络通信，数据库以及设计模式，算法等几个模块。&lt;/p&gt;
@@ -809,10 +880,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Tomcat Overview</title>
-      <link>https://techqu.github.io/post/tomcat-overview/</link>
+      <link>/post/tomcat-overview/</link>
       <pubDate>Tue, 12 Feb 2019 15:12:30 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/tomcat-overview/</guid>
+      <guid>/post/tomcat-overview/</guid>
       <description>&lt;h2 id=&#34;tomcat-server的组成部分&#34;&gt;Tomcat Server的组成部分&lt;/h2&gt;
 
 &lt;h3 id=&#34;1-1-server&#34;&gt;1.1 – Server&lt;/h3&gt;
@@ -824,10 +895,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>SpringBoot 究竟是如何跑起来的?</title>
-      <link>https://techqu.github.io/post/springboot-how-run/</link>
+      <link>/post/springboot-how-run/</link>
       <pubDate>Tue, 12 Feb 2019 10:22:20 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/springboot-how-run/</guid>
+      <guid>/post/springboot-how-run/</guid>
       <description>&lt;p&gt;不得不说 SpringBoot 太复杂了，我本来只想研究一下 SpringBoot 最简单的 HelloWorld 程序是如何从 main 方法一步一步跑起来的，但是这却是一个相当深的坑。你可以试着沿着调用栈代码一层一层的深入进去，如果你不打断点，你根本不知道接下来程序会往哪里流动。这个不同于我研究过去的 Go 语言、Python 语言框架，它们通常都非常直接了当，设计上清晰易懂，代码写起来简单，里面的实现同样也很简单。但是 SpringBoot 不是，它的外表轻巧简单，但是它的里面就像一只巨大的怪兽，这只怪兽有千百只脚把自己缠绕在一起，把爱研究源码的读者绕的晕头转向。&lt;/p&gt;
 
 &lt;p&gt;但是这 Java 编程的世界 SpringBoot 就是老大哥，你却不得不服。即使你的心中有千万头草泥马在奔跑，但是它就是天下第一。如果你是一个学院派的程序员，看到这种现象你会怀疑人生，你不得不接受一个规则 —— 受市场最欢迎的未必就是设计的最好的，里面夹杂着太多其它的非理性因素。&lt;/p&gt;
@@ -837,58 +908,58 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>《软件测试52讲》-谈谈测试</title>
-      <link>https://techqu.github.io/post/test-about/</link>
+      <link>/post/test-about/</link>
       <pubDate>Thu, 31 Jan 2019 13:39:29 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/test-about/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://techqu.github.io/img/undraw/undraw_mobile_testing_reah.png&#34; alt=&#34;mobile_testing&#34; /&gt;&lt;/p&gt;
+      <guid>/post/test-about/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/img/undraw/undraw_mobile_testing_reah.png&#34; alt=&#34;mobile_testing&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo Export Csv</title>
-      <link>https://techqu.github.io/post/mongo-export-csv/</link>
+      <link>/post/mongo-export-csv/</link>
       <pubDate>Tue, 29 Jan 2019 15:01:21 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mongo-export-csv/</guid>
+      <guid>/post/mongo-export-csv/</guid>
       <description>&lt;p&gt;mongo 上查询数据，导出excel，并解决Mac上的Excel在导入CSV文件不支持utf-8的问题&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mysql 使用Navicat 导出数据库表结构</title>
-      <link>https://techqu.github.io/post/mysql-navicat-structure-doc/</link>
+      <link>/post/mysql-navicat-structure-doc/</link>
       <pubDate>Tue, 29 Jan 2019 14:08:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-navicat-structure-doc/</guid>
+      <guid>/post/mysql-navicat-structure-doc/</guid>
       <description>&lt;p&gt;我们在写数据库设计文档的时候，会需要对数据库表进行设计的编写，手动写的话会很费时间费精力，尤其是如果有大量的表需要写的时候，就更加浪费时间了。下面就让我给大家讲一个简单方法。
 我的是在Navicat中导出的数据库表。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Drools 7.15.0 docker容器方式部署</title>
-      <link>https://techqu.github.io/post/drools-7.15.0.final-docker-deploy/</link>
+      <link>/post/drools-7.15.0.final-docker-deploy/</link>
       <pubDate>Thu, 24 Jan 2019 14:56:49 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/drools-7.15.0.final-docker-deploy/</guid>
+      <guid>/post/drools-7.15.0.final-docker-deploy/</guid>
       <description>&lt;p&gt;关于drools的相关介绍就不再赘述了，关于drools网上的资料都很少，或者都有些老了，最近折腾了一下，记录下安装部署的过程，希望能节省下大家的时间。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>政事堂书单 2018</title>
-      <link>https://techqu.github.io/post/booklist-zhengshitang-2018/</link>
+      <link>/post/booklist-zhengshitang-2018/</link>
       <pubDate>Mon, 21 Jan 2019 16:34:26 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/booklist-zhengshitang-2018/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://techqu.github.io/img/undraw/undraw_reading_list_4boi.png&#34; alt=&#34;reading_list&#34; /&gt;&lt;/p&gt;</description>
+      <guid>/post/booklist-zhengshitang-2018/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/img/undraw/undraw_reading_list_4boi.png&#34; alt=&#34;reading_list&#34; /&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Drools Documentation</title>
-      <link>https://techqu.github.io/post/drools-wb-translation/</link>
+      <link>/post/drools-wb-translation/</link>
       <pubDate>Sat, 19 Jan 2019 13:18:56 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/drools-wb-translation/</guid>
+      <guid>/post/drools-wb-translation/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;转载自：&lt;a href=&#34;https://github.com/MyHerux/drools-springboot&#34;&gt;MyHerux/drools-springboot&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -896,46 +967,62 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
-      <link>https://techqu.github.io/post/15-lock-in-java/</link>
+      <link>/post/15-lock-in-java/</link>
       <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/15-lock-in-java/</guid>
+      <guid>/post/15-lock-in-java/</guid>
       <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>关于</title>
-      <link>https://techqu.github.io/about/</link>
+      <link>/about/</link>
       <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
       
-      <guid>https://techqu.github.io/about/</guid>
-      <description>关于我 从14年参加工作，业余时间也都有学习，可惜一直感觉工作中能用上的东西很少,也担心自己陷入低效率勤奋，想找到科学正确的学习方法。 主力操作</description>
+      <guid>/about/</guid>
+      <description>关于我 从14年参加工作，业余时间也都有学习，可惜一直感觉工作中能用上的东西很少,也担心自己陷入低效率勤奋，想找到科学正确的学习方法。
+ 主力操作系统 —— macOS。 日常编辑器 —— Vim ，用于写代码、写博客. 代码编辑器 —— Idea,VSCode 编程语言 —— 熟悉程度由高到低 Java,HTML/CSS/JS, Python, Shell, C 。  关于技术 前端(HTML/CSS/JS)、服务端（java,python）、大数据(mr,HDFS,spark)都有些了解。
+对于某个具体的技术，探索它背后的理论本质，理论的应用面更宽，一项优秀的 理论往往在多个语言中都有体现，在多个不同领域都有应用。所以探求理论本质，既能加 深对技术本身的理解，也能拓展知识深度和广度，这是个一举多得的方法。
+个人方面  接受挑战VS安于现状 找高手学习VS与低手找感觉 总结规律VS机械重复  平时经常会思考的一些点：  假如自己不为生计担忧，或者说就是财富自由，自己还会从事这份工作吗？是否有兴趣？
+ 看源码，看英文文档看不明白，功力不够，如何弥补追上？
+ 技术基础不牢，工作起来都不够自信？
+ 掌握哪些东西，就能快速学习新技术，新框架，迅速理解其本质和原理？
+ 看前沿技术论文，文章。不求自己做出什么牛逼的技术，起码能看懂别人的设计的精妙，找到成就感
+  关于写博客  学习。学习东西的时候，过段时间就忘了，需要总结，输出 利益驱动，建立自己的个人影响力 记录自己观点打自己脸的阶段 与他人交流 表达能力  关于学习、关于阅读 建立自己的世界观和知识体系，系统学习各个领域，不求精通，但求对世界能获得概貌性的认识.
+胡适先生说:
+ “怕什么真理无穷，进一寸有一寸的欢喜”。
+ 刘慈欣在《流浪地球》扉页上写道：
+ 阅读是拓展人生空间的一个主要途径，每本书都是一扇门，通向我们没有涉足的新世界，在阅读中，我们经历了我们本来不可能在有生之年经历的事情，游历了那些我们的肉身永远无法到达的地方，愿大家在阅读中建立美好的生活！
+ 即使开了一辆老掉牙的破车，只要在前行就好，偶尔吹点小风，这就是幸福。
+关于人生、关于初心 我们大多数人当然也包括我，所在的圈子比较固定，容易对咱国家的基本盘，认识存在偏差。很多屁股决定脑袋的媒体控制着舆论导向，我们都希望能丰富自己的相关知识，比如对一些国家政策或是企业政策的提出，有自己的认识，看出政策背后提出的背景和原因，能达到什么样的效果，导致什么问题。
+简单说，就是渴望来系统地了解自己所处的时代，增加自己的嗅觉。
+虽然觉得罗辑思维越来越不行，但当初也是通过这个平台，知道凯文·凯利，喜欢财经，开始思考付费学习和知识变现，最终知道焦虑下的知识付费大多没什么卵用。</description>
     </item>
     
     <item>
       <title>值得一看的网络课程收集</title>
-      <link>https://techqu.github.io/post/course-introduction/</link>
+      <link>/post/course-introduction/</link>
       <pubDate>Fri, 18 Jan 2019 15:03:48 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/course-introduction/</guid>
+      <guid>/post/course-introduction/</guid>
       <description>&lt;p&gt;前言：搜罗来一些不错的网络课程，比如Coursera, edX, Udacity上&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Navigator</title>
-      <link>https://techqu.github.io/navigator/</link>
+      <link>/navigator/</link>
       <pubDate>Fri, 18 Jan 2019 14:35:04 +0800</pubDate>
       
-      <guid>https://techqu.github.io/navigator/</guid>
-      <description>| 分类 | | | | | | | | | | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | &amp;mdash; | | 每日必看 | ImportNew | InfoQ | leetcode | juejin| medium | segmentfault | oschina| | | | springcloud | springboot | | | | | | | 每日必看 Fruits Vegetable 每日</description>
+      <guid>/navigator/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《深入剖析Kubernetes》-Docker的实现原理</title>
-      <link>https://techqu.github.io/post/docker-introduction/</link>
+      <link>/post/docker-introduction/</link>
       <pubDate>Thu, 17 Jan 2019 15:12:03 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/docker-introduction/</guid>
+      <guid>/post/docker-introduction/</guid>
       <description>&lt;p&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”&lt;/p&gt;
 
 &lt;p&gt;Docker容器具有以下3个特点：&lt;/p&gt;
@@ -951,10 +1038,10 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>《深入剖析Kubernetes》-入门</title>
-      <link>https://techqu.github.io/post/kubernetes-introduction/</link>
+      <link>/post/kubernetes-introduction/</link>
       <pubDate>Thu, 17 Jan 2019 08:41:16 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/kubernetes-introduction/</guid>
+      <guid>/post/kubernetes-introduction/</guid>
       <description>&lt;p&gt;首先，Kubernetes项目要解决的问题是什么？&lt;/p&gt;
 
 &lt;p&gt;编排？调度？容器云？还是集群管理？&lt;/p&gt;
@@ -964,38 +1051,38 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     
     <item>
       <title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</title>
-      <link>https://techqu.github.io/post/geektime-network-protocol-ipconfig/</link>
+      <link>/post/geektime-network-protocol-ipconfig/</link>
       <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-network-protocol-ipconfig/</guid>
+      <guid>/post/geektime-network-protocol-ipconfig/</guid>
       <description>&lt;p&gt;从一行查看IP地址的命令开始讲解，
 Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>分布式事务-TCC事务：最终一致性</title>
-      <link>https://techqu.github.io/post/transaction-tcc/</link>
+      <link>/post/transaction-tcc/</link>
       <pubDate>Tue, 15 Jan 2019 10:53:02 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/transaction-tcc/</guid>
-      <description>TCC 事务：最终一致性 方案简介 TCC（Try-Confirm-Cancel）的概念，最早是由 Pat Helland 于 2007 年发表的一篇名为《Life beyond Distributed Transactions:an Aposta</description>
+      <guid>/post/transaction-tcc/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>分布式事务-本地消息表：最终一致性</title>
-      <link>https://techqu.github.io/post/transaction-local-msg-tb/</link>
+      <link>/post/transaction-local-msg-tb/</link>
       <pubDate>Tue, 15 Jan 2019 10:53:02 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/transaction-local-msg-tb/</guid>
-      <description>本地消息表：最终一致性 方案简介 本地消息表的方案最初是由 eBay 提出，核心思路是将分布式事务拆分成本地事务进行处理。 方案通过在事务主动发起方额外新建</description>
+      <guid>/post/transaction-local-msg-tb/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>从分布式一致性谈到CAP理论、BASE理论、分布式事务</title>
-      <link>https://techqu.github.io/post/distributed-consistency/</link>
+      <link>/post/distributed-consistency/</link>
       <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/distributed-consistency/</guid>
+      <guid>/post/distributed-consistency/</guid>
       <description>&lt;p&gt;什么是事务，简单说事务就是要么全不做，要么全做。一部分做一部分不做就会出一致性问题。&lt;/p&gt;
 
 &lt;p&gt;传统的单体应用不会横跨多个数据库，可以通过单机事务保证一致性。&lt;/p&gt;
@@ -1005,28 +1092,28 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
     
     <item>
       <title>分布式事务-2PC(二阶段提交)</title>
-      <link>https://techqu.github.io/post/transaction-2pc/</link>
+      <link>/post/transaction-2pc/</link>
       <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/transaction-2pc/</guid>
-      <description>2PC(二阶段提交)方案：强一致性 方案简介 二阶段提交协议（Two-phase Commit，即 2PC）是常用的分布式事务解决方案，即将事务的提</description>
+      <guid>/post/transaction-2pc/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>分布式事务-3PC(三阶段提交)</title>
-      <link>https://techqu.github.io/post/transaction-3pc/</link>
+      <link>/post/transaction-3pc/</link>
       <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/transaction-3pc/</guid>
-      <description>方案简介 三阶段提交协议，是二阶段提交协议的改进版本，与二阶段提交不同的是，引入超时机制。同时在协调者和参与者中都引入超时机制。 3PC把2PC</description>
+      <guid>/post/transaction-3pc/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>什么是Devops？</title>
-      <link>https://techqu.github.io/post/what-is-devops/</link>
+      <link>/post/what-is-devops/</link>
       <pubDate>Sun, 13 Jan 2019 10:06:30 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/what-is-devops/</guid>
+      <guid>/post/what-is-devops/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1036,10 +1123,10 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
     
     <item>
       <title>Devops实践</title>
-      <link>https://techqu.github.io/post/devops-in-action/</link>
+      <link>/post/devops-in-action/</link>
       <pubDate>Sun, 13 Jan 2019 10:03:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/devops-in-action/</guid>
+      <guid>/post/devops-in-action/</guid>
       <description>&lt;h2 id=&#34;1-配置管理&#34;&gt;1、配置管理&lt;/h2&gt;
 
 &lt;p&gt;很多应用程序需要一些配置通过组合的配置文件，命令行参数和环境变量。
@@ -1056,19 +1143,19 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>《你的灯亮着吗?》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-your-light-on/</link>
+      <link>/post/reading-note-your-light-on/</link>
       <pubDate>Sat, 12 Jan 2019 17:39:54 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-your-light-on/</guid>
-      <description>在微信读书app上很快就看完了</description>
+      <guid>/post/reading-note-your-light-on/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>《影响力》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-influence/</link>
+      <link>/post/reading-note-influence/</link>
       <pubDate>Sat, 12 Jan 2019 17:20:43 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-influence/</guid>
+      <guid>/post/reading-note-influence/</guid>
       <description>&lt;p&gt;主要讲的是作者对于顺从性的研究，到底是什么因素让一个人向另一个人说了“行”？哪些技术能最有效地利用这些因素。作者研究了顺从心理学，先是在实验室，后来在社会上进行参与式观察。&lt;/p&gt;
 
 &lt;p&gt;顺从职业者：销售员、筹款家、广告商等。&lt;/p&gt;
@@ -1078,37 +1165,37 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>《凹凸相对论》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <link>/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
-      <description>在微信读书app上很快就看完了，从正反两个角度看待同样的问题，思路很不错</description>
+      <guid>/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>《大型网站技术架构》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-large-website-technology-architecture/</link>
+      <link>/post/reading-note-large-website-technology-architecture/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-large-website-technology-architecture/</guid>
-      <description>李智慧老师13年写的架构入门书，没有太深入的内容，比较适合刚刚接触网站架构的同学有个通盘的了解，也可以是有一定经验的同学作为目录一样去看。了</description>
+      <guid>/post/reading-note-large-website-technology-architecture/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>《曾国藩的正面与侧面》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <link>/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
-      <description>从《曾国藩家书》了解到的曾国藩，以他为榜样，资质愚钝，后天补足。</description>
+      <guid>/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>高效学习</title>
-      <link>https://techqu.github.io/post/learn-method/</link>
+      <link>/post/learn-method/</link>
       <pubDate>Sat, 12 Jan 2019 11:59:01 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/learn-method/</guid>
+      <guid>/post/learn-method/</guid>
       <description>&lt;p&gt;首先明确的是，学习是件反人性的事，需要刻意练习的，是需要持之以恒的。&lt;/p&gt;
 
 &lt;p&gt;很多事情能做到什么程度，其实在思想的源头就被决定了，因为它会绝大程度地受到思考问题的出发点、思维方式、格局观、价值观等因素影响。&lt;/p&gt;
@@ -1125,10 +1212,10 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>书单-按学科划分</title>
-      <link>https://techqu.github.io/post/booklist/</link>
+      <link>/post/booklist/</link>
       <pubDate>Sun, 06 Jan 2019 15:24:35 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/booklist/</guid>
+      <guid>/post/booklist/</guid>
       <description>&lt;p&gt;眼界对应着拓宽，这是广度上的，如果需要深入了解一个领域，还需入手一些经典的教科书籍，经过系统的学习才能掌握。
 人的精力和时间都是有限的，你不可能对每一个领域都有比较深的认识。我们都只能在有限的时间里做有限的事情，读书也须有选择。那么怎么选择呢？建议从兴趣入手。&lt;/p&gt;
 
@@ -1137,19 +1224,19 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>书单-按能力划分</title>
-      <link>https://techqu.github.io/post/booklist-ability/</link>
+      <link>/post/booklist-ability/</link>
       <pubDate>Sun, 06 Jan 2019 15:24:35 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/booklist-ability/</guid>
+      <guid>/post/booklist-ability/</guid>
       <description>&lt;p&gt;按能力划分（附书籍豆瓣链接）&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>如何集成maven和Spring boot的profile功能</title>
-      <link>https://techqu.github.io/post/springboot-maven-profile/</link>
+      <link>/post/springboot-maven-profile/</link>
       <pubDate>Fri, 04 Jan 2019 23:05:13 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/springboot-maven-profile/</guid>
+      <guid>/post/springboot-maven-profile/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;今天看 guns 项目的 application.properties 文件，发现了&lt;code&gt;spring.profiles.active = @profiles.active@&lt;/code&gt;的写法，查了好些资料终于搞明白了。原来是在集成maven和Spring boot的profile功能时用的，那么如何集成呢？&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -1157,55 +1244,55 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（下）</title>
-      <link>https://techqu.github.io/post/jvm-how-execute-method-2/</link>
+      <link>/post/geektime-jvm-how-execute-method-2/</link>
       <pubDate>Wed, 26 Dec 2018 11:45:43 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-how-execute-method-2/</guid>
+      <guid>/post/geektime-jvm-how-execute-method-2/</guid>
       <description>&lt;p&gt;《极客时间-深入拆解java虚拟机》笔记&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（上）</title>
-      <link>https://techqu.github.io/post/jvm-how-execute-method-1/</link>
+      <link>/post/geektime-jvm-how-execute-method-1/</link>
       <pubDate>Tue, 25 Dec 2018 22:52:53 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-how-execute-method-1/</guid>
+      <guid>/post/geektime-jvm-how-execute-method-1/</guid>
       <description>&lt;p&gt;JVM是如何执行方法调用的？（上）&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>理解GC日志</title>
-      <link>https://techqu.github.io/post/jvm-understand-gc-log/</link>
+      <link>/post/jvm-understand-gc-log/</link>
       <pubDate>Mon, 24 Dec 2018 19:03:40 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-understand-gc-log/</guid>
+      <guid>/post/jvm-understand-gc-log/</guid>
       <description>&lt;p&gt;理解GC日志，基于jdk1.7,一步步看懂GC日志&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JVM性能调优</title>
-      <link>https://techqu.github.io/post/jvm-performance-optimization/</link>
+      <link>/post/jvm-performance-optimization/</link>
       <pubDate>Mon, 24 Dec 2018 18:48:04 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-performance-optimization/</guid>
+      <guid>/post/jvm-performance-optimization/</guid>
       <description>&lt;p&gt;linux性能调优和年轻代大小选择和年老代大小的选择&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JVM 工具</title>
-      <link>https://techqu.github.io/post/jvm-tools/</link>
+      <link>/post/jvm-tools/</link>
       <pubDate>Mon, 24 Dec 2018 18:08:25 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-tools/</guid>
+      <guid>/post/jvm-tools/</guid>
       <description>&lt;p&gt;本文介绍了常用的JDK的命令行工具&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java虚拟机是如何加载Java类的?</title>
-      <link>https://techqu.github.io/post/how-jvm-load-java-class/</link>
+      <link>/post/geektime-jvm-load-java-class/</link>
       <pubDate>Mon, 24 Dec 2018 15:46:28 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/how-jvm-load-java-class/</guid>
+      <guid>/post/geektime-jvm-load-java-class/</guid>
       <description>&lt;p&gt;Java虚拟机是如何加载Java类的?&lt;/p&gt;
 
 &lt;p&gt;虚拟机规范并没有指明二进制字节流要从一个Class文件获取，或者说根本没有指明从哪里获取、怎样获取。这种开放使得Java在很多领域得到充分运用，例如：&lt;/p&gt;
@@ -1222,10 +1309,10 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>Java工程师成神之路（2018修订版）</title>
-      <link>https://techqu.github.io/post/roadmap/</link>
+      <link>/post/roadmap/</link>
       <pubDate>Thu, 20 Dec 2018 11:12:42 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/roadmap/</guid>
+      <guid>/post/roadmap/</guid>
       <description>&lt;p&gt;网罗了比较全面的java技术栈。&lt;/p&gt;
 
 &lt;p&gt;本文基于微信公众号文章基础上添加，原文链接：
@@ -1234,46 +1321,46 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>markdown语法示例</title>
-      <link>https://techqu.github.io/post/markdown/</link>
+      <link>/post/markdown/</link>
       <pubDate>Thu, 20 Dec 2018 10:58:38 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/markdown/</guid>
+      <guid>/post/markdown/</guid>
       <description>&lt;p&gt;本文是markdown语法的示例&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>对象存活判断、垃圾收集算法和垃圾收集器</title>
-      <link>https://techqu.github.io/post/jvm-garabage-collection/</link>
+      <link>/post/geektime-jvm-garabage-collection/</link>
       <pubDate>Thu, 20 Dec 2018 08:44:54 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-garabage-collection/</guid>
+      <guid>/post/geektime-jvm-garabage-collection/</guid>
       <description>&lt;p&gt;全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>简历模版</title>
-      <link>https://techqu.github.io/post/resume/</link>
+      <link>/post/resume/</link>
       <pubDate>Wed, 19 Dec 2018 21:45:56 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/resume/</guid>
+      <guid>/post/resume/</guid>
       <description>&lt;p&gt;本文是一个markdown风格语法的简历模版，转载自网络&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》-笔记</title>
-      <link>https://techqu.github.io/post/mysql/</link>
+      <link>/post/mysql/</link>
       <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql/</guid>
+      <guid>/post/mysql/</guid>
       <description>&lt;p&gt;MYSQL实战45讲-极客时间笔记&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>线程间通信</title>
-      <link>https://techqu.github.io/post/thread-notify/</link>
+      <link>/post/thread-notify/</link>
       <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/thread-notify/</guid>
+      <guid>/post/thread-notify/</guid>
       <description>&lt;p&gt;《java并发编程的艺术》-4.3线程间通信&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1284,37 +1371,37 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>《数据结构与算法之美》-基础篇(1)</title>
-      <link>https://techqu.github.io/post/data-structure-and-algorithm.0/</link>
+      <link>/post/data-structure-and-algorithm.0/</link>
       <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/data-structure-and-algorithm.0/</guid>
+      <guid>/post/data-structure-and-algorithm.0/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《数据结构与算法之美》-基础篇(2)</title>
-      <link>https://techqu.github.io/post/data-structure-and-algorithm.1/</link>
+      <link>/post/data-structure-and-algorithm.1/</link>
       <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/data-structure-and-algorithm.1/</guid>
+      <guid>/post/data-structure-and-algorithm.1/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《数据结构与算法之美》-高级篇</title>
-      <link>https://techqu.github.io/post/data-structure-and-algorithm.2/</link>
+      <link>/post/data-structure-and-algorithm.2/</link>
       <pubDate>Sun, 18 Nov 2018 15:03:48 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/data-structure-and-algorithm.2/</guid>
+      <guid>/post/data-structure-and-algorithm.2/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>归档</title>
-      <link>https://techqu.github.io/archives/</link>
+      <link>/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://techqu.github.io/archives/</guid>
+      <guid>/archives/</guid>
       <description></description>
     </item>
     

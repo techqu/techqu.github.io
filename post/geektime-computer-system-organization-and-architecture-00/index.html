@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>《深入浅出计算机组成原理》-基础篇 - Mainroad</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="《深入浅出计算机组成原理》-基础篇" />
+<meta property="og:description" content="如果找出各大学计算机系的培养计划，你会发现，它们都有差不多十来门核心课程。其中，“计算机组成原理”是入门和底层层面的第一课。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/geektime-computer-system-organization-and-architecture-00/" />
+<meta property="article:published_time" content="2019-08-08T14:50:26+08:00" />
+<meta property="article:modified_time" content="2019-08-08T14:50:26+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《深入浅出计算机组成原理》-基础篇"/>
+<meta name="twitter:description" content="如果找出各大学计算机系的培养计划，你会发现，它们都有差不多十来门核心课程。其中，“计算机组成原理”是入门和底层层面的第一课。"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/syntax.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Mainroad" rel="home">
+				<div class="logo__title">Mainroad</div>
+				<div class="logo__tagline">Just another site</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">《深入浅出计算机组成原理》-基础篇</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-08T14:50:26">August 08, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%e5%8e%9f%e7%90%86" rel="category">计算机组成原理</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#计算机组成原理知识地图">计算机组成原理知识地图</a></li>
+</ul></li>
+<li><a href="#05-计算机指令-让我们试试用纸带编程">05-计算机指令:让我们试试用纸带编程</a>
+<ul>
+<li><a href="#从编译到汇编-代码怎么变成机器码">从编译到汇编，代码怎么变成机器码?</a></li>
+<li><a href="#解析指令和机器码">解析指令和机器码</a></li>
+</ul></li>
+<li><a href="#06-指令跳转-原来if-else就是goto">06-指令跳转:原来if&hellip;else就是goto</a>
+<ul>
+<li><a href="#cpu是如何执行指令的">CPU是如何执行指令的?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>如果找出各大学计算机系的培养计划，你会发现，它们都有差不多十来门核心课程。其中，“计算机组成原理”是入门和底层层面的第一课。</p>
+
+<p>这是为什么呢?我们直接用肉眼来看，计算机是由CPU、内存、显示器这些设备组成的硬件，但是，计算机 系的学生毕业之后，大部分却都是从事各种软件开发工作。显然，在硬件和软件之间需要一座桥梁，而“计 算机组成原理”就扮演了这样一个角色，它既隔离了软件和硬件，也提供了让软件无需关心硬件，就能直接 操作硬件的接口。</p>
+
+<p>也就是说，你只需要对硬件有原理性的理解，就可以信赖硬件的可靠性，安安心心用高级语言来写程序。无 论是写操作系统和编译器这样的硬核代码，还是写Web应用和手机App这样的应用层代码，你都可以做到心里有底。</p>
+
+<p>除此之外，组成原理是计算机其他核心课程的一个“导引”。学习组成原理之后，向下，你可以学习数字电路相关的课程，向上，你可以学习编译原理、操作系统这些核心课程。如果想要深入理解，甚至设计一台自己的计算机，体系结构是必不可少的一门课，而组成原理是计算机体系结构的一个入门版本。</p>
+
+<p><img src="/img/geektime-computer-computer-system-organization-architecture-00.png" alt="/img/geektime-computer-computer-system-organization-architecture-00.png" /></p>
+
+<h3 id="计算机组成原理知识地图">计算机组成原理知识地图</h3>
+
+<p>计算机组成原理的英文叫Computer Organization。这里的Organization是“组织机构”的意思。计算机由 很多个不同的部件放在一起，变成了一个“组织机构”。这个组织机构最终能够进行各种计算、控制、读取 输入，进行输出，达成各种强大的功能。
+在这张图里面，我们把整个计算机组成原理的知识点拆分成了四大部分，分别是<strong>计算机的基本组成、计算机 的指令和计算、处理器设计，以及存储器和I/O设备。</strong>
+首先，我们来看计算机的基本组成。</p>
+
+<p>这一部分，你需要学习计算机是由哪些硬件组成的。这些硬件，又是怎么对应到经典的冯·诺依曼体系结构 中的，也就是<strong>运算器、控制器、存储器、输入设备和输出设备这五大基本组件</strong>。除此之外，你还需要了解计 算机的两个核心指标，性能和功耗。性能和功耗也是我们在应用和设计五大基本组件中需要重点考虑的因 素。</p>
+
+<p>了解了组成部分，接下来你需要掌握<strong>计算机的指令和计算。</strong></p>
+
+<p>在计算机指令部分，你需要搞明白，我们每天撰写的一行行C、Java、PHP程序，是怎么在计算机里面跑起 来的。这里面，你既需要了解我们的程序是怎么通过编译器和汇编器，变成一条条机器指令这样的编译过程 (如果把编译过程展开的话，可以变成一门完整的编译原理课程)，还需要知道我们的操作系统是怎么链接、装载、执行这些程序的(这部分知识如果再深入学习，又可以变成一门操作系统课程)。而这一条条指令执行的控制过程，就是由计算机五大组件之一的控制器来控制的。</p>
+
+<p>在计算机的计算部分，你要从二进制和编码开始，理解我们的数据在计算机里的表示，以及我们是怎么从数 字电路层面，实现加法、乘法这些基本的运算功能的。实现这些运算功能的ALU(Arithmetic Logic Unit/ALU)，也就是算术逻辑单元，其实就是我们计算机五大组件之一的运算器。
+这里面有一个在今天看起来特别重要的知识点，就是浮点数(Floating Point)。浮点数是我们在日常运用 中非常容易用错的一种数据表示形式。掌握浮点数能让你对数据的编码、存储和计算能够有一个从表到里的 深入理解。尤其在AI火热的今天，浮点数是机器学习中重度使用的数据表示形式，掌握它更是非常有必要。</p>
+
+<p>明白计算机指令和计算是如何运转的，我们就可以深入到<strong>CPU</strong>的设计中去一探究竟了。</p>
+
+<p>CPU时钟可以用来构造寄存器和内存的锁存器和触发器，因此，CPU时钟应该是我们学习CPU的前导知识。 搞明白我们为什么需要<strong>CPU时钟(CPU Clock)</strong>，以及寄存器和内存是用什么样的硬件组成的之后，我们可 以再来看看，整个计算机的数据通路是如何构造出来的。
+数据通路，其实就是连接了整个运算器和控制器，并最终组成了CPU。而出于对于性能和功耗的考虑，你要 进一步理解和掌握面向流水线设计的CPU、数据和控制冒险，以及分支预测的相关技术。</p>
+
+<p>既然CPU作为控制器要和输入输出设备通信，那么我们就要知道异常和中断发生的机制。在CPU设计部分的 最后，我会讲一讲指令的并行执行，看看如何直接在CPU层面，通过SIMD来支持并行计算。</p>
+
+<p>最后，我们需要看一看，计算机五大组成部分之一，<strong>存储器的原理</strong>。通过存储器的层次结构作为基础的框架 引导，你需要掌握从上到下的CPU高速缓存、内存、SSD硬盘和机械硬盘的工作原理，它们之间的性能差 异，以及实际应用中利用这些设备会遇到的挑战。存储器其实很多时候又扮演了输入输出设备的角色，所以 你需要进一步了解，CPU和这些存储器之间是如何进行通信的，以及我们最重视的性能问题是怎么一回事; 理解什么是IO_WAIT，如何通过DMA来提升程序性能。</p>
+
+<p>对于存储器，我们不仅需要它们能够正常工作，还要确保里面的数据不能丢失。于是你要掌握我们是如何通 过RAID、Erasure Code、ECC以及分布式HDFS，这些不同的技术，来确保数据的完整性和访问性能。</p>
+
+<p>学习计算机组成原理，究竟有没有好办法?</p>
+
+<p>相信这个学习地图，应该让你对计算机组成这门课要学些什么，有了一些了解。不过这个地图上的知识点繁
+多，应该也给你带来了不小的挑战。</p>
+
+<p>我上一节也说过，相较于整个计算机科学中的其他科目，计算机组成原理更像是整个计算机学科里的“纲
+要”。这门课里任何一个知识点深入挖下去，都可以变成计算机科学里的一门核心课程。
+比如说，程序怎样从高级代码变成指令在计算机里面运行，对应着“编译原理”和“操作系统”这两门课 程;计算实现背后则是“数字电路”;如果要深入CPU和存储器系统的优化，必然要深入了解“计算机体系 结构”。</p>
+
+<p>因此，为了帮你更快更好地学计算机组成，我为你总结了三个学习方法，帮你更好地掌握这些知识点，并且能够学为所用，让你在工作中能够用得上。</p>
+
+<p>首先，学会提问自己来串联知识点。学完一个知识点之后，你可以从下面两个方面，问一下自己。 我写的程序，是怎样从输入的代码，变成运行的程序，并得到最终结果的?</p>
+
+<p>整个过程中，计算器层面到底经历了哪些步骤，有哪些地方是可以优化的?</p>
+
+<p>无论是程序的编译、链接、装载和执行，以及计算时需要用到的逻辑电路、ALU，乃至CPU自发为你做的流 水线、指令级并行和分支预测，还有对应访问到的硬盘、内存，以及加载到高速缓存中的数据，这些都对应 着我们学习中的一个个知识点。建议你自己脑子里过一遍，最好时口头表述一遍或者写下来，这样对你彻底 掌握这些知识点都会非常有帮助。
+其次，写一些示例程序来验证知识点。计算机科学是一门实践的学科。计算机组成中的大量原理和设计，都 对应着“性能”这个词。因此，通过把对应的知识点，变成一个个性能对比的示例代码程序记录下来，是把 这些知识点融汇贯通的好方法。因为，相比于强记硬背知识点，一个有着明确性能对比的示例程序，会在你 脑海里留下更深刻的印象。当你想要回顾这些知识点的时候，一个程序也更容易提示你把它从脑海深处里面 找出来。
+最后，通过和计算机硬件发展的历史做对照。计算机的发展并不是一蹴而就的。从第一台电子计算机 ENIAC(Electronic Numerical Integrator And Computer，电子数值积分计算机)的发明到现在，已经有70 多年了。现代计算机用的各个技术，都是跟随实际应用中遇到的挑战，一个个发明、打磨，最后保留下来 的。这当中不仅仅有学术层面的碰撞，更有大量商业层面的交锋。通过了解充满戏剧性和故事性的计算机硬 件发展史，让你更容易理解计算机组成中各种原理的由来。
+比如说，奔腾4和SPARC的失败，以及ARM的成功，能让我们记住CPU指令集的繁与简、权衡性能和功耗的 重要性，而现今高速发展的机器学习和边缘计算，又给计算机硬件设计带来了新的挑战。</p>
+
+<h2 id="05-计算机指令-让我们试试用纸带编程">05-计算机指令:让我们试试用纸带编程</h2>
+
+<h3 id="从编译到汇编-代码怎么变成机器码">从编译到汇编，代码怎么变成机器码?</h3>
+
+<p><img src="/img/c-assembly-machine.png" alt="c-assembly-machine" /></p>
+
+<p>从高级语言到汇编代码，再到机器码，就是一个日常开发程序，最终变成了CPU可以执行的计算机指令的过程。</p>
+
+<h3 id="解析指令和机器码">解析指令和机器码</h3>
+
+<ul>
+<li>第一类是算术类指令。我们的加减乘除，在CPU层面，都会变成一条条算术类指令。</li>
+<li>第二类是数据传输类指令。给变量赋值、在内存里读写数据，用的都是数据传输类指令。</li>
+<li>第三类是逻辑类指令。逻辑上的与或非，都是这一类指令。</li>
+<li>第四类是条件分支类指令。日常我们写的“if/else”，其实都是条件分支类指令。</li>
+<li>最后一类是无条件跳转指令。写一些大一点的程序，我们常常需要写一些函数或者方法。在调用函数的时 候，其实就是发起了一个无条件跳转指令。</li>
+</ul>
+
+<h2 id="06-指令跳转-原来if-else就是goto">06-指令跳转:原来if&hellip;else就是goto</h2>
+
+<h3 id="cpu是如何执行指令的">CPU是如何执行指令的?</h3>
+
+<p>拿我们用的Intel CPU来说，里面差不多有几百亿个晶体管。实际上，一条条计算机指令执行起来非常复 杂。好在CPU在软件层面已经为我们做好了封装。对于我们这些做软件的程序员来说，我们只要知道，写好 的代码变成了指令之后，是一条一条顺序执行的就可以了。</p>
+
+<p>我们先不管几百亿的晶体管的背后是怎么通过电路运转起来的，逻辑上，我们可以认为，CPU其实就是由一堆寄存器组成的。而寄存器就是CPU内部，由多个触发器(Flip-Flop)或者锁存器(Latches)组成的简单 电路。
+触发器和锁存器，其实就是两种不同原理的数字电路组成的逻辑门。这块内容并不是我们这节课的重点，所以你只要了解就好。如果想要深入学习的话，你可以学习数字电路的相关课程，这里我们不深入探讨。
+好了，现在我们接着前面说。N个触发器或者锁存器，就可以组成一个N位(Bit)的寄存器，能够保存N位 的数据。比方说，我们用的64位Intel服务器，寄存器就是64位的。</p>
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		记录生活的点滴，学习知识，分享知识
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/geektime-java-performance/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">《Java性能调优实战》</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/reading-note-%E6%9A%97%E6%97%B6%E9%97%B4-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">《暗时间》-读书笔记</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Mainroad.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
+</html>

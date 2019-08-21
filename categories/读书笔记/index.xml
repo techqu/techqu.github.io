@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>读书笔记 on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
-    <description>Recent content in 读书笔记 on Quguang 学习笔记</description>
+    <title>读书笔记 on Mainroad</title>
+    <link>/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 读书笔记 on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Sat, 12 Jan 2019 17:39:54 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>《你的灯亮着吗?》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-your-light-on/</link>
+      <link>/post/reading-note-your-light-on/</link>
       <pubDate>Sat, 12 Jan 2019 17:39:54 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-your-light-on/</guid>
-      <description>在微信读书app上很快就看完了</description>
+      <guid>/post/reading-note-your-light-on/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>《影响力》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-influence/</link>
+      <link>/post/reading-note-influence/</link>
       <pubDate>Sat, 12 Jan 2019 17:20:43 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-influence/</guid>
+      <guid>/post/reading-note-influence/</guid>
       <description>&lt;p&gt;主要讲的是作者对于顺从性的研究，到底是什么因素让一个人向另一个人说了“行”？哪些技术能最有效地利用这些因素。作者研究了顺从心理学，先是在实验室，后来在社会上进行参与式观察。&lt;/p&gt;
 
 &lt;p&gt;顺从职业者：销售员、筹款家、广告商等。&lt;/p&gt;
@@ -35,29 +35,29 @@
     
     <item>
       <title>《凹凸相对论》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <link>/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
-      <description>在微信读书app上很快就看完了，从正反两个角度看待同样的问题，思路很不错</description>
+      <guid>/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>《大型网站技术架构》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-large-website-technology-architecture/</link>
+      <link>/post/reading-note-large-website-technology-architecture/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-large-website-technology-architecture/</guid>
-      <description>李智慧老师13年写的架构入门书，没有太深入的内容，比较适合刚刚接触网站架构的同学有个通盘的了解，也可以是有一定经验的同学作为目录一样去看。了</description>
+      <guid>/post/reading-note-large-website-technology-architecture/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>《曾国藩的正面与侧面》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <link>/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
-      <description>从《曾国藩家书》了解到的曾国藩，以他为榜样，资质愚钝，后天补足。</description>
+      <guid>/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
   </channel>

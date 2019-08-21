@@ -1,49 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html class="no-js" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>《深入剖析Kubernetes》-Docker的实现原理 - Quguang 学习笔记</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="瞿广" /><meta name="description" content="容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”
-Docker容器具有以下3个特点：
- 轻量级：在同一台宿主机上的容器共享系统Kernel，这使得他们可以迅速启动而且占有的内存极少。镜像是以分层文件系统构造的，这可以让它们共享相同的文件，使得磁盘使用率和镜像下载速度得到提高。 开放：Docker容器基于开放标准，这使得Docker容器可以运行在主流Linux发行版和Windows操作系统上。 安全：容器将各个应用程序隔离开来，这给所有的应用程序提供了一层额外的安全防护。  对于Docker等大多数Linux容器来说，Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。
-" /><meta name="keywords" content="Docker的实现原理, 容器, Docker" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://techqu.github.io/post/docker-introduction/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/douban.css">
-<link rel="stylesheet" href="/css/techqu.css">
-
-
-<meta property="og:title" content="《深入剖析Kubernetes》-Docker的实现原理" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>《深入剖析Kubernetes》-Docker的实现原理 - Mainroad</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="《深入剖析Kubernetes》-Docker的实现原理" />
 <meta property="og:description" content="容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”
 
 Docker容器具有以下3个特点：
@@ -56,31 +20,11 @@ Docker容器具有以下3个特点：
 
 对于Docker等大多数Linux容器来说，Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://techqu.github.io/post/docker-introduction/" /><meta property="article:published_time" content="2019-01-17T15:12:03&#43;08:00"/>
-<meta property="article:modified_time" content="2019-01-18T15:12:03&#43;08:00"/>
+<meta property="og:url" content="/post/docker-introduction/" />
+<meta property="article:published_time" content="2019-01-17T15:12:03+08:00" />
+<meta property="article:modified_time" content="2019-01-18T15:12:03+08:00" />
 
-<meta itemprop="name" content="《深入剖析Kubernetes》-Docker的实现原理">
-<meta itemprop="description" content="容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”
-
-Docker容器具有以下3个特点：
-
-
-轻量级：在同一台宿主机上的容器共享系统Kernel，这使得他们可以迅速启动而且占有的内存极少。镜像是以分层文件系统构造的，这可以让它们共享相同的文件，使得磁盘使用率和镜像下载速度得到提高。
-开放：Docker容器基于开放标准，这使得Docker容器可以运行在主流Linux发行版和Windows操作系统上。
-安全：容器将各个应用程序隔离开来，这给所有的应用程序提供了一层额外的安全防护。
-
-
-对于Docker等大多数Linux容器来说，Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。">
-
-
-<meta itemprop="datePublished" content="2019-01-17T15:12:03&#43;08:00" />
-<meta itemprop="dateModified" content="2019-01-18T15:12:03&#43;08:00" />
-<meta itemprop="wordCount" content="4514">
-
-
-
-<meta itemprop="keywords" content="docker,容器," />
-<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="《深入剖析Kubernetes》-Docker的实现原理"/>
 <meta name="twitter:description" content="容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”
 
@@ -94,89 +38,51 @@ Docker容器具有以下3个特点：
 
 对于Docker等大多数Linux容器来说，Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/syntax.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
 </head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">专注</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">全部文章</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">专注</a>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Mainroad" rel="home">
+				<div class="logo__title">Mainroad</div>
+				<div class="logo__tagline">Just another site</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">《深入剖析Kubernetes》-Docker的实现原理</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-01-17T15:12:03">January 17, 2019</time>
+	<time class="meta__text" datetime="2019-01-18T15:12:03"> (Last Modified: January 18, 2019)</time>
 </div>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">全部文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">《深入剖析Kubernetes》-Docker的实现原理</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> 2019-01-17 </span>
-        <div class="post-category">
-            <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-            <a href="/categories/%E5%AE%B9%E5%99%A8/"> 容器 </a>
-            </div>
-          <span class="more-meta"> 约 4514 字 </span>
-          <span class="more-meta"> 预计阅读 10 分钟 </span>
-        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/geektime_note" rel="category">geektime_note</a>, <a class="meta__link" href="/categories/%e5%ae%b9%e5%99%a8" rel="category">容器</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
 <ul>
 <li>
 <ul>
@@ -189,10 +95,10 @@ Docker容器具有以下3个特点：
 </ul></li>
 </ul>
 </nav>
-  </div>
+	</div>
 </div>
-    <div class="post-content">
-      <p>容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”</p>
+<div class="content post__content clearfix">
+			<p>容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”</p>
 
 <p>Docker容器具有以下3个特点：</p>
 
@@ -305,9 +211,11 @@ PID  USER   TIME COMMAND
 <p>在理解了 Namespace 的工作方式之后，你就会明白，跟真实存在的虚拟机不同，在使用 Docker 的时候，并没有一个真正的“Docker 容器”运行在宿主机里面。Docker 项目帮助用户启动的，还是原来的应用进程，只不过在创建这些进程时，Docker 为它们加上了各种各样的 Namespace 参数。</p>
 
 <div class="admonition note"><p class="admonition-title">note</p>
-  <p>所以，Docker 容器这个听起来玄而又玄的概念，实际上是在创建容器进程时，<strong>指定了这个进程所需要启用的一组 Namespace 参数</strong>。<strong>这样，容器就只能“看”到当前 Namespace 所限定的资源、文件、设备、状态，或者配置。</strong>而对于宿主机以及其他不相关的程序，它就完全看不到了。</p>
+  
 
-<p><strong>所以说，容器，其实是一种特殊的进程而已。</strong></p>
+所以，Docker 容器这个听起来玄而又玄的概念，实际上是在创建容器进程时，**指定了这个进程所需要启用的一组 Namespace 参数**。**这样，容器就只能“看”到当前 Namespace 所限定的资源、文件、设备、状态，或者配置。**而对于宿主机以及其他不相关的程序，它就完全看不到了。
+
+**所以说，容器，其实是一种特殊的进程而已。**
 
 </div>
 
@@ -447,99 +355,55 @@ $ mount -t aufs -o dirs=./A:./B none ./C
 <li><a href="https://time.geekbang.org/column/article/14653">06 | 白话容器基础（二）：隔离与限制</a></li>
 <li><a href="https://time.geekbang.org/column/article/17921">07 | 白话容器基础（三）：深入理解容器镜像</a></li>
 </ul>
-    </div>
-
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">瞿广</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">
-        2019-01-18
-        
-    </span>
-  </p>
-  
-  
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/docker/" rel="tag">docker</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E5%AE%B9%E5%99%A8/" rel="tag">容器</a></li>
+	</ul>
 </div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/docker/">docker</a>
-          <a href="/tags/%E5%AE%B9%E5%99%A8/">容器</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/course-introduction/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">值得一看的网络课程收集</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/kubernetes-introduction/">
-            <span class="next-text nav-default">《深入剖析Kubernetes》-入门</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
+		</footer>
+	</article>
+</main>
 
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
-  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		记录生活的点滴，学习知识，分享知识
+	</div>
 </div>
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
-      <span class="division">|</span>
-    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
-  </div>
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2019
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">瞿广</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/kubernetes-introduction/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">《深入剖析Kubernetes》-入门</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/course-introduction/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">值得一看的网络课程收集</p></a>
+	</div>
+</nav>
 
 
-
-
-
-
-<script src="/js/douban.js"></script>
-
-
-</body>
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Mainroad.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
 </html>

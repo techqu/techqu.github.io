@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>容器 on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/%E5%AE%B9%E5%99%A8/</link>
-    <description>Recent content in 容器 on Quguang 学习笔记</description>
+    <title>容器 on Mainroad</title>
+    <link>/categories/%E5%AE%B9%E5%99%A8/</link>
+    <description>Recent content in 容器 on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Thu, 17 Jan 2019 15:12:03 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>《深入剖析Kubernetes》-Docker的实现原理</title>
-      <link>https://techqu.github.io/post/docker-introduction/</link>
+      <link>/post/docker-introduction/</link>
       <pubDate>Thu, 17 Jan 2019 15:12:03 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/docker-introduction/</guid>
+      <guid>/post/docker-introduction/</guid>
       <description>&lt;p&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”&lt;/p&gt;
 
 &lt;p&gt;Docker容器具有以下3个特点：&lt;/p&gt;

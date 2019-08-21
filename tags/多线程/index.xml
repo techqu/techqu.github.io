@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>多线程 on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
-    <description>Recent content in 多线程 on Quguang 学习笔记</description>
+    <title>多线程 on Mainroad</title>
+    <link>/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+    <description>Recent content in 多线程 on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Thu, 20 Dec 2018 10:58:38 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>markdown语法示例</title>
-      <link>https://techqu.github.io/post/markdown/</link>
+      <link>/post/markdown/</link>
       <pubDate>Thu, 20 Dec 2018 10:58:38 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/markdown/</guid>
+      <guid>/post/markdown/</guid>
       <description>&lt;p&gt;本文是markdown语法的示例&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>线程间通信</title>
-      <link>https://techqu.github.io/post/thread-notify/</link>
+      <link>/post/thread-notify/</link>
       <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/thread-notify/</guid>
+      <guid>/post/thread-notify/</guid>
       <description>&lt;p&gt;《java并发编程的艺术》-4.3线程间通信&lt;/p&gt;
 
 &lt;ul&gt;

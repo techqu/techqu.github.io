@@ -1,149 +1,68 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html class="no-js" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>《Java并发编程实战》-2-并发工具类(下) - Quguang 学习笔记</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="瞿广" /><meta name="description" content="21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/douban.css">
-<link rel="stylesheet" href="/css/techqu.css">
-
-
-<meta property="og:title" content="《Java并发编程实战》-2-并发工具类(下)" />
-<meta property="og:description" content="21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>《Java并发编程实战》-2-并发工具类(下) - Mainroad</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="《Java并发编程实战》-2-并发工具类(下)" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/" /><meta property="article:published_time" content="2019-07-26T17:31:24&#43;08:00"/>
-<meta property="article:modified_time" content="2019-07-27T17:31:24&#43;08:00"/>
+<meta property="og:url" content="/post/geektime-java-concurrent-in-action.1.2/" />
+<meta property="article:published_time" content="2019-07-26T17:31:24+08:00" />
+<meta property="article:modified_time" content="2019-07-27T17:31:24+08:00" />
 
-<meta itemprop="name" content="《Java并发编程实战》-2-并发工具类(下)">
-<meta itemprop="description" content="21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全">
-
-
-<meta itemprop="datePublished" content="2019-07-26T17:31:24&#43;08:00" />
-<meta itemprop="dateModified" content="2019-07-27T17:31:24&#43;08:00" />
-<meta itemprop="wordCount" content="3538">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="《Java并发编程实战》-2-并发工具类(下)"/>
-<meta name="twitter:description" content="21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全"/>
+<meta name="twitter:description" content=""/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/syntax.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
 </head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">专注</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">全部文章</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">专注</a>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Mainroad" rel="home">
+				<div class="logo__title">Mainroad</div>
+				<div class="logo__tagline">Just another site</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">《Java并发编程实战》-2-并发工具类(下)</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-07-26T17:31:24">July 26, 2019</time>
+	<time class="meta__text" datetime="2019-07-27T17:31:24"> (Last Modified: July 27, 2019)</time>
 </div>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">全部文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">《Java并发编程实战》-2-并发工具类(下)</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> 2019-07-26 </span>
-        <div class="post-category">
-            <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-            <a href="/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/"> java并发实战 </a>
-            </div>
-          <span class="more-meta"> 约 3538 字 </span>
-          <span class="more-meta"> 预计阅读 8 分钟 </span>
-        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/geektime_note" rel="category">geektime_note</a>, <a class="meta__link" href="/categories/java%e5%b9%b6%e5%8f%91%e5%ae%9e%e6%88%98" rel="category">java并发实战</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
 <ul>
 <li>
 <ul>
@@ -159,22 +78,33 @@
 <li><a href="#4-原子化对象属性更新器">4. 原子化对象属性更新器</a></li>
 <li><a href="#5-原子化的累加器">5. 原子化的累加器</a></li>
 </ul></li>
+<li><a href="#总结">总结</a></li>
 </ul></li>
-<li><a href="#22-executor与线程池-如何创建正确的线程池">22|Executor与线程池：如何创建正确的线程池？</a></li>
-<li><a href="#23-future-如何用多线程实现最优的-烧水泡茶-程序">23|Future:如何用多线程实现最优的“烧水泡茶”程序？</a></li>
-<li><a href="#24-completablefuture-异步编程没那么难">24|CompletableFuture：异步编程没那么难</a></li>
+<li><a href="#22-executor与线程池-如何创建正确的线程池">22|Executor与线程池：如何创建正确的线程池？</a>
+<ul>
+<li><a href="#使用线程池要注意些什么">使用线程池要注意些什么</a></li>
+</ul></li>
+<li><a href="#23-future-如何用多线程实现最优的-烧水泡茶-程序">23|Future:如何用多线程实现最优的“烧水泡茶”程序？</a>
+<ul>
+<li><a href="#如何获取任务执行结果">如何获取任务执行结果</a></li>
+<li><a href="#总结-1">总结</a></li>
+</ul></li>
+<li><a href="#24-completablefuture-异步编程没那么难">24|CompletableFuture：异步编程没那么难</a>
+<ul>
+<li><a href="#completablefuture的核心优势">CompletableFuture的核心优势</a></li>
+<li><a href="#创建completablefuture对象">创建CompletableFuture对象</a></li>
+</ul></li>
 <li><a href="#25-completionservice-如何批量执行异步任务">25|CompletionService:如何批量执行异步任务</a></li>
 <li><a href="#26-forkjoin-单机版的mapreduce">26|ForkJoin：单机版的MapReduce</a></li>
 <li><a href="#27-并发工具类热点问题答疑">27|并发工具类热点问题答疑</a></li>
+<li><a href="#总结-2">总结</a></li>
 </ul></li>
 </ul>
 </nav>
-  </div>
+	</div>
 </div>
-    <div class="post-content">
-      
-
-<h2 id="21-原子类-无锁工具类的典范-重点学习">21|原子类：无锁工具类的典范(重点学习)</h2>
+<div class="content post__content clearfix">
+			<h2 id="21-原子类-无锁工具类的典范-重点学习">21|原子类：无锁工具类的典范(重点学习)</h2>
 
 <p>前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，<code>add10K()</code>   这个方法不是线 程安全的，问题就出在变量 count 的可见性和 <code>count+=1</code> 的原子性上。<strong>可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。</strong></p>
 
@@ -320,7 +250,14 @@ oldV = xxxx;
 
 <h4 id="2-原子化的对象引用类型">2. 原子化的对象引用类型</h4>
 
-<p>相关实现有 AtomicReference、AtomicStampedReference 和 AtomicMarkableReference，利用 它们可以实现对象引用的原子化更新</p>
+<p>相关实现有 AtomicReference、AtomicStampedReference 和 AtomicMarkableReference，利用 它们可以实现对象引用的原子化更新.不过需要注意的是，对象引用的更新需要重点关注 ABA 问题， AtomicStampedReference 和 AtomicMarkableReference 这两个原子类可以解决 ABA 问题</p>
+
+<p>解决 ABA 问题的思路其实很简单，增加一个版本号维度就可以了，这个和我们在《18 | StampedLock:有没有比读写锁更快的锁?》介绍的乐观锁机制很类似，每次执行 CAS 操作，附加再更新一个版本号，只要保证版本号是递增的，那么即便 A 变成 B 之后再变回 A，版本号也不 会变回来(版本号递增的)</p>
+
+<ul>
+<li>AtomicStampedReference 实现的 CAS 方法就增加了版本号参数</li>
+<li>AtomicMarkableReference 的实现机制则更简单，将版本号简化成了一个 Boolean</li>
+</ul>
 
 <h4 id="3-原子化数组">3. 原子化数组</h4>
 
@@ -340,108 +277,337 @@ oldV = xxxx;
 
 <p>DoubleAccumulator、DoubleAdder、LongAccumulator 和 LongAdder，这四个类仅仅用来执行 累加操作，相比原子化的基本数据类型，速度更快，但是不支持 compareAndSet() 方法。如果你 仅仅需要累加操作，使用原子化的累加器性能会更好。</p>
 
+<h3 id="总结">总结</h3>
+
+<p>无锁方案相对于互斥锁方案，优点非常多，首先性能好，其次是基本不会出现死锁问题(但可能 出现饥饿和活锁问题，因为自旋会反复重试)。Java 提供的原子类大部分都实现了<code>compareAndSet()</code>方法，基于 <code>compareAndSet()</code>方法，你可以构建自己的无锁数据结构，但是建 议你不要这样做，这个工作最好还是让大师们去完成，原因是无锁算法没你想象的那么简单。</p>
+
+<p>Java 提供的原子类能够解决一些简单的原子性问题，但你可能会发现，上面我们所有原子类的方法都是针对一个共享变量的，如果你需要解决多个变量的原子性问题，建议还是使用互斥锁方案。原子类虽好，但使用要慎之又慎。</p>
+
 <h2 id="22-executor与线程池-如何创建正确的线程池">22|Executor与线程池：如何创建正确的线程池？</h2>
+
+<p>虽然在Java语言中创建线程看上去就像创建一个对象一样简单，只需要new Thread()就可以了，但实际上创 建线程远不是创建一个对象那么简单。创建对象，仅仅是在JVM的堆里分配一块内存而已;而创建一个线 程，却需要调用操作系统内核的API，然后操作系统要为线程分配一系列的资源，这个成本就很高了，所以 线程是一个重量级的对象，应该避免频繁创建和销毁。</p>
+
+<p>线程池的需求是如此普遍，所以Java SDK并发包自然也少不了它。但是很多人在初次接触并发包里线程池相 关的工具类时，多少会都有点蒙，不知道该从哪里入手，我觉得根本原因在于线程池和一般意义上的池化资 源是不同的。一般意义上的池化资源，都是下面这样，当你需要资源的时候就调用acquire()方法来申请资 源，用完之后就调用release()释放资源。若你带着这个固有模型来看并发包里线程池相关的工具类时，会很 遗憾地发现它们完全匹配不上，Java提供的线程池里面压根就没有申请线程和释放线程的方法。</p>
+
+<pre><code class="language-java">class XXXPool{
+// 获取池化资源 XXX acquire() { }
+// 释放池化资源
+void release(XXX x){ }
+}
+</code></pre>
+
+<p>### 线程池是一种生产者-消费者模式
+为什么线程池没有采用一般意义上池化资源的设计方法呢?如果线程池采用一般意义上池化资源的设计方 法，应该是下面示例代码这样。你可以来思考一下，假设我们获取到一个空闲线程T1，然后该如何使用T1 呢?你期望的可能是这样:通过调用T1的execute()方法，传入一个Runnable对象来执行具体业务逻辑，就 像通过构造函数Thread(Runnable target)创建线程一样。可惜的是，你翻遍Thread对象的所有方法，都不 存在类似<code>execute(Runnable target)</code>这样的公共方法。</p>
+
+<p>线程池的使用方是生产者，线程池本身是消费者。 在下面的示例代码中，我们创建了一个非常简单的线程池MyThreadPool，你可以通过它来理解线程池的工 作原理。</p>
+
+<pre><code class="language-java">//简化的线程池，仅用来说明工作原理 class MyThreadPool{
+//利用阻塞队列实现生产者-消费者模式 BlockingQueue&lt;Runnable&gt; workQueue; //保存内部工作线程
+List&lt;WorkerThread&gt; threads = new ArrayList&lt;&gt;();
+// 构造方法 MyThreadPool(int poolSize,
+BlockingQueue&lt;Runnable&gt; workQueue){ this.workQueue = workQueue;
+// 创建工作线程
+for(int idx=0; idx&lt;poolSize; idx++){
+        WorkerThread work = new WorkerThread();
+        work.start();
+        threads.add(work);
+} }
+// 提交任务
+void execute(Runnable command){
+      workQueue.put(command);
+    }
+// 工作线程负责消费任务，并执行任务 class WorkerThread extends Thread{
+public void run() { //循环取任务并执行 while(true){ 1
+          Runnable task = workQueue.take();
+          task.run();
+        }
+} }
+}
+/** 下面是使用示例 **/
+// 创建有界阻塞队列 BlockingQueue&lt;Runnable&gt; workQueue =
+new LinkedBlockingQueue&lt;&gt;(2);
+// 创建线程池
+MyThreadPool pool = new MyThreadPool(
+10, workQueue); // 提交任务 pool.execute(()-&gt;{
+      System.out.println(&quot;hello&quot;);
+  });
+</code></pre>
+
+<p>在MyThreadPool的内部，我们维护了一个阻塞队列workQueue和一组工作线程，工作线程的个数由构造函 数中的poolSize来指定。用户通过调用execute()方法来提交Runnable任务，execute()方法的内部实现仅仅 是将任务加入到workQueue中。MyThreadPool内部维护的工作线程会消费workQueue中的任务并执行任 务，相关的代码就是代码1处的while循环。线程池主要的工作原理就这些，是不是还挺简单的?</p>
+
+<p>Java并发包里提供的线程池，远比我们上面的示例代码强大得多，当然也复杂得多。Java提供的线程池相关 的工具类中，最核心的是ThreadPoolExecutor，通过名字你也能看出来，它强调的是Executor，而不是一般 意义上的池化资源。</p>
+
+<p>ThreadPoolExecutor的构造函数非常复杂，如下面代码所示，这个最完备的构造函数有7个参数。</p>
+
+<pre><code class="language-java">ThreadPoolExecutor(
+    int corePoolSize,
+    int maximumPoolSize,
+    long keepAliveTime,
+    TimeUnit unit,
+    BlockingQueue&lt;Runnable&gt; workQueue,
+    ThreadFactory threadFactory,
+    RejectedExecutionHandler handler)
+</code></pre>
+
+<p>下面我们一一介绍这些参数的意义，你可以把线程池类比为一个项目组，而线程就是项目组的成员。</p>
+
+<ul>
+<li>corePoolSize:表示线程池保有的最小线程数。有些项目很闲，但是也不能把人都撤了，至少要留corePoolSize个人坚守阵地。</li>
+<li>maximumPoolSize:表示线程池创建的最大线程数。当项目很忙时，就需要加人，但是也不能无限制地 加，最多就加到maximumPoolSize个人。当项目闲下来时，就要撤人了，最多能撤到corePoolSize个人。</li>
+<li>keepAliveTime &amp; unit:上面提到项目根据忙闲来增减人员，那在编程世界里，如何定义忙和闲呢?很简 单，一个线程如果在一段时间内，都没有执行任务，说明很闲，keepAliveTime 和 unit 就是用来定义这 个“一段时间”的参数。也就是说，如果一个线程空闲了keepAliveTime &amp; unit这么久，而且线程池 的线程数大于 corePoolSize ，那么这个空闲的线程就要被回收了。</li>
+<li>workQueue:工作队列，和上面示例代码的工作队列同义。</li>
+<li>threadFactory:通过这个参数你可以自定义如何创建线程，例如你可以给线程指定一个有意义的名字。</li>
+<li>handler:通过这个参数你可以自定义任务的拒绝策略。如果线程池中所有的线程都在忙碌，并且工作队 列也满了(前提是工作队列是有界队列)，那么此时提交任务，线程池就会拒绝接收。至于拒绝的策略， 你可以通过handler这个参数来指定。</li>
+</ul>
+
+<p>ThreadPoolExecutor已经提供了以下4种策略。</p>
+
+<ul>
+<li>CallerRunsPolicy:提交任务的线程自己去执行该任务。</li>
+<li>AbortPolicy:默认的拒绝策略，会throws RejectedExecutionException。</li>
+<li>DiscardPolicy:直接丢弃任务，没有任何异常抛出。</li>
+<li>DiscardOldestPolicy:丢弃最老的任务，其实就是把最早进入工作队列的任务丢弃，然后把新任务加入 到工作队列。</li>
+</ul>
+
+<p>Java在1.6版本还增加了 <code>allowCoreThreadTimeOut(boolean value)</code> 方法，它可以让所有线程都支持超时，这 意味着如果项目很闲，就会将项目组的成员都撤走。</p>
+
+<h3 id="使用线程池要注意些什么">使用线程池要注意些什么</h3>
+
+<p>考虑到ThreadPoolExecutor的构造函数实在是有些复杂，所以Java并发包里提供了一个线程池的静态工厂类</p>
+
+<p>Executors，利用Executors你可以快速创建线程池。不过目前大厂的编码规范中基本上都不建议使用 Executors了，所以这里我就不再花篇幅介绍了。
+不建议使用Executors的最重要的原因是:Executors提供的很多方法默认使用的都是无界的 LinkedBlockingQueue，高负载情境下，无界队列很容易导致OOM，而OOM会导致所有请求都无法处理， 这是致命问题。<strong>所以强烈建议使用有界队列。</strong></p>
+
+<p>使用有界队列，当任务过多时，线程池会触发执行拒绝策略，线程池默认的拒绝策略会<code>throw RejectedExecutionException</code> 这是个运行时异常，对于运行时异常编译器并不强制catch它，所以开发人员 很容易忽略。因此默认拒绝策略要慎重使用。如果线程池处理的任务非常重要，建议自定义自己的拒绝策 略;并且在实际工作中，自定义的拒绝策略往往和降级策略配合使用。</p>
+
+<p>使用线程池，还要注意异常处理的问题，例如通过ThreadPoolExecutor对象的execute()方法提交任务时， 如果任务在执行的过程中出现运行时异常，会导致执行任务的线程终止;不过，最致命的是任务虽然异常 了，但是你却获取不到任何通知，这会让你误以为任务都执行得很正常。虽然线程池提供了很多用于异常处 理的方法，但是最稳妥和简单的方案还是捕获所有异常并按需处理，你可以参考下面的示例代码。</p>
+
+<pre><code class="language-java">try { //业务逻辑
+} catch (RuntimeException x) { //按需处理
+} catch (Throwable x) { //按需处理
+}
+</code></pre>
 
 <h2 id="23-future-如何用多线程实现最优的-烧水泡茶-程序">23|Future:如何用多线程实现最优的“烧水泡茶”程序？</h2>
 
+<h3 id="如何获取任务执行结果">如何获取任务执行结果</h3>
+
+<p>Java通过ThreadPoolExecutor提供的3个submit()方法和1个FutureTask工具类来支持获得任务执行结果的需 求。下面我们先来介绍这3个submit()方法，这3个方法的方法签名如下。</p>
+
+<pre><code class="language-java">// 提交Runnable任务
+ Future&lt;?&gt; submit(Runnable task); 
+ // 提交Callable任务
+ 
+&lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; task); 
+
+// 提交Runnable任务及结果引用
+ &lt;T&gt; Future&lt;T&gt; submit(Runnable task, T result);
+</code></pre>
+
+<p>你会发现它们的返回值都是Future接口，Future接口有5个方法，我都列在下面了，它们分别是</p>
+
+<ol>
+<li>取消任务的 方法<code>cancel()</code></li>
+<li>判断任务是否已取消的方法<code>isCancelled()</code></li>
+<li>判断任务是否已结束的方法<code>isDone()</code></li>
+<li>2个获得 任务执行结果的<code>get()</code>和<code>get(timeout, unit)</code>，其中最后一个<code>get(timeout, unit)</code>支持超时机制。</li>
+</ol>
+
+<p>通过Future接口 的这5个方法你会发现，我们提交的任务不但能够获取任务执行结果，还可以取消任务。不过需要注意的 是:这两个get()方法都是阻塞式的，如果被调用的时候，任务还没有执行完，那么调用get()方法的线程会阻 塞，直到任务执行完才会被唤醒。</p>
+
+<p>这3个submit()方法之间的区别在于方法参数不同，下面我们简要介绍一下。
+1. 提交Runnable任务 <code>submit(Runnable task)</code> :这个方法的参数是一个Runnable接口，Runnable接
+口的run()方法是没有返回值的，所以<code>submit(Runnable task)</code>这个方法返回的Future<strong>仅可以用来断
+言任务已经结束了</strong>，类似于<code>Thread.join()</code>。
+2. 提交Callable任务 <code>submit(Callable&lt;T&gt; task)</code>:这个方法的参数是一个Callable接口，它只有一个call()方法，并且这个方法是有返回值的，所以这个方法返回的Future对象可以通过调用其get()方法来获取任务的执行结果。
+3. 提交Runnable任务及结果引用 <code>submit(Runnable task, T result)</code>:这个方法很有意思，假设这
+个方法返回的Future对象是f，f.get()的返回值就是传给submit()方法的参数result。这个方法该怎么用 呢?下面这段示例代码展示了它的经典用法。需要你注意的是Runnable接口的实现类Task声明了一个有 参构造函数<code>Task(Result r)</code>，创建Task对象的时候传入了result对象，这样就能在类Task的run()方法 中对result进行各种操作了。result相当于主线程和子线程之间的桥梁，通过它主子线程可以共享数据。</p>
+
+<p>下面我们再来介绍FutureTask工具类。前面我们提到的Future是一个接口，而FutureTask是一个实实在在的 工具类，这个工具类有两个构造函数，它们的参数和前面介绍的submit()方法类似，所以这里我就不再赘述 了。</p>
+
+<pre><code class="language-java">FutureTask(Callable&lt;V&gt; callable);
+   FutureTask(Runnable runnable, V result);
+</code></pre>
+
+<p>那如何使用FutureTask呢?其实很简单，FutureTask实现了Runnable和Future接口，由于实现了Runnable 接口，所以可以将FutureTask对象作为任务提交给ThreadPoolExecutor去执行，也可以直接被Thread执 行;又因为实现了Future接口，所以也能用来获得任务的执行结果。下面的示例代码是将FutureTask对象提 交给ThreadPoolExecutor去执行。</p>
+
+<pre><code class="language-java">// 创建FutureTask 
+FutureTask&lt;Integer&gt; futureTask = new FutureTask&lt;&gt;(()-&gt; 1+2); // 创建线程池
+ExecutorService es = Executors.newCachedThreadPool();
+ // 提交FutureTask 
+ es.submit(futureTask);
+// 获取计算结果
+  Integer result = futureTask.get();
+</code></pre>
+
+<p>FutureTask对象直接被Thread执行的示例代码如下所示。相信你已经发现了，利用FutureTask对象可以很容 易获取子线程的执行结果。</p>
+
+<pre><code class="language-java">// 创建FutureTask 
+FutureTask&lt;Integer&gt; futureTask = new FutureTask&lt;&gt;(()-&gt; 1+2);
+// 创建并启动线程
+Thread T1 = new Thread(futureTask); 
+  T1.start();
+// 获取计算结果
+Integer result = futureTask.get();
+</code></pre>
+
+<h3 id="总结-1">总结</h3>
+
+<p>利用Java并发包提供的Future可以很容易获得异步任务的执行结果，无论异步任务是通过线程池 ThreadPoolExecutor执行的，还是通过手工创建子线程来执行的。Future可以类比为现实世界里的提货单， 比如去蛋糕店订生日蛋糕，蛋糕店都是先给你一张提货单，你拿到提货单之后，没有必要一直在店里等着， 可以先去干点其他事，比如看场电影;等看完电影后，基本上蛋糕也做好了，然后你就可以凭提货单领蛋糕 了。</p>
+
+<p>利用多线程可以快速将一些串行的任务并行化，从而提高性能;如果任务之间有依赖关系，比如当前任务依 赖前一个任务的执行结果，这种问题基本上都可以用Future来解决。在分析这种问题的过程中，建议你用有 向图描述一下任务之间的依赖关系，同时将线程的分工也做好，类似于烧水泡茶最优分工方案那幅图。对照 图来写代码，好处是更形象，且不易出错。</p>
+
 <h2 id="24-completablefuture-异步编程没那么难">24|CompletableFuture：异步编程没那么难</h2>
+
+<p>异步化，是并行方案得以实施的基础，更深入地讲其实就是:<strong>利用多线程优化性能这个核心方案得以实施的 基础</strong> 。看到这里，相信你应该就能理解异步编程最近几年为什么会大火了，因为优化性能是互联网大厂的一 个核心需求啊。Java在1.8版本提供了CompletableFuture来支持异步编程，CompletableFuture有可能是你 见过的最复杂的工具类了，不过功能也着实让人感到震撼。</p>
+
+<h3 id="completablefuture的核心优势">CompletableFuture的核心优势</h3>
+
+<p>为了领略CompletableFuture异步编程的优势，这里我们用CompletableFuture重新实现前面曾提及的烧水 泡茶程序。首先还是需要先完成分工方案，在下面的程序中，我们分了3个任务:任务1负责洗水壶、烧开 水，任务2负责洗茶壶、洗茶杯和拿茶叶，任务3负责泡茶。其中任务3要等待任务1和任务2都完成后才能开 始。这个分工如下图所示。</p>
+
+<p><img src="/img/wash-cup-make-tea.png" alt="wash-cup-make-tea" /></p>
+
+<p>下面是代码实现，你先略过 <code>runAsync()、supplyAsync()、thenCombine()</code>这些不太熟悉的方法，从大局上 看，你会发现:</p>
+
+<ol>
+<li>无需手工维护线程，没有繁琐的手工维护线程的工作，给任务分配线程的工作也不需要我们关注;</li>
+<li>语义更清晰，例如 <code>f3 = f1.thenCombine(f2, ()-&gt;{})</code> 能够清晰地表述“任务3要等待任务1和任务2都完成后才能开始”;</li>
+
+<li><p>代码更简练并且专注于业务逻辑，几乎所有代码都是业务逻辑相关的。</p>
+
+<pre><code class="language-java">//任务1:洗水壶-&gt;烧开水 
+CompletableFuture&lt;Void&gt; f1 = CompletableFuture.runAsync(()-&gt;{ 
+System.out.println(&quot;T1:洗水壶...&quot;); 
+sleep(1, TimeUnit.SECONDS);
+
+System.out.println(&quot;T1:烧开水...&quot;);
+ sleep(15, TimeUnit.SECONDS);
+});
+
+//任务2:洗茶壶-&gt;洗茶杯-&gt;拿茶叶 
+CompletableFuture&lt;String&gt; f2 = CompletableFuture.supplyAsync(()-&gt;{ 
+System.out.println(&quot;T2:洗茶壶...&quot;); 
+sleep(1, TimeUnit.SECONDS);
+
+System.out.println(&quot;T2:洗茶杯...&quot;);
+sleep(2, TimeUnit.SECONDS);
+
+System.out.println(&quot;T2:拿茶叶...&quot;); 
+sleep(1, TimeUnit.SECONDS);
+return &quot;⻰井&quot;;
+}); 
+
+//任务3:任务1和任务2完成后执行:泡茶 
+CompletableFuture&lt;String&gt; f3 =f1.thenCombine(f2, (__, tf)-&gt;{ 
+    
+System.out.println(&quot;T1:拿到茶叶:&quot; + tf); 
+System.out.println(&quot;T1:泡茶...&quot;);
+ 
+return &quot;上茶:&quot; + tf; 
+});
+
+//等待任务3执行结果 
+System.out.println(f3.join());
+void sleep(int t, TimeUnit u) {
+try {
+  u.sleep(t);
+}catch(InterruptedException e){}
+}
+// 一次执行结果: 
+T1:洗水壶... 
+T2:洗茶壶... 
+T1:烧开水... 
+T2:洗茶杯... 
+T2:拿茶叶... 
+T1:拿到茶叶:⻰井 
+T1:泡茶... 
+上茶:⻰井
+
+</code></pre></li>
+</ol>
+
+<p>领略CompletableFuture异步编程的优势之后，下面我们详细介绍CompletableFuture的使用，首先是如何 创建CompletableFuture对象。</p>
+
+<h3 id="创建completablefuture对象">创建CompletableFuture对象</h3>
+
+<p>创建CompletableFuture对象主要靠下面代码中展示的这4个静态方法，我们先看前两个。在烧水泡茶的例 子中，我们已经使用了<code>runAsync(Runnable runnable)</code>和<code>supplyAsync(Supplier&lt;U&gt; supplier)</code>，它们之间的区别是:<strong>Runnable 接口的run()方法没有返回值，而Supplier接口的get()方法是有 返回值的。</strong></p>
+
+<p>//TODO</p>
+
+<p>前两个方法和后两个方法的区别在于:<strong>后两个方法可以指定线程池参数。</strong></p>
 
 <h2 id="25-completionservice-如何批量执行异步任务">25|CompletionService:如何批量执行异步任务</h2>
 
 <h2 id="26-forkjoin-单机版的mapreduce">26|ForkJoin：单机版的MapReduce</h2>
 
+<p>前面几篇文章我们介绍了线程池、Future、CompletableFuture和CompletionService，仔细观察你会发现这些工具类都是在帮助我们<strong>站在任务的视角来解决并发问题</strong>，而不是让我们纠缠在线程之间如何协作的细节上 (比如线程之间如何实现等待、通知等)。</p>
+
+<ul>
+<li>对于简单的并行任务，你可以通过“线程池+Future”的方案来 解决;</li>
+<li>如果任务之间有聚合关系，无论是AND聚合还是OR聚合，都可以通过CompletableFuture来解决;</li>
+<li>而批量的并行任务，则可以通过CompletionService来解决。</li>
+</ul>
+
+<p>我们一直讲，并发编程可以分为三个层面的问题，分别是<strong>分工、协作和互斥</strong>，当你关注于任务的时候，你会发现你的视角已经从并发编程的细节中跳出来了，你应用的更多的是现实世界的思维模式，类比的往往是现实世界里的分工，所以我把线程池、Future、CompletableFuture和CompletionService都列到了分工里面。</p>
+
+<p>上面提到的简单并行、聚合、批量并行这三种任务模型，基本上能够覆盖日常工作中的并发场景了，但还是 不够全面，因为还有一种“分治”的任务模型没有覆盖到。分治，顾名思义，即分而治之，是一种解决复杂 问题的思维方法和模式;具体来讲，指的是把一个复杂的问题分解成多个相似的子问题，然后再把子问题分 解成更小的子问题，直到子问题简单到可以直接求解。理论上来讲，解决每一个问题都对应着一个任务，所 以对于问题的分治，实际上就是对于任务的分治。</p>
+
+<p>分治思想在很多领域都有广泛的应用，例如算法领域有分治算法(归并排序、快速排序都属于分治算法，二分法查找也是一种分治算法);大数据领域知名的计算框架MapReduce背后的思想也是分治。既然分治这 种任务模型如此普遍，那Java显然也需要支持，<strong>Java并发包里提供了一种叫做Fork/Join的并行计算框架，就 是用来支持分治这种任务模型的。</strong></p>
+
 <h2 id="27-并发工具类热点问题答疑">27|并发工具类热点问题答疑</h2>
 
-    </div>
+<ol>
+<li>while(true) 总不让人省心</li>
+<li>signalAll()总让人省心</li>
+<li>Sempaphore需要锁中锁</li>
+<li>锁的申请和释放要成对出现</li>
+<li>回调总要关心执行线程是谁</li>
+<li>共享线程池：有福同享就要有难同当</li>
+<li>线上问题定位的利器：线程栈dump</li>
+</ol>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">瞿广</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">
-        2019-07-27
-        
-    </span>
-  </p>
-  
-  
-</div>
-<footer class="post-footer">
-      
-      <nav class="post-nav">
-        <a class="prev" href="/post/geektime-java-concurrent-in-action.2/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">《Java并发编程实战》-3-并发设计模式</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/geektime-java-concurrent-in-action.1.1/">
-            <span class="next-text nav-default">《Java并发编程实战》-2-并发工具类(上)</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
+<h2 id="总结-2">总结</h2>
 
-      </div>
-    </main>
+<p>Java并发工具类到今天为止，就告一段落了，由于篇幅原因，不能每个工具类都详细介绍。Java并发工具类 内容繁杂，熟练使用是需要一个过程的，而且需要多加实践。希望你学完这个模块之后，<strong>遇到并发问题时最 起码能知道用哪些工具可以解决</strong>。至于工具使用的细节和最佳实践，我总结的也只是我认为重要的。由于每 个人的思维方式和编码习惯不同，也许我认为不重要的，恰恰是你的短板，所以这部分内容更多地还是需要 你去实践，在实践中养成良好的编码习惯，不断纠正错误的思维方式。</p>
+		</div>
+	</article>
+</main>
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
-  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		记录生活的点滴，学习知识，分享知识
+	</div>
 </div>
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
-      <span class="division">|</span>
-    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
-  </div>
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2019
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">瞿广</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/geektime-java-concurrent-in-action.1.1/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">《Java并发编程实战》-2-并发工具类(上)</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/geektime-java-concurrent-in-action.2/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">《Java并发编程实战》-3-并发设计模式</p></a>
+	</div>
+</nav>
 
 
-
-
-
-
-<script src="/js/douban.js"></script>
-
-
-</body>
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Mainroad.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
 </html>

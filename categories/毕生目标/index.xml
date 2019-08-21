@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>毕生目标 on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/%E6%AF%95%E7%94%9F%E7%9B%AE%E6%A0%87/</link>
-    <description>Recent content in 毕生目标 on Quguang 学习笔记</description>
+    <title>毕生目标 on Mainroad</title>
+    <link>/categories/%E6%AF%95%E7%94%9F%E7%9B%AE%E6%A0%87/</link>
+    <description>Recent content in 毕生目标 on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Wed, 16 Jan 2019 10:42:50 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/%E6%AF%95%E7%94%9F%E7%9B%AE%E6%A0%87/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/%E6%AF%95%E7%94%9F%E7%9B%AE%E6%A0%87/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2018总结-2019展望</title>
-      <link>https://techqu.github.io/post/2018-2019/</link>
+      <link>/post/2018-2019/</link>
       <pubDate>Wed, 16 Jan 2019 10:42:50 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/2018-2019/</guid>
-      <description>2018总结 一、个人 结婚 体重暴涨 工作能力进步 了解了面试准备的重要性 二、了解和学习 领域驱动设计 devops spring security ldap service mesh mysql 网络协议 kubernetes jvm etl kylin 数据结构与算法 并发</description>
+      <guid>/post/2018-2019/</guid>
+      <description>&lt;p&gt;个人2019年，年度目标&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>书单-按学科划分</title>
-      <link>https://techqu.github.io/post/booklist/</link>
+      <link>/post/booklist/</link>
       <pubDate>Sun, 06 Jan 2019 15:24:35 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/booklist/</guid>
+      <guid>/post/booklist/</guid>
       <description>&lt;p&gt;眼界对应着拓宽，这是广度上的，如果需要深入了解一个领域，还需入手一些经典的教科书籍，经过系统的学习才能掌握。
 人的精力和时间都是有限的，你不可能对每一个领域都有比较深的认识。我们都只能在有限的时间里做有限的事情，读书也须有选择。那么怎么选择呢？建议从兴趣入手。&lt;/p&gt;
 
@@ -34,19 +34,19 @@
     
     <item>
       <title>书单-按能力划分</title>
-      <link>https://techqu.github.io/post/booklist-ability/</link>
+      <link>/post/booklist-ability/</link>
       <pubDate>Sun, 06 Jan 2019 15:24:35 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/booklist-ability/</guid>
+      <guid>/post/booklist-ability/</guid>
       <description>&lt;p&gt;按能力划分（附书籍豆瓣链接）&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java工程师成神之路（2018修订版）</title>
-      <link>https://techqu.github.io/post/roadmap/</link>
+      <link>/post/roadmap/</link>
       <pubDate>Thu, 20 Dec 2018 11:12:42 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/roadmap/</guid>
+      <guid>/post/roadmap/</guid>
       <description>&lt;p&gt;网罗了比较全面的java技术栈。&lt;/p&gt;
 
 &lt;p&gt;本文基于微信公众号文章基础上添加，原文链接：

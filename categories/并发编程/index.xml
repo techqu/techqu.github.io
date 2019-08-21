@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>并发编程 on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</link>
-    <description>Recent content in 并发编程 on Quguang 学习笔记</description>
+    <title>并发编程 on Mainroad</title>
+    <link>/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</link>
+    <description>Recent content in 并发编程 on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Sat, 19 Jan 2019 07:56:14 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
-      <link>https://techqu.github.io/post/15-lock-in-java/</link>
+      <link>/post/15-lock-in-java/</link>
       <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/15-lock-in-java/</guid>
+      <guid>/post/15-lock-in-java/</guid>
       <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
     </item>
     

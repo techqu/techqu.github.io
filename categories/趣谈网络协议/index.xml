@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>《趣谈网络协议》 on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</link>
-    <description>Recent content in 《趣谈网络协议》 on Quguang 学习笔记</description>
+    <title>《趣谈网络协议》 on Mainroad</title>
+    <link>/categories/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</link>
+    <description>Recent content in 《趣谈网络协议》 on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Wed, 16 Jan 2019 18:51:01 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</title>
-      <link>https://techqu.github.io/post/geektime-network-protocol-ipconfig/</link>
+      <link>/post/geektime-network-protocol-ipconfig/</link>
       <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-network-protocol-ipconfig/</guid>
+      <guid>/post/geektime-network-protocol-ipconfig/</guid>
       <description>&lt;p&gt;从一行查看IP地址的命令开始讲解，
 Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
     </item>

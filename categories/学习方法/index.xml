@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>学习方法 on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</link>
-    <description>Recent content in 学习方法 on Quguang 学习笔记</description>
+    <title>学习方法 on Mainroad</title>
+    <link>/categories/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</link>
+    <description>Recent content in 学习方法 on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Sat, 12 Jan 2019 11:59:01 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>高效学习</title>
-      <link>https://techqu.github.io/post/learn-method/</link>
+      <link>/post/learn-method/</link>
       <pubDate>Sat, 12 Jan 2019 11:59:01 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/learn-method/</guid>
+      <guid>/post/learn-method/</guid>
       <description>&lt;p&gt;首先明确的是，学习是件反人性的事，需要刻意练习的，是需要持之以恒的。&lt;/p&gt;
 
 &lt;p&gt;很多事情能做到什么程度，其实在思想的源头就被决定了，因为它会绝大程度地受到思考问题的出发点、思维方式、格局观、价值观等因素影响。&lt;/p&gt;

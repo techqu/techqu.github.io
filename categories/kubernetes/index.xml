@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kubernetes on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/kubernetes/</link>
-    <description>Recent content in kubernetes on Quguang 学习笔记</description>
+    <title>kubernetes on Mainroad</title>
+    <link>/categories/kubernetes/</link>
+    <description>Recent content in kubernetes on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Thu, 17 Jan 2019 08:41:16 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>《深入剖析Kubernetes》-入门</title>
-      <link>https://techqu.github.io/post/kubernetes-introduction/</link>
+      <link>/post/kubernetes-introduction/</link>
       <pubDate>Thu, 17 Jan 2019 08:41:16 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/kubernetes-introduction/</guid>
+      <guid>/post/kubernetes-introduction/</guid>
       <description>&lt;p&gt;首先，Kubernetes项目要解决的问题是什么？&lt;/p&gt;
 
 &lt;p&gt;编排？调度？容器云？还是集群管理？&lt;/p&gt;

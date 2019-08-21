@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/python/</link>
-    <description>Recent content in python on Quguang 学习笔记</description>
+    <title>python on Mainroad</title>
+    <link>/categories/python/</link>
+    <description>Recent content in python on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Thu, 21 Mar 2019 20:04:31 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Python 学习入门</title>
-      <link>https://techqu.github.io/post/python-helloword/</link>
+      <link>/post/python-helloword/</link>
       <pubDate>Thu, 21 Mar 2019 20:04:31 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/python-helloword/</guid>
+      <guid>/post/python-helloword/</guid>
       <description>&lt;p&gt;学习了python的基础语法、变量类型、条件语句、数据结构、模块引用等&lt;/p&gt;</description>
     </item>
     

@@ -1,154 +1,69 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html class="no-js" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行 - Quguang 学习笔记</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="瞿广" /><meta name="description" content="从一行查看IP地址的命令开始讲解， Window上是ipconfig，Linux上是ifconfig，和 ip addr
-" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://techqu.github.io/post/geektime-network-protocol-ipconfig/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/douban.css">
-<link rel="stylesheet" href="/css/techqu.css">
-
-
-<meta property="og:title" content="《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行 - Mainroad</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行" />
 <meta property="og:description" content="从一行查看IP地址的命令开始讲解，
 Window上是ipconfig，Linux上是ifconfig，和 ip addr" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://techqu.github.io/post/geektime-network-protocol-ipconfig/" /><meta property="article:published_time" content="2019-01-16T18:51:01&#43;08:00"/>
-<meta property="article:modified_time" content="2019-01-16T18:51:01&#43;08:00"/>
+<meta property="og:url" content="/post/geektime-network-protocol-ipconfig/" />
+<meta property="article:published_time" content="2019-01-16T18:51:01+08:00" />
+<meta property="article:modified_time" content="2019-01-16T18:51:01+08:00" />
 
-<meta itemprop="name" content="《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行">
-<meta itemprop="description" content="从一行查看IP地址的命令开始讲解，
-Window上是ipconfig，Linux上是ifconfig，和 ip addr">
-
-
-<meta itemprop="datePublished" content="2019-01-16T18:51:01&#43;08:00" />
-<meta itemprop="dateModified" content="2019-01-16T18:51:01&#43;08:00" />
-<meta itemprop="wordCount" content="3185">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行"/>
 <meta name="twitter:description" content="从一行查看IP地址的命令开始讲解，
 Window上是ipconfig，Linux上是ifconfig，和 ip addr"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/syntax.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
 </head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">专注</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">全部文章</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">专注</a>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Mainroad" rel="home">
+				<div class="logo__title">Mainroad</div>
+				<div class="logo__tagline">Just another site</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-01-16T18:51:01">January 16, 2019</time>
 </div>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">全部文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> 2019-01-16 </span>
-        <div class="post-category">
-            <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"> 网络协议 </a>
-            <a href="/categories/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"> 《趣谈网络协议》 </a>
-            </div>
-          <span class="more-meta"> 约 3185 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
-        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/geektime_note" rel="category">geektime_note</a>, <a class="meta__link" href="/categories/%e7%bd%91%e7%bb%9c%e5%8d%8f%e8%ae%ae" rel="category">网络协议</a>, <a class="meta__link" href="/categories/%e8%b6%a3%e8%b0%88%e7%bd%91%e7%bb%9c%e5%8d%8f%e8%ae%ae" rel="category">《趣谈网络协议》</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
 <ul>
 <li>
 <ul>
@@ -163,10 +78,10 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr"/>
 </ul></li>
 </ul>
 </nav>
-  </div>
+	</div>
 </div>
-    <div class="post-content">
-      <p>从一行查看IP地址的命令开始讲解，
+<div class="content post__content clearfix">
+			<p>从一行查看IP地址的命令开始讲解，
 Window上是ipconfig，Linux上是ifconfig，和 ip addr</p>
 
 <pre><code class="language-shell">root@test:~# ip addr
@@ -199,15 +114,16 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr</p>
 <h2 id="无类型域间选路-cidr">无类型域间选路（CIDR）</h2>
 
 <div class="admonition note"><p class="admonition-title">CIDR</p>
-  <p>为了方便表示IP和子网掩码 大佬们想到了一个简单的方法：IP/子网掩码位数 （CIDR表示法）</p>
+  
+为了方便表示IP和子网掩码 大佬们想到了一个简单的方法：IP/子网掩码位数 （CIDR表示法）
 
-<p>举例 ：IP为192.168.0.0 子网掩码为255.255.255.0 用CIDR法表示</p>
+举例 ：IP为192.168.0.0 子网掩码为255.255.255.0 用CIDR法表示
 
-<ul>
-<li>step1：先将子网掩码由二进制转换为十进制</li>
-<li>11111111.11111111.11111111.00000000</li>
-<li>setp2：CIDR表示为：192.168.0.0/24</li>
-</ul>
+
+- step1：先将子网掩码由二进制转换为十进制
+- 11111111.11111111.11111111.00000000
+- setp2：CIDR表示为：192.168.0.0/24
+
 
 </div>
 
@@ -246,8 +162,9 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr</p>
 
 <h2 id="公有ip和私有ip">公有IP和私有IP</h2>
 
-<p><div class="admonition note">
-  <ul>
+<p><div class="admonition note"></p>
+
+<ul>
 <li>publicIP：这种IP地址可以直接连接至Internet</li>
 <li>privateIP：这种ip地址不能直接连接到internet，主要用于规划局域网内的规划</li>
 </ul>
@@ -262,7 +179,7 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr</p>
 
 <p>这三段中的ip的地址是无法上网的，只能限于内部网络使用</p>
 
-</div>
+<p></div>
 　　与私有IP地址对应的是公有地址（Public address），由Inter NIC（Internet Network Information Center 因特网信息中心）负责。这些IP地址分配给注册并向Inter NIC提出申请的组织机构。通过它直接访问因特网。  　　</p>
 
 <p>　　私有IP的出现是为了解决公有IP地址不够用的情况。从A、B、C三类IP地址中拿出一部分作为私有IP地址，这些IP地址不能被路由到Internet骨干网上，Internet路由器也将丢弃该私有地址。如果私有IP地址想要连至Internet，需要将私有地址转换为公有地址。这个转换过程称为网络地址转换（Network Address Translation，NAT），通常使用路由器来执行NAT转换。</p>
@@ -317,51 +234,45 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr</p>
 <li>子网掩码：255.255.224.0</li>
 </ul></li>
 
-<li><p>用CIDR表示：</p></li>
-</ol>
+<li><p>用CIDR表示：</p>
 
-<pre><code>  step1：将子网掩码由二进制转换为十进制
-              255.255.224.0
-              11111111.11111111.11100000.00000000
-  step2：CIDR表示为
-              172.16.100.200/19
-</code></pre>
+<pre><code>step1：将子网掩码由二进制转换为十进制
+          255.255.224.0
+          11111111.11111111.11100000.00000000
+step2：CIDR表示为
+          172.16.100.200/19
+</code></pre></li>
 
-<ol>
-<li>网络ID是多少</li>
-</ol>
+<li><p>网络ID是多少</p>
 
 <pre><code>step1：将IP地址由二进制转换为十进制
-            10101100.00010000.01100100.11001000
+        10101100.00010000.01100100.11001000
 step2：将二进制的IP地址与二进制的子网掩码进行运算 子网掩码为1时保留原IP位 否则为0
-            1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 0 0 1 0 0. 1 1 0 0 1 0 0 0
-            1 1 1 1 1 1 1 1. 1 1 1 1 1 1 1 1. 1 1 1 0 0 0 0 0. 0 0 0 0 0 0 0 0
-        =   1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 0 0 0 0 0. 0 0 0 0 0 0 0 0
+        1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 0 0 1 0 0. 1 1 0 0 1 0 0 0
+        1 1 1 1 1 1 1 1. 1 1 1 1 1 1 1 1. 1 1 1 0 0 0 0 0. 0 0 0 0 0 0 0 0
+    =   1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 0 0 0 0 0. 0 0 0 0 0 0 0 0
 step3:将二进制的结果转换为十进制
-            172.16.96.0/19
-</code></pre>
+        172.16.96.0/19
+</code></pre></li>
 
-<ol>
-<li>网络主机数有多少</li>
-</ol>
+<li><p>网络主机数有多少</p>
 
 <pre><code>num=2^(32-19)-2
-</code></pre>
+</code></pre></li>
 
-<ol>
-<li>网络主机的范围是多少</li>
-</ol>
+<li><p>网络主机的范围是多少</p>
 
 <pre><code>step1：将长度为子网掩码为1的数IP记录下来（即网络ID）
-            1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 x x x x x . x x x x x x x x
-            1 1 1 1 1 1 1 1. 1 1 1 1 1 1 1 1. 1 1 1 
+        1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 x x x x x . x x x x x x x x
+        1 1 1 1 1 1 1 1. 1 1 1 1 1 1 1 1. 1 1 1 
 step2：将x全部变为0即最小值 将x全部变为1即最大值
-            1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 0 0 0 0 0.0
-            1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 x 1 1 1 1 .255
+        1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 0 0 0 0 0.0
+        1 0 1 0 1 1 0 0 .0 0 0 1 0 0 0 0. 0 1 1 x 1 1 1 1 .255
 step3：将二进制的结果转换为十进制（ip的最后一组不能为0和255）
-            最小值：172.16.96.1
-            最大值：172.16.177.254
-</code></pre>
+        最小值：172.16.96.1
+        最大值：172.16.177.254
+</code></pre></li>
+</ol>
 
 <h2 id="附">附</h2>
 
@@ -372,96 +283,45 @@ step3：将二进制的结果转换为十进制（ip的最后一组不能为0和
 <blockquote>
 <p>参考文章：<a href="https://time.geekbang.org/column/article/7772">https://time.geekbang.org/column/article/7772</a></p>
 </blockquote>
-    </div>
+		</div>
+	</article>
+</main>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">瞿广</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">
-        2019-01-16
-        
-    </span>
-  </p>
-  
-  
-</div>
-<footer class="post-footer">
-      
-      <nav class="post-nav">
-        <a class="prev" href="/post/kubernetes-introduction/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">《深入剖析Kubernetes》-入门</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/transaction-tcc/">
-            <span class="next-text nav-default">分布式事务-TCC事务：最终一致性</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
-  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		记录生活的点滴，学习知识，分享知识
+	</div>
 </div>
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
-      <span class="division">|</span>
-    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
-  </div>
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2019
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">瞿广</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/transaction-tcc/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">分布式事务-TCC事务：最终一致性</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/kubernetes-introduction/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">《深入剖析Kubernetes》-入门</p></a>
+	</div>
+</nav>
 
 
-
-
-
-
-<script src="/js/douban.js"></script>
-
-
-</body>
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Mainroad.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
 </html>

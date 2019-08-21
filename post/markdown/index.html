@@ -1,149 +1,67 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html class="no-js" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>markdown语法示例 - Quguang 学习笔记</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="瞿广" /><meta name="description" content="本文是markdown语法的示例
-" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://techqu.github.io/post/markdown/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/douban.css">
-<link rel="stylesheet" href="/css/techqu.css">
-
-
-<meta property="og:title" content="markdown语法示例" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>markdown语法示例 - Mainroad</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="markdown语法示例" />
 <meta property="og:description" content="本文是markdown语法的示例" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://techqu.github.io/post/markdown/" /><meta property="article:published_time" content="2018-12-20T10:58:38&#43;08:00"/>
-<meta property="article:modified_time" content="2018-12-20T10:58:38&#43;08:00"/>
+<meta property="og:url" content="/post/markdown/" />
+<meta property="article:published_time" content="2018-12-20T10:58:38+08:00" />
+<meta property="article:modified_time" content="2018-12-20T10:58:38+08:00" />
 
-<meta itemprop="name" content="markdown语法示例">
-<meta itemprop="description" content="本文是markdown语法的示例">
-
-
-<meta itemprop="datePublished" content="2018-12-20T10:58:38&#43;08:00" />
-<meta itemprop="dateModified" content="2018-12-20T10:58:38&#43;08:00" />
-<meta itemprop="wordCount" content="7068">
-
-
-
-<meta itemprop="keywords" content="java,volatile,synchronized,多线程,并发," />
-<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="markdown语法示例"/>
 <meta name="twitter:description" content="本文是markdown语法的示例"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/syntax.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
 </head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">专注</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">全部文章</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">专注</a>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Mainroad" rel="home">
+				<div class="logo__title">Mainroad</div>
+				<div class="logo__tagline">Just another site</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">markdown语法示例</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2018-12-20T10:58:38">December 20, 2018</time>
 </div>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">全部文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">markdown语法示例</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> 2018-12-20 </span>
-        <div class="post-category">
-            <a href="/categories/tech/"> Tech </a>
-            </div>
-          <span class="more-meta"> 约 7068 字 </span>
-          <span class="more-meta"> 预计阅读 15 分钟 </span>
-        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/tech" rel="category">Tech</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
 <ul>
 <li><a href="#h1">H1</a>
 <ul>
@@ -233,10 +151,10 @@
 </ul></li>
 </ul>
 </nav>
-  </div>
+	</div>
 </div>
-    <div class="post-content">
-      <p>本文是markdown语法的示例</p>
+<div class="content post__content clearfix">
+			<p>本文是markdown语法的示例</p>
 
 <h1 id="h1">H1</h1>
 
@@ -474,16 +392,16 @@ D--&gt;&gt;A: Dashed open arrow
   </div></p></li>
 
 <li><p>网易云音乐
-  <iframe style="max-width: 100%"
-      class="music163"
-      frameborder="no"
-      border="0"
-      marginwidth="0"
-      marginheight="0"
-      width="330"
-      height="86"
-      src="//music.163.com/outchain/player?type=2&id=28196554&auto=0&height=66">
-    </iframe></p></li>
+<iframe style="max-width: 100%"
+  class="music163"
+  frameborder="no"
+  border="0"
+  marginwidth="0"
+  marginheight="0"
+  width="330"
+  height="86"
+  src="//music.163.com/outchain/player?type=2&id=28196554&auto=0&height=66">
+</iframe></p></li>
 </ol>
 
 <blockquote>
@@ -1311,30 +1229,30 @@ Not a problem!
 
 <h2 id="section-7">Github Emoji</h2>
 
-<pre><code>This is a test for emoji 😄.  The emojis are images linked to github assets .
+<pre><code>This is a test for emoji :smile:.  The emojis are images linked to github assets :octocat:.
 </code></pre>
 
-<p>This is a test for emoji 😄.  The emojis are images linked to github assets .</p>
+<p>This is a test for emoji :smile:.  The emojis are images linked to github assets :octocat:.</p>
 
 <h3 id="people">People</h3>
 
-<p>👍👎👽👼💢😠😧😲👶💙😊💥🙇👦👰💔👤👥👏😰💥😖😕👷👮👫💑:couplekiss:😢😿:cupid::dancer:👯:dash:😞:disappointed_relieved:💫:dizzy_face:💧:ear:❗️:expressionless:👀👊:family:😨:feelsgood:🐾:fire::fist:😳:frowning:🖕👧:godmode:💚:grey_exclamation:❔:grimacing:😁😀:guardsman:💇:hand:💩:hear_no_evil:❤️😍:heart_eyes_cat:💓:heartpulse::hushed::imp:💁:innocent::japanese_goblin:👹:joy::joy_cat:💋😗:kissing_cat:😚:kissing_heart:😙:laughing::lips:💌:man::man_with_gua_pi_mao:👳:mask::massage:🤘:muscle:🎵:nail_care::neutral_face:🙅:no_mouth:👃🎶:ok_hand:🙆:older_man:👵:open_hands:😮:pensive:😣:person_frowning:👱:person_with_pouting_face:👇:point_left:👉:point_up:👆:poop:😾:pray::princess:👊:purple_heart:❓:rage::rage2::rage4:✋:raised_hands:🙋:relaxed:😌:revolving_hearts:🏃:running:😆:scream:🙀:see_no_evil:💩💀:sleeping:😪:smile:😸:smiley:😺:smiling_imp:😏:smirk_cat:😭✨:sparkling_heart:🙊:speech_balloon:⭐️🌟😛:stuck_out_tongue_closed_eyes:😜:sunglasses::suspect::sweat:💦:sweat_smile:💭:thumbsdown:👍:tired_face:👅:triumph::two_hearts:👬:two_women_holding_hands:😒:v::walking:👋😩:wink:👩:worried:💛:yum::zzz:</p>
+<p>:+1::-1::alien::angel::anger::angry::anguished::astonished::baby::blue_heart::blush::boom::bow::bowtie::boy::bride_with_veil::broken_heart::bust_in_silhouette::busts_in_silhouette::clap::cold_sweat::collision::confounded::confused::construction_worker::cop::couple::couple_with_heart::couplekiss::cry::crying_cat_face::cupid::dancer::dancers::dash::disappointed::disappointed_relieved::dizzy::dizzy_face::droplet::ear::exclamation::expressionless::eyes::facepunch::family::fearful::feelsgood::feet::finnadie::fire::fist::flushed::frowning::fu::girl::goberserk::godmode::green_heart::grey_exclamation::grey_question::grimacing::grin::grinning::guardsman::haircut::hand::hankey::hear_no_evil::heart::heart_eyes::heart_eyes_cat::heartbeat::heartpulse::hurtrealbad::hushed::imp::information_desk_person::innocent::japanese_goblin::japanese_ogre::joy::joy_cat::kiss::kissing::kissing_cat::kissing_closed_eyes::kissing_heart::kissing_smiling_eyes::laughing::lips::love_letter::man::man_with_gua_pi_mao::man_with_turban::mask::massage::metal::muscle::musical_note::nail_care::neckbeard::neutral_face::no_good::no_mouth::nose::notes::ok_hand::ok_woman::older_man::older_woman::open_hands::open_mouth::pensive::persevere::person_frowning::person_with_blond_hair::person_with_pouting_face::point_down::point_left::point_right::point_up::point_up_2::poop::pouting_cat::pray::princess::punch::purple_heart::question::rage::rage1::rage2::rage3::rage4::raised_hand::raised_hands::raising_hand::relaxed::relieved::revolving_hearts::runner::running::satisfied::scream::scream_cat::see_no_evil::shit::skull::sleeping::sleepy::smile::smile_cat::smiley::smiley_cat::smiling_imp::smirk::smirk_cat::sob::sparkles::sparkling_heart::speak_no_evil::speech_balloon::star::star2::stuck_out_tongue::stuck_out_tongue_closed_eyes::stuck_out_tongue_winking_eye::sunglasses::suspect::sweat::sweat_drops::sweat_smile::thought_balloon::thumbsdown::thumbsup::tired_face::tongue::triumph::trollface::two_hearts::two_men_holding_hands::two_women_holding_hands::unamused::v::walking::wave::weary::wink::woman::worried::yellow_heart::yum::zzz:</p>
 
 <h3 id="nature">Nature</h3>
 
-<p>🐜🐤:bear:🐝🐞:bird:🌼:blowfish:🐗💐:bug:🌵:camel:🐱🐈🌸:chestnut:🐔:cloud:🐮🐄🌙:crocodile:🌀:deciduous_tree:🐶🐕🐬:dragon:🐲:dromedary_camel:🌾:earth_africa:🌎:earth_asia:🐘:evergreen_tree:🍂:first_quarter_moon:🌛:fish::foggy::four_leaf_clover:🐸🌕:full_moon_with_face:🌐:goat::hamster::hatched_chick:🐣:herb::hibiscus:🐝:horse:🐨:last_quarter_moon:🌜:leaves::leopard::maple_leaf:🌌:monkey:🐵:moon::mouse:🐁:mushroom:🌑:new_moon_with_face:🌃:ocean::octocat:🐙:ox:🌴:panda_face:⛅️:paw_prints:🐧:pig:🐖🐽:poodle:🐰:rabbit2:🐎:ram:🐀🐓:rose:🌱:sheep:🐚:snail:🐍:snowflake:⛄️:squirrel:🌞:sunflower:☀️🐯🐅:tropical_fish:🌷:turtle:☔️:volcano:🌘:waning_gibbous_moon:🐃:waxing_crescent_moon:🌔:whale::whale2:🐺⚡️</p>
+<p>:ant::baby_chick::bear::bee::beetle::bird::blossom::blowfish::boar::bouquet::bug::cactus::camel::cat::cat2::cherry_blossom::chestnut::chicken::cloud::cow::cow2::crescent_moon::crocodile::cyclone::deciduous_tree::dog::dog2::dolphin::dragon::dragon_face::dromedary_camel::ear_of_rice::earth_africa::earth_americas::earth_asia::elephant::evergreen_tree::fallen_leaf::first_quarter_moon::first_quarter_moon_with_face::fish::foggy::four_leaf_clover::frog::full_moon::full_moon_with_face::globe_with_meridians::goat::hamster::hatched_chick::hatching_chick::herb::hibiscus::honeybee::horse::koala::last_quarter_moon::last_quarter_moon_with_face::leaves::leopard::maple_leaf::milky_way::monkey::monkey_face::moon::mouse::mouse2::mushroom::new_moon::new_moon_with_face::night_with_stars::ocean::octocat::octopus::ox::palm_tree::panda_face::partly_sunny::paw_prints::penguin::pig::pig2::pig_nose::poodle::rabbit::rabbit2::racehorse::ram::rat::rooster::rose::seedling::sheep::shell::snail::snake::snowflake::snowman::squirrel::sun_with_face::sunflower::sunny::tiger::tiger2::tropical_fish::tulip::turtle::umbrella::volcano::waning_crescent_moon::waning_gibbous_moon::water_buffalo::waxing_crescent_moon::waxing_gibbous_moon::whale::whale2::wolf::zap:</p>
 
 <h3 id="objects">Objects</h3>
 
-<p>🎱⏰🍎🎨👟🍼:balloon:🎍:banana:📊:baseball:🏀:bath:🛁:battery:🍺🍻:bell:🍱:bicyclist:👙:birthday:🃏:black_nib:📘:bomb:📖🔖:bookmark_tabs:📚:boot:🎳:bread:💼:bulb:🍰📆:calling:📷:candy:📇:cd::chart_with_downwards_trend:📈:cherries::chocolate_bar:🎄:clapper::clipboard:📕:closed_lock_with_key:🌂:clubs::cocktail:☕️💻:confetti_ball:🍪:corn:💳:crown:🔮:curry::custard:🍡:dart:📅♦️:dollar:🎎:door:🍩:dress:📀📧:egg:🍆:electric_plug:✉️✉️:envelope_with_arrow:💶👓:fax::file_folder:🎆:fish_cake:🎣:flags::flashlight:🐬:floppy_disk:🎴:football::footprints:🍴:fried_shrimp:🍟:game_die:💎👻🎁💝:golf:🍇:green_apple:📗:guitar:🔫🍔:hammer:👜:headphones:♥️🔆:high_heel:🔪:honey_pot:🏇:hourglass:⏳:ice_cream::icecream:📥:incoming_envelope:📱:jack_o_lantern:👖:key:👘:lantern:📒:lemon:💄:lock:🔏:lollipop::loop:🔊:loudspeaker:🔅:mag::mag_right:🀄️📫:mailbox_closed:📬:mailbox_with_no_mail:👞:meat_on_bone:📣🍈:memo:🎤:microscope:💽:money_with_wings:💰:mortar_board:🚵:movie_camera:🎹:musical_score:🔇📛:necktie:📰:no_bell:📓:notebook_with_decorative_cover:🔩:oden::open_book:📂:orange_book:📤:package:📄:page_with_curl:📟:paperclip:🍑:pear:📝:pencil2:☎️💊🍍:pizza:📯:postbox:👝:poultry_leg:💷:purse:📌:radio:🍜:ribbon:🍚🍙:rice_cracker:🎑:ring:🏉:running_shirt_with_sash:🍶👡:santa:📡:saxophone:🎒:scissors:📜:seat:🍧:shirt:👞🚿:ski:🚬:snowboarder:⚽️🔉:space_invader:♠️🍝:sparkle:🎇:speaker:🍲📏:strawberry:🏄:sushi:🍠:swimmer:💉:tada:🎋:tangerine:🍵☎️:telephone_receiver:🔭:tennis:🚽:tomato:🎩:triangular_ruler:🏆:tropical_drink:🎺:tshirt:📺🔓📼📹:video_game:🎻:watch:🍉:wind_chime:🍷:womans_clothes:👒:wrench:💴</p>
+<p>:8ball::alarm_clock::apple::art::athletic_shoe::baby_bottle::balloon::bamboo::banana::bar_chart::baseball::basketball::bath::bathtub::battery::beer::beers::bell::bento::bicyclist::bikini::birthday::black_joker::black_nib::blue_book::bomb::book::bookmark::bookmark_tabs::books::boot::bowling::bread::briefcase::bulb::cake::calendar::calling::camera::candy::card_index::cd::chart_with_downwards_trend::chart_with_upwards_trend::cherries::chocolate_bar::christmas_tree::clapper::clipboard::closed_book::closed_lock_with_key::closed_umbrella::clubs::cocktail::coffee::computer::confetti_ball::cookie::corn::credit_card::crown::crystal_ball::curry::custard::dango::dart::date::diamonds::dollar::dolls::door::doughnut::dress::dvd::e-mail::egg::eggplant::electric_plug::email::envelope::envelope_with_arrow::euro::eyeglasses::fax::file_folder::fireworks::fish_cake::fishing_pole_and_fish::flags::flashlight::flipper::floppy_disk::flower_playing_cards::football::footprints::fork_and_knife::fried_shrimp::fries::game_die::gem::ghost::gift::gift_heart::golf::grapes::green_apple::green_book::guitar::gun::hamburger::hammer::handbag::headphones::hearts::high_brightness::high_heel::hocho::honey_pot::horse_racing::hourglass::hourglass_flowing_sand::ice_cream::icecream::inbox_tray::incoming_envelope::iphone::jack_o_lantern::jeans::key::kimono::lantern::ledger::lemon::lipstick::lock::lock_with_ink_pen::lollipop::loop::loud_sound::loudspeaker::low_brightness::mag::mag_right::mahjong::mailbox::mailbox_closed::mailbox_with_mail::mailbox_with_no_mail::mans_shoe::meat_on_bone::mega::melon::memo::microphone::microscope::minidisc::money_with_wings::moneybag::mortar_board::mountain_bicyclist::movie_camera::musical_keyboard::musical_score::mute::name_badge::necktie::newspaper::no_bell::notebook::notebook_with_decorative_cover::nut_and_bolt::oden::open_book::open_file_folder::orange_book::outbox_tray::package::page_facing_up::page_with_curl::pager::paperclip::peach::pear::pencil::pencil2::phone::pill::pineapple::pizza::postal_horn::postbox::pouch::poultry_leg::pound::purse::pushpin::radio::ramen::ribbon::rice::rice_ball::rice_cracker::rice_scene::ring::rugby_football::running_shirt_with_sash::sake::sandal::santa::satellite::saxophone::school_satchel::scissors::scroll::seat::shaved_ice::shirt::shoe::shower::ski::smoking::snowboarder::soccer::sound::space_invader::spades::spaghetti::sparkle::sparkler::speaker::stew::straight_ruler::strawberry::surfer::sushi::sweet_potato::swimmer::syringe::tada::tanabata_tree::tangerine::tea::telephone::telephone_receiver::telescope::tennis::toilet::tomato::tophat::triangular_ruler::trophy::tropical_drink::trumpet::tshirt::tv::unlock::vhs::video_camera::video_game::violin::watch::watermelon::wind_chime::wine_glass::womans_clothes::womans_hat::wrench::yen:</p>
 
 <h3 id="places">Places</h3>
 
-<p>🚡✈️🚑:anchor:🚛:atm::bank::barber:🔰:bike:🚙:boat:🌉:bullettrain_front:🚄:bus::busstop:🚗🎠:checkered_flag:⛪️🎪:city_sunrise:🌆:cn::construction:🏪:crossed_flags:🇩🇪🏬:es::european_castle:🏤:factory::ferris_wheel:🚒:fountain:🇫🇷⛽️🇬🇧🚁🏥🏨:hotsprings:🏠:house_with_garden:🇮🇹🏮:japan:🏯:jp::kr::light_rail:🏩:minibus:🚝:mount_fuji:🚠:mountain_railway:🗿:office:🚘:oncoming_bus::oncoming_police_car:🚖:performing_arts:🚓:post_office:🚃:rainbow:🚗:rocket:🎢:rotating_light:📍:rowboat:🇷🇺⛵️🏫🚢🎰:speedboat:🌠:station:🗽:steam_locomotive:🌅:sunrise_over_mountains:🚟:taxi::tent::ticket:🗼:tractor:🚥:train::train2:🚊🚩:trolleybus::truck:🇬🇧🇺🇸🚦:warning:💒</p>
+<p>:aerial_tramway::airplane::ambulance::anchor::articulated_lorry::atm::bank::barber::beginner::bike::blue_car::boat::bridge_at_night::bullettrain_front::bullettrain_side::bus::busstop::car::carousel_horse::checkered_flag::church::circus_tent::city_sunrise::city_sunset::cn::construction::convenience_store::crossed_flags::de::department_store::es::european_castle::european_post_office::factory::ferris_wheel::fire_engine::fountain::fr::fuelpump::gb::helicopter::hospital::hotel::hotsprings::house::house_with_garden::it::izakaya_lantern::japan::japanese_castle::jp::kr::light_rail::love_hotel::minibus::monorail::mount_fuji::mountain_cableway::mountain_railway::moyai::office::oncoming_automobile::oncoming_bus::oncoming_police_car::oncoming_taxi::performing_arts::police_car::post_office::railway_car::rainbow::red_car::rocket::roller_coaster::rotating_light::round_pushpin::rowboat::ru::sailboat::school::ship::slot_machine::speedboat::stars::station::statue_of_liberty::steam_locomotive::sunrise::sunrise_over_mountains::suspension_railway::taxi::tent::ticket::tokyo_tower::tractor::traffic_light::train::train2::tram::triangular_flag_on_post::trolleybus::truck::uk::us::vertical_traffic_light::warning::wedding:</p>
 
 <h3 id="symbols">Symbols</h3>
 
-<p>💯🔢🅰️🆎🔤🔡🉑♒️♈️◀️⏬:arrow_double_up:⬇️:arrow_down_small:▶️:arrow_heading_down:⤴️:arrow_left:↙️:arrow_lower_right:➡️:arrow_right_hook:⬆️:arrow_up_down:🔼:arrow_upper_left:↗️:arrows_clockwise:🔄:b::baby_symbol::back:🛄:ballot_box_with_check:‼️:black_circle:⬛️:black_medium_small_square:◼️:black_small_square:🔲:cancer::capital_abcd:♑️:chart:🚸:cinema::cl::clock1:🕙:clock1030:🕚:clock1130:🕛:clock1230:🕜:clock2:🕝:clock3:🕞:clock4:🕟:clock5:🕠:clock6:🕡:clock7:🕢:clock8:🕣:clock9:🕤:congratulations:🆒©️:curly_loop:💱:customs::diamond_shape_with_a_dot_inside:🚯:eight::eight_pointed_black_star:✳️:end::fast_forward:5️⃣4️⃣🆓♊️#️⃣💟:heavy_check_mark:➗:heavy_dollar_sign:❗️:heavy_minus_sign:✖️:heavy_plus_sign:🆔🉐:information_source:⁉️:keycap_ten:🈁🔵:large_blue_diamond:🔶:left_luggage::left_right_arrow:↩️:leo::libra::link::m:🚹🚇:mobile_phone_off:❎:new::ng::nine::no_bicycles:⛔️:no_entry_sign:📵:no_pedestrians:🚭:non-potable_water:⭕️🅾️🆗🔛1️⃣⛎🅿️〽️:passport_control:♓️🚰:put_litter_in_its_place:🔘:recycle:🔴:registered:🔁:repeat_one:🚻:rewind:🈂️♐️♏️:secret:7️⃣:signal_strength:6️⃣🔯:small_blue_diamond:🔸:small_red_triangle:🔻:soon::sos::symbols:♉️3️⃣™️🔝🔱🔀:two::u5272::u5408:🈺:u6307:🈷️🈶🈵🈚️🈸🈲🈳:underage:🆙📳:virgo::vs:〰️:wc:♿️:white_check_mark:⚪️:white_flower:⬜️:white_medium_small_square:◻️:white_small_square:🔳:womens::x::zero:</p>
+<p>:100::1234::a::ab::abc::abcd::accept::aquarius::aries::arrow_backward::arrow_double_down::arrow_double_up::arrow_down::arrow_down_small::arrow_forward::arrow_heading_down::arrow_heading_up::arrow_left::arrow_lower_left::arrow_lower_right::arrow_right::arrow_right_hook::arrow_up::arrow_up_down::arrow_up_small::arrow_upper_left::arrow_upper_right::arrows_clockwise::arrows_counterclockwise::b::baby_symbol::back::baggage_claim::ballot_box_with_check::bangbang::black_circle::black_large_square::black_medium_small_square::black_medium_square::black_small_square::black_square_button::cancer::capital_abcd::capricorn::chart::children_crossing::cinema::cl::clock1::clock10::clock1030::clock11::clock1130::clock12::clock1230::clock130::clock2::clock230::clock3::clock330::clock4::clock430::clock5::clock530::clock6::clock630::clock7::clock730::clock8::clock830::clock9::clock930::congratulations::cool::copyright::curly_loop::currency_exchange::customs::diamond_shape_with_a_dot_inside::do_not_litter::eight::eight_pointed_black_star::eight_spoked_asterisk::end::fast_forward::five::four::free::gemini::hash::heart_decoration::heavy_check_mark::heavy_division_sign::heavy_dollar_sign::heavy_exclamation_mark::heavy_minus_sign::heavy_multiplication_x::heavy_plus_sign::id::ideograph_advantage::information_source::interrobang::keycap_ten::koko::large_blue_circle::large_blue_diamond::large_orange_diamond::left_luggage::left_right_arrow::leftwards_arrow_with_hook::leo::libra::link::m::mens::metro::mobile_phone_off::negative_squared_cross_mark::new::ng::nine::no_bicycles::no_entry::no_entry_sign::no_mobile_phones::no_pedestrians::no_smoking::non-potable_water::o::o2::ok::on::one::ophiuchus::parking::part_alternation_mark::passport_control::pisces::potable_water::put_litter_in_its_place::radio_button::recycle::red_circle::registered::repeat::repeat_one::restroom::rewind::sa::sagittarius::scorpius::secret::seven::shipit::signal_strength::six::six_pointed_star::small_blue_diamond::small_orange_diamond::small_red_triangle::small_red_triangle_down::soon::sos::symbols::taurus::three::tm::top::trident::twisted_rightwards_arrows::two::u5272::u5408::u55b6::u6307::u6708::u6709::u6e80::u7121::u7533::u7981::u7a7a::underage::up::vibration_mode::virgo::vs::wavy_dash::wc::wheelchair::white_check_mark::white_circle::white_flower::white_large_square::white_medium_small_square::white_medium_square::white_small_square::white_square_button::womens::x::zero:</p>
 
 <h2 id="insert">Insert</h2>
 
@@ -1419,7 +1337,7 @@ $$
 <pre><code>{{% music &quot;28196554&quot; %}}
 </code></pre>
 
-  <iframe style="max-width: 100%"
+<p><iframe style="max-width: 100%"
       class="music163"
       frameborder="no"
       border="0"
@@ -1428,18 +1346,16 @@ $$
       width="330"
       height="86"
       src="//music.163.com/outchain/player?type=2&id=28196554&auto=0&height=66">
-    </iframe>
+    </iframe></p>
 
 <h2 id="youtube">YouTube</h2>
 
 <pre><code>{{% youtube &quot;wC5pJm8RAu4&quot; %}}
 </code></pre>
 
-
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube-nocookie.com/embed/wC5pJm8RAu4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="//www.youtube.com/embed/wC5pJm8RAu4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
-
 <div class="footnotes">
 
 <hr />
@@ -1455,125 +1371,60 @@ $$
  <a class="footnote-return" href="#fnref:pa"><sup>[return]</sup></a></li>
 </ol>
 </div>
-    </div>
-
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">瞿广</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">
-        2018-12-20
-        
-    </span>
-  </p>
-  
-  <p class="copyright-item">
-    <span class="item-title">许可协议</span>
-    <span class="item-content">MIT</span>
-  </p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/java/" rel="tag">java</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/volatile/" rel="tag">volatile</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/synchronized/" rel="tag">synchronized</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li>
+	</ul>
 </div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/java/">java</a>
-          <a href="/tags/volatile/">volatile</a>
-          <a href="/tags/synchronized/">synchronized</a>
-          <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
-          <a href="/tags/%E5%B9%B6%E5%8F%91/">并发</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/roadmap/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Java工程师成神之路（2018修订版）</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/jvm-garabage-collection/">
-            <span class="next-text nav-default">对象存活判断、垃圾收集算法和垃圾收集器</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-  
-  
+		</footer>
+	</article>
+</main>
 
-  
-    <script src="https://utteranc.es/client.js"
-            repo="techqu/techqu.github.io"
-            issue-term="pathname"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
-  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		记录生活的点滴，学习知识，分享知识
+	</div>
 </div>
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
-      <span class="division">|</span>
-    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
-  </div>
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2019
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">瞿广</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/geektime-jvm-garabage-collection/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">对象存活判断、垃圾收集算法和垃圾收集器</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/roadmap/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Java工程师成神之路（2018修订版）</p></a>
+	</div>
+</nav>
 
 
-
-
-
-
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Mainroad.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
 <script src="/js/douban.js"></script>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 </body>
 </html>

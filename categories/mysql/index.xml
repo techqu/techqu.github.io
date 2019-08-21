@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>MySQL on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/mysql/</link>
-    <description>Recent content in MySQL on Quguang 学习笔记</description>
+    <title>MySQL on Mainroad</title>
+    <link>/categories/mysql/</link>
+    <description>Recent content in MySQL on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Fri, 17 May 2019 18:26:55 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java面试-高并发-MySQL读写分离</title>
-      <link>https://techqu.github.io/post/java-interview-mysql-shading05/</link>
+      <link>/post/java-interview-mysql-shading05/</link>
       <pubDate>Fri, 17 May 2019 18:26:55 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mysql-shading05/</guid>
+      <guid>/post/java-interview-mysql-shading05/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;你们有没有做MySQL读写分离？如何实现mysql的读写分离？MySQL主从复制原理的是啥？如何解决mysql主从同步的延时问题？&lt;/p&gt;</description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>Java面试-高并发-Mysql全局唯一的id</title>
-      <link>https://techqu.github.io/post/java-interview-mysql-shading04/</link>
+      <link>/post/java-interview-mysql-shading04/</link>
       <pubDate>Fri, 17 May 2019 18:19:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mysql-shading04/</guid>
+      <guid>/post/java-interview-mysql-shading04/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;分库分表之后，id主键如何处理？&lt;/p&gt;</description>
@@ -35,10 +35,10 @@
     
     <item>
       <title>Java面试-高并发-Mysql 动态扩容缩容的分库分表方案</title>
-      <link>https://techqu.github.io/post/java-interview-mysql-shading03/</link>
+      <link>/post/java-interview-mysql-shading03/</link>
       <pubDate>Fri, 17 May 2019 17:41:34 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mysql-shading03/</guid>
+      <guid>/post/java-interview-mysql-shading03/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;如何设计可以动态扩容缩容的分库分表方案？&lt;/p&gt;</description>
@@ -46,10 +46,10 @@
     
     <item>
       <title>Java面试-高并发-Mysql-怎么把你那个单库单表的系统给迁移到分库分表上</title>
-      <link>https://techqu.github.io/post/java-interview-mysql-shading02/</link>
+      <link>/post/java-interview-mysql-shading02/</link>
       <pubDate>Fri, 17 May 2019 17:30:42 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mysql-shading02/</guid>
+      <guid>/post/java-interview-mysql-shading02/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？&lt;/p&gt;</description>
@@ -57,10 +57,10 @@
     
     <item>
       <title>Java面试-高并发-Mysql 分库分表</title>
-      <link>https://techqu.github.io/post/java-interview-mysql-shading01/</link>
+      <link>/post/java-interview-mysql-shading01/</link>
       <pubDate>Fri, 17 May 2019 16:12:09 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/java-interview-mysql-shading01/</guid>
+      <guid>/post/java-interview-mysql-shading01/</guid>
       <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
 
 &lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;</description>
@@ -68,55 +68,55 @@
     
     <item>
       <title>Mysql  B&#43;tree 索引</title>
-      <link>https://techqu.github.io/post/mysql-index-b&#43;tree/</link>
+      <link>/post/mysql-index-b&#43;tree/</link>
       <pubDate>Thu, 09 May 2019 18:43:28 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-index-b&#43;tree/</guid>
+      <guid>/post/mysql-index-b&#43;tree/</guid>
       <description>&lt;p&gt;众所周知，Mysql中的索引结构是用B+Tree实现的，那么具体是如何来构建的呢？&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》- Question 03</title>
-      <link>https://techqu.github.io/post/mysql-question-03/</link>
+      <link>/post/mysql-question-03/</link>
       <pubDate>Wed, 27 Mar 2019 15:49:58 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-question-03/</guid>
-      <description>join的写法 如果用left join，左边的表一定是驱动表吗？ 如果两个表的join包含多个条件的等值匹配，是都要写到 on 里面呢，还是只把一个条</description>
+      <guid>/post/mysql-question-03/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》- Order By</title>
-      <link>https://techqu.github.io/post/mysql-orderby/</link>
+      <link>/post/mysql-orderby/</link>
       <pubDate>Wed, 20 Mar 2019 08:49:19 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-orderby/</guid>
+      <guid>/post/mysql-orderby/</guid>
       <description>&lt;p&gt;在你开发应用时，一定会遇到需要根据指定的字段来显式结果的需求。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》- 唯一索引和普通索引</title>
-      <link>https://techqu.github.io/post/mysql-index-unique-and-normal/</link>
+      <link>/post/mysql-index-unique-and-normal/</link>
       <pubDate>Sat, 16 Mar 2019 15:26:14 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-index-unique-and-normal/</guid>
+      <guid>/post/mysql-index-unique-and-normal/</guid>
       <description>&lt;p&gt;在不同的业务场景下，应该选择普通索引，还是唯一索引呢？接下来，我们就从这两种索引对查询语句和更新语句的性能影响来进行分析。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》- 深入浅出索引</title>
-      <link>https://techqu.github.io/post/mysql-index/</link>
+      <link>/post/mysql-index/</link>
       <pubDate>Sat, 16 Mar 2019 15:25:44 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-index/</guid>
+      <guid>/post/mysql-index/</guid>
       <description>&lt;p&gt;简单来说，索引的出现其实就是为了提高数据查询的效率，就像书的目录一样。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》- 事务隔离</title>
-      <link>https://techqu.github.io/post/mysql-transaction-2/</link>
+      <link>/post/mysql-transaction-2/</link>
       <pubDate>Fri, 15 Mar 2019 09:26:22 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-transaction-2/</guid>
+      <guid>/post/mysql-transaction-2/</guid>
       <description>&lt;p&gt;如果是可重复读隔离级别，事务T启动的时候会创建一个视图read-view，之后事务T执行期间，即使有其他事务修改了数据，事务T看到的仍然跟在启动时看到的一样。也就是说，一个在可重复读隔离级别下执行的事务，好像与世无争，不受外界影响。&lt;/p&gt;
 
 &lt;p&gt;但是，一个事务要更新一行，如果刚好有另外一个事务拥有这一行的行锁，它又不能这么超然了，会被锁住，进入等待状态。问题是，既然进入了等待状态，那么等到这个事务自己获取到行锁要更新数据的时候，它读到的值又是什么呢？&lt;/p&gt;</description>
@@ -124,47 +124,47 @@
     
     <item>
       <title>《MYSQL实战45讲》- 行锁、死锁、事务</title>
-      <link>https://techqu.github.io/post/mysql-transaction/</link>
+      <link>/post/mysql-transaction/</link>
       <pubDate>Thu, 14 Mar 2019 17:23:42 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-transaction/</guid>
-      <description>行锁 MySQL的行锁是在引擎层由各个引擎自己实现的。比如MyISAM引擎就不支持行锁。不支持行锁意味着并发控制只能使用表锁，对于这种引擎的表</description>
+      <guid>/post/mysql-transaction/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》-如何快速复制一张表</title>
-      <link>https://techqu.github.io/post/mysql-how-to-copy-table/</link>
+      <link>/post/mysql-how-to-copy-table/</link>
       <pubDate>Mon, 25 Feb 2019 08:00:23 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-how-to-copy-table/</guid>
+      <guid>/post/mysql-how-to-copy-table/</guid>
       <description>&lt;p&gt;本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》-Join语句是怎么执行的</title>
-      <link>https://techqu.github.io/post/mysql-how-join-run/</link>
+      <link>/post/mysql-how-join-run/</link>
       <pubDate>Fri, 22 Feb 2019 22:27:38 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-how-join-run/</guid>
-      <description>1 准备工作： CREATE TABLE `t2` ( `id` int(11) NOT NULL, `a` int(11) DEFAULT NULL, `b` int(11) DEFAULT NULL, PRIMARY KEY (`id`), KEY `a` (`a`) ) ENGINE=InnoDB; drop procedure idata; delimiter ;; create procedure idata() begin declare i int; set i=1; while(i&amp;lt;=1000)do insert into t2 values(i, i, i); set i=i+1; end while; end;; delimiter ; call idata(); create table t1 like t2; insert into t1 (select *</description>
+      <guid>/post/mysql-how-join-run/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Mysql 使用Navicat 导出数据库表结构</title>
-      <link>https://techqu.github.io/post/mysql-navicat-structure-doc/</link>
+      <link>/post/mysql-navicat-structure-doc/</link>
       <pubDate>Tue, 29 Jan 2019 14:08:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql-navicat-structure-doc/</guid>
+      <guid>/post/mysql-navicat-structure-doc/</guid>
       <description>&lt;p&gt;我们在写数据库设计文档的时候，会需要对数据库表进行设计的编写，手动写的话会很费时间费精力，尤其是如果有大量的表需要写的时候，就更加浪费时间了。下面就让我给大家讲一个简单方法。
 我的是在Navicat中导出的数据库表。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《MYSQL实战45讲》-笔记</title>
-      <link>https://techqu.github.io/post/mysql/</link>
+      <link>/post/mysql/</link>
       <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/mysql/</guid>
+      <guid>/post/mysql/</guid>
       <description>&lt;p&gt;MYSQL实战45讲-极客时间笔记&lt;/p&gt;</description>
     </item>
     

@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>java并发实战 on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/</link>
-    <description>Recent content in java并发实战 on Quguang 学习笔记</description>
+    <title>java并发实战 on Mainroad</title>
+    <link>/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/</link>
+    <description>Recent content in java并发实战 on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Sat, 27 Jul 2019 17:31:24 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>《Java并发编程实战》-3-并发设计模式</title>
-      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.2/</link>
+      <link>/post/geektime-java-concurrent-in-action.2/</link>
       <pubDate>Sat, 27 Jul 2019 17:31:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.2/</guid>
-      <description>28|Immutability模式：如何利用不可变性解决问题？ 29|Copy-on-Write模式：不是延时策略的COW 30| 线程本地存储模式：</description>
+      <guid>/post/geektime-java-concurrent-in-action.2/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《Java并发编程实战》-2-并发工具类(下)</title>
-      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/</link>
+      <link>/post/geektime-java-concurrent-in-action.1.2/</link>
       <pubDate>Fri, 26 Jul 2019 17:31:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.2/</guid>
-      <description>21|原子类：无锁工具类的典范(重点学习) 前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K() 这个方法不是线 程安全</description>
+      <guid>/post/geektime-java-concurrent-in-action.1.2/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>《Java并发编程实战》-2-并发工具类(上)</title>
-      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/</link>
+      <link>/post/geektime-java-concurrent-in-action.1.1/</link>
       <pubDate>Fri, 26 Jul 2019 17:30:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/</guid>
-      <description>14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领</description>
+      <guid>/post/geektime-java-concurrent-in-action.1.1/</guid>
+      <description>14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中 Lock 用于解决互斥 问题，Condition 用于解决同步问题。
+原因是 synchronized 申请资源的时候，如果申请不到，线程直 接进入阻塞状态了，而线程进入阻塞状态，啥都干不了，也释放不了线程已经占有的资源。但我 们希望的是:
+对于“不可抢占”这个条件，占用部分资源的线程进一步申请其他资源时，如果申 请不到，可以主动释放它占有的资源，这样不可抢占这个条件就破坏掉了。
+如果我们重新设计一把互斥锁去解决这个问题，那该怎么设计呢?我觉得有三种方案。
+ 能够响应中断。synchronized 的问题是，持有锁 A 后，如果尝试获取锁 B 失败，那么线程就 进入阻塞状态，一旦发生死锁，就没有任何机会来唤醒阻塞的线程。但如果阻塞状态的线程能 够响应中断信号，也就是说当我们给阻塞的线程发送中断信号的时候，能够唤醒它，那它就有 机会释放曾经持有的锁 A。这样就破坏了不可抢占条件了。 支持超时。如果线程在一段时间之内没有获取到锁，不是进入阻塞状态，而是返回一个错误， 那这个线程也有机会释放曾经持有的锁。这样也能破坏不可抢占条件。 非阻塞地获取锁。如果尝试获取锁失败，并不进入阻塞状态，而是直接返回，那这个线程也有 机会释放曾经持有的锁。这样也能破坏不可抢占条件。  这三种方案可以全面弥补 synchronized 的问题。到这里相信你应该也能理解了，这三个方案就 是“重复造轮子”的主要原因，体现在 API 上，就是 Lock 接口的三个方法。详情如下:
+// 支持中断的 API void lockInterruptibly() throws InterruptedException; // 支持超时的 API boolean tryLock(long time, TimeUnit unit) throws InterruptedException; // 支持非阻塞获取锁的 API boolean tryLock();  如何保证可见性 Java SDK 里面锁的实现非常复杂，这里我就不展开细说了，但是原理还是 需要简单介绍一下:它是利用了 volatile 相关的 Happens-Before 规则。Java SDK 里面的 ReentrantLock，内部持有一个 volatile 的成员变量 state，获取锁的时候，会读写 state 的值; 解锁的时候，也会读写 state 的值(简化后的代码如下面所示)。也就是说，在执行 value+=1 之前，程序先读写了一次 volatile 变量 state，在执行 value+=1 之后，又读写了一次 volatile 变量 state。</description>
     </item>
     
     <item>
       <title>《Java并发编程实战》-1-理论基础篇</title>
-      <link>https://techqu.github.io/post/geektime-java-concurrent-in-action.0/</link>
+      <link>/post/geektime-java-concurrent-in-action.0/</link>
       <pubDate>Thu, 25 Jul 2019 17:31:24 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/geektime-java-concurrent-in-action.0/</guid>
+      <guid>/post/geektime-java-concurrent-in-action.0/</guid>
       <description>&lt;p&gt;这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个&lt;strong&gt;核心矛盾一直存在，就是这三者的速度差异&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     

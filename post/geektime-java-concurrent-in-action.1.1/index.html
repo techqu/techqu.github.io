@@ -1,149 +1,78 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html class="no-js" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>《Java并发编程实战》-2-并发工具类(上) - Quguang 学习笔记</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="瞿广" /><meta name="description" content="14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领" /><meta name="keywords" content="java, java语言, java语言笔记, techqu, quguang, 瞿广, 博客, 项目管理, python, 软件架构, 公众号, 小程序" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
-
-
-<link rel="canonical" href="https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/douban.css">
-<link rel="stylesheet" href="/css/techqu.css">
-
-
-<meta property="og:title" content="《Java并发编程实战》-2-并发工具类(上)" />
-<meta property="og:description" content="14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>《Java并发编程实战》-2-并发工具类(上) - Mainroad</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="《Java并发编程实战》-2-并发工具类(上)" />
+<meta property="og:description" content="14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中 Lock 用于解决互斥 问题，Condition 用于解决同步问题。
+原因是 synchronized 申请资源的时候，如果申请不到，线程直 接进入阻塞状态了，而线程进入阻塞状态，啥都干不了，也释放不了线程已经占有的资源。但我 们希望的是:
+对于“不可抢占”这个条件，占用部分资源的线程进一步申请其他资源时，如果申 请不到，可以主动释放它占有的资源，这样不可抢占这个条件就破坏掉了。
+如果我们重新设计一把互斥锁去解决这个问题，那该怎么设计呢?我觉得有三种方案。
+ 能够响应中断。synchronized 的问题是，持有锁 A 后，如果尝试获取锁 B 失败，那么线程就 进入阻塞状态，一旦发生死锁，就没有任何机会来唤醒阻塞的线程。但如果阻塞状态的线程能 够响应中断信号，也就是说当我们给阻塞的线程发送中断信号的时候，能够唤醒它，那它就有 机会释放曾经持有的锁 A。这样就破坏了不可抢占条件了。 支持超时。如果线程在一段时间之内没有获取到锁，不是进入阻塞状态，而是返回一个错误， 那这个线程也有机会释放曾经持有的锁。这样也能破坏不可抢占条件。 非阻塞地获取锁。如果尝试获取锁失败，并不进入阻塞状态，而是直接返回，那这个线程也有 机会释放曾经持有的锁。这样也能破坏不可抢占条件。  这三种方案可以全面弥补 synchronized 的问题。到这里相信你应该也能理解了，这三个方案就 是“重复造轮子”的主要原因，体现在 API 上，就是 Lock 接口的三个方法。详情如下:
+// 支持中断的 API void lockInterruptibly() throws InterruptedException; // 支持超时的 API boolean tryLock(long time, TimeUnit unit) throws InterruptedException; // 支持非阻塞获取锁的 API boolean tryLock();  如何保证可见性 Java SDK 里面锁的实现非常复杂，这里我就不展开细说了，但是原理还是 需要简单介绍一下:它是利用了 volatile 相关的 Happens-Before 规则。Java SDK 里面的 ReentrantLock，内部持有一个 volatile 的成员变量 state，获取锁的时候，会读写 state 的值; 解锁的时候，也会读写 state 的值(简化后的代码如下面所示)。也就是说，在执行 value&#43;=1 之前，程序先读写了一次 volatile 变量 state，在执行 value&#43;=1 之后，又读写了一次 volatile 变量 state。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://techqu.github.io/post/geektime-java-concurrent-in-action.1.1/" /><meta property="article:published_time" content="2019-07-26T17:30:24&#43;08:00"/>
-<meta property="article:modified_time" content="2019-07-27T17:31:24&#43;08:00"/>
+<meta property="og:url" content="/post/geektime-java-concurrent-in-action.1.1/" />
+<meta property="article:published_time" content="2019-07-26T17:30:24+08:00" />
+<meta property="article:modified_time" content="2019-07-27T17:31:24+08:00" />
 
-<meta itemprop="name" content="《Java并发编程实战》-2-并发工具类(上)">
-<meta itemprop="description" content="14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领">
-
-
-<meta itemprop="datePublished" content="2019-07-26T17:30:24&#43;08:00" />
-<meta itemprop="dateModified" content="2019-07-27T17:31:24&#43;08:00" />
-<meta itemprop="wordCount" content="11422">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="《Java并发编程实战》-2-并发工具类(上)"/>
-<meta name="twitter:description" content="14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领"/>
+<meta name="twitter:description" content="14|Lock和Condition（上）：隐藏在并发包中的管程 再造管程的理由 在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中 Lock 用于解决互斥 问题，Condition 用于解决同步问题。
+原因是 synchronized 申请资源的时候，如果申请不到，线程直 接进入阻塞状态了，而线程进入阻塞状态，啥都干不了，也释放不了线程已经占有的资源。但我 们希望的是:
+对于“不可抢占”这个条件，占用部分资源的线程进一步申请其他资源时，如果申 请不到，可以主动释放它占有的资源，这样不可抢占这个条件就破坏掉了。
+如果我们重新设计一把互斥锁去解决这个问题，那该怎么设计呢?我觉得有三种方案。
+ 能够响应中断。synchronized 的问题是，持有锁 A 后，如果尝试获取锁 B 失败，那么线程就 进入阻塞状态，一旦发生死锁，就没有任何机会来唤醒阻塞的线程。但如果阻塞状态的线程能 够响应中断信号，也就是说当我们给阻塞的线程发送中断信号的时候，能够唤醒它，那它就有 机会释放曾经持有的锁 A。这样就破坏了不可抢占条件了。 支持超时。如果线程在一段时间之内没有获取到锁，不是进入阻塞状态，而是返回一个错误， 那这个线程也有机会释放曾经持有的锁。这样也能破坏不可抢占条件。 非阻塞地获取锁。如果尝试获取锁失败，并不进入阻塞状态，而是直接返回，那这个线程也有 机会释放曾经持有的锁。这样也能破坏不可抢占条件。  这三种方案可以全面弥补 synchronized 的问题。到这里相信你应该也能理解了，这三个方案就 是“重复造轮子”的主要原因，体现在 API 上，就是 Lock 接口的三个方法。详情如下:
+// 支持中断的 API void lockInterruptibly() throws InterruptedException; // 支持超时的 API boolean tryLock(long time, TimeUnit unit) throws InterruptedException; // 支持非阻塞获取锁的 API boolean tryLock();  如何保证可见性 Java SDK 里面锁的实现非常复杂，这里我就不展开细说了，但是原理还是 需要简单介绍一下:它是利用了 volatile 相关的 Happens-Before 规则。Java SDK 里面的 ReentrantLock，内部持有一个 volatile 的成员变量 state，获取锁的时候，会读写 state 的值; 解锁的时候，也会读写 state 的值(简化后的代码如下面所示)。也就是说，在执行 value&#43;=1 之前，程序先读写了一次 volatile 变量 state，在执行 value&#43;=1 之后，又读写了一次 volatile 变量 state。"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/syntax.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
 </head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">专注</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">主页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">全部文章</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">专注</a>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Mainroad" rel="home">
+				<div class="logo__title">Mainroad</div>
+				<div class="logo__tagline">Just another site</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">《Java并发编程实战》-2-并发工具类(上)</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-07-26T17:30:24">July 26, 2019</time>
+	<time class="meta__text" datetime="2019-07-27T17:31:24"> (Last Modified: July 27, 2019)</time>
 </div>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">主页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">全部文章</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">《Java并发编程实战》-2-并发工具类(上)</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> 2019-07-26 </span>
-        <div class="post-category">
-            <a href="/categories/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E7%AC%94%E8%AE%B0/"> 极客时间笔记 </a>
-            <a href="/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/"> java并发实战 </a>
-            </div>
-          <span class="more-meta"> 约 11422 字 </span>
-          <span class="more-meta"> 预计阅读 23 分钟 </span>
-        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/geektime_note" rel="category">geektime_note</a>, <a class="meta__link" href="/categories/java%e5%b9%b6%e5%8f%91%e5%ae%9e%e6%88%98" rel="category">java并发实战</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
 <ul>
 <li>
 <ul>
@@ -193,10 +122,10 @@
 </ul></li>
 </ul>
 </nav>
-  </div>
+	</div>
 </div>
-    <div class="post-content">
-      
+<div class="content post__content clearfix">
+			
 
 <h2 id="14-lock和condition-上-隐藏在并发包中的管程">14|Lock和Condition（上）：隐藏在并发包中的管程</h2>
 
@@ -239,22 +168,23 @@
 <ol>
 <li>顺序性规则:对于线程 T1，value+=1 Happens-Before 释放锁的操作 unlock(); 2. volatile 变量规则:由于 state = 1 会先读取 state，所以线程 T1 的 unlock() 操作
 Happens-Before 线程 T2 的 lock() 操作;</li>
-<li>传递性规则:线程 T2 的 lock() 操作 Happens-Before 线程 T1 的 value+=1 。</li>
-</ol>
+
+<li><p>传递性规则:线程 T2 的 lock() 操作 Happens-Before 线程 T1 的 value+=1 。</p>
 
 <pre><code class="language-java">
- class SampleLock { volatile int state; //加锁
+class SampleLock { volatile int state; //加锁
 lock() {
 // 省略代码无数
- state = 1;
+state = 1;
 }
 //解锁
- unlock() {
+unlock() {
 // 省略代码无数
 state = 0; }
 }
 
-</code></pre>
+</code></pre></li>
+</ol>
 
 <p>### 什么是可重入锁</p>
 
@@ -616,32 +546,33 @@ int curX = x, curY = y;
 <ul>
 <li>StampedLock 不支持重入</li>
 <li>另外，StampedLock 的悲观读锁、写锁都不支持条件变量</li>
-<li>如果线程阻塞在 StampedLock 的 readLock() 或者 writeLock() 上时，此时调用该阻塞线程的 interrupt() 方法，会导致 CPU 飙升。所以，使用 StampedLock 一定不要调用中断操作，如果需要支持中断功能，一定使用可中断的 悲观读锁 readLockInterruptibly() 和写锁 writeLockInterruptibly()</li>
-</ul>
+
+<li><p>如果线程阻塞在 StampedLock 的 readLock() 或者 writeLock() 上时，此时调用该阻塞线程的 interrupt() 方法，会导致 CPU 飙升。所以，使用 StampedLock 一定不要调用中断操作，如果需要支持中断功能，一定使用可中断的 悲观读锁 readLockInterruptibly() 和写锁 writeLockInterruptibly()</p>
 
 <pre><code class="language-java">public long readLock() {
-    long s = state, next;  // bypass acquireRead on common uncontended case
-    return ((whead == wtail &amp;&amp; (s &amp; ABITS) &lt; RFULL &amp;&amp;
-            U.compareAndSwapLong(this, STATE, s, next = s + RUNIT)) ?
-            next : acquireRead(false, 0L));   //当CAS失败之后就会尝试申请锁，注意第一个参数是false
+long s = state, next;  // bypass acquireRead on common uncontended case
+return ((whead == wtail &amp;&amp; (s &amp; ABITS) &lt; RFULL &amp;&amp;
+        U.compareAndSwapLong(this, STATE, s, next = s + RUNIT)) ?
+        next : acquireRead(false, 0L));   //当CAS失败之后就会尝试申请锁，注意第一个参数是false
 }
 
 public long writeLock() {
-    long s, next;  // bypass acquireWrite in fully unlocked case only
-    return ((((s = state) &amp; ABITS) == 0L &amp;&amp;
-            U.compareAndSwapLong(this, STATE, s, next = s + WBIT)) ?
-            next : acquireWrite(false, 0L)); //当CAS失败之后就会尝试申请锁，注意第一个参数是false
+long s, next;  // bypass acquireWrite in fully unlocked case only
+return ((((s = state) &amp; ABITS) == 0L &amp;&amp;
+        U.compareAndSwapLong(this, STATE, s, next = s + WBIT)) ?
+        next : acquireWrite(false, 0L)); //当CAS失败之后就会尝试申请锁，注意第一个参数是false
 }
 //就拿acquireWrite举例，acquireRead也是类似的。
 private long acquireWrite(boolean interruptible, long deadline) {
-        WNode node = null, p;
-        for (int spins = -1;;) { // spin while enqueuing
-             //省略代码无数
-            if (interruptible &amp;&amp; Thread.interrupted())
-                return cancelWaiter(node, node, true);
-                }
-    }
-</code></pre>
+    WNode node = null, p;
+    for (int spins = -1;;) { // spin while enqueuing
+         //省略代码无数
+        if (interruptible &amp;&amp; Thread.interrupted())
+            return cancelWaiter(node, node, true);
+            }
+}
+</code></pre></li>
+</ul>
 
 <p>首先里面是个无限循环，然后 <code>if (interruptible &amp;&amp; Thread.interrupted())</code>已经得知调用的interruptible参数传入的是false，所以<code>Thread.interrupted()</code>也不会执行到，也一定调用不到<code>cancelWaiter</code>，所以就一直循环循环，CPU使用率就会涨涨涨。
 所以如果要使用中断功能就得用<code>readLockInterruptibly()</code>或者<code>writeLockInterruptibly()</code>来获得锁。</p>
@@ -885,96 +816,45 @@ List 里面只有一个实现类就是CopyOnWriteArrayList。CopyOnWrite，顾�
 <p>Java 并发容器的内容很多，但鉴于篇幅有限，我们只是对一些关键点进行了梳理和介绍。
 而在实际工作中，你不单要清楚每种容器的特性，还要能选对容器，这才是关键，至于每种容器 的用法，用的时候看一下 API 说明就可以了，这些容器的使用都不难。在文中，我们甚至都没有 介绍 Java 容器的快速失败机制(Fail-Fast)，原因就在于当你选对容器的时候，根本不会触发 它。</p>
 
-    </div>
+		</div>
+	</article>
+</main>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">瞿广</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">
-        2019-07-27
-        
-    </span>
-  </p>
-  
-  
-</div>
-<footer class="post-footer">
-      
-      <nav class="post-nav">
-        <a class="prev" href="/post/geektime-java-concurrent-in-action.1.2/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">《Java并发编程实战》-2-并发工具类(下)</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/geektime-java-concurrent-in-action.0/">
-            <span class="next-text nav-default">《Java并发编程实战》-1-理论基础篇</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://github.com/techqu" class="iconfont icon-github" title="github"></a>
-  <a href="https://techqu.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		记录生活的点滴，学习知识，分享知识
+	</div>
 </div>
 
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
-      <span class="division">|</span>
-    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
-  </div>
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2019
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">瞿广</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
-  <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/geektime-java-concurrent-in-action.0/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">《Java并发编程实战》-1-理论基础篇</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/geektime-java-concurrent-in-action.1.2/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">《Java并发编程实战》-2-并发工具类(下)</p></a>
+	</div>
+</nav>
 
 
-
-
-
-
-<script src="/js/douban.js"></script>
-
-
-</body>
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Mainroad.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
 </html>

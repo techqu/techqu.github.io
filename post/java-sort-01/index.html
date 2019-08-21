@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Java排序算法 - Mainroad</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Java排序算法" />
+<meta property="og:description" content="总结简单的排序算法
+
+有个不错的网站，动画演示各种算法：visualgo" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/java-sort-01/" />
+<meta property="article:published_time" content="2019-08-17T19:48:51+08:00" />
+<meta property="article:modified_time" content="2019-08-17T19:48:51+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java排序算法"/>
+<meta name="twitter:description" content="总结简单的排序算法
+
+有个不错的网站，动画演示各种算法：visualgo"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/syntax.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Mainroad" rel="home">
+				<div class="logo__title">Mainroad</div>
+				<div class="logo__tagline">Just another site</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Java排序算法</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-17T19:48:51">August 17, 2019</time>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#冒泡排序">冒泡排序</a></li>
+<li><a href="#插入排序">插入排序</a></li>
+<li><a href="#选择排序">选择排序</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>总结简单的排序算法</p>
+
+<p>有个不错的网站，动画演示各种算法：<a href="https://visualgo.net/zh/sorting">visualgo</a></p>
+
+<h2 id="冒泡排序">冒泡排序</h2>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">techqu</span>.<span style="color:#a6e22e">sort</span>;
+
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Arrays</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> BubbleSort {
+
+    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">int</span>[] array <span style="color:#f92672">=</span> {1, 4, 2, 8, 20, 23, 12};
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String[] <span style="color:#a6e22e">args</span>) {
+        <span style="color:#66d9ef">int</span>[] <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> sort(array);
+        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(Arrays.<span style="color:#a6e22e">toString</span>(b));
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">int</span>[] <span style="color:#a6e22e">sort</span>(<span style="color:#66d9ef">int</span>[] <span style="color:#a6e22e">array</span>) {
+        <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> array.<span style="color:#a6e22e">length</span>;
+        <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">flag</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
+            <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> i <span style="color:#f92672">-</span> 1;
+            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(s);
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> 0; j <span style="color:#f92672">&lt;</span> s; j<span style="color:#f92672">++</span>) {
+                <span style="color:#66d9ef">if</span> (array[j] <span style="color:#f92672">&gt;</span> array[j <span style="color:#f92672">+</span> 1]) {
+                    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">tmp</span> <span style="color:#f92672">=</span> array[j];
+                    array[j] <span style="color:#f92672">=</span> array[j <span style="color:#f92672">+</span> 1];
+                    array[j <span style="color:#f92672">+</span> 1] <span style="color:#f92672">=</span> tmp;
+                    flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+                }
+            }
+            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>flag) {
+                <span style="color:#66d9ef">break</span>;
+            }
+        }
+        <span style="color:#66d9ef">return</span> array;
+    }
+}</code></pre></div>
+
+<h2 id="插入排序">插入排序</h2>
+
+<pre><code class="language-java">package com.techqu.sort;
+
+import java.util.Arrays;
+
+public class InsertSort {
+
+    static int[] array = {1, 4, 2, 8, 20, 23, 12};
+
+    public static void main(String[] args) {
+        int[] b = sort(array);
+        System.out.println(Arrays.toString(b));
+
+    }
+
+    public static int[] sort(int[] array) {
+        int n = array.length;
+        for (int i = 1; i &lt; n; i++) {
+            int value = array[i];
+            int j = i - 1;
+            for (; j &gt; 0; j--) {
+                if (value &lt; array[j]) {
+                    array[j + 1] = array[j];//数据移动
+                } else {
+
+                    break;
+                }
+            }
+            array[j + 1] = value;//插入数据
+        }
+        return array;
+    }
+}
+
+</code></pre>
+
+<h2 id="选择排序">选择排序</h2>
+
+<pre><code class="language-java">package com.techqu.sort;
+
+import java.util.Arrays;
+
+public class SelectSort {
+
+    static int[] array = {1, 4, 2, 8, 20, 23, 12};
+
+    public static void main(String[] args) {
+
+        int[] b = sort(array);
+        System.out.println(Arrays.toString(b));
+
+    }
+
+    public static int[] sort(int[] array) {
+        int n = array.length;
+
+        for (int i = 0; i &lt; n - 1; i++) {
+            System.out.println(Arrays.toString(array));
+            int min_index = i;
+            for (int j = i + 1; j &lt; n; j++) {
+
+                System.out.println(array[min_index] + &quot;,&quot; + array[j]);
+                if (array[min_index] &gt; array[j]) {
+                    min_index = j;
+                }
+
+            }
+            if (i != min_index) {
+                int tmp = array[i];
+                array[i] = array[min_index];
+                array[min_index] = tmp;
+            }
+
+        }
+        return array;
+
+    }
+
+}
+
+</code></pre>
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		记录生活的点滴，学习知识，分享知识
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/reading-note-%E6%9A%97%E6%97%B6%E9%97%B4-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">《暗时间》-读书笔记</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/java-jvm-jmap/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">java内存溢出分析工具：jmap使用实战</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Mainroad.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
+</html>

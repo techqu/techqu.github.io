@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>java on Quguang 学习笔记</title>
-    <link>https://techqu.github.io/tags/java/</link>
-    <description>Recent content in java on Quguang 学习笔记</description>
+    <title>java on Mainroad</title>
+    <link>/tags/java/</link>
+    <description>Recent content in java on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Sat, 19 Jan 2019 07:56:14 +0800</lastBuildDate>
     
-	<atom:link href="https://techqu.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
-      <link>https://techqu.github.io/post/15-lock-in-java/</link>
+      <link>/post/15-lock-in-java/</link>
       <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/15-lock-in-java/</guid>
+      <guid>/post/15-lock-in-java/</guid>
       <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>什么是Devops？</title>
-      <link>https://techqu.github.io/post/what-is-devops/</link>
+      <link>/post/what-is-devops/</link>
       <pubDate>Sun, 13 Jan 2019 10:06:30 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/what-is-devops/</guid>
+      <guid>/post/what-is-devops/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -35,10 +35,10 @@
     
     <item>
       <title>Devops实践</title>
-      <link>https://techqu.github.io/post/devops-in-action/</link>
+      <link>/post/devops-in-action/</link>
       <pubDate>Sun, 13 Jan 2019 10:03:47 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/devops-in-action/</guid>
+      <guid>/post/devops-in-action/</guid>
       <description>&lt;h2 id=&#34;1-配置管理&#34;&gt;1、配置管理&lt;/h2&gt;
 
 &lt;p&gt;很多应用程序需要一些配置通过组合的配置文件，命令行参数和环境变量。
@@ -55,19 +55,19 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>《你的灯亮着吗?》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-your-light-on/</link>
+      <link>/post/reading-note-your-light-on/</link>
       <pubDate>Sat, 12 Jan 2019 17:39:54 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-your-light-on/</guid>
-      <description>在微信读书app上很快就看完了</description>
+      <guid>/post/reading-note-your-light-on/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>《影响力》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-influence/</link>
+      <link>/post/reading-note-influence/</link>
       <pubDate>Sat, 12 Jan 2019 17:20:43 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-influence/</guid>
+      <guid>/post/reading-note-influence/</guid>
       <description>&lt;p&gt;主要讲的是作者对于顺从性的研究，到底是什么因素让一个人向另一个人说了“行”？哪些技术能最有效地利用这些因素。作者研究了顺从心理学，先是在实验室，后来在社会上进行参与式观察。&lt;/p&gt;
 
 &lt;p&gt;顺从职业者：销售员、筹款家、广告商等。&lt;/p&gt;
@@ -77,37 +77,37 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>《凹凸相对论》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <link>/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
-      <description>在微信读书app上很快就看完了，从正反两个角度看待同样的问题，思路很不错</description>
+      <guid>/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>《大型网站技术架构》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-large-website-technology-architecture/</link>
+      <link>/post/reading-note-large-website-technology-architecture/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-large-website-technology-architecture/</guid>
-      <description>李智慧老师13年写的架构入门书，没有太深入的内容，比较适合刚刚接触网站架构的同学有个通盘的了解，也可以是有一定经验的同学作为目录一样去看。了</description>
+      <guid>/post/reading-note-large-website-technology-architecture/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>《曾国藩的正面与侧面》-读书笔记</title>
-      <link>https://techqu.github.io/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <link>/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
-      <description>从《曾国藩家书》了解到的曾国藩，以他为榜样，资质愚钝，后天补足。</description>
+      <guid>/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>高效学习</title>
-      <link>https://techqu.github.io/post/learn-method/</link>
+      <link>/post/learn-method/</link>
       <pubDate>Sat, 12 Jan 2019 11:59:01 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/learn-method/</guid>
+      <guid>/post/learn-method/</guid>
       <description>&lt;p&gt;首先明确的是，学习是件反人性的事，需要刻意练习的，是需要持之以恒的。&lt;/p&gt;
 
 &lt;p&gt;很多事情能做到什么程度，其实在思想的源头就被决定了，因为它会绝大程度地受到思考问题的出发点、思维方式、格局观、价值观等因素影响。&lt;/p&gt;
@@ -124,10 +124,10 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>如何集成maven和Spring boot的profile功能</title>
-      <link>https://techqu.github.io/post/springboot-maven-profile/</link>
+      <link>/post/springboot-maven-profile/</link>
       <pubDate>Fri, 04 Jan 2019 23:05:13 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/springboot-maven-profile/</guid>
+      <guid>/post/springboot-maven-profile/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;今天看 guns 项目的 application.properties 文件，发现了&lt;code&gt;spring.profiles.active = @profiles.active@&lt;/code&gt;的写法，查了好些资料终于搞明白了。原来是在集成maven和Spring boot的profile功能时用的，那么如何集成呢？&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -135,55 +135,55 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（下）</title>
-      <link>https://techqu.github.io/post/jvm-how-execute-method-2/</link>
+      <link>/post/geektime-jvm-how-execute-method-2/</link>
       <pubDate>Wed, 26 Dec 2018 11:45:43 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-how-execute-method-2/</guid>
+      <guid>/post/geektime-jvm-how-execute-method-2/</guid>
       <description>&lt;p&gt;《极客时间-深入拆解java虚拟机》笔记&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（上）</title>
-      <link>https://techqu.github.io/post/jvm-how-execute-method-1/</link>
+      <link>/post/geektime-jvm-how-execute-method-1/</link>
       <pubDate>Tue, 25 Dec 2018 22:52:53 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-how-execute-method-1/</guid>
+      <guid>/post/geektime-jvm-how-execute-method-1/</guid>
       <description>&lt;p&gt;JVM是如何执行方法调用的？（上）&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>理解GC日志</title>
-      <link>https://techqu.github.io/post/jvm-understand-gc-log/</link>
+      <link>/post/jvm-understand-gc-log/</link>
       <pubDate>Mon, 24 Dec 2018 19:03:40 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-understand-gc-log/</guid>
+      <guid>/post/jvm-understand-gc-log/</guid>
       <description>&lt;p&gt;理解GC日志，基于jdk1.7,一步步看懂GC日志&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JVM性能调优</title>
-      <link>https://techqu.github.io/post/jvm-performance-optimization/</link>
+      <link>/post/jvm-performance-optimization/</link>
       <pubDate>Mon, 24 Dec 2018 18:48:04 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-performance-optimization/</guid>
+      <guid>/post/jvm-performance-optimization/</guid>
       <description>&lt;p&gt;linux性能调优和年轻代大小选择和年老代大小的选择&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JVM 工具</title>
-      <link>https://techqu.github.io/post/jvm-tools/</link>
+      <link>/post/jvm-tools/</link>
       <pubDate>Mon, 24 Dec 2018 18:08:25 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-tools/</guid>
+      <guid>/post/jvm-tools/</guid>
       <description>&lt;p&gt;本文介绍了常用的JDK的命令行工具&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java虚拟机是如何加载Java类的?</title>
-      <link>https://techqu.github.io/post/how-jvm-load-java-class/</link>
+      <link>/post/geektime-jvm-load-java-class/</link>
       <pubDate>Mon, 24 Dec 2018 15:46:28 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/how-jvm-load-java-class/</guid>
+      <guid>/post/geektime-jvm-load-java-class/</guid>
       <description>&lt;p&gt;Java虚拟机是如何加载Java类的?&lt;/p&gt;
 
 &lt;p&gt;虚拟机规范并没有指明二进制字节流要从一个Class文件获取，或者说根本没有指明从哪里获取、怎样获取。这种开放使得Java在很多领域得到充分运用，例如：&lt;/p&gt;
@@ -200,10 +200,10 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>Java工程师成神之路（2018修订版）</title>
-      <link>https://techqu.github.io/post/roadmap/</link>
+      <link>/post/roadmap/</link>
       <pubDate>Thu, 20 Dec 2018 11:12:42 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/roadmap/</guid>
+      <guid>/post/roadmap/</guid>
       <description>&lt;p&gt;网罗了比较全面的java技术栈。&lt;/p&gt;
 
 &lt;p&gt;本文基于微信公众号文章基础上添加，原文链接：
@@ -212,28 +212,28 @@ ConfigMap API资源提供了将配置数据注入容器的机制，同时保持�
     
     <item>
       <title>markdown语法示例</title>
-      <link>https://techqu.github.io/post/markdown/</link>
+      <link>/post/markdown/</link>
       <pubDate>Thu, 20 Dec 2018 10:58:38 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/markdown/</guid>
+      <guid>/post/markdown/</guid>
       <description>&lt;p&gt;本文是markdown语法的示例&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>对象存活判断、垃圾收集算法和垃圾收集器</title>
-      <link>https://techqu.github.io/post/jvm-garabage-collection/</link>
+      <link>/post/geektime-jvm-garabage-collection/</link>
       <pubDate>Thu, 20 Dec 2018 08:44:54 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/jvm-garabage-collection/</guid>
+      <guid>/post/geektime-jvm-garabage-collection/</guid>
       <description>&lt;p&gt;全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>线程间通信</title>
-      <link>https://techqu.github.io/post/thread-notify/</link>
+      <link>/post/thread-notify/</link>
       <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
       
-      <guid>https://techqu.github.io/post/thread-notify/</guid>
+      <guid>/post/thread-notify/</guid>
       <description>&lt;p&gt;《java并发编程的艺术》-4.3线程间通信&lt;/p&gt;
 
 &lt;ul&gt;
