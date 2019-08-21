@@ -4,13 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Java面试-高并发-MQ的高可用(2) - stay hungry stay foolish</title>
+	<title>Java面试-高并发-MQ的高可用(2) - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Java面试-高并发-MQ的高可用(2)" />
-<meta property="og:description" content="1、面试题
-
-如何保证消息队列的高可用啊？" />
+<meta property="og:description" content="面试题 如何保证消息队列的高可用啊？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/java-interview-mq02/" />
 <meta property="article:published_time" content="2019-05-15T15:36:47+08:00" />
@@ -18,9 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Java面试-高并发-MQ的高可用(2)"/>
-<meta name="twitter:description" content="1、面试题
-
-如何保证消息队列的高可用啊？"/>
+<meta name="twitter:description" content="面试题 如何保证消息队列的高可用啊？"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -101,9 +97,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#1-面试题">1、面试题</a></li>
-<li><a href="#2-面试官心理分析">2、面试官心理分析</a></li>
-<li><a href="#3-面试题剖析">3、面试题剖析</a>
+<li><a href="#1-面试官心理分析">1、面试官心理分析</a></li>
+<li><a href="#2-面试题剖析">2、面试题剖析</a>
 <ul>
 <li><a href="#1-rabbitmq的高可用性">（1）RabbitMQ的高可用性</a>
 <ul>
@@ -120,11 +115,9 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h3 id="1-面试题">1、面试题</h3>
+			<p>面试题 如何保证消息队列的高可用啊？</p>
 
-<p>如何保证消息队列的高可用啊？</p>
-
-<h3 id="2-面试官心理分析">2、面试官心理分析</h3>
+<h3 id="1-面试官心理分析">1、面试官心理分析</h3>
 
 <p>如果有人问到你MQ的知识，高可用是必问的，因为MQ的缺点，我刚才已经说过了，有好多，导致系统可用性降低，等等。所以只要你用了MQ，接下来问的一些要点肯定就是围绕着MQ的那些缺点怎么来解决了。</p>
 
@@ -132,7 +125,7 @@
 
 <p>去年的事儿，非常大的互联网公司，非常核心的系统，就是疏忽了MQ，没考虑MQ如何保证高可用，如果MQ挂了怎么办，导致几个小时系统不可用，公司损失几千万，team背锅，你闹的祸，你老大帮你一起背锅</p>
 
-<h3 id="3-面试题剖析">3、面试题剖析</h3>
+<h3 id="2-面试题剖析">2、面试题剖析</h3>
 
 <p>这个问题这么问是很好的，因为不能问你kafka的高可用性怎么保证啊？ActiveMQ的高可用性怎么保证啊？一个面试官要是这么问就显得很没水平，人家可能用的就是RabbitMQ，没用过Kafka，你上来问人家kafka干什么？这不是摆明了刁难人么。</p>
 
@@ -180,9 +173,7 @@
 
 <p>这么搞，就有所谓的高可用性了，因为如果某个broker宕机了，没事儿，那个broker上面的partition在其他机器上都有副本的，如果这上面有某个partition的leader，那么此时会重新选举一个新的leader出来，大家继续读写那个新的leader即可。这就有所谓的高可用性了。</p>
 
-<p>写数据的时候，生产者就写leader，然后leader将数据落地写本地磁盘，接着其他follower自己主动从leader来pull数据。一旦所有follower同步好数据了，就会发送ack给leader，leader收到所有follower的ack之后，就会返回写成功的消息给生产者。（当然，这只是其中一种模式，还可以适当调整这个行为）</p>
-
-<p>消费的时候，只会从leader去读，但是只有一个消息已经被所有follower都同步成功返回ack的时候，这个消息才会被消费者读到。</p>
+<p><strong>写数据的时候，生产者就写leader，然后leader将数据落地写本地磁盘，接着其他follower自己主动从leader来pull数据。一旦所有follower同步好数据了，就会发送ack给leader，leader收到所有follower的ack之后，就会返回写成功的消息给生产者。（当然，这只是其中一种模式，还可以适当调整这个行为）消费的时候，只会从leader去读，但是只有一个消息已经被所有follower都同步成功返回ack的时候，这个消息才会被消费者读到。</strong></p>
 
 <p>实际上这块机制，讲深了，是可以非常之深入的，但是我还是回到我们这个课程的主题和定位，聚焦面试，至少你听到这里大致明白了kafka是如何保证高可用机制的了，对吧？不至于一无所知，现场还能给面试官画画图。要遇上面试官确实是kafka高手，深挖了问，那你只能说不好意思，太深入的你没研究过。</p>
 
@@ -220,7 +211,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

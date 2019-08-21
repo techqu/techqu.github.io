@@ -4,11 +4,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>全面理解Java内存模型 - stay hungry stay foolish</title>
+	<title>全面理解Java内存模型 - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="全面理解Java内存模型" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Java内存模型即Java Memory Model，简称JMM。
+
+JMM定义了Java 虚拟机(JVM)在计算机内存(RAM)中的工作方式。JVM是整个计算机虚拟模型，所以JMM是隶属于JVM的。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/jmm-java/" />
 <meta property="article:published_time" content="2019-02-14T11:26:21+08:00" />
@@ -16,7 +18,9 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="全面理解Java内存模型"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="Java内存模型即Java Memory Model，简称JMM。
+
+JMM定义了Java 虚拟机(JVM)在计算机内存(RAM)中的工作方式。JVM是整个计算机虚拟模型，所以JMM是隶属于JVM的。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -31,9 +35,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -80,6 +84,11 @@
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2019-02-14T11:26:21">February 14, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9d%a2%e8%af%95" rel="category">面试</a></span>
 </div>
 </div>
 		</header>
@@ -364,7 +373,7 @@ Java线程之间的通信总是隐式进行，整个通信过程对程序员完�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

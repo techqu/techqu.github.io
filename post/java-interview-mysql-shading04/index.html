@@ -4,13 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Java面试-高并发-Mysql全局唯一的id - stay hungry stay foolish</title>
+	<title>Java面试-高并发-Mysql全局唯一的id - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Java面试-高并发-Mysql全局唯一的id" />
-<meta property="og:description" content="1、面试题
-
-分库分表之后，id主键如何处理？" />
+<meta property="og:description" content="面试题 分库分表之后，id主键如何处理？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/java-interview-mysql-shading04/" />
 <meta property="article:published_time" content="2019-05-17T18:19:24+08:00" />
@@ -18,9 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Java面试-高并发-Mysql全局唯一的id"/>
-<meta name="twitter:description" content="1、面试题
-
-分库分表之后，id主键如何处理？"/>
+<meta name="twitter:description" content="面试题 分库分表之后，id主键如何处理？"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -99,9 +95,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#1-面试题">1、面试题</a></li>
-<li><a href="#2-面试官心里分析">2、面试官心里分析</a></li>
-<li><a href="#3-面试题剖析">3、面试题剖析</a>
+<li><a href="#1-面试官心里分析">1、面试官心里分析</a></li>
+<li><a href="#2-面试题剖析">2、面试题剖析</a>
 <ul>
 <li><a href="#1-数据库自增id">（1）数据库自增id</a></li>
 <li><a href="#2-uuid">（2）uuid</a></li>
@@ -114,15 +109,13 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h2 id="1-面试题">1、面试题</h2>
+			<p>面试题 分库分表之后，id主键如何处理？</p>
 
-<p>分库分表之后，id主键如何处理？</p>
-
-<h2 id="2-面试官心里分析">2、面试官心里分析</h2>
+<h2 id="1-面试官心里分析">1、面试官心里分析</h2>
 
 <p>其实这是分库分表之后你必然要面对的一个问题，就是id咋生成？因为要是分成多个表之后，每个表都是从1开始累加，那肯定不对啊，需要一个全局唯一的id来支持。所以这都是你实际生产环境中必须考虑的问题。</p>
 
-<h2 id="3-面试题剖析">3、面试题剖析</h2>
+<h2 id="2-面试题剖析">2、面试题剖析</h2>
 
 <h3 id="1-数据库自增id">（1）数据库自增id</h3>
 
@@ -330,7 +323,7 @@ public synchronized long nextId() {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

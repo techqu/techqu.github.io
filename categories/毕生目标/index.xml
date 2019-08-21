@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>毕生目标 on stay hungry stay foolish</title>
+    <title>毕生目标 on quguang&#39;s blog</title>
     <link>/categories/%E6%AF%95%E7%94%9F%E7%9B%AE%E6%A0%87/</link>
-    <description>Recent content in 毕生目标 on stay hungry stay foolish</description>
+    <description>Recent content in 毕生目标 on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Jan 2019 10:42:50 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 21 Jan 2019 16:34:26 +0800</lastBuildDate>
     
 	<atom:link href="/categories/%E6%AF%95%E7%94%9F%E7%9B%AE%E6%A0%87/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>政事堂书单 2018</title>
+      <link>/post/booklist-zhengshitang-2018/</link>
+      <pubDate>Mon, 21 Jan 2019 16:34:26 +0800</pubDate>
+      
+      <guid>/post/booklist-zhengshitang-2018/</guid>
+      <description>&lt;p&gt;读史明智，顾子明推荐书单&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>值得一看的网络课程收集</title>
+      <link>/post/course-introduction/</link>
+      <pubDate>Fri, 18 Jan 2019 15:03:48 +0800</pubDate>
+      
+      <guid>/post/course-introduction/</guid>
+      <description>&lt;p&gt;前言：搜罗来一些不错的网络课程，比如Coursera, edX, Udacity上&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>2018-2019</title>

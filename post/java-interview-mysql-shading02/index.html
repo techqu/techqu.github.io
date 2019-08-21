@@ -4,23 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Java面试-高并发-Mysql-怎么把你那个单库单表的系统给迁移到分库分表上 - stay hungry stay foolish</title>
+	<title>Java面试-高并发-Mysql-单库单表迁移到分库分表 - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Java面试-高并发-Mysql-怎么把你那个单库单表的系统给迁移到分库分表上" />
-<meta property="og:description" content="1、面试题
-
-现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？" />
+	<meta property="og:title" content="Java面试-高并发-Mysql-单库单表迁移到分库分表" />
+<meta property="og:description" content="面试题 现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/java-interview-mysql-shading02/" />
 <meta property="article:published_time" content="2019-05-17T17:30:42+08:00" />
 <meta property="article:modified_time" content="2019-05-17T17:30:42+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Java面试-高并发-Mysql-怎么把你那个单库单表的系统给迁移到分库分表上"/>
-<meta name="twitter:description" content="1、面试题
-
-现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？"/>
+<meta name="twitter:title" content="Java面试-高并发-Mysql-单库单表迁移到分库分表"/>
+<meta name="twitter:description" content="面试题 现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -79,7 +75,7 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Java面试-高并发-Mysql-怎么把你那个单库单表的系统给迁移到分库分表上</h1>
+			<h1 class="post__title">Java面试-高并发-Mysql-单库单表迁移到分库分表</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
@@ -99,9 +95,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#1-面试题">1、面试题</a></li>
-<li><a href="#2-面试官心里分析">2、面试官心里分析</a></li>
-<li><a href="#3-面试题剖析">3、面试题剖析</a>
+<li><a href="#1-面试官心里分析">1、面试官心里分析</a></li>
+<li><a href="#2-面试题剖析">2、面试题剖析</a>
 <ul>
 <li><a href="#1-停机迁移方案">（1）停机迁移方案</a></li>
 <li><a href="#2-双写迁移方案">（2）双写迁移方案</a></li>
@@ -112,18 +107,15 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h2 id="1-面试题">1、面试题</h2>
+			<p>面试题 现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？</p>
 
-<p>现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？</p>
-
-<h2 id="2-面试官心里分析">2、面试官心里分析</h2>
+<h2 id="1-面试官心里分析">1、面试官心里分析</h2>
 
 <p>你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直拆分、分表），那问题来了，你接下来该怎么把你那个单库单表的系统给迁移到分库分表上去？</p>
 
 <p>所以这都是一环扣一环的，就是看你有没有全流程经历过这个过程</p>
 
-<p>友情提示</p>
-
+<blockquote>
 <p>假设，你现有有一个单库单表的系统，在线上在跑，假设单表有600万数据</p>
 
 <p>3个库，每个库里分了4个表，每个表要放50万的数据量</p>
@@ -132,13 +124,15 @@
 
 <p>你怎么把线上系统平滑地迁移到分库分表上面去</p>
 
-<p>sharding-jdbc：自己上官网，找一个官网最基本的例子，自己写一下，试一下，跑跑看，是非常简单的</p>
-
-<p>mycat：自己上官网，找一个官网最基本的例子，自己写一下，试一下看看</p>
+<ul>
+<li>sharding-jdbc：自己上官网，找一个官网最基本的例子，自己写一下，试一下，跑跑看，是非常简单的</li>
+<li>mycat：自己上官网，找一个官网最基本的例子，自己写一下，试一下看看</li>
+</ul>
 
 <p>1个小时以内就可以搞定了</p>
+</blockquote>
 
-<h2 id="3-面试题剖析">3、面试题剖析</h2>
+<h2 id="2-面试题剖析">2、面试题剖析</h2>
 
 <p>这个其实从low到高大上有好几种方案，我们都玩儿过，我都给你说一下</p>
 
@@ -202,7 +196,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

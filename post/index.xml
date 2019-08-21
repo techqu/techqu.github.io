@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on stay hungry stay foolish</title>
+    <title>Posts on quguang&#39;s blog</title>
     <link>/post/</link>
-    <description>Recent content in Posts on stay hungry stay foolish</description>
+    <description>Recent content in Posts on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 19 Aug 2019 17:49:12 +0800</lastBuildDate>
@@ -76,7 +76,25 @@
     </item>
     
     <item>
-      <title>《Java并发编程实战》-3-并发设计模式</title>
+      <title>《Java并发编程实战》-5-其他并发模型（未完待续）</title>
+      <link>/post/geektime-java-concurrent-in-action.4/</link>
+      <pubDate>Mon, 29 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-concurrent-in-action.4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-4-案例分析（未完待续）</title>
+      <link>/post/geektime-java-concurrent-in-action.3/</link>
+      <pubDate>Sun, 28 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-concurrent-in-action.3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-3-并发设计模式（未完待续）</title>
       <link>/post/geektime-java-concurrent-in-action.2/</link>
       <pubDate>Sat, 27 Jul 2019 17:31:24 +0800</pubDate>
       
@@ -90,7 +108,7 @@
       <pubDate>Fri, 26 Jul 2019 17:31:24 +0800</pubDate>
       
       <guid>/post/geektime-java-concurrent-in-action.1.2/</guid>
-      <description></description>
+      <description>&lt;p&gt;前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，&lt;code&gt;add10K()&lt;/code&gt;   这个方法不是线程安全的，问题就出在变量 count 的可见性和 &lt;code&gt;count+=1&lt;/code&gt; 的原子性上。&lt;strong&gt;可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -128,10 +146,9 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Sat, 20 Jul 2019 17:15:57 +0800</pubDate>
       
       <guid>/post/vim/</guid>
-      <description>&lt;p&gt;编辑器之神-vim
-神的编辑器-emacs&lt;/p&gt;
+      <description>&lt;p&gt;&lt;strong&gt;编辑器之神-vim,神的编辑器-emacs&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;最近开始使用vim键盘流，原因是写代码时真心不想再去碰鼠标，来回切换很麻烦。以下是记录了一些常用但是我不会的快捷键&lt;/p&gt;</description>
+&lt;p&gt;最近开始使用vim键盘流，写代码时真心不想再去碰鼠标，来回切换很麻烦。以下是记录了一些常用但是我不会的快捷键&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -140,7 +157,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Mon, 15 Jul 2019 10:32:05 +0800</pubDate>
       
       <guid>/post/saas-hrm/</guid>
-      <description></description>
+      <description>&lt;p&gt;一个实际的saas项目的例子&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -149,11 +166,11 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Fri, 12 Jul 2019 11:51:07 +0800</pubDate>
       
       <guid>/post/how-to-read-spring-source-code/</guid>
-      <description></description>
+      <description>&lt;p&gt;给不知道如何阅读spring源码的同学一点借鉴&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>关于线性代数</title>
+      <title>线性代数学习</title>
       <link>/post/math-linear-algebra/</link>
       <pubDate>Wed, 10 Jul 2019 18:58:15 +0800</pubDate>
       
@@ -217,9 +234,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Tue, 21 May 2019 17:55:57 +0800</pubDate>
       
       <guid>/post/java-interview-distributed-session/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;集群部署时的分布式session如何实现？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 集群部署时的分布式session如何实现？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -237,9 +252,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Tue, 21 May 2019 16:46:51 +0800</pubDate>
       
       <guid>/post/java-interview-distributed-dubbo06/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;如何基于dubbo进行服务治理、服务降级、失败重试以及超时重试？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 如何基于dubbo进行服务治理、服务降级、失败重试以及超时重试？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -248,9 +261,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Tue, 21 May 2019 16:01:24 +0800</pubDate>
       
       <guid>/post/java-interview-distributed-dubbo05/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;dubbo的spi思想是什么？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 dubbo的spi思想是什么？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -259,9 +270,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Tue, 21 May 2019 14:53:52 +0800</pubDate>
       
       <guid>/post/java-interview-distributed-dubbo04/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -270,7 +279,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Tue, 21 May 2019 14:41:19 +0800</pubDate>
       
       <guid>/post/java-interview-distributed-dubbo03/</guid>
-      <description></description>
+      <description>&lt;p&gt;面试题:dubbo支持哪些通信协议？支持哪些序列化协议？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -279,7 +288,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Tue, 21 May 2019 14:32:22 +0800</pubDate>
       
       <guid>/post/java-interview-distributed-dubbo02/</guid>
-      <description></description>
+      <description>&lt;p&gt;面试题:说一下的dubbo的工作原理？注册中心挂了可以继续通信吗？说说一次rpc请求的流程？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -288,9 +297,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Tue, 21 May 2019 10:49:00 +0800</pubDate>
       
       <guid>/post/java-interview-distributed-introduce01/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;为什么要进行系统拆分？如何进行系统拆分？拆分后不用dubbo可以吗？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 为什么要进行系统拆分？如何进行系统拆分？拆分后不用dubbo可以吗？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -299,11 +306,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Mon, 20 May 2019 16:56:21 +0800</pubDate>
       
       <guid>/post/java-interview-distributed-zk02/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;一般实现分布式锁都有哪些方式？使用redis如何设计分布式锁？使用zk来设计分布式锁可以吗？这两种分布式锁的实现方式哪种效率比较高？&lt;/p&gt;
-
-&lt;h2 id=&#34;2-面试官心里分析&#34;&gt;2、面试官心里分析&lt;/h2&gt;
+      <description>&lt;p&gt;面试题 一般实现分布式锁都有哪些方式？使用redis如何设计分布式锁？使用zk来设计分布式锁可以吗？这两种分布式锁的实现方式哪种效率比较高？&lt;/p&gt;
 
 &lt;p&gt;其实一般问问题，都是这么问的，先问问你zk，然后其实是要过度的zk关联的一些问题里去，比如分布式锁。因为在分布式系统开发中，分布式锁的使用场景还是很常见的。&lt;/p&gt;</description>
     </item>
@@ -314,9 +317,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Mon, 20 May 2019 16:50:16 +0800</pubDate>
       
       <guid>/post/java-interview-distributed-zk01/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;zk都有哪些使用场景？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 zk都有哪些使用场景？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -340,9 +341,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Fri, 17 May 2019 18:26:55 +0800</pubDate>
       
       <guid>/post/java-interview-mysql-shading05/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;你们有没有做MySQL读写分离？如何实现mysql的读写分离？MySQL主从复制原理的是啥？如何解决mysql主从同步的延时问题？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 你们有没有做MySQL读写分离？如何实现mysql的读写分离？MySQL主从复制原理的是啥？如何解决mysql主从同步的延时问题？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -351,9 +350,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Fri, 17 May 2019 18:19:24 +0800</pubDate>
       
       <guid>/post/java-interview-mysql-shading04/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;分库分表之后，id主键如何处理？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 分库分表之后，id主键如何处理？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -362,20 +359,16 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Fri, 17 May 2019 17:41:34 +0800</pubDate>
       
       <guid>/post/java-interview-mysql-shading03/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;如何设计可以动态扩容缩容的分库分表方案？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 如何设计可以动态扩容缩容的分库分表方案？&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Java面试-高并发-Mysql-怎么把你那个单库单表的系统给迁移到分库分表上</title>
+      <title>Java面试-高并发-Mysql-单库单表迁移到分库分表</title>
       <link>/post/java-interview-mysql-shading02/</link>
       <pubDate>Fri, 17 May 2019 17:30:42 +0800</pubDate>
       
       <guid>/post/java-interview-mysql-shading02/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -384,9 +377,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Fri, 17 May 2019 16:12:09 +0800</pubDate>
       
       <guid>/post/java-interview-mysql-shading01/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -395,9 +386,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Thu, 16 May 2019 18:51:25 +0800</pubDate>
       
       <guid>/post/java-interview-gaobingfa/</guid>
-      <description>&lt;h2 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h2&gt;
-
-&lt;p&gt;如何设计一个高并发系统？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 如何设计一个高并发系统？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -406,7 +395,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Thu, 16 May 2019 18:11:25 +0800</pubDate>
       
       <guid>/post/java-interview-cache06/</guid>
-      <description></description>
+      <description>&lt;p&gt;redis的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -415,11 +404,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Thu, 16 May 2019 17:48:03 +0800</pubDate>
       
       <guid>/post/java-interview-cache05/</guid>
-      <description>&lt;h2 id=&#34;01-面试题以及解答思路介绍&#34;&gt;01_面试题以及解答思路介绍&lt;/h2&gt;
-
-&lt;p&gt;1、面试题&lt;/p&gt;
-
-&lt;p&gt;如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -428,7 +413,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Thu, 16 May 2019 17:47:24 +0800</pubDate>
       
       <guid>/post/java-interview-cache04/</guid>
-      <description></description>
+      <description>&lt;p&gt;redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -437,9 +422,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Thu, 16 May 2019 17:38:03 +0800</pubDate>
       
       <guid>/post/java-interview-cache03/</guid>
-      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
-
-&lt;p&gt;redis都有哪些数据类型？分别在哪些场景下使用比较合适？&lt;/p&gt;</description>
+      <description>&lt;p&gt;redis都有哪些数据类型？分别在哪些场景下使用比较合适？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -448,9 +431,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Thu, 16 May 2019 17:28:03 +0800</pubDate>
       
       <guid>/post/java-interview-cache02/</guid>
-      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
-
-&lt;p&gt;redis和memcached有什么区别？redis的线程模型是什么？为什么单线程的redis比多线程的memcached效率要高得多（为什么redis是单线程的但是还可以支撑高并发）？&lt;/p&gt;</description>
+      <description>&lt;p&gt;redis和memcached有什么区别？redis的线程模型是什么？为什么单线程的redis比多线程的memcached效率要高得多（为什么redis是单线程的但是还可以支撑高并发）？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -459,9 +440,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Thu, 16 May 2019 17:18:03 +0800</pubDate>
       
       <guid>/post/java-interview-cache01/</guid>
-      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
-
-&lt;p&gt;在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？&lt;/p&gt;</description>
+      <description>&lt;p&gt;在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -470,9 +449,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
       
       <guid>/post/java-interview-mq07/</guid>
-      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
-
-&lt;p&gt;如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -481,9 +458,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Wed, 15 May 2019 19:36:47 +0800</pubDate>
       
       <guid>/post/java-interview-mq06/</guid>
-      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
-
-&lt;p&gt;如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -492,9 +467,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Wed, 15 May 2019 18:36:47 +0800</pubDate>
       
       <guid>/post/java-interview-mq05/</guid>
-      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
-
-&lt;p&gt;如何保证消息的顺序性？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 如何保证消息的顺序性？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -503,9 +476,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Wed, 15 May 2019 17:36:47 +0800</pubDate>
       
       <guid>/post/java-interview-mq04/</guid>
-      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
-
-&lt;p&gt;如何保证消息的可靠性传输（如何处理消息丢失的问题）？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 如何保证消息的可靠性传输（如何处理消息丢失的问题）？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -514,9 +485,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Wed, 15 May 2019 16:36:47 +0800</pubDate>
       
       <guid>/post/java-interview-mq03/</guid>
-      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
-
-&lt;p&gt;如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -525,9 +494,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Wed, 15 May 2019 15:36:47 +0800</pubDate>
       
       <guid>/post/java-interview-mq02/</guid>
-      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
-
-&lt;p&gt;如何保证消息队列的高可用啊？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 如何保证消息队列的高可用啊？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -536,9 +503,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Wed, 15 May 2019 14:36:47 +0800</pubDate>
       
       <guid>/post/java-interview-mq01/</guid>
-      <description>&lt;h3 id=&#34;1-面试题&#34;&gt;1、面试题&lt;/h3&gt;
-
-&lt;p&gt;为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？&lt;/p&gt;</description>
+      <description>&lt;p&gt;面试题 为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -743,7 +708,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Mon, 18 Feb 2019 09:08:09 +0800</pubDate>
       
       <guid>/post/java-seckill-action/</guid>
-      <description></description>
+      <description>&lt;p&gt;现在很多面试都问如何设计一个秒杀系统，特此学习一下&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -752,7 +717,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Mon, 18 Feb 2019 08:56:11 +0800</pubDate>
       
       <guid>/post/java-how-to-design-seckill/</guid>
-      <description></description>
+      <description>&lt;p&gt;什么是秒杀? 秒杀场景一般会在电商网站举行一些活动或者节假日在12306网站上抢票时遇到。对于电商网站中一些稀缺或者特价商品，电商网站一般会在约定时间点对其进行限量销售，因为这些商品的特殊性，会吸引大量用户前来抢购，并且会在约定的时间点同时在秒杀页面进行抢购。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -788,26 +753,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Fri, 15 Feb 2019 11:10:56 +0800</pubDate>
       
       <guid>/post/java-rpc/</guid>
-      <description>&lt;p&gt;在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Java&#34;&gt;
- public class Test {
-     public static void main(String[] args) {
-         HelloWorldService helloWorldService = new HelloWorldServiceImpl();
-         helloWorldService.sayHello(&amp;quot;test&amp;quot;);
-     }
- }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;而一旦踏入公司尤其是大型互联网公司就会发现，公司的系统都由成千上万大大小小的服务组成，各服务部署在不同的机器上，由不同的团队负责。这时就会遇到两个问题：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;要搭建一个新服务，免不了需要依赖他人的服务，而现在他人的服务都在远端，怎么调用？&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;其它团队要使用我们的服务，我们的服务该怎么发布以便他人调用？&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;下文我们将对这两个问题展开探讨。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -820,11 +766,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
 
 &lt;p&gt;　　如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。&lt;/p&gt;
 
-&lt;p&gt;　　那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？&lt;/p&gt;
-
-&lt;p&gt;　　在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池，首先我们从最核心的ThreadPoolExecutor类中的方法讲起，然后再讲述它的实现原理，接着给出了它的使用示例，最后讨论了一下如何合理配置线程池的大小。&lt;/p&gt;
-
-&lt;p&gt;　　若有不正之处请多多谅解，并欢迎批评指正。&lt;/p&gt;</description>
+&lt;p&gt;　　那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -833,7 +775,9 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Thu, 14 Feb 2019 11:26:21 +0800</pubDate>
       
       <guid>/post/jmm-java/</guid>
-      <description></description>
+      <description>&lt;p&gt;Java内存模型即Java Memory Model，简称JMM。&lt;/p&gt;
+
+&lt;p&gt;JMM定义了Java 虚拟机(JVM)在计算机内存(RAM)中的工作方式。JVM是整个计算机虚拟模型，所以JMM是隶属于JVM的。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -851,11 +795,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Wed, 13 Feb 2019 07:56:41 +0800</pubDate>
       
       <guid>/post/interview-exp-baidu/</guid>
-      <description>&lt;p&gt;从事Java开发也有5年经验了，7月初来到帝都，开启面试经历，前后20天左右，主面互联网公司，一二线大公司或者是融资中的创业公司都面试过，拿了一些offer，其中包括奇虎360，最后综合决定还是去百度了。&lt;/p&gt;
-
-&lt;p&gt;首先不同面试官面试风格一定不同，我这里就是总结这些天面试Java开发过程中的大多数问题，综合分类有Java基础，框架，多线程，网络通信，数据库以及设计模式，算法等几个模块。&lt;/p&gt;
-
-&lt;p&gt;一名3年工作经验的Java程序员应该具备的技能，这可能是Java程序员们比较关心的内容。我这里要说明一下，以下列举的内容不是都要会的东西&amp;mdash;-但是如果你掌握得越多，最终能得到的评价、拿到的薪水势必也越高。&lt;/p&gt;</description>
+      <description>&lt;p&gt;从事Java开发也有5年经验了，7月初来到帝都，开启面试经历，前后20天左右，主面互联网公司，一二线大公司或者是融资中的创业公司都面试过，拿了一些offer，其中包括奇虎360，最后综合决定还是去百度了。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -879,11 +819,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Tue, 12 Feb 2019 10:22:20 +0800</pubDate>
       
       <guid>/post/springboot-how-run/</guid>
-      <description>&lt;p&gt;不得不说 SpringBoot 太复杂了，我本来只想研究一下 SpringBoot 最简单的 HelloWorld 程序是如何从 main 方法一步一步跑起来的，但是这却是一个相当深的坑。你可以试着沿着调用栈代码一层一层的深入进去，如果你不打断点，你根本不知道接下来程序会往哪里流动。这个不同于我研究过去的 Go 语言、Python 语言框架，它们通常都非常直接了当，设计上清晰易懂，代码写起来简单，里面的实现同样也很简单。但是 SpringBoot 不是，它的外表轻巧简单，但是它的里面就像一只巨大的怪兽，这只怪兽有千百只脚把自己缠绕在一起，把爱研究源码的读者绕的晕头转向。&lt;/p&gt;
-
-&lt;p&gt;但是这 Java 编程的世界 SpringBoot 就是老大哥，你却不得不服。即使你的心中有千万头草泥马在奔跑，但是它就是天下第一。如果你是一个学院派的程序员，看到这种现象你会怀疑人生，你不得不接受一个规则 —— 受市场最欢迎的未必就是设计的最好的，里面夹杂着太多其它的非理性因素。&lt;/p&gt;
-
-&lt;p&gt;经过了一番痛苦的折磨，我还是把 SpringBoot 的运行原理摸清楚了，这里分享给大家。&lt;/p&gt;</description>
+      <description>&lt;p&gt;不得不说 SpringBoot 太复杂了，我本来只想研究一下 SpringBoot 最简单的 HelloWorld 程序是如何从 main 方法一步一步跑起来的，但是这却是一个相当深的坑。你可以试着沿着调用栈代码一层一层的深入进去，如果你不打断点，你根本不知道接下来程序会往哪里流动。这个不同于我研究过去的 Go 语言、Python 语言框架，它们通常都非常直接了当，设计上清晰易懂，代码写起来简单，里面的实现同样也很简单。但是 SpringBoot 不是，它的外表轻巧简单，但是它的里面就像一只巨大的怪兽，这只怪兽有千百只脚把自己缠绕在一起，把爱研究源码的读者绕的晕头转向。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -892,9 +828,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Thu, 31 Jan 2019 13:39:29 +0800</pubDate>
       
       <guid>/post/test-about/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/img/undraw/undraw_mobile_testing_reah.png&#34; alt=&#34;mobile_testing&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
+      <description>&lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -931,7 +865,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Mon, 21 Jan 2019 16:34:26 +0800</pubDate>
       
       <guid>/post/booklist-zhengshitang-2018/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/img/undraw/undraw_reading_list_4boi.png&#34; alt=&#34;reading_list&#34; /&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;读史明智，顾子明推荐书单&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -4,15 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Java面试-高并发-如何保证Redis的高并发和高可用 - stay hungry stay foolish</title>
+	<title>Java面试-高并发-如何保证Redis的高并发和高可用 - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Java面试-高并发-如何保证Redis的高并发和高可用" />
-<meta property="og:description" content="01_面试题以及解答思路介绍
-
-1、面试题
-
-如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？" />
+<meta property="og:description" content="面试题 如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/java-interview-cache05/" />
 <meta property="article:published_time" content="2019-05-16T17:48:03+08:00" />
@@ -20,11 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Java面试-高并发-如何保证Redis的高并发和高可用"/>
-<meta name="twitter:description" content="01_面试题以及解答思路介绍
-
-1、面试题
-
-如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？"/>
+<meta name="twitter:description" content="面试题 如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -39,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -103,8 +95,18 @@
 <ul>
 <li>
 <ul>
-<li><a href="#01-面试题以及解答思路介绍">01_面试题以及解答思路介绍</a></li>
-<li><a href="#02-redis如何通过读写分离来承载读请求qps超过10万">02_redis如何通过读写分离来承载读请求QPS超过10万+？</a></li>
+<li><a href="#01-面试题以及解答思路介绍">01_面试题以及解答思路介绍</a>
+<ul>
+<li><a href="#1-面试官心里分析">1、面试官心里分析</a></li>
+<li><a href="#2-面试题剖析">2、面试题剖析</a></li>
+</ul></li>
+<li><a href="#02-redis如何通过读写分离来承载读请求qps超过10万">02_redis如何通过读写分离来承载读请求QPS超过10万+？</a>
+<ul>
+<li><a href="#1-redis高并发跟整个系统的高并发之间的关系">1、redis高并发跟整个系统的高并发之间的关系</a></li>
+<li><a href="#2-redis不能支撑高并发的瓶颈在哪里">2、redis不能支撑高并发的瓶颈在哪里？</a></li>
+<li><a href="#3-如果redis要支撑超过10万-的并发-那应该怎么做">3、如果redis要支撑超过10万+的并发，那应该怎么做？</a></li>
+<li><a href="#4-接下来要讲解的一个topic">4、接下来要讲解的一个topic</a></li>
+</ul></li>
 <li><a href="#03-redis-replication以及master持久化对主从架构的安全意义">03_redis replication以及master持久化对主从架构的安全意义</a></li>
 <li><a href="#04-redis主从复制原理-断点续传-无磁盘化复制-过期key处理">04_redis主从复制原理、断点续传、无磁盘化复制、过期key处理</a></li>
 <li><a href="#05-redis-replication的完整流运行程和原理的再次深入剖析">05_redis replication的完整流运行程和原理的再次深入剖析</a></li>
@@ -118,33 +120,31 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h2 id="01-面试题以及解答思路介绍">01_面试题以及解答思路介绍</h2>
+			<p>面试题 如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？</p>
 
-<p>1、面试题</p>
+<h2 id="01-面试题以及解答思路介绍">01_面试题以及解答思路介绍</h2>
 
-<p>如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？</p>
-
-<p>2、面试官心里分析</p>
+<h3 id="1-面试官心里分析">1、面试官心里分析</h3>
 
 <p>其实问这个问题，主要是考考你，redis单机能承载多高并发？如果单机扛不住如何扩容抗更多的并发？redis会不会挂？既然redis会挂那怎么保证redis是高可用的？</p>
 
 <p>其实针对的都是项目中你肯定要考虑的一些问题，如果你没考虑过，那确实你对生产系统中的问题思考太少。</p>
 
-<p>3、面试题剖析</p>
+<h3 id="2-面试题剖析">2、面试题剖析</h3>
 
 <p>就是如果你用redis缓存技术的话，肯定要考虑如何用redis来加多台机器，保证redis是高并发的，还有就是如何让Redis保证自己不是挂掉以后就直接死掉了，redis高可用</p>
 
 <p>我这里会选用我之前讲解过这一块内容，redis高并发、高可用、缓存一致性</p>
 
-<p>redis高并发：主从架构，一主多从，一般来说，很多项目其实就足够了，单主用来写入数据，单机几万QPS，多从用来查询数据，多个从实例可以提供每秒10万的QPS。</p>
+<p><strong>redis高并发</strong>：主从架构，一主多从，一般来说，很多项目其实就足够了，单主用来写入数据，单机几万QPS，多从用来查询数据，多个从实例可以提供每秒10万的QPS。</p>
 
-<p>redis高并发的同时，还需要容纳大量的数据：一主多从，每个实例都容纳了完整的数据，比如redis主就10G的内存量，其实你就最对只能容纳10g的数据量。如果你的缓存要容纳的数据量很大，达到了几十g，甚至几百g，或者是几t，那你就需要redis集群，而且用redis集群之后，可以提供可能每秒几十万的读写并发。</p>
+<p><strong>redis高并发的同时，还需要容纳大量的数据</strong>：一主多从，每个实例都容纳了完整的数据，比如redis主就10G的内存量，其实你就最对只能容纳10g的数据量。如果你的缓存要容纳的数据量很大，达到了几十g，甚至几百g，或者是几t，那你就需要redis集群，而且用redis集群之后，可以提供可能每秒几十万的读写并发。</p>
 
-<p>redis高可用：如果你做主从架构部署，其实就是加上哨兵就可以了，就可以实现，任何一个实例宕机，自动会进行主备切换。</p>
+<p><strong>redis高可用</strong>：如果你做主从架构部署，其实就是加上哨兵就可以了，就可以实现，任何一个实例宕机，自动会进行主备切换。</p>
 
 <h2 id="02-redis如何通过读写分离来承载读请求qps超过10万">02_redis如何通过读写分离来承载读请求QPS超过10万+？</h2>
 
-<p>1、redis高并发跟整个系统的高并发之间的关系</p>
+<h3 id="1-redis高并发跟整个系统的高并发之间的关系">1、redis高并发跟整个系统的高并发之间的关系</h3>
 
 <p>redis，你要搞高并发的话，不可避免，要把底层的缓存搞得很好</p>
 
@@ -156,11 +156,11 @@
 
 <p>首先，你的底层的缓存中间件，缓存系统，必须能够支撑的起我们说的那种高并发，其次，再经过良好的整体的缓存架构的设计（多级缓存架构、热点缓存），支撑真正的上十万，甚至上百万的高并发</p>
 
-<p>2、redis不能支撑高并发的瓶颈在哪里？</p>
+<h3 id="2-redis不能支撑高并发的瓶颈在哪里">2、redis不能支撑高并发的瓶颈在哪里？</h3>
 
 <p>单机</p>
 
-<p>3、如果redis要支撑超过10万+的并发，那应该怎么做？</p>
+<h3 id="3-如果redis要支撑超过10万-的并发-那应该怎么做">3、如果redis要支撑超过10万+的并发，那应该怎么做？</h3>
 
 <p>单机的redis几乎不太可能说QPS超过10万+，除非一些特殊情况，比如你的机器性能特别好，配置特别高，物理机，维护做的特别好，而且你的整体的操作不是太复杂</p>
 
@@ -174,7 +174,7 @@
 
 <p>主从架构 -&gt; 读写分离 -&gt; 支撑10万+读QPS的架构</p>
 
-<p>4、接下来要讲解的一个topic</p>
+<h3 id="4-接下来要讲解的一个topic">4、接下来要讲解的一个topic</h3>
 
 <p>redis replication</p>
 
@@ -297,7 +297,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

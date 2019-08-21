@@ -4,13 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Java面试-高并发-MQ可靠性传输(4) - stay hungry stay foolish</title>
+	<title>Java面试-高并发-MQ可靠性传输(4) - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Java面试-高并发-MQ可靠性传输(4)" />
-<meta property="og:description" content="1、面试题
-
-如何保证消息的可靠性传输（如何处理消息丢失的问题）？" />
+<meta property="og:description" content="面试题 如何保证消息的可靠性传输（如何处理消息丢失的问题）？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/java-interview-mq04/" />
 <meta property="article:published_time" content="2019-05-15T17:36:47+08:00" />
@@ -18,9 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Java面试-高并发-MQ可靠性传输(4)"/>
-<meta name="twitter:description" content="1、面试题
-
-如何保证消息的可靠性传输（如何处理消息丢失的问题）？"/>
+<meta name="twitter:description" content="面试题 如何保证消息的可靠性传输（如何处理消息丢失的问题）？"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -101,9 +97,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#1-面试题">1、面试题</a></li>
-<li><a href="#2-面试官心里分析">2、面试官心里分析</a></li>
-<li><a href="#3-面试题剖析">3、面试题剖析</a>
+<li><a href="#1-面试官心里分析">1、面试官心里分析</a></li>
+<li><a href="#2-面试题剖析">2、面试题剖析</a>
 <ul>
 <li><a href="#1-rabbitmq">（1）rabbitmq</a>
 <ul>
@@ -125,11 +120,9 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h3 id="1-面试题">1、面试题</h3>
+			<p>面试题 如何保证消息的可靠性传输（如何处理消息丢失的问题）？</p>
 
-<p>如何保证消息的可靠性传输（如何处理消息丢失的问题）？</p>
-
-<h3 id="2-面试官心里分析">2、面试官心里分析</h3>
+<h3 id="1-面试官心里分析">1、面试官心里分析</h3>
 
 <p>这个是肯定的，用mq有个基本原则，就是数据不能多一条，也不能少一条，不能多，就是刚才说的重复消费和幂等性问题。不能少，就是说这数据别搞丢了。那这个问题你必须得考虑一下。</p>
 
@@ -137,7 +130,7 @@
 
 <p>我们当时为了确保说这个MQ传递过程中绝对不会把计费消息给弄丢，花了很多的精力。广告主投放了一个广告，明明说好了，用户点击一次扣费1块钱。结果要是用户动不动点击了一次，扣费的时候搞的消息丢了，我们公司就会不断的少几块钱，几块钱，积少成多，这个就对公司是一个很大的损失。</p>
 
-<h3 id="3-面试题剖析">3、面试题剖析</h3>
+<h3 id="2-面试题剖析">2、面试题剖析</h3>
 
 <p>这个丢数据，mq一般分为两种，要么是mq自己弄丢了，要么是我们消费的时候弄丢了。咱们从rabbitmq和kafka分别来分析一下吧</p>
 
@@ -239,7 +232,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docker on stay hungry stay foolish</title>
+    <title>docker on quguang&#39;s blog</title>
     <link>/tags/docker/</link>
-    <description>Recent content in docker on stay hungry stay foolish</description>
+    <description>Recent content in docker on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Jan 2019 15:12:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 24 Jan 2019 14:56:49 +0800</lastBuildDate>
     
 	<atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Drools 7.15.0 docker容器方式部署</title>
+      <link>/post/drools-7.15.0.final-docker-deploy/</link>
+      <pubDate>Thu, 24 Jan 2019 14:56:49 +0800</pubDate>
+      
+      <guid>/post/drools-7.15.0.final-docker-deploy/</guid>
+      <description>&lt;p&gt;关于drools的相关介绍就不再赘述了，关于drools网上的资料都很少，或者都有些老了，最近折腾了一下，记录下安装部署的过程，希望能节省下大家的时间。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>《深入剖析Kubernetes》-Docker的实现原理</title>

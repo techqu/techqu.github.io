@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>spring on stay hungry stay foolish</title>
+    <title>spring on quguang&#39;s blog</title>
     <link>/categories/spring/</link>
-    <description>Recent content in spring on stay hungry stay foolish</description>
+    <description>Recent content in spring on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Jul 2019 11:51:07 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Fri, 12 Jul 2019 11:51:07 +0800</pubDate>
       
       <guid>/post/how-to-read-spring-source-code/</guid>
-      <description></description>
+      <description>&lt;p&gt;给不知道如何阅读spring源码的同学一点借鉴&lt;/p&gt;</description>
     </item>
     
     <item>

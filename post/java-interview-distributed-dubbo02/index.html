@@ -4,11 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Java面试-分布式 Dubbo的原理 - stay hungry stay foolish</title>
+	<title>Java面试-分布式 Dubbo的原理 - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Java面试-分布式 Dubbo的原理" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="面试题:说一下的dubbo的工作原理？注册中心挂了可以继续通信吗？说说一次rpc请求的流程？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/java-interview-distributed-dubbo02/" />
 <meta property="article:published_time" content="2019-05-21T14:32:22+08:00" />
@@ -16,7 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Java面试-分布式 Dubbo的原理"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="面试题:说一下的dubbo的工作原理？注册中心挂了可以继续通信吗？说说一次rpc请求的流程？"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -31,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -95,9 +95,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#1-面试题">1、面试题</a></li>
-<li><a href="#2-面试官心里分析">2、面试官心里分析</a></li>
-<li><a href="#3-面试题剖析">3、面试题剖析</a>
+<li><a href="#1-面试官心里分析">1、面试官心里分析</a></li>
+<li><a href="#2-面试题剖析">2、面试题剖析</a>
 <ul>
 <li><a href="#1-dubbo工作原理">（1）dubbo工作原理</a>
 <ul>
@@ -111,11 +110,9 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h2 id="1-面试题">1、面试题</h2>
+			<p>面试题:说一下的dubbo的工作原理？注册中心挂了可以继续通信吗？说说一次rpc请求的流程？</p>
 
-<p>说一下的dubbo的工作原理？注册中心挂了可以继续通信吗？说说一次rpc请求的流程？</p>
-
-<h2 id="2-面试官心里分析">2、面试官心里分析</h2>
+<h2 id="1-面试官心里分析">1、面试官心里分析</h2>
 
 <p>MQ、ES、Redis、Dubbo，上来先问你一些思考的问题，原理（<strong>kafka高可用架构原理、es分布式架构原理、redis线程模型原理、Dubbo工作原理</strong>），<strong>生产环境里可能会碰到的一些问题（每种技术引入之后生产环境都可能会碰到一些问题），系统设计（设计MQ，设计搜索引擎，设计一个缓存，设计rpc框架）</strong></p>
 
@@ -127,7 +124,7 @@
 
 <p>既然聊dubbo，那肯定是先从dubbo原理开始聊了，你先说说dubbo支撑rpc分布式调用的架构师啥，然后说说一次rpc请求dubbo是怎么给你完成的，对吧。</p>
 
-<h2 id="3-面试题剖析">3、面试题剖析</h2>
+<h2 id="2-面试题剖析">2、面试题剖析</h2>
 
 <h3 id="1-dubbo工作原理">（1）dubbo工作原理</h3>
 
@@ -192,7 +189,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

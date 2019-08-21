@@ -4,11 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>《Java并发编程实战》-2-并发工具类(下) - stay hungry stay foolish</title>
+	<title>《Java并发编程实战》-2-并发工具类(下) - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="《Java并发编程实战》-2-并发工具类(下)" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K()   这个方法不是线程安全的，问题就出在变量 count 的可见性和 count&#43;=1 的原子性上。可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/geektime-java-concurrent-in-action.1.2/" />
 <meta property="article:published_time" content="2019-07-26T17:31:24+08:00" />
@@ -16,7 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="《Java并发编程实战》-2-并发工具类(下)"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，add10K()   这个方法不是线程安全的，问题就出在变量 count 的可见性和 count&#43;=1 的原子性上。可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -31,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -134,9 +134,9 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h2 id="21-原子类-无锁工具类的典范-重点学习">21|原子类：无锁工具类的典范(重点学习)</h2>
+			<p>前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，<code>add10K()</code>   这个方法不是线程安全的，问题就出在变量 count 的可见性和 <code>count+=1</code> 的原子性上。<strong>可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。</strong></p>
 
-<p>前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，<code>add10K()</code>   这个方法不是线 程安全的，问题就出在变量 count 的可见性和 <code>count+=1</code> 的原子性上。<strong>可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。</strong></p>
+<h2 id="21-原子类-无锁工具类的典范-重点学习">21|原子类：无锁工具类的典范(重点学习)</h2>
 
 <pre><code class="language-java">public class Test{
   long count = 0;
@@ -620,7 +620,7 @@ T1:泡茶...
 		<a class="post-nav__link" href="/post/geektime-java-concurrent-in-action.1.1/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">《Java并发编程实战》-2-并发工具类(上)</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/post/geektime-java-concurrent-in-action.2/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">《Java并发编程实战》-3-并发设计模式</p></a>
+		<a class="post-nav__link" href="/post/geektime-java-concurrent-in-action.2/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">《Java并发编程实战》-3-并发设计模式（未完待续）</p></a>
 	</div>
 </nav>
 
@@ -632,7 +632,7 @@ T1:泡茶...
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

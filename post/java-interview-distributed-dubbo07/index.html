@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Java面试-分布式 分布式服务接口的幂等性和顺序性 - stay hungry stay foolish</title>
+	<title>Java面试-分布式 分布式服务接口的幂等性和顺序性 - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Java面试-分布式 分布式服务接口的幂等性和顺序性" />
@@ -31,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -95,23 +95,20 @@
 <ul>
 <li>
 <ul>
+<li><a href="#1-面试官心里分析">1、面试官心里分析</a></li>
+<li><a href="#2-面试题剖析">2、面试题剖析</a></li>
 <li><a href="#1-面试题">1、面试题</a></li>
 <li><a href="#2-面试官心里分析">2、面试官心里分析</a></li>
 <li><a href="#3-面试题剖析">3、面试题剖析</a></li>
-<li><a href="#1-面试题-1">1、面试题</a></li>
-<li><a href="#2-面试官心里分析-1">2、面试官心里分析</a></li>
-<li><a href="#3-面试题剖析-1">3、面试题剖析</a></li>
 </ul></li>
 </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h2 id="1-面试题">1、面试题</h2>
+			<p>面试题 分布式服务接口的幂等性如何设计（比如不能重复扣款）？</p>
 
-<p>分布式服务接口的幂等性如何设计（比如不能重复扣款）？</p>
-
-<h2 id="2-面试官心里分析">2、面试官心里分析</h2>
+<h2 id="1-面试官心里分析">1、面试官心里分析</h2>
 
 <p>从这个问题开始，面试官就已经进入了实际的生产问题的面试了</p>
 
@@ -127,7 +124,7 @@
 
 <p>我们之前生产就遇到过，是往数据库里写入数据，重复的请求，就导致我们的数据经常会错，出现一些重复数据，就会导致一些问题</p>
 
-<h2 id="3-面试题剖析">3、面试题剖析</h2>
+<h2 id="2-面试题剖析">2、面试题剖析</h2>
 
 <p><img src="/img/01_分布式系统接口的幂等性问题.png" alt="01_分布式系统接口的幂等性问题" /></p>
 
@@ -157,11 +154,11 @@
 
 <hr />
 
-<h2 id="1-面试题-1">1、面试题</h2>
+<h2 id="1-面试题">1、面试题</h2>
 
 <p>分布式服务接口请求的顺序性如何保证？</p>
 
-<h2 id="2-面试官心里分析-1">2、面试官心里分析</h2>
+<h2 id="2-面试官心里分析">2、面试官心里分析</h2>
 
 <p>其实分布式系统接口的调用顺序，也是个问题，一般来说是不用保证顺序的。但是有的时候可能确实是需要严格的顺序保证。给大家举个例子，你服务A调用服务B，先插入再删除。好，结果俩请求过去了，落在不同机器上，可能插入请求因为某些原因执行慢了一些，导致删除请求先执行了，此时因为没数据所以啥效果也没有；结果这个时候插入请求过来了，好，数据插入进去了，那就尴尬了。</p>
 
@@ -169,7 +166,7 @@
 
 <p>所以这都是分布式系统一些很常见的问题</p>
 
-<h2 id="3-面试题剖析-1">3、面试题剖析</h2>
+<h2 id="3-面试题剖析">3、面试题剖析</h2>
 
 <p><img src="/img/01_分布式系统接口调用顺序性.png" alt="01_分布式系统接口调用顺序性" /></p>
 
@@ -213,7 +210,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

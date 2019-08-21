@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>geektime on stay hungry stay foolish</title>
+    <title>geektime on quguang&#39;s blog</title>
     <link>/categories/geektime/</link>
-    <description>Recent content in geektime on stay hungry stay foolish</description>
+    <description>Recent content in geektime on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 04 Aug 2019 20:34:10 +0800</lastBuildDate>
@@ -34,7 +34,25 @@
     </item>
     
     <item>
-      <title>《Java并发编程实战》-3-并发设计模式</title>
+      <title>《Java并发编程实战》-5-其他并发模型（未完待续）</title>
+      <link>/post/geektime-java-concurrent-in-action.4/</link>
+      <pubDate>Mon, 29 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-concurrent-in-action.4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-4-案例分析（未完待续）</title>
+      <link>/post/geektime-java-concurrent-in-action.3/</link>
+      <pubDate>Sun, 28 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-concurrent-in-action.3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-3-并发设计模式（未完待续）</title>
       <link>/post/geektime-java-concurrent-in-action.2/</link>
       <pubDate>Sat, 27 Jul 2019 17:31:24 +0800</pubDate>
       
@@ -48,7 +66,7 @@
       <pubDate>Fri, 26 Jul 2019 17:31:24 +0800</pubDate>
       
       <guid>/post/geektime-java-concurrent-in-action.1.2/</guid>
-      <description></description>
+      <description>&lt;p&gt;前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，&lt;code&gt;add10K()&lt;/code&gt;   这个方法不是线程安全的，问题就出在变量 count 的可见性和 &lt;code&gt;count+=1&lt;/code&gt; 的原子性上。&lt;strong&gt;可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -182,9 +200,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
       <pubDate>Thu, 31 Jan 2019 13:39:29 +0800</pubDate>
       
       <guid>/post/test-about/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/img/undraw/undraw_mobile_testing_reah.png&#34; alt=&#34;mobile_testing&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
+      <description>&lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -4,13 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Java面试-高并发-MQ技术选型(1) - stay hungry stay foolish</title>
+	<title>Java面试-高并发-MQ技术选型(1) - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Java面试-高并发-MQ技术选型(1)" />
-<meta property="og:description" content="1、面试题
-
-为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？" />
+<meta property="og:description" content="面试题 为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/java-interview-mq01/" />
 <meta property="article:published_time" content="2019-05-15T14:36:47+08:00" />
@@ -18,9 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Java面试-高并发-MQ技术选型(1)"/>
-<meta name="twitter:description" content="1、面试题
-
-为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？"/>
+<meta name="twitter:description" content="面试题 为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -101,15 +97,14 @@
 <ul>
 <li>
 <ul>
-<li><a href="#1-面试题">1、面试题</a></li>
-<li><a href="#2-面试官心理分析">2、面试官心理分析</a>
+<li><a href="#1-面试官心理分析">1、面试官心理分析</a>
 <ul>
 <li><a href="#1-第一-你知道不知道你们系统里为什么要用消息队列这个东西">（1）第一，你知道不知道你们系统里为什么要用消息队列这个东西？</a></li>
 <li><a href="#2-第二-你既然用了消息队列这个东西-你知道不知道用了有什么好处">（2）第二，你既然用了消息队列这个东西，你知道不知道用了有什么好处？</a></li>
 <li><a href="#3-第三-既然你用了mq-可能是某一种mq-那么你当时做没做过调研啊">（3）第三，既然你用了MQ，可能是某一种MQ，那么你当时做没做过调研啊？</a></li>
 </ul></li>
-<li><a href="#3-额外的友情提示">3、额外的友情提示</a></li>
-<li><a href="#4-面试题剖析">4、面试题剖析</a>
+<li><a href="#2-额外的友情提示">2、额外的友情提示</a></li>
+<li><a href="#3-面试题剖析">3、面试题剖析</a>
 <ul>
 <li><a href="#1-为什么使用消息队列啊">（1）为什么使用消息队列啊？</a></li>
 <li><a href="#2-消息队列有什么优点和缺点啊">（2）消息队列有什么优点和缺点啊？</a></li>
@@ -122,11 +117,9 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h3 id="1-面试题">1、面试题</h3>
+			<p>面试题 为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？</p>
 
-<p>为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？</p>
-
-<h3 id="2-面试官心理分析">2、面试官心理分析</h3>
+<h3 id="1-面试官心理分析">1、面试官心理分析</h3>
 
 <p>其实面试官主要是想看看：</p>
 
@@ -148,7 +141,7 @@
 
 <p>如果是一个不考虑技术选型的候选人招进了团队，面试官交给他一个任务，去设计个什么系统，他在里面用一些技术，可能都没考虑过选型，最后选的技术可能并不一定合适，一样是留坑</p>
 
-<h3 id="3-额外的友情提示">3、额外的友情提示</h3>
+<h3 id="2-额外的友情提示">2、额外的友情提示</h3>
 
 <p>同学啊，如果你看到这里，连activemq、rabbitmq、rocketmq、kafka是什么都不知道？连个hello world demo都没写过？那你。。。</p>
 
@@ -158,7 +151,7 @@
 
 <p>等你先知道这几个东西是什么，同时写过hello world之后，你再来继续看我们的课程</p>
 
-<h3 id="4-面试题剖析">4、面试题剖析</h3>
+<h3 id="3-面试题剖析">3、面试题剖析</h3>
 
 <h4 id="1-为什么使用消息队列啊">（1）为什么使用消息队列啊？</h4>
 
@@ -310,7 +303,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

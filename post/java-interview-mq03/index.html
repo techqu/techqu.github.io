@@ -4,13 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Java面试-高并发-MQ重复消费(3) - stay hungry stay foolish</title>
+	<title>Java面试-高并发-MQ重复消费(3) - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Java面试-高并发-MQ重复消费(3)" />
-<meta property="og:description" content="1、面试题
-
-如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？" />
+<meta property="og:description" content="面试题 如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/java-interview-mq03/" />
 <meta property="article:published_time" content="2019-05-15T16:36:47+08:00" />
@@ -18,9 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Java面试-高并发-MQ重复消费(3)"/>
-<meta name="twitter:description" content="1、面试题
-
-如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？"/>
+<meta name="twitter:description" content="面试题 如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -101,9 +97,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#1-面试题">1、面试题</a></li>
-<li><a href="#2-面试官心里分析">2、面试官心里分析</a></li>
-<li><a href="#3-面试题剖析">3、面试题剖析</a></li>
+<li><a href="#1-面试官心里分析">1、面试官心里分析</a></li>
+<li><a href="#2-面试题剖析">2、面试题剖析</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -111,17 +106,15 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h3 id="1-面试题">1、面试题</h3>
+			<p>面试题 如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？</p>
 
-<p>如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？</p>
-
-<h3 id="2-面试官心里分析">2、面试官心里分析</h3>
+<h3 id="1-面试官心里分析">1、面试官心里分析</h3>
 
 <p>其实这个很常见的一个问题，这俩问题基本可以连起来问。既然是消费消息，那肯定要考虑考虑会不会重复消费？能不能避免重复消费？或者重复消费了也别造成系统异常可以吗？这个是MQ领域的基本问题，其实本质上还是问你使用消息队列如何保证幂等性，这个是你架构里要考虑的一个问题。</p>
 
 <p>面试官问你，肯定是必问的，这是你要考虑的实际生产上的系统设计问题。</p>
 
-<h3 id="3-面试题剖析">3、面试题剖析</h3>
+<h3 id="2-面试题剖析">2、面试题剖析</h3>
 
 <p>回答这个问题，首先你别听到重复消息这个事儿，就一无所知吧，你先大概说一说可能会有哪些重复消费的问题。</p>
 
@@ -185,7 +178,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

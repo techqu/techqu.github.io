@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on stay hungry stay foolish</title>
+    <title>linux on quguang&#39;s blog</title>
     <link>/categories/linux/</link>
-    <description>Recent content in linux on stay hungry stay foolish</description>
+    <description>Recent content in linux on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Apr 2019 13:24:32 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jul 2019 17:15:57 +0800</lastBuildDate>
     
 	<atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>编辑器之神-Vim学习</title>
+      <link>/post/vim/</link>
+      <pubDate>Sat, 20 Jul 2019 17:15:57 +0800</pubDate>
+      
+      <guid>/post/vim/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;编辑器之神-vim,神的编辑器-emacs&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;最近开始使用vim键盘流，写代码时真心不想再去碰鼠标，来回切换很麻烦。以下是记录了一些常用但是我不会的快捷键&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Linux三剑客之AWK学习</title>

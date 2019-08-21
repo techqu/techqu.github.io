@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>java并发实战 on stay hungry stay foolish</title>
+    <title>java并发实战 on quguang&#39;s blog</title>
     <link>/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/</link>
-    <description>Recent content in java并发实战 on stay hungry stay foolish</description>
+    <description>Recent content in java并发实战 on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Jul 2019 17:31:24 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jul 2019 17:31:24 +0800</lastBuildDate>
     
 	<atom:link href="/categories/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>《Java并发编程实战》-3-并发设计模式</title>
+      <title>《Java并发编程实战》-5-其他并发模型（未完待续）</title>
+      <link>/post/geektime-java-concurrent-in-action.4/</link>
+      <pubDate>Mon, 29 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-concurrent-in-action.4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-4-案例分析（未完待续）</title>
+      <link>/post/geektime-java-concurrent-in-action.3/</link>
+      <pubDate>Sun, 28 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-concurrent-in-action.3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-3-并发设计模式（未完待续）</title>
       <link>/post/geektime-java-concurrent-in-action.2/</link>
       <pubDate>Sat, 27 Jul 2019 17:31:24 +0800</pubDate>
       
@@ -26,7 +44,7 @@
       <pubDate>Fri, 26 Jul 2019 17:31:24 +0800</pubDate>
       
       <guid>/post/geektime-java-concurrent-in-action.1.2/</guid>
-      <description></description>
+      <description>&lt;p&gt;前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，&lt;code&gt;add10K()&lt;/code&gt;   这个方法不是线程安全的，问题就出在变量 count 的可见性和 &lt;code&gt;count+=1&lt;/code&gt; 的原子性上。&lt;strong&gt;可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -45,6 +63,15 @@
       
       <guid>/post/geektime-java-concurrent-in-action.0/</guid>
       <description>&lt;p&gt;这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个&lt;strong&gt;核心矛盾一直存在，就是这三者的速度差异&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
+      <link>/post/java-15-lock/</link>
+      <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
+      
+      <guid>/post/java-15-lock/</guid>
+      <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -4,11 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Java面试-高并发-redis的过期策略 - stay hungry stay foolish</title>
+	<title>Java面试-高并发-redis的过期策略 - quguang&#39;s blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Java面试-高并发-redis的过期策略" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/java-interview-cache04/" />
 <meta property="article:published_time" content="2019-05-16T17:47:24+08:00" />
@@ -16,7 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Java面试-高并发-redis的过期策略"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -31,9 +31,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="stay hungry stay foolish" rel="home">
-				<div class="logo__title">stay hungry stay foolish</div>
-				<div class="logo__tagline">Just another site</div>
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
 			</a>
 		</div>
 		
@@ -95,11 +95,9 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<p>1、面试题</p>
+			<p>redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？</p>
 
-<p>redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？</p>
-
-<p>2、面试官心里分析</p>
+<p>1、面试官心里分析</p>
 
 <p>1）老师啊，我往redis里写的数据怎么没了？</p>
 
@@ -122,7 +120,7 @@ set进去的key，1小时之后就没了，就失效了</p>
 
 <p>如果你连这个问题都不知道，上来就懵了，回答不出来，那线上你写代码的时候，想当然的认为写进redis的数据就一定会存在，后面导致系统各种漏洞和bug，谁来负责？</p>
 
-<p>3、面试题剖析</p>
+<p>2、面试题剖析</p>
 
 <p>（1）设置过期时间</p>
 
@@ -229,7 +227,7 @@ private final int CACHE_SIZE;
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 stay hungry stay foolish.
+			&copy; 2019 quguang&#39;s blog.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>
