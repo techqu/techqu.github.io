@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>MongoDB中聚合工具Aggregate等的介绍与使用 - quguang&#39;s blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="MongoDB中聚合工具Aggregate等的介绍与使用" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/mongo-aggregate/" />
+<meta property="article:published_time" content="2019-09-04T20:40:24+08:00" />
+<meta property="article:modified_time" content="2019-09-04T20:40:24+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MongoDB中聚合工具Aggregate等的介绍与使用"/>
+<meta name="twitter:description" content=""/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">不动笔墨不读书</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/post/2018-2019/">2018-2019</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">about me</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/post/learn-method/">learn method</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/dracula.min.css" rel="stylesheet">
+
+
+</header>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/django.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/vim.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/gradle.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/tex.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/shell.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/http.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">MongoDB中聚合工具Aggregate等的介绍与使用</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-09-04T20:40:24">September 04, 2019</time>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#一-aggregation-pipleline">一、Aggregation Pipleline</a></li>
+<li><a href="#二-aggregate具体介绍">二、aggregate具体介绍</a></li>
+<li><a href="#二-group">二、group</a></li>
+<li><a href="#三-mapreduce">三、mapReduce</a></li>
+<li><a href="#四-总结">四、总结</a></li>
+<li><a href="#使用-python-操作-mongo">使用 python 操作 mongo</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>Aggregate是MongoDB提供的众多工具中的比较重要的一个，类似于SQL语句中的GROUP BY。聚合工具可以让开发人员直接使用MongoDB原生的命令操作数据库中的数据，并且按照要求进行聚合。</p>
+
+<p>MongoDB提供了三种执行聚合的方法：<strong>Aggregation Pipleline，map-reduce功能和 Single Purpose Aggregation Operations</strong></p>
+
+<p>其中用来做聚合操作的几个函数是</p>
+
+<ul>
+<li><p>aggregate(pipeline,options) 指定 group 的 keys, 通过操作符 $push/$addToSet/$sum 等实现简单的 reduce, 不支持函数/自定义变量</p></li>
+
+<li><p>group({ key, reduce, initial [, keyf] [, cond] [, finalize] }) 支持函数(keyf) mapReduce 的阉割版本</p></li>
+
+<li><p>mapReduce</p></li>
+
+<li><p>count(query)</p></li>
+
+<li><p>distinct(field,query)</p></li>
+</ul>
+
+<h3 id="一-aggregation-pipleline">一、Aggregation Pipleline</h3>
+
+<p>MongoDB’s aggregation framework is modeled on the concept of data processing pipelines. Documents enter a multi-stage pipeline that transforms the documents into an aggregated result.</p>
+
+<p>管道在*nix中将上一个命令输出的数据作为下一个命令的参数。MongoDB中的管道聚合非常实用，提供高效的数据聚合，并且是MongoDB中数据聚合的首选方法</p>
+
+<p>官方给的图：</p>
+
+<p>aggreagte是一个数组，其中包含多个对象（命令），通过遍历Pipleline数组对collection中的数据进行操作。</p>
+
+<p>$match：查询条件</p>
+
+<p>$group：聚合的配置</p>
+
+<p>_id代表你想聚合的数据的主键，上述数据中，你想聚合所有cust_id相同的条目的amount的总和，那_id即被设置为cust_id。_id为必须，你可以填写一个空值。</p>
+
+<p>total代表你最后想输出的数据之一，这里total是每条结果中amount的总和。</p>
+
+<p>$sum是一个聚合的操作符，另外的操作符你可以在官方文档中找到。上图中的命令表示对相同主键（_id）下的amount进行求和。如果你想要计算主键出现的次数，可以把命令写成如下的形式  {$sum: 1}</p>
+
+<p>聚合的过程
+看一下图例，所有的数据先经过$match命令，只留下了status为A的数据，接着，对筛选出的数据进行聚合操作，对相同cust_id的数据进行计算amount总和的操作，最后输出结果。</p>
+
+<h3 id="二-aggregate具体介绍">二、aggregate具体介绍</h3>
+
+<p>接受两个参数 pipeline/options, pipeline 是 array, 相同的 operator 可以多次使用</p>
+
+<p>pipeline 支持的方法</p>
+
+<p>$geoNear geoNear命令可以在查询结果中返回每个点距离查询点的距离</p>
+
+<p>$group 指定 group 的 _id(key/keys) 和基于操作符($push/$sum/$addToSet/&hellip;) 的累加运算</p>
+
+<p>$limit 限制条件</p>
+
+<p>$match 输入过滤条件</p>
+
+<p>$out 将输出结果保存到 collection</p>
+
+<p>$project 修改数据流中的文档结构</p>
+
+<p>$redact 是 $project/$match 功能的合并</p>
+
+<p>$skip 跳过</p>
+
+<p>$sort 对结果排序</p>
+
+<p>$unwind 拆解数据</p>
+
+<p>$group 允许用的累加操作符 $addToSet/$avg/$first/$last/$max/$min/$push/$sum，不被允许的累加操作符$each&hellip; ,默认最多可以用 100MB RAM, 增加allowDiskUse可以让$group操作更多的数据</p>
+
+<p>下面是aggregate的用法</p>
+
+<pre><code>db.newtest.aggregate([
+    {$match: {}},
+    {$skip: 10}, // 跳过 collection 的前 10 行
+    {$project: {group: 1, datetime: 1, category: 1, count: 1}},
+    // 如果不选择 {count: 1} 最后的结果中 count_all/count_avg = 0
+    {$redact: { // redact 简单用法 过滤 group != 'A' 的行
+        $cond: [{$eq: [&quot;$group&quot;, &quot;A&quot;]}, &quot;$$DESCEND&quot;, &quot;$$PRUNE&quot;]
+    }},
+    {$group: {
+        _id: {year: {$year: &quot;$datetime&quot;}, month: {$month: &quot;$datetime&quot;}, day: {$dayOfMonth: &quot;$datetime&quot;}},
+        group_unique: {$addToSet: &quot;$group&quot;},
+        category_first: {$first: &quot;$category&quot;},
+        category_last: {$last: &quot;$category&quot;},
+        count_all: {$sum: &quot;$count&quot;},
+        count_avg: {$avg: &quot;$count&quot;},
+        rows: {$sum: 1}
+    }},
+    // 拆分 group_unique 如果开启这个选项, 会导致 _id 重复而无法写入 out 指定的 collection, 除非再 $group 一次
+    // {$unwind: &quot;$group_unique&quot;},
+    // 只保留这两个字段
+    {$project: {group_unique: 1, rows: 1}},
+    // 结果按照 _id 排序
+    {$sort: {&quot;_id&quot;: 1}},
+    // 只保留 50 条结果
+    // {$limit: 50},
+    // 结果另存
+    {$out: &quot;data_agg_out&quot;},
+], {
+    explain: true,
+    allowDiskUse: true,
+    cursor: {batchSize: 0}
+})
+db.data_agg_out.find()
+db.data_agg_out.aggregate([
+    {$group: {
+        _id: null,
+        rows: {$sum: '$rows'}
+    }}
+])
+db.data_agg_out.drop()
+
+</code></pre>
+
+<p>$match 聚合前数据筛选</p>
+
+<p>$skip 跳过聚合前数据集的 n 行, 如果 {$skip: 10}, 最后 rows = 5000000 - 10</p>
+
+<p>$project 之选择需要的字段, 除了 _id 之外其他的字段的值只能为 1</p>
+
+<p>$redact 看了文档不明其实际使用场景, 这里只是简单筛选聚合前的数据</p>
+
+<p>$group 指定各字段的累加方法</p>
+
+<p>$unwind 拆分 array 字段的值, 这样会导致 _id 重复</p>
+
+<p>$project 可重复使用多次 最后用来过滤想要存储的字段</p>
+
+<p>$out 如果 $group/$project/$redact 的 _id 没有重复就不会报错</p>
+
+<p>以上方法中 $project/$redact/$group/$unwind 可以使用多次</p>
+
+<h3 id="二-group">二、group</h3>
+
+<p>group 比 aggregate 好的一个地方是 map/reduce 都支持用 function 定义, 下面是支持的选项</p>
+
+<p>ns 如果用 db.runCommand({group: {}}) 方式调用, 需要 ns 指定 collection
+cond 聚合前筛选
+key 聚合的 key
+initial 初始化 累加 结果
+$reduce 接受 (curr, result) 参数, 将 curr 累加到 result
+keyf 代替 key 用函数生成聚合用的主键
+finalize 结果处理
+需要保证输出结果小于 16MB 因为 group 没有提供转存选项</p>
+
+<pre><code class="language-python">db.data.group({
+    cond: {'group': 'A'},
+    // key: {'group': 1, 'category': 1},
+    keyf: function(doc) {
+        var dt = new Date(doc.created);
+        // or
+        // var dt = doc.datetime;
+        return {
+            year: doc.datetime.getFullYear(),
+            month: doc.datetime.getMonth() + 1,
+            day: doc.datetime.getDate()
+        }
+    },
+    initial: {count: 0, category: []},
+    $reduce: function(curr, result) {
+        result.count += curr.count;
+        if (result.category.indexOf(curr.category) == -1) {
+            result.category.push(curr.category);
+        }
+    },
+    finalize: function(result) {
+        result.category = result.category.join();
+    }
+})
+</code></pre>
+
+<p>如果要求聚合大量数据, 就需要用到 mapReduce</p>
+
+<h3 id="三-mapreduce">三、mapReduce</h3>
+
+<p>query 聚合前筛选
+sort 对聚合前的数据排序 用来优化 reduce
+limit 限制进入 map 的数据
+map(function) emit(key, value) 在函数中指定聚合的 K/V
+reduce(function) 参数 (key, values) key 在 map 中定义了, values 是在这个 K 下的所有 V 数组
+finalize 处理最后结果
+out 结果转存 可以选择另外一个 db
+scope 设置全局变量
+jdMode(false) 是否(默认是)把 map/reduce 中间结果转为 BSON 格式, BSON 格式可以利用磁盘空间, 这样就可以处理大规模的数据集
+verbose(true) 详细信息
+如果设 jsMode 为 true 不进行 BSON 转换, 可以优化 reduce 的执行速度, 但是由于内存限制最大在 emit 数量小于 500,000 时使用</p>
+
+<p>写 mapReduce 时需要注意</p>
+
+<p>emit 返回的 value 必须和 reduce 返回的 value 结构一致
+reduce 函数必须幂等
+详见 Troubleshoot the Reduce Function</p>
+
+<pre><code class="language-python">db.data.mapReduce(function() {
+    var d = this.datetime;
+    var key = {
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate(),
+    };
+    var value = {
+        count: this.count,
+        rows: 1,
+        groups: [this.group],
+    }
+    emit(key, value);
+}, function(key, vals) {
+    var reducedVal = {
+        count: 0,
+        groups: [],
+        rows: 0,
+    };
+    for(var i = 0; i &lt; vals.length; i++) {
+        var v = vals[i];
+        reducedVal.count += v.count;
+        reducedVal.rows += v.rows;
+        for(var j = 0; j &lt; v.groups.length; j ++) {
+            if (reducedVal.groups.indexOf(v.groups[j]) == -1) {
+                reducedVal.groups.push(v.groups[j]);
+            }
+        }
+    }
+    return reducedVal;
+}, {
+    query: {},
+    sort: {datetime: 1},    // 需要索引 否则结果返回空
+    limit: 50000,
+    finalize: function(key, reducedVal) {
+        reducedVal.avg = reducedVal.count / reducedVal.rows;
+        return reducedVal;
+    },
+    out: {
+        inline: 1,
+        // replace: &quot;&quot;,
+        // merge: &quot;&quot;,
+        // reduce: &quot;&quot;,
+    },
+    scope: {},
+    jsMode: true
+})
+</code></pre>
+
+<p>测试数据：</p>
+
+<pre><code>&gt; db.newtest.find()
+{ &quot;_id&quot; : ObjectId(&quot;5a2544352ba57ccba824d7bf&quot;), &quot;group&quot; : &quot;E&quot;, &quot;created&quot; : 1402764223, &quot;count&quot; : 63, &quot;datetime&quot; : 1512391126, &quot;title&quot; : &quot;aa&quot;, &quot;category&quot; : &quot;C8&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5a2544512ba57ccba824d7c0&quot;), &quot;group&quot; : &quot;I&quot;, &quot;created&quot; : 1413086660, &quot;count&quot; : 93, &quot;datetime&quot; : 1512391261, &quot;title&quot; : &quot;bb&quot;, &quot;category&quot; : &quot;C10&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5a2544562ba57ccba824d7c1&quot;), &quot;group&quot; : &quot;H&quot;, &quot;created&quot; : 1440750343, &quot;count&quot; : 41, &quot;datetime&quot; : 1512391111, &quot;title&quot; : &quot;cc&quot;, &quot;category&quot; : &quot;C1&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5a2544562ba57ccba824d7c2&quot;), &quot;group&quot; : &quot;S&quot;, &quot;created&quot; : 1437710373, &quot;count&quot; : 14, &quot;datetime&quot; : 1512392136, &quot;title&quot; : &quot;dd&quot;, &quot;category&quot; : &quot;C10&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5a2544562ba57ccba824d7c3&quot;), &quot;group&quot; : &quot;Z&quot;, &quot;created&quot; : 1428307315, &quot;count&quot; : 78, &quot;datetime&quot; : 1512391166, &quot;title&quot; : &quot;ee&quot;, &quot;category&quot; : &quot;C5&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5a2544562ba57ccba824d7c4&quot;), &quot;group&quot; : &quot;R&quot;, &quot;created&quot; : 1402809274, &quot;count&quot; : 74, &quot;datetime&quot; : 1512391162, &quot;title&quot; : &quot;ff&quot;, &quot;category&quot; : &quot;C9&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5a2544562ba57ccba824d7c5&quot;), &quot;group&quot; : &quot;Y&quot;, &quot;created&quot; : 1400571321, &quot;count&quot; : 66, &quot;datetime&quot; : 1512139164, &quot;title&quot; : &quot;gg&quot;, &quot;category&quot; : &quot;C2&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5a2544562ba57ccba824d7c6&quot;), &quot;group&quot; : &quot;L&quot;, &quot;created&quot; : 1416562128, &quot;count&quot; : 5, &quot;datetime&quot; : 1512393165, &quot;title&quot; : &quot;hh&quot;, &quot;category&quot; : &quot;C1&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5a2544562ba57ccba824d7c7&quot;), &quot;group&quot; : &quot;E&quot;, &quot;created&quot; : 1414057884, &quot;count&quot; : 12, &quot;datetime&quot; : 1512391165, &quot;title&quot; : &quot;ii&quot;, &quot;category&quot; : &quot;C3&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5a2544572ba57ccba824d7c8&quot;), &quot;group&quot; : &quot;L&quot;, &quot;created&quot; : 1418879346, &quot;count&quot; : 67, &quot;datetime&quot; : 1512391167, &quot;title&quot; : &quot;gg&quot;, &quot;category&quot; : &quot;C3&quot; }
+
+</code></pre>
+
+<h3 id="四-总结">四、总结</h3>
+
+<p>method  allowDiskUse    out function
+aggregate   true    pipeline/collection false
+group   false   pipeline    true
+mapReduce   jsMode  pipeline/collection true</p>
+
+<ul>
+<li>aggregate 基于累加操作的的聚合 可以重复利用 $project/$group 一层一层聚合数据, 可以用于大量数据(单输出结果小于 16MB) 不可用于分片数据</li>
+<li>mapReduce 可以处理超大数据集 需要严格遵守 mapReduce 中的结构一致/幂等 写法, 可增量输出/合并, 见 out options</li>
+<li>group RDB 中的 group by 简单需求可用(只有 inline 输出) 会产生 read lock</li>
+</ul>
+
+<h3 id="使用-python-操作-mongo">使用 python 操作 mongo</h3>
+
+<p><a href="https://api.mongodb.com/python/current/examples/aggregation.html">https://api.mongodb.com/python/current/examples/aggregation.html</a></p>
+
+<p><a href="https://www.runoob.com/python/python-lists.html">https://www.runoob.com/python/python-lists.html</a></p>
+
+<blockquote>
+<p><a href="https://www.cnblogs.com/chenpingzhao/p/7978905.html">https://www.cnblogs.com/chenpingzhao/p/7978905.html</a></p>
+</blockquote>
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		不动笔墨不读书
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/java-resubmit-8-resolution/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">8种方案解决重复提交问题</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/geektime-software-engineering-01/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">软件工程之美-常见的软件开发模型(Software Development Model)</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 quguang&#39;s blog.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
+</html>

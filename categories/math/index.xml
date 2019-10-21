@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>math on quguang&#39;s blog</title>
+    <link>/categories/math/</link>
+    <description>Recent content in math on quguang&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Jul 2019 18:58:15 +0800</lastBuildDate>
+    
+	<atom:link href="/categories/math/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>线性代数学习</title>
+      <link>/post/math-linear-algebra/</link>
+      <pubDate>Wed, 10 Jul 2019 18:58:15 +0800</pubDate>
+      
+      <guid>/post/math-linear-algebra/</guid>
+      <description>&lt;p&gt;线性代数课程，无论你从行列式入手还是直接从矩阵入手，从一开始就充斥着莫名其妙。比如说，在全国一般工科院系教学中应用最广泛的同济线性代数教材（现在到了第四版），一上来就介绍逆序数这个“前无古人，后无来者”的古怪概念，然后用逆序数给出行列式的一个极不直观的定义，接着是一些简直犯傻的行列式性质和习题——把这行乘一个系数加到另一行上，再把那一列减过来，折腾得那叫一个热闹，可就是压根看不出这个东西有嘛用。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

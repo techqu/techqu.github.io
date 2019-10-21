@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/post/" />
 
-<meta property="og:updated_time" content="2019-08-19T17:49:12+08:00" />
+<meta property="og:updated_time" content="2019-09-21T14:23:59+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -23,7 +23,7 @@
 	<link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="quguang's blog">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/syntax.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/douban.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 </head>
@@ -34,7 +34,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
 				<div class="logo__title">quguang&#39;s blog</div>
-				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
+				<div class="logo__tagline">不动笔墨不读书</div>
 			</a>
 		</div>
 		
@@ -56,8 +56,11 @@
 </nav>
 
 	</div>
+<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/dracula.min.css" rel="stylesheet">
+
+
+</header>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/monokai.min.css" rel="stylesheet">
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/django.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
@@ -65,11 +68,9 @@
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/yaml.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/gradle.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/tex.min.js"></script>
-
-
+<script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/shell.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/http.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-
-</header>
 		<div class="wrapper flex">
 			<div class="primary">
 			
@@ -79,257 +80,243 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/linux-awk/" rel="bookmark">
-			Linux三剑客之AWK学习
+			<a href="/post/java-interview-mysql-shading01/" rel="bookmark">
+			Java面试-高并发-Mysql 分库分表
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-04-02T13:24:32">April 02, 2019</time>
+	<time class="meta__text" datetime="2019-05-17T16:12:09">May 17, 2019</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/linux" rel="category">linux</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9d%a2%e8%af%95" rel="category">面试</a>, <a class="meta__link" href="/categories/mysql" rel="category">MySQL</a></span>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>awk是一个强大的文本分析工具，相对于grep的查找，sed的编辑，awk在其对数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。</p>
+		<p>面试题 为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/mysql-question-03/" rel="bookmark">
-			《MYSQL实战45讲》- Question 03
+			<a href="/post/java-interview-gaobingfa/" rel="bookmark">
+			Java面试-高并发-如何设计一个高并发系统？
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-27T15:49:58">March 27, 2019</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/mysql" rel="category">MySQL</a></span>
+	<time class="meta__text" datetime="2019-05-16T18:51:25">May 16, 2019</time>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		
+		<p>面试题 如何设计一个高并发系统？</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/python-helloword/" rel="bookmark">
-			Python 学习入门
+			<a href="/post/java-interview-cache06/" rel="bookmark">
+			Java面试-高并发-redis的持久化
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-21T20:04:31">March 21, 2019</time>
-	<time class="meta__text" datetime="2019-03-19T20:04:31"> (Last Modified: March 19, 2019)</time>
+	<time class="meta__text" datetime="2019-05-16T18:11:25">May 16, 2019</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">python</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9d%a2%e8%af%95" rel="category">面试</a>, <a class="meta__link" href="/categories/redis" rel="category">redis</a>, <a class="meta__link" href="/categories/%e7%bc%93%e5%ad%98" rel="category">缓存</a></span>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>学习了python的基础语法、变量类型、条件语句、数据结构、模块引用等</p>
+		<p>redis的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/data-structure-and-algorithm-merge-sort/" rel="bookmark">
-			《数据结构与算法之美》-归并排序
+			<a href="/post/java-interview-cache05/" rel="bookmark">
+			Java面试-高并发-如何保证Redis的高并发和高可用
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-21T16:54:30">March 21, 2019</time>
-	<time class="meta__text" datetime="2019-03-07T16:54:30"> (Last Modified: March 07, 2019)</time>
+	<time class="meta__text" datetime="2019-05-16T17:48:03">May 16, 2019</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e7%ae%97%e6%b3%95" rel="category">数据结构与算法</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9d%a2%e8%af%95" rel="category">面试</a>, <a class="meta__link" href="/categories/redis" rel="category">redis</a>, <a class="meta__link" href="/categories/%e7%bc%93%e5%ad%98" rel="category">缓存</a></span>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		
+		<p>面试题 如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/mysql-orderby/" rel="bookmark">
-			《MYSQL实战45讲》- Order By
+			<a href="/post/java-interview-cache04/" rel="bookmark">
+			Java面试-高并发-redis的过期策略
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-20T08:49:19">March 20, 2019</time>
+	<time class="meta__text" datetime="2019-05-16T17:47:24">May 16, 2019</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/mysql" rel="category">MySQL</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9d%a2%e8%af%95" rel="category">面试</a>, <a class="meta__link" href="/categories/redis" rel="category">redis</a>, <a class="meta__link" href="/categories/%e7%bc%93%e5%ad%98" rel="category">缓存</a></span>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>在你开发应用时，一定会遇到需要根据指定的字段来显式结果的需求。</p>
+		<p>redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/mysql-index-unique-and-normal/" rel="bookmark">
-			《MYSQL实战45讲》- 唯一索引和普通索引
+			<a href="/post/java-interview-cache03/" rel="bookmark">
+			Java面试-高并发-redis 数据类型
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-16T15:26:14">March 16, 2019</time>
+	<time class="meta__text" datetime="2019-05-16T17:38:03">May 16, 2019</time>
+	<time class="meta__text" datetime="2019-05-15T20:36:47"> (Last Modified: May 15, 2019)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/mysql" rel="category">MySQL</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9d%a2%e8%af%95" rel="category">面试</a>, <a class="meta__link" href="/categories/redis" rel="category">redis</a>, <a class="meta__link" href="/categories/%e7%bc%93%e5%ad%98" rel="category">缓存</a></span>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>在不同的业务场景下，应该选择普通索引，还是唯一索引呢？接下来，我们就从这两种索引对查询语句和更新语句的性能影响来进行分析。</p>
+		<p>redis都有哪些数据类型？分别在哪些场景下使用比较合适？</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/mysql-index/" rel="bookmark">
-			《MYSQL实战45讲》- 深入浅出索引
+			<a href="/post/java-interview-cache02/" rel="bookmark">
+			Java面试-高并发-为什么redis是单线程的但是还可以支撑高并发
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-16T15:25:44">March 16, 2019</time>
+	<time class="meta__text" datetime="2019-05-16T17:28:03">May 16, 2019</time>
+	<time class="meta__text" datetime="2019-05-15T20:36:47"> (Last Modified: May 15, 2019)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/mysql" rel="category">MySQL</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9d%a2%e8%af%95" rel="category">面试</a>, <a class="meta__link" href="/categories/redis" rel="category">redis</a>, <a class="meta__link" href="/categories/%e7%bc%93%e5%ad%98" rel="category">缓存</a></span>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>简单来说，索引的出现其实就是为了提高数据查询的效率，就像书的目录一样。</p>
+		<p>redis和memcached有什么区别？redis的线程模型是什么？为什么单线程的redis比多线程的memcached效率要高得多（为什么redis是单线程的但是还可以支撑高并发）？</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/mysql-transaction-2/" rel="bookmark">
-			《MYSQL实战45讲》- 事务隔离
+			<a href="/post/java-interview-cache01/" rel="bookmark">
+			Java面试-高并发-缓存是如何使用的？
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-15T09:26:22">March 15, 2019</time>
+	<time class="meta__text" datetime="2019-05-16T17:18:03">May 16, 2019</time>
+	<time class="meta__text" datetime="2019-05-15T20:36:47"> (Last Modified: May 15, 2019)</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/mysql" rel="category">MySQL</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9d%a2%e8%af%95" rel="category">面试</a>, <a class="meta__link" href="/categories/redis" rel="category">redis</a>, <a class="meta__link" href="/categories/%e7%bc%93%e5%ad%98" rel="category">缓存</a></span>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>如果是可重复读隔离级别，事务T启动的时候会创建一个视图read-view，之后事务T执行期间，即使有其他事务修改了数据，事务T看到的仍然跟在启动时看到的一样。也就是说，一个在可重复读隔离级别下执行的事务，好像与世无争，不受外界影响。</p>
-
-<p>但是，一个事务要更新一行，如果刚好有另外一个事务拥有这一行的行锁，它又不能这么超然了，会被锁住，进入等待状态。问题是，既然进入了等待状态，那么等到这个事务自己获取到行锁要更新数据的时候，它读到的值又是什么呢？</p>
+		<p>在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/mysql-transaction/" rel="bookmark">
-			《MYSQL实战45讲》- 行锁、死锁、事务
+			<a href="/post/java-interview-mq07/" rel="bookmark">
+			Java面试-高并发-MQ自己设计一个(7)
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-14T17:23:42">March 14, 2019</time>
+	<time class="meta__text" datetime="2019-05-15T20:36:47">May 15, 2019</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/mysql" rel="category">MySQL</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9d%a2%e8%af%95" rel="category">面试</a>, <a class="meta__link" href="/categories/%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97" rel="category">消息队列</a>, <a class="meta__link" href="/categories/mq" rel="category">MQ</a></span>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		
+		<p>面试题 如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路</p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/mysql-how-to-copy-table/" rel="bookmark">
-			《MYSQL实战45讲》-如何快速复制一张表
+			<a href="/post/java-interview-mq06/" rel="bookmark">
+			Java面试-高并发-MQ延时以及过期失效(6)
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-02-25T08:00:23">February 25, 2019</time>
+	<time class="meta__text" datetime="2019-05-15T19:36:47">May 15, 2019</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/mysql" rel="category">MySQL</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%9d%a2%e8%af%95" rel="category">面试</a>, <a class="meta__link" href="/categories/%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97" rel="category">消息队列</a>, <a class="meta__link" href="/categories/mq" rel="category">MQ</a></span>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。</p>
+		<p>面试题 如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？</p>
 	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/post/page/6/">«</a>
-	<span class="pagination__item pagination__item--current">7/13</span>
+	<span class="pagination__item pagination__item--current">7/16</span>
 	<a class="pagination__item pagination__item--next btn" href="/post/page/8/">»</a>
 </div>
 
 
 			</div>
 			
-<aside class="sidebar sidebar--left"><div class="widget-search widget">
-	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
-		<label>
-			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
-		</label>
-		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="/" />
-	</form>
-</div>
+<aside class="sidebar sidebar--left">
 <div class="widget-recent widget">
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/post/java-jvm-jmap/">java内存溢出分析工具：jmap使用实战</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/java-sort-01/">Java排序算法</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/reading-note-dark-time/">《暗时间》-读书笔记</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/geektime-computer-system-organization-and-architecture-00/">《深入浅出计算机组成原理》-基础篇</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/geektime-java-performance/">《Java性能调优实战》</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/reading-note-%E4%B8%AD%E5%9B%BD%E8%BF%91%E4%BB%A3%E5%8F%B2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">《中国近代史》-蒋廷黻-读书笔记</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/geektime-java-36-01/">Java核心技术36讲-Java提供了哪些IO方式? NIO如何实现多路复用? </a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/geektime-tomcat-netty-03/">Tomcat&amp;Netty-Tomcat系统架构(下):聊聊多层容器的设计</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/geektime-tomcat-netty-02/">Tomcat Netty-Tomcat系统架构(上): 连接器是如何设计的?</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/k8s-install/">K8s Install</a></li>
 		</ul>
 	</div>
 </div>
@@ -337,33 +324,38 @@
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/collection">Collection</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/ddd">Ddd</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/devops">Devops</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/doc">Doc</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/docker">Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/domain-driven-design">Domain driven design</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/drools">Drools</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/dubbo">Dubbo</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/geektime">Geektime</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/io">Io</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/java">Java</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/java%e5%b9%b6%e5%8f%91%e5%ae%9e%e6%88%98">Java并发实战</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/java%e6%80%a7%e8%83%bd%e8%b0%83%e4%bc%98%e5%ae%9e%e6%88%98">Java性能调优实战</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/java%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af36%e8%ae%b2">Java核心技术36讲</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/jvm">Jvm</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/kubernetes">Kubernetes</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/linux">Linux</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/math">Math</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/mongo">Mongo</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/mq">Mq</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/mysql">Mysql</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/python">Python</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/redis">Redis</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/saas">Saas</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/service-mesh">Service mesh</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/spring">Spring</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/tech">Tech</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/transaction">Transaction</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e4%ba%8b%e5%8a%a1">事务</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e4%ba%ba%e7%89%a9%e4%bc%a0%e8%ae%b0">人物传记</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e5%88%86%e5%b8%83%e5%bc%8f">分布式</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e5%8e%86%e5%8f%b2">历史</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e5%ad%a6%e4%b9%a0%e6%96%b9%e6%b3%95">学习方法</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e5%ae%b9%e5%99%a8">容器</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e5%b7%a5%e5%85%b7%e4%bd%bf%e7%94%a8">工具使用</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e5%bf%83%e7%90%86%e5%ad%a6">心理学</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e7%ae%97%e6%b3%95">数据结构与算法</a></li>
@@ -377,8 +369,10 @@
 			<li class="widget__item"><a class="widget__link" href="/categories/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%e5%8e%9f%e7%90%86">计算机组成原理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f">设计模式</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0">读书笔记</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e8%af%bb%e5%86%99%e5%88%86%e7%a6%bb">读写分离</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e8%b6%a3%e8%b0%88%e7%bd%91%e7%bb%9c%e5%8d%8f%e8%ae%ae">趣谈网络协议</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%bd%af%e4%bb%b6%e5%b7%a5%e7%a8%8b%e4%b9%8b%e7%be%8e">软件工程之美</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e9%80%8f%e8%a7%86http%e5%8d%8f%e8%ae%ae">透视http协议</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9d%a2%e7%bb%8f">面经</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9d%a2%e8%af%95">面试</a></li>
 		</ul>
 	</div>
@@ -406,6 +400,7 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%ae%97%e6%b3%95" title="算法">算法</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba" title="虚拟机">虚拟机</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%94%81" title="锁">锁</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9d%a2%e8%af%95" title="面试">面试</a>
 	</div>
 </div>
 <div class="widget-social widget">

@@ -225,24 +225,6 @@
     </item>
     
     <item>
-      <title>最新拼多多技术部面试题：幻读&#43;分段锁&#43;死锁&#43;Spring Cloud&#43;秒杀</title>
-      <link>/post/interview-exp-pdd/</link>
-      <pubDate>Wed, 13 Feb 2019 08:30:08 +0800</pubDate>
-      
-      <guid>/post/interview-exp-pdd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>5年经验Java程序员帝都面试20天，拿下数个offer，最终选择了百度</title>
-      <link>/post/interview-exp-baidu/</link>
-      <pubDate>Wed, 13 Feb 2019 07:56:41 +0800</pubDate>
-      
-      <guid>/post/interview-exp-baidu/</guid>
-      <description>&lt;p&gt;从事Java开发也有5年经验了，7月初来到帝都，开启面试经历，前后20天左右，主面互联网公司，一二线大公司或者是融资中的创业公司都面试过，拿了一些offer，其中包括奇虎360，最后综合决定还是去百度了。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
       <link>/post/java-15-lock/</link>
       <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>

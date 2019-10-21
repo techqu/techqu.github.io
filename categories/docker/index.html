@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>docker - quguang&#39;s blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="docker" />
+<meta property="og:description" content="quguang&#39;s Personal blog about everything" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/categories/docker/" />
+
+<meta property="og:updated_time" content="2019-01-17T15:12:03+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="docker"/>
+<meta name="twitter:description" content="quguang&#39;s Personal blog about everything"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="alternate" type="application/rss+xml" href="/categories/docker/index.xml" title="quguang's blog">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">不动笔墨不读书</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/post/2018-2019/">2018-2019</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">about me</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/post/learn-method/">learn method</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/dracula.min.css" rel="stylesheet">
+
+
+</header>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/django.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/vim.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/gradle.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/tex.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/shell.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/http.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">docker</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/docker-introduction/" rel="bookmark">
+			《深入剖析Kubernetes》-Docker的实现原理
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-01-17T15:12:03">January 17, 2019</time>
+	<time class="meta__text" datetime="2019-01-18T15:12:03"> (Last Modified: January 18, 2019)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/kubernetes" rel="category">kubernetes</a>, <a class="meta__link" href="/categories/docker" rel="category">docker</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”</p>
+
+<p>Docker容器具有以下3个特点：</p>
+
+<ul>
+<li><strong>轻量级</strong>：在同一台宿主机上的容器共享系统Kernel，这使得他们可以迅速启动而且占有的内存极少。镜像是以分层文件系统构造的，这可以让它们共享相同的文件，使得磁盘使用率和镜像下载速度得到提高。</li>
+<li><strong>开放</strong>：Docker容器基于开放标准，这使得Docker容器可以运行在主流Linux发行版和Windows操作系统上。</li>
+<li><strong>安全</strong>：容器将各个应用程序隔离开来，这给所有的应用程序提供了一层额外的安全防护。</li>
+</ul>
+
+<p>对于Docker等大多数Linux容器来说，<strong>Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。</strong></p>
+	</div>
+</article>
+</main>
+
+
+			</div>
+			
+<aside class="sidebar sidebar--left">
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/reading-note-%E4%B8%AD%E5%9B%BD%E8%BF%91%E4%BB%A3%E5%8F%B2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">《中国近代史》-蒋廷黻-读书笔记</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/geektime-java-36-01/">Java核心技术36讲-Java提供了哪些IO方式? NIO如何实现多路复用? </a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/geektime-tomcat-netty-03/">Tomcat&amp;Netty-Tomcat系统架构(下):聊聊多层容器的设计</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/geektime-tomcat-netty-02/">Tomcat Netty-Tomcat系统架构(上): 连接器是如何设计的?</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/k8s-install/">K8s Install</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/collection">Collection</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/devops">Devops</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/doc">Doc</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/docker">Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/domain-driven-design">Domain driven design</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/drools">Drools</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/dubbo">Dubbo</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/geektime">Geektime</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/io">Io</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/java%e5%b9%b6%e5%8f%91%e5%ae%9e%e6%88%98">Java并发实战</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/java%e6%80%a7%e8%83%bd%e8%b0%83%e4%bc%98%e5%ae%9e%e6%88%98">Java性能调优实战</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/java%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af36%e8%ae%b2">Java核心技术36讲</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/jvm">Jvm</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/kubernetes">Kubernetes</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/linux">Linux</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/mongo">Mongo</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/mq">Mq</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/python">Python</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/redis">Redis</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/saas">Saas</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/service-mesh">Service mesh</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/spring">Spring</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/tech">Tech</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/transaction">Transaction</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e4%ba%ba%e7%89%a9%e4%bc%a0%e8%ae%b0">人物传记</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e5%88%86%e5%b8%83%e5%bc%8f">分布式</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e5%8e%86%e5%8f%b2">历史</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e5%ad%a6%e4%b9%a0%e6%96%b9%e6%b3%95">学习方法</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e5%b7%a5%e5%85%b7%e4%bd%bf%e7%94%a8">工具使用</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e5%bf%83%e7%90%86%e5%ad%a6">心理学</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e7%ae%97%e6%b3%95">数据结构与算法</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e6%9d%82%e8%b0%88">杂谈</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e6%af%95%e7%94%9f%e7%9b%ae%e6%a0%87">毕生目标</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e6%b5%8b%e8%af%95">测试</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97">消息队列</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e7%bc%93%e5%ad%98">缓存</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e7%bd%91%e7%bb%9c%e5%8d%8f%e8%ae%ae">网络协议</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%80%83%e7%a0%94">考研</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%e5%8e%9f%e7%90%86">计算机组成原理</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f">设计模式</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0">读书笔记</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%b6%a3%e8%b0%88%e7%bd%91%e7%bb%9c%e5%8d%8f%e8%ae%ae">趣谈网络协议</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%bd%af%e4%bb%b6%e5%b7%a5%e7%a8%8b%e4%b9%8b%e7%be%8e">软件工程之美</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e9%80%8f%e8%a7%86http%e5%8d%8f%e8%ae%ae">透视http协议</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9d%a2%e7%bb%8f">面经</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9d%a2%e8%af%95">面试</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/doc" title="Doc">Doc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker" title="Docker">Docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jvm" title="Jvm">Jvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/maven" title="Maven">Maven</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/servlet" title="Servlet">Servlet</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sort" title="Sort">Sort</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/springmvc" title="Springmvc">Springmvc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/synchronized" title="Synchronized">Synchronized</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tomcat" title="Tomcat">Tomcat</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/volatile" title="Volatile">Volatile</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e4%b9%a6%e5%8d%95" title="书单">书单</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%a4%9a%e7%ba%bf%e7%a8%8b" title="多线程">多线程</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%ae%b9%e5%99%a8" title="容器">容器</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%b9%b6%e5%8f%91" title="并发">并发</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" title="数据结构">数据结构</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%b7%b1%e5%85%a5%e6%8b%86%e8%a7%a3java%e8%99%9a%e6%8b%9f%e6%9c%ba" title="深入拆解java虚拟机">深入拆解java虚拟机</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%ae%97%e6%b3%95" title="算法">算法</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba" title="虚拟机">虚拟机</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%94%81" title="锁">锁</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9d%a2%e8%af%95" title="面试">面试</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Facebook" rel="noopener noreferrer" href="https://facebook.com/username" target="_blank">
+				<svg class="widget-social__link-icon icon icon-facebook" width="24" height="24" viewBox="0 0 352 352"><path d="m0 32v288c0 17.5 14.5 32 32 32h288c17.5 0 32-14.5 32-32v-288c0-17.5-14.5-32-32-32h-288c-17.5 0-32 14.5-32 32zm320 0v288h-83v-108h41.5l6-48h-47.5v-31c0-14 3.5-23.5 23.5-23.5h26v-43.5c-4.4-.6-19.8-1.5-37.5-1.5-36.9 0-62 22.2-62 63.5v36h-42v48h42v108h-155v-288z"/></svg>
+				<span>Facebook</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/quguang1011" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Instagram" rel="noopener noreferrer" href="https://www.instagram.com/username" target="_blank">
+				<svg class="widget-social__link-icon icon icon-instagram" width="24" height="24" viewBox="0 0 256 256"><circle cx="193" cy="59" r="15"/><path fill-rule="evenodd" d="M101 0h54c41 0 58.4 3.9 74.5 17C256.2 37.5 256 74.8 256 97.7v60c0 26.7 0 60.4-26.5 81.4-16 13.4-33.5 16.9-74.5 16.9h-54c-41 0-57.5-3.5-74.5-16.9C1 218.9.5 186.3.1 160.5L0 155V97.7c0-23-.2-60.2 26.5-80.7C45 2 60 0 101 0zm4.9 23h44.3c45.8 0 58.3 3.5 70.3 17.5 11.8 13.2 12 30.1 12.5 62.9V156c.2 20.8.3 45.8-12.5 59.5-12 14-24.5 17.5-70.3 17.5h-44.3c-45.9 0-57.3-3.5-70.4-17.5-12.2-13-12.3-36.5-12.4-56.7v-55.6c.4-32.6.7-49.6 12.4-62.7C48 26.5 60 23 105.9 23zm19.6 144.5a42 42 0 1 0 0-84 42 42 0 0 0 0 84zm0 22.5a64.5 64.5 0 1 0 0-129 64.5 64.5 0 0 0 0 129z"/></svg>
+				<span>Instagram</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="LinkedIn" rel="noopener noreferrer" href="https://linkedin.com/in/%e5%b9%bf-%e7%9e%bf-5245b7111" target="_blank">
+				<svg class="widget-social__link-icon icon icon-linkedin" width="24" height="24" viewBox="0 0 352 352"><path d="M0,40v272c0,21.9,18.1,40,40,40h272c21.9,0,40-18.1,40-40V40c0-21.9-18.1-40-40-40H40C18.1,0,0,18.1,0,40z M312,32 c4.6,0,8,3.4,8,8v272c0,4.6-3.4,8-8,8H40c-4.6,0-8-3.4-8-8V40c0-4.6,3.4-8,8-8H312z M59.5,87c0,15.2,12.3,27.5,27.5,27.5 c15.2,0,27.5-12.3,27.5-27.5c0-15.2-12.3-27.5-27.5-27.5C71.8,59.5,59.5,71.8,59.5,87z M187,157h-1v-21h-45v152h47v-75 c0-19.8,3.9-39,28.5-39c24.2,0,24.5,22.4,24.5,40v74h47v-83.5c0-40.9-8.7-72-56.5-72C208.5,132.5,193.3,145.1,187,157z M64,288h47.5 V136H64V288z"/></svg>
+				<span>LinkedIn</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Telegram" rel="noopener noreferrer" href="https://t.me/username" target="_blank">
+				<svg class="widget-social__link-icon icon icon-telegram" width="24" height="24" viewBox="0 0 132 110"><path fill="#ddd" d="M50 103c-4 0-3-1-5-5L34 60l88-52"/><path fill="#aaa" d="M50 103c3 0 4-1 6-3l16-16-20-12"/><path fill="#fff" d="M52 72l48 36c6 3 10 2 11-5l20-93c2-8-3-11-8-9L7 45c-8 4-8 8-1 10l29 9 69-43c3-2 6-1 4 1"/></svg>
+				<span>Telegram</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/techqu" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitLab" rel="noopener noreferrer" href="https://gitlab.com/username" target="_blank">
+				<svg class="widget-social__link-icon icon icon-gitlab" width="24" height="24" viewBox="0 0 265 265"><path d="M128.075 236.075l47.104-144.97H80.97l47.104 144.97z M14.956 91.104L.642 135.16a9.752 9.752 0 0 0 3.542 10.903l123.891 90.012-113.12-144.97z M14.956 91.105H80.97L52.601 3.79c-1.46-4.493-7.816-4.492-9.275 0l-28.37 87.315z M241.194 91.104l14.314 44.056a9.752 9.752 0 0 1-3.543 10.903l-123.89 90.012 113.119-144.97z M241.194 91.105h-66.015l28.37-87.315c1.46-4.493 7.816-4.492 9.275 0l28.37 87.315z"/></svg>
+				<span>GitLab</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Bitbucket" rel="noopener noreferrer" href="https://bitbucket.org/username" target="_blank">
+				<svg class="widget-social__link-icon icon icon-bitbucket" width="24" height="24" viewBox="0 0 256 231"><path d="M8.308 0A8.202 8.202 0 0 0 .106 9.516l34.819 211.373a11.155 11.155 0 0 0 10.909 9.31h167.04a8.202 8.202 0 0 0 8.201-6.89l34.82-213.752a8.202 8.202 0 0 0-8.203-9.514L8.308 0zm146.616 152.768h-53.315l-14.436-75.42h80.67l-12.919 75.42z"/></svg>
+				<span>Bitbucket</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:quguang1011@gmail.com">
+				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>quguang1011@gmail.com</span>
+			</a>
+		</div>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 quguang&#39;s blog.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>《透视HTTP协议》-常说的“四层”和“七层”到底是什么? - quguang&#39;s blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="《透视HTTP协议》-常说的“四层”和“七层”到底是什么?" />
+<meta property="og:description" content="在上一讲中，我简单提到了TCP/IP协议，它是HTTP协议的下层协议，负责具体的数据传输工作。并且还特别说了，TCP/IP协议是一个“有层次的协议栈”。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/geektime-http-protocol-tcp-osi/" />
+<meta property="article:published_time" content="2019-02-20T15:29:44+08:00" />
+<meta property="article:modified_time" content="2019-08-20T15:29:44+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《透视HTTP协议》-常说的“四层”和“七层”到底是什么?"/>
+<meta name="twitter:description" content="在上一讲中，我简单提到了TCP/IP协议，它是HTTP协议的下层协议，负责具体的数据传输工作。并且还特别说了，TCP/IP协议是一个“有层次的协议栈”。"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">不动笔墨不读书</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/post/2018-2019/">2018-2019</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">about me</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/post/learn-method/">learn method</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/dracula.min.css" rel="stylesheet">
+
+
+</header>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/django.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/vim.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/gradle.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/tex.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/shell.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/http.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">《透视HTTP协议》-常说的“四层”和“七层”到底是什么?</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-02-20T15:29:44">February 20, 2019</time>
+	<time class="meta__text" datetime="2019-08-20T15:29:44"> (Last Modified: August 20, 2019)</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%80%8f%e8%a7%86http%e5%8d%8f%e8%ae%ae" rel="category">《透视HTTP协议》</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#tcp-ip网络分层模型">TCP/IP网络分层模型</a></li>
+<li><a href="#osi七层网络模型分别是哪七层-各运行那些协议">OSI七层网络模型分别是哪七层？各运行那些协议？</a></li>
+<li><a href="#tcp-ip协议栈的工作方式">TCP/IP协议栈的工作方式</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>在上一讲中，我简单提到了TCP/IP协议，它是HTTP协议的下层协议，负责具体的数据传输工作。并且还特别说了，TCP/IP协议是一个“有层次的协议栈”。</p>
+
+<h3 id="tcp-ip网络分层模型">TCP/IP网络分层模型</h3>
+
+<p><img src="/img/geektime-http-protocol-tcp-ip.png" alt="geektime-http-protocol-tcp-ip" /></p>
+
+<p>我们来仔细地看一下这个精巧的积木架构，注意它的层次顺序是“从下往上”数的，所以第一层就是最下面 的一层。</p>
+
+<ul>
+<li><strong>第一层叫“链接层”(link layer)</strong>，负责在以太网、WiFi这样的底层网络上发送原始数据包，工作在网卡这个层次，使用MAC地址来标记网络上的设备，所以有时候也叫MAC层。</li>
+<li><strong>第二层叫“网际层”或者“网络互连层”(internet layer)</strong>，IP协议就处在这一层。因为IP协议定义了“IP 地址”的概念，所以就可以在“链接层”的基础上，用IP地址取代MAC地址，把许许多多的局域网、广域网 连接成一个虚拟的巨大网络，在这个网络里找设备时只要把IP地址再“翻译”成MAC地址就可以了。</li>
+
+<li><p><strong>第三层叫“传输层”(transport layer)</strong>，这个层次协议的职责是保证数据在IP地址标记的两点之间“可靠”地传输，是TCP协议工作的层次，另外还有它的一个“小伙伴”UDP。</p>
+
+<p>TCP是一个有状态的协议，需要先与对方建立连接然后才能发送数据，而且保证数据不丢失不重复。而UDP 则比较简单，它无状态，不用事先建立连接就可以任意发送数据，但不保证数据一定会发到对方。两个协议 的另一个重要区别在于数据的形式。TCP的数据是连续的“字节流”，有先后顺序，而UDP则是分散的小数 据包，是顺序发，乱序收。</p>
+
+<p>关于TCP和UDP可以展开讨论的话题还有很多，比如最经典的“三次握手”和“四次挥手”，一时半会很难 说完，好在与HTTP的关系不是太大，以后遇到了再详细讲解。</p></li>
+
+<li><p><strong>协议栈的第四层叫“应用层”(application layer)</strong>，由于下面的三层把基础打得非常好，所以在这一层 就“百花齐放”了，有各种面向具体应用的协议。例如Telnet、SSH、FTP、SMTP等等，当然还有我们的 HTTP。</p></li>
+</ul>
+
+<p>MAC层的传输单位是帧(frame)，IP层的传输单位是包(packet)，TCP层的传输单位是段 (segment)，HTTP的传输单位则是消息或报文(message)。但这些名词并没有什么本质的区分，可以 统称为数据包。</p>
+
+<h3 id="osi七层网络模型分别是哪七层-各运行那些协议">OSI七层网络模型分别是哪七层？各运行那些协议？</h3>
+
+<p>OSI，全称是“开放式系统互联通信参考模型”(Open System Interconnection Reference Model)。</p>
+
+<p>TCP/IP发明于1970年代，当时除了它还有很多其他的网络协议，整个网络世界比较混乱。</p>
+
+<p>这个时候国际标准组织(ISO)注意到了这种现象，感觉“野路子”太多，就想要来个“大一统”。于是设计出了一个新的网络分层模型，想用这个新框架来统一既存的各种网络协议。</p>
+
+<p>OSI模型分成了七层，部分层次与TCP/IP很像，从下到上分别是:</p>
+
+<ol>
+<li>第一层:物理层，网络的物理形式，例如电缆、光纤、网卡、集线器等等;</li>
+<li>第二层:数据链路层，它基本相当于TCP/IP的链接层;</li>
+<li>第三层:网络层，相当于TCP/IP里的网际层;</li>
+<li>第四层:传输层，相当于TCP/IP里的传输层;</li>
+<li>第五层:会话层，维护网络中的连接状态，即保持会话和同步;</li>
+<li>第六层:表示层，把数据转换为合适、可理解的语法和语义;</li>
+<li>第七层:应用层，面向具体的应用传输数据。</li>
+</ol>
+
+<p><img src="/img/geektime-http-protocol-osi-mapping.png" alt="img/geektime-http-protocol-osi-mapping.png" /></p>
+
+<p>对比一下就可以看出，TCP/IP是一个纯软件的栈，没有网络应有的最根基的电 缆、网卡等物理设备的位置。而OSI则补足了这个缺失，在理论层面上描述网络更加完整。OSI的分层模型在四层以上分的太细，而TCP/IP实际应用时的会话管理、编码转换、压缩等和具体应用经常联系的很紧密，很难分开。例如，HTTP协议就同时包含了连接管理和数据格式定义。</p>
+
+<p>到这里，你应该能够明白一开始那些“某某层”的概念了。</p>
+
+<p>所谓的“四层负载均衡”就是指工作在传输层上，基于TCP/IP协议的特性，例如IP地址、端口号等实现对后 端服务器的负载均衡。</p>
+
+<p>所谓的“七层负载均衡”就是指工作在应用层上，看到的是HTTP协议，解析HTTP报文里的URI、主机名、 资源类型等数据，再用适当的策略转发给后端服务器。</p>
+
+<h3 id="tcp-ip协议栈的工作方式">TCP/IP协议栈的工作方式</h3>
+
+<p>HTTP协议的传输过程就是这样通过协议栈逐层向下，每一层都添加本层的专有数据，层层打包，然后通过 下层发送出去。</p>
+
+<p>接收数据是则是相反的操作，从下往上穿过协议栈，逐层拆包，每层去掉本层的专有头，上层就会拿到自己
+的数据。</p>
+
+<p>但下层的传输过程对于上层是完全“透明”的，上层也不需要关心下层的具体实现细节，所以就HTTP层次 来看，它不管下层是不是TCP/IP协议，看到的只是一个可靠的传输链路，只要把数据加上自己的头，对方就能原样收到。</p>
+
+<p><img src="/img/geektime-http-protocol-work.png" alt="img/geektime-http-protocol-work.png" /></p>
+
+<p>全景图</p>
+
+<p><img src="/img/network-osi.gif" alt="network-osi" /></p>
+
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>协议</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>应用层</td>
+<td>DHCP · DNS · FTP · Gopher · HTTP · IMAP4 · IRC · NNTP · XMPP · POP3 · SIP · SMTP ·SNMP · SSH · TELNET · RPC · RTCP · RTP · RTSP · SDP · SOAP · GTP · STUN · NTP · SSDP</td>
+</tr>
+
+<tr>
+<td>表示层</td>
+<td>HTTP/HTML · FTP · Telnet · ASN.1（具有表示层功能）</td>
+</tr>
+
+<tr>
+<td>会话层</td>
+<td>ADSP · ASP · H.245 · ISO-SP · iSNS · NetBIOS · PAP · RPC · RTCP · SMPP · SCP · SSH · ZIP · SDP（具有会话层功能）</td>
+</tr>
+
+<tr>
+<td>传输层</td>
+<td>TCP · UDP · TLS · DCCP · SCTP ·RSVP · PPTP</td>
+</tr>
+
+<tr>
+<td>网络层</td>
+<td>IP (IPv4 · IPv6) · ICMP · ICMPv6 · IGMP · IS-IS · IPsec · BGP · RIP · OSPF · ARP · RARP</td>
+</tr>
+
+<tr>
+<td>数据链路层</td>
+<td>Wi-Fi(IEEE 802.11) · WiMAX(IEEE 802.16) · ATM · DTM · 令牌环 · 以太网路 ·FDDI · 帧中继 · GPRS · EVDO · HSPA · HDLC · PPP · L2TP · ISDN · STP</td>
+</tr>
+
+<tr>
+<td>物理层</td>
+<td>以太网路卡 · 调制解调器 · 电力线通信(PLC) · SONET/SDH（光同步数字传输网） ·G.709（光传输网络） · 光导纤维 · 同轴电缆 · 双绞线</td>
+</tr>
+</tbody>
+</table>
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		不动笔墨不读书
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/java-seckill-action/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">秒杀系统架构分析与实战</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/mysql-how-join-run/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">《MYSQL实战45讲》-Join语句是怎么执行的</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 quguang&#39;s blog.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
+</html>

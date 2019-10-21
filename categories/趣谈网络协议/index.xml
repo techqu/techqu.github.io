@@ -6,10 +6,28 @@
     <description>Recent content in 《趣谈网络协议》 on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jul 2019 14:38:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Sep 2019 14:38:50 +0800</lastBuildDate>
     
 	<atom:link href="/categories/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《趣谈网络协议》- 文件下载</title>
+      <link>/post/geektime-network-protocol-01/</link>
+      <pubDate>Wed, 11 Sep 2019 14:38:50 +0800</pubDate>
+      
+      <guid>/post/geektime-network-protocol-01/</guid>
+      <description>&lt;p&gt;如果你想下载一个电影，一般会通过什么方式？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《趣谈网络协议》- Https</title>
+      <link>/post/geektime-network-protocol-https/</link>
+      <pubDate>Fri, 23 Aug 2019 11:44:25 +0800</pubDate>
+      
+      <guid>/post/geektime-network-protocol-https/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>《趣谈网络协议》- Udp Tcp</title>
@@ -23,7 +41,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     </item>
     
     <item>
-      <title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</title>
+      <title>《趣谈网络协议》-Ipconfig</title>
       <link>/post/geektime-network-protocol-ipconfig/</link>
       <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
       

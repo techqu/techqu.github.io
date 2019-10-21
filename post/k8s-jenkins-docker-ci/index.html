@@ -16,13 +16,7 @@
 
 1个Node项目VUE生成静态页面做前端&#43;nginx
 
-pgsql
-
-redis
-
-rabbitmq
-
-emqx" />
+pgsql、redis、rabbitmq、emqx" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/k8s-jenkins-docker-ci/" />
 <meta property="article:published_time" content="2019-07-02T11:50:35+08:00" />
@@ -38,19 +32,13 @@ emqx" />
 
 1个Node项目VUE生成静态页面做前端&#43;nginx
 
-pgsql
-
-redis
-
-rabbitmq
-
-emqx"/>
+pgsql、redis、rabbitmq、emqx"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/syntax.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/douban.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 </head>
@@ -61,7 +49,7 @@ emqx"/>
 		<div class="logo">
 			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
 				<div class="logo__title">quguang&#39;s blog</div>
-				<div class="logo__tagline">记录生活的点滴，学习知识，分享知识</div>
+				<div class="logo__tagline">不动笔墨不读书</div>
 			</a>
 		</div>
 		
@@ -83,8 +71,11 @@ emqx"/>
 </nav>
 
 	</div>
+<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/dracula.min.css" rel="stylesheet">
+
+
+</header>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/monokai.min.css" rel="stylesheet">
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/django.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
@@ -92,11 +83,9 @@ emqx"/>
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/yaml.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/gradle.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/tex.min.js"></script>
-
-
+<script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/shell.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/http.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-
-</header>
 		<div class="wrapper flex">
 			<div class="primary">
 			
@@ -139,13 +128,7 @@ emqx"/>
 
 <p>1个Node项目VUE生成静态页面做前端+nginx</p>
 
-<p>pgsql</p>
-
-<p>redis</p>
-
-<p>rabbitmq</p>
-
-<p>emqx</p>
+<p>pgsql、redis、rabbitmq、emqx</p>
 
 <p><img src="/img/micro-service.png" alt="micro-service.png" /></p>
 
@@ -218,7 +201,7 @@ node {
 
 <p>2，jenkins pipeline（Node服务的）</p>
 
-<pre><code>
+<pre><code class="language-bash">
 node {
    
    REGISTRY = 'hb.shubing.vip/k12soft'
@@ -250,7 +233,7 @@ node {
 
 <p>3，dockerfile （JAVA服务的）</p>
 
-<pre><code>FROM java:8u111
+<pre><code class="language-dockerfile">FROM java:8u111
 MAINTAINER gongshubing@weds.com.cn
 # 定义变量
 ENV WORK_DIR /opt
@@ -266,7 +249,7 @@ CMD [&quot;java -server -Dspring.profiles.active=ops -Xmx512m -Xms256m -Xmn256m 
 
 <p>4，dockerfile（NODE服务的）</p>
 
-<pre><code>FROM node:10.15.3
+<pre><code class="language-dockerfile">FROM node:10.15.3
 MAINTAINER gongshubing@weds.com.cn
 # 定义变量
 ENV WORK_DIR /opt
@@ -283,7 +266,7 @@ CMD [&quot;npm start&quot;]
 
 <p>5，K8S 编排yaml文件（所有项目编排文件一样，不同之处只有镜像URL/IP/PORT）：pod中的日志文件写入nfs</p>
 
-<pre><code># deployment
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># deployment</span>
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -292,7 +275,7 @@ metadata:
   labels:
     app: xtcloud-appgateway
 spec:
-  replicas: 1
+  replicas: <span style="color:#ae81ff">1</span>
   selector:
     matchLabels:
       app: xtcloud-appgateway
@@ -305,7 +288,7 @@ spec:
       - name: xtcloud-appgateway
         image: hb.shubing.vip/k12soft/xtcloud-appgateway:latest
         ports:
-        - containerPort: 8097
+        - containerPort: <span style="color:#ae81ff">8097</span>
         volumeMounts:
           - name: xtcloud-logs-persistent-storage
             mountPath: /data/logs
@@ -313,29 +296,27 @@ spec:
       - name: xtcloud-logs-persistent-storage
         nfs:
           path: /nfs
-          server: 10.0.60.67
+          server: <span style="color:#ae81ff">10.0.60.67</span>
       imagePullSecrets:
         - name: weds-harbor-secret
-# service
+<span style="color:#75715e"># service</span>
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: xtcloud-appgateway-service
 spec:
-  clusterIP: 192.168.1.15
+  clusterIP: <span style="color:#ae81ff">192.168.1.15</span>
   selector:
     app: xtcloud-appgateway
   ports:
     - protocol: TCP
-      port: 8097
-      targetPort: 8097
-
-</code></pre>
+      port: <span style="color:#ae81ff">8097</span>
+      targetPort: <span style="color:#ae81ff">8097</span></code></pre></div>
 
 <p>6，jenkins调用编排K8s脚本</p>
 
-<pre><code>#!/bin/bash
+<pre><code class="language-bash">#!/bin/bash
 
 TAG=$1
 JOB_NAME=$2
@@ -355,7 +336,7 @@ sed &quot;s/latest/$TAG/&quot; ${JOB_NAME}.yml | kubectl replace --force -f -
 		<span class="authorbox__name">About me</span>
 	</div>
 	<div class="authorbox__description">
-		记录生活的点滴，学习知识，分享知识
+		不动笔墨不读书
 	</div>
 </div>
 

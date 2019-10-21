@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>软件工程之美-常见的软件开发模型(Software Development Model) - quguang&#39;s blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="软件工程之美-常见的软件开发模型(Software Development Model)" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/geektime-software-engineering-01/" />
+<meta property="article:published_time" content="2019-09-06T10:37:18+08:00" />
+<meta property="article:modified_time" content="2019-09-06T10:37:18+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="软件工程之美-常见的软件开发模型(Software Development Model)"/>
+<meta name="twitter:description" content=""/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">不动笔墨不读书</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/post/2018-2019/">2018-2019</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">about me</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/post/learn-method/">learn method</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/dracula.min.css" rel="stylesheet">
+
+
+</header>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/django.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/vim.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/gradle.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/tex.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/shell.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/http.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">软件工程之美-常见的软件开发模型(Software Development Model)</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-09-06T10:37:18">September 06, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/%e8%bd%af%e4%bb%b6%e5%b7%a5%e7%a8%8b%e4%b9%8b%e7%be%8e" rel="category">软件工程之美</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#瀑布模型">瀑布模型</a>
+<ul>
+<li><a href="#一-问题的定义及规划">一、问题的定义及规划</a></li>
+<li><a href="#二-需求分析">二、需求分析</a></li>
+<li><a href="#三-软件设计">三、软件设计</a></li>
+<li><a href="#四-程序编码">四、程序编码</a></li>
+<li><a href="#五-软件测试">五、软件测试</a></li>
+<li><a href="#六-运行维护">六、运行维护</a></li>
+</ul></li>
+<li><a href="#快速开发快速改">快速开发快速改</a></li>
+<li><a href="#大瀑布拆小瀑布">大瀑布拆小瀑布</a></li>
+<li><a href="#分场景">分场景</a>
+<ul>
+<li><a href="#场景一-外包项目-需要阶段验收">场景一:外包项目，需要阶段验收</a></li>
+<li><a href="#场景二-项目风险高-随时可能会中断">场景二:项目风险高，随时可能会中断</a></li>
+<li><a href="#场景三-山寨一款软件产品-希望能快速上线发布">场景三:山寨一款软件产品，希望能快速上线发布</a></li>
+<li><a href="#场景四-客户都没想清楚想要什么-但是个大单子">场景四:客户都没想清楚想要什么，但是个大单子</a></li>
+<li><a href="#场景五-我的产品已经上线-但是需要持续更新维护">场景五:我的产品已经上线，但是需要持续更新维护</a></li>
+</ul></li>
+<li><a href="#敏捷开发和瀑布模型的差异">敏捷开发和瀑布模型的差异</a></li>
+<li><a href="#该不该选择敏捷开发">该不该选择敏捷开发?</a></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<h3 id="瀑布模型">瀑布模型</h3>
+
+<p>瀑布模型把整个项目过程分成了六个主要阶段:</p>
+
+<h4 id="一-问题的定义及规划">一、问题的定义及规划</h4>
+
+<p>这个阶段是需求方和开发方共同确定软件开发目标，同时还要做可行性研究，以确定项目可
+行。这个阶段会产生需求文档和可行性研究报告。</p>
+
+<h4 id="二-需求分析">二、需求分析</h4>
+
+<p>对需求方提出的所有需求，进行详细的分析。这个阶段一般需要和客户反复确认，以保证能
+充分理解客户需求。最终会形成需求分析文档。</p>
+
+<h4 id="三-软件设计">三、软件设计</h4>
+
+<p>根据需求分析的结果，对整个软件系统进行抽象和设计，如系统框架设计，数据库设计等
+等。最后会形成架构设计文档。</p>
+
+<h4 id="四-程序编码">四、程序编码</h4>
+
+<p>将架构设计和界面设计的结果转换成计算机能运行的程序代码。</p>
+
+<h4 id="五-软件测试">五、软件测试</h4>
+
+<p>在编码完成后，对可运行的结果对照需求分析文档进行严密的测试。如果测试发现问题，需
+要修复。最终测试完成后，形成测试报告。</p>
+
+<h4 id="六-运行维护">六、运行维护</h4>
+
+<p>在软件开发完成，正式运行投入使用。后续需要继续维护，修复错误和增加功能。交付时需
+要提供使用说明文档。</p>
+
+<p>也是从那时开始，有了“软件生命周期”(Software Life Cycle,SLC) 的概念。</p>
+
+<blockquote>
+<p>软件生命周期是软件的产生直到报废或停止使用的生命周期。而像瀑布模型
+   这样，通过把整个软件生命周期划分为若干阶段来管理软件开发过程的方
+   法，叫软件生命周期模型。</p>
+</blockquote>
+
+<p>不管什么软件项目，不管采用什么开发模式，有四种活动是必不可少的，那就是 <strong>需求、
+设计、编码和测试。</strong> 而这四项活动，都是起源自瀑布模型，也是瀑布模型中核心的部分</p>
+
+<p>用瀑布模型开发软件，就像建筑工程里，盖房子一样简单和自然。每个阶段都有侧重的事情，就像需求阶段专注于搞清楚需求，编码阶段专注于实现。</p>
+
+<p>最重要的是，这种编码前先设计、编码后测试、整个过程重视文档的方式，开发出来的产品，质量相对是有保障的。</p>
+
+<p>但用瀑布模式开发，也存在一些问题。</p>
+
+<blockquote>
+<p>最大的问题就是不能及时响应需求变更，越到后期变更代价越大。另外，通常要到最后阶段 才能看到结果是什么样子。</p>
+</blockquote>
+
+<p>优缺点对比：</p>
+
+<p>优点：</p>
+
+<ol>
+<li>简单易行</li>
+<li>可以按照阶段检查，能及时发现问题</li>
+<li>前一个阶段完成后，就可以重点关注下一个阶段</li>
+<li>有很好的分工协作</li>
+<li>对质量有保障</li>
+</ol>
+
+<p>缺点：</p>
+
+<ol>
+<li>难以响应需求的变更，当需求发生改变时，越到后期代价越大</li>
+<li>工作量分布不均衡</li>
+<li>前期进度受阻，会一直压缩后续阶段时间，导致延期或影响质量。</li>
+<li>一直到最后阶段才能看到结果</li>
+</ol>
+
+<h3 id="快速开发快速改">快速开发快速改</h3>
+
+<p>快速原型模型，就是为了要解决客户的需求不明确和需求多变的问题。</p>
+
+<p>先迅速建造一个可以运行的软件原型，然后收集用户反馈，再反复修改确认，使开发出的软件能真正反映用户需求，这种开发模型就叫快速原型模型，也叫原型模型。</p>
+
+<p>原型模型因为能快速修改，所以能快速对用户的反馈和变更作出响应，同时原型模型注重和客户的沟通，所以最终开发出来的软件能够真正反映用户的需求。</p>
+
+<p>但这种快速原型开发往往是以牺牲质量为代价的。</p>
+
+<p>针对原型模型的这种快速、低质量的特点，通常有两种处理策略:抛弃策略和附加策略。</p>
+
+<h3 id="大瀑布拆小瀑布">大瀑布拆小瀑布</h3>
+
+<p>瀑布模型的很多问题，根源都是周期太长。周期长所以中间难以响应变更，周期长所以客户 很久才能看到结果，周期太长所以风险不好控制。如果能将周期变短，那么很多问题就迎刃 而解了。</p>
+
+<p>比较典型的主要是:增量模型 和 迭代模型。</p>
+
+<p>增量模型——按模块分批次交付</p>
+
+<p>因为增量模型的根基是模块化，所以，如果系统不能模块化，那么将很难采用增量模型的模 式来开发。另外，对模块的划分很抽象，这本身对于系统架构的水平是要求很高的。</p>
+
+<p>基于这样的特点，增量模型主要适用于:需求比较清楚，能模块化的软件系统，并且可以按 模块分批次交付。</p>
+
+<p>迭代模型——每次迭代都有一个可用的版本</p>
+
+<p>迭代模型最难的部分，在于规划每次迭代的内容和要达到的目标。多了可能完不成，少了可 能造成每次迭代工作量不饱和，这需要在实践中去摸索，一个迭代一个迭代的去调整。</p>
+
+<p>迭代模型由于在初始迭代时，只清楚当前迭代的需求，而不知道后续需求，设计可能会考虑不周全。这样的话，迭代一多，系统会有不少冗余，一段时间后就需要对系统进行重构。
+另外每次迭代，用户可能会增加新的需求和对现有需求进行更改，因此开发时间上可能会比预期要长。如果你做的是小项目的话，并不建议使用迭代模型来开发。</p>
+
+<h3 id="分场景">分场景</h3>
+
+<h4 id="场景一-外包项目-需要阶段验收">场景一:外包项目，需要阶段验收</h4>
+
+<p><img src="/img/geektime-software-v-model.png" alt="V模型" /></p>
+
+<p>这个模型就是 V 模型，本质上它还是瀑布模型，只不过它是更重视对每个阶段验收测试的 过程模型。</p>
+
+<h4 id="场景二-项目风险高-随时可能会中断">场景二:项目风险高，随时可能会中断</h4>
+
+<p>这种情况，基于增量模型或者迭代模型进行开发，就可以有效降低风险。你需要注意的是，
+在每次交付的时候，要同时做一个风险评估，如果风险过大就不继续后续开发了，及时止
+损。</p>
+
+<h4 id="场景三-山寨一款软件产品-希望能快速上线发布">场景三:山寨一款软件产品，希望能快速上线发布</h4>
+
+<p>其实软件行业山寨的案例不少，山寨项目的特点是，项目需求是明确的，不会有什么变化，
+这时候就可以选择增量模型，划分好模块，先实现核心模块，发布可运行版本，再增量发布
+其他模块。多模块可以同步开发。</p>
+
+<h4 id="场景四-客户都没想清楚想要什么-但是个大单子">场景四:客户都没想清楚想要什么，但是个大单子</h4>
+
+<p>很多项目，客户一开始都没想清楚想要的是什么，需要花很长时间去分析定义需求，但是单
+子很大，值得认真去做好。</p>
+
+<p><img src="/img/geektime-software-RUP.png" alt="RUP" /></p>
+
+<h4 id="场景五-我的产品已经上线-但是需要持续更新维护">场景五:我的产品已经上线，但是需要持续更新维护</h4>
+
+<p>很多产品在上线后，还在保持不停的更新维护，修复 Bug、增加新功能，每个月甚至每周 更新。
+在这种情况下，迭代模型是比较合适的。固定时间周期，在固定的周期内选择适合的需求开 发任务和 Bug 修复任务去完成，按时发布。</p>
+
+<p>另外还可以尝试敏捷开发，也是基于迭代的开发模型，它也强调快速交付，每次交付系统的 部分功能，来保证客户满意度。在敏捷开发中，系统交付的周期称之为冲刺(Sprint)。</p>
+
+<p>严格来说，敏捷开发并不算是一种开发模型，更像是框架或指南。有各种开发模型来实现敏 捷开发，比如说极限编程(Extreme programming)，看板(Kanban)和 Scrum。</p>
+
+<h3 id="敏捷开发和瀑布模型的差异">敏捷开发和瀑布模型的差异</h3>
+
+<p>这些年敏捷开发，已经逐步发展出一套 “Scrum + 极限编程 + 看板” 的最佳实践， Scrum 主要用来管理项目过程，极限编程重点在工程实践，而看板将工作流可视化。</p>
+
+<ol>
+<li><p>敏捷开发是怎么做需求分析的?</p>
+
+<p>瀑布模型的一个重要阶段就是需求分析，要有严谨的需求分析，产生详尽的需求分析文档。</p>
+
+<p>而敏捷开发的需求，主要是来源于一个个小的用户故事，用户故事通常是写在卡片上的一句 话，在 Sprint 的开发中，再去确认需求的细节。</p></li>
+
+<li><p>敏捷开发是怎么做架构设计的?</p>
+
+<p>瀑布模型在需求分析完了以后，就需要根据需求做架构设计。而在敏捷开发中，并不是基于 完整的用户需求开发，每个 Sprint 只做一部分需求，所以是一种渐进式的架构设计，当前 Sprint 只做适合当前需求的架构设计。</p>
+
+<p>这种渐进式的架构设计，迭代次数一多，就会出现架构满足不了需求的现象，产生不少冗余代码，通常我们叫它技术债务，需要定期对系统架构进行重构。</p></li>
+
+<li><p>敏捷开发怎么保证项目质量的?</p>
+
+<p>瀑布模型在编码完成后，会有专门的阶段进行测试，以保证质量。</p>
+
+<p>在敏捷开发的 Sprint 中，并没有专门的测试阶段，这就依赖于开发功能的同时，要编写单元测试和集成测试代 码，用自动化的方式辅助完成测试。</p></li>
+
+<li><p>敏捷开发是怎么发布部署的?</p>
+
+<p>瀑布模型通常在编码结束后，开始部署测试环境，然后在测试阶段定期部署测试环境。测试验收通过后，发布部署到生产环境。</p>
+
+<p>在敏捷开发中，这种持续构建、持续发布的概念叫持续集成，因为整个过程都是全自动化 的，每次完成一个任务，提交代码后都可以触发一次构建部署操作，脚本会拿最新的代码做 一次全新的构建，然后运行所有的单元测试和集成测试代码，测试通过后部署到测试环境。</p>
+
+<p>持续集成是一个非常好的实践，极大的缩短和简化了部署的流程，而且自动化测试的加入也 很好的保证了部署产品的质量。前期搭建整个持续集成环境需要一定技术要求</p></li>
+</ol>
+
+<p>迭代模型本质上是一个小瀑布模型，所以在一个迭代里面，需 要完整的经历从需求分析，到设计、编码、测试这几个完整的阶段。</p>
+
+<p>所以像瀑布模型一样，刚开始测试的时候是不稳定的，到测试后期才逐步稳定下来，一般迭 代前期也会相对轻松一点，而后期测试阶段可能会时间很紧张。</p>
+
+<p>敏捷开发的 Sprint 中，没有严格的阶段划分，每个 Sprint 周期里面会完成多个用户故事。 在用户故事的开发时，会针对用户故事有编码、自动化测试编码。当一个用户故事开发完成，即可通过持续集成自动发布到测试环境。</p>
+
+<p>相对来收，敏捷开发中，整个 Sprint 的节奏是比较恒定，产品也是相对稳定的，即使用户故事没有完成，也不影响版本的发布。</p>
+
+<p>因此，敏捷开发更注重软件开发中人的作用，需要团队成员以及客户之间的紧密协作。</p>
+
+<h3 id="该不该选择敏捷开发">该不该选择敏捷开发?</h3>
+
+<p>该不该选择敏捷开发，是很多团队纠结的问题。毕竟关于敏捷，有很多在中国落地失败的例子，是不是这种方法在国内水土不服?</p>
+
+<p>其实，敏捷开发无论国内还是国外，大厂还是小厂，都已经有无数成功案例。这些年，软件 工程中一些好的实践，像持续集成、测试驱动开发、结对编程、看板等都来自于敏捷开发。</p>
+
+<p>可以肯定，敏捷开发是一种非常好的软件开发模式。</p>
+
+<p>但在应用上，也确实需要一些满足一些条件才能用好，例如:</p>
+
+<ul>
+<li>团队要小，人数超过一定规模就要分拆;</li>
+<li>团队成员之间要紧密协作，客户也要自始至终深度配合;</li>
+<li>领导们得支持。敏捷需要扁平化的组织结构，更少的控制，更多的发挥项目组成员的主动性;</li>
+<li>写代码时要有一定比例的自动化测试代码，要花时间搭建好源码管理和持续集成环境。</li>
+</ul>
+
+<p>所以在选择敏捷开发这个问题上，你先要参考上面这些条件。
+因为敏捷开发对项目成员综合素质要求更高，做计划要相对难一些。如果团队大、客户不配合、领导不支持，再好的敏捷方法也很难有效实践起来。
+如果你要实践敏捷开发，建议先找个小项目进行试点，能证明可行了，再进一步推广。有条 件的话，可以和一些顾问公司合作，请人做专门的培训和指导。
+如果不具备条件，应该考虑先把其中一些好的实践用起来，比如说 <strong>持续集成、每日站会、自动化测试等。</strong></p>
+
+<h3 id="总结">总结</h3>
+
+<p>现在的软件项目，各种类型都有，根据项目特点，选择好合适的开发模型，可以让你事半功 倍，降低项目风险，提高项目开发效率，控制项目成本。</p>
+
+<p>比如说:</p>
+
+<ul>
+<li>一个以确认需求为主要目的的项目，就可以不用花太多时间在代码质量上面，低成本、高效做出来才是最重要的;</li>
+<li>一个高风险的项目，则可以采用螺旋模型，出现问题及时止损;</li>
+<li>一个很长时间加班加点，却一直没法上线，导致士气低落的项目，可以改成增量模型，先上线一个小模块，让大家看到成绩提升士气，然后再迭代，逐步上线其他模块。</li>
+</ul>
+
+<p>同时，你也不必拘泥于这几种开发模型，还可以借鉴其他模型做的好的地方，甚至创造自己的开发模型，比如说你觉得敏捷的“站立会议”适合你的项目，那也可以借鉴过来。</p>
+
+<p>工程中常见的“分而治之”的策略:<strong>大项目拆成小项目，大服务拆成小服务，大团队拆成小团队。</strong></p>
+
+<p>服务之间通过商定好的标准协议进行通信，架构上将大的服务拆分隔离成微服务，大团队按 照业务或者服务拆分成小组，按照一定的流程规范保障协作。最终，各个小组要负责的内容其实就不多了。</p>
+
+<p>就像淘宝这种网站，不需要一个庞大的项目组，通过逐级分拆，一个小组可能就只需要负责一个页面中的一个小模块。</p>
+
+<p>所以，也要归功于现在微服务、容器等新技术，可以将复杂的业务逐级拆分，让很多公司能 真正敏捷起来。</p>
+
+<p>我们知道，在敏捷开发中有很多概念，像 Backlog、持续交付、每日站会等，这些概念最 终要变成实践的话，就必须要通过一定的流程规范来保障这些概念的实施。
+这就是为什么很多公司写代码要求你写自动化测试代码，为什么要用一些像 Jira、禅道这样 的项目管理软件来管理任务，为什么要每天开站立会议，为什么要有代码审查。这些都不过 是为了保障敏捷的实施。</p>
+
+<p>如果你在实施敏捷开发的项目工作，就可以多去观察平时工作中这些和敏捷有关的流程规范，再结合敏捷开发中的知识点，就能很好的帮助你理解敏捷开发，理解这些流程规范背后
+的理论依据。</p>
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		不动笔墨不读书
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/mongo-aggregate/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">MongoDB中聚合工具Aggregate等的介绍与使用</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/geektime-software-engineering-02/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">作为程序员，你应该有产品意识</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 quguang&#39;s blog.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
+</html>

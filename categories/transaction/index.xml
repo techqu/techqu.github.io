@@ -6,10 +6,28 @@
     <description>Recent content in transaction on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 14 Jan 2019 14:53:02 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 15 Jan 2019 10:53:02 +0800</lastBuildDate>
     
 	<atom:link href="/categories/transaction/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>分布式事务-TCC事务：最终一致性</title>
+      <link>/post/transaction-tcc/</link>
+      <pubDate>Tue, 15 Jan 2019 10:53:02 +0800</pubDate>
+      
+      <guid>/post/transaction-tcc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>分布式事务-本地消息表：最终一致性</title>
+      <link>/post/transaction-local-msg-tb/</link>
+      <pubDate>Tue, 15 Jan 2019 10:53:02 +0800</pubDate>
+      
+      <guid>/post/transaction-local-msg-tb/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>从分布式一致性谈到CAP理论、BASE理论、分布式事务</title>
@@ -22,6 +40,24 @@
 &lt;p&gt;传统的单体应用不会横跨多个数据库，可以通过单机事务保证一致性。&lt;/p&gt;
 
 &lt;p&gt;然而在海量数据的场景下，需要对数据库做拆分，即分库分表，而Cobar、MyCat这类分库分表中间并不提供分布式事务的特性，并且基于二阶段提交的分布式事务性能较差，对于大多数业务场景来说，并不需要强一致，只需要保证最终一致性即可。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>分布式事务-2PC(二阶段提交)</title>
+      <link>/post/transaction-2pc/</link>
+      <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
+      
+      <guid>/post/transaction-2pc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>分布式事务-3PC(三阶段提交)</title>
+      <link>/post/transaction-3pc/</link>
+      <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
+      
+      <guid>/post/transaction-3pc/</guid>
+      <description></description>
     </item>
     
   </channel>

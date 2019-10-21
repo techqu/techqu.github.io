@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Service Mesh Data Plane vs Control Plane - quguang&#39;s blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Service Mesh Data Plane vs Control Plane" />
+<meta property="og:description" content="Matt Klein的一篇精彩的博客“服务网格中的数据平面与控制平面”
+
+
+原文链接：https://blog.envoyproxy.io/service-mesh-data-plane-vs-control-plane-2774e720f7fc
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/service-mesh-data-plane-vs-control-plane/" />
+<meta property="article:published_time" content="2019-09-10T10:44:24+08:00" />
+<meta property="article:modified_time" content="2019-09-10T10:44:24+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Service Mesh Data Plane vs Control Plane"/>
+<meta name="twitter:description" content="Matt Klein的一篇精彩的博客“服务网格中的数据平面与控制平面”
+
+
+原文链接：https://blog.envoyproxy.io/service-mesh-data-plane-vs-control-plane-2774e720f7fc
+"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/douban.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
+				<div class="logo__title">quguang&#39;s blog</div>
+				<div class="logo__tagline">不动笔墨不读书</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/post/2018-2019/">2018-2019</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">about me</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/post/learn-method/">learn method</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/dracula.min.css" rel="stylesheet">
+
+
+</header>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/django.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/vim.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/yaml.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/gradle.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/tex.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/shell.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/http.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Service Mesh Data Plane vs Control Plane</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-09-10T10:44:24">September 10, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/service-mesh" rel="category">service-mesh</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-a-service-mesh-really">What is a service mesh, really?</a></li>
+<li><a href="#the-data-plane">The data plane</a></li>
+<li><a href="#the-control-plane">The control plane</a></li>
+<li><a href="#data-plane-vs-control-plane-summary">Data plane vs. control plane summary</a></li>
+<li><a href="#current-project-landscape">Current project landscape</a></li>
+<li><a href="#key-takeaways">Key takeaways</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>Matt Klein的一篇精彩的博客“服务网格中的数据平面与控制平面”</p>
+
+<blockquote>
+<p>原文链接：<a href="https://blog.envoyproxy.io/service-mesh-data-plane-vs-control-plane-2774e720f7fc">https://blog.envoyproxy.io/service-mesh-data-plane-vs-control-plane-2774e720f7fc</a></p>
+</blockquote>
+
+<p>As the idea of the “service mesh” has become increasingly popular over the last two years and as the number of entrants into the space has swelled, I have seen a commensurate increase in confusion among the overall tech community around how to compare and contrast the different players.</p>
+
+<p>The situation can best be summarized by the following series of tweets that I wrote in July:<img src="/img/matt-twitter-screenshot.png" alt="matt-twitter-screenshot" /></p>
+
+<p>The previous tweets mention several different projects (Linkerd, NGINX, HAProxy, Envoy, and Istio) but more importantly introduce the general concepts of the service mesh data plane and the control plane. In this post I will step back and discuss what I mean by the terms data plane and control plane at a very high level and then discuss how the terms relate to the projects mentioned in the tweets.</p>
+
+<h3 id="what-is-a-service-mesh-really">What is a service mesh, really?</h3>
+
+<p>Figure 1: Service mesh overview<img src="/img/service-mesh-overview.png" alt="service-mesh-overview" /></p>
+
+<p><strong>Figure 1</strong> illustrates the service mesh concept at its most basic level. There are four service clusters (A-D). Each service instance is colocated with a sidecar network proxy. All network traffic (HTTP, REST, gRPC, Redis, etc.) from an individual service instance flows via its local sidecar proxy to the appropriate destination. Thus, the service instance is not aware of the network at large and only knows about its local proxy. In effect, the distributed system network has been abstracted away from the service programmer.</p>
+
+<h3 id="the-data-plane">The data plane</h3>
+
+<p>In a service mesh, the sidecar proxy performs the following tasks:</p>
+
+<ul>
+<li><strong>Service discovery</strong>: What are all of the upstream/backend service instances that are available?</li>
+<li><strong>Health checking</strong>: Are the upstream service instances returned by service discovery healthy and ready to accept network traffic? This may include both active (e.g., out-of-band pings to a <code>/healthcheck</code> endpoint) and passive (e.g., using 3 consecutive 5xx as an indication of an unhealthy state) health checking.</li>
+<li><strong>Routing</strong>: Given a REST request for <code>/foo</code> from the local service instance, to which upstream service cluster should the request be sent?</li>
+<li><strong>Load balancing</strong>: Once an upstream service cluster has been selected during routing, to which upstream service instance should the request be sent? With what timeout? With what circuit breaking settings? If the request fails should it be retried?</li>
+<li><strong>Authentication and authorization</strong>: For incoming requests, can the caller be cryptographically attested using mTLS or some other mechanism? If attested, is the caller allowed to invoke the requested endpoint or should an unauthenticated response be returned? <strong>主要是端到端的mTLS加密、服务间认证授权、终端用户认证授权</strong></li>
+<li><strong>Observability</strong>: For each request, detailed statistics, logging, and distributed tracing data should be generated so that operators can understand distributed traffic flow and debug problems as they occur.<strong>一般我们说的可观测性（Observability），包含Logging、Tracing、Metrics 这三部分</strong></li>
+</ul>
+
+<p>All of the previous items are the responsibility of the service mesh data plane. In effect, the sidecar proxy is the data plane. Said another way, the data plane is responsible for conditionally translating, forwarding, and observing every network packet that flows to and from a service instance.</p>
+
+<h3 id="the-control-plane">The control plane</h3>
+
+<p>The network abstraction that the sidecar proxy data plane provides is magical. However, how does the proxy actually know to route <code>/foo</code> to service B? How is the service discovery data that the proxy queries populated? How are the load balancing, timeout, circuit breaking, etc. settings specified? How are deploys accomplished using blue/green or gradual traffic shifting semantics? Who configures systemwide authentication and authorization settings?</p>
+
+<p>All of the above items are the responsibility of the service mesh control plane. The control plane takes a set of isolated stateless sidecar proxies and turns them into a distributed system.</p>
+
+<p>The reason that I think many technologists find the split concepts of data plane and control plane confusing is that for most people the data plane is familiar while the control plane is foreign. We’ve been around physical network routers and switches for a long time. We understand that packets/requests need to go from point A to point B and that we can use hardware and software to make that happen. The new breed of software proxies are just really fancy versions of tools we have been using for a long time.</p>
+
+<p>Figure 2: Human control plane <img src="/img/service-mesh-human-control-plane.png" alt="service-mesh-human-control-plane" /></p>
+
+<p>However, we have also been using control planes for a long time, though most network operators might not associate that portion of the system with a piece of technology. There reason for this is simple — most control planes in use today are… us.</p>
+
+<p><strong>Figure 2</strong> shows what I call the “human control plane.” In this type of deployment (which is still extremely common), a (likely grumpy) human operator crafts static configurations — potentially with the aid of some scripting tools — and deploys them using some type of bespoke process to all of the proxies. The proxies then consume the configuration and proceed with data plane processing using the updated settings.</p>
+
+<p>Figure 3: Advanced service mesh control plane<img src="/img/service-mesh-advanced-control-plane.png" alt="service-mesh-advanced-control-plane" /></p>
+
+<p><strong>Figure 3</strong> shows an “advanced” service mesh control plane. It is composed of the following pieces:</p>
+
+<ul>
+<li><strong>The human</strong>: There is still a (hopefully less grumpy) human in the loop making high level decisions about the overall system.</li>
+<li><strong>Control plane UI</strong>: The human interacts with some type of UI to control the system. This might be a web portal, a CLI, or some other interface. Through the UI, the operator has access to global system configuration settings such as deploy control (blue/green and/or traffic shifting), authentication and authorization settings, route table specification (e.g., when service A requests <code>/foo</code> what happens), and load balancer settings (e.g., timeouts, retries, circuit breakers, etc.).</li>
+<li><strong>Workload scheduler</strong>: Services are run on an infrastructure via some type of scheduling system (e.g., Kubernetes or Nomad). The scheduler is responsible for bootstrapping a service along with its sidecar proxy.</li>
+<li><strong>Service discovery</strong>: As the scheduler starts and stops service instances it reports liveness state into a service discovery system.</li>
+<li><strong>Sidecar proxy configuration APIs</strong>: The sidecar proxies dynamically fetch state from various system components in an eventually consistent way without operator involvement. The entire system composed of all currently running service instances and sidecar proxies eventually converge. Envoy’s universal data plane API is one such example of how this works in practice.</li>
+</ul>
+
+<p>Ultimately, the goal of a control plane is to set policy that will eventually be enacted by the data plane. More advanced control planes will abstract more of the system from the operator and require less handholding (assuming they are working correctly!).</p>
+
+<h3 id="data-plane-vs-control-plane-summary">Data plane vs. control plane summary</h3>
+
+<p><strong>Service mesh data plane</strong>: Touches every packet/request in the system. Responsible for service discovery, health checking, routing, load balancing, authentication/authorization, and observability.</p>
+
+<p><strong>Service mesh control plane</strong>: Provides policy and configuration for all of the running data planes in the mesh. Does not touch any packets/requests in the system. The control plane turns all of the data planes into a distributed system.</p>
+
+<h3 id="current-project-landscape">Current project landscape</h3>
+
+<p>With the above explanation out of the way, let’s take a look at the current service mesh landscape.</p>
+
+<ul>
+<li><strong>Data planes</strong>: <a href="https://linkerd.io/">Linkerd</a>, <a href="https://www.nginx.com/">NGINX</a>, <a href="https://www.haproxy.com/">HAProxy</a>, <a href="https://envoyproxy.github.io/">Envoy</a>, <a href="https://traefik.io/">Traefik</a></li>
+<li><strong>Control planes</strong>: <a href="https://istio.io/">Istio</a>, <a href="https://verizon.github.io/nelson/">Nelson</a>, <a href="https://github.com/airbnb/synapse">SmartStack</a></li>
+</ul>
+
+<p>Instead of doing an in-depth analysis of each solution above, I’m going to briefly touch on some of the points that I think are causing the majority of the ecosystem confusion right now.</p>
+
+<p><strong>Linkerd</strong> was one of the first service mesh data plane proxies on the scene in early 2016 and has done a fantastic job of increasing awareness and excitement around the service mesh design pattern. Envoy followed about 6 months later (though was in production at Lyft since late 2015). Linkerd and Envoy are the two projects that are most commonly mentioned when discussing “service meshes.”</p>
+
+<p><strong>Istio</strong> was announced May, 2017. The project goals of Istio look very much like the advanced control plane illustrated in figure 3. The default proxy of Istio is Envoy. Thus, Istio is the control plane and Envoy is the data plane. In a short time, Istio has garnered a lot of excitement, and other data planes have begun integrations as a replacement for Envoy (both Linkerd and NGINX have demonstrated Istio integration). The fact that it’s possible for a single control plane to use different data planes means that the control plane and data plane are not necessarily tightly coupled. An API such as Envoy’s universal data plane API can form a bridge between the two pieces of the system.</p>
+
+<p><strong>Nelson</strong> and <strong>SmartStack</strong> help further illustrate the control plane vs. data plane divide. Nelson uses Envoy as its proxy and builds a robust service mesh control plane around the HashiCorp stack (i.e. Nomad, etc.). SmartStack was perhaps the first of the new wave of service meshes. SmartStack forms a control plane around HAProxy or NGINX, further demonstrating that it’s possible to decouple the service mesh control plane and the data plane.</p>
+
+<p>The service mesh microservice networking space is getting a lot of attention right now (rightly so!) with more projects and vendors entering all the time. Over the next several years, we will see a lot of innovation in both data planes and control planes, and further intermixing of the various components. The ultimate result should be microservice networking that is more transparent and magical to the (hopefully less and less grumpy) operator.</p>
+
+<h3 id="key-takeaways">Key takeaways</h3>
+
+<ul>
+<li>A service mesh is composed of two disparate pieces: the data plane and the control plane. Both are required. Without both the system will not work.</li>
+<li>Everyone is familiar with the control plane — albeit the control plane might be you!</li>
+<li>All of the data planes compete with each other on features, performance, configurability, and extensibility.</li>
+<li>All of the control planes compete with each other on features, configurability, extensibility, and usability.</li>
+<li>A single control plane may contain the right abstractions and APIs such that multiple data planes can be used.</li>
+</ul>
+
+<p>服务网格控制平面“为网格中所有正在运行的数据平面提供策略和配置”，并且“控制平面将所有数据平面转变为分布式系统。”最终，控制平面的目标是设置将由数据平面制定的策略。控制平面可以通过配置文件，API调用和用户界面来实现。选择的实现方法通常取决于用户的角色，以及他们的目标和技术能力。</p>
+
+<p>例如，产品所有者可能想要在应用程序中发布新功能，这里UI通常是最合适的控制平面，因为这可以显示系统的可理解视图并且还提供一些导轨。但是，对于想要配置一系列低级防火墙规则的网络运维人员，使用CLI或配置文件将提供更细粒度（高级用户风格）控制，并且还便于自动化。</p>
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="me avatar" src="/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About me</span>
+	</div>
+	<div class="authorbox__description">
+		不动笔墨不读书
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/geektime-software-engineering-02/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">作为程序员，你应该有产品意识</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/geektime-network-protocol-01/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">《趣谈网络协议》- 文件下载</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 quguang&#39;s blog.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/douban.js"></script></body>
+</html>

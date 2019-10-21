@@ -6,10 +6,38 @@
     <description>Recent content in kubernetes on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Jan 2019 08:41:16 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 15 Sep 2019 10:45:17 +0800</lastBuildDate>
     
 	<atom:link href="/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>K8s Install</title>
+      <link>/post/k8s-install/</link>
+      <pubDate>Sun, 15 Sep 2019 10:45:17 +0800</pubDate>
+      
+      <guid>/post/k8s-install/</guid>
+      <description>&lt;p&gt;公司服务器上的 k8s 集群不给自己玩了，所以打算在本地mac 上装 kubernestes 集群 ，记录下使用 docker 的 mac 客户端 安装 kubernetets 的过程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《深入剖析Kubernetes》-Docker的实现原理</title>
+      <link>/post/docker-introduction/</link>
+      <pubDate>Thu, 17 Jan 2019 15:12:03 +0800</pubDate>
+      
+      <guid>/post/docker-introduction/</guid>
+      <description>&lt;p&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”&lt;/p&gt;
+
+&lt;p&gt;Docker容器具有以下3个特点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;轻量级&lt;/strong&gt;：在同一台宿主机上的容器共享系统Kernel，这使得他们可以迅速启动而且占有的内存极少。镜像是以分层文件系统构造的，这可以让它们共享相同的文件，使得磁盘使用率和镜像下载速度得到提高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开放&lt;/strong&gt;：Docker容器基于开放标准，这使得Docker容器可以运行在主流Linux发行版和Windows操作系统上。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全&lt;/strong&gt;：容器将各个应用程序隔离开来，这给所有的应用程序提供了一层额外的安全防护。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于Docker等大多数Linux容器来说，&lt;strong&gt;Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>《深入剖析Kubernetes》-入门</title>

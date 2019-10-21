@@ -6,10 +6,202 @@
     <description>Recent content in Posts on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Aug 2019 17:49:12 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 21 Sep 2019 14:23:59 +0800</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《中国近代史》-蒋廷黻-读书笔记</title>
+      <link>/post/reading-note-%E4%B8%AD%E5%9B%BD%E8%BF%91%E4%BB%A3%E5%8F%B2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 21 Sep 2019 14:23:59 +0800</pubDate>
+      
+      <guid>/post/reading-note-%E4%B8%AD%E5%9B%BD%E8%BF%91%E4%BB%A3%E5%8F%B2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;p&gt;新中国是如何一步一步从大清朝走过来的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java核心技术36讲-Java提供了哪些IO方式? NIO如何实现多路复用? </title>
+      <link>/post/geektime-java-36-01/</link>
+      <pubDate>Wed, 18 Sep 2019 18:59:24 +0800</pubDate>
+      
+      <guid>/post/geektime-java-36-01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tomcat&amp;Netty-Tomcat系统架构(下):聊聊多层容器的设计</title>
+      <link>/post/geektime-tomcat-netty-03/</link>
+      <pubDate>Tue, 17 Sep 2019 16:19:34 +0800</pubDate>
+      
+      <guid>/post/geektime-tomcat-netty-03/</guid>
+      <description>&lt;p&gt;专栏上一期我们学完了连接器的设计，今天我们一起来看一下Tomcat的容器设计。先复习一下，上期我讲 到了Tomcat有两个核心组件:&lt;strong&gt;连接器和容器&lt;/strong&gt;，其中连接器负责外部交流，容器负责内部处理。具体来说就是&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;连接器处理Socket通信和应用层协议的解析，得到Servlet请求;&lt;/li&gt;
+&lt;li&gt;而容器则负责处理Servlet请求。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tomcat Netty-Tomcat系统架构(上): 连接器是如何设计的?</title>
+      <link>/post/geektime-tomcat-netty-02/</link>
+      <pubDate>Tue, 17 Sep 2019 11:20:46 +0800</pubDate>
+      
+      <guid>/post/geektime-tomcat-netty-02/</guid>
+      <description>&lt;p&gt;在面试时我们可能经常被问到:你做的XX项目的架构是如何设计的，请讲一下实现的思路。对于面试官来 说，可以通过你对复杂系统设计的理解，了解你的技术水平以及处理复杂问题的思路。&lt;/p&gt;
+
+&lt;p&gt;今天咱们就来一步一步分析Tomcat的设计思路，看看Tomcat的设计者们当时是怎么回答这个问题的。一方 面我们可以学到Tomcat的总体架构，学会从宏观上怎么去设计一个复杂系统，怎么设计顶层模块，以及模 块之间的关系;另一方面也为我们深入学习Tomcat的工作原理打下基础。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>K8s Install</title>
+      <link>/post/k8s-install/</link>
+      <pubDate>Sun, 15 Sep 2019 10:45:17 +0800</pubDate>
+      
+      <guid>/post/k8s-install/</guid>
+      <description>&lt;p&gt;公司服务器上的 k8s 集群不给自己玩了，所以打算在本地mac 上装 kubernestes 集群 ，记录下使用 docker 的 mac 客户端 安装 kubernetets 的过程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tomcat Netty-Servlet规范和Servlet容器</title>
+      <link>/post/geektime-tomcat-netty-01.1/</link>
+      <pubDate>Thu, 12 Sep 2019 11:20:46 +0800</pubDate>
+      
+      <guid>/post/geektime-tomcat-netty-01.1/</guid>
+      <description>&lt;p&gt;浏览器发给服务端的是一个HTTP格式的请求，HTTP服务器收到这个请求 后，需要调用服务端程序来处理，所谓的服务端程序就是你写的Java类，一般来说不同的请求需要由不同的 Java类来处理。&lt;/p&gt;
+
+&lt;p&gt;那么问题来了，HTTP服务器怎么知道要调用哪个Java类的哪个方法呢。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《趣谈网络协议》- 文件下载</title>
+      <link>/post/geektime-network-protocol-01/</link>
+      <pubDate>Wed, 11 Sep 2019 14:38:50 +0800</pubDate>
+      
+      <guid>/post/geektime-network-protocol-01/</guid>
+      <description>&lt;p&gt;如果你想下载一个电影，一般会通过什么方式？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Service Mesh Data Plane vs Control Plane</title>
+      <link>/post/service-mesh-data-plane-vs-control-plane/</link>
+      <pubDate>Tue, 10 Sep 2019 10:44:24 +0800</pubDate>
+      
+      <guid>/post/service-mesh-data-plane-vs-control-plane/</guid>
+      <description>&lt;p&gt;Matt Klein的一篇精彩的博客“服务网格中的数据平面与控制平面”&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;原文链接：&lt;a href=&#34;https://blog.envoyproxy.io/service-mesh-data-plane-vs-control-plane-2774e720f7fc&#34;&gt;https://blog.envoyproxy.io/service-mesh-data-plane-vs-control-plane-2774e720f7fc&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>作为程序员，你应该有产品意识</title>
+      <link>/post/geektime-software-engineering-02/</link>
+      <pubDate>Mon, 09 Sep 2019 11:11:31 +0800</pubDate>
+      
+      <guid>/post/geektime-software-engineering-02/</guid>
+      <description>&lt;p&gt;和领导老贾谈职业规划的时候，他提出：我作为程序员，也要重视下产品方面的能力。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>软件工程之美-常见的软件开发模型(Software Development Model)</title>
+      <link>/post/geektime-software-engineering-01/</link>
+      <pubDate>Fri, 06 Sep 2019 10:37:18 +0800</pubDate>
+      
+      <guid>/post/geektime-software-engineering-01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MongoDB中聚合工具Aggregate等的介绍与使用</title>
+      <link>/post/mongo-aggregate/</link>
+      <pubDate>Wed, 04 Sep 2019 20:40:24 +0800</pubDate>
+      
+      <guid>/post/mongo-aggregate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>8种方案解决重复提交问题</title>
+      <link>/post/java-resubmit-8-resolution/</link>
+      <pubDate>Mon, 26 Aug 2019 20:40:12 +0800</pubDate>
+      
+      <guid>/post/java-resubmit-8-resolution/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;作者：锦成同学&lt;/p&gt;
+
+&lt;p&gt;链接：juejin.im/post/5d31928c51882564c966a71c&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>【最佳实践】如何优雅的进行重试</title>
+      <link>/post/java-retry-best-practice/</link>
+      <pubDate>Mon, 26 Aug 2019 08:26:39 +0800</pubDate>
+      
+      <guid>/post/java-retry-best-practice/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch入门</title>
+      <link>/post/elasticsearch-01/</link>
+      <pubDate>Sun, 25 Aug 2019 20:50:59 +0800</pubDate>
+      
+      <guid>/post/elasticsearch-01/</guid>
+      <description>&lt;p&gt;希望通过这篇文章能让读者大致了解Elasticsearch是做什么的以及它的使用和基本原理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>领域驱动设计系列文章（1）——通过现实例子显示领域驱动设计的威力</title>
+      <link>/post/domain-driven-design-01/</link>
+      <pubDate>Sun, 25 Aug 2019 13:32:15 +0800</pubDate>
+      
+      <guid>/post/domain-driven-design-01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>领域驱动设计系列文章（2)-浅析VO、DTO、DO、PO的概念、区别和用处</title>
+      <link>/post/software-vo-dto-do-po-use/</link>
+      <pubDate>Sun, 25 Aug 2019 13:12:57 +0800</pubDate>
+      
+      <guid>/post/software-vo-dto-do-po-use/</guid>
+      <description>&lt;p&gt;本篇文章主要讨论一下我们经常会用到的一些对象：VO、DTO、DO和PO。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《趣谈网络协议》- Https</title>
+      <link>/post/geektime-network-protocol-https/</link>
+      <pubDate>Fri, 23 Aug 2019 11:44:25 +0800</pubDate>
+      
+      <guid>/post/geektime-network-protocol-https/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《透视HTTP协议》-https</title>
+      <link>/post/geektime-http-protocol/</link>
+      <pubDate>Thu, 22 Aug 2019 13:57:16 +0800</pubDate>
+      
+      <guid>/post/geektime-http-protocol/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>我用50W&#43;年薪的独角兽offer，犒劳自己一年的卧薪尝胆！不服输，你就不会输</title>
+      <link>/post/interview-exp-from-wx-01/</link>
+      <pubDate>Thu, 22 Aug 2019 10:06:03 +0800</pubDate>
+      
+      <guid>/post/interview-exp-from-wx-01/</guid>
+      <description>&lt;p&gt;本文转载自公众号：石杉的架构笔记&lt;/p&gt;
+
+&lt;p&gt;写在前面：&lt;/p&gt;
+
+&lt;p&gt;首先做个自我介绍，楼主男，渣本毕业，坐标帝都，差 4 个月 4 年工作经验。本次面试了几家独角兽和一线大厂，都拿了offer，几乎100%的命中率。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>java内存溢出分析工具：jmap使用实战</title>
@@ -54,16 +246,34 @@
     </item>
     
     <item>
-      <title>《Java性能调优实战》</title>
-      <link>/post/geektime-java-performance/</link>
-      <pubDate>Sun, 04 Aug 2019 20:34:10 +0800</pubDate>
+      <title>《Java性能调优实战》模块一 · 概述</title>
+      <link>/post/geektime-java-performance-01/</link>
+      <pubDate>Tue, 06 Aug 2019 20:34:10 +0800</pubDate>
       
-      <guid>/post/geektime-java-performance/</guid>
+      <guid>/post/geektime-java-performance-01/</guid>
       <description>&lt;p&gt;为什么要做性能调优?一款线上产品如果没有经过性能测试，那它就好比是一颗定时炸弹，你不知道它什么时候会出现问题，你也
 不清楚它能承受的极限在哪儿。&lt;/p&gt;
 
 &lt;p&gt;好的系统性能调优不仅仅可以提高系统的性能，还能为公司节省资源。这也是我们做性能调优的最直接的目
 的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块二 · Java编程性能调优 (10讲)</title>
+      <link>/post/geektime-java-performance-02/</link>
+      <pubDate>Mon, 05 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance-02/</guid>
+      <description>&lt;p&gt;从第二个模块开始，学习Java编程的性能优化。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块三 · 多线程性能调优 (10讲)</title>
+      <link>/post/geektime-java-performance-03/</link>
+      <pubDate>Sun, 04 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance-03/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -73,6 +283,33 @@
       
       <guid>/post/geektime-jvm-01/</guid>
       <description>&lt;p&gt;整个专栏将分为四大模块:基本原理、高效实现、代码优化、虚拟机黑科技&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块四 · JVM性能监测及调优 (6讲) </title>
+      <link>/post/geektime-java-performance-04/</link>
+      <pubDate>Sat, 03 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance-04/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块五 · 设计模式调优 (6讲) </title>
+      <link>/post/geektime-java-performance-05/</link>
+      <pubDate>Fri, 02 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance-05/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块六 · 数据库性能调优 (7讲) </title>
+      <link>/post/geektime-java-performance-06/</link>
+      <pubDate>Thu, 01 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance-06/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -210,13 +447,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
 
 &lt;p&gt;1个Node项目VUE生成静态页面做前端+nginx&lt;/p&gt;
 
-&lt;p&gt;pgsql&lt;/p&gt;
-
-&lt;p&gt;redis&lt;/p&gt;
-
-&lt;p&gt;rabbitmq&lt;/p&gt;
-
-&lt;p&gt;emqx&lt;/p&gt;</description>
+&lt;p&gt;pgsql、redis、rabbitmq、emqx&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -694,12 +925,12 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     </item>
     
     <item>
-      <title>OSI七层网络模型分别是哪七层？各运行那些协议？</title>
-      <link>/post/network-osi/</link>
+      <title>《透视HTTP协议》-常说的“四层”和“七层”到底是什么?</title>
+      <link>/post/geektime-http-protocol-tcp-osi/</link>
       <pubDate>Wed, 20 Feb 2019 15:29:44 +0800</pubDate>
       
-      <guid>/post/network-osi/</guid>
-      <description></description>
+      <guid>/post/geektime-http-protocol-tcp-osi/</guid>
+      <description>&lt;p&gt;在上一讲中，我简单提到了TCP/IP协议，它是HTTP协议的下层协议，负责具体的数据传输工作。并且还特别说了，TCP/IP协议是一个“有层次的协议栈”。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -930,7 +1161,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     </item>
     
     <item>
-      <title>《趣谈网络协议》-Ipconfig:最熟悉又陌生的命令行</title>
+      <title>《趣谈网络协议》-Ipconfig</title>
       <link>/post/geektime-network-protocol-ipconfig/</link>
       <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
       
@@ -1128,6 +1359,17 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
       <description>&lt;blockquote&gt;
 &lt;p&gt;今天看 guns 项目的 application.properties 文件，发现了&lt;code&gt;spring.profiles.active = @profiles.active@&lt;/code&gt;的写法，查了好些资料终于搞明白了。原来是在集成maven和Spring boot的profile功能时用的，那么如何集成呢？&lt;/p&gt;
 &lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Io</title>
+      <link>/post/java-io/</link>
+      <pubDate>Thu, 27 Dec 2018 18:05:02 +0800</pubDate>
+      
+      <guid>/post/java-io/</guid>
+      <description>&lt;p&gt;Java 提供了哪些IO方式？NIO如何实现多路复用？&lt;/p&gt;
+
+&lt;p&gt;首先、传统的java.io包，它基于流模型实现，提供了，比如File抽象、输入输出流等。交互方式是同步、阻塞的方式。也就是说，在读取输入流或者写入输出流时，在写、读动作完成之前，线程会一直阻塞在那里，它们之间的调用时可靠的线性顺序。&lt;/p&gt;</description>
     </item>
     
     <item>

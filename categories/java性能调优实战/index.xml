@@ -6,22 +6,67 @@
     <description>Recent content in Java性能调优实战 on quguang&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Aug 2019 20:34:10 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 20:34:10 +0800</lastBuildDate>
     
 	<atom:link href="/categories/java%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%AE%9E%E6%88%98/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>《Java性能调优实战》</title>
-      <link>/post/geektime-java-performance/</link>
-      <pubDate>Sun, 04 Aug 2019 20:34:10 +0800</pubDate>
+      <title>《Java性能调优实战》模块一 · 概述</title>
+      <link>/post/geektime-java-performance-01/</link>
+      <pubDate>Tue, 06 Aug 2019 20:34:10 +0800</pubDate>
       
-      <guid>/post/geektime-java-performance/</guid>
+      <guid>/post/geektime-java-performance-01/</guid>
       <description>&lt;p&gt;为什么要做性能调优?一款线上产品如果没有经过性能测试，那它就好比是一颗定时炸弹，你不知道它什么时候会出现问题，你也
 不清楚它能承受的极限在哪儿。&lt;/p&gt;
 
 &lt;p&gt;好的系统性能调优不仅仅可以提高系统的性能，还能为公司节省资源。这也是我们做性能调优的最直接的目
 的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块二 · Java编程性能调优 (10讲)</title>
+      <link>/post/geektime-java-performance-02/</link>
+      <pubDate>Mon, 05 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance-02/</guid>
+      <description>&lt;p&gt;从第二个模块开始，学习Java编程的性能优化。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块三 · 多线程性能调优 (10讲)</title>
+      <link>/post/geektime-java-performance-03/</link>
+      <pubDate>Sun, 04 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance-03/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块四 · JVM性能监测及调优 (6讲) </title>
+      <link>/post/geektime-java-performance-04/</link>
+      <pubDate>Sat, 03 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance-04/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块五 · 设计模式调优 (6讲) </title>
+      <link>/post/geektime-java-performance-05/</link>
+      <pubDate>Fri, 02 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance-05/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块六 · 数据库性能调优 (7讲) </title>
+      <link>/post/geektime-java-performance-06/</link>
+      <pubDate>Thu, 01 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>/post/geektime-java-performance-06/</guid>
+      <description></description>
     </item>
     
   </channel>

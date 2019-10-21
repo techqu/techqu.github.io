@@ -68,6 +68,17 @@
     </item>
     
     <item>
+      <title>Java Io</title>
+      <link>/post/java-io/</link>
+      <pubDate>Thu, 27 Dec 2018 18:05:02 +0800</pubDate>
+      
+      <guid>/post/java-io/</guid>
+      <description>&lt;p&gt;Java 提供了哪些IO方式？NIO如何实现多路复用？&lt;/p&gt;
+
+&lt;p&gt;首先、传统的java.io包，它基于流模型实现，提供了，比如File抽象、输入输出流等。交互方式是同步、阻塞的方式。也就是说，在读取输入流或者写入输出流时，在写、读动作完成之前，线程会一直阻塞在那里，它们之间的调用时可靠的线性顺序。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（下）</title>
       <link>/post/geektime-jvm-how-execute-method-2/</link>
       <pubDate>Wed, 26 Dec 2018 11:45:43 +0800</pubDate>
@@ -133,15 +144,6 @@
 
 &lt;p&gt;本文基于微信公众号文章基础上添加，原文链接：
 &lt;a href=&#34;https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg&#34;&gt;https://mp.weixin.qq.com/s/UKwZkwYmDSVTbj62ACuapg&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>markdown语法示例</title>
-      <link>/post/markdown/</link>
-      <pubDate>Thu, 20 Dec 2018 10:58:38 +0800</pubDate>
-      
-      <guid>/post/markdown/</guid>
-      <description>&lt;p&gt;本文是markdown语法的示例&lt;/p&gt;</description>
     </item>
     
     <item>
