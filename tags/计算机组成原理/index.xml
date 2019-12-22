@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计算机组成原理 on Quguang&#39;s Blog</title>
+    <link>https://quguang.wang/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</link>
+    <description>Recent content in 计算机组成原理 on Quguang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Aug 2019 14:50:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://quguang.wang/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>《深入浅出计算机组成原理》-基础篇</title>
+      <link>https://quguang.wang/post/geektime-computer-system-organization-and-architecture-00/</link>
+      <pubDate>Thu, 08 Aug 2019 14:50:26 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-computer-system-organization-and-architecture-00/</guid>
+      <description>&lt;p&gt;如果找出各大学计算机系的培养计划，你会发现，它们都有差不多十来门核心课程。其中，“计算机组成原理”是入门和底层层面的第一课。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

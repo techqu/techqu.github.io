@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MQ on Quguang&#39;s Blog</title>
+    <link>https://quguang.wang/tags/mq/</link>
+    <description>Recent content in MQ on Quguang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 May 2019 20:36:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://quguang.wang/tags/mq/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java面试-高并发-MQ自己设计一个(7)</title>
+      <link>https://quguang.wang/post/java-interview-mq07/</link>
+      <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq07/</guid>
+      <description>&lt;p&gt;面试题 如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ延时以及过期失效(6)</title>
+      <link>https://quguang.wang/post/java-interview-mq06/</link>
+      <pubDate>Wed, 15 May 2019 19:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq06/</guid>
+      <description>&lt;p&gt;面试题 如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ消息的顺序性(5)</title>
+      <link>https://quguang.wang/post/java-interview-mq05/</link>
+      <pubDate>Wed, 15 May 2019 18:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq05/</guid>
+      <description>&lt;p&gt;面试题 如何保证消息的顺序性？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ可靠性传输(4)</title>
+      <link>https://quguang.wang/post/java-interview-mq04/</link>
+      <pubDate>Wed, 15 May 2019 17:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq04/</guid>
+      <description>&lt;p&gt;面试题 如何保证消息的可靠性传输（如何处理消息丢失的问题）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ重复消费(3)</title>
+      <link>https://quguang.wang/post/java-interview-mq03/</link>
+      <pubDate>Wed, 15 May 2019 16:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq03/</guid>
+      <description>&lt;p&gt;面试题 如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ的高可用(2)</title>
+      <link>https://quguang.wang/post/java-interview-mq02/</link>
+      <pubDate>Wed, 15 May 2019 15:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq02/</guid>
+      <description>&lt;p&gt;面试题 如何保证消息队列的高可用啊？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ技术选型(1)</title>
+      <link>https://quguang.wang/post/java-interview-mq01/</link>
+      <pubDate>Wed, 15 May 2019 14:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq01/</guid>
+      <description>&lt;p&gt;面试题 为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

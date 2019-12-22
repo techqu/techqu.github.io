@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>volatile on quguang&#39;s blog</title>
-    <link>/tags/volatile/</link>
-    <description>Recent content in volatile on quguang&#39;s blog</description>
+    <title>volatile on Quguang&#39;s Blog</title>
+    <link>https://quguang.wang/tags/volatile/</link>
+    <description>Recent content in volatile on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 19 Dec 2018 17:32:22 +0800</lastBuildDate>
     
-	<atom:link href="/tags/volatile/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quguang.wang/tags/volatile/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>线程间通信</title>
-      <link>/post/thread-notify/</link>
+      <link>https://quguang.wang/post/thread-notify/</link>
       <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
       
-      <guid>/post/thread-notify/</guid>
+      <guid>https://quguang.wang/post/thread-notify/</guid>
       <description>&lt;p&gt;《java并发编程的艺术》-4.3线程间通信&lt;/p&gt;
 
 &lt;ul&gt;

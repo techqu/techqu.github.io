@@ -1,80 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>java on quguang&#39;s blog</title>
-    <link>/tags/java/</link>
-    <description>Recent content in java on quguang&#39;s blog</description>
+    <title>java on Quguang&#39;s Blog</title>
+    <link>https://quguang.wang/tags/java/</link>
+    <description>Recent content in java on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Aug 2019 20:34:10 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 11:51:07 +0800</lastBuildDate>
     
-	<atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quguang.wang/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>《Java性能调优实战》模块一 · 概述</title>
-      <link>/post/geektime-java-performance-01/</link>
-      <pubDate>Tue, 06 Aug 2019 20:34:10 +0800</pubDate>
-      
-      <guid>/post/geektime-java-performance-01/</guid>
-      <description>&lt;p&gt;为什么要做性能调优?一款线上产品如果没有经过性能测试，那它就好比是一颗定时炸弹，你不知道它什么时候会出现问题，你也
-不清楚它能承受的极限在哪儿。&lt;/p&gt;
-
-&lt;p&gt;好的系统性能调优不仅仅可以提高系统的性能，还能为公司节省资源。这也是我们做性能调优的最直接的目
-的。&lt;/p&gt;</description>
-    </item>
     
     <item>
-      <title>《Java性能调优实战》模块二 · Java编程性能调优 (10讲)</title>
-      <link>/post/geektime-java-performance-02/</link>
-      <pubDate>Mon, 05 Aug 2019 20:34:10 +0800</pubDate>
+      <title>怎样阅读spring源码</title>
+      <link>https://quguang.wang/post/how-to-read-spring-source-code/</link>
+      <pubDate>Fri, 12 Jul 2019 11:51:07 +0800</pubDate>
       
-      <guid>/post/geektime-java-performance-02/</guid>
-      <description>&lt;p&gt;从第二个模块开始，学习Java编程的性能优化。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>《Java性能调优实战》模块三 · 多线程性能调优 (10讲)</title>
-      <link>/post/geektime-java-performance-03/</link>
-      <pubDate>Sun, 04 Aug 2019 20:34:10 +0800</pubDate>
-      
-      <guid>/post/geektime-java-performance-03/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>《Java性能调优实战》模块四 · JVM性能监测及调优 (6讲) </title>
-      <link>/post/geektime-java-performance-04/</link>
-      <pubDate>Sat, 03 Aug 2019 20:34:10 +0800</pubDate>
-      
-      <guid>/post/geektime-java-performance-04/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>《Java性能调优实战》模块五 · 设计模式调优 (6讲) </title>
-      <link>/post/geektime-java-performance-05/</link>
-      <pubDate>Fri, 02 Aug 2019 20:34:10 +0800</pubDate>
-      
-      <guid>/post/geektime-java-performance-05/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>《Java性能调优实战》模块六 · 数据库性能调优 (7讲) </title>
-      <link>/post/geektime-java-performance-06/</link>
-      <pubDate>Thu, 01 Aug 2019 20:34:10 +0800</pubDate>
-      
-      <guid>/post/geektime-java-performance-06/</guid>
-      <description></description>
+      <guid>https://quguang.wang/post/how-to-read-spring-source-code/</guid>
+      <description>&lt;p&gt;给不知道如何阅读spring源码的同学一点借鉴&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Tomcat Overview</title>
-      <link>/post/tomcat-overview/</link>
+      <link>https://quguang.wang/post/tomcat-overview/</link>
       <pubDate>Tue, 12 Feb 2019 15:12:30 +0800</pubDate>
       
-      <guid>/post/tomcat-overview/</guid>
+      <guid>https://quguang.wang/post/tomcat-overview/</guid>
       <description>&lt;h2 id=&#34;tomcat-server的组成部分&#34;&gt;Tomcat Server的组成部分&lt;/h2&gt;
 
 &lt;h3 id=&#34;1-1-server&#34;&gt;1.1 – Server&lt;/h3&gt;
@@ -86,19 +37,19 @@
     
     <item>
       <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
-      <link>/post/java-15-lock/</link>
+      <link>https://quguang.wang/post/java-15-lock/</link>
       <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
       
-      <guid>/post/java-15-lock/</guid>
+      <guid>https://quguang.wang/post/java-15-lock/</guid>
       <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>什么是Devops？</title>
-      <link>/post/what-is-devops/</link>
+      <link>https://quguang.wang/post/what-is-devops/</link>
       <pubDate>Sun, 13 Jan 2019 10:06:30 +0800</pubDate>
       
-      <guid>/post/what-is-devops/</guid>
+      <guid>https://quguang.wang/post/what-is-devops/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -107,79 +58,68 @@
     </item>
     
     <item>
-      <title>Devops实践</title>
-      <link>/post/devops-in-action/</link>
-      <pubDate>Sun, 13 Jan 2019 10:03:47 +0800</pubDate>
-      
-      <guid>/post/devops-in-action/</guid>
-      <description>&lt;p&gt;强调业务目标，以用户的价值为唯一的评判标准，团队的考核评价机制也要改变，个体和团队的成功都要放在整个开发-运维生命周期内来进行评价，开发完成了很多用户需求不一定是成功，运维保障系统不down机也不一定是成功！只有用户想要的功能被及时实现了，被成功部署了，被稳定使用了才算成功。
-就是把敏捷开发部门和运维部门之间的围墙打通，形成闭环&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>《你的灯亮着吗?》-读书笔记</title>
-      <link>/post/reading-note-your-light-on/</link>
+      <link>https://quguang.wang/post/reading-note-%E4%BD%A0%E7%9A%84%E7%81%AF%E4%BA%AE%E7%9D%80%E5%90%97/</link>
       <pubDate>Sat, 12 Jan 2019 17:39:54 +0800</pubDate>
       
-      <guid>/post/reading-note-your-light-on/</guid>
+      <guid>https://quguang.wang/post/reading-note-%E4%BD%A0%E7%9A%84%E7%81%AF%E4%BA%AE%E7%9D%80%E5%90%97/</guid>
       <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
-      <title>《影响力》-读书笔记</title>
-      <link>/post/reading-note-influence/</link>
-      <pubDate>Sat, 12 Jan 2019 17:20:43 +0800</pubDate>
-      
-      <guid>/post/reading-note-influence/</guid>
-      <description>&lt;p&gt;主要讲的是作者对于顺从性的研究，到底是什么因素让一个人向另一个人说了“行”？哪些技术能最有效地利用这些因素。作者研究了顺从心理学，先是在实验室，后来在社会上进行参与式观察。&lt;/p&gt;
-
-&lt;p&gt;顺从职业者：销售员、筹款家、广告商等。&lt;/p&gt;
-
-&lt;p&gt;最后总结了六个基本类型，每一类型都是从一种能指导人们行为的基本心理原则衍生出来的，正因为如此，这些策略就具有了左右人们行为的力量，分别是 ：&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>《凹凸相对论》-读书笔记</title>
-      <link>/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <link>https://quguang.wang/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://quguang.wang/post/reading-note-%E5%87%B9%E5%87%B8%E7%9B%B8%E5%AF%B9%E8%AE%BA/</guid>
       <description>这里填写文章文章摘要。</description>
     </item>
     
     <item>
       <title>《大型网站技术架构》-读书笔记</title>
-      <link>/post/reading-note-large-website-technology-architecture/</link>
+      <link>https://quguang.wang/post/reading-note-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>/post/reading-note-large-website-technology-architecture/</guid>
-      <description>这里填写文章文章摘要。</description>
+      <guid>https://quguang.wang/post/reading-note-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/</guid>
+      <description>&lt;p&gt;李智慧老师13年写的架构入门书，没有太深入的内容，比较适合刚刚接触网站架构的同学有个通盘的了解，也可以是有一定经验的同学作为目录一样去看。了解架构的演化历史，形成知识图和大局观。&lt;/p&gt;
+
+&lt;p&gt;何为架构，要有大局观，大局观就是提前预防掉那些通用的问题：高可用，工程化，伸缩性，扩展性。对应需要的能力：了解分布式的一些东西，了解项目的业务和流程和运维使之工程化，了解负载均衡，能够对业务的分割和代码的分层。&lt;/p&gt;
+
+&lt;div class=&#34;douban_show&#34;&gt;
+    &lt;div id=&#34;db9787121212000&#34; date-dbid=&#34;9787121212000&#34; class=&#34;douban_item post-preview&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;</description>
     </item>
     
     <item>
       <title>《曾国藩的正面与侧面》-读书笔记</title>
-      <link>/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <link>https://quguang.wang/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
-      <description>这里填写文章文章摘要。</description>
+      <guid>https://quguang.wang/post/reading-note-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2/</guid>
+      <description>&lt;p&gt;从《曾国藩家书》了解到的曾国藩，以他为榜样，资质愚钝，后天补足。&lt;/p&gt;
+
+&lt;div class=&#34;douban_show&#34;&gt;
+    &lt;div id=&#34;db9787512501805&#34; date-dbid=&#34;9787512501805&#34; class=&#34;douban_item post-preview&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;</description>
     </item>
     
     <item>
       <title>《稀缺》-读书笔记</title>
-      <link>/post/reading-note-scarcity/</link>
+      <link>https://quguang.wang/post/reading-note-%E7%A8%80%E7%BC%BA/</link>
       <pubDate>Sat, 12 Jan 2019 15:46:07 +0800</pubDate>
       
-      <guid>/post/reading-note-scarcity/</guid>
-      <description>这里填写文章文章摘要。</description>
+      <guid>https://quguang.wang/post/reading-note-%E7%A8%80%E7%BC%BA/</guid>
+      <description>&lt;div class=&#34;douban_show&#34;&gt;
+    &lt;div id=&#34;db9787213063497&#34; date-dbid=&#34;9787213063497&#34; class=&#34;douban_item post-preview&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;</description>
     </item>
     
     <item>
       <title>learn method</title>
-      <link>/post/learn-method/</link>
+      <link>https://quguang.wang/post/learn-method/</link>
       <pubDate>Sat, 12 Jan 2019 11:59:01 +0800</pubDate>
       
-      <guid>/post/learn-method/</guid>
+      <guid>https://quguang.wang/post/learn-method/</guid>
       <description>&lt;p&gt;首先明确的是，学习是件反人性的事，需要刻意练习的，是需要持之以恒的。&lt;/p&gt;
 
 &lt;p&gt;很多事情能做到什么程度，其实在思想的源头就被决定了，因为它会绝大程度地受到思考问题的出发点、思维方式、格局观、价值观等因素影响。&lt;/p&gt;
@@ -196,10 +136,10 @@
     
     <item>
       <title>如何集成maven和Spring boot的profile功能</title>
-      <link>/post/springboot-maven-profile/</link>
+      <link>https://quguang.wang/post/springboot-maven-profile/</link>
       <pubDate>Fri, 04 Jan 2019 23:05:13 +0800</pubDate>
       
-      <guid>/post/springboot-maven-profile/</guid>
+      <guid>https://quguang.wang/post/springboot-maven-profile/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;今天看 guns 项目的 application.properties 文件，发现了&lt;code&gt;spring.profiles.active = @profiles.active@&lt;/code&gt;的写法，查了好些资料终于搞明白了。原来是在集成maven和Spring boot的profile功能时用的，那么如何集成呢？&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -207,10 +147,10 @@
     
     <item>
       <title>Java Io</title>
-      <link>/post/java-io/</link>
+      <link>https://quguang.wang/post/java-io/</link>
       <pubDate>Thu, 27 Dec 2018 18:05:02 +0800</pubDate>
       
-      <guid>/post/java-io/</guid>
+      <guid>https://quguang.wang/post/java-io/</guid>
       <description>&lt;p&gt;Java 提供了哪些IO方式？NIO如何实现多路复用？&lt;/p&gt;
 
 &lt;p&gt;首先、传统的java.io包，它基于流模型实现，提供了，比如File抽象、输入输出流等。交互方式是同步、阻塞的方式。也就是说，在读取输入流或者写入输出流时，在写、读动作完成之前，线程会一直阻塞在那里，它们之间的调用时可靠的线性顺序。&lt;/p&gt;</description>
@@ -218,55 +158,55 @@
     
     <item>
       <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（下）</title>
-      <link>/post/geektime-jvm-how-execute-method-2/</link>
+      <link>https://quguang.wang/post/geektime-jvm-how-execute-method-2/</link>
       <pubDate>Wed, 26 Dec 2018 11:45:43 +0800</pubDate>
       
-      <guid>/post/geektime-jvm-how-execute-method-2/</guid>
+      <guid>https://quguang.wang/post/geektime-jvm-how-execute-method-2/</guid>
       <description>&lt;p&gt;《极客时间-深入拆解java虚拟机》笔记&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（上）</title>
-      <link>/post/geektime-jvm-how-execute-method-1/</link>
+      <link>https://quguang.wang/post/geektime-jvm-how-execute-method-1/</link>
       <pubDate>Tue, 25 Dec 2018 22:52:53 +0800</pubDate>
       
-      <guid>/post/geektime-jvm-how-execute-method-1/</guid>
+      <guid>https://quguang.wang/post/geektime-jvm-how-execute-method-1/</guid>
       <description>&lt;p&gt;JVM是如何执行方法调用的？（上）&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>理解GC日志</title>
-      <link>/post/jvm-understand-gc-log/</link>
+      <link>https://quguang.wang/post/jvm-understand-gc-log/</link>
       <pubDate>Mon, 24 Dec 2018 19:03:40 +0800</pubDate>
       
-      <guid>/post/jvm-understand-gc-log/</guid>
+      <guid>https://quguang.wang/post/jvm-understand-gc-log/</guid>
       <description>&lt;p&gt;理解GC日志，基于jdk1.7,一步步看懂GC日志&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JVM性能调优</title>
-      <link>/post/jvm-performance-optimization/</link>
+      <link>https://quguang.wang/post/jvm-performance-optimization/</link>
       <pubDate>Mon, 24 Dec 2018 18:48:04 +0800</pubDate>
       
-      <guid>/post/jvm-performance-optimization/</guid>
+      <guid>https://quguang.wang/post/jvm-performance-optimization/</guid>
       <description>&lt;p&gt;linux性能调优和年轻代大小选择和年老代大小的选择&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JVM 工具</title>
-      <link>/post/jvm-tools/</link>
+      <link>https://quguang.wang/post/jvm-tools/</link>
       <pubDate>Mon, 24 Dec 2018 18:08:25 +0800</pubDate>
       
-      <guid>/post/jvm-tools/</guid>
+      <guid>https://quguang.wang/post/jvm-tools/</guid>
       <description>&lt;p&gt;本文介绍了常用的JDK的命令行工具&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java虚拟机是如何加载Java类的?</title>
-      <link>/post/geektime-jvm-load-java-class/</link>
+      <link>https://quguang.wang/post/geektime-jvm-load-java-class/</link>
       <pubDate>Mon, 24 Dec 2018 15:46:28 +0800</pubDate>
       
-      <guid>/post/geektime-jvm-load-java-class/</guid>
+      <guid>https://quguang.wang/post/geektime-jvm-load-java-class/</guid>
       <description>&lt;p&gt;Java虚拟机是如何加载Java类的?&lt;/p&gt;
 
 &lt;p&gt;虚拟机规范并没有指明二进制字节流要从一个Class文件获取，或者说根本没有指明从哪里获取、怎样获取。这种开放使得Java在很多领域得到充分运用，例如：&lt;/p&gt;
@@ -283,10 +223,10 @@
     
     <item>
       <title>Java工程师成神之路（2018修订版）</title>
-      <link>/post/roadmap/</link>
+      <link>https://quguang.wang/post/roadmap/</link>
       <pubDate>Thu, 20 Dec 2018 11:12:42 +0800</pubDate>
       
-      <guid>/post/roadmap/</guid>
+      <guid>https://quguang.wang/post/roadmap/</guid>
       <description>&lt;p&gt;网罗了比较全面的java技术栈。&lt;/p&gt;
 
 &lt;p&gt;本文基于微信公众号文章基础上添加，原文链接：
@@ -295,19 +235,19 @@
     
     <item>
       <title>对象存活判断、垃圾收集算法和垃圾收集器</title>
-      <link>/post/geektime-jvm-garabage-collection/</link>
+      <link>https://quguang.wang/post/geektime-jvm-garabage-collection/</link>
       <pubDate>Thu, 20 Dec 2018 08:44:54 +0800</pubDate>
       
-      <guid>/post/geektime-jvm-garabage-collection/</guid>
+      <guid>https://quguang.wang/post/geektime-jvm-garabage-collection/</guid>
       <description>&lt;p&gt;全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>线程间通信</title>
-      <link>/post/thread-notify/</link>
+      <link>https://quguang.wang/post/thread-notify/</link>
       <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
       
-      <guid>/post/thread-notify/</guid>
+      <guid>https://quguang.wang/post/thread-notify/</guid>
       <description>&lt;p&gt;《java并发编程的艺术》-4.3线程间通信&lt;/p&gt;
 
 &lt;ul&gt;

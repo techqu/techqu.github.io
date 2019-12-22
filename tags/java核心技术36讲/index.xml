@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java核心技术36讲 on Quguang&#39;s Blog</title>
+    <link>https://quguang.wang/tags/java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF36%E8%AE%B2/</link>
+    <description>Recent content in Java核心技术36讲 on Quguang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 18 Sep 2019 18:59:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://quguang.wang/tags/java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF36%E8%AE%B2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java核心技术36讲-Java提供了哪些IO方式? NIO如何实现多路复用? </title>
+      <link>https://quguang.wang/post/geektime-java-36-01/</link>
+      <pubDate>Wed, 18 Sep 2019 18:59:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-36-01/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

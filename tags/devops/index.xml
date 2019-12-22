@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devops on Quguang&#39;s Blog</title>
+    <link>https://quguang.wang/tags/devops/</link>
+    <description>Recent content in devops on Quguang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Jul 2019 11:50:35 +0800</lastBuildDate>
+    
+	<atom:link href="https://quguang.wang/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>基于Kubernetes/Jenkins/Harbor/Sonarqube搭建微服务CICD系统</title>
+      <link>https://quguang.wang/post/k8s-jenkins-docker-ci/</link>
+      <pubDate>Tue, 02 Jul 2019 11:50:35 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/k8s-jenkins-docker-ci/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;项目说明&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;14个JAVA spring cloud 微服务项目&lt;/p&gt;
+
+&lt;p&gt;5个Node项目&lt;/p&gt;
+
+&lt;p&gt;1个Node项目VUE生成静态页面做前端+nginx&lt;/p&gt;
+
+&lt;p&gt;pgsql、redis、rabbitmq、emqx&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《持续交付》</title>
+      <link>https://quguang.wang/post/geektime-ci-cd-introduce/</link>
+      <pubDate>Fri, 19 Apr 2019 15:23:49 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-ci-cd-introduce/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

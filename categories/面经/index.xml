@@ -1,45 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>面经 on quguang&#39;s blog</title>
-    <link>/categories/%E9%9D%A2%E7%BB%8F/</link>
-    <description>Recent content in 面经 on quguang&#39;s blog</description>
+    <title>面经 on Huabing Blog</title>
+    <link>https://zhaohuabing.com/categories/%E9%9D%A2%E7%BB%8F/</link>
+    <description>Recent content in 面经 on Huabing Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Aug 2019 10:06:03 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 13 Feb 2019 08:30:08 +0800</lastBuildDate>
     
-	<atom:link href="/categories/%E9%9D%A2%E7%BB%8F/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaohuabing.com/categories/%E9%9D%A2%E7%BB%8F/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>我用50W&#43;年薪的独角兽offer，犒劳自己一年的卧薪尝胆！不服输，你就不会输</title>
-      <link>/post/interview-exp-from-wx-01/</link>
-      <pubDate>Thu, 22 Aug 2019 10:06:03 +0800</pubDate>
-      
-      <guid>/post/interview-exp-from-wx-01/</guid>
-      <description>&lt;p&gt;本文转载自公众号：石杉的架构笔记&lt;/p&gt;
-
-&lt;p&gt;写在前面：&lt;/p&gt;
-
-&lt;p&gt;首先做个自我介绍，楼主男，渣本毕业，坐标帝都，差 4 个月 4 年工作经验。本次面试了几家独角兽和一线大厂，都拿了offer，几乎100%的命中率。&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>最新拼多多技术部面试题：幻读&#43;分段锁&#43;死锁&#43;Spring Cloud&#43;秒杀</title>
-      <link>/post/interview-exp-pdd/</link>
+      <link>https://zhaohuabing.com/post/interview-exp-pdd/</link>
       <pubDate>Wed, 13 Feb 2019 08:30:08 +0800</pubDate>
       
-      <guid>/post/interview-exp-pdd/</guid>
+      <guid>https://zhaohuabing.com/post/interview-exp-pdd/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>5年经验Java程序员帝都面试20天，拿下数个offer，最终选择了百度</title>
-      <link>/post/interview-exp-baidu/</link>
-      <pubDate>Wed, 13 Feb 2019 07:56:41 +0800</pubDate>
-      
-      <guid>/post/interview-exp-baidu/</guid>
-      <description>&lt;p&gt;从事Java开发也有5年经验了，7月初来到帝都，开启面试经历，前后20天左右，主面互联网公司，一二线大公司或者是融资中的创业公司都面试过，拿了一些offer，其中包括奇虎360，最后综合决定还是去百度了。&lt;/p&gt;</description>
     </item>
     
   </channel>

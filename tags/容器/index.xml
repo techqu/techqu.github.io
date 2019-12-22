@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>容器 on quguang&#39;s blog</title>
-    <link>/tags/%E5%AE%B9%E5%99%A8/</link>
-    <description>Recent content in 容器 on quguang&#39;s blog</description>
+    <title>容器 on Quguang&#39;s Blog</title>
+    <link>https://quguang.wang/tags/%E5%AE%B9%E5%99%A8/</link>
+    <description>Recent content in 容器 on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Jan 2019 15:12:03 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Nov 2019 15:12:03 +0800</lastBuildDate>
     
-	<atom:link href="/tags/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://quguang.wang/tags/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>《深入剖析Kubernetes》-k8s网络</title>
+      <link>https://quguang.wang/post/geektime-kubernetes-docker-introduction.1/</link>
+      <pubDate>Wed, 27 Nov 2019 15:12:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-kubernetes-docker-introduction.1/</guid>
+      <description>&lt;p&gt;Kubernetes 的网络模型假定了所有 Pod 都在一个可以直接连通的扁平的网络空间中，这在 GCE 里面是现成的网络模型，Kubernetes 假定这个网络已经存在。而在私有云里搭建 Kubernetes 集群，就不能假定这个网络已经存在。我们需要自己实现这个网络假设，将不同节点的 Docker 容器之间的互相访问先打通，然后运行 Kubernetes。比如使用 Flannel。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>《深入剖析Kubernetes》-Docker的实现原理</title>
-      <link>/post/docker-introduction/</link>
+      <link>https://quguang.wang/post/geektime-kubernetes-docker-introduction/</link>
       <pubDate>Thu, 17 Jan 2019 15:12:03 +0800</pubDate>
       
-      <guid>/post/docker-introduction/</guid>
+      <guid>https://quguang.wang/post/geektime-kubernetes-docker-introduction/</guid>
       <description>&lt;p&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”&lt;/p&gt;
 
 &lt;p&gt;Docker容器具有以下3个特点：&lt;/p&gt;

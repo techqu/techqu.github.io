@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>缓存 on Quguang&#39;s Blog</title>
+    <link>https://quguang.wang/tags/%E7%BC%93%E5%AD%98/</link>
+    <description>Recent content in 缓存 on Quguang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 May 2019 18:11:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://quguang.wang/tags/%E7%BC%93%E5%AD%98/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java面试-高并发-redis的持久化</title>
+      <link>https://quguang.wang/post/java-interview-cache06/</link>
+      <pubDate>Thu, 16 May 2019 18:11:25 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache06/</guid>
+      <description>&lt;p&gt;redis的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-如何保证Redis的高并发和高可用</title>
+      <link>https://quguang.wang/post/java-interview-cache05/</link>
+      <pubDate>Thu, 16 May 2019 17:48:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache05/</guid>
+      <description>&lt;p&gt;面试题 如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-redis的过期策略</title>
+      <link>https://quguang.wang/post/java-interview-cache04/</link>
+      <pubDate>Thu, 16 May 2019 17:47:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache04/</guid>
+      <description>&lt;p&gt;redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-redis 数据类型</title>
+      <link>https://quguang.wang/post/java-interview-cache03/</link>
+      <pubDate>Thu, 16 May 2019 17:38:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache03/</guid>
+      <description>&lt;p&gt;redis都有哪些数据类型？分别在哪些场景下使用比较合适？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-为什么redis是单线程的但是还可以支撑高并发</title>
+      <link>https://quguang.wang/post/java-interview-cache02/</link>
+      <pubDate>Thu, 16 May 2019 17:28:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache02/</guid>
+      <description>&lt;p&gt;redis和memcached有什么区别？redis的线程模型是什么？为什么单线程的redis比多线程的memcached效率要高得多（为什么redis是单线程的但是还可以支撑高并发）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-缓存是如何使用的？</title>
+      <link>https://quguang.wang/post/java-interview-cache01/</link>
+      <pubDate>Thu, 16 May 2019 17:18:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache01/</guid>
+      <description>&lt;p&gt;在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

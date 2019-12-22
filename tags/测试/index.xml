@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>测试 on Quguang&#39;s Blog</title>
+    <link>https://quguang.wang/tags/%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 测试 on Quguang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 31 Jan 2019 13:39:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://quguang.wang/tags/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>《软件测试52讲》-谈谈测试</title>
+      <link>https://quguang.wang/post/test-about/</link>
+      <pubDate>Thu, 31 Jan 2019 13:39:29 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/test-about/</guid>
+      <description>&lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

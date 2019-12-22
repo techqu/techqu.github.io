@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>软件工程之美 on Quguang&#39;s Blog</title>
+    <link>https://quguang.wang/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B9%8B%E7%BE%8E/</link>
+    <description>Recent content in 软件工程之美 on Quguang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Sep 2019 11:11:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://quguang.wang/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B9%8B%E7%BE%8E/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>作为程序员，你应该有产品意识</title>
+      <link>https://quguang.wang/post/geektime-software-engineering-02/</link>
+      <pubDate>Mon, 09 Sep 2019 11:11:31 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-software-engineering-02/</guid>
+      <description>&lt;p&gt;和领导老贾谈职业规划的时候，他提出：我作为程序员，也要重视下产品方面的能力。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>软件工程之美-常见的软件开发模型(Software Development Model)</title>
+      <link>https://quguang.wang/post/geektime-software-engineering-01/</link>
+      <pubDate>Fri, 06 Sep 2019 10:37:18 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-software-engineering-01/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

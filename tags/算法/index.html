@@ -1,347 +1,794 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>算法 - quguang&#39;s blog</title>
-	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
-	<meta property="og:title" content="算法" />
-<meta property="og:description" content="quguang&#39;s Personal blog about everything" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/tags/%E7%AE%97%E6%B3%95/" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="og:updated_time" content="2019-04-12T17:04:30+08:00" />
+    
+    <meta property="og:site_name" content="Quguang&#39;s Blog">
+    <meta property="og:type" content="article">
 
-	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="算法"/>
-<meta name="twitter:description" content="quguang&#39;s Personal blog about everything"/>
+    
+    <meta property="og:image" content="https://quguang.wang/img/home-bg-jeep.jpg">
+    <meta property="twitter:image" content="https://quguang.wang/img/home-bg-jeep.jpg" />
+    
 
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/tags/%E7%AE%97%E6%B3%95/index.xml" title="quguang's blog">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/douban.css">
-	<link rel="shortcut icon" href="/favicon.ico">
-		
+    
+    <meta name="title" content="算法" />
+    <meta property="og:title" content="算法" />
+    <meta property="twitter:title" content="算法" />
+    
+
+    
+    <meta name="description" content="瞿广，程序员, 开源爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="瞿广，程序员, 开源爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="瞿广，程序员, 开源爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="瞿广, quguang, , 瞿广的网络日志, 瞿广的博客, quguang Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>算法-瞿广的博客 | quguang Blog</title>
+
+    <link rel="canonical" href="/tags/%E7%AE%97%E6%B3%95/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
 </head>
-<body class="body">
-	<div class="container container--outer">
-		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="quguang&#39;s blog" rel="home">
-				<div class="logo__title">quguang&#39;s blog</div>
-				<div class="logo__tagline">不动笔墨不读书</div>
-			</a>
-		</div>
-		
-<nav class="menu">
-	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
-		<span class="menu__btn-title" tabindex="-1">Menu</span>
-	</button>
-	<ul class="menu__list">
-		<li class="menu__item">
-			<a class="menu__link" href="/post/2018-2019/">2018-2019</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/about/">about me</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/post/learn-method/">learn method</a>
-		</li>
-	</ul>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Quguang&#39;s Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/"></a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/math">math</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/read">read</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/tech">tech</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/books/">BOOKS</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
 </nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-	</div>
-<link href="https://cdn.bootcss.com/highlight.js/9.15.10/styles/dracula.min.css" rel="stylesheet">
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
 
 
+
+<header class="intro-header" style="background-image: url('/img/home-bg-jeep.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Quguang&#39;s Blog </h1>
+                    
+		    <span class="subheading">路在脚下，心向远方</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/django.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/vim.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/yaml.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/gradle.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/tex.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/shell.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/http.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-		<div class="wrapper flex">
-			<div class="primary">
-			
-<main class="main list" role="main">
-	<header class="main__header">
-		<h1 class="main__title">算法</h1>
-	</header><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/data-structure-red-black-tree/" rel="bookmark">
-			《数据结构与算法之美》-红黑树
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-04-12T17:04:30">April 12, 2019</time>
-</div>
 
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/tech" rel="category">Tech</a>, <a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e7%ae%97%e6%b3%95" rel="category">数据结构与算法</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>很多书籍里，但凡讲到平衡二叉查找树，就会拿红黑树作为例子。不仅如此，如果你有一定的开发经验，你会发现，在工程中，很多用到平衡二叉查找树的地方都会用红黑树。你有没有想过，</p>
+
+
+  
+<div class="container">
+    <div class="row">
+        
+        
+   	    <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container
+        ">
+            
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/data-structure-red-black-tree/">
+        <h2 class="post-title">
+            《数据结构与算法之美》-红黑树
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>很多书籍里，但凡讲到平衡二叉查找树，就会拿红黑树作为例子。不仅如此，如果你有一定的开发经验，你会发现，在工程中，很多用到平衡二叉查找树的地方都会用红黑树。你有没有想过，</p>
 
 <p>Java TreeMap实现了SortedMap接口，也就是说会按照key的大小顺序对Map中的元素进行排序，key大小的评判可以通过其本身的自然顺序（natural ordering），也可以通过构造时传入的比较器（Comparator）。</p>
 
 <p>TreeMap底层通过红黑树（Red-Black tree）实现，也就意味着containsKey(), get(), put(), remove()都有着log(n)的时间复杂度。其具体算法实现参照了《算法导论》。</p>
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/data-structure-and-algorithm.0/" rel="bookmark">
-			《数据结构与算法之美》-基础篇(1)
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-11-18T15:03:48">November 18, 2018</time>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Friday, April 12, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/data-structure-and-algorithm.0/">
+        <h2 class="post-title">
+            《数据结构与算法之美》-基础篇(1)
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by      &#34;瞿广&#34; Sunday, November 18, 2018
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/data-structure-and-algorithm.1/">
+        <h2 class="post-title">
+            《数据结构与算法之美》-基础篇(2)
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by      &#34;瞿广&#34; Sunday, November 18, 2018
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/data-structure-and-algorithm.2/">
+        <h2 class="post-title">
+            《数据结构与算法之美》-高级篇
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by      &#34;瞿广&#34; Sunday, November 18, 2018
+    
+    
+    </p>
+
+</div>
+<hr>
+
+
+            
+
+
+
+       	</div>
+        
+
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+             
+            
+                
+                    <a href="/tags/devops" title="devops">
+                        devops
+                    </a>
+                
+            
+                
+                    <a href="/tags/docker" title="docker">
+                        docker
+                    </a>
+                
+            
+                
+                    <a href="/tags/domain-driven-design" title="domain-driven-design">
+                        domain-driven-design
+                    </a>
+                
+            
+                
+                    <a href="/tags/drools" title="drools">
+                        drools
+                    </a>
+                
+            
+                
+                    <a href="/tags/dubbo" title="dubbo">
+                        dubbo
+                    </a>
+                
+            
+                
+                    <a href="/tags/java" title="java">
+                        java
+                    </a>
+                
+            
+                
+                    <a href="/tags/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98" title="java并发实战">
+                        java并发实战
+                    </a>
+                
+            
+                
+                    <a href="/tags/java%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%AE%9E%E6%88%98" title="java性能调优实战">
+                        java性能调优实战
+                    </a>
+                
+            
+                
+            
+                
+                    <a href="/tags/jvm" title="jvm">
+                        jvm
+                    </a>
+                
+            
+                
+                    <a href="/tags/kubernetes" title="kubernetes">
+                        kubernetes
+                    </a>
+                
+            
+                
+                    <a href="/tags/linux" title="linux">
+                        linux
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/mq" title="mq">
+                        mq
+                    </a>
+                
+            
+                
+                    <a href="/tags/mysql" title="mysql">
+                        mysql
+                    </a>
+                
+            
+                
+            
+                
+                    <a href="/tags/redis" title="redis">
+                        redis
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/spring" title="spring">
+                        spring
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/%E4%B9%A6%E5%8D%95" title="书单">
+                        书单
+                    </a>
+                
+            
+                
+            
+                
+                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F" title="分布式">
+                        分布式
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/%E5%AE%B9%E5%99%A8" title="容器">
+                        容器
+                    </a>
+                
+            
+                
+                    <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8" title="工具使用">
+                        工具使用
+                    </a>
+                
+            
+                
+                    <a href="/tags/%E5%B9%B6%E5%8F%91" title="并发">
+                        并发
+                    </a>
+                
+            
+                
+            
+                
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" title="数据结构">
+                        数据结构
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97" title="消息队列">
+                        消息队列
+                    </a>
+                
+            
+                
+                    <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E9%AB%98%E6%89%8B%E8%AF%BE" title="消息队列高手课">
+                        消息队列高手课
+                    </a>
+                
+            
+                
+            
+                
+                    <a href="/tags/%E7%AE%97%E6%B3%95" title="算法">
+                        算法
+                    </a>
+                
+            
+                
+                    <a href="/tags/%E7%BC%93%E5%AD%98" title="缓存">
+                        缓存
+                    </a>
+                
+            
+                
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE" title="网络协议">
+                        网络协议
+                    </a>
+                
+            
+                
+            
+                
+                    <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA" title="虚拟机">
+                        虚拟机
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE" title="趣谈网络协议">
+                        趣谈网络协议
+                    </a>
+                
+            
+                
+                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B9%8B%E7%BE%8E" title="软件工程之美">
+                        软件工程之美
+                    </a>
+                
+            
+                
+                    <a href="/tags/%E9%80%8F%E8%A7%86http%E5%8D%8F%E8%AE%AE" title="透视http协议">
+                        透视http协议
+                    </a>
+                
+            
+                
+            
+                
+            
+                
+                    <a href="/tags/%E9%9D%A2%E8%AF%95" title="面试">
+                        面试
+                    </a>
+                
+            
+        </div>
+    </section>
+    
+
+    
+	
+    <section class="visible-md visible-lg">
+	<hr><h5><a href="/top/about">ABOUT ME</a></h5>
+        <div class="short-about">
+            
+            <a href="/top/about">
+               <img src="/img/avatar.jpg" alt="avatar" style="cursor: pointer" />
+            </a>
+            
+            
+                <p>Software Developer, Open Source Enthusiast and Life Adventurer</p>
+            
+           
+           <ul class="list-inline"> 
+               
+               <li>
+                   <a href='/tags/%E7%AE%97%E6%B3%95/index.xml' rel="alternate" type="application/rss+xml" title="Quguang&#39;s Blog" >
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="/your%20wechat%20qr%20code%20image">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               <li>
+                   <a target="_blank" href="https://github.com/yourgithub">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+               
+               <li>
+                   <a target="_blank" href="https://www.linkedin.com/in/yourlinkedinid">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               
+               
+               
+                    <li>
+                        <a target="_blank" href="https://stackoverflow.com/users/yourstackoverflowid">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+            
+            
+            
+               
+                </ul>
+            </div>
+    </section>
+	
+    
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+            
+            <li><a target="_blank" href="https://zhaozhihan.com">Linda的博客</a></li>
+            
+        </ul>
+    </section>
+    
+
+    
+    
 </div>
 
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/tech" rel="category">Tech</a>, <a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e7%ae%97%e6%b3%95" rel="category">数据结构与算法</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>本文是极客时间中数据结构与算法课程的笔记，包含数据结构和基础算法</p>
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/data-structure-and-algorithm.1/" rel="bookmark">
-			《数据结构与算法之美》-基础篇(2)
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-11-18T15:03:48">November 18, 2018</time>
 </div>
 
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/tech" rel="category">Tech</a>, <a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e7%ae%97%e6%b3%95" rel="category">数据结构与算法</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景</p>
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/data-structure-and-algorithm.2/" rel="bookmark">
-			《数据结构与算法之美》-高级篇
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-11-18T15:03:48">November 18, 2018</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/tech" rel="category">Tech</a>, <a class="meta__link" href="/categories/geektime" rel="category">geektime</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e7%ae%97%e6%b3%95" rel="category">数据结构与算法</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景</p>
-	</div>
-</article>
-</main>
 
 
-			</div>
-			
-<aside class="sidebar sidebar--left">
-<div class="widget-recent widget">
-	<h4 class="widget__title">Recent Posts</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/post/reading-note-%E4%B8%AD%E5%9B%BD%E8%BF%91%E4%BB%A3%E5%8F%B2-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">《中国近代史》-蒋廷黻-读书笔记</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/geektime-java-36-01/">Java核心技术36讲-Java提供了哪些IO方式? NIO如何实现多路复用? </a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/geektime-tomcat-netty-03/">Tomcat&amp;Netty-Tomcat系统架构(下):聊聊多层容器的设计</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/geektime-tomcat-netty-02/">Tomcat Netty-Tomcat系统架构(上): 连接器是如何设计的?</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/k8s-install/">K8s Install</a></li>
-		</ul>
-	</div>
-</div>
-<div class="widget-categories widget">
-	<h4 class="widget__title">Categories</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/categories/"></a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/collection">Collection</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/devops">Devops</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/doc">Doc</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/docker">Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/domain-driven-design">Domain driven design</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/drools">Drools</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/dubbo">Dubbo</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/geektime">Geektime</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/io">Io</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/java">Java</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/java%e5%b9%b6%e5%8f%91%e5%ae%9e%e6%88%98">Java并发实战</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/java%e6%80%a7%e8%83%bd%e8%b0%83%e4%bc%98%e5%ae%9e%e6%88%98">Java性能调优实战</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/java%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af36%e8%ae%b2">Java核心技术36讲</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/jvm">Jvm</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/kubernetes">Kubernetes</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/linux">Linux</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/math">Math</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/mongo">Mongo</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/mq">Mq</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/mysql">Mysql</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/python">Python</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/redis">Redis</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/saas">Saas</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/service-mesh">Service mesh</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/spring">Spring</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/tech">Tech</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/transaction">Transaction</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e4%ba%ba%e7%89%a9%e4%bc%a0%e8%ae%b0">人物传记</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e5%88%86%e5%b8%83%e5%bc%8f">分布式</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e5%8e%86%e5%8f%b2">历史</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e5%ad%a6%e4%b9%a0%e6%96%b9%e6%b3%95">学习方法</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e5%b7%a5%e5%85%b7%e4%bd%bf%e7%94%a8">工具使用</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e5%bf%83%e7%90%86%e5%ad%a6">心理学</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e4%b8%8e%e7%ae%97%e6%b3%95">数据结构与算法</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e6%9d%82%e8%b0%88">杂谈</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e6%af%95%e7%94%9f%e7%9b%ae%e6%a0%87">毕生目标</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e6%b5%8b%e8%af%95">测试</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97">消息队列</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e7%bc%93%e5%ad%98">缓存</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e7%bd%91%e7%bb%9c%e5%8d%8f%e8%ae%ae">网络协议</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e8%80%83%e7%a0%94">考研</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%e5%8e%9f%e7%90%86">计算机组成原理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f">设计模式</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0">读书笔记</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e8%b6%a3%e8%b0%88%e7%bd%91%e7%bb%9c%e5%8d%8f%e8%ae%ae">趣谈网络协议</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e8%bd%af%e4%bb%b6%e5%b7%a5%e7%a8%8b%e4%b9%8b%e7%be%8e">软件工程之美</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e9%80%8f%e8%a7%86http%e5%8d%8f%e8%ae%ae">透视http协议</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9d%a2%e7%bb%8f">面经</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/%e9%9d%a2%e8%af%95">面试</a></li>
-		</ul>
-	</div>
-</div>
-<div class="widget-taglist widget">
-	<h4 class="widget__title">Tags</h4>
-	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/doc" title="Doc">Doc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker" title="Docker">Docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/java" title="Java">Java</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jvm" title="Jvm">Jvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/maven" title="Maven">Maven</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/servlet" title="Servlet">Servlet</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sort" title="Sort">Sort</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/springmvc" title="Springmvc">Springmvc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/synchronized" title="Synchronized">Synchronized</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/tomcat" title="Tomcat">Tomcat</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/volatile" title="Volatile">Volatile</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e4%b9%a6%e5%8d%95" title="书单">书单</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%a4%9a%e7%ba%bf%e7%a8%8b" title="多线程">多线程</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%ae%b9%e5%99%a8" title="容器">容器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%b9%b6%e5%8f%91" title="并发">并发</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" title="数据结构">数据结构</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%b7%b1%e5%85%a5%e6%8b%86%e8%a7%a3java%e8%99%9a%e6%8b%9f%e6%9c%ba" title="深入拆解java虚拟机">深入拆解java虚拟机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%ae%97%e6%b3%95" title="算法">算法</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%99%9a%e6%8b%9f%e6%9c%ba" title="虚拟机">虚拟机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%94%81" title="锁">锁</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%9d%a2%e8%af%95" title="面试">面试</a>
-	</div>
-</div>
-<div class="widget-social widget">
-	<h4 class="widget-social__title widget__title">Social</h4>
-	<div class="widget-social__content widget__content">
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Facebook" rel="noopener noreferrer" href="https://facebook.com/username" target="_blank">
-				<svg class="widget-social__link-icon icon icon-facebook" width="24" height="24" viewBox="0 0 352 352"><path d="m0 32v288c0 17.5 14.5 32 32 32h288c17.5 0 32-14.5 32-32v-288c0-17.5-14.5-32-32-32h-288c-17.5 0-32 14.5-32 32zm320 0v288h-83v-108h41.5l6-48h-47.5v-31c0-14 3.5-23.5 23.5-23.5h26v-43.5c-4.4-.6-19.8-1.5-37.5-1.5-36.9 0-62 22.2-62 63.5v36h-42v48h42v108h-155v-288z"/></svg>
-				<span>Facebook</span>
-			</a>
-		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/quguang1011" target="_blank">
-				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
-				<span>Twitter</span>
-			</a>
-		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Instagram" rel="noopener noreferrer" href="https://www.instagram.com/username" target="_blank">
-				<svg class="widget-social__link-icon icon icon-instagram" width="24" height="24" viewBox="0 0 256 256"><circle cx="193" cy="59" r="15"/><path fill-rule="evenodd" d="M101 0h54c41 0 58.4 3.9 74.5 17C256.2 37.5 256 74.8 256 97.7v60c0 26.7 0 60.4-26.5 81.4-16 13.4-33.5 16.9-74.5 16.9h-54c-41 0-57.5-3.5-74.5-16.9C1 218.9.5 186.3.1 160.5L0 155V97.7c0-23-.2-60.2 26.5-80.7C45 2 60 0 101 0zm4.9 23h44.3c45.8 0 58.3 3.5 70.3 17.5 11.8 13.2 12 30.1 12.5 62.9V156c.2 20.8.3 45.8-12.5 59.5-12 14-24.5 17.5-70.3 17.5h-44.3c-45.9 0-57.3-3.5-70.4-17.5-12.2-13-12.3-36.5-12.4-56.7v-55.6c.4-32.6.7-49.6 12.4-62.7C48 26.5 60 23 105.9 23zm19.6 144.5a42 42 0 1 0 0-84 42 42 0 0 0 0 84zm0 22.5a64.5 64.5 0 1 0 0-129 64.5 64.5 0 0 0 0 129z"/></svg>
-				<span>Instagram</span>
-			</a>
-		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="LinkedIn" rel="noopener noreferrer" href="https://linkedin.com/in/%e5%b9%bf-%e7%9e%bf-5245b7111" target="_blank">
-				<svg class="widget-social__link-icon icon icon-linkedin" width="24" height="24" viewBox="0 0 352 352"><path d="M0,40v272c0,21.9,18.1,40,40,40h272c21.9,0,40-18.1,40-40V40c0-21.9-18.1-40-40-40H40C18.1,0,0,18.1,0,40z M312,32 c4.6,0,8,3.4,8,8v272c0,4.6-3.4,8-8,8H40c-4.6,0-8-3.4-8-8V40c0-4.6,3.4-8,8-8H312z M59.5,87c0,15.2,12.3,27.5,27.5,27.5 c15.2,0,27.5-12.3,27.5-27.5c0-15.2-12.3-27.5-27.5-27.5C71.8,59.5,59.5,71.8,59.5,87z M187,157h-1v-21h-45v152h47v-75 c0-19.8,3.9-39,28.5-39c24.2,0,24.5,22.4,24.5,40v74h47v-83.5c0-40.9-8.7-72-56.5-72C208.5,132.5,193.3,145.1,187,157z M64,288h47.5 V136H64V288z"/></svg>
-				<span>LinkedIn</span>
-			</a>
-		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Telegram" rel="noopener noreferrer" href="https://t.me/username" target="_blank">
-				<svg class="widget-social__link-icon icon icon-telegram" width="24" height="24" viewBox="0 0 132 110"><path fill="#ddd" d="M50 103c-4 0-3-1-5-5L34 60l88-52"/><path fill="#aaa" d="M50 103c3 0 4-1 6-3l16-16-20-12"/><path fill="#fff" d="M52 72l48 36c6 3 10 2 11-5l20-93c2-8-3-11-8-9L7 45c-8 4-8 8-1 10l29 9 69-43c3-2 6-1 4 1"/></svg>
-				<span>Telegram</span>
-			</a>
-		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/techqu" target="_blank">
-				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
-				<span>GitHub</span>
-			</a>
-		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="GitLab" rel="noopener noreferrer" href="https://gitlab.com/username" target="_blank">
-				<svg class="widget-social__link-icon icon icon-gitlab" width="24" height="24" viewBox="0 0 265 265"><path d="M128.075 236.075l47.104-144.97H80.97l47.104 144.97z M14.956 91.104L.642 135.16a9.752 9.752 0 0 0 3.542 10.903l123.891 90.012-113.12-144.97z M14.956 91.105H80.97L52.601 3.79c-1.46-4.493-7.816-4.492-9.275 0l-28.37 87.315z M241.194 91.104l14.314 44.056a9.752 9.752 0 0 1-3.543 10.903l-123.89 90.012 113.119-144.97z M241.194 91.105h-66.015l28.37-87.315c1.46-4.493 7.816-4.492 9.275 0l28.37 87.315z"/></svg>
-				<span>GitLab</span>
-			</a>
-		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Bitbucket" rel="noopener noreferrer" href="https://bitbucket.org/username" target="_blank">
-				<svg class="widget-social__link-icon icon icon-bitbucket" width="24" height="24" viewBox="0 0 256 231"><path d="M8.308 0A8.202 8.202 0 0 0 .106 9.516l34.819 211.373a11.155 11.155 0 0 0 10.909 9.31h167.04a8.202 8.202 0 0 0 8.201-6.89l34.82-213.752a8.202 8.202 0 0 0-8.203-9.514L8.308 0zm146.616 152.768h-53.315l-14.436-75.42h80.67l-12.919 75.42z"/></svg>
-				<span>Bitbucket</span>
-			</a>
-		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Email" href="mailto:quguang1011@gmail.com">
-				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
-				<span>quguang1011@gmail.com</span>
-			</a>
-		</div>
-	</div>
-</div>
-</aside>
-		</div>
-		<footer class="footer">
-	<div class="container footer__container flex">
-		
-		<div class="footer__copyright">
-			&copy; 2019 quguang&#39;s blog.
-			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
-		</div>
-	</div>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='/tags/%E7%AE%97%E6%B3%95/index.xml' rel="alternate" type="application/rss+xml" title="Quguang&#39;s Blog" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:youremail@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    <li>
+                        <a target="_blank" href="/your%20wechat%20qr%20code%20image">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/yourgithub">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/yourlinkedinid">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://stackoverflow.com/users/yourstackoverflowid">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+            
+                    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Quguang&#39;s Blog 2019
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
 </footer>
-	</div>
-<script async defer src="/js/menu.js"></script>
-<script src="/js/douban.js"></script></body>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
 </html>
