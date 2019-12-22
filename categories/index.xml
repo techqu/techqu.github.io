@@ -6,26 +6,26 @@
     <description>Recent content in Categories on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Oct 2019 18:22:22 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Nov 2019 15:12:03 +0800</lastBuildDate>
     
 	<atom:link href="https://quguang.wang/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>read</title>
-      <link>https://quguang.wang/categories/read/</link>
-      <pubDate>Tue, 22 Oct 2019 18:22:22 +0800</pubDate>
+      <title>Tech</title>
+      <link>https://quguang.wang/categories/tech/</link>
+      <pubDate>Wed, 27 Nov 2019 15:12:03 +0800</pubDate>
       
-      <guid>https://quguang.wang/categories/read/</guid>
+      <guid>https://quguang.wang/categories/tech/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Tech</title>
-      <link>https://quguang.wang/categories/tech/</link>
-      <pubDate>Sun, 04 Aug 2019 15:32:03 +0800</pubDate>
+      <title>note</title>
+      <link>https://quguang.wang/categories/note/</link>
+      <pubDate>Tue, 22 Oct 2019 18:22:22 +0800</pubDate>
       
-      <guid>https://quguang.wang/categories/tech/</guid>
+      <guid>https://quguang.wang/categories/note/</guid>
       <description></description>
     </item>
     
@@ -35,6 +35,15 @@
       <pubDate>Wed, 10 Jul 2019 18:58:15 +0800</pubDate>
       
       <guid>https://quguang.wang/categories/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>life</title>
+      <link>https://quguang.wang/categories/life/</link>
+      <pubDate>Sat, 06 Apr 2019 10:22:26 +0800</pubDate>
+      
+      <guid>https://quguang.wang/categories/life/</guid>
       <description></description>
     </item>
     

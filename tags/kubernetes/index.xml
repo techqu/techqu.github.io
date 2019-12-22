@@ -12,12 +12,29 @@
     
     
     <item>
-      <title>K8s Install</title>
+      <title>kubernetes Install</title>
       <link>https://quguang.wang/post/k8s-install/</link>
       <pubDate>Sun, 15 Sep 2019 10:45:17 +0800</pubDate>
       
       <guid>https://quguang.wang/post/k8s-install/</guid>
       <description>&lt;p&gt;公司服务器上的 k8s 集群不给自己玩了，所以打算在本地mac 上装 kubernestes 集群 ，记录下使用 docker 的 mac 客户端 安装 kubernetets 的过程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于Kubernetes/Jenkins/Harbor/Sonarqube搭建微服务CICD系统</title>
+      <link>https://quguang.wang/post/k8s-jenkins-docker-ci/</link>
+      <pubDate>Tue, 02 Jul 2019 11:50:35 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/k8s-jenkins-docker-ci/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;项目说明&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;14个JAVA spring cloud 微服务项目&lt;/p&gt;
+
+&lt;p&gt;5个Node项目&lt;/p&gt;
+
+&lt;p&gt;1个Node项目VUE生成静态页面做前端+nginx&lt;/p&gt;
+
+&lt;p&gt;pgsql、redis、rabbitmq、emqx&lt;/p&gt;</description>
     </item>
     
     <item>

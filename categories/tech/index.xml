@@ -6,10 +6,298 @@
     <description>Recent content in Tech on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Aug 2019 15:32:03 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Nov 2019 15:12:03 +0800</lastBuildDate>
     
 	<atom:link href="https://quguang.wang/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《深入剖析Kubernetes》-k8s网络</title>
+      <link>https://quguang.wang/post/geektime-kubernetes-docker-introduction.1/</link>
+      <pubDate>Wed, 27 Nov 2019 15:12:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-kubernetes-docker-introduction.1/</guid>
+      <description>&lt;p&gt;Kubernetes 的网络模型假定了所有 Pod 都在一个可以直接连通的扁平的网络空间中，这在 GCE 里面是现成的网络模型，Kubernetes 假定这个网络已经存在。而在私有云里搭建 Kubernetes 集群，就不能假定这个网络已经存在。我们需要自己实现这个网络假设，将不同节点的 Docker 容器之间的互相访问先打通，然后运行 Kubernetes。比如使用 Flannel。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>读书笔记-全球通史</title>
+      <link>https://quguang.wang/post/reading-note-%E5%85%A8%E7%90%83%E9%80%9A%E5%8F%B2/</link>
+      <pubDate>Sun, 10 Nov 2019 17:44:38 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/reading-note-%E5%85%A8%E7%90%83%E9%80%9A%E5%8F%B2/</guid>
+      <description>&lt;p&gt;贯穿全世界的历史。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Reading Note 中国大历史</title>
+      <link>https://quguang.wang/post/reading-note-%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%8E%86%E5%8F%B2/</link>
+      <pubDate>Sun, 10 Nov 2019 16:36:40 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/reading-note-%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%8E%86%E5%8F%B2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>消息队列高手课-基础篇-01</title>
+      <link>https://quguang.wang/post/geektime-mq-01/</link>
+      <pubDate>Tue, 22 Oct 2019 15:05:43 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-mq-01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>消息队列高手课-基础篇-02</title>
+      <link>https://quguang.wang/post/geektime-mq-02/</link>
+      <pubDate>Tue, 22 Oct 2019 15:05:43 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-mq-02/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java核心技术36讲-Java提供了哪些IO方式? NIO如何实现多路复用? </title>
+      <link>https://quguang.wang/post/geektime-java-36-01/</link>
+      <pubDate>Wed, 18 Sep 2019 18:59:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-36-01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tomcat&amp;Netty-Tomcat系统架构(下):聊聊多层容器的设计</title>
+      <link>https://quguang.wang/post/geektime-tomcat-netty-03/</link>
+      <pubDate>Tue, 17 Sep 2019 16:19:34 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-tomcat-netty-03/</guid>
+      <description>&lt;p&gt;专栏上一期我们学完了连接器的设计，今天我们一起来看一下Tomcat的容器设计。先复习一下，上期我讲 到了Tomcat有两个核心组件:&lt;strong&gt;连接器和容器&lt;/strong&gt;，其中连接器负责外部交流，容器负责内部处理。具体来说就是&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;连接器处理Socket通信和应用层协议的解析，得到Servlet请求;&lt;/li&gt;
+&lt;li&gt;而容器则负责处理Servlet请求。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tomcat Netty-Tomcat系统架构(上): 连接器是如何设计的?</title>
+      <link>https://quguang.wang/post/geektime-tomcat-netty-02/</link>
+      <pubDate>Tue, 17 Sep 2019 11:20:46 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-tomcat-netty-02/</guid>
+      <description>&lt;p&gt;在面试时我们可能经常被问到:你做的XX项目的架构是如何设计的，请讲一下实现的思路。对于面试官来 说，可以通过你对复杂系统设计的理解，了解你的技术水平以及处理复杂问题的思路。&lt;/p&gt;
+
+&lt;p&gt;今天咱们就来一步一步分析Tomcat的设计思路，看看Tomcat的设计者们当时是怎么回答这个问题的。一方 面我们可以学到Tomcat的总体架构，学会从宏观上怎么去设计一个复杂系统，怎么设计顶层模块，以及模 块之间的关系;另一方面也为我们深入学习Tomcat的工作原理打下基础。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes Install</title>
+      <link>https://quguang.wang/post/k8s-install/</link>
+      <pubDate>Sun, 15 Sep 2019 10:45:17 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/k8s-install/</guid>
+      <description>&lt;p&gt;公司服务器上的 k8s 集群不给自己玩了，所以打算在本地mac 上装 kubernestes 集群 ，记录下使用 docker 的 mac 客户端 安装 kubernetets 的过程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tomcat Netty-Servlet规范和Servlet容器</title>
+      <link>https://quguang.wang/post/geektime-tomcat-netty-01.1/</link>
+      <pubDate>Thu, 12 Sep 2019 11:20:46 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-tomcat-netty-01.1/</guid>
+      <description>&lt;p&gt;浏览器发给服务端的是一个HTTP格式的请求，HTTP服务器收到这个请求 后，需要调用服务端程序来处理，所谓的服务端程序就是你写的Java类，一般来说不同的请求需要由不同的 Java类来处理。&lt;/p&gt;
+
+&lt;p&gt;那么问题来了，HTTP服务器怎么知道要调用哪个Java类的哪个方法呢。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《趣谈网络协议》- 文件下载</title>
+      <link>https://quguang.wang/post/geektime-network-protocol-01/</link>
+      <pubDate>Wed, 11 Sep 2019 14:38:50 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-network-protocol-01/</guid>
+      <description>&lt;p&gt;如果你想下载一个电影，一般会通过什么方式？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Service Mesh Data Plane vs Control Plane</title>
+      <link>https://quguang.wang/post/service-mesh-data-plane-vs-control-plane/</link>
+      <pubDate>Tue, 10 Sep 2019 10:44:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/service-mesh-data-plane-vs-control-plane/</guid>
+      <description>&lt;p&gt;Matt Klein的一篇精彩的博客“服务网格中的数据平面与控制平面”&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;原文链接：&lt;a href=&#34;https://blog.envoyproxy.io/service-mesh-data-plane-vs-control-plane-2774e720f7fc&#34;&gt;https://blog.envoyproxy.io/service-mesh-data-plane-vs-control-plane-2774e720f7fc&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>作为程序员，你应该有产品意识</title>
+      <link>https://quguang.wang/post/geektime-software-engineering-02/</link>
+      <pubDate>Mon, 09 Sep 2019 11:11:31 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-software-engineering-02/</guid>
+      <description>&lt;p&gt;和领导老贾谈职业规划的时候，他提出：我作为程序员，也要重视下产品方面的能力。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>软件工程之美-常见的软件开发模型(Software Development Model)</title>
+      <link>https://quguang.wang/post/geektime-software-engineering-01/</link>
+      <pubDate>Fri, 06 Sep 2019 10:37:18 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-software-engineering-01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MongoDB中聚合工具Aggregate等的介绍与使用</title>
+      <link>https://quguang.wang/post/mongo-aggregate/</link>
+      <pubDate>Wed, 04 Sep 2019 20:40:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mongo-aggregate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>8种方案解决重复提交问题</title>
+      <link>https://quguang.wang/post/java-resubmit-8-resolution/</link>
+      <pubDate>Mon, 26 Aug 2019 20:40:12 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-resubmit-8-resolution/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;作者：锦成同学&lt;/p&gt;
+
+&lt;p&gt;链接：juejin.im/post/5d31928c51882564c966a71c&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>【最佳实践】如何优雅的进行重试</title>
+      <link>https://quguang.wang/post/java-retry-best-practice/</link>
+      <pubDate>Mon, 26 Aug 2019 08:26:39 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-retry-best-practice/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch入门</title>
+      <link>https://quguang.wang/post/elasticsearch-01/</link>
+      <pubDate>Sun, 25 Aug 2019 20:50:59 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/elasticsearch-01/</guid>
+      <description>&lt;p&gt;希望通过这篇文章能让读者大致了解Elasticsearch是做什么的以及它的使用和基本原理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>领域驱动设计系列文章（1）——通过现实例子显示领域驱动设计的威力</title>
+      <link>https://quguang.wang/post/domain-driven-design-01/</link>
+      <pubDate>Sun, 25 Aug 2019 13:32:15 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/domain-driven-design-01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>领域驱动设计系列文章（2)-浅析VO、DTO、DO、PO的概念、区别和用处</title>
+      <link>https://quguang.wang/post/software-vo-dto-do-po-use/</link>
+      <pubDate>Sun, 25 Aug 2019 13:12:57 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/software-vo-dto-do-po-use/</guid>
+      <description>&lt;p&gt;本篇文章主要讨论一下我们经常会用到的一些对象：VO、DTO、DO和PO。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《趣谈网络协议》- Https</title>
+      <link>https://quguang.wang/post/geektime-network-protocol-https/</link>
+      <pubDate>Fri, 23 Aug 2019 11:44:25 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-network-protocol-https/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《透视HTTP协议》-https</title>
+      <link>https://quguang.wang/post/geektime-http-protocol/</link>
+      <pubDate>Thu, 22 Aug 2019 13:57:16 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-http-protocol/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>我用50W&#43;年薪的独角兽offer，犒劳自己一年的卧薪尝胆！不服输，你就不会输</title>
+      <link>https://quguang.wang/post/interview-exp-from-wx-01/</link>
+      <pubDate>Thu, 22 Aug 2019 10:06:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/interview-exp-from-wx-01/</guid>
+      <description>&lt;p&gt;本文转载自公众号：石杉的架构笔记&lt;/p&gt;
+
+&lt;p&gt;写在前面：&lt;/p&gt;
+
+&lt;p&gt;首先做个自我介绍，楼主男，渣本毕业，坐标帝都，差 4 个月 4 年工作经验。本次面试了几家独角兽和一线大厂，都拿了offer，几乎100%的命中率。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>java内存溢出分析工具：jmap使用实战</title>
+      <link>https://quguang.wang/post/java-jvm-jmap/</link>
+      <pubDate>Mon, 19 Aug 2019 17:49:12 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-jvm-jmap/</guid>
+      <description>&lt;p&gt;java内存溢出分析工具：jmap使用实战&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java排序算法</title>
+      <link>https://quguang.wang/post/java-sort-01/</link>
+      <pubDate>Sat, 17 Aug 2019 19:48:51 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-sort-01/</guid>
+      <description>&lt;p&gt;总结简单的排序算法&lt;/p&gt;
+
+&lt;p&gt;有个不错的网站，动画演示各种算法：&lt;a href=&#34;https://visualgo.net/zh/sorting&#34;&gt;visualgo&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《深入浅出计算机组成原理》-基础篇</title>
+      <link>https://quguang.wang/post/geektime-computer-system-organization-and-architecture-00/</link>
+      <pubDate>Thu, 08 Aug 2019 14:50:26 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-computer-system-organization-and-architecture-00/</guid>
+      <description>&lt;p&gt;如果找出各大学计算机系的培养计划，你会发现，它们都有差不多十来门核心课程。其中，“计算机组成原理”是入门和底层层面的第一课。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块一 · 概述</title>
+      <link>https://quguang.wang/post/geektime-java-performance-01/</link>
+      <pubDate>Tue, 06 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-performance-01/</guid>
+      <description>&lt;p&gt;为什么要做性能调优?一款线上产品如果没有经过性能测试，那它就好比是一颗定时炸弹，你不知道它什么时候会出现问题，你也
+不清楚它能承受的极限在哪儿。&lt;/p&gt;
+
+&lt;p&gt;好的系统性能调优不仅仅可以提高系统的性能，还能为公司节省资源。这也是我们做性能调优的最直接的目
+的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块二 · Java编程性能调优 (10讲)</title>
+      <link>https://quguang.wang/post/geektime-java-performance-02/</link>
+      <pubDate>Mon, 05 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-performance-02/</guid>
+      <description>&lt;p&gt;从第二个模块开始，学习Java编程的性能优化。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块三 · 多线程性能调优 (10讲)</title>
+      <link>https://quguang.wang/post/geektime-java-performance-03/</link>
+      <pubDate>Sun, 04 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-performance-03/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>《深入拆解Java虚拟机》-课程目录</title>
@@ -18,6 +306,485 @@
       
       <guid>https://quguang.wang/post/geektime-jvm-01/</guid>
       <description>&lt;p&gt;整个专栏将分为四大模块:基本原理、高效实现、代码优化、虚拟机黑科技&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块四 · JVM性能监测及调优 (6讲) </title>
+      <link>https://quguang.wang/post/geektime-java-performance-04/</link>
+      <pubDate>Sat, 03 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-performance-04/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块五 · 设计模式调优 (6讲) </title>
+      <link>https://quguang.wang/post/geektime-java-performance-05/</link>
+      <pubDate>Fri, 02 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-performance-05/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java性能调优实战》模块六 · 数据库性能调优 (7讲) </title>
+      <link>https://quguang.wang/post/geektime-java-performance-06/</link>
+      <pubDate>Thu, 01 Aug 2019 20:34:10 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-performance-06/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-5-其他并发模型（未完待续）</title>
+      <link>https://quguang.wang/post/geektime-java-concurrent-in-action.4/</link>
+      <pubDate>Mon, 29 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-concurrent-in-action.4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-4-案例分析（未完待续）</title>
+      <link>https://quguang.wang/post/geektime-java-concurrent-in-action.3/</link>
+      <pubDate>Sun, 28 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-concurrent-in-action.3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-3-并发设计模式（未完待续）</title>
+      <link>https://quguang.wang/post/geektime-java-concurrent-in-action.2/</link>
+      <pubDate>Sat, 27 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-concurrent-in-action.2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-2-并发工具类(下)</title>
+      <link>https://quguang.wang/post/geektime-java-concurrent-in-action.1.2/</link>
+      <pubDate>Fri, 26 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-concurrent-in-action.1.2/</guid>
+      <description>&lt;p&gt;前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，&lt;code&gt;add10K()&lt;/code&gt;   这个方法不是线程安全的，问题就出在变量 count 的可见性和 &lt;code&gt;count+=1&lt;/code&gt; 的原子性上。&lt;strong&gt;可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-2-并发工具类(上)</title>
+      <link>https://quguang.wang/post/geektime-java-concurrent-in-action.1.1/</link>
+      <pubDate>Fri, 26 Jul 2019 17:30:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-concurrent-in-action.1.1/</guid>
+      <description>&lt;p&gt;在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有 &lt;strong&gt;两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作&lt;/strong&gt;。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中 &lt;strong&gt;Lock 用于解决互斥 问题，Condition 用于解决同步问题。&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Java并发编程实战》-1-理论基础篇</title>
+      <link>https://quguang.wang/post/geektime-java-concurrent-in-action.0/</link>
+      <pubDate>Thu, 25 Jul 2019 17:31:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-java-concurrent-in-action.0/</guid>
+      <description>&lt;p&gt;这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个&lt;strong&gt;核心矛盾一直存在，就是这三者的速度差异&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《趣谈网络协议》- Udp Tcp</title>
+      <link>https://quguang.wang/post/geektime-network-protocol-udp-tcp/</link>
+      <pubDate>Thu, 25 Jul 2019 14:38:50 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-network-protocol-udp-tcp/</guid>
+      <description>&lt;p&gt;传输层里比较重要的两个协议，一个是 TCP，一个是
+UDP。对于不从事底层开发的人员来讲，或者对于开发应用的人来讲，最常用的就是这两个协议。由于
+面试的时候，这两个协议经常会被放在一起问&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>编辑器之神-Vim学习</title>
+      <link>https://quguang.wang/post/vim/</link>
+      <pubDate>Sat, 20 Jul 2019 17:15:57 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/vim/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;编辑器之神-vim,神的编辑器-emacs&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;最近开始使用vim键盘流，写代码时真心不想再去碰鼠标，来回切换很麻烦。以下是记录了一些常用但是我不会的快捷键&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>传统Saas项目实例</title>
+      <link>https://quguang.wang/post/saas-hrm/</link>
+      <pubDate>Mon, 15 Jul 2019 10:32:05 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/saas-hrm/</guid>
+      <description>&lt;p&gt;一个实际的saas项目的例子&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>怎样阅读spring源码</title>
+      <link>https://quguang.wang/post/how-to-read-spring-source-code/</link>
+      <pubDate>Fri, 12 Jul 2019 11:51:07 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/how-to-read-spring-source-code/</guid>
+      <description>&lt;p&gt;给不知道如何阅读spring源码的同学一点借鉴&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spring是如何运用设计模式的？</title>
+      <link>https://quguang.wang/post/spring-design-pattern/</link>
+      <pubDate>Fri, 05 Jul 2019 15:00:05 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/spring-design-pattern/</guid>
+      <description>&lt;p&gt;关于设计模式，如果使用得当，将会使我们的代码更加简洁，并且更具扩展性。本文主要讲解Spring中如何使用策略模式，工厂方法模式以及Builder模式。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot 使用 AOP 防止重复提交</title>
+      <link>https://quguang.wang/post/springboot-prevent-repeat-submit/</link>
+      <pubDate>Fri, 05 Jul 2019 14:48:41 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/springboot-prevent-repeat-submit/</guid>
+      <description>&lt;p&gt;在传统的web项目中，防止重复提交，通常做法是：后端生成一个唯一的提交令牌（uuid），并存储在服务端。页面提交请求携带这个提交令牌，后端验证并在第一次验证后删除该令牌，保证提交请求的唯一性。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于Kubernetes/Jenkins/Harbor/Sonarqube搭建微服务CICD系统</title>
+      <link>https://quguang.wang/post/k8s-jenkins-docker-ci/</link>
+      <pubDate>Tue, 02 Jul 2019 11:50:35 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/k8s-jenkins-docker-ci/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;项目说明&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;14个JAVA spring cloud 微服务项目&lt;/p&gt;
+
+&lt;p&gt;5个Node项目&lt;/p&gt;
+
+&lt;p&gt;1个Node项目VUE生成静态页面做前端+nginx&lt;/p&gt;
+
+&lt;p&gt;pgsql、redis、rabbitmq、emqx&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于 DDD、CQRS和Event Souring</title>
+      <link>https://quguang.wang/post/introduction-to-ddd-cqrs-and-event/</link>
+      <pubDate>Wed, 19 Jun 2019 10:47:53 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/introduction-to-ddd-cqrs-and-event/</guid>
+      <description>&lt;p&gt;我最近开始学习域驱动设计，CQRS和事件溯源。 到目前为止，我主要参与了使用“经典”N层/层架构和关系数据库的项目。 随着项目变得越来越复杂，我注意到这个模型并不总是很好。 不久之前，我写了一篇关于N层神话的文章，它已经暴露了我觉得这种类型的架构所带来的一些问题。 我尝试的第一件事是在这样的架构中应用域驱动设计。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式会话</title>
+      <link>https://quguang.wang/post/java-interview-distributed-session/</link>
+      <pubDate>Tue, 21 May 2019 17:55:57 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-distributed-session/</guid>
+      <description>&lt;p&gt;面试题 集群部署时的分布式session如何实现？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 分布式服务接口的幂等性和顺序性</title>
+      <link>https://quguang.wang/post/java-interview-distributed-dubbo07/</link>
+      <pubDate>Tue, 21 May 2019 17:35:10 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-distributed-dubbo07/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 Dubbo服务治理、服务降级</title>
+      <link>https://quguang.wang/post/java-interview-distributed-dubbo06/</link>
+      <pubDate>Tue, 21 May 2019 16:46:51 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-distributed-dubbo06/</guid>
+      <description>&lt;p&gt;面试题 如何基于dubbo进行服务治理、服务降级、失败重试以及超时重试？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 Dubbo的spi思想</title>
+      <link>https://quguang.wang/post/java-interview-distributed-dubbo05/</link>
+      <pubDate>Tue, 21 May 2019 16:01:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-distributed-dubbo05/</guid>
+      <description>&lt;p&gt;面试题 dubbo的spi思想是什么？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试 分布式-dubbo负载均衡策略和集群容错策略</title>
+      <link>https://quguang.wang/post/java-interview-distributed-dubbo04/</link>
+      <pubDate>Tue, 21 May 2019 14:53:52 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-distributed-dubbo04/</guid>
+      <description>&lt;p&gt;面试题 dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 Dubbo的协议</title>
+      <link>https://quguang.wang/post/java-interview-distributed-dubbo03/</link>
+      <pubDate>Tue, 21 May 2019 14:41:19 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-distributed-dubbo03/</guid>
+      <description>&lt;p&gt;面试题:dubbo支持哪些通信协议？支持哪些序列化协议？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 Dubbo的原理</title>
+      <link>https://quguang.wang/post/java-interview-distributed-dubbo02/</link>
+      <pubDate>Tue, 21 May 2019 14:32:22 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-distributed-dubbo02/</guid>
+      <description>&lt;p&gt;面试题:说一下的dubbo的工作原理？注册中心挂了可以继续通信吗？说说一次rpc请求的流程？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式-什么是分布式？</title>
+      <link>https://quguang.wang/post/java-interview-distributed-introduce01/</link>
+      <pubDate>Tue, 21 May 2019 10:49:00 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-distributed-introduce01/</guid>
+      <description>&lt;p&gt;面试题 为什么要进行系统拆分？如何进行系统拆分？拆分后不用dubbo可以吗？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式-分布式锁</title>
+      <link>https://quguang.wang/post/java-interview-distributed-zk02/</link>
+      <pubDate>Mon, 20 May 2019 16:56:21 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-distributed-zk02/</guid>
+      <description>&lt;p&gt;面试题 一般实现分布式锁都有哪些方式？使用redis如何设计分布式锁？使用zk来设计分布式锁可以吗？这两种分布式锁的实现方式哪种效率比较高？&lt;/p&gt;
+
+&lt;p&gt;其实一般问问题，都是这么问的，先问问你zk，然后其实是要过度的zk关联的一些问题里去，比如分布式锁。因为在分布式系统开发中，分布式锁的使用场景还是很常见的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-分布式 Zookeeper的使用场景</title>
+      <link>https://quguang.wang/post/java-interview-distributed-zk01/</link>
+      <pubDate>Mon, 20 May 2019 16:50:16 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-distributed-zk01/</guid>
+      <description>&lt;p&gt;面试题 zk都有哪些使用场景？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高可用-设计高可用架构</title>
+      <link>https://quguang.wang/post/java-interview-ha-01/</link>
+      <pubDate>Mon, 20 May 2019 15:06:10 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-ha-01/</guid>
+      <description>&lt;p&gt;前半部分，专注在高并发这一块，缓存架构，承载高并发，在各种高并发导致的令人崩溃/异常的场景下，运行着&lt;/p&gt;
+
+&lt;p&gt;缓存架构，&lt;strong&gt;高可用性，在各种系统的各个地方有乱七八糟的异常和故障的情况下，整套缓存系统还能继续健康的run着&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;HA，HAProxy，主备服务间的切换，这就做到了高可用性，主备实例，多冗余实例，高可用最最基础的东西&lt;/p&gt;
+
+&lt;p&gt;什么样的情况下，可能会导致系统的崩溃，以及系统不可用，针对各种各样的一些情况，然后我们用什么技术，去保护整个系统处于高可用的一个情况下&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MySQL读写分离</title>
+      <link>https://quguang.wang/post/java-interview-mysql-shading05/</link>
+      <pubDate>Fri, 17 May 2019 18:26:55 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mysql-shading05/</guid>
+      <description>&lt;p&gt;面试题 你们有没有做MySQL读写分离？如何实现mysql的读写分离？MySQL主从复制原理的是啥？如何解决mysql主从同步的延时问题？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-Mysql全局唯一的id</title>
+      <link>https://quguang.wang/post/java-interview-mysql-shading04/</link>
+      <pubDate>Fri, 17 May 2019 18:19:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mysql-shading04/</guid>
+      <description>&lt;p&gt;面试题 分库分表之后，id主键如何处理？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-Mysql 动态扩容缩容的分库分表方案</title>
+      <link>https://quguang.wang/post/java-interview-mysql-shading03/</link>
+      <pubDate>Fri, 17 May 2019 17:41:34 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mysql-shading03/</guid>
+      <description>&lt;p&gt;面试题 如何设计可以动态扩容缩容的分库分表方案？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-Mysql-单库单表迁移到分库分表</title>
+      <link>https://quguang.wang/post/java-interview-mysql-shading02/</link>
+      <pubDate>Fri, 17 May 2019 17:30:42 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mysql-shading02/</guid>
+      <description>&lt;p&gt;面试题 现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-Mysql 分库分表</title>
+      <link>https://quguang.wang/post/java-interview-mysql-shading01/</link>
+      <pubDate>Fri, 17 May 2019 16:12:09 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mysql-shading01/</guid>
+      <description>&lt;p&gt;面试题 为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-如何设计一个高并发系统？</title>
+      <link>https://quguang.wang/post/java-interview-gaobingfa/</link>
+      <pubDate>Thu, 16 May 2019 18:51:25 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-gaobingfa/</guid>
+      <description>&lt;p&gt;面试题 如何设计一个高并发系统？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-redis的持久化</title>
+      <link>https://quguang.wang/post/java-interview-cache06/</link>
+      <pubDate>Thu, 16 May 2019 18:11:25 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache06/</guid>
+      <description>&lt;p&gt;redis的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-如何保证Redis的高并发和高可用</title>
+      <link>https://quguang.wang/post/java-interview-cache05/</link>
+      <pubDate>Thu, 16 May 2019 17:48:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache05/</guid>
+      <description>&lt;p&gt;面试题 如何保证Redis的高并发和高可用？redis的主从复制原理能介绍一下么？redis的哨兵原理能介绍一下么？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-redis的过期策略</title>
+      <link>https://quguang.wang/post/java-interview-cache04/</link>
+      <pubDate>Thu, 16 May 2019 17:47:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache04/</guid>
+      <description>&lt;p&gt;redis的过期策略都有哪些？内存淘汰机制都有哪些？手写一下LRU代码实现？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-redis 数据类型</title>
+      <link>https://quguang.wang/post/java-interview-cache03/</link>
+      <pubDate>Thu, 16 May 2019 17:38:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache03/</guid>
+      <description>&lt;p&gt;redis都有哪些数据类型？分别在哪些场景下使用比较合适？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-为什么redis是单线程的但是还可以支撑高并发</title>
+      <link>https://quguang.wang/post/java-interview-cache02/</link>
+      <pubDate>Thu, 16 May 2019 17:28:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache02/</guid>
+      <description>&lt;p&gt;redis和memcached有什么区别？redis的线程模型是什么？为什么单线程的redis比多线程的memcached效率要高得多（为什么redis是单线程的但是还可以支撑高并发）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-缓存是如何使用的？</title>
+      <link>https://quguang.wang/post/java-interview-cache01/</link>
+      <pubDate>Thu, 16 May 2019 17:18:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-cache01/</guid>
+      <description>&lt;p&gt;在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ自己设计一个(7)</title>
+      <link>https://quguang.wang/post/java-interview-mq07/</link>
+      <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq07/</guid>
+      <description>&lt;p&gt;面试题 如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ延时以及过期失效(6)</title>
+      <link>https://quguang.wang/post/java-interview-mq06/</link>
+      <pubDate>Wed, 15 May 2019 19:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq06/</guid>
+      <description>&lt;p&gt;面试题 如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ消息的顺序性(5)</title>
+      <link>https://quguang.wang/post/java-interview-mq05/</link>
+      <pubDate>Wed, 15 May 2019 18:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq05/</guid>
+      <description>&lt;p&gt;面试题 如何保证消息的顺序性？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ可靠性传输(4)</title>
+      <link>https://quguang.wang/post/java-interview-mq04/</link>
+      <pubDate>Wed, 15 May 2019 17:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq04/</guid>
+      <description>&lt;p&gt;面试题 如何保证消息的可靠性传输（如何处理消息丢失的问题）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ重复消费(3)</title>
+      <link>https://quguang.wang/post/java-interview-mq03/</link>
+      <pubDate>Wed, 15 May 2019 16:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq03/</guid>
+      <description>&lt;p&gt;面试题 如何保证消息不被重复消费啊（如何保证消息消费时的幂等性）？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ的高可用(2)</title>
+      <link>https://quguang.wang/post/java-interview-mq02/</link>
+      <pubDate>Wed, 15 May 2019 15:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq02/</guid>
+      <description>&lt;p&gt;面试题 如何保证消息队列的高可用啊？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java面试-高并发-MQ技术选型(1)</title>
+      <link>https://quguang.wang/post/java-interview-mq01/</link>
+      <pubDate>Wed, 15 May 2019 14:36:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-mq01/</guid>
+      <description>&lt;p&gt;面试题 为什么使用消息队列啊？消息队列有什么优点和缺点啊？kafka、activemq、rabbitmq、rocketmq都有什么区别以及适合哪些场景？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>互联网Java工程师面试突击训练-课程目录</title>
+      <link>https://quguang.wang/post/java-interview-shishan01/</link>
+      <pubDate>Wed, 15 May 2019 13:32:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-shishan01/</guid>
+      <description>&lt;p&gt;因为java面试题是一个较为大的体系，所以我们会拆分为几季来讲解，预计是会推出3季，本次是第一季，第一季课程包含的内容如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mysql  B&#43;tree 索引</title>
+      <link>https://quguang.wang/post/mysql-index-b&#43;tree/</link>
+      <pubDate>Thu, 09 May 2019 18:43:28 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-index-b&#43;tree/</guid>
+      <description>&lt;p&gt;众所周知，Mysql中的索引结构是用B+Tree实现的，那么具体是如何来构建的呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Hashmap</title>
+      <link>https://quguang.wang/post/java-hashmap/</link>
+      <pubDate>Mon, 22 Apr 2019 17:22:31 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-hashmap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《持续交付》</title>
+      <link>https://quguang.wang/post/geektime-ci-cd-introduce/</link>
+      <pubDate>Fri, 19 Apr 2019 15:23:49 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-ci-cd-introduce/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -31,6 +798,421 @@
 &lt;p&gt;Java TreeMap实现了SortedMap接口，也就是说会按照key的大小顺序对Map中的元素进行排序，key大小的评判可以通过其本身的自然顺序（natural ordering），也可以通过构造时传入的比较器（Comparator）。&lt;/p&gt;
 
 &lt;p&gt;TreeMap底层通过红黑树（Red-Black tree）实现，也就意味着containsKey(), get(), put(), remove()都有着log(n)的时间复杂度。其具体算法实现参照了《算法导论》。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>简单理解Zookeeper的Leader选举</title>
+      <link>https://quguang.wang/post/zk-election/</link>
+      <pubDate>Fri, 12 Apr 2019 15:10:41 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/zk-election/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>技术路线的选择重要但不具有决定性</title>
+      <link>https://quguang.wang/post/technology-routine/</link>
+      <pubDate>Thu, 04 Apr 2019 18:35:09 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/technology-routine/</guid>
+      <description>&lt;p&gt;最近微软在技术上连续有大动作，在PDC上发布了Windows Azure云计算平台，预告了Visual Studio 2010、.NET 4.0和C# 4.0。如果放在几年前，我相信微软粉丝们一定是欢声雷动，不过这次情况有点不太一样，在网上看到有人在抱怨微软技术更新速度太快而且四面出击，还有人扬言要改弦更张，投奔Linux或者Java阵营。我本人也收到一封来信，写信人大意是说自己大学时选择.NET路线，一路跟下来很辛苦，2.0还没学好，人家已经4.0预览了，感到很困惑，问我该怎么办。老实讲，这样的问题我无法回答，每个人具体情况不同，所应该采取的态度和解决方案也不同。
+从我自己来讲，其实技术路线问题也曾长时间地困扰我，所以我想把我现在的一些想法摊出来跟大家分享一下。罗列如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux三剑客之AWK学习</title>
+      <link>https://quguang.wang/post/linux-awk/</link>
+      <pubDate>Tue, 02 Apr 2019 13:24:32 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/linux-awk/</guid>
+      <description>&lt;p&gt;awk是一个强大的文本分析工具，相对于grep的查找，sed的编辑，awk在其对数据分析并生成报告时，显得尤为强大。简单来说awk就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- Question 03</title>
+      <link>https://quguang.wang/post/mysql-question-03/</link>
+      <pubDate>Wed, 27 Mar 2019 15:49:58 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-question-03/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python 学习入门</title>
+      <link>https://quguang.wang/post/python-helloword/</link>
+      <pubDate>Thu, 21 Mar 2019 20:04:31 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/python-helloword/</guid>
+      <description>&lt;p&gt;学习了python的基础语法、变量类型、条件语句、数据结构、模块引用等&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- Order By</title>
+      <link>https://quguang.wang/post/mysql-orderby/</link>
+      <pubDate>Wed, 20 Mar 2019 08:49:19 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-orderby/</guid>
+      <description>&lt;p&gt;在你开发应用时，一定会遇到需要根据指定的字段来显式结果的需求。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 唯一索引和普通索引</title>
+      <link>https://quguang.wang/post/mysql-index-unique-and-normal/</link>
+      <pubDate>Sat, 16 Mar 2019 15:26:14 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-index-unique-and-normal/</guid>
+      <description>&lt;p&gt;在不同的业务场景下，应该选择普通索引，还是唯一索引呢？接下来，我们就从这两种索引对查询语句和更新语句的性能影响来进行分析。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 深入浅出索引</title>
+      <link>https://quguang.wang/post/mysql-index/</link>
+      <pubDate>Sat, 16 Mar 2019 15:25:44 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-index/</guid>
+      <description>&lt;p&gt;简单来说，索引的出现其实就是为了提高数据查询的效率，就像书的目录一样。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 事务隔离</title>
+      <link>https://quguang.wang/post/mysql-transaction-2/</link>
+      <pubDate>Fri, 15 Mar 2019 09:26:22 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-transaction-2/</guid>
+      <description>&lt;p&gt;如果是可重复读隔离级别，事务T启动的时候会创建一个视图read-view，之后事务T执行期间，即使有其他事务修改了数据，事务T看到的仍然跟在启动时看到的一样。也就是说，一个在可重复读隔离级别下执行的事务，好像与世无争，不受外界影响。&lt;/p&gt;
+
+&lt;p&gt;但是，一个事务要更新一行，如果刚好有另外一个事务拥有这一行的行锁，它又不能这么超然了，会被锁住，进入等待状态。问题是，既然进入了等待状态，那么等到这个事务自己获取到行锁要更新数据的时候，它读到的值又是什么呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》- 行锁、死锁、事务</title>
+      <link>https://quguang.wang/post/mysql-transaction/</link>
+      <pubDate>Thu, 14 Mar 2019 17:23:42 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-transaction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》-如何快速复制一张表</title>
+      <link>https://quguang.wang/post/mysql-how-to-copy-table/</link>
+      <pubDate>Mon, 25 Feb 2019 08:00:23 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-how-to-copy-table/</guid>
+      <description>&lt;p&gt;本文源自极客时间-《MySQL实战45讲-41|如何快速复制一张表》，介绍了表复制的三种方法，并且分别比较了他们的优缺点和局限性。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》-Join语句是怎么执行的</title>
+      <link>https://quguang.wang/post/mysql-how-join-run/</link>
+      <pubDate>Fri, 22 Feb 2019 22:27:38 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-how-join-run/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《透视HTTP协议》-常说的“四层”和“七层”到底是什么?</title>
+      <link>https://quguang.wang/post/geektime-http-protocol-tcp-osi/</link>
+      <pubDate>Wed, 20 Feb 2019 15:29:44 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-http-protocol-tcp-osi/</guid>
+      <description>&lt;p&gt;在上一讲中，我简单提到了TCP/IP协议，它是HTTP协议的下层协议，负责具体的数据传输工作。并且还特别说了，TCP/IP协议是一个“有层次的协议栈”。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>秒杀系统架构分析与实战</title>
+      <link>https://quguang.wang/post/java-seckill-action/</link>
+      <pubDate>Mon, 18 Feb 2019 09:08:09 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-seckill-action/</guid>
+      <description>&lt;p&gt;现在很多面试都问如何设计一个秒杀系统，特此学习一下&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>如何设计一个秒杀系统</title>
+      <link>https://quguang.wang/post/java-how-to-design-seckill/</link>
+      <pubDate>Mon, 18 Feb 2019 08:56:11 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-how-to-design-seckill/</guid>
+      <description>&lt;p&gt;什么是秒杀? 秒杀场景一般会在电商网站举行一些活动或者节假日在12306网站上抢票时遇到。对于电商网站中一些稀缺或者特价商品，电商网站一般会在约定时间点对其进行限量销售，因为这些商品的特殊性，会吸引大量用户前来抢购，并且会在约定的时间点同时在秒杀页面进行抢购。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>分布式系统唯一ID生成方案汇总</title>
+      <link>https://quguang.wang/post/java-distributed-id/</link>
+      <pubDate>Sun, 17 Feb 2019 12:57:39 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-distributed-id/</guid>
+      <description>&lt;p&gt;系统唯一ID是我们在设计一个系统的时候常常会遇见的问题，也常常为这个问题而纠结。生成ID的方法有很多，适应不同的场景、需求以及性能要求。所以有些比较复杂的系统会有多个ID生成的策略。下面就介绍一些常见的ID生成策略。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Resource List</title>
+      <link>https://quguang.wang/post/java-interview-resource-list/</link>
+      <pubDate>Fri, 15 Feb 2019 17:40:34 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-interview-resource-list/</guid>
+      <description>&lt;p&gt;总结了一些面试资源清单&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Dubbo解析及原理浅析</title>
+      <link>https://quguang.wang/post/java-dubbo-principle/</link>
+      <pubDate>Fri, 15 Feb 2019 15:41:23 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-dubbo-principle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>你应该知道的 RPC 原理</title>
+      <link>https://quguang.wang/post/java-rpc/</link>
+      <pubDate>Fri, 15 Feb 2019 11:10:56 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-rpc/</guid>
+      <description>&lt;p&gt;在校期间大家都写过不少程序，比如写个hello world服务类，然后本地调用下，如下所示。这些程序的特点是服务消费方和服务提供方是本地调用关系。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java并发编程：线程池的使用</title>
+      <link>https://quguang.wang/post/java-thread-pool/</link>
+      <pubDate>Thu, 14 Feb 2019 15:04:47 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-thread-pool/</guid>
+      <description>&lt;p&gt;在前面的文章中，我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：&lt;/p&gt;
+
+&lt;p&gt;　　如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。&lt;/p&gt;
+
+&lt;p&gt;　　那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>全面理解Java内存模型</title>
+      <link>https://quguang.wang/post/jmm-java/</link>
+      <pubDate>Thu, 14 Feb 2019 11:26:21 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/jmm-java/</guid>
+      <description>&lt;p&gt;Java内存模型即Java Memory Model，简称JMM。&lt;/p&gt;
+
+&lt;p&gt;JMM定义了Java 虚拟机(JVM)在计算机内存(RAM)中的工作方式。JVM是整个计算机虚拟模型，所以JMM是隶属于JVM的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>最新拼多多技术部面试题：幻读&#43;分段锁&#43;死锁&#43;Spring Cloud&#43;秒杀</title>
+      <link>https://quguang.wang/post/interview-exp-pdd/</link>
+      <pubDate>Wed, 13 Feb 2019 08:30:08 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/interview-exp-pdd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>5年经验Java程序员帝都面试20天，拿下数个offer，最终选择了百度</title>
+      <link>https://quguang.wang/post/interview-exp-baidu/</link>
+      <pubDate>Wed, 13 Feb 2019 07:56:41 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/interview-exp-baidu/</guid>
+      <description>&lt;p&gt;从事Java开发也有5年经验了，7月初来到帝都，开启面试经历，前后20天左右，主面互联网公司，一二线大公司或者是融资中的创业公司都面试过，拿了一些offer，其中包括奇虎360，最后综合决定还是去百度了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tomcat Overview</title>
+      <link>https://quguang.wang/post/tomcat-overview/</link>
+      <pubDate>Tue, 12 Feb 2019 15:12:30 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/tomcat-overview/</guid>
+      <description>&lt;h2 id=&#34;tomcat-server的组成部分&#34;&gt;Tomcat Server的组成部分&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-1-server&#34;&gt;1.1 – Server&lt;/h3&gt;
+
+&lt;p&gt;A Server element represents the entire Catalina servlet container. (Singleton)&lt;/p&gt;
+
+&lt;h3 id=&#34;1-2-service&#34;&gt;1.2 – Service&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot 究竟是如何跑起来的?</title>
+      <link>https://quguang.wang/post/springboot-how-run/</link>
+      <pubDate>Tue, 12 Feb 2019 10:22:20 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/springboot-how-run/</guid>
+      <description>&lt;p&gt;不得不说 SpringBoot 太复杂了，我本来只想研究一下 SpringBoot 最简单的 HelloWorld 程序是如何从 main 方法一步一步跑起来的，但是这却是一个相当深的坑。你可以试着沿着调用栈代码一层一层的深入进去，如果你不打断点，你根本不知道接下来程序会往哪里流动。这个不同于我研究过去的 Go 语言、Python 语言框架，它们通常都非常直接了当，设计上清晰易懂，代码写起来简单，里面的实现同样也很简单。但是 SpringBoot 不是，它的外表轻巧简单，但是它的里面就像一只巨大的怪兽，这只怪兽有千百只脚把自己缠绕在一起，把爱研究源码的读者绕的晕头转向。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《软件测试52讲》-谈谈测试</title>
+      <link>https://quguang.wang/post/test-about/</link>
+      <pubDate>Thu, 31 Jan 2019 13:39:29 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/test-about/</guid>
+      <description>&lt;p&gt;简单聊下我所了解的测试,测试基础知识、GUI 自动化测试、API 自动化测试、代码级测试、性能测试、测试数据准备、测试基础架构、测试新技术，测试覆盖率、软件缺陷报告、测试计划&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mongo Export Csv</title>
+      <link>https://quguang.wang/post/mongo-export-csv/</link>
+      <pubDate>Tue, 29 Jan 2019 15:01:21 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mongo-export-csv/</guid>
+      <description>&lt;p&gt;mongo 上查询数据，导出excel，并解决Mac上的Excel在导入CSV文件不支持utf-8的问题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mysql 使用Navicat 导出数据库表结构</title>
+      <link>https://quguang.wang/post/mysql-navicat-structure-doc/</link>
+      <pubDate>Tue, 29 Jan 2019 14:08:24 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-navicat-structure-doc/</guid>
+      <description>&lt;p&gt;我们在写数据库设计文档的时候，会需要对数据库表进行设计的编写，手动写的话会很费时间费精力，尤其是如果有大量的表需要写的时候，就更加浪费时间了。下面就让我给大家讲一个简单方法。
+我的是在Navicat中导出的数据库表。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Drools 7.15.0 docker容器方式部署</title>
+      <link>https://quguang.wang/post/drools-7.15.0.final-docker-deploy/</link>
+      <pubDate>Thu, 24 Jan 2019 14:56:49 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/drools-7.15.0.final-docker-deploy/</guid>
+      <description>&lt;p&gt;关于drools的相关介绍就不再赘述了，关于drools网上的资料都很少，或者都有些老了，最近折腾了一下，记录下安装部署的过程，希望能节省下大家的时间。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Drools Documentation</title>
+      <link>https://quguang.wang/post/drools-wb-translation/</link>
+      <pubDate>Sat, 19 Jan 2019 13:18:56 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/drools-wb-translation/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;转载自：&lt;a href=&#34;https://github.com/MyHerux/drools-springboot&#34;&gt;MyHerux/drools-springboot&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>about me</title>
+      <link>https://quguang.wang/top/about/</link>
+      <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
+      
+      <guid>https://quguang.wang/top/about/</guid>
+      <description>关于我 始终处于一个在不断认识自己、认识世界的过程中。渴望来系统地了解自己所处的时代，增加自己的嗅觉。当然也希望在 IT 行业，有自己的一技之长。 关</description>
+    </item>
+    
+    <item>
+      <title>Java 中15种锁的介绍：公平锁，可重入锁等等……</title>
+      <link>https://quguang.wang/post/java-15-lock/</link>
+      <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/java-15-lock/</guid>
+      <description>&lt;p&gt;Java 中15种锁的介绍&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>值得一看的网络课程收集</title>
+      <link>https://quguang.wang/post/course-introduction/</link>
+      <pubDate>Fri, 18 Jan 2019 15:03:48 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/course-introduction/</guid>
+      <description>&lt;p&gt;前言：搜罗来一些不错的网络课程，比如Coursera, edX, Udacity上&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Navigator</title>
+      <link>https://quguang.wang/navigator/</link>
+      <pubDate>Fri, 18 Jan 2019 14:35:04 +0800</pubDate>
+      
+      <guid>https://quguang.wang/navigator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>《深入剖析Kubernetes》-Docker的实现原理</title>
+      <link>https://quguang.wang/post/geektime-kubernetes-docker-introduction/</link>
+      <pubDate>Thu, 17 Jan 2019 15:12:03 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-kubernetes-docker-introduction/</guid>
+      <description>&lt;p&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”&lt;/p&gt;
+
+&lt;p&gt;Docker容器具有以下3个特点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;轻量级&lt;/strong&gt;：在同一台宿主机上的容器共享系统Kernel，这使得他们可以迅速启动而且占有的内存极少。镜像是以分层文件系统构造的，这可以让它们共享相同的文件，使得磁盘使用率和镜像下载速度得到提高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开放&lt;/strong&gt;：Docker容器基于开放标准，这使得Docker容器可以运行在主流Linux发行版和Windows操作系统上。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全&lt;/strong&gt;：容器将各个应用程序隔离开来，这给所有的应用程序提供了一层额外的安全防护。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于Docker等大多数Linux容器来说，&lt;strong&gt;Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《深入剖析Kubernetes》-入门</title>
+      <link>https://quguang.wang/post/geektime-kubernetes-introduction/</link>
+      <pubDate>Thu, 17 Jan 2019 08:41:16 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-kubernetes-introduction/</guid>
+      <description>&lt;p&gt;首先，Kubernetes项目要解决的问题是什么？&lt;/p&gt;
+
+&lt;p&gt;编排？调度？容器云？还是集群管理？&lt;/p&gt;
+
+&lt;p&gt;对于大多数用户来说，他们希望Kubernetes项目带来的体验是确定的：现在我有了应用的容器镜像，请帮我在一个给定的集群上把这个应用运行起来。更进一步地说，我还希望Kubernetes能给我提供路由网关、水平扩展、监控、备份、灾难恢复等一系列运维能力。这不就是经典Paas（比如，Cloud Foundry）项目的能力吗?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《趣谈网络协议》-Ipconfig</title>
+      <link>https://quguang.wang/post/geektime-network-protocol-ipconfig/</link>
+      <pubDate>Wed, 16 Jan 2019 18:51:01 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/geektime-network-protocol-ipconfig/</guid>
+      <description>&lt;p&gt;从一行查看IP地址的命令开始讲解，
+Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>分布式事务-TCC事务：最终一致性</title>
+      <link>https://quguang.wang/post/transaction-tcc/</link>
+      <pubDate>Tue, 15 Jan 2019 10:53:02 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/transaction-tcc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>分布式事务-本地消息表：最终一致性</title>
+      <link>https://quguang.wang/post/transaction-local-msg-tb/</link>
+      <pubDate>Tue, 15 Jan 2019 10:53:02 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/transaction-local-msg-tb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>从分布式一致性谈到CAP理论、BASE理论、分布式事务</title>
+      <link>https://quguang.wang/post/distributed-consistency/</link>
+      <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/distributed-consistency/</guid>
+      <description>&lt;p&gt;什么是事务，简单说事务就是要么全不做，要么全做。一部分做一部分不做就会出一致性问题。&lt;/p&gt;
+
+&lt;p&gt;传统的单体应用不会横跨多个数据库，可以通过单机事务保证一致性。&lt;/p&gt;
+
+&lt;p&gt;然而在海量数据的场景下，需要对数据库做拆分，即分库分表，而Cobar、MyCat这类分库分表中间并不提供分布式事务的特性，并且基于二阶段提交的分布式事务性能较差，对于大多数业务场景来说，并不需要强一致，只需要保证最终一致性即可。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>分布式事务-2PC(二阶段提交)</title>
+      <link>https://quguang.wang/post/transaction-2pc/</link>
+      <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/transaction-2pc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>分布式事务-3PC(三阶段提交)</title>
+      <link>https://quguang.wang/post/transaction-3pc/</link>
+      <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/transaction-3pc/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -54,6 +1236,15 @@
       <guid>https://quguang.wang/post/devops-in-action/</guid>
       <description>&lt;p&gt;强调业务目标，以用户的价值为唯一的评判标准，团队的考核评价机制也要改变，个体和团队的成功都要放在整个开发-运维生命周期内来进行评价，开发完成了很多用户需求不一定是成功，运维保障系统不down机也不一定是成功！只有用户想要的功能被及时实现了，被成功部署了，被稳定使用了才算成功。
 就是把敏捷开发部门和运维部门之间的围墙打通，形成闭环&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>书单-按能力划分</title>
+      <link>https://quguang.wang/post/booklist-ability/</link>
+      <pubDate>Sun, 06 Jan 2019 15:24:35 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/booklist-ability/</guid>
+      <description>&lt;p&gt;按能力划分（附书籍豆瓣链接）&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -106,6 +1297,15 @@
     </item>
     
     <item>
+      <title>JVM性能调优</title>
+      <link>https://quguang.wang/post/jvm-performance-optimization/</link>
+      <pubDate>Mon, 24 Dec 2018 18:48:04 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/jvm-performance-optimization/</guid>
+      <description>&lt;p&gt;linux性能调优和年轻代大小选择和年老代大小的选择&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>JVM 工具</title>
       <link>https://quguang.wang/post/jvm-tools/</link>
       <pubDate>Mon, 24 Dec 2018 18:08:25 +0800</pubDate>
@@ -153,6 +1353,15 @@
       
       <guid>https://quguang.wang/post/geektime-jvm-garabage-collection/</guid>
       <description>&lt;p&gt;全文出自《深入理解java虚拟机》第三章。 垃圾收集器与内存分配策略。包含三部分内容：如何判断哪些对象需要回收，如何回收和一些常见的垃圾收集器。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《MYSQL实战45讲》-笔记</title>
+      <link>https://quguang.wang/post/mysql/</link>
+      <pubDate>Wed, 19 Dec 2018 17:32:22 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql/</guid>
+      <description>&lt;p&gt;MYSQL实战45讲-极客时间笔记&lt;/p&gt;</description>
     </item>
     
     <item>

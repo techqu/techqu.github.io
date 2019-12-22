@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://quguang.wang/categories/</loc>
+    <lastmod>2019-11-28T15:12:03+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://quguang.wang/tags/docker/</loc>
     <lastmod>2019-11-28T15:12:03+08:00</lastmod>
   </url>
@@ -19,6 +24,11 @@
   
   <url>
     <loc>https://quguang.wang/tags/</loc>
+    <lastmod>2019-11-28T15:12:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quguang.wang/categories/tech/</loc>
     <lastmod>2019-11-28T15:12:03+08:00</lastmod>
   </url>
   
@@ -43,12 +53,7 @@
   </url>
   
   <url>
-    <loc>https://quguang.wang/categories/</loc>
-    <lastmod>2019-10-22T18:22:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quguang.wang/categories/read/</loc>
+    <loc>https://quguang.wang/categories/note/</loc>
     <lastmod>2019-10-22T18:22:22+08:00</lastmod>
   </url>
   
@@ -103,12 +108,12 @@
   </url>
   
   <url>
-    <loc>https://quguang.wang/post/k8s-install/</loc>
+    <loc>https://quguang.wang/tags/kubernetes/</loc>
     <lastmod>2019-09-15T10:45:17+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://quguang.wang/tags/kubernetes/</loc>
+    <loc>https://quguang.wang/post/k8s-install/</loc>
     <lastmod>2019-09-15T10:45:17+08:00</lastmod>
   </url>
   
@@ -265,11 +270,6 @@
   <url>
     <loc>https://quguang.wang/post/geektime-java-performance-03/</loc>
     <lastmod>2019-08-04T20:34:10+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quguang.wang/categories/tech/</loc>
-    <lastmod>2019-08-04T15:32:03+08:00</lastmod>
   </url>
   
   <url>
@@ -633,6 +633,11 @@
   </url>
   
   <url>
+    <loc>https://quguang.wang/categories/life/</loc>
+    <lastmod>2019-04-06T10:22:26+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://quguang.wang/tags/%E8%80%83%E7%A0%94/</loc>
     <lastmod>2019-04-06T10:22:26+08:00</lastmod>
   </url>
@@ -835,6 +840,11 @@
   <url>
     <loc>https://quguang.wang/post/drools-7.15.0.final-docker-deploy/</loc>
     <lastmod>2019-01-26T14:56:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quguang.wang/tags/booklist/</loc>
+    <lastmod>2019-01-21T16:34:26+08:00</lastmod>
   </url>
   
   <url>

@@ -105,7 +105,7 @@
                     </li>
                     
                     <li>
-                        <a href="/categories/"></a>
+                        <a href="/categories/life">life</a>
                     </li>
                     
                     <li>
@@ -113,7 +113,7 @@
                     </li>
                     
                     <li>
-                        <a href="/categories/read">read</a>
+                        <a href="/categories/note">note</a>
                     </li>
                     
                     <li>
@@ -122,8 +122,6 @@
                     
                     
 		    
-                        <li><a href="/top/books/">BOOKS</a></li>
-                    
                         <li><a href="/top/about/">ABOUT</a></li>
                     
 
@@ -201,19 +199,42 @@
             
 
 <div class="post-preview">
-    <a href="https://quguang.wang/post/geektime-jvm-01/">
+    <a href="https://quguang.wang/post/geektime-kubernetes-docker-introduction.1/">
         <h2 class="post-title">
-            《深入拆解Java虚拟机》-课程目录
+            《深入剖析Kubernetes》-k8s网络
         </h2>
 	
         <div class="post-content-preview">
 	
-            <p>整个专栏将分为四大模块:基本原理、高效实现、代码优化、虚拟机黑科技</p>
+            <p>Kubernetes 的网络模型假定了所有 Pod 都在一个可以直接连通的扁平的网络空间中，这在 GCE 里面是现成的网络模型，Kubernetes 假定这个网络已经存在。而在私有云里搭建 Kubernetes 集群，就不能假定这个网络已经存在。我们需要自己实现这个网络假设，将不同节点的 Docker 容器之间的互相访问先打通，然后运行 Kubernetes。比如使用 Flannel。</p>
        
         </div>
     </a>
     <p class="post-meta">
-    Posted by 瞿广 Sunday, August 4, 2019
+    Posted by 瞿广 Wednesday, November 27, 2019
+    
+    
+    <br>Last Modified on Thursday, November 28, 2019
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/reading-note-%E5%85%A8%E7%90%83%E9%80%9A%E5%8F%B2/">
+        <h2 class="post-title">
+            读书笔记-全球通史
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>贯穿全世界的历史。</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Sunday, November 10, 2019
     
     
     </p>
@@ -222,23 +243,19 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://quguang.wang/post/data-structure-red-black-tree/">
+    <a href="https://quguang.wang/post/reading-note-%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%8E%86%E5%8F%B2/">
         <h2 class="post-title">
-            《数据结构与算法之美》-红黑树
+            Reading Note 中国大历史
         </h2>
 	
         <div class="post-content-preview">
 	
-            <p>很多书籍里，但凡讲到平衡二叉查找树，就会拿红黑树作为例子。不仅如此，如果你有一定的开发经验，你会发现，在工程中，很多用到平衡二叉查找树的地方都会用红黑树。你有没有想过，</p>
-
-<p>Java TreeMap实现了SortedMap接口，也就是说会按照key的大小顺序对Map中的元素进行排序，key大小的评判可以通过其本身的自然顺序（natural ordering），也可以通过构造时传入的比较器（Comparator）。</p>
-
-<p>TreeMap底层通过红黑树（Red-Black tree）实现，也就意味着containsKey(), get(), put(), remove()都有着log(n)的时间复杂度。其具体算法实现参照了《算法导论》。</p>
+            
        
         </div>
     </a>
     <p class="post-meta">
-    Posted by 瞿广 Friday, April 12, 2019
+    Posted by 瞿广 Sunday, November 10, 2019
     
     
     </p>
@@ -247,23 +264,19 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://quguang.wang/post/what-is-devops/">
+    <a href="https://quguang.wang/post/geektime-mq-01/">
         <h2 class="post-title">
-            什么是Devops？
+            消息队列高手课-基础篇-01
         </h2>
 	
         <div class="post-content-preview">
 	
-            <blockquote>
-<p>DevOps是人员，流程和产品的结合，可以为最终用户持续的提供价值。</p>
-</blockquote>
-
-<p>它不仅仅是流程，它不仅仅是产品或工具，它完全是人员，流程和工具，共同努力实现目标。最终以小增量单位实现价值，持续交付给终端用户，我认为这非常重要。</p>
+            
        
         </div>
     </a>
     <p class="post-meta">
-    Posted by 瞿广 Sunday, January 13, 2019
+    Posted by 瞿广 Tuesday, October 22, 2019
     
     
     </p>
@@ -272,43 +285,19 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://quguang.wang/post/devops-in-action/">
+    <a href="https://quguang.wang/post/geektime-mq-02/">
         <h2 class="post-title">
-            Devops实践
+            消息队列高手课-基础篇-02
         </h2>
 	
         <div class="post-content-preview">
 	
-            <p>强调业务目标，以用户的价值为唯一的评判标准，团队的考核评价机制也要改变，个体和团队的成功都要放在整个开发-运维生命周期内来进行评价，开发完成了很多用户需求不一定是成功，运维保障系统不down机也不一定是成功！只有用户想要的功能被及时实现了，被成功部署了，被稳定使用了才算成功。
-就是把敏捷开发部门和运维部门之间的围墙打通，形成闭环</p>
+            
        
         </div>
     </a>
     <p class="post-meta">
-    Posted by 瞿广 Sunday, January 13, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/springboot-maven-profile/">
-        <h2 class="post-title">
-            如何集成maven和Spring boot的profile功能
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <blockquote>
-<p>今天看 guns 项目的 application.properties 文件，发现了<code>spring.profiles.active = @profiles.active@</code>的写法，查了好些资料终于搞明白了。原来是在集成maven和Spring boot的profile功能时用的，那么如何集成呢？</p>
-</blockquote>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Friday, January 4, 2019
+    Posted by 瞿广 Tuesday, October 22, 2019
     
     
     </p>
@@ -347,6 +336,12 @@
         <h5>FEATURED TAGS</h5>
         <div class="tags">
              
+            
+                
+                    <a href="/tags/booklist" title="booklist">
+                        booklist
+                    </a>
+                
             
                 
                     <a href="/tags/devops" title="devops">
@@ -625,7 +620,7 @@
                
                
                <li>
-                   <a target="_blank" href="https://github.com/yourgithub">
+                   <a target="_blank" href="https://github.com/techqu">
                        <span class="fa-stack fa-lg">
                            <i class="fa fa-circle fa-stack-2x"></i>
                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -670,7 +665,7 @@
         <h5>FRIENDS</h5>
         <ul class="list-inline">
             
-            <li><a target="_blank" href="https://zhaozhihan.com">Linda的博客</a></li>
+            <li><a target="_blank" href="https://servicemesher.com">servicemesher的博客</a></li>
             
         </ul>
     </section>
@@ -704,7 +699,7 @@
                    
                     
                     <li>
-                        <a href="mailto:youremail@gmail.com">
+                        <a href="mailto:quguang1011@gmail.com">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
@@ -732,7 +727,7 @@
 		    
                     
                     <li>
-                        <a target="_blank" href="https://github.com/yourgithub">
+                        <a target="_blank" href="https://github.com/techqu">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>

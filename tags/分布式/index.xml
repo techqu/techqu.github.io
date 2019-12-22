@@ -21,6 +21,19 @@
     </item>
     
     <item>
+      <title>从分布式一致性谈到CAP理论、BASE理论、分布式事务</title>
+      <link>https://quguang.wang/post/distributed-consistency/</link>
+      <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/distributed-consistency/</guid>
+      <description>&lt;p&gt;什么是事务，简单说事务就是要么全不做，要么全做。一部分做一部分不做就会出一致性问题。&lt;/p&gt;
+
+&lt;p&gt;传统的单体应用不会横跨多个数据库，可以通过单机事务保证一致性。&lt;/p&gt;
+
+&lt;p&gt;然而在海量数据的场景下，需要对数据库做拆分，即分库分表，而Cobar、MyCat这类分库分表中间并不提供分布式事务的特性，并且基于二阶段提交的分布式事务性能较差，对于大多数业务场景来说，并不需要强一致，只需要保证最终一致性即可。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>分布式事务-2PC(二阶段提交)</title>
       <link>https://quguang.wang/post/transaction-2pc/</link>
       <pubDate>Mon, 14 Jan 2019 14:53:02 +0800</pubDate>

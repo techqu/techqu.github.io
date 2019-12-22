@@ -105,7 +105,7 @@
                     </li>
                     
                     <li>
-                        <a href="/categories/"></a>
+                        <a href="/categories/life">life</a>
                     </li>
                     
                     <li>
@@ -113,7 +113,7 @@
                     </li>
                     
                     <li>
-                        <a href="/categories/read">read</a>
+                        <a href="/categories/note">note</a>
                     </li>
                     
                     <li>
@@ -122,8 +122,6 @@
                     
                     
 		    
-                        <li><a href="/top/books/">BOOKS</a></li>
-                    
                         <li><a href="/top/about/">ABOUT</a></li>
                     
 
@@ -201,21 +199,19 @@
             
 
 <div class="post-preview">
-    <a href="https://quguang.wang/post/java-io/">
+    <a href="https://quguang.wang/post/geektime-java-36-01/">
         <h2 class="post-title">
-            Java Io
+            Java核心技术36讲-Java提供了哪些IO方式? NIO如何实现多路复用? 
         </h2>
 	
         <div class="post-content-preview">
 	
-            <p>Java 提供了哪些IO方式？NIO如何实现多路复用？</p>
-
-<p>首先、传统的java.io包，它基于流模型实现，提供了，比如File抽象、输入输出流等。交互方式是同步、阻塞的方式。也就是说，在读取输入流或者写入输出流时，在写、读动作完成之前，线程会一直阻塞在那里，它们之间的调用时可靠的线性顺序。</p>
+            
        
         </div>
     </a>
     <p class="post-meta">
-    Posted by 瞿广 Thursday, December 27, 2018
+    Posted by 瞿广 Wednesday, September 18, 2019
     
     
     </p>
@@ -224,19 +220,24 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://quguang.wang/post/geektime-jvm-how-execute-method-2/">
+    <a href="https://quguang.wang/post/geektime-tomcat-netty-03/">
         <h2 class="post-title">
-            《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（下）
+            Tomcat&amp;Netty-Tomcat系统架构(下):聊聊多层容器的设计
         </h2>
 	
         <div class="post-content-preview">
 	
-            <p>《极客时间-深入拆解java虚拟机》笔记</p>
+            <p>专栏上一期我们学完了连接器的设计，今天我们一起来看一下Tomcat的容器设计。先复习一下，上期我讲 到了Tomcat有两个核心组件:<strong>连接器和容器</strong>，其中连接器负责外部交流，容器负责内部处理。具体来说就是</p>
+
+<ul>
+<li>连接器处理Socket通信和应用层协议的解析，得到Servlet请求;</li>
+<li>而容器则负责处理Servlet请求。</li>
+</ul>
        
         </div>
     </a>
     <p class="post-meta">
-    Posted by 瞿广 Wednesday, December 26, 2018
+    Posted by 瞿广 Tuesday, September 17, 2019
     
     
     </p>
@@ -245,19 +246,21 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://quguang.wang/post/geektime-jvm-how-execute-method-1/">
+    <a href="https://quguang.wang/post/geektime-tomcat-netty-02/">
         <h2 class="post-title">
-            《深入拆解Java虚拟机》-JVM是如何执行方法调用的？（上）
+            Tomcat Netty-Tomcat系统架构(上): 连接器是如何设计的?
         </h2>
 	
         <div class="post-content-preview">
 	
-            <p>JVM是如何执行方法调用的？（上）</p>
+            <p>在面试时我们可能经常被问到:你做的XX项目的架构是如何设计的，请讲一下实现的思路。对于面试官来 说，可以通过你对复杂系统设计的理解，了解你的技术水平以及处理复杂问题的思路。</p>
+
+<p>今天咱们就来一步一步分析Tomcat的设计思路，看看Tomcat的设计者们当时是怎么回答这个问题的。一方 面我们可以学到Tomcat的总体架构，学会从宏观上怎么去设计一个复杂系统，怎么设计顶层模块，以及模 块之间的关系;另一方面也为我们深入学习Tomcat的工作原理打下基础。</p>
        
         </div>
     </a>
     <p class="post-meta">
-    Posted by 瞿广 Tuesday, December 25, 2018
+    Posted by 瞿广 Tuesday, September 17, 2019
     
     
     </p>
@@ -266,19 +269,19 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://quguang.wang/post/jvm-understand-gc-log/">
+    <a href="https://quguang.wang/post/k8s-install/">
         <h2 class="post-title">
-            理解GC日志
+            kubernetes Install
         </h2>
 	
         <div class="post-content-preview">
 	
-            <p>理解GC日志，基于jdk1.7,一步步看懂GC日志</p>
+            <p>公司服务器上的 k8s 集群不给自己玩了，所以打算在本地mac 上装 kubernestes 集群 ，记录下使用 docker 的 mac 客户端 安装 kubernetets 的过程</p>
        
         </div>
     </a>
     <p class="post-meta">
-    Posted by 瞿广 Monday, December 24, 2018
+    Posted by 瞿广 Sunday, September 15, 2019
     
     
     </p>
@@ -287,19 +290,21 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://quguang.wang/post/jvm-tools/">
+    <a href="https://quguang.wang/post/geektime-tomcat-netty-01.1/">
         <h2 class="post-title">
-            JVM 工具
+            Tomcat Netty-Servlet规范和Servlet容器
         </h2>
 	
         <div class="post-content-preview">
 	
-            <p>本文介绍了常用的JDK的命令行工具</p>
+            <p>浏览器发给服务端的是一个HTTP格式的请求，HTTP服务器收到这个请求 后，需要调用服务端程序来处理，所谓的服务端程序就是你写的Java类，一般来说不同的请求需要由不同的 Java类来处理。</p>
+
+<p>那么问题来了，HTTP服务器怎么知道要调用哪个Java类的哪个方法呢。</p>
        
         </div>
     </a>
     <p class="post-meta">
-    Posted by 瞿广 Monday, December 24, 2018
+    Posted by 瞿广 Thursday, September 12, 2019
     
     
     </p>
@@ -342,6 +347,12 @@
         <h5>FEATURED TAGS</h5>
         <div class="tags">
              
+            
+                
+                    <a href="/tags/booklist" title="booklist">
+                        booklist
+                    </a>
+                
             
                 
                     <a href="/tags/devops" title="devops">
@@ -620,7 +631,7 @@
                
                
                <li>
-                   <a target="_blank" href="https://github.com/yourgithub">
+                   <a target="_blank" href="https://github.com/techqu">
                        <span class="fa-stack fa-lg">
                            <i class="fa fa-circle fa-stack-2x"></i>
                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -665,7 +676,7 @@
         <h5>FRIENDS</h5>
         <ul class="list-inline">
             
-            <li><a target="_blank" href="https://zhaozhihan.com">Linda的博客</a></li>
+            <li><a target="_blank" href="https://servicemesher.com">servicemesher的博客</a></li>
             
         </ul>
     </section>
@@ -699,7 +710,7 @@
                    
                     
                     <li>
-                        <a href="mailto:youremail@gmail.com">
+                        <a href="mailto:quguang1011@gmail.com">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
@@ -727,7 +738,7 @@
 		    
                     
                     <li>
-                        <a target="_blank" href="https://github.com/yourgithub">
+                        <a target="_blank" href="https://github.com/techqu">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
