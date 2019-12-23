@@ -199,29 +199,6 @@
             
 
 <div class="post-preview">
-    <a href="https://quguang.wang/post/mysql-transaction-2/">
-        <h2 class="post-title">
-            《MYSQL实战45讲》- 事务隔离
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>如果是可重复读隔离级别，事务T启动的时候会创建一个视图read-view，之后事务T执行期间，即使有其他事务修改了数据，事务T看到的仍然跟在启动时看到的一样。也就是说，一个在可重复读隔离级别下执行的事务，好像与世无争，不受外界影响。</p>
-
-<p>但是，一个事务要更新一行，如果刚好有另外一个事务拥有这一行的行锁，它又不能这么超然了，会被锁住，进入等待状态。问题是，既然进入了等待状态，那么等到这个事务自己获取到行锁要更新数据的时候，它读到的值又是什么呢？</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Friday, March 15, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
     <a href="https://quguang.wang/post/mysql-transaction/">
         <h2 class="post-title">
             《MYSQL实战45讲》- 行锁、死锁、事务
@@ -301,6 +278,27 @@
     
     
     <br>Last Modified on Tuesday, August 20, 2019
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/java-seckill-action/">
+        <h2 class="post-title">
+            秒杀系统架构分析与实战
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>现在很多面试都问如何设计一个秒杀系统，特此学习一下</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Monday, February 18, 2019
+    
     
     </p>
 
