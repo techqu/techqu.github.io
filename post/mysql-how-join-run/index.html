@@ -228,7 +228,7 @@
 <ul>
 <li><a href="#1-准备工作">1 准备工作：</a></li>
 <li><a href="#2-三种方法">2 三种方法</a></li>
-<li><a href="#2-1-index-nested-loop-join">2.1 Index Nested-Loop Join</a>
+<li><a href="#2-1-index-nested-loop-join-驱动表上有索引">2.1 Index Nested-Loop Join(驱动表上有索引)</a>
 <ul>
 <li><a href="#执行流程">执行流程：</a></li>
 <li><a href="#流程分析">流程分析</a></li>
@@ -237,7 +237,7 @@
 <li><a href="#结论">结论：</a></li>
 </ul></li>
 <li><a href="#2-2-simple-nested-loop-join">2.2 Simple Nested-loop join</a></li>
-<li><a href="#2-3-block-nested-loop-join">2.3 Block Nested-Loop Join</a>
+<li><a href="#2-3-block-nested-loop-join-被驱动表上没有可用的索引">2.3 Block Nested-Loop Join(被驱动表上没有可用的索引)</a>
 <ul>
 <li>
 <ul>
@@ -294,12 +294,21 @@ insert into t1 (select * from t2 where id&lt;=100)
 
 <h2 id="2-三种方法">2 三种方法</h2>
 
-<h2 id="2-1-index-nested-loop-join">2.1 Index Nested-Loop Join</h2>
+<h2 id="2-1-index-nested-loop-join-驱动表上有索引">2.1 Index Nested-Loop Join(驱动表上有索引)</h2>
 
 <pre><code class="language-sql">selec * from t1 straight_join t2 on (t1.a = t2.a)
 </code></pre>
 
-<p>t1是驱动表，t2是被驱动表</p>
+<p>straight_join</p>
+
+<blockquote>
+<p>TRAIGHT_JOIN is similar to JOIN, except that the left table is always read before the right table.
+This can be used for those (few) cases for which the join optimizer puts the tables in the wrong order</p>
+</blockquote>
+
+<p>意思就是说STRAIGHT_JOIN功能同join类似，但能让左边的表来驱动右边的表，能改表优化器对于联表查询的执行顺序。</p>
+
+<p>因此：t1是驱动表，t2是被驱动表</p>
 
 <h3 id="执行流程">执行流程：</h3>
 
@@ -341,7 +350,7 @@ insert into t1 (select * from t2 where id&lt;=100)
 
 <h3 id="问题二-怎么选择驱动表">问题二：怎么选择驱动表？</h3>
 
-<p>在这个join语句执行过程中，驱动表是走全表扫描，而被驱动表是走树搜索。</p>
+<p><strong>在这个join语句执行过程中，驱动表是走全表扫描，而被驱动表是走树搜索。</strong></p>
 
 <p>假设被驱动表的行数是M。每次在被驱动表一行数据，要先搜索索引a，再搜索主键索引。每次搜索一棵树近似复杂度是以 2 为底的M的对数，记为log2M，所以再被驱动表上查一行的时间复杂度是 2*log2M。</p>
 
@@ -352,7 +361,7 @@ insert into t1 (select * from t2 where id&lt;=100)
 <li>如果使用join语句的话，需要让小表做驱动表</li>
 </ol>
 
-<p>但是，需要注意，这个结论的前提是<strong>“可以使用被驱动表的索引”</strong></p>
+<p>但是，需要注意，这个结论的前提是 <strong>可以使用被驱动表的索引</strong></p>
 
 <h2 id="2-2-simple-nested-loop-join">2.2 Simple Nested-loop join</h2>
 
@@ -367,7 +376,7 @@ insert into t1 (select * from t2 where id&lt;=100)
 
 <p>当然MYSQL没有使用这个方法，而是下面的 <code>Block Nested-Loop Join</code></p>
 
-<h2 id="2-3-block-nested-loop-join">2.3 Block Nested-Loop Join</h2>
+<h2 id="2-3-block-nested-loop-join-被驱动表上没有可用的索引">2.3 Block Nested-Loop Join(被驱动表上没有可用的索引)</h2>
 
 <p>这时候，被驱动表上没有可用的索引，算法的流程是这样的：</p>
 

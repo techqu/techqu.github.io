@@ -4,31 +4,61 @@
   
   <url>
     <loc>https://quguang.wang/categories/</loc>
-    <lastmod>2019-11-28T15:12:03+08:00</lastmod>
+    <lastmod>2019-12-26T14:12:44+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://quguang.wang/tags/docker/</loc>
-    <lastmod>2019-11-28T15:12:03+08:00</lastmod>
+    <loc>https://quguang.wang/tags/jvm/</loc>
+    <lastmod>2019-12-26T14:12:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quguang.wang/post/xiaoe-tech-jvm-03/</loc>
+    <lastmod>2019-12-26T14:12:44+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://quguang.wang/post/</loc>
-    <lastmod>2019-11-28T15:12:03+08:00</lastmod>
+    <lastmod>2019-12-26T14:12:44+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://quguang.wang/</loc>
-    <lastmod>2019-11-28T15:12:03+08:00</lastmod>
+    <lastmod>2019-12-26T14:12:44+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://quguang.wang/tags/</loc>
-    <lastmod>2019-11-28T15:12:03+08:00</lastmod>
+    <lastmod>2019-12-26T14:12:44+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://quguang.wang/categories/tech/</loc>
+    <lastmod>2019-12-26T14:12:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quguang.wang/post/xiaoe-tech-jvm-02/</loc>
+    <lastmod>2019-12-25T14:12:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quguang.wang/post/xiaoe-tech-jvm-01/</loc>
+    <lastmod>2019-12-24T14:12:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quguang.wang/categories/life/</loc>
+    <lastmod>2019-12-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quguang.wang/post/life-say-goodbye-to-fake-workhard/</loc>
+    <lastmod>2019-12-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quguang.wang/tags/docker/</loc>
     <lastmod>2019-11-28T15:12:03+08:00</lastmod>
   </url>
   
@@ -224,11 +254,6 @@
   
   <url>
     <loc>https://quguang.wang/post/java-jvm-jmap/</loc>
-    <lastmod>2019-08-19T17:49:12+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quguang.wang/tags/jvm/</loc>
     <lastmod>2019-08-19T17:49:12+08:00</lastmod>
   </url>
   
@@ -629,11 +654,6 @@
   
   <url>
     <loc>https://quguang.wang/post/kaoyan-plan-2020/</loc>
-    <lastmod>2019-04-06T10:22:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://quguang.wang/categories/life/</loc>
     <lastmod>2019-04-06T10:22:26+08:00</lastmod>
   </url>
   
@@ -1144,10 +1164,6 @@
   
   <url>
     <loc>https://quguang.wang/search/</loc>
-  </url>
-  
-  <url>
-    <loc>https://quguang.wang/archives/</loc>
   </url>
   
 </urlset>

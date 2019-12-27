@@ -6,10 +6,50 @@
     <description>Recent content in Posts on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Nov 2019 15:12:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Dec 2019 14:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://quguang.wang/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JVM中有哪些垃圾回收算法，每个算法各自的优劣？</title>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-03/</link>
+      <pubDate>Thu, 26 Dec 2019 14:12:44 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-03/</guid>
+      <description>&lt;p&gt;上一篇文章我们重新梳理了一下什么时候触发垃圾回收，以及到底哪些对象可以垃圾回收&lt;/p&gt;
+
+&lt;p&gt;另外，对新生代填满，GC Roots对象，软引用、弱引用，还有finalize()等概念进行了比较细致的梳理。&lt;/p&gt;
+
+&lt;p&gt;那么这篇文章，我们就来看看在对新生代进行垃圾回收的时候，到底是采取一种什么样的算法进行的呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JVM的垃圾回收机制</title>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-02/</link>
+      <pubDate>Wed, 25 Dec 2019 14:12:44 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-02/</guid>
+      <description>&lt;p&gt;上一篇文章给大家分析了JVM中的几块内存区域分别都是干什么的，今天的文章就给大家初步介绍一下垃圾回收的概念。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JVM的内存区域划分</title>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-01/</link>
+      <pubDate>Tue, 24 Dec 2019 14:12:44 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>告别伪勤奋</title>
+      <link>https://quguang.wang/post/life-say-goodbye-to-fake-workhard/</link>
+      <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://quguang.wang/post/life-say-goodbye-to-fake-workhard/</guid>
+      <description>&lt;p&gt;伪勤奋的几种常见情形，以及解决方法:&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>《深入剖析Kubernetes》-k8s网络</title>
@@ -21,7 +61,7 @@
     </item>
     
     <item>
-      <title>读书笔记-全球通史</title>
+      <title>《全球通史》</title>
       <link>https://quguang.wang/post/reading-note-%E5%85%A8%E7%90%83%E9%80%9A%E5%8F%B2/</link>
       <pubDate>Sun, 10 Nov 2019 17:44:38 +0800</pubDate>
       
@@ -77,7 +117,7 @@
     </item>
     
     <item>
-      <title>《中国近代史》-蒋廷黻-读书笔记</title>
+      <title>《中国近代史》-蒋廷黻</title>
       <link>https://quguang.wang/post/reading-note-%E4%B8%AD%E5%9B%BD%E8%BF%91%E4%BB%A3%E5%8F%B2/</link>
       <pubDate>Sat, 21 Sep 2019 14:23:59 +0800</pubDate>
       
@@ -863,7 +903,7 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     </item>
     
     <item>
-      <title>2020考研准备</title>
+      <title>2020考研计划</title>
       <link>https://quguang.wang/post/kaoyan-plan-2020/</link>
       <pubDate>Sat, 06 Apr 2019 10:22:26 +0800</pubDate>
       
@@ -1238,7 +1278,7 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>2018-2019</title>
+      <title>2018总结-2019计划</title>
       <link>https://quguang.wang/post/2018-2019/</link>
       <pubDate>Wed, 16 Jan 2019 10:42:50 +0800</pubDate>
       

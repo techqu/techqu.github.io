@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Nov 2019 15:12:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Dec 2019 14:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://quguang.wang/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JVM</title>
+      <link>https://quguang.wang/tags/jvm/</link>
+      <pubDate>Thu, 26 Dec 2019 14:12:44 +0800</pubDate>
+      
+      <guid>https://quguang.wang/tags/jvm/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>docker</title>
@@ -116,15 +125,6 @@
       <pubDate>Thu, 22 Aug 2019 10:06:03 +0800</pubDate>
       
       <guid>https://quguang.wang/tags/%E9%9D%A2%E8%AF%95/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JVM</title>
-      <link>https://quguang.wang/tags/jvm/</link>
-      <pubDate>Mon, 19 Aug 2019 17:49:12 +0800</pubDate>
-      
-      <guid>https://quguang.wang/tags/jvm/</guid>
       <description></description>
     </item>
     

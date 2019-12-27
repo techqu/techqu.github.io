@@ -199,6 +199,73 @@
             
 
 <div class="post-preview">
+    <a href="https://quguang.wang/post/distributed-consistency/">
+        <h2 class="post-title">
+            从分布式一致性谈到CAP理论、BASE理论、分布式事务
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>什么是事务，简单说事务就是要么全不做，要么全做。一部分做一部分不做就会出一致性问题。</p>
+
+<p>传统的单体应用不会横跨多个数据库，可以通过单机事务保证一致性。</p>
+
+<p>然而在海量数据的场景下，需要对数据库做拆分，即分库分表，而Cobar、MyCat这类分库分表中间并不提供分布式事务的特性，并且基于二阶段提交的分布式事务性能较差，对于大多数业务场景来说，并不需要强一致，只需要保证最终一致性即可。</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Monday, January 14, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/transaction-2pc/">
+        <h2 class="post-title">
+            分布式事务-2PC(二阶段提交)
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Monday, January 14, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/transaction-3pc/">
+        <h2 class="post-title">
+            分布式事务-3PC(三阶段提交)
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Monday, January 14, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="https://quguang.wang/post/what-is-devops/">
         <h2 class="post-title">
             什么是Devops？
@@ -238,73 +305,6 @@
     </a>
     <p class="post-meta">
     Posted by 瞿广 Sunday, January 13, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/booklist-ability/">
-        <h2 class="post-title">
-            书单-按能力划分
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>按能力划分（附书籍豆瓣链接）</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Sunday, January 6, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/springboot-maven-profile/">
-        <h2 class="post-title">
-            如何集成maven和Spring boot的profile功能
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <blockquote>
-<p>今天看 guns 项目的 application.properties 文件，发现了<code>spring.profiles.active = @profiles.active@</code>的写法，查了好些资料终于搞明白了。原来是在集成maven和Spring boot的profile功能时用的，那么如何集成呢？</p>
-</blockquote>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Friday, January 4, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/java-io/">
-        <h2 class="post-title">
-            Java Io
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>Java 提供了哪些IO方式？NIO如何实现多路复用？</p>
-
-<p>首先、传统的java.io包，它基于流模型实现，提供了，比如File抽象、输入输出流等。交互方式是同步、阻塞的方式。也就是说，在读取输入流或者写入输出流时，在写、读动作完成之前，线程会一直阻塞在那里，它们之间的调用时可靠的线性顺序。</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Thursday, December 27, 2018
     
     
     </p>
@@ -683,6 +683,22 @@
     
 
     
+    
+    <section>
+        <hr>
+        <h5>BOOKMARKS</h5>
+        <ul class="list-inline">
+            
+            <li><a target="_blank" href="https://martinfowler.com">Martin Fowler</a></li>
+            
+            <li><a target="_blank" href="http://www.servicemesher.com">ServiceMesher</a></li>
+            
+            <li><a target="_blank" href="https://pxhere.com">Pxhere</a></li>
+            
+            <li><a target="_blank" href="https://unsplash.com">unsplash</a></li>
+            
+        </ul>
+    </section>
     
 </div>
 

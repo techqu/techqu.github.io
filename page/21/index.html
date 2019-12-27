@@ -200,6 +200,92 @@
             
 
 <div class="post-preview">
+    <a href="https://quguang.wang/post/mysql-index-unique-and-normal/">
+        <h2 class="post-title">
+            《MYSQL实战45讲》- 唯一索引和普通索引
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>在不同的业务场景下，应该选择普通索引，还是唯一索引呢？接下来，我们就从这两种索引对查询语句和更新语句的性能影响来进行分析。</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Saturday, March 16, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/mysql-index/">
+        <h2 class="post-title">
+            《MYSQL实战45讲》- 深入浅出索引
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>简单来说，索引的出现其实就是为了提高数据查询的效率，就像书的目录一样。</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Saturday, March 16, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/mysql-transaction-2/">
+        <h2 class="post-title">
+            《MYSQL实战45讲》- 事务隔离
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>如果是可重复读隔离级别，事务T启动的时候会创建一个视图read-view，之后事务T执行期间，即使有其他事务修改了数据，事务T看到的仍然跟在启动时看到的一样。也就是说，一个在可重复读隔离级别下执行的事务，好像与世无争，不受外界影响。</p>
+
+<p>但是，一个事务要更新一行，如果刚好有另外一个事务拥有这一行的行锁，它又不能这么超然了，会被锁住，进入等待状态。问题是，既然进入了等待状态，那么等到这个事务自己获取到行锁要更新数据的时候，它读到的值又是什么呢？</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Friday, March 15, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/mysql-transaction/">
+        <h2 class="post-title">
+            《MYSQL实战45讲》- 行锁、死锁、事务
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Thursday, March 14, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="https://quguang.wang/post/mysql-how-to-copy-table/">
         <h2 class="post-title">
             《MYSQL实战45讲》-如何快速复制一张表
@@ -213,92 +299,6 @@
     </a>
     <p class="post-meta">
     Posted by 瞿广 Monday, February 25, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/mysql-how-join-run/">
-        <h2 class="post-title">
-            《MYSQL实战45讲》-Join语句是怎么执行的
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Friday, February 22, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/geektime-http-protocol-tcp-osi/">
-        <h2 class="post-title">
-            《透视HTTP协议》-常说的“四层”和“七层”到底是什么?
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>在上一讲中，我简单提到了TCP/IP协议，它是HTTP协议的下层协议，负责具体的数据传输工作。并且还特别说了，TCP/IP协议是一个“有层次的协议栈”。</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by CSDN-JeremyZJM Wednesday, February 20, 2019
-    
-    
-    <br>Last Modified on Tuesday, August 20, 2019
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/java-seckill-action/">
-        <h2 class="post-title">
-            秒杀系统架构分析与实战
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>现在很多面试都问如何设计一个秒杀系统，特此学习一下</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Monday, February 18, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/java-how-to-design-seckill/">
-        <h2 class="post-title">
-            如何设计一个秒杀系统
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>什么是秒杀? 秒杀场景一般会在电商网站举行一些活动或者节假日在12306网站上抢票时遇到。对于电商网站中一些稀缺或者特价商品，电商网站一般会在约定时间点对其进行限量销售，因为这些商品的特殊性，会吸引大量用户前来抢购，并且会在约定的时间点同时在秒杀页面进行抢购。</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by CSDN-Heaven-Wang Monday, February 18, 2019
     
     
     </p>
@@ -677,6 +677,22 @@
     
 
     
+    
+    <section>
+        <hr>
+        <h5>BOOKMARKS</h5>
+        <ul class="list-inline">
+            
+            <li><a target="_blank" href="https://martinfowler.com">Martin Fowler</a></li>
+            
+            <li><a target="_blank" href="http://www.servicemesher.com">ServiceMesher</a></li>
+            
+            <li><a target="_blank" href="https://pxhere.com">Pxhere</a></li>
+            
+            <li><a target="_blank" href="https://unsplash.com">unsplash</a></li>
+            
+        </ul>
+    </section>
     
 </div>
 
