@@ -200,6 +200,86 @@
             
 
 <div class="post-preview">
+    <a href="https://quguang.wang/post/geektime-kubernetes-docker-introduction/">
+        <h2 class="post-title">
+            《深入剖析Kubernetes》-Docker的实现原理
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造一个“边界”</p>
+
+<p>Docker容器具有以下3个特点：</p>
+
+<ul>
+<li><strong>轻量级</strong>：在同一台宿主机上的容器共享系统Kernel，这使得他们可以迅速启动而且占有的内存极少。镜像是以分层文件系统构造的，这可以让它们共享相同的文件，使得磁盘使用率和镜像下载速度得到提高。</li>
+<li><strong>开放</strong>：Docker容器基于开放标准，这使得Docker容器可以运行在主流Linux发行版和Windows操作系统上。</li>
+<li><strong>安全</strong>：容器将各个应用程序隔离开来，这给所有的应用程序提供了一层额外的安全防护。</li>
+</ul>
+
+<p>对于Docker等大多数Linux容器来说，<strong>Cgroups技术是用来制造约束的主要手段，而Namespace技术则是用来修改进程视图的主要方法。</strong></p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Thursday, January 17, 2019
+    
+    
+    <br>Last Modified on Friday, January 18, 2019
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/geektime-kubernetes-introduction/">
+        <h2 class="post-title">
+            《深入剖析Kubernetes》-入门
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>首先，Kubernetes项目要解决的问题是什么？</p>
+
+<p>编排？调度？容器云？还是集群管理？</p>
+
+<p>对于大多数用户来说，他们希望Kubernetes项目带来的体验是确定的：现在我有了应用的容器镜像，请帮我在一个给定的集群上把这个应用运行起来。更进一步地说，我还希望Kubernetes能给我提供路由网关、水平扩展、监控、备份、灾难恢复等一系列运维能力。这不就是经典Paas（比如，Cloud Foundry）项目的能力吗?</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Thursday, January 17, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/geektime-network-protocol-ipconfig/">
+        <h2 class="post-title">
+            《趣谈网络协议》-Ipconfig
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>从一行查看IP地址的命令开始讲解，
+Window上是ipconfig，Linux上是ifconfig，和 ip addr</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Wednesday, January 16, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="https://quguang.wang/post/2018-2019/">
         <h2 class="post-title">
             2018总结-2019计划
@@ -234,73 +314,6 @@
     </a>
     <p class="post-meta">
     Posted by 瞿广 Tuesday, January 15, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/transaction-local-msg-tb/">
-        <h2 class="post-title">
-            分布式事务-本地消息表：最终一致性
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Tuesday, January 15, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/distributed-consistency/">
-        <h2 class="post-title">
-            从分布式一致性谈到CAP理论、BASE理论、分布式事务
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>什么是事务，简单说事务就是要么全不做，要么全做。一部分做一部分不做就会出一致性问题。</p>
-
-<p>传统的单体应用不会横跨多个数据库，可以通过单机事务保证一致性。</p>
-
-<p>然而在海量数据的场景下，需要对数据库做拆分，即分库分表，而Cobar、MyCat这类分库分表中间并不提供分布式事务的特性，并且基于二阶段提交的分布式事务性能较差，对于大多数业务场景来说，并不需要强一致，只需要保证最终一致性即可。</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Monday, January 14, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/transaction-2pc/">
-        <h2 class="post-title">
-            分布式事务-2PC(二阶段提交)
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Monday, January 14, 2019
     
     
     </p>

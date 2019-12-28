@@ -199,6 +199,75 @@
             
 
 <div class="post-preview">
+    <a href="https://quguang.wang/post/geektime-java-concurrent-in-action.1.2/">
+        <h2 class="post-title">
+            《Java并发编程实战》-2-并发工具类(下)
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>前面我们多次提到一个累加器的例子，示例代码如下。在这个例子中，<code>add10K()</code>   这个方法不是线程安全的，问题就出在变量 count 的可见性和 <code>count+=1</code> 的原子性上。<strong>可见性问题可以用 volatile 来解决，而原子性问题我们前面一直都是采用的互斥锁方案。</strong></p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Friday, July 26, 2019
+    
+    
+    <br>Last Modified on Saturday, July 27, 2019
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/geektime-java-concurrent-in-action.1.1/">
+        <h2 class="post-title">
+            《Java并发编程实战》-2-并发工具类(上)
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>在前面《08 | 管程:并发编程的万能钥 匙》中我们提到过在并发编程领域，有 <strong>两大核心问题:一个是互斥，即同一时刻只允许一个线程 访问共享资源;另一个是同步，即线程之间如何通信、协作</strong>。这两大问题，管程都是能够解决 的。Java SDK 并发包通过 Lock 和 Condition 两个接口来实现管程，其中 <strong>Lock 用于解决互斥 问题，Condition 用于解决同步问题。</strong></p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Friday, July 26, 2019
+    
+    
+    <br>Last Modified on Saturday, July 27, 2019
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/geektime-java-concurrent-in-action.0/">
+        <h2 class="post-title">
+            《Java并发编程实战》-1-理论基础篇
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>这些年，我们的CPU、内存、I/O设备都在不断迭代，不断朝着更快的方向努力。但是在这个快速发展的过程中，又一个<strong>核心矛盾一直存在，就是这三者的速度差异</strong>。</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Thursday, July 25, 2019
+    
+    
+    <br>Last Modified on Saturday, July 27, 2019
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="https://quguang.wang/post/geektime-network-protocol-udp-tcp/">
         <h2 class="post-title">
             《趣谈网络协议》- Udp Tcp
@@ -237,69 +306,6 @@ UDP。对于不从事底层开发的人员来讲，或者对于开发应用的�
     </a>
     <p class="post-meta">
     Posted by 瞿广 Saturday, July 20, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/saas-hrm/">
-        <h2 class="post-title">
-            传统Saas项目实例
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>一个实际的saas项目的例子</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Monday, July 15, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/how-to-read-spring-source-code/">
-        <h2 class="post-title">
-            怎样阅读spring源码
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>给不知道如何阅读spring源码的同学一点借鉴</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Friday, July 12, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/spring-design-pattern/">
-        <h2 class="post-title">
-            Spring是如何运用设计模式的？
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>关于设计模式，如果使用得当，将会使我们的代码更加简洁，并且更具扩展性。本文主要讲解Spring中如何使用策略模式，工厂方法模式以及Builder模式。</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Friday, July 5, 2019
     
     
     </p>
