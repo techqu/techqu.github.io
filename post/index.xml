@@ -6,17 +6,46 @@
     <description>Recent content in Posts on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Dec 2019 08:51:05 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jan 2020 16:53:34 +0800</lastBuildDate>
     
 	<atom:link href="https://quguang.wang/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>如何阅读 Redis 源码？</title>
+      <link>https://quguang.wang/post/how-to-read-redis-source-code/</link>
+      <pubDate>Mon, 20 Jan 2020 16:53:34 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/how-to-read-redis-source-code/</guid>
+      <description>&lt;p&gt;在这篇文章中， 我将向大家介绍一种我认为比较合理的 Redis 源码阅读顺序， 希望可以给对 Redis 有兴趣并打算阅读 Redis 源码的朋友带来一点帮助。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mysql-行锁&#43;间隙锁（next-key lock）</title>
+      <link>https://quguang.wang/post/mysql-next-key-lock/</link>
+      <pubDate>Fri, 10 Jan 2020 21:27:38 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-next-key-lock/</guid>
+      <description>&lt;p&gt;本文主要介绍了幻读带来的问题 ，以及 mysql给出的解决办法，即 next-key lock。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>JVM中都有哪些常见的垃圾回收器，各自的特点是什么？</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-06/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-06-garbage-collector/</link>
       <pubDate>Sat, 28 Dec 2019 08:51:05 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-06/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-06-garbage-collector/</guid>
+      <description>&lt;p&gt;如果你不合理的设置内存，就会导致新生代内存不充足，然后导致很多对象不停的迁移到老年代去，最后导致老年代也要不停的进行垃圾回收。&lt;/p&gt;
+
+&lt;p&gt;最后这频繁的垃圾回收，就会极大的影响系统的性能。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Stop the World”问题分析：JVM最让人无奈的痛点！</title>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-07-stop-the-world/</link>
+      <pubDate>Sat, 28 Dec 2019 08:51:05 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-07-stop-the-world/</guid>
       <description>&lt;p&gt;如果你不合理的设置内存，就会导致新生代内存不充足，然后导致很多对象不停的迁移到老年代去，最后导致老年代也要不停的进行垃圾回收。&lt;/p&gt;
 
 &lt;p&gt;最后这频繁的垃圾回收，就会极大的影响系统的性能。&lt;/p&gt;</description>
@@ -24,10 +53,10 @@
     
     <item>
       <title>线上系统部署时如何设置JVM内存大小</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-05/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-05-jvm-properties-set/</link>
       <pubDate>Sat, 28 Dec 2019 08:51:05 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-05/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-05-jvm-properties-set/</guid>
       <description>&lt;p&gt;如果你不合理的设置内存，就会导致新生代内存不充足，然后导致很多对象不停的迁移到老年代去，最后导致老年代也要不停的进行垃圾回收。&lt;/p&gt;
 
 &lt;p&gt;最后这频繁的垃圾回收，就会极大的影响系统的性能。&lt;/p&gt;</description>
@@ -35,10 +64,10 @@
     
     <item>
       <title>JVM中有哪些垃圾回收算法，每个算法各自的优劣？</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-04/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-04-garbage-algorithm/</link>
       <pubDate>Thu, 26 Dec 2019 14:12:44 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-04/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-04-garbage-algorithm/</guid>
       <description>&lt;p&gt;上一篇文章我们重新梳理了一下什么时候触发垃圾回收，以及到底哪些对象可以垃圾回收&lt;/p&gt;
 
 &lt;p&gt;另外，对新生代填满，GC Roots对象，软引用、弱引用，还有finalize()等概念进行了比较细致的梳理。&lt;/p&gt;
@@ -48,28 +77,28 @@
     
     <item>
       <title>JVM的分代模型与垃圾回收机制</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-03/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-03-heap-stack-metaspace/</link>
       <pubDate>Wed, 25 Dec 2019 14:12:44 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-03/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-03-heap-stack-metaspace/</guid>
       <description>&lt;p&gt;上一篇文章给大家分析了JVM中的几块内存区域分别都是干什么的，今天的文章就给大家初步介绍一下垃圾回收的概念。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JVM的内存区域划分</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-02/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-02-memory-partition/</link>
       <pubDate>Tue, 24 Dec 2019 14:12:44 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-02/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-02-memory-partition/</guid>
       <description></description>
     </item>
     
     <item>
       <title>JVM的类加载机制</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-01/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-01-classloader/</link>
       <pubDate>Tue, 24 Dec 2019 14:12:44 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-01/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-01-classloader/</guid>
       <description></description>
     </item>
     
@@ -80,6 +109,15 @@
       
       <guid>https://quguang.wang/post/life-say-goodbye-to-fake-workhard/</guid>
       <description>&lt;p&gt;伪勤奋的几种常见情形，以及解决方法:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我的简历</title>
+      <link>https://quguang.wang/post/resume-01/</link>
+      <pubDate>Thu, 19 Dec 2019 21:45:56 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/resume-01/</guid>
+      <description>&lt;p&gt;本文是一个markdown风格语法的简历，模板转载自网络&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1619,10 +1657,10 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
     
     <item>
       <title>简历模版</title>
-      <link>https://quguang.wang/post/resume/</link>
+      <link>https://quguang.wang/post/resume-template/</link>
       <pubDate>Wed, 19 Dec 2018 21:45:56 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/resume/</guid>
+      <guid>https://quguang.wang/post/resume-template/</guid>
       <description>&lt;p&gt;本文是一个markdown风格语法的简历模版，转载自网络&lt;/p&gt;</description>
     </item>
     
@@ -1674,6 +1712,15 @@ Window上是ipconfig，Linux上是ifconfig，和 ip addr&lt;/p&gt;</description>
       
       <guid>https://quguang.wang/post/data-structure-and-algorithm.2/</guid>
       <description>&lt;p&gt;本文是极客时间中数据结构与算法课程的笔记，包含一些高级算法和实际场景&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://quguang.wang/post/untitled-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://quguang.wang/post/untitled-1/</guid>
+      <description>    贷款信息申明 本人自愿向天津好车多多融资租赁有限公司申请融资租赁款，车辆交易价格  结算价  元， 首付  首付款   元。 本人自愿向 四川新网银行 申请两笔个人消费贷款共计 __ 银行本金 _____ 元，其中 ： 第一笔  车辆贷款额  元， 用于偿付融资租赁款； 第二笔   超融总金额  元， ，用于支付购车相关附加费用，明细如下： （1）资产管理费：  资产管理费  元； （2）技术服务费：  技术服务费 元； （3） 车辆保险金额 ：  商业险 元。 贷款 期限  36 月，每 期月供预计___ 月供 ___ 元（以实际借据为准），一次性受托支付给天津好车多多融资租赁有限公司。 本人未受到诱导性营销或欺瞒，具备偿还能力，自愿向新网银行申请上述贷款，自愿签署并遵守借款合同的各项约定。 本人完全理解并确认：本人与任何第三方之间的纠纷或基础合同关系的变更，不会影响本人与新网银行签订的借款合同，本人不以任何理由否认本人与新网银行之间的借款关系或拒绝还款。 本人承诺向任何第三方支付除上述贷款外的一切费用，与本人向新网银行申请的贷款无关。 &amp;#xa0; 申明人：  客户人姓名  身份证尾号后 四位： 身份证后四位 申明日期：  2019 年  12   月  23 日  </description>
     </item>
     
   </channel>

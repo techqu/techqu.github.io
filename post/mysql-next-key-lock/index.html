@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Quguang&#39;s Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://quguang.wang/img/bg-china.jpg">
+    <meta property="twitter:image" content="https://quguang.wang/img/bg-china.jpg" />
+    
+
+    
+    <meta name="title" content="mysql-行锁&#43;间隙锁（next-key lock）" />
+    <meta property="og:title" content="mysql-行锁&#43;间隙锁（next-key lock）" />
+    <meta property="twitter:title" content="mysql-行锁&#43;间隙锁（next-key lock）" />
+    
+
+    
+    <meta name="description" content="瞿广，程序员, 技术爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="瞿广，程序员, 技术爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="瞿广，程序员, 技术爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="瞿广, quguang, , 瞿广的网络日志, 瞿广的博客, quguang Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>mysql-行锁&#43;间隙锁（next-key lock）-瞿广的博客 | quguang Blog</title>
+
+    <link rel="canonical" href="/post/mysql-next-key-lock/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Quguang&#39;s Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/life">life</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/math">math</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/note">note</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/tech">tech</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/bg-china.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/mysql" title="MySQL">
+                            MySQL
+                        </a>
+                        
+                    </div>
+                    <h1>mysql-行锁&#43;间隙锁（next-key lock）</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            瞿广
+                         
+                        on 
+                        Friday, January 10, 2020
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#幻读">幻读</a>
+<ul>
+<li><a href="#1-1-什么是幻读">1-1：什么是幻读？</a></li>
+<li><a href="#1-2-幻读带来的问题">1-2：幻读带来的问题？</a></li>
+<li><a href="#1-3-怎么避免幻读">1-3：怎么避免幻读？</a></li>
+<li><a href="#1-4-为啥会出现幻读">1-4：为啥会出现幻读？</a></li>
+<li><a href="#1-5-间隙锁是啥-它怎么避免出现幻读的-它引入了什么新的问题">1-5：间隙锁是啥？它怎么避免出现幻读的？它引入了什么新的问题？</a></li>
+</ul></li>
+<li><a href="#为什么需要间隙锁">为什么需要间隙锁</a></li>
+<li><a href="#mysql中的间隙锁">Mysql中的间隙锁</a></li>
+<li><a href="#间隙是怎么划分的">间隙是怎么划分的？</a></li>
+<li><a href="#间隙锁锁定的区域">间隙锁锁定的区域</a></li>
+<li><a href="#间隙锁的目的是为了防止幻读-其主要通过两个方面实现这个目的">间隙锁的目的是为了防止幻读，其主要通过两个方面实现这个目的：</a></li>
+<li><a href="#innodb自动使用间隙锁的条件">innodb自动使用间隙锁的条件：</a>
+<ul>
+<li><a href="#案例一">案例一</a></li>
+<li><a href="#案例二">案例二</a></li>
+<li><a href="#案例三">案例三</a></li>
+</ul></li>
+<li><a href="#next-key锁">next-key锁</a></li>
+<li><a href="#加锁规则总结">加锁规则总结</a></li>
+<li><a href="#其他案例">其他案例</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                
+                <p>本文主要介绍了幻读带来的问题 ，以及 mysql给出的解决办法，即 next-key lock。</p>
+
+<h3 id="幻读">幻读</h3>
+
+<h4 id="1-1-什么是幻读">1-1：什么是幻读？</h4>
+
+<p>幻读是指在同一个事务中，存在前后两次查询同一个范围的数据，但是第二次查询却看到了第一次查询没看到的行。</p>
+
+<p>比如：事务在插入已经检查过不存在的记录时，惊奇的发现这些数据已经存在了。</p>
+
+<p>注意，幻读出现的场景</p>
+
+<p>第一：事务的隔离级别为可重复读，且是当前读</p>
+
+<p>第二：幻读仅专指新插入的行</p>
+
+<h4 id="1-2-幻读带来的问题">1-2：幻读带来的问题？</h4>
+
+<p>一是，对行锁语义的破坏
+二是，破坏了数据一致性</p>
+
+<h4 id="1-3-怎么避免幻读">1-3：怎么避免幻读？</h4>
+
+<p>存储引擎采用加间隙锁的方式来避免出现幻读</p>
+
+<h4 id="1-4-为啥会出现幻读">1-4：为啥会出现幻读？</h4>
+
+<p>行锁只能锁定存在的行，针对新插入的操作没有限定</p>
+
+<h4 id="1-5-间隙锁是啥-它怎么避免出现幻读的-它引入了什么新的问题">1-5：间隙锁是啥？它怎么避免出现幻读的？它引入了什么新的问题？</h4>
+
+<p>间隙锁，是专门用于解决幻读这种问题的锁，它锁的了行与行之间的间隙，能够阻塞新插入的操作
+间隙锁的引入也带来了一些新的问题，比如：降低并发度，可能导致死锁。</p>
+
+<p>注意，读读不互斥，读写/写读/写写是互斥的，但是间隙锁之间是不冲突的，间隙锁会阻塞插入操作</p>
+
+<h3 id="为什么需要间隙锁">为什么需要间隙锁</h3>
+
+<p>我们给所有行加锁的时候，这一行还不存在，不存在也就加不上锁。</p>
+
+<p>也就是说，即使把所有的记录都加上锁，还是阻止不了新插入的记录，这也是为什么“幻读”会被单独拿出来解决的原因。</p>
+
+<p>产生幻读的原因是，行锁只能锁住行，但是新插入记录这个动作，要更新的是记录之间的“间隙”。因此，为了解决幻读问题，InnoDB 只好引入新的锁，也就是间隙锁 (Gap Lock)。</p>
+
+<h3 id="mysql中的间隙锁">Mysql中的间隙锁</h3>
+
+<p>下表中（见图一），id为主键，number字段上有非唯一索引的二级索引，有什么方式可以让该表不能再插入number=5的记录？</p>
+
+<p>图一
+<img src="/img/mysql-gap-lock-01.webp" alt="img/mysql-gap-lock-01" /></p>
+
+<p>根据上面生活中的例子，我们自然而然可以想到，只要控制几个点，number=5<strong>之前</strong>不能插入记录，number=5现有的记录<strong>之间</strong>不能再插入新的记录，number=5<strong>之后</strong>不能插入新的记录，那么新的number=5的记录将不能被插入进来。</p>
+
+<p>那么，mysql是如何控制number=5之前，之中，之后不能有新的记录插入呢（防止幻读）？
+答案是用间隙锁，在RR级别下，mysql通过间隙锁可以实现锁定number=5之前的间隙，number=5记录之间的间隙，number=5之后的间隙，从而使的新的记录无法被插入进来。</p>
+
+<h3 id="间隙是怎么划分的">间隙是怎么划分的？</h3>
+
+<p>注：为了方面理解，我们规定（id=A,number=B）代表一条字段id=A,字段number=B的记录，（C，D）代表一个区间，代表C-D这个区间范围。</p>
+
+<p>图一中，根据number列，我们可以分为几个区间：（无穷小，2），（2，4），（4，5），（5，5），（5,11），（11，无穷大）。
+只要这些区间对应的两个临界记录中间可以插入记录，就认为区间对应的记录之间有间隙。
+例如：区间（2，4）分别对应的临界记录是（id=1,number=2），（id=3，number=4），这两条记录中间可以插入（id=2,number=3）等记录，那么就认为（id=1,number=2）与（id=3，number=4）之间存在间隙。</p>
+
+<p>很多人会问，那记录（id=6，number=5）与（id=8，number=5）之间有间隙吗？
+答案是有的，（id=6，number=5）与（id=8，number=5）之间可以插入记录（id=7，number=5），因此（id=6,number=5）与（id=8,number=5）之间有间隙的，</p>
+
+<h3 id="间隙锁锁定的区域">间隙锁锁定的区域</h3>
+
+<p>根据检索条件向左寻找最靠近检索条件的记录值A，作为左区间，向右寻找最靠近检索条件的记录值B作为右区间，即锁定的间隙为（A，B）。
+图一中，where number=5的话，那么间隙锁的区间范围为（4,11）；</p>
+
+<h3 id="间隙锁的目的是为了防止幻读-其主要通过两个方面实现这个目的">间隙锁的目的是为了防止幻读，其主要通过两个方面实现这个目的：</h3>
+
+<p>（1）防止间隙内有新数据被插入</p>
+
+<p>（2）防止已存在的数据，更新成间隙内的数据（例如防止numer=3的记录通过update变成number=5）</p>
+
+<h3 id="innodb自动使用间隙锁的条件">innodb自动使用间隙锁的条件：</h3>
+
+<p>（1）必须在RR级别下</p>
+
+<p>（2）检索条件必须有索引（没有索引的话，mysql会全表扫描，那样会锁定整张表所有的记录，包括不存在的记录，此时其他事务不能修改不能删除不能添加）</p>
+
+<p><strong>接下来，通过实际操作观察下间隙锁的作用范围</strong></p>
+
+<h4 id="案例一">案例一</h4>
+
+<pre><code class="language-sql">session 1:
+start  transaction ;
+select  * from news where number=4 for update ;
+
+session 2:
+start  transaction ;
+insert into news value(2,4);#（阻塞）
+insert into news value(2,2);#（阻塞）
+insert into news value(4,4);#（阻塞）
+insert into news value(4,5);#（阻塞）
+insert into news value(7,5);#（执行成功）
+insert into news value(9,5);#（执行成功）
+insert into news value(11,5);#（执行成功）
+</code></pre>
+
+<p>检索条件number=4,向左取得最靠近的值2作为左区间，向右取得最靠近的5作为右区间，因此，session 1的间隙锁的范围（2，4），（4，5），如下图所示：</p>
+
+<p><img src="/img/mysql-gap-lock-02.webp" alt="img/mysql-gap-lock-02" /></p>
+
+<p>间隙锁锁定的区间为（2，4），（4，5），即记录（id=1,number=2）和记录（id=3,number=4）之间间隙会被锁定，记录（id=3,number=4）和记录（id=6,number=5）之间间隙被锁定。</p>
+
+<p>因此记录（id=2,number=4），（id=2,number=2），（id=4,number=4），（id=4,number=5）正好处在（id=3,number=4）和（id=6,number=5）之间，所以插入不了，需要等待锁的释放，而记录(id=7,number=5)，（id=9,number=5），（id=11,number=5）不在上述锁定的范围内，因此都会插入成功。</p>
+
+<h4 id="案例二">案例二</h4>
+
+<pre><code class="language-sql">session 1:
+start  transaction ;
+select  * from news where number=13 for update ;
+
+session 2:
+start  transaction ;
+insert into news value(11,5);#(执行成功)
+insert into news value(12,11);#(执行成功)
+insert into news value(14,11);#(阻塞)
+insert into news value(15,12);#(阻塞)
+update news set id=14 where number=11;#(阻塞)
+update news set id=11 where number=11;#(执行成功)
+</code></pre>
+
+<p>检索条件number=13,向左取得最靠近的值11作为左区间，向右由于没有记录因此取得无穷大作为右区间，因此，session 1的间隙锁的范围（11，无穷大），如下图所示：</p>
+
+<p><img src="/img/mysql-gap-lock-03.webp" alt="img/mysql-gap-lock-03" /></p>
+
+<p>此表中没有number=13的记录的，innodb依然会为该记录左右两侧加间隙锁，间隙锁的范围（11，无穷大）。</p>
+
+<p>有人会问，为啥update news set id=14 where number=11会阻塞，但是update news set id=11 where number=11却执行成功呢？</p>
+
+<p>间隙锁采用在指定记录的前面和后面以及中间的间隙上加间隙锁的方式避免数据被插入，此图间隙锁锁定的区域是（11，无穷大），也就是记录（id=13,number=11）之后不能再插入记录，update news set id=14 where number=11这条语句如果执行的话，将会被插入到（id=13,number=11）的后面，也就是在区间（11，无穷大）之间，由于该区间被间隙锁锁定，所以只能阻塞等待，而update news set id=11 where number=11执行后是会被插入到（id=13,number=11）的记录前面，也就不在（11，无穷大）的范围内，所以无需等待，执行成功。</p>
+
+<h4 id="案例三">案例三</h4>
+
+<pre><code class="language-sql">session 1:
+start  transaction ;
+select  * from news where number=5 for update;
+
+session 2:
+start  transaction ;
+insert into news value(4,4);#(阻塞)
+insert into news value(4,5);#(阻塞)
+insert into news value(5,5);#(阻塞)
+insert into news value(7,11);#(阻塞)
+insert into news value(9,12);#(执行成功)
+insert into news value(12,11);#(阻塞)
+update news set number=5 where id=1;#(阻塞)
+update news set id=11 where number=11;#(阻塞)
+update news set id=2 where number=4 ;#（执行成功）
+update news set id=4 where number=4 ;#（阻塞）
+</code></pre>
+
+<p>检索条件number=5,向左取得最靠近的值4作为左区间，向右取得11为右区间，因此，session 1的间隙锁的范围（4，5），（5，11），如下图所示：</p>
+
+<p><img src="/img/mysql-gap-lock-04.webp" alt="img/mysql-gap-lock-04" /></p>
+
+<p>有人会问，为啥<code>insert into news value(9,12)</code>会执行成功？间隙锁采用在指定记录的前面和后面以及中间的间隙上加间隙锁的方式避免数据被插入，（id=9,number=12）很明显在记录（13,11）的后面，因此不再锁定的间隙范围内。</p>
+
+<p>为啥<code>update news set number=5 where id=1</code>会阻塞？
+number=5的记录的前面，后面包括中间都被封锁了，你这个<code>update news set number=5 where id=1</code>根本没法执行，因为innodb已经把你可以存放的位置都锁定了，因为只能等待。</p>
+
+<p>同理，<code>update news set id=11 where number=11</code>由于记录（id=10,number=5）与记录（id=13,number=11）中间的间隙被封锁了，你这句sql也没法执行，必须等待，因为存放的位置被封锁了。</p>
+
+<p><strong>案例四：</strong></p>
+
+<pre><code class="language-sql">session 1:
+start  transaction;
+select * from news where number&gt;4 for update;
+
+session 2:
+start  transaction;
+update news set id=2 where number=4 ;#(执行成功)
+update news set id=4 where number=4 ;#(阻塞)
+update news set id=5 where number=5 ;#(阻塞)
+insert into news value(2,3);#(执行成功)
+insert into news value(null,13);#(阻塞)
+</code></pre>
+
+<p>检索条件number&gt;4,向左取得最靠近的值4作为左区间，向右取无穷大，因此，session 1的间隙锁的范围（4，无穷大），如下图所示：</p>
+
+<p><img src="/img/mysql-gap-lock-05.webp" alt="img/mysql-gap-lock-05" /></p>
+
+<p>session2中之所以有些阻塞，有些执行成功，其实就是因为插入的区域被锁定，从而阻塞。</p>
+
+<h3 id="next-key锁">next-key锁</h3>
+
+<p>next-key锁其实包含了记录锁和间隙锁，即锁定一个范围，并且锁定记录本身，InnoDB默认加锁方式是next-key 锁。
+上面的案例一session 1中的sql是：<code>select * from news where number=4 for update</code>;
+next-key锁锁定的范围为间隙锁+记录锁，即区间（2，4），（4，5）加间隙锁，同时number=4的记录加记录锁。</p>
+
+<h3 id="加锁规则总结">加锁规则总结</h3>
+
+<p>我总结的加锁规则里面，包含了两个“原则”、两个“优化”和一个“bug”。</p>
+
+<p><strong>原则 1</strong>：加锁的基本单位是 next-key lock。希望你还记得，next-key lock 是前开后闭区间。</p>
+
+<p><strong>原则 2</strong>：查找过程中访问到的对象才会加锁。</p>
+
+<p><strong>优化 1</strong>：索引上的等值查询，给唯一索引加锁的时候，next-key lock 退化为行锁。</p>
+
+<p><strong>优化 2</strong>：索引上的等值查询，向右遍历时且最后一个值不满足等值条件的时候，next-key lock 退化为间隙锁。</p>
+
+<p><strong>一个 bug</strong>：唯一索引上的范围查询会访问到不满足条件的第一个值为止。</p>
+
+<h3 id="其他案例">其他案例</h3>
+
+<p>案例一：等值查询间隙锁</p>
+
+<p>根据原则 1，加锁单位是 next-key lock，session A 加锁范围就是 (5,10]；同时根据优化 2，这是一个等值查询 (id=7)，而 id=10 不满足查询条件，<strong>next-key lock 退化成间隙锁</strong>，因此最终加锁的范围是 (5,10)。</p>
+
+<p>案例二：非唯一索引等值锁</p>
+
+<p>案例三：主键索引范围锁</p>
+
+<p>案例四：非唯一索引范围锁</p>
+
+<p>案例五：唯一索引范围锁 bug</p>
+
+<p>案例六：非唯一索引上存在&rdquo;等值&rdquo;的例子</p>
+
+<p>案例七：limit 语句加锁</p>
+
+<p>delete 语句明确加了 limit  的限制，因此在遍历之后，满足条件的语句已经有两条，循环就结束了。</p>
+
+<p>对我们实践的指导意义就是，在删除数据的时候尽量加 limit。这样不仅可以控制删除数据的条数，让操作更安全，还可以减小加锁的范围。</p>
+
+<p>案例八：一个死锁的例子</p>
+
+<blockquote>
+<p>作者：xdd_mdd</p>
+
+<p>链接：<a href="https://www.jianshu.com/p/bf862c37c4c9">https://www.jianshu.com/p/bf862c37c4c9</a></p>
+
+<p>来源：简书</p>
+
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/xiaoe-tech-jvm-06-garbage-collector/" data-toggle="tooltip" data-placement="top" title="JVM中都有哪些常见的垃圾回收器，各自的特点是什么？">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/how-to-read-redis-source-code/" data-toggle="tooltip" data-placement="top" title="如何阅读 Redis 源码？">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/devops" title="devops">
+                            devops
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/domain-driven-design" title="domain-driven-design">
+                            domain-driven-design
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/drools" title="drools">
+                            drools
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dubbo" title="dubbo">
+                            dubbo
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/java" title="java">
+                            java
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98" title="java并发实战">
+                            java并发实战
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/java%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%AE%9E%E6%88%98" title="java性能调优实战">
+                            java性能调优实战
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/jvm" title="jvm">
+                            jvm
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/kubernetes" title="kubernetes">
+                            kubernetes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/linux" title="linux">
+                            linux
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/mq" title="mq">
+                            mq
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/mysql" title="mysql">
+                            mysql
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/mysql%E5%AE%9E%E6%88%9845%E8%AE%B2" title="mysql实战45讲">
+                            mysql实战45讲
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/redis" title="redis">
+                            redis
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/spring" title="spring">
+                            spring
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E4%B9%A6%E5%8D%95" title="书单">
+                            书单
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F" title="分布式">
+                            分布式
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E5%AE%B9%E5%99%A8" title="容器">
+                            容器
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8" title="工具使用">
+                            工具使用
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E5%B9%B6%E5%8F%91" title="并发">
+                            并发
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" title="数据结构">
+                            数据结构
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E9%AB%98%E6%89%8B%E8%AF%BE" title="消息队列高手课">
+                            消息队列高手课
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E7%AE%97%E6%B3%95" title="算法">
+                            算法
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E7%BC%93%E5%AD%98" title="缓存">
+                            缓存
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE" title="网络协议">
+                            网络协议
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E8%B6%A3%E8%B0%88%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE" title="趣谈网络协议">
+                            趣谈网络协议
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B9%8B%E7%BE%8E" title="软件工程之美">
+                            软件工程之美
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E9%80%8F%E8%A7%86http%E5%8D%8F%E8%AE%AE" title="透视http协议">
+                            透视http协议
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E9%9D%A2%E8%AF%95" title="面试">
+                            面试
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://servicemesher.com">servicemesher的博客</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Quguang&#39;s Blog" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:quguang1011@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    <li>
+                        <a target="_blank" href="/your%20wechat%20qr%20code%20image">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/techqu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/yourlinkedinid">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    <li>
+                        <a target="_blank" href="https://medium.com/@quguang1011">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-medium fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+            
+                    
+                    <li>
+                        <a target="_blank" href="https://stackoverflow.com/users/yourstackoverflowid">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+            
+                    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Quguang&#39;s Blog 2020
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

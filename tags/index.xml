@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Dec 2019 08:51:05 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jan 2020 21:27:38 +0800</lastBuildDate>
     
 	<atom:link href="https://quguang.wang/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MySQL</title>
+      <link>https://quguang.wang/tags/mysql/</link>
+      <pubDate>Fri, 10 Jan 2020 21:27:38 +0800</pubDate>
+      
+      <guid>https://quguang.wang/tags/mysql/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>JVM</title>
@@ -17,6 +26,15 @@
       <pubDate>Sat, 28 Dec 2019 08:51:05 +0800</pubDate>
       
       <guid>https://quguang.wang/tags/jvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>面试</title>
+      <link>https://quguang.wang/tags/%E9%9D%A2%E8%AF%95/</link>
+      <pubDate>Thu, 19 Dec 2019 21:45:56 +0800</pubDate>
+      
+      <guid>https://quguang.wang/tags/%E9%9D%A2%E8%AF%95/</guid>
       <description></description>
     </item>
     
@@ -120,15 +138,6 @@
     </item>
     
     <item>
-      <title>面试</title>
-      <link>https://quguang.wang/tags/%E9%9D%A2%E8%AF%95/</link>
-      <pubDate>Thu, 22 Aug 2019 10:06:03 +0800</pubDate>
-      
-      <guid>https://quguang.wang/tags/%E9%9D%A2%E8%AF%95/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>计算机组成原理</title>
       <link>https://quguang.wang/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</link>
       <pubDate>Thu, 08 Aug 2019 14:50:26 +0800</pubDate>
@@ -219,15 +228,6 @@
     </item>
     
     <item>
-      <title>MySQL</title>
-      <link>https://quguang.wang/tags/mysql/</link>
-      <pubDate>Fri, 17 May 2019 18:26:55 +0800</pubDate>
-      
-      <guid>https://quguang.wang/tags/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>redis</title>
       <link>https://quguang.wang/tags/redis/</link>
       <pubDate>Thu, 16 May 2019 18:11:25 +0800</pubDate>
@@ -251,15 +251,6 @@
       <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
       
       <guid>https://quguang.wang/tags/mq/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>消息队列</title>
-      <link>https://quguang.wang/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</link>
-      <pubDate>Wed, 15 May 2019 20:36:47 +0800</pubDate>
-      
-      <guid>https://quguang.wang/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</guid>
       <description></description>
     </item>
     
@@ -296,6 +287,15 @@
       <pubDate>Thu, 04 Apr 2019 18:35:09 +0800</pubDate>
       
       <guid>https://quguang.wang/tags/%E6%9D%82%E8%B0%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MYSQL实战45讲</title>
+      <link>https://quguang.wang/tags/mysql%E5%AE%9E%E6%88%9845%E8%AE%B2/</link>
+      <pubDate>Wed, 27 Mar 2019 15:49:58 +0800</pubDate>
+      
+      <guid>https://quguang.wang/tags/mysql%E5%AE%9E%E6%88%9845%E8%AE%B2/</guid>
       <description></description>
     </item>
     
@@ -381,11 +381,11 @@
     </item>
     
     <item>
-      <title>booklist</title>
-      <link>https://quguang.wang/tags/booklist/</link>
+      <title>书单</title>
+      <link>https://quguang.wang/tags/%E4%B9%A6%E5%8D%95/</link>
       <pubDate>Mon, 21 Jan 2019 16:34:26 +0800</pubDate>
       
-      <guid>https://quguang.wang/tags/booklist/</guid>
+      <guid>https://quguang.wang/tags/%E4%B9%A6%E5%8D%95/</guid>
       <description></description>
     </item>
     
@@ -404,15 +404,6 @@
       <pubDate>Sat, 19 Jan 2019 07:56:14 +0800</pubDate>
       
       <guid>https://quguang.wang/tags/%E9%94%81/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>书单</title>
-      <link>https://quguang.wang/tags/%E4%B9%A6%E5%8D%95/</link>
-      <pubDate>Fri, 18 Jan 2019 15:03:48 +0800</pubDate>
-      
-      <guid>https://quguang.wang/tags/%E4%B9%A6%E5%8D%95/</guid>
       <description></description>
     </item>
     
@@ -467,15 +458,6 @@
       <pubDate>Tue, 25 Dec 2018 22:52:53 +0800</pubDate>
       
       <guid>https://quguang.wang/tags/%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>虚拟机</title>
-      <link>https://quguang.wang/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
-      <pubDate>Mon, 24 Dec 2018 19:03:40 +0800</pubDate>
-      
-      <guid>https://quguang.wang/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
       <description></description>
     </item>
     

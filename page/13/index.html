@@ -22,9 +22,9 @@
     
 
     
-    <meta name="description" content="瞿广，程序员, 开源爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。">
-    <meta property="og:description" content="瞿广，程序员, 开源爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。" />
-    <meta property="twitter:description" content="瞿广，程序员, 开源爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。" />
+    <meta name="description" content="瞿广，程序员, 技术爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。">
+    <meta property="og:description" content="瞿广，程序员, 技术爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。" />
+    <meta property="twitter:description" content="瞿广，程序员, 技术爱好者，生活探险家 | 这里是 瞿广 的博客，与你一起发现更大的世界。" />
     
 
     
@@ -176,7 +176,7 @@
                 <div class="site-heading">
                     <h1>Quguang&#39;s Blog </h1>
                     
-		    <span class="subheading">路在脚下，心向远方</span>
+		    <span class="subheading">当你的才华还撑不起你的野心的时候，你就应该静下心来学习；当你的能力还驾驭不了你的目标时，就应该沉下心来，历练；梦想，不是浮躁，而是沉淀和积累，只有拼出来的美丽，没有等出来的辉煌，机会永远是留给最渴望的那个人。</span>
                 </div>
             </div>
         </div>
@@ -200,6 +200,98 @@
             
 
 <div class="post-preview">
+    <a href="https://quguang.wang/post/springboot-prevent-repeat-submit/">
+        <h2 class="post-title">
+            Spring Boot 使用 AOP 防止重复提交
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>在传统的web项目中，防止重复提交，通常做法是：后端生成一个唯一的提交令牌（uuid），并存储在服务端。页面提交请求携带这个提交令牌，后端验证并在第一次验证后删除该令牌，保证提交请求的唯一性。</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Friday, July 5, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/k8s-jenkins-docker-ci/">
+        <h2 class="post-title">
+            基于Kubernetes/Jenkins/Harbor/Sonarqube搭建微服务CICD系统
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p><strong>项目说明</strong></p>
+
+<p>14个JAVA spring cloud 微服务项目</p>
+
+<p>5个Node项目</p>
+
+<p>1个Node项目VUE生成静态页面做前端+nginx</p>
+
+<p>pgsql、redis、rabbitmq、emqx</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Tuesday, July 2, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/introduction-to-ddd-cqrs-and-event/">
+        <h2 class="post-title">
+            关于 DDD、CQRS和Event Souring
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>我最近开始学习域驱动设计，CQRS和事件溯源。 到目前为止，我主要参与了使用“经典”N层/层架构和关系数据库的项目。 随着项目变得越来越复杂，我注意到这个模型并不总是很好。 不久之前，我写了一篇关于N层神话的文章，它已经暴露了我觉得这种类型的架构所带来的一些问题。 我尝试的第一件事是在这样的架构中应用域驱动设计。</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Wednesday, June 19, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://quguang.wang/post/java-interview-distributed-session/">
+        <h2 class="post-title">
+            Java面试-分布式会话
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            <p>面试题 集群部署时的分布式session如何实现？</p>
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    Posted by 瞿广 Tuesday, May 21, 2019
+    
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="https://quguang.wang/post/java-interview-distributed-dubbo07/">
         <h2 class="post-title">
             Java面试-分布式 分布式服务接口的幂等性和顺序性
@@ -208,90 +300,6 @@
         <div class="post-content-preview">
 	
             
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Tuesday, May 21, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/java-interview-distributed-dubbo06/">
-        <h2 class="post-title">
-            Java面试-分布式 Dubbo服务治理、服务降级
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>面试题 如何基于dubbo进行服务治理、服务降级、失败重试以及超时重试？</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Tuesday, May 21, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/java-interview-distributed-dubbo05/">
-        <h2 class="post-title">
-            Java面试-分布式 Dubbo的spi思想
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>面试题 dubbo的spi思想是什么？</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Tuesday, May 21, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/java-interview-distributed-dubbo04/">
-        <h2 class="post-title">
-            Java面试 分布式-dubbo负载均衡策略和集群容错策略
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>面试题 dubbo负载均衡策略和集群容错策略都有哪些？动态代理策略呢？</p>
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by 瞿广 Tuesday, May 21, 2019
-    
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://quguang.wang/post/java-interview-distributed-dubbo03/">
-        <h2 class="post-title">
-            Java面试-分布式 Dubbo的协议
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            <p>面试题:dubbo支持哪些通信协议？支持哪些序列化协议？</p>
        
         </div>
     </a>
@@ -339,12 +347,6 @@
         <h5>FEATURED TAGS</h5>
         <div class="tags">
              
-            
-                
-                    <a href="/tags/booklist" title="booklist">
-                        booklist
-                    </a>
-                
             
                 
                     <a href="/tags/devops" title="devops">
@@ -431,6 +433,12 @@
                 
             
                 
+                    <a href="/tags/mysql%E5%AE%9E%E6%88%9845%E8%AE%B2" title="mysql实战45讲">
+                        mysql实战45讲
+                    </a>
+                
+            
+                
             
                 
                     <a href="/tags/redis" title="redis">
@@ -507,12 +515,6 @@
                 
             
                 
-                    <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97" title="消息队列">
-                        消息队列
-                    </a>
-                
-            
-                
                     <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E9%AB%98%E6%89%8B%E8%AF%BE" title="消息队列高手课">
                         消息队列高手课
                     </a>
@@ -538,12 +540,6 @@
                     </a>
                 
             
-                
-            
-                
-                    <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA" title="虚拟机">
-                        虚拟机
-                    </a>
                 
             
                 
@@ -643,6 +639,15 @@
                    </a>
                </li>
                
+               
+               <li>
+                   <a target="_blank" href="https://medium.com/@quguang1011">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-medium fa-stack-1x fa-inverse"></i>
+                            </span>
+                   </a>
+               </li>
                
                
                     <li>
@@ -767,6 +772,15 @@
                     </li>
 		    
                     
+                    <li>
+                        <a target="_blank" href="https://medium.com/@quguang1011">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-medium fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+            
                     
                     <li>
                         <a target="_blank" href="https://stackoverflow.com/users/yourstackoverflowid">
@@ -782,7 +796,7 @@
                     
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; Quguang&#39;s Blog 2019
+                    Copyright &copy; Quguang&#39;s Blog 2020
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

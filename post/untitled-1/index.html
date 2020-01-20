@@ -1,0 +1,122 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="Aspose.Words for .NET 15.1.0.0" />
+
+    <title></title>
+</head>
+
+<body style="background: rgba(255,255,255,0.5)">
+
+
+    <p style="font-size:16pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; text-align:center; widows:0">
+        <span style="font-family:黑体; font-size:16pt">贷款信息申明</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; widows:0">
+        <span style=" font-size:12pt">本人自愿向天津好车多多融资租赁有限公司申请融资租赁款，车辆交易价格</span>
+        <span style=" font-size:12pt; text-decoration:underline">  </span>
+        <span style="color:#ff0000;  font-size:12pt; text-decoration:underline" th:text="${loanInfo.carFinalAmount}">结算价</span>
+        <span style=" font-size:12pt; text-decoration:underline">      </span>
+        <span style=" font-size:12pt">元，</span>
+        <span style=" font-size:12pt">首付</span>
+        <span style=" font-size:12pt; text-decoration:underline"> </span>
+        <span style="color:#ff0000;  font-size:12pt; text-decoration:underline" th:text="${loanInfo.downPayment}">首付款</span>
+        <span style="color:#ff0000;  font-size:12pt; text-decoration:underline"> </span>
+        <span style=" font-size:12pt; text-decoration:underline">      </span>
+        <span style=" font-size:12pt">元。</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; widows:0">
+        <span style=" font-size:12pt">本人自愿向</span>
+
+        <span style=" font-size:12pt; text-decoration:underline;font-weight:bold">四川新网银行</span>
+        <span>申请两笔个人消费贷款共计</span>
+        <span style=" font-size:12pt">__</span>
+        <span style="color:#ff0000;  font-size:12pt" th:text="${loanInfo.bankOverdraftPrincipal}">银行本金</span>
+        <span style="  font-size:12pt">_____</span>
+        <span style=" font-size:12pt">元，其中</span>
+        <span style=" font-size:12pt">：</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; widows:0">
+        <span style=" font-size:12pt; font-weight:bold">第一笔</span>
+        <span style=" font-size:12pt; text-decoration:underline">  </span>
+        <span style="color:#ff0000;  font-size:12pt; text-decoration:underline" th:text="${loanInfo.carMakeLoanAmout}">车辆贷款额</span>
+        <span style=" font-size:12pt; text-decoration:underline">       </span>
+        <span style=" font-size:12pt">元，</span>
+        <span style=" font-size:12pt; ">用于偿付融资租赁款；</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; widows:0">
+        <span style=" font-size:12pt; font-weight:bold">第二笔</span>
+        <span style=" font-size:12pt; font-weight:bold; text-decoration:underline"> </span>
+        <span style=" font-size:12pt; text-decoration:underline"> </span>
+        <span style="color:#ff0000;  font-size:12pt; text-decoration:underline" th:text="${loanInfo.financingAllAmount}">超融总金额</span>
+        <span style=" font-size:12pt; text-decoration:underline">       </span>
+        <span style=" font-size:12pt">元，</span>
+        <span style=" font-size:12pt; font-weight:bold">，用于支付购车相关附加费用，明细如下：</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; widows:0">
+        <span style=" font-size:12pt">（1）资产管理费：       </span>
+        <span style="color:#ff0000;  font-size:12pt" th:text="${loanInfo.pushGPSFee}">资产管理费 </span>
+        <span style=" font-size:12pt">             元；</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; widows:0">
+        <span style=" font-size:12pt">（2）技术服务费：       </span>
+        <span style="color:#ff0000;  font-size:12pt" th:text="${loanInfo.financingRentServiceAmount}">技术服务费</span>
+        <span style=" font-size:12pt">              元；</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; widows:0">
+        <span style=" font-size:12pt">（3）</span>
+        <span style=" font-size:12pt">车辆保险金额</span>
+        <span style=" font-size:12pt">：    </span>
+        <span style="color:#ff0000;  font-size:12pt" th:text="${loanInfo.pushInsuranceMoney}">商业险</span>
+        <span style=" font-size:12pt">              元。</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; widows:0">
+        <span style=" font-size:12pt; font-weight:bold">　　贷款</span>
+        <span style=" font-size:12pt; font-weight:bold">期限 </span>
+        <span style="color:#ff0000;  font-size:12pt; font-weight:bold; text-decoration:underline" th:text="${loanInfo.rentalTermName}">36</span>
+        <span style=" font-size:12pt; font-weight:bold"> 月，每</span>
+        <span style=" font-size:12pt; font-weight:bold">期月供预计___</span>
+        <span style="color:#ff0000;  font-size:12pt; font-weight:bold" th:text="${loanInfo.monthRepay}">月供</span>
+        <span style=" font-size:12pt; font-weight:bold">___</span>
+        <span style=" font-size:12pt; font-weight:bold">元（以实际借据为准），一次性受托支付给天津好车多多融资租赁有限公司。</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; text-indent:21pt; widows:0">
+        <span style=" font-size:12pt; font-weight:bold">本人未受到诱导性营销或欺瞒，具备偿还能力，自愿向新网银行申请上述贷款，自愿签署并遵守借款合同的各项约定。</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; text-indent:21pt; widows:0">
+        <span style=" font-size:12pt; font-weight:bold">本人完全理解并确认：本人与任何第三方之间的纠纷或基础合同关系的变更，不会影响本人与新网银行签订的借款合同，本人不以任何理由否认本人与新网银行之间的借款关系或拒绝还款。</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 0pt 10pt; orphans:0; text-indent:21pt; widows:0">
+        <span style=" font-size:12pt; font-weight:bold">本人承诺向任何第三方支付除上述贷款外的一切费用，与本人向新网银行申请的贷款无关。</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 48pt 10pt 0pt; orphans:0; text-align:justify; widows:0">
+        <span style=" font-size:12pt">&#xa0;</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 48pt 10pt 0pt; orphans:0; text-align:left; text-indent:20pt; widows:0">
+        <span style=" font-size:12pt">申明人： </span>
+        <span style="color:#ff0000;  font-size:12pt" th:text="${loanInfo.proposerName}">客户人姓名</span>
+        <span style=" font-size:12pt"> </span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 48pt 10pt 0pt; orphans:0; text-align:left; text-indent:20pt; widows:0">
+        <span style=" font-size:12pt">身份证尾号后</span>
+        <span style=" font-size:12pt">四位：</span>
+        <span style="color:#ff0000;  font-size:12pt" th:text="${loanInfo.credentialNumber}">身份证后四位</span>
+    </p>
+    <p style="font-size:12pt; line-height:115%; margin:0pt 48pt 10pt 0pt; orphans:0; text-align:left; text-indent:20pt; widows:0">
+        <span style=" font-size:12pt">申明日期：</span>
+        <span style=" font-size:12pt"> </span>
+        <span style="color:#ff0000;  font-size:12pt" th:text="${#dates.format(loanInfo.createdDate, 'yyyy')}">2019</span>
+        <span style=" font-size:12pt">   年 </span>
+        <span style="color:#ff0000;  font-size:12pt" th:text="${#dates.format(loanInfo.createdDate, 'MM')}">12</span>
+        <span style="color:#ff0000;  font-size:12pt"> </span>
+        <span style=" font-size:12pt"> </span>
+        <span style=" font-size:12pt"> 月 </span>
+        <span style="color:#ff0000;  font-size:12pt" th:text="${#dates.format(loanInfo.createdDate, 'dd')}">23</span>
+        <span style=" font-size:12pt">  日</span>
+    </p>
+
+</body>
+
+</html>

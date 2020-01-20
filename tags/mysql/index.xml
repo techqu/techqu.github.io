@@ -6,10 +6,19 @@
     <description>Recent content in MySQL on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 May 2019 18:26:55 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jan 2020 21:27:38 +0800</lastBuildDate>
     
 	<atom:link href="https://quguang.wang/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>mysql-行锁&#43;间隙锁（next-key lock）</title>
+      <link>https://quguang.wang/post/mysql-next-key-lock/</link>
+      <pubDate>Fri, 10 Jan 2020 21:27:38 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/mysql-next-key-lock/</guid>
+      <description>&lt;p&gt;本文主要介绍了幻读带来的问题 ，以及 mysql给出的解决办法，即 next-key lock。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Java面试-高并发-MySQL读写分离</title>

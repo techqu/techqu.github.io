@@ -13,10 +13,21 @@
     
     <item>
       <title>JVM中都有哪些常见的垃圾回收器，各自的特点是什么？</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-06/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-06-garbage-collector/</link>
       <pubDate>Sat, 28 Dec 2019 08:51:05 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-06/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-06-garbage-collector/</guid>
+      <description>&lt;p&gt;如果你不合理的设置内存，就会导致新生代内存不充足，然后导致很多对象不停的迁移到老年代去，最后导致老年代也要不停的进行垃圾回收。&lt;/p&gt;
+
+&lt;p&gt;最后这频繁的垃圾回收，就会极大的影响系统的性能。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Stop the World”问题分析：JVM最让人无奈的痛点！</title>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-07-stop-the-world/</link>
+      <pubDate>Sat, 28 Dec 2019 08:51:05 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-07-stop-the-world/</guid>
       <description>&lt;p&gt;如果你不合理的设置内存，就会导致新生代内存不充足，然后导致很多对象不停的迁移到老年代去，最后导致老年代也要不停的进行垃圾回收。&lt;/p&gt;
 
 &lt;p&gt;最后这频繁的垃圾回收，就会极大的影响系统的性能。&lt;/p&gt;</description>
@@ -24,10 +35,10 @@
     
     <item>
       <title>线上系统部署时如何设置JVM内存大小</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-05/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-05-jvm-properties-set/</link>
       <pubDate>Sat, 28 Dec 2019 08:51:05 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-05/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-05-jvm-properties-set/</guid>
       <description>&lt;p&gt;如果你不合理的设置内存，就会导致新生代内存不充足，然后导致很多对象不停的迁移到老年代去，最后导致老年代也要不停的进行垃圾回收。&lt;/p&gt;
 
 &lt;p&gt;最后这频繁的垃圾回收，就会极大的影响系统的性能。&lt;/p&gt;</description>
@@ -35,10 +46,10 @@
     
     <item>
       <title>JVM中有哪些垃圾回收算法，每个算法各自的优劣？</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-04/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-04-garbage-algorithm/</link>
       <pubDate>Thu, 26 Dec 2019 14:12:44 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-04/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-04-garbage-algorithm/</guid>
       <description>&lt;p&gt;上一篇文章我们重新梳理了一下什么时候触发垃圾回收，以及到底哪些对象可以垃圾回收&lt;/p&gt;
 
 &lt;p&gt;另外，对新生代填满，GC Roots对象，软引用、弱引用，还有finalize()等概念进行了比较细致的梳理。&lt;/p&gt;
@@ -48,28 +59,28 @@
     
     <item>
       <title>JVM的分代模型与垃圾回收机制</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-03/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-03-heap-stack-metaspace/</link>
       <pubDate>Wed, 25 Dec 2019 14:12:44 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-03/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-03-heap-stack-metaspace/</guid>
       <description>&lt;p&gt;上一篇文章给大家分析了JVM中的几块内存区域分别都是干什么的，今天的文章就给大家初步介绍一下垃圾回收的概念。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JVM的内存区域划分</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-02/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-02-memory-partition/</link>
       <pubDate>Tue, 24 Dec 2019 14:12:44 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-02/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-02-memory-partition/</guid>
       <description></description>
     </item>
     
     <item>
       <title>JVM的类加载机制</title>
-      <link>https://quguang.wang/post/xiaoe-tech-jvm-01/</link>
+      <link>https://quguang.wang/post/xiaoe-tech-jvm-01-classloader/</link>
       <pubDate>Tue, 24 Dec 2019 14:12:44 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/xiaoe-tech-jvm-01/</guid>
+      <guid>https://quguang.wang/post/xiaoe-tech-jvm-01-classloader/</guid>
       <description></description>
     </item>
     

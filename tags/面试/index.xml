@@ -6,10 +6,19 @@
     <description>Recent content in 面试 on Quguang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Aug 2019 10:06:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 19 Dec 2019 21:45:56 +0800</lastBuildDate>
     
 	<atom:link href="https://quguang.wang/tags/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>我的简历</title>
+      <link>https://quguang.wang/post/resume-01/</link>
+      <pubDate>Thu, 19 Dec 2019 21:45:56 +0800</pubDate>
+      
+      <guid>https://quguang.wang/post/resume-01/</guid>
+      <description>&lt;p&gt;本文是一个markdown风格语法的简历，模板转载自网络&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>我用50W&#43;年薪的独角兽offer，犒劳自己一年的卧薪尝胆！不服输，你就不会输</title>
@@ -257,10 +266,10 @@
     
     <item>
       <title>简历模版</title>
-      <link>https://quguang.wang/post/resume/</link>
+      <link>https://quguang.wang/post/resume-template/</link>
       <pubDate>Wed, 19 Dec 2018 21:45:56 +0800</pubDate>
       
-      <guid>https://quguang.wang/post/resume/</guid>
+      <guid>https://quguang.wang/post/resume-template/</guid>
       <description>&lt;p&gt;本文是一个markdown风格语法的简历模版，转载自网络&lt;/p&gt;</description>
     </item>
     
